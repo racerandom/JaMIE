@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+import os
 from tqdm import tqdm
 import torch
 from utils import *
 from torch.utils.data import Dataset, DataLoader, TensorDataset
-from pytorch_pretrained_bert import BertTokenizer, BertForTokenClassification, WEIGHTS_NAME, CONFIG_NAME
+from pytorch_pretrained_bert import BertTokenizer, BertForTokenClassification, BertConfig
 from pytorch_pretrained_bert.optimization import BertAdam, WarmupLinearSchedule
 from model import save_bert_model
 
@@ -74,15 +74,13 @@ print(cert_lab2ix)
 # train_tensors, train_deunk = extract_cert_from_conll('data/train_%s.txt' % CORPUS, tokenizer, cert_lab2ix, device)
 # test_tensors, test_deunk = extract_cert_from_conll('data/test_%s.txt' % CORPUS, tokenizer, cert_lab2ix, device)
 train_tensors, train_deunk = extract_ner_from_conll('data/train_%s.txt' % args.CORPUS, tokenizer, lab2ix, device)
-test_tensors, test_deunk = extract_ner_from_conll('data/test_%s.txt' % args.CORPUS, tokenizer, lab2ix, device)
 
 
 # NUM_EPOCHS = 5
 # BATCH_SIZE = 16
 # test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
 train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
-test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
-print('train size: %i, test size: %i' % (len(train_tensors), len(test_tensors)))
+print('train size: %i' % len(train_tensors))
 
 if args.do_train:
     """ Disease Tags recognition """
@@ -111,13 +109,21 @@ if args.do_train:
     #        if step !=0 and step % 100 == 0:
     #            eval(model, test_data, label2ix)
 
-#     """ save the trained model """
-#     save_bert_model(model, tokenizer, args.MODEL_DIR)
-#
-# """ load the new model"""
-# tokenizer = BertTokenizer.from_pretrained(args.MODEL_DIR, do_lower_case=False, do_basic_tokenize=False)
-# model = BertForTokenClassification.from_pretrained(BERT_URL, num_labels=len(lab2ix))
-# model.to(device)
+    """ save the trained model """
+    save_bert_model(model, tokenizer, args.MODEL_DIR)
+
+""" load the new tokenizer"""
+tokenizer = BertTokenizer.from_pretrained(args.MODEL_DIR, do_lower_case=False, do_basic_tokenize=False)
+test_tensors, test_deunk = extract_ner_from_conll('data/test_%s.txt' % args.CORPUS, tokenizer, lab2ix, device)
+test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
+print('ttest size: %i' % len(test_tensors))
+
+""" load the new model"""
+config = BertConfig.from_json_file(os.path.join(args.MODEL_DIR, 'config.json'))
+model = BertForTokenClassification(config, num_labels=len(lab2ix))
+state_dict = torch.load(os.path.join(args.MODEL_DIR, 'pytorch_model.bin'))
+model.load_state_dict(state_dict)
+model.to(device)
 
 """ predict test out """
 output_file = 'outputs/ner_%s_ep%i_out.txt' % (args.CORPUS, args.NUM_EPOCHS)
