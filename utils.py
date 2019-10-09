@@ -380,10 +380,11 @@ def eval_pid_seq(model, tokenizer, test_data, orig_token, label2ix, epoch):
 #        for line in lines:
 #            fo.write(line + '\n')
 
+
 def eval_seq(model, tokenizer, test_data, deunk_toks, label2ix, file_out):
     model.eval()
     with torch.no_grad():
-        with open(file_out, 'w') as fo, open('outputs/%s_eval.txt' % file_out, 'w') as fe:
+        with open(file_out, 'w') as fo, open(file_out, 'w') as fe:
             for deunk_tok, (token, mask, gold) in zip(deunk_toks, test_data):
                 pred_prob = model(token, attention_mask=mask)
                 pred = torch.argmax(pred_prob, dim=-1)
