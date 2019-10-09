@@ -430,3 +430,4 @@ def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, cer
                 for t_deunk, t_lab in zip(b_deunk, b_labs):
                     fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, ix2clab[active_pred_lab_list.pop(0)] if t_lab == 'B-D' else '_'))
                 fo.write('\n')
+
