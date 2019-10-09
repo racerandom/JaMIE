@@ -12,11 +12,11 @@ Copy the processed data (in 黒橋研 server) into the 'data' folder in XX.
 
 ## step1: medical tag recognition:
 
-### Train a model:
+### Train and test:
 > python clinical\_ner.py \\  
 > --corpus 'goku' \\  
 > --model 'checkpoints/ner/' \\ # save model   
-> --epoch 3 \\  
+> --epoch 5 \\  
 > --batch 16 \\  
 > --do_train 
 
@@ -27,12 +27,17 @@ Copy the processed data (in 黒橋研 server) into the 'data' folder in XX.
 
 Predicted texts will be located in the 'outputs' folder.
 
+### Evaluation:
+> cd conlleval  
+> python conlleval.py < ../outputs/ner_goku_ep5_eval.txt
+
 ## step2: disease certainty classification
 
-### Train a model:
-> python clinical\_ner.py \\  
+### Train and test:
+> python clinical\_cert.py \\  
 > --corpus 'goku' \\  
-> --model 'checkpoints/ner/' \\ # save model   
+> --model 'checkpoints/cert/' \\ # save model  
+> --ner_out 'outputs/ner\_goku\_ep3\_out.txt' \\ # predicted ner results  
 > --epoch 3 \\  
 > --batch 16 \\  
 > --do_train 
@@ -40,7 +45,8 @@ Predicted texts will be located in the 'outputs' folder.
 ### Test:
 > python clinical\_ner.py \\  
 > --corpus 'goku' \\  
-> --model 'checkpoints/ner/' # load model  
+> --model 'checkpoints/cert/' # load model  
+> --ner_out 'outputs/ner\_goku\_ep3\_out.txt' \\ # predicted ner results 
 
 Predicted texts will be located in the 'outputs' folder.
 

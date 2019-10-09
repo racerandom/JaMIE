@@ -8,3 +8,4 @@ bert_seq*
 bert_tag*
 temp.*
 *.ipynb
+temp_cert.py

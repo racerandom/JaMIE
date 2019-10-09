@@ -97,14 +97,14 @@ if args.do_train:
                         warmup=0.1,
                         t_total=args.NUM_EPOCHS * len(train_dataloader))
 
+    model.train()
     for epoch in range(1, args.NUM_EPOCHS + 1):
         for batch_feat, batch_mask, batch_lab in tqdm(train_dataloader, desc='Training'):
-            model.train()
-            model.zero_grad()
             loss = model(batch_feat, attention_mask=batch_mask, labels=batch_lab)
 
             loss.backward()
             optimizer.step()
+            model.zero_grad()
 
     #        if step !=0 and step % 100 == 0:
     #            eval(model, test_data, label2ix)

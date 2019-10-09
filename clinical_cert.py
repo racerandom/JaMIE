@@ -81,6 +81,38 @@ train_tensors, train_deunk = extract_cert_from_conll('data/train_%s.txt' % args.
 train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
 print('train size: %i' % len(train_tensors))
 
+def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, cert_lab2ix, file_out):
+    pred_labs, gold_labs = [], []
+    ix2clab = {v:k for k,v in cert_lab2ix.items()}
+    model.eval()
+    with torch.no_grad():
+        with open(file_out, 'w') as fo:
+            for b_deunk, b_labs, (b_toks, b_masks, b_ner_masks, b_clab_masks, b_clabs) in zip(test_deunks, test_labs, test_dataloader):
+                pred_prob = model(b_toks, b_ner_masks, b_clab_masks, attention_mask=b_masks)
+                active_index = b_clab_masks.view(-1) == 1
+                if not (active_index != 0).sum().item():
+                    for t_deunk, t_lab in zip(b_deunk, b_labs):
+                        fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, '_'))
+                    fo.write('\n')
+                    continue
+                active_pred_prob = pred_prob.view(-1, len(cert_lab2ix))[active_index]
+                active_pred_lab = torch.argmax(active_pred_prob, dim=-1)
+                active_gold_lab = b_clabs.view(-1)[active_index]
+                pred_labs.append(active_pred_lab.tolist())
+                gold_labs.append(active_gold_lab.tolist())
+    #             b_deunk = ['[CLS]'] + b_deunk
+    #             print(b_deunk)
+    #             print(b_labs)
+    #             for k in b_ner_masks.view(5, -1)[active_index]:
+    #                 print([b_deunk[i] for i, j in enumerate(k) if j == 1])
+
+    #             print(len(b_labs), b_ner_masks.shape)
+    #             print()
+                active_pred_lab_list = active_pred_lab.tolist()
+                for t_deunk, t_lab in zip(b_deunk, b_labs):
+                    fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, ix2clab[active_pred_lab_list.pop(0)] if t_lab == 'B-D' else '_'))
+                fo.write('\n')
+
 
 if args.do_train:
     model = SeqCertClassifier.from_pretrained(BERT_URL, num_labels=len(cert_lab2ix))
@@ -96,14 +128,14 @@ if args.do_train:
                         warmup=0.1,
                         t_total=args.NUM_EPOCHS * len(train_dataloader))
 
+    model.train()
     for epoch in range(1, args.NUM_EPOCHS + 1):
         for (b_toks, b_masks, b_ner_masks, b_clab_masks, b_clabs) in tqdm(train_dataloader, desc='Training'):
-            model.train()
-            model.zero_grad()
             loss = model(b_toks, b_ner_masks, b_clab_masks, attention_mask=b_masks, labels=b_clabs)
 
             loss.backward()
             optimizer.step()
+            model.zero_grad()
 
     """ save the trained model """
     save_bert_model(model, tokenizer, args.MODEL_DIR)
