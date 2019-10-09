@@ -322,8 +322,7 @@ def extract_cert_from_conll(conll_file, tokenizer, cert_lab2ix, device, test_mod
         pad_ner_masks.append(pad_s_ner_masks)
         clab_masks.append(s_clab_masks)
         pad_cert_lab_ids.append([cert_lab2ix[clab] for clab in s_ner_clabs])
-        
-        
+
         assert len(pad_tok_ids) == len(pad_masks)
         assert len(pad_ner_masks) == len(clab_masks) == len(pad_cert_lab_ids)
     
@@ -384,7 +383,7 @@ def eval_pid_seq(model, tokenizer, test_data, orig_token, label2ix, epoch):
 def eval_seq(model, tokenizer, test_data, deunk_toks, label2ix, file_out):
     model.eval()
     with torch.no_grad():
-        with open(file_out, 'w') as fo:
+        with open('%s_eval.txt' % file_out, 'w') as fe, open('%s_out.txt' % file_out, 'w') as fo:
             for deunk_tok, (token, mask, gold) in zip(deunk_toks, test_data):
                 pred_prob = model(token, attention_mask=mask)
                 pred = torch.argmax(pred_prob, dim=-1)
@@ -399,9 +398,9 @@ def eval_seq(model, tokenizer, test_data, deunk_toks, label2ix, file_out):
                 
                 assert len(bpe_tok) == len(deunk_tok)
                 
-                # for t, g, p in zip(deunk_tok, gold_masked_ix.tolist(), pred_masked_ix.tolist()):
-                #     fe.write('%s\t%s\t%s\n' % (t, ix2label[g], ix2label[p]))
-                # fe.write('\n')
+                for t, g, p in zip(deunk_tok, gold_masked_ix.tolist(), pred_masked_ix.tolist()):
+                    fe.write('%s\t%s\t%s\n' % (t, ix2label[g], ix2label[p]))
+                fe.write('\n')
                 for dt, t, g, p in zip(deunk_tok, bpe_tok, gold_masked_ix.tolist(), pred_masked_ix.tolist()):
                     fo.write('%s\t%s\t%s\t%s\n' % (dt, t, ix2label[p], '_'))
                 fo.write('\n')

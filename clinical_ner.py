@@ -126,6 +126,6 @@ model.load_state_dict(state_dict)
 model.to(device)
 
 """ predict test out """
-output_file = 'outputs/ner_%s_ep%i_out.txt' % (args.CORPUS, args.NUM_EPOCHS)
+output_file = 'outputs/ner_%s_ep%i' % (args.CORPUS, args.NUM_EPOCHS)
 eval_seq(model, tokenizer, test_dataloader, test_deunks, lab2ix, output_file)
 

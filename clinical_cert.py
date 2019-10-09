@@ -97,7 +97,7 @@ if args.do_train:
                         t_total=args.NUM_EPOCHS * len(train_dataloader))
 
     for epoch in range(1, args.NUM_EPOCHS + 1):
-        for (b_toks, b_masks, b_ner_masks, b_clab_masks, b_clabs) in tqdm(train_dataloader):
+        for (b_toks, b_masks, b_ner_masks, b_clab_masks, b_clabs) in tqdm(train_dataloader, desc='Training'):
             model.train()
             model.zero_grad()
             loss = model(b_toks, b_ner_masks, b_clab_masks, attention_mask=b_masks, labels=b_clabs)
