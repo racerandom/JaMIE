@@ -37,6 +37,8 @@ parser.add_argument("-b", "--batch", dest="BATCH_SIZE", default=16, type=int,
                     help="BATCH SIZE")
 parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=3, type=int,
                     help="fine-tuning epoch number")
+parser.add_argument("-n", "--ner_out", dest="NER_OUT", type=str,
+                    help="tag recognition results")
 parser.add_argument("--do_train",
                     action='store_true',
                     help="Whether to run training.")
@@ -50,7 +52,7 @@ args = parser.parse_args()
 
 train_deunks, train_toks, train_labs, train_cert_labs = read_conll('data/train_%s.txt' % args.CORPUS)
 # test_deunks, test_toks, test_labs, test_cert_labs = read_conll('data/test_%s.txt' % CORPUS)
-test_deunks, test_toks, test_labs, test_cert_labs = read_conll('outputs/ner_%s_ep3_out.txt' % args.CORPUS)
+test_deunks, test_toks, test_labs, test_cert_labs = read_conll(args.NER_OUT)
 # test_deunks, test_toks, test_labs, test_cert_labs = read_conll('data/records.txt')
 
 
@@ -108,7 +110,7 @@ if args.do_train:
 
 """ load the new tokenizer """
 tokenizer = BertTokenizer.from_pretrained(args.MODEL_DIR, do_lower_case=False, do_basic_tokenize=False)
-test_tensors, test_deunk = extract_cert_from_conll('outputs/ner_%s_ep3_out.txt' % args.CORPUS,
+test_tensors, test_deunk = extract_cert_from_conll(args.NER_OUT,
                                                    tokenizer,
                                                    cert_lab2ix,
                                                    device,
