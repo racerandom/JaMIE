@@ -80,8 +80,8 @@ test_tensors, test_deunk = extract_cert_from_conll('outputs/ner_%s_ep3_out.txt' 
                                                    test_mode=True)
 
 # test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
-train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE,shuffle=True)
-test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
+train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
+test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
 print('train size: %i, test size: %i' % (len(train_tensors), len(test_tensors)))
 
 

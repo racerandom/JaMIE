@@ -80,8 +80,8 @@ test_tensors, test_deunk = extract_ner_from_conll('data/test_%s.txt' % args.CORP
 # NUM_EPOCHS = 5
 # BATCH_SIZE = 16
 # test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
-train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE,shuffle=True)
-test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE,shuffle=False)
+train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
+test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
 print('train size: %i, test size: %i' % (len(train_tensors), len(test_tensors)))
 
 if args.do_train:
@@ -111,13 +111,13 @@ if args.do_train:
     #        if step !=0 and step % 100 == 0:
     #            eval(model, test_data, label2ix)
 
-    """ save the trained model """
-    save_bert_model(model, tokenizer, args.MODEL_DIR)
-
-""" load the new model"""
-tokenizer = BertTokenizer.from_pretrained(args.MODEL_DIR, do_lower_case=False, do_basic_tokenize=False)
-model = BertForTokenClassification.from_pretrained(BERT_URL, num_labels=len(lab2ix))
-model.to(device)
+#     """ save the trained model """
+#     save_bert_model(model, tokenizer, args.MODEL_DIR)
+#
+# """ load the new model"""
+# tokenizer = BertTokenizer.from_pretrained(args.MODEL_DIR, do_lower_case=False, do_basic_tokenize=False)
+# model = BertForTokenClassification.from_pretrained(BERT_URL, num_labels=len(lab2ix))
+# model.to(device)
 
 """ predict test out """
 output_file = 'outputs/ner_%s_ep%i_out.txt' % (args.CORPUS, args.NUM_EPOCHS)
