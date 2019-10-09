@@ -1,0 +1,3 @@
+１．<a>右肺上葉Ｓ１ａ</a>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ｎｏｄｕｌｅ</d>（<a>全体</a>：<f>１．５×１．０Ｃｍ</f>、<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>：<f>１．３×１．４Ｃｍ</f>）に著変なし。<a>辺縁</a>の<d certainty="positive">すりガラス状陰影</d>と<a>正常肺野の境界</a>は<f>明瞭</f>である。引き続き、<d certainty="positive">原発性肺癌</d>を考える。<d certainty="positive">ｃＴ１ｂ</d>
+（規約変更に伴い<p>Ｔ因子</p>を前回より変更）２．<d certainty="negative">肺門、縦隔、鎖骨上窩リンパ節有意腫大</d>なし。<d certainty="positive">Ｎ０</d>
+３．<d certainty="negative">肺転移</d>は明らかでない。<d certainty="negative">胸水貯留</d>なし。４．<a>喉頭</a>全摘後である。５．<d certainty="negative">肝転移、副腎転移</d>は明らかでない。その他<a>撮像範囲</a>で<a>腹部</a>に新出の異常なし。６．<a>撮像範囲の骨</a>に<f>明らかな</f><d certainty="negative">転移</d>なし。

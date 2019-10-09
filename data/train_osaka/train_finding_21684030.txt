@@ -1,0 +1,2 @@
+<a>両側肺下葉優位</a>に<d certainty="positive">すりガラス影や牽引性気管支拡張、蜂巣肺</d>が認められます。<d certainty="suspicious">fibrotic NSIPパターンの間質性肺炎</d>を疑います。前回1/4と著変ありません。
+<a>縦隔内</a>に<f>短径1cm未満</f>の<d certainty="positive">LNs</d>が認められますが、<f>positive size</f>の<d certainty="negative">LN</d>は認められません。

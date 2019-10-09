@@ -1,0 +1,18 @@
+<sentence><event class="" eid="e1">つまらない</event>質問ですがよろしく<event class="" eid="e2">お願いします</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先ほど</TIMEX3>よく<event class="" eid="e3">行く</event>靴屋で靴を電話で<event class="" eid="e4">注文しよう</event>と<event class="" eid="e5">したのです</event>が『来店の上、注文書<event class="" eid="e6">記入願います</event>』と<event class="" eid="e7">言われ</event>、店に<event class="" eid="e8">行きました</event>。</sentence>
+<sentence type="fragment">注文書を<event class="" eid="e9">書き終え</event>て『</sentence>
+<sentence>内金いくらですか？</sentence>
+<sentence type="fragment">』と<event class="" eid="e10">聞く</event>と『全額<event class="" eid="e11">頂きます</event>』と<event class="" eid="e12">言うのです</event>。</sentence>
+<sentence type="fragment">僕は『</sentence>
+<sentence>商品が手元に<event class="STATE" eid="e13">ない</event>のに全額は<event class="STATE" eid="e14">おかしく</event><event class="STATE" eid="e15">ないです</event>か？</sentence>
+<sentence type="fragment">』と<event class="" eid="e16">いう</event>と『<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="2005-XX" valueFromSurface="XXXX-XX">月</TIMEX3>を<event class="" eid="e17">またぐので</event>仮の売上げを<event class="" eid="e18">上げるので</event>…』という事でした。</sentence>
+<sentence>仮の売上げって何だろうと<event class="" eid="e19">思い</event>つつ<event class="" eid="e20">カード決済しよう</event>としたら、『カードは仮売上げでは<event class="" eid="e21">使用できません</event>』と<event class="" eid="e22">言われました</event>。</sentence>
+<sentence>仮の売上げって一体何ですか？</sentence>
+<sentence>商品を<event class="" eid="e23">受け取ってない</event>のにどうして<event class="" eid="e24">全額入金しない</event>と<event class="STATE" eid="e25">ダメなんです</event>か？</sentence>
+<sentence>これってお店では<event class="STATE" eid="e26">普通なんです</event>か？</sentence>
+<sentence>長々とすいませんでした。</sentence>
+<sentence>商品を<event class="" eid="e27">渡していないので</event>、帳簿上は<event class="STATE" eid="e28">正式</event>の売り上げとして<event class="" eid="e29">扱えないのです</event>。</sentence>
+<sentence>だから仮売り上げと<event class="" eid="e30">言っている</event>はずです。</sentence>
+<sentence>そのお店としては営業成績が<event class="" eid="e31">伸びない</event>ため、とにかくその<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="2005-XX" valueFromSurface="XXXX-XX">月</TIMEX3>の売り上げ額に<event class="" eid="e32">算入したかった</event>だけです。</sentence>
+<sentence>もちろん、こんなのはその店のわがままです。</sentence>
+<sentence>こんな<event class="STATE" eid="e33">理不尽</event>と<event class="" eid="e34">いう</event>か、納得の<event class="" eid="e35">いかない</event>ことを<event class="" eid="e36">言うのであれ</event>ば、その場で購入を<event class="" eid="e37">断る</event>のが<event class="STATE" eid="e38">いい</event>と<event class="" eid="e39">思います</event>。</sentence>

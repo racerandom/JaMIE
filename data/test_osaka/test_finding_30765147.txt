@@ -1,0 +1,17 @@
+<a>肝</a>：<a>右葉</a>に<d certainty="positive">小嚢胞</d>を<f>散見</f>。<a>S7辺縁</a>に<d certainty="positive">血管腫+AP shunt</d>と思われる<d certainty="positive">濃染域</d>あり。前回CT(2013年4月18日)と比べて著変なし。
+<a>胆嚢</a>：n.p.
+<a>胆管</a>の<d certainty="negative">拡張</d>は認めない。
+<a>膵</a>：<a>体部</a>に<f>4mm</f>の<d certainty="positive">嚢胞病変</d>あり。前回同様と思われる。<a>主膵管</a>に<d certainty="negative">拡張</d>なし。
+<a>脾</a>：n.p.
+<a>副腎</a>：n.p.
+<a>腎</a>：n.p.
+<a>左胃動脈領域</a>に<d certainty="positive">小リンパ節</d>が見られるが、著変なし。
+<d certainty="negative">腹水</d>なし。
+1) <d certainty="positive">肝血管腫</d> (著変なし)
+2) <d certainty="positive">膵体部微小嚢胞</d> (著変なし)
+<a>両肺下葉優位</a>に<d certainty="positive">収縮性変化</d>を伴った<d certainty="positive">線状・索状影、すりガラス影</d>を認め、<d certainty="positive">牽引性気管支拡張</d>を認めます。前回（2013.4.18）と比較して著変ありません。
+<a>左肺下葉S6、major fissure近く</a>の<f>径3mm大</f>の<d certainty="positive">結節</d>は前回と同様です。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>を認めません。
+<d certainty="negative">胸水貯留</d>なし。
+<d certainty="positive">心拡大、冠動脈石灰化</d>あり。
+<a>両側下肺野</a>に<d certainty="positive">索状影</d>あり。前回Xp2014/06/10と同様です。

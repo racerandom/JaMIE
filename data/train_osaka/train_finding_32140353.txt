@@ -1,0 +1,6 @@
+<a>両肺下葉・胸膜下優位</a>に<d certainty="positive">収縮性変化</d>を伴った<d certainty="positive">すりガラス影、網状影</d>を認め、<d certainty="positive">牽引性気管支拡張像や蜂巣肺</d>を伴っています。<a>上葉</a>にも<f>軽度</f>ですが、類似の所見を認めます。前回他院CT（2017/03/15）と比較して著変ありません。<a>上葉</a>の<d certainty="positive">嚢胞腔</d>、<a>気管支血管周囲</a>に沿った<d certainty="positive">陰影やすりガラス影</d>も<c>目立つ</c>点など、<d certainty="suspicious">inconsistent with UIP patternの間質性肺炎</d>の経過像を疑います。
+<a>左肺S3</a>に<f>径16mm大</f>の<d certainty="positive">不整結節状影</d>を認めますが、thin-section CTで比較するとほぼ同様です。経過は見て下さい。
+<a>気管分岐部付近の気管右前方、前縦隔左側</a>に<f>短径1.2cm程</f>の<d certainty="positive">腫大リンパ節</d>を認めます。前回同様です。その他、<f>複数</f>の<d certainty="positive">リンパ節</d>を認めますが、<f>有意なサイズ</f>の<d certainty="negative">リンパ節腫大</d>は認めません。
+<d certainty="negative">胸水</d>なし
+<a>冠動脈</a>の<d certainty="positive">石灰化</d>。
+<a>胆嚢内</a>に<f>径7mm程度</f>の<d certainty="positive">結石</d>あり。前回と著変ありません。

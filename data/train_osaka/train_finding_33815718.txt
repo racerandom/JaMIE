@@ -1,0 +1,32 @@
+<a>肝、胆、膵、脾、副腎、腎</a>；W.N.L.
+<a>子宮体部</a>に<f>径5cm</f>の<f>境界明瞭な</f><d certainty="positive">腫瘤</d>あり。<d certainty="suspicious">筋腫</d>の疑い。
+<d certainty="negative">腫大リンパ節</d>なし。
+<d certainty="negative">腹水</d>なし。
+<ABD US>
+<Liver> :<a>肝</a>は<d certainty="positive">挙上</d>している。
+<f>edge dull</f>
+<f>surface smooth</f>
+internal echo <f>homogeneous</f>
+<d certainty="negative">IHBD dilatation (-)</d>
+<d certainty="negative">Liver/Kidney contrast (-)</d>
+観察範囲内に<f>明らかな</f><d certainty="negative">SOL (-)</d>
+<<a>GB</a>> :n.p.
+<<a>CBD</a>> : <d certainty="negative">dilatation (-)</d> <f>2.0mm</f>
+<<a>Pancreas</a>> :
+<<a>Kidney</a>> :<a>Bil.Kidneys</a>.n.p.　<d certainty="negative">hydronephrosis(-)</d>
+<<a>Spleen</a>> :
+<d certainty="negative">splenomegaly (-)</d>
+<<a>LN</a>>:　可視範囲内(-)
+<<d certainty="negative">Ascites</d>>: <d certainty="negative">可視範囲内(-)</d>
+<a>両側肺全体</a>、特に、<a>下葉優位</a>に<d certainty="positive">容積減少</d>を伴った<d certainty="positive">すりガラス影、網状影</d>を認め、<d certainty="positive">蜂巣肺や牽引性気管支拡張像</d>を伴っています。<a>小葉間隔壁</a>は<d certainty="positive">やや肥厚</d>し、同部に<f>隣接</f>した<f>不整な</f><d certainty="positive">粒状影や線状・索状影</d>が認められますが、<d certainty="suspicious">線維化に伴う変化</d>か。
+<d certainty="suspicious">間質性肺炎</d>（<d certainty="suspicious">UIP pattern</d>）の他、<d certainty="suspicious">慢性過敏性肺臓炎</d>などが鑑別に挙がります。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>を認めません。
+<d certainty="negative">胸水</d>なし。
+<a>肝、胆、膵、脾、副腎、腎</a>；W.N.L.
+<d certainty="positive">後屈子宮</d>。
+<d certainty="negative">腫大リンパ節</d>なし。
+<d certainty="negative">腹水</d>なし。
+<a>肝、胆、膵、脾、副腎、腎</a>；W.N.L.
+<d certainty="positive">後屈子宮</d>。
+<d certainty="negative">腫大リンパ節</d>なし。
+<d certainty="negative">腹水</d>なし。

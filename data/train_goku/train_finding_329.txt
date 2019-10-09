@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。単純ＣＴ<a>右肺中葉Ｓ４</a>に<f>比較的境界明瞭なふたこぶ状</f>の<d certainty="positive">結節</d>がみられる。<f>１．３×１．６Ｃｍ</f>で、前回より<c>増大</c>しています。また経過でも<c>漸増</c>しています。<d certainty="suspicious">原発性肺癌</d>がうたわれます。<d certainty="suspicious">ｃＴ１ｂ</d>
+<a>結節周囲</a>の<d certainty="positive">濃度上昇</d>は<d certainty="positive">気管支鏡（ＸＸＸＸ年ＸＸ月ＸＸ日）後変化</d>を疑います。<d certainty="negative">頚部・縦隔・腋窩リンパ節転移</d>を疑う所見は認められません。<d certainty="positive">Ｎ０</d>
+<d certainty="positive">左少量胸水</d>あり。<a>甲状腺右葉</a>の<d certainty="positive">低吸収域</d>は著変ありません。<a>右乳腺内</a>の<d certainty="positive">石灰化</d>著変ありません。

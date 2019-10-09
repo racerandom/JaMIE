@@ -1,0 +1,10 @@
+<sentence>アウトルックエクスプレスです。</sentence>
+<sentence>迷惑メールで、本文が<event class="STATE" eid="e1">同じで</event>送信者が<event class="" eid="e2">違う</event>場合の着信拒否のような設定方法を<event class="" eid="e3">教えてください</event>。</sentence>
+<sentence>Ｏｕｔｌｏｏｋ　Ｅｘｐｒｅｓｓでは次の方法で迷惑メールを自動でゴミ箱に<event class="" eid="e4">振り分けることができます</event>。</sentence>
+<sentence type="quasi">ツール＞メッセージルール＞メール、メールルール「新規作成」</sentence>
+<sentence type="quasi">１．「メッセージ本文に<event class="" eid="e5">指定した</event>言葉が<event class="" eid="e6">含まれる</event>場合」にチェック</sentence>
+<sentence>２．「<event class="" eid="e7">削除する</event>」にチェック　※本文指定では、「サーバーから<event class="" eid="e8">ダウンロードしない</event>（<event class="" eid="e9">削除する</event>）」は<event class="" eid="e10">機能しない</event>ようです。</sentence>
+<sentence>３．青文字の部分をクリック、迷惑メールに<event class="" eid="e11">ある</event><event class="STATE" eid="e12">特徴的な</event>文章を指定。</sentence>
+<sentence type="quasi">（４．任意の名前を<event class="" eid="e13">付ける</event>）</sentence>
+<sentence>プロバイダの設定で<event class="" eid="e14">できる</event>場合はそちらでの設定の方が<event class="STATE" eid="e15">よいでしょう</event>。</sentence>
+<sentence>Ｙａｈｏｏ！メールでは、画面右上「メールオプション」より、「フィルターと受信通知設定」で<event class="" eid="e16">できます</event>。</sentence>

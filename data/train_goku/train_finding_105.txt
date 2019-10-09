@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺上葉Ｓ１＋２ａ</a>の<d certainty="positive">結節</d>が<f>１×０．３Ｃｍ</f>と前回より<c>わずかに増大</c>しています。<a>辺縁</a>に<d certainty="positive">小棘形成</d>も前回より<c>やや目立ち</c>、<d certainty="suspicious">原発性肺癌</d>の疑いです。<d certainty="suspicious">Ｔ１ａ</d>
+　　鑑別として<d certainty="suspicious">肺転移</d>があがります。<a>右肺上葉</a>切除後。<d certainty="negative">局所再発</d>なし。<a>壁側胸膜</a>に<d certainty="positive">多発石灰化</d>を認め、<d certainty="positive">胸膜プラーク</d>の所見である。<f>有意なサイズ</f>の<d certainty="negative">リンパ節腫大</d>なし。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水</d>なし。ｓｃａｎ内の<a>腹部</a>に著変なし。

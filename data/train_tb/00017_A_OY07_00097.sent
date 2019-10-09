@@ -1,0 +1,7 @@
+<sentence>入院中の叔父は病状が<event class="STATE" eid="e1">思わしく</event>          <event class="STATE" eid="e2">ない</event>。</sentence>
+<sentence>母は<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="XXXX-XX-XX" valueFromSurface="Q-XW">数週間前</TIMEX3>に叔父と<event class="" eid="e3">話した</event>のが<event class="" eid="e4">お別れだった</event>のかなと<event class="" eid="e5">いう</event>。</sentence>
+<sentence>その後、痴呆の症状が<event class="" eid="e6">出てしまった</event>からだ。</sentence>
+<sentence>私はその後<event class="" eid="e7">行っていない</event>が、母は一人で<event class="" eid="e8">行っている</event>。</sentence>
+<sentence>三崎から<event class="" eid="e9">行く</event>にはバスを<event class="" eid="e10">乗り継がなくてはいけなく</event>て、とても<event class="STATE" eid="e11">不便だ</event>。</sentence>
+<sentence>だから、<event class="" eid="e12">行った</event>          <TIMEX3 definite="TRUE" tid="t2" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">翌日</TIMEX3>は<event class="" eid="e13">疲れてしまう</event>ようだ。</sentence>
+<sentence>          <event class="STATE" eid="e14">大変で</event>も、仲の<event class="STATE" eid="e15">いい</event>兄だから、お見舞いに<event class="" eid="e16">行くのだろう</event>。</sentence>

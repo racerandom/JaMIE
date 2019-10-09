@@ -1,0 +1,19 @@
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先週</TIMEX3>の<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="2005-WXX-5" valueFromSurface="XXXX-WXX-5">金曜日</TIMEX3>の<TIMEX3 definite="TRUE" tid="t3" type="TIME" value="2005-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">夜</TIMEX3>に商品を<event class="" eid="e1">落札されたのです</event>が、落札者から未だ連絡が<event class="" eid="e2">ありません</event>。</sentence>
+<sentence>こちらから、<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="2005-WXX-6" valueFromSurface="XXXX-WXX-6">土曜日</TIMEX3>の<TIMEX3 definite="TRUE" tid="t5" type="TIME" value="2005-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>・<TIMEX3 definite="TRUE" tid="t6" type="TIME" value="2005-XX-XXTEV" valueFromSurface="XXXX-XX-XXTEV">夕方</TIMEX3>・<TIMEX3 definite="TRUE" tid="t7" type="DATE" value="2005-WXX-7" valueFromSurface="XXXX-WXX-7">日曜</TIMEX3><TIMEX3 definite="TRUE" tid="t8" type="TIME" value="2005-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>・<TIMEX3 definite="TRUE" tid="t9" type="DATE" value="2005-WXX-1" valueFromSurface="XXXX-WXX-1">月曜</TIMEX3>の<TIMEX3 definite="TRUE" tid="t10" type="TIME" value="2005-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>にメールを<event class="" eid="e3">いれているのです</event>が、連絡が<event class="" eid="e4">きません</event>。</sentence>
+<sentence>この場合どのくらいまで<event class="" eid="e5">待ったら良いでしょう</event>か？</sentence>
+<sentence>　<event class="" eid="e6">来ない</event>場合はどう<event class="" eid="e7">したら良いでしょう</event>か？</sentence>
+<sentence><event class="" eid="e8">教えてください</event>。</sentence>
+<sentence>暫らく<event class="" eid="e9">お待ちください</event>。</sentence>
+<sentence type="quasi">《落札者はこんな方》</sentence>
+<sentence>①たまにしかＰＣを<event class="" eid="e10">開けない</event>。</sentence>
+<sentence>　入札を<event class="" eid="e11">管理していない</event>。</sentence>
+<sentence>②責任<event class="" eid="e12">ある</event>入札ではない。</sentence>
+<sentence>　自分でパソコン操作が<event class="" eid="e13">出来ないので</event>他人へ<event class="" eid="e14">入札依頼した</event>。</sentence>
+<sentence type="quasi">《連絡メール》</sentence>
+<sentence>　<TIMEX3 definite="TRUE" quant="EACH" tid="t11" type="SET" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">毎朝</TIMEX3>や<TIMEX3 definite="TRUE" quant="EACH" tid="t12" type="SET" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">毎晩</TIMEX3>に<event class="" eid="e15">繰返し</event>て<event class="" eid="e16">発信してください</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t13" type="DURATION" value="P7D" valueFromSurface="P7D">７</TIMEX3>〜<TIMEX3 definite="FALSE" mod="APPROX" tid="t14" type="DURATION" value="P10D" valueFromSurface="P10D">１０日位</TIMEX3>は<event class="" eid="e17">辛抱してください</event>。</sentence>
+<sentence type="quasi">《連絡が<event class="STATE" eid="e18">皆無</event>の場合》</sentence>
+<sentence>　①最後通告の<event class="" eid="e19">メール発信し</event>て<event class="" eid="e20">次点繰上げします</event>。</sentence>
+<sentence>　②一次落札者の評価は『どちらでも<event class="STATE" eid="e21">ない</event>」以下で貴方次第です。</sentence>
+<sentence>またの機会にＮＥＴで<event class="" eid="e22">再開する</event>可能性も<event class="" eid="e23">ありますので</event><event class="STATE" eid="e24">慎重な</event>評価に<event class="" eid="e25">しておきましょう</event>。</sentence>
+<sentence type="quasi">＜ゆう＞</sentence>

@@ -1,0 +1,7 @@
+前回（2018/04/16）と比較して、<a>右肺</a>に<d certainty="positive">すりガラス影</d>が新たに出現しています。<f>非区域性</f>です。<a>minor fissure</a>の<d certainty="positive">頭側への陥凹</d>あり、<f>一部</f>に<d certainty="positive">収縮傾向</d>が認められます。<d certainty="positive">牽引性気管支拡張</d>も<f>一部</f>で認められます。<d certainty="suspicious">間質性肺炎</d>の<d certainty="positive">牽引性気管支拡張</d>も<f>一部</f>で認められます。<c certainty="suspicious">増悪経過</c>の可能性があります（<d certainty="suspicious">D/D細菌性などの肺炎</d>）
+<a>両側肺</a>に<d certainty="positive">気腫性変化</d>あり。
+<d certainty="positive">奇静脈葉</d>あり(<d certainty="positive">正常変異</d>)
+<a>両側胸膜</a>に<d certainty="positive">限局性肥厚及び石灰化</d>を認めます。<d certainty="suspicious">胸膜プラーク</d>の疑い。
+<d certainty="negative">胸水の貯留</d>を認めません。
+<f>有意な</f><d certainty="negative">リンパ節腫大</d>を認めません。
+<a>大動脈、冠動脈</a>に<d certainty="positive">石灰化</d>を認めます。

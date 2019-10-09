@@ -1,0 +1,1 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右下葉Ｓ６ｃ</a>に<f>０．８×０．５Ｃｍ</f>の<d certainty="positive">結節</d>あり。経過で<c>増大</c>しています。<d certainty="suspicious">肺転移</d>疑い。<a>右肺尖部</a>の<d certainty="positive">石灰化結節</d>は<d certainty="suspicious">炎症後肉芽腫</d>疑い。<d certainty="negative">胸水</d>なし。<a>両側乳房内</a>に<f>複数</f>の<d certainty="positive">軟部濃度結節・腫瘤</d>あり。著変なし。

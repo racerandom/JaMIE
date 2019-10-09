@@ -1,0 +1,7 @@
+<sentence>落札者からパソコンが<event class="" eid="e1">使えない</event>為、携帯から連絡掲示板で連絡が<event class="" eid="e2">来ました</event>。</sentence>
+<sentence>こちらが掲示板で<event class="" eid="e3">返答した</event>場合、相手の携帯に連絡が<event class="" eid="e4">行きます</event>か？</sentence>
+<sentence><event class="" eid="e5">教えてください</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>携帯で連絡掲示板を<event class="" eid="e6">利用しました</event>。</sentence>
+<sentence>　返答などはパソコンの登録アドレスに連絡が<event class="" eid="e7">きますので</event>相手が、ヤフーモバイルで<event class="" eid="e8">メールチェックすればいい</event>と<event class="" eid="e9">思います</event>。</sentence>
+<sentence>直接携帯のメールアドレスには<event class="" eid="e10">きません</event>。</sentence>
+<sentence><event class="STATE" eid="e11">面倒なので</event>、直接携帯メールで<event class="" eid="e12">やり取りすればいいので</event>は？</sentence>

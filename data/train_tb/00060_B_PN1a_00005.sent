@@ -1,0 +1,70 @@
+<sentence type="quasi">どう<event class="" eid="e1">変わる</event>保育園　中</sentence>
+<sentence type="quasi">認可の複線化</sentence>
+<sentence type="quasi"><sampling type="start" />受け皿確保へ「民活」拡大</sentence>
+<sentence type="quasi">ニーズ即応期待、質への不安も</sentence>
+<sentence type="quasi">企業経営</sentence>
+<sentence>　東京都江戸川区に<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2000-10" valueFromSurface="XXXX-10">昨年十月</TIMEX3>、<event class="STATE" eid="e2">新しい</event>保育所が<event class="" eid="e3">オープンした</event>。</sentence>
+<sentence>場所は、地下鉄駅前のビルの二階という好立地。</sentence>
+<sentence>約四百六十平方メートルのフロアは、床暖房の<event class="" eid="e4">入った</event>保育室や調理室などに<event class="" eid="e5">仕切られ</event>、裸足の子どもたちが<event class="STATE" eid="e6">元気に</event><event class="" eid="e7">走り回っている</event>。</sentence>
+<sentence>　全国初の企業経営の認可保育所「さくら保育園」だ。</sentence>
+<sentence>経営主体は、ビルの所有者で不動産賃貸業などを<event class="" eid="e8">営む</event>丸善建設。</sentence>
+<sentence>同社は、同じビル内で十数年前からカルチャー教室や幼児教室を<event class="" eid="e9">開いている</event>が、保育所を<event class="" eid="e10">手がける</event>のは初めてだ。</sentence>
+<sentence>根木島義明社長は、ビルのフロアが<event class="" eid="e11">空いた</event>のを機に保育所経営に<event class="" eid="e12">乗り出した</event>と<event class="" eid="e13">いう</event>。</sentence>
+<sentence>　「教室に<event class="" eid="e14">来る</event>母親から、保育所不足の現状は<event class="" eid="e15">聞いていた</event>。</sentence>
+<sentence>特に江戸川区は、公立でゼロ歳児保育を<event class="" eid="e16">行っていないので</event>親の要望が<event class="STATE" eid="e17">強い</event>。</sentence>
+<sentence type="quasi">助成の<event class="" eid="e18">ある</event>認可保育所なら経営の見通しが<event class="" eid="e19">たつ</event>」</sentence>
+<sentence>　国と自治体から運営費の助成が<event class="" eid="e20">受けられる</event>認可保育所は、自治体の直営か社会福祉法人しか<event class="" eid="e21">運営できなかった</event>が、旧厚生省は、規制緩和の一環として<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2000" valueFromSurface="XXXX">昨年</TIMEX3>から企業の参入を<event class="" eid="e22">認めた</event>。</sentence>
+<sentence>認可保育所への入所待機児が三万人を<event class="" eid="e23">超える</event>中、企業などの新規参入を<event class="STATE" eid="e24">しやすく</event><event class="" eid="e25">し</event>、保育所不足を<event class="" eid="e26">解消する</event>ねらいだ。</sentence>
+<sentence>これまでに全国で三園が<event class="" eid="e27">オープンした</event>。</sentence>
+<sentence>　さくら保育園は、<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P0Y" valueFromSurface="P0Y">ゼロ歳</TIMEX3>から<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P2Y" valueFromSurface="P2Y">二歳児</TIMEX3>まで各二十人の定員で、<TIMEX3 definite="TRUE" general="TRUE" tid="t5" type="TIME" value="XXXX-XX-XXT07:30" valueFromSurface="XXXX-XX-XXT07:30">午前七時半</TIMEX3>から<TIMEX3 definite="TRUE" general="TRUE" tid="t6" type="TIME" value="XXXX-XX-XXT19:30" valueFromSurface="XXXX-XX-XXT19:30">午後七時半</TIMEX3>までの<TIMEX3 definite="FALSE" tid="t7" type="DURATION" value="PT12H" valueFromSurface="PT12H">十二時間</TIMEX3>保育を<event class="" eid="e28">行っている</event>。</sentence>
+<sentence>開園直前までほとんど<event class="" eid="e29">宣伝しなかった</event>が、<TIMEX3 tid="t201" type="DURATION" value="P0Y" valueFromSurface="P0Y">ゼロ歳</TIMEX3>と<TIMEX3 definite="FALSE" tid="t8" type="DURATION" value="P1Y" valueFromSurface="P1Y">一歳児</TIMEX3>はすぐに<event class="" eid="e30">埋まる</event>人気だった。</sentence>
+<sentence>　だが根木島社長は<quote>「持ちビルでなければ、とても採算が<event class="" eid="e31">合わない</event>」</quote>と<event class="STATE" eid="e32">厳しい</event>表情も<event class="" eid="e33">みせる</event>。</sentence>
+<sentence>国の運営費助成は<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">従来</TIMEX3>通りだが、社会福祉法人などには<event class="" eid="e34">出される</event>建設費の補助などは<event class="STATE" eid="e35">ない</event>。</sentence>
+<sentence>　<quote>「<event class="STATE" eid="e36">中途半端な</event>規制緩和ではどれだけの企業が<event class="" eid="e37">参入する</event>か疑問だ」</quote>と<event class="" eid="e38">いう</event>。</sentence>
+<sentence type="quasi">揺らぎ</sentence>
+<sentence>　保育の中核は公立をはじめと<event class="" eid="e39">する</event>認可保育所が<event class="" eid="e40">担い</event>、その不足を無認可保育所が<event class="" eid="e41">補う</event>―というこれまで<event class="" eid="e42">続いてきた</event>保育の枠組みが、<event class="" eid="e43">揺らいでいる</event>。</sentence>
+<sentence>　東京都は、<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="2001-01-24" valueFromSurface="XXXX-XX-24">二十四日</TIMEX3>に<event class="" eid="e44">発表した</event><TIMEX3 definite="FALSE" tid="t10" type="DATE" value="FY2001" valueFromSurface="FYXXXX">二〇〇一年度</TIMEX3>予算案に、<event class="STATE" eid="e45">新たな</event>保育所施策「認証保育所制度」のための十二億円を<event class="" eid="e46">盛り込んだ</event>。</sentence>
+<sentence><TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">従来</TIMEX3>の認可とは<event class="STATE" eid="e47">別に</event>、<event class="STATE" eid="e48">都独自</event>の基準で保育所を<event class="" eid="e49">選定し</event>、国の運営費基準額のおよそ半額を<event class="" eid="e50">助成する</event>ものだ。</sentence>
+<sentence>　都は、<TIMEX3 definite="TRUE" tid="t11" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">以前</TIMEX3>から三十人未満の個人経営の無認可保育所に助成を<event class="" eid="e51">行ってきた</event>が、新制度では二十―百二十人規模も対象と<event class="" eid="e52">し</event>、企業や学校法人などの経営主体も<event class="" eid="e53">認める</event>。</sentence>
+<sentence>定員の半数以上はニーズの<event class="STATE" eid="e54">高い</event><TIMEX3 definite="FALSE" tid="t12" type="DURATION" value="P0Y" valueFromSurface="P0Y">ゼロ</TIMEX3>―<TIMEX3 definite="FALSE" tid="t13" type="DURATION" value="P2Y" valueFromSurface="P2Y">二歳児</TIMEX3>と<event class="" eid="e55">する</event>ほか、<TIMEX3 definite="FALSE" mod="EQUAL_OR_MORE" tid="t14" type="DURATION" value="PT2H" valueFromSurface="PT2H">二時間以上</TIMEX3>の延長保育、保育料は国基準の上限を<event class="" eid="e56">超えない</event>などの条件を<event class="" eid="e57">つける</event>。</sentence>
+<sentence>駅前型を基本に<TIMEX3 definite="FALSE" tid="t15" type="DATE" value="FY2001" valueFromSurface="FYXXXX">初年度</TIMEX3>は十カ所程度に<event class="" eid="e58">助成する</event>予定で、待機児の<event class="STATE" eid="e59">多い</event>ある区の保育<sampling type="end" />所担当者は<quote>「鉄道会社と企業が<event class="" eid="e60">提携し</event>て駅ビル内での保育所開設を<event class="" eid="e61">検討している</event>」</quote>と<event class="" eid="e62">いう</event>。</sentence>
+<sentence type="fragment">　都丸繁・都子育て推進課長は</sentence>
+<sentence>「<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">従来</TIMEX3>の制度では<event class="STATE" eid="e63">多様な</event>ニーズを<event class="" eid="e64">吸収できない</event>。</sentence>
+<sentence type="quasi"><event class="STATE" eid="e65">新たな</event>形での受け皿作りが必要」</sentence>
+<sentence type="fragment">と<event class="" eid="e66">話す</event>。</sentence>
+<sentence>　横浜市は<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="1998" valueFromSurface="Q-3Y">三年前</TIMEX3>から、<event class="STATE" eid="e67">独自</event>の基準で無認可保育所に<event class="" eid="e68">助成する</event>「横浜保育室」制度を<event class="" eid="e69">始めた</event>。</sentence>
+<sentence>定員二十人以上、<TIMEX3 definite="FALSE" mod="LESS_THAN" tid="t17" type="DURATION" value="P3Y" valueFromSurface="P3Y">三歳児未満</TIMEX3>の施設が対象で、<TIMEX3 tid="t202" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>では百八カ所に<event class="" eid="e70">増えた</event>。</sentence>
+<sentence>地域の個人経営の保育所が<event class="STATE" eid="e71">少なく</event><event class="STATE" eid="e72">ない</event>が、大手の教育関連企業が<event class="" eid="e73">経営する</event><event class="STATE" eid="e74">新しい</event>保育所も助成を<event class="" eid="e75">受け</event>て<event class="" eid="e76">進出している</event>。</sentence>
+<sentence type="fragment">　同市の浅井規夫・児童福祉部次長は</sentence>
+<sentence>「認可保育所を<event class="" eid="e77">つくる</event>には、土地や建物の確保など時間が<event class="" eid="e78">かかる</event>。</sentence>
+<sentence type="quasi">緊急性の<event class="STATE" eid="e79">高い</event>待機児解消のためには小回りの<event class="" eid="e80">きく</event>民間の力を<event class="" eid="e81">活用したい</event>」</sentence>
+<sentence type="fragment">と<event class="" eid="e82">いう</event>。</sentence>
+<sentence>　全国の認可保育所数はおよそ二万二千。</sentence>
+<sentence>定員を<event class="STATE" eid="e83">弾力的に</event><event class="" eid="e84">増やす</event>など<event class="" eid="e85">し</event>て在所児はここ<TIMEX3 definite="TRUE" tid="t18" type="DURATION" value="PXY" valueFromSurface="PXY">数年</TIMEX3>徐々に<event class="" eid="e86">増えている</event>が、施設数は<event class="" eid="e87">減っている</event>。</sentence>
+<sentence>そう<event class="" eid="e88">した</event>中、保育サービスの民間への委譲が<event class="" eid="e89">進みつつある</event>。</sentence>
+<sentence>無認可保育所の側には、助成拡充を<event class="" eid="e90">歓迎する</event>一方で<event class="STATE" eid="e91">急速な</event>変化に<event class="" eid="e92">戸惑う</event>声も<event class="" eid="e93">ある</event>。</sentence>
+<sentence type="quasi">引き下げ</sentence>
+<sentence>　神奈川県厚木市に<event class="" eid="e94">ある</event><quote>「くれよん」</quote>は、園児十数人の保育施設だ。</sentence>
+<sentence>幼児保育のほかに学童保育や障害児の利用も<event class="" eid="e95">ある</event>。</sentence>
+<sentence>県の小規模保育施設への助成を<event class="" eid="e96">申請した</event>が、保育内容が基準と<event class="" eid="e97">異なる</event>ために<event class="" eid="e98">受けられなかった</event>。</sentence>
+<sentence type="fragment">代表の高橋恵美子さんは</sentence>
+<sentence>「子どもを<event class="" eid="e99">一貫し</event>て<event class="" eid="e100">保育できる</event>地域の拠点作りを<event class="" eid="e101">目指している</event>。</sentence>
+<sentence type="quasi"><event class="STATE" eid="e102">きめ細かで</event><event class="STATE" eid="e103">多様な</event>保育を<event class="" eid="e104">しよう</event>としても<TIMEX3 tid="t203" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>の行政の助成の網からは<event class="" eid="e105">漏れてしまう</event>」</sentence>
+<sentence type="fragment">と<event class="" eid="e106">話す</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t19" type="DATE" value="1998" valueFromSurface="Q-3Y">三年前</TIMEX3>に、横浜保育室のネストを横浜市旭区に<event class="" eid="e107">開いた</event>伊藤保子さんは、<TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">現在</TIMEX3>の施設助成という形に限界を<event class="" eid="e108">感じている</event>。</sentence>
+<sentence>「助成を<event class="" eid="e109">受けられる</event>施設とそうでない施設の利用者の間の<event class="STATE" eid="e110">不公平</event>は<event class="" eid="e111">なくならない</event>。</sentence>
+<sentence type="quasi">子を<event class="" eid="e112">持つ</event>親への助成などの形を<event class="" eid="e113">考えていかない</event>と」</sentence>
+<sentence type="fragment">と<event class="" eid="e114">話す</event>。</sentence>
+<sentence>　東京都新宿区の<quote>「鳩の会ポッポの家共同保育所」</quote>は、<TIMEX3 definite="FALSE" tid="t20" type="DATE" value="1965" valueFromSurface="1965">一九六五年</TIMEX3>に保育所を<event class="" eid="e115">求める</event>地域住民が<event class="" eid="e116">設立した</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t21" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>は<TIMEX3 definite="FALSE" tid="t22" type="DURATION" value="P0Y" valueFromSurface="P0Y">ゼロ</TIMEX3>―<TIMEX3 definite="FALSE" tid="t23" type="DURATION" value="P2Y" valueFromSurface="P2Y">二歳児</TIMEX3>十数人を<event class="" eid="e117">預かる</event>。</sentence>
+<sentence>経費の六割は都の助成金だ。</sentence>
+<sentence type="fragment">　施設長で全国無認可保育所連絡協議会事務局長の馬渕磯子さん（<TIMEX3 definite="FALSE" tid="t24" type="DURATION" value="P58Y" valueFromSurface="P58Y">五八</TIMEX3>）は</sentence>
+<sentence>「公的保育が<event class="" eid="e118">整う</event>までの代替のつもりで保育所作りを<event class="" eid="e119">始めた</event>。</sentence>
+<sentence>ところが公的保育の拡充が<event class="" eid="e120">追いつかず</event>、社会福祉法人や、無認可保育所、そして今度は企業へと<event class="" eid="e121">移されていく</event>。</sentence>
+<sentence type="quasi">保育の水準が<event class="STATE" eid="e122">高い</event>公立並みに<event class="" eid="e123">そろうのではなく</event>、<event class="" eid="e124">引き下げられることになる</event>と問題です」</sentence>
+<sentence type="fragment">と<event class="" eid="e125">話している</event>。</sentence>
+<sentence type="quasi">認可保育所</sentence>
+<sentence>　施設面積や保育士の数など国が<event class="" eid="e126">定めた</event>最低基準を<event class="" eid="e127">満たし</event>、都道府県などの認可を<event class="" eid="e128">受けた</event>施設。</sentence>
+<sentence>保育料や入所児童は市町村が<event class="" eid="e129">決める</event>。</sentence>
+<sentence>国が<event class="" eid="e130">決める</event>運営費の基準額の半分を国と自治体が<event class="" eid="e131">助成し</event>、半分を保育料として利用者から<event class="" eid="e132">徴収する</event>が、多くの自治体が助成を<event class="" eid="e133">上積みしている</event>。</sentence>
+<sentence type="quasi">（学芸部・吉住　琢二）</sentence>

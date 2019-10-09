@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺門部</a>に<f>４．０ｃｍ×３．４Ｃｍ</f>の<d certainty="positive">腫瘤</d>を認め、<a>内部</a>は<f>不均一</f>に造影されています。<d certainty="suspicious">原発性肺癌</d>疑いです。<d certainty="suspicious">Ｔ２ｂ</d>
+　ほぼ前回同様。<d certainty="positive">＃１１Ｌ，＃１２Ｌ肺門リンパ節</d>は<d certainty="positive">腫瘤</d>と<f>一塊</f>となり、<d certainty="positive">腫大</d>しています。<d certainty="positive">Ｎ１</d>
+<a>左上葉</a>部分切除後。<a>左肺尖</a>に<d certainty="positive">炎症性変化</d>あり。<d certainty="positive">肺気腫</d>あり。<f>少量</f><d certainty="positive">左胸水</d>あり。<a>ｓｃａｎ内</a>で<d certainty="negative">肝転移や副腎転移</d>なし。左中咽頭癌術後。<a>左頚部</a>郭清術後。<a>ｓｃａｎ内の頚部</a>に<f>有意な</f><d certainty="negative">リンパ節腫大</d>は明らかでありません．

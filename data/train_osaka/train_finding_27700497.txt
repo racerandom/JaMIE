@@ -1,0 +1,8 @@
+<a>Vocal cord</a>　<d certainty="negative">左右差</d>なし、<d certainty="negative">可動制限</d>なし。<a>気管分岐部角</a>は<d certainty="positive">鋭角</d>。
+<a>気管両側</a>を区域枝レベルまで観察。<a>気管支粘膜</a>は可視範囲内に異常なし。
+<a>右B5b</a>にてBAL 84/150ml回収。肉眼的には<f>無色、微濁</f>。
+<a>右B8a、B3a</a>にてTBLB施行。
+<a>血</a>確認後検査終了。検査後透視で<d certainty="negative">気胸</d>なし。
+<a>両側肺下葉、気管支血管周囲</a>を主体に<d certainty="positive">網状影、索状影、すりガラス影</d>を認めます。前回CT（2016/04/25）と大きな変化は認めません。<d certainty="suspicious">NSIP patternの間質性肺炎</d>を疑います。
+<a>両側腋窩や縦隔</a>に<d certainty="positive">小リンパ節</d><f>散見</f>されます。<f>有意な</f><d certainty="negative">リンパ節腫大</d>認めません。
+<a>前縦隔の胸腺</a>疑う<d certainty="positive">軟部陰影</d>は前回同様です。

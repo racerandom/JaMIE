@@ -1,0 +1,3 @@
+<a>左肺上葉舌区Ｓ４ａ、上区Ｓ３ｂ</a>に<f>４．６×４．９Ｃｍ</f>の<d certainty="positive">腫瘤</d>を認めます。<a>内部</a>に<d certainty="negative">造影効果</d>が乏しく、<a>辺縁</a>に<d certainty="positive">造影される充実部分</d>あり、<f>既知</f>の<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ２ｂ</d>
+<a>右肺門＃１１ｉ</a>に<d certainty="positive">リンパ節腫大</d>を認めますが、同側にない状況での<d certainty="positive">対側リンパ節</d>であり、<d certainty="suspicious">気腫肺により反応性腫大</d>を疑います。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水貯留</d>なし。<d certainty="negative">脳転移</d>を疑う所見なし。<a>右側脳室背側</a>に<d certainty="positive">低吸収域</d>あり、まずは<d certainty="suspicious">陳旧性梗塞</d>が疑われますが、念のため<d certainty="suspicious">脳転移による浮腫</d>をＭＲＩにて除外ください。

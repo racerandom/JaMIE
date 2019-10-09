@@ -1,0 +1,3 @@
+<a>右肺下葉Ｓ６〜肋骨（右第６−９）、椎体（Ｔｈ６−７，　Ｔｈ９）、軟部組織</a>へ<d certainty="positive">浸潤する腫瘤</d>は<f>６．０×７．２Ｃｍ</f>に<c>増大</c>している。<a>脊柱管</a>までは<d certainty="negative">浸潤</d>はおよんでいないが、<a>椎間孔</a>へは<d certainty="positive">浸潤</d>がおよんでいる。<d certainty="positive">原発性肺癌</d>と考える。<d certainty="positive">ｃＴ４</d>
+<d certainty="positive">腫瘍と一塊となった右肺門リンパ節腫大</d>は<c>やや増大</c>している。<a>右縦隔部</a>にも<d certainty="positive">リンパ節</d>が<f>散在</f>しているが、<f>有意な</f><d certainty="negative">腫大</d>はなし。<d certainty="negative">Ｎ１</d>
+<d certainty="negative">肺転移</d>は明らかでない。<a>肺底部</a>に<d certainty="positive">線維化</d>あり。<f>少量</f><d certainty="positive">胸水貯留</d>あり。<a>撮像範囲の腹部、骨</a>に新出の<d certainty="negative">転移</d>なし。

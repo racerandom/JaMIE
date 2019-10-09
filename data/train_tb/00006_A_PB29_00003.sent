@@ -1,0 +1,230 @@
+<sentence type="quasi">第三十九章</sentence>
+<sentence type="quasi">違和感</sentence>
+<sentence>　<TIMEX3 definite="TRUE" mod="START" tid="t1" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">明け方</TIMEX3>、志津は何かの刺激で目が<event class="" eid="e1">覚めた</event>。</sentence>
+<sentence>右肩に違和感が<event class="" eid="e2">ある</event>。</sentence>
+<sentence><event class="STATE" eid="e3">重く</event>、<event class="STATE" eid="e4">気怠い</event>。</sentence>
+<sentence><event class="" eid="e5">動かす</event>と<event class="STATE" eid="e6">軽い</event>痛みが<event class="" eid="e7">走る</event>。</sentence>
+<sentence type="quasi">　（<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P50Y" valueFromSurface="P50Y">五十</TIMEX3>肩かしら？）</sentence>
+<sentence>　病院で同年輩の仲間がひとりふたり、整形の医者にそんな診断を<event class="" eid="e8">付けられた</event>、と<event class="" eid="e9">嘆いていた</event>ことを<event class="" eid="e10">思い出した</event>。</sentence>
+<sentence type="quasi">　（それとも、こちらを<event class="" eid="e11">向い</event>て話を<event class="" eid="e12">してた</event>からかな？）</sentence>
+<sentence>　右隣に<event class="" eid="e13">寝ている</event>娘の横顔を半身の姿勢で<event class="" eid="e14">見</event>ながら<event class="" eid="e15">話しかけていた</event>ことを<event class="" eid="e16">思い出した</event>。</sentence>
+<sentence>　三宝はスースーと<event class="STATE" eid="e17">軽い</event>寝息を<event class="" eid="e18">たてている</event>。</sentence>
+<sentence><event class="STATE" eid="e19">軽く</event><event class="" eid="e20">開いた</event>口元に、まだあどけなさが<event class="" eid="e21">残っている</event>。</sentence>
+<sentence>いっぱしに恋を<event class="" eid="e22">し</event>、胸が<event class="" eid="e23">張り裂ける</event>ような失恋まで<event class="" eid="e24">体験した</event>とは到底<event class="" eid="e25">思えない</event>。</sentence>
+<sentence>この<event class="STATE" eid="e26">深い</event>眠りの底に、その<event class="STATE" eid="e27">苦々しい</event>思い出を<event class="" eid="e28">埋めてくれれ</event>ばと<event class="" eid="e29">願った</event>。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>自分が<event class="" eid="e30">起き出せ</event>ば、折角の夢を<event class="" eid="e31">破りかねない</event>。</sentence>
+<sentence>再びとは<event class="" eid="e32">眠り込めない</event>まま、右肩を<event class="" eid="e33">さすり</event>ながら、志津は<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>のスケジュールを<event class="" eid="e34">思いめぐらした</event>。</sentence>
+<sentence>　三宝のことはもう心配<event class="STATE" eid="e35">ない</event>。</sentence>
+<sentence>気持が<event class="" eid="e36">晴れた</event>ところで、ここまで<event class="" eid="e37">きた</event>以上、息子とその婚約者に<event class="" eid="e38">会っ</event>て<event class="" eid="e39">いこう</event>かと<event class="" eid="e40">考えた</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t5" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>もう一度<event class="" eid="e41">かける</event>からと言って正樹は電話を<event class="" eid="e42">切った</event>と<event class="" eid="e43">いう</event>。</sentence>
+<sentence>もともと名取へは<TIMEX3 definite="TRUE" tid="t6" type="TIME" value="XXXX-XX-XXTEV" valueFromSurface="XXXX-XX-XXTEV">夕方</TIMEX3>の新幹線でゆっくり<event class="" eid="e44">帰る</event>つもりだったから、時間は<event class="STATE" eid="e45">十分に</event><event class="" eid="e46">ある</event>。</sentence>
+<sentence>問題は三宝を<event class="" eid="e47">誘う</event>かどうかだ。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="" type="TIME" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">ゆうべ</TIMEX3>の段階ではとてもじゃないと<event class="" eid="e48">思った</event>が、<TIMEX3 definite="FALSE" tid="t7" type="DURATION" value="P1N" valueFromSurface="P1N">一夜</TIMEX3><event class="" eid="e49">明けれ</event>ば少しは気持のゆとりも<event class="" eid="e50">生まれているかも知れない</event>。</sentence>
+<sentence>　あれこれ<event class="" eid="e51">思案している</event>うちに、さすがにまだ寝不足が<event class="" eid="e52">こたえ</event>、いつしか<event class="" eid="e53">まどろんでいた</event>。</sentence>
+<sentence>　再び<event class="" eid="e54">目覚めた</event>時、ガラス戸をカーテンが<event class="" eid="e55">覆った</event>だけの部屋を、<TIMEX3 definite="TRUE" general="TRUE" tid="t8" type="DATE" value="XXXX-SP" valueFromSurface="XXXX-SP">春</TIMEX3>の朝日が<event class="STATE" eid="e56">白く</event><event class="" eid="e57">浮き立たせていた</event>。</sentence>
+<sentence>よほど<event class="" eid="e58">疲れた</event>のか、三宝はまだ<event class="" eid="e59">眠っている</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" mod="START" tid="t9" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">明け方</TIMEX3>にはこちらを<event class="" eid="e60">向いていた</event>顔が<TIMEX3 definite="TRUE" tid="t10" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>は枕の向こうに<event class="" eid="e61">落ち</event>、<event class="" eid="e62">解いた</event>髪と、それが<event class="" eid="e63">かかった</event>肩先がこちらを<event class="" eid="e64">向いている</event>。</sentence>
+<sentence>片方のふくらはぎが、蒲団からむき出しに<event class="" eid="e65">なっている</event>。</sentence>
+<sentence>そのしどけなさに、馥郁と<event class="STATE" eid="e66">若い</event>女の色香が<event class="" eid="e67">漂っている</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t11" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先刻</TIMEX3>、その横顔を<event class="" eid="e68">見</event>て<event class="STATE" eid="e69">あどけない</event>と<event class="" eid="e70">感じた</event>印象と<event class="STATE" eid="e71">裏腹な</event>のに<event class="" eid="e72">戸惑った</event>。</sentence>
+<sentence type="quasi">　（<event class="" eid="e73">ひょっとし</event>て…？）</sentence>
+<sentence>　途方も<event class="STATE" eid="e74">ない</event>疑いが瞬時胸を<event class="" eid="e75">よぎった</event>。</sentence>
+<sentence type="quasi">　（でも、まさか、この子に<event class="" eid="e76">限っ</event>て…そこまでは<event class="" eid="e77">踏み越えてない</event>はずだわ）</sentence>
+<sentence>　その疑念を一笑に<event class="" eid="e78">付す</event>根拠は何も<event class="STATE" eid="e79">ない</event>。</sentence>
+<sentence>娘の貞操観念を<event class="" eid="e80">信ずる</event>以外には。</sentence>
+<sentence>　<event class="" eid="e81">あらぬ</event>疑念を<event class="" eid="e82">振り払う</event>かのように、志津はやおら蒲団から身を<event class="" eid="e83">起した</event>。</sentence>
+<sentence><event class="" eid="e84">寝ている</event>者を<event class="" eid="e85">気遣っ</event>てそっと床を<event class="" eid="e86">抜け出し</event>、洗面に<event class="" eid="e87">立った</event>。</sentence>
+<sentence>水を<event class="" eid="e88">すくっている</event>間は<event class="STATE" eid="e89">よかった</event>が、顔を<event class="" eid="e90">洗おう</event>と傍らのタオルに右手を<event class="" eid="e91">伸ばした</event>時、また<event class="" eid="e92">し</event>ても肩に痛みが<event class="" eid="e93">走った</event>。</sentence>
+<sentence>　三宝はマナ板に<event class="" eid="e94">あたる</event>包丁の音で<event class="" eid="e95">目覚めた</event>。</sentence>
+<sentence>一瞬、<event class="" eid="e96">タイムスリップし</event>、タイムトンネルを<event class="" eid="e97">抜け</event>て<event class="STATE" eid="e98">幼い</event>日の名取の家に<event class="" eid="e99">いる</event>のかと<event class="" eid="e100">錯覚した</event>。</sentence>
+<sentence>　子供の頃、母の<event class="" eid="e101">立てる</event>この包丁の音をぬくぬくと<event class="" eid="e102">した</event>寝床で<event class="" eid="e103">聞き</event>ながら、<TIMEX3 definite="TRUE" tid="t12" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>の訪れ、母親の大きな庇護の下に<event class="" eid="e104">ある</event>幸せを<event class="" eid="e105">かみしめた</event>ものだ。</sentence>
+<sentence>錯覚が<event class="" eid="e106">解け</event>、再び<event class="" eid="e107">タイムスリップし</event>て現実に<event class="" eid="e108">返った</event>時、<event class="" eid="e109">寝</event>ながらに<event class="" eid="e110">し</event>て<event class="" eid="e111">聞いた</event>母の悲恋物語が<event class="" eid="e112">蘇った</event>。</sentence>
+<sentence>母は<event class="" eid="e113">否定した</event>が、身を<event class="" eid="e114">切られる</event>思いで<event class="" eid="e115">別れた</event>という医者は、何故か佐倉周平の<event class="STATE" eid="e116">若き</event>日の姿であったように<event class="" eid="e117">思えてくる</event>。</sentence>
+<sentence>　兄の正樹が、母と佐倉は<TIMEX3 definite="TRUE" tid="t13" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>からの知り合いだったに相違<event class="STATE" eid="e118">ない</event>と、いつか<event class="STATE" eid="e119">興奮気味に</event>自分に<event class="" eid="e120">告げ</event>て<event class="" eid="e121">きた</event>ことまでが<event class="" eid="e122">思い出されていた</event>からかも知れない。</sentence>
+<sentence>正樹に<event class="" eid="e123">言わせれ</event>ば、いくらなんでも母が<event class="" eid="e124">見</event>も<event class="" eid="e125">知らぬ</event>さいはての地の、それも小さな病院の外科医を<event class="" eid="e126">頼っ</event>て<event class="" eid="e127">行く</event>はずは<event class="STATE" eid="e128">ない</event>、きっとどこかで佐倉のことを<event class="" eid="e129">知っていた</event>はずだ、と。</sentence>
+<sentence>どこかと<event class="" eid="e130">言っ</event>ても、お母さんは大学病院を<event class="" eid="e131">出た</event>後は名取の町立病院にしか<event class="" eid="e132">勤めていないのだ</event>からどちらかでしょ、と<event class="" eid="e133">言い返す</event>と、ウン、どちらかだよ、でも、多分町立病院だ、と兄は<event class="" eid="e134">主張した</event>。</sentence>
+<sentence>その根拠はと<event class="" eid="e135">尋ねる</event>と、大学病院はあまたの医者が<event class="" eid="e136">いただろう</event>し、母も看護婦になりたてで右も左も<event class="" eid="e137">わからない</event>状況だったろうから、特定のひとりの医者だけが印象に<event class="" eid="e138">残った</event>とは<event class="STATE" eid="e139">考え難い</event>、というものだった。</sentence>
+<sentence>では母はなぜ佐倉とは一面識も<event class="STATE" eid="e140">なかった</event>と嘘を<event class="" eid="e141">ついた</event>のか、との疑問には、それはたぶん父を<event class="" eid="e142">気遣っ</event>てのことだろう、と<event class="" eid="e143">答えた</event>。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t14" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>職場で一緒だった医者がその道の大家と<event class="" eid="e144">なっ</event>て、たとえば仙台の大学病院や東京の大病院の<event class="STATE" eid="e145">偉い</event>外科医に<event class="" eid="e146">なっている</event>、ということなら、その医者が旧知の人であったとしてもなんら父も<event class="STATE" eid="e147">不思議に</event><event class="" eid="e148">思わないだろう</event>が、秋田の<event class="" eid="e149">さびれた</event>町の小さな病院に<event class="" eid="e150">勤めている</event>外科医をいくら旧知でもわざわざ<event class="" eid="e151">訪ね</event>て<event class="" eid="e152">いく</event>はずは<event class="STATE" eid="e153">ない</event>。</sentence>
+<sentence>何か男女の<event class="" eid="e154">秘密めいた</event>関係が二人の間に<event class="" eid="e155">あったのではない</event>かと父は<event class="" eid="e156">疑うだろう</event>、だから<event class="" eid="e157">知らない</event>と<event class="" eid="e158">言い張ったんだ</event>よ、と。</sentence>
+<sentence>兄はもう、母と佐倉は名取の町立病院で<event class="" eid="e159">出会っている</event>、と<event class="STATE" eid="e160">固く</event><event class="" eid="e161">信じ込んでいる</event>ようだ。</sentence>
+<sentence>だが三宝は、半信半疑のまま兄の言い分を<event class="" eid="e162">聞いていた</event>。</sentence>
+<sentence>　朝食の<ruby rubyText="さなか">最中</ruby>、正樹から電話が<event class="" eid="e163">入った</event>。</sentence>
+<sentence>改めて志津の<TIMEX3 definite="TRUE" tid="t15" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>の予定を<event class="" eid="e164">問いただし</event>て<event class="" eid="e165">きた</event>。</sentence>
+<sentence type="quasi">　「お昼ごはん、どこかで一緒に<event class="" eid="e166">食べよう</event>か？」</sentence>
+<sentence>　三宝の意志は<event class="" eid="e167">確かめてない</event>が、たとえ三宝が<event class="" eid="e168">同行しなくてもいい</event>という心境に<event class="" eid="e169">なっていた</event>。</sentence>
+<sentence>嘉子<sampling type="start" />にも一目<event class="" eid="e170">会っ</event>て<event class="" eid="e171">帰りたい</event>。</sentence>
+<sentence type="quasi">　「ウン、じゃ、<event class="STATE" eid="e172">いい</event>所が<event class="" eid="e173">ある</event>から、三宝も是非<event class="" eid="e174">誘ってみ</event>てよ」</sentence>
+<sentence>　正樹の声は<event class="" eid="e175">弾んでいた</event>。</sentence>
+<sentence>青山通りの近くに<event class="STATE" eid="e176">いい</event>レストランを<event class="" eid="e177">見つけた</event>、実は<TIMEX3 tid="t201" type="TIME" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">ゆうべ</TIMEX3>、もうそこを<event class="" eid="e178">予約してしまった</event>、少なくとも二人、<event class="" eid="e179">ひょっとし</event>て四人に<event class="" eid="e180">なるかも知れない</event>、人数は<TIMEX3 definite="TRUE" tid="t16" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">明日</TIMEX3>改めて<event class="" eid="e181">知らせる</event>と<event class="" eid="e182">いってある</event>、三宝が<event class="" eid="e183">来る</event>かどうか<event class="" eid="e184">確認してほしい</event>、と一気に<event class="" eid="e185">喋った</event>。</sentence>
+<sentence><event class="" eid="e186">わかった</event>、<TIMEX3 definite="FALSE" tid="t17" type="DURATION" value="PT30M" valueFromSurface="PT30M">三十分後</TIMEX3>にこちらから<event class="" eid="e187">かける</event>からと<event class="" eid="e188">答え</event>て電話を<event class="" eid="e189">切った</event>。</sentence>
+<sentence>三宝に即答を<event class="" eid="e190">迫る</event>のは<event class="STATE" eid="e191">酷だ</event>と<event class="" eid="e192">思った</event>からである。</sentence>
+<sentence>　青山通りを根津美術館のほうへ<event class="" eid="e193">曲り</event>、突き当りを左に<event class="" eid="e194">折れ</event>て二、三十メートルの所、と<event class="" eid="e195">告げる</event>と、大体<event class="" eid="e196">わかりました</event>が、生憎そのレストランの名前は<event class="" eid="e197">聞いたことがありません</event>、とタクシーの運転手は<event class="" eid="e198">答えた</event>。</sentence>
+<sentence><quote>「根津美術館」</quote>というのも、志津はもとより、東京に<event class="" eid="e199">来</event>て<TIMEX3 definite="FALSE" tid="t18" type="DURATION" value="P3Y" valueFromSurface="P3Y">三年</TIMEX3>に<event class="" eid="e200">なる</event>三宝も初めて<event class="" eid="e201">聞く</event>。</sentence>
+<sentence>しかし、運転手がすぐに<quote>「ああ、それは<event class="" eid="e202">わかります</event>」</quote>と<event class="" eid="e203">答えた</event>ところを<event class="" eid="e204">みる</event>と、東京でもまずまず<event class="" eid="e205">知られた</event>所なのだろう。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" mod="APPROX" tid="t19" type="DURATION" value="PT30M" valueFromSurface="PT30M">三十分ほど</TIMEX3><event class="" eid="e206">し</event>て青山通りを表参道と反対側に<event class="" eid="e207">折れ</event>、二、三百メートル坂を<event class="" eid="e208">下る</event>とＴ字路に<event class="" eid="e209">突き当った</event>が、美術館らしきものはどこにも<event class="" eid="e210">見当らない</event>。</sentence>
+<sentence type="quasi">　「根津美術館は…？」</sentence>
+<sentence type="quasi">　志津が<event class="" eid="e211">呟く</event>ように疑問を<event class="" eid="e212">漏らす</event>と、</sentence>
+<sentence type="quasi">　「あの角のがそうです」</sentence>
+<sentence>と、運転手はハンドルを左に<event class="" eid="e213">切り</event>ながら右斜め前方を<event class="" eid="e214">指さした</event>。</sentence>
+<sentence>嘉子が相槌を<event class="" eid="e215">打った</event>。</sentence>
+<sentence type="quasi">　「<event class="STATE" eid="e216"><TIMEX3 definite="TRUE" tid="t20" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>ふう</event>の、お屋敷の跡のように<event class="" eid="e217">見えます</event>けど…」</sentence>
+<sentence>　竹藪が瓦を<event class="" eid="e218">いただいた</event>土塀から<event class="" eid="e219">のぞいている</event>、<TIMEX3 definite="TRUE" tid="t21" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>の武家屋敷風情の家を視野に<event class="" eid="e220">捉え</event>て志津はさらに<event class="" eid="e221">呟いた</event>。</sentence>
+<sentence>　「ええ、<TIMEX3 definite="TRUE" tid="t22" type="DATE" value="MXX" valueFromSurface="MXX">明治時代</TIMEX3>のお金持のお屋敷だったんじゃないですかねぇ。</sentence>
+<sentence>さてと…？」</sentence>
+<sentence>　運転手は<event class="STATE" eid="e222">さり気なく</event><event class="" eid="e223">答え</event>てアクセルを<event class="" eid="e224">ゆるめた</event>。</sentence>
+<sentence type="quasi">　「<event class="" eid="e225">曲っ</event>て、二、三十メートルと<event class="" eid="e226">いう</event>と、もうその辺ですが…」</sentence>
+<sentence type="quasi">　「あ、<event class="" eid="e227">いた</event>っ…」</sentence>
+<sentence>　車を<event class="" eid="e228">徐行させ</event>て運転手が左右を<event class="" eid="e229">ねめ回した</event>時、志津がフロントガラスを<event class="" eid="e230">見すえ</event>て<event class="" eid="e231">叫んだ</event>。</sentence>
+<sentence>十メートルほど前方に、それらしき店の前で正樹と嘉子が<event class="" eid="e232">並ん</event>で<event class="" eid="e233">立っている</event>。</sentence>
+<sentence><event class="" eid="e234">空いている</event>助手席に身を<event class="" eid="e235">乗り出した</event>志津をそれかと<event class="" eid="e236">確かめる</event>ように、正樹が上体を<event class="" eid="e237">屈め</event>て車を<event class="" eid="e238">のぞき見た</event>。</sentence>
+<sentence>志津が手を<event class="" eid="e239">振る</event>のとほとんど同時に正樹が手を<event class="" eid="e240">振った</event>。</sentence>
+<sentence>　レストランは一階と二階が<event class="" eid="e241">あった</event>が、正樹は二階の窓際の席を<event class="" eid="e242">リザーブしていた</event>。</sentence>
+<sentence>二階のほうが席が<event class="STATE" eid="e243">少なく</event>ゆったりと<event class="" eid="e244">した</event>風情である。</sentence>
+<sentence>それにしても、青山通りや右手の表参道の賑わいとは<event class="STATE" eid="e245">裏腹に</event>、人通りも<event class="STATE" eid="e246">なく</event>、車が時々<event class="" eid="e247">通る</event>だけの道沿いにポツンと<event class="" eid="e248">建っている</event>この店が、<TIMEX3 definite="FALSE" tid="t23" type="DATE" value="NONE">休日</TIMEX3>とは<event class="" eid="e249">言え</event>ほとんど満員の盛況であるのに<event class="" eid="e250">驚いた</event>。</sentence>
+<sentence type="quasi">　「ここもね、この人<event class="" eid="e251">お勧め</event>の店」</sentence>
+<sentence>　席に<event class="" eid="e252">落ち着く</event>や、正樹が傍らの嘉子を手で<event class="" eid="e253">示し</event>て<event class="" eid="e254">言った</event>。</sentence>
+<sentence>　「学校のクラスメートと、そこの美術館へ<event class="" eid="e255">来たんです</event>。</sentence>
+<sentence type="quasi">その帰りがけに<event class="" eid="e256">見つけ</event>て、フッと<event class="" eid="e257">寄った</event>のがキッカケで…」</sentence>
+<sentence>　<event class="" eid="e258">落<sampling type="end" />ち着いている</event>が、嘉子もまだ学生気分が<event class="" eid="e259">抜けていない</event>。</sentence>
+<sentence>この若さ、初々しさは、いつまでも<event class="" eid="e260">失ってもらいたく</event><event class="STATE" eid="e261">ない</event>と志津は<event class="" eid="e262">思った</event>。</sentence>
+<sentence>が、一方で、二人には<event class="STATE" eid="e263">早く</event><event class="" eid="e264">結婚してもらいたい</event>、<TIMEX3 definite="TRUE" tid="t24" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>もその願望はチラと<event class="" eid="e265">言い残す</event>つもりで<event class="" eid="e266">いた</event>。</sentence>
+<sentence>無論、三宝が場を<event class="" eid="e267">はずした</event>機を<event class="" eid="e268">窺っ</event>てだが…。</sentence>
+<sentence type="quasi">　「でも、<event class="STATE" eid="e269">圧倒的に</event>女性が<event class="STATE" eid="e270">多い</event>わね」</sentence>
+<sentence>　志津はそっと周りに流し目を<event class="" eid="e271">くれ</event>ながら<event class="" eid="e272">言った</event>。</sentence>
+<sentence>実際、男性客は正樹以外一人か二人で、それも中年の女性客の連れ合いを<event class="" eid="e273">思わせる</event>初老の紳士たちだった。</sentence>
+<sentence>　「ウン、青山通りや表参道もそうだけど、こう<event class="" eid="e274">いう</event>所を<event class="" eid="e275">見つける</event>のは女性が<event class="STATE" eid="e276">早い</event>よね。</sentence>
+<sentence type="quasi">でもまあ、店員は男性のほうが<event class="STATE" eid="e277">多い</event>から」</sentence>
+<sentence type="quasi">　「三宝さんは、この辺は<event class="" eid="e278">来た</event>こと<event class="STATE" eid="e279">ない</event>？」</sentence>
+<sentence>　嘉子がまた気遣いを<event class="" eid="e280">見せてくれた</event>―と志津は<event class="" eid="e281">思った</event>。</sentence>
+<sentence><event class="" eid="e282">沈み込んでいる</event>わけではないが、三人の陽気さとはもう一つ波長が<event class="" eid="e283">合わないでいる</event>三宝へ、<event class="" eid="e284">落ち合った</event>時から嘉子はしきりに言葉を<event class="" eid="e285">投げかけ</event>、あるいは<event class="" eid="e286">目配せしている</event>。</sentence>
+<sentence type="quasi">　（万が一自分が<event class="STATE" eid="e287">早く</event><event class="" eid="e288">死ぬことになっ</event>ても、この人はきっと三宝の支えと<event class="" eid="e289">なってくれるだろう</event>）</sentence>
+<sentence>　後に<event class="" eid="e290">なっ</event>て志津は、何故こんな考えが突如<event class="" eid="e291">閃いた</event>のか、この時はただただ嘉子を、三宝にとって頼り甲斐の<event class="" eid="e292">ある</event><TIMEX3 definite="TRUE" tid="t25" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">未来</TIMEX3>の義姉と<event class="STATE" eid="e293">単純に</event><event class="" eid="e294">考えた</event>だけだったので、<event class="STATE" eid="e295">不思議に</event><event class="" eid="e296">思った</event>。</sentence>
+<sentence type="quasi">　「ええ、この辺は、<event class="STATE" eid="e297">身分不相応だ</event>と<event class="" eid="e298">思ってました</event>から」</sentence>
+<sentence type="quasi">　「ウン、まあ、若者のメッカ竹下通り辺りに<event class="" eid="e299">比べれ</event>ばね、格式が一枚も二枚も上だけど…」</sentence>
+<sentence type="quasi">　「私、噂に<event class="" eid="e300">聞く</event>だけで、竹下通りは<event class="" eid="e301">行った</event>こと<event class="STATE" eid="e302">ないんです</event>よ」</sentence>
+<sentence>　嘉子が微笑を<event class="" eid="e303">含んだ</event>まま<event class="" eid="e304">言った</event>。</sentence>
+<sentence>言葉は正樹に<event class="" eid="e305">返している</event>が、目は三宝に<event class="" eid="e306">据えられている</event>。</sentence>
+<sentence>その風情も志津には<event class="STATE" eid="e307">好ましかった</event>。</sentence>
+<sentence type="quasi">　「タケシタドオリ、て？」</sentence>
+<sentence>　「お母さんが<event class="" eid="e308">行ったら</event>カルチャーショックを<event class="" eid="e309">受け</event>て<event class="" eid="e310">卒倒する</event>よ。</sentence>
+<sentence><event class="" eid="e311">知らない</event>ほうが<event class="STATE" eid="e312">いい</event>。</sentence>
+<sentence>なあ？」</sentence>
+<sentence>　正樹が三宝の同意を<event class="" eid="e313">求めた</event>。</sentence>
+<sentence>　「三宝でさえショックを<event class="" eid="e314">受けた</event>と<event class="" eid="e315">言ってんだ</event>から。</sentence>
+<sentence>東北の田舎者には刺激が<event class="" eid="e316">きつ過ぎるんだ</event>よ。</sentence>
+<sentence>無論、僕も<event class="STATE" eid="e317">好きじゃない</event>よ。</sentence>
+<sentence type="quasi">だからこの人を<event class="" eid="e318">連れ</event>て<event class="" eid="e319">行こう</event>とは<event class="" eid="e320">思わない</event>」</sentence>
+<sentence type="quasi">　「そんな<event class="" eid="e321">勿体ぶった</event>言い方<event class="" eid="e322">される</event>と、一度は<event class="" eid="e323">行ってみたい</event>わよね？」</sentence>
+<sentence>　志津は嘉子に<event class="" eid="e324">言った</event>。</sentence>
+<sentence type="quasi">　「ええ、そうですね」</sentence>
+<sentence>　嘉子は<event class="STATE" eid="e325">素直に</event>相槌を<event class="" eid="e326">打つ</event>。</sentence>
+<sentence><TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今度</TIMEX3>は正樹と三宝が目配せを<event class="" eid="e327">交した</event>。</sentence>
+<sentence>　レストランでざっと<TIMEX3 definite="FALSE" mod="APPROX" tid="t26" type="DURATION" value="PT2H" valueFromSurface="PT2H">二時間ほど</TIMEX3><event class="" eid="e328">過ごし</event>てから、嘉子の誘いで根津美術館に<event class="" eid="e329">立ち寄った</event>。</sentence>
+<sentence>外観から<event class="" eid="e330">想像した</event>より<event class="STATE" eid="e331">はるかに</event><event class="STATE" eid="e332">広い</event>庭とその木立の繁茂ぶりに、志津と三宝は目を<event class="" eid="e333"><ruby rubyText="みは">瞠</ruby>った</event>。</sentence>
+<sentence>　美術館の展示物は実業家だった根津嘉一郎の収集品で茶器が<event class="STATE" eid="e334">主だった</event>。</sentence>
+<sentence>志津と嘉子は興味を<event class="" eid="e335">惹かれた</event>が、正樹と三宝は余り関心が<event class="STATE" eid="e336">なさ</event>そうだった。</sentence>
+<sentence>むしろ、茶室が<event class="" eid="e337">点在する</event><event class="STATE" eid="e338">広い</event>庭の散策のほうを<event class="" eid="e339">楽しんだ</event>。</sentence>
+<sentence>　正樹はカメラを<event class="" eid="e340">用意し</event>て<event class="" eid="e341">きてい</event>て、美術館や<event class="STATE" eid="e342">庵ふう</event>の茶室を背景に写真を<event class="" eid="e343">撮った</event>。</sentence>
+<sentence>時々嘉子と三宝に<event class="" eid="e344">代らせた</event>が、大部分は自分がシャッターを<event class="" eid="e345">押した</event>。</sentence>
+<sentence>被写体は三人とは<event class="" eid="e346">限らなかった</event>。</sentence>
+<sentence>志津は三宝と自分とふたりだけのスナップも<event class="" eid="e347">要求した</event>し、正樹と嘉子のふたりを三宝に<event class="" eid="e348">撮らせ</event>たり<event class="" eid="e349">した</event>。</sentence>
+<sentence type="quasi">　「写真、必ず<event class="" eid="e350">送っ</event>てね」</sentence>
+<sentence>　正樹がフィルムを<event class="" eid="e351">巻き上げた</event>ところで、志津は力を<event class="" eid="e352">込め</event>て<event class="" eid="e353">言った</event>。</sentence>
+<sentence>自分のためではない、佐倉に<event class="" eid="e354">送りたい</event>との思惑が<event class="" eid="e355">あった</event>。</sentence>
+<sentence type="quasi">　「ああ、もちろん」</sentence>
+<sentence>　正樹は別に<event class="" eid="e356">訝る</event>ふうも<event class="STATE" eid="e357">なく</event><event class="STATE" eid="e358">素直に</event><event class="" eid="e359">頷いた</event>。</sentence>
+<sentence type="quasi">　「この辺に、<event class="" eid="e360">洒落た</event>ブティックは<event class="STATE" eid="e361">ない</event>かしら？」</sentence>
+<sentence>　美術館を<event class="" eid="e362">出た</event>ところで、志津は誰にとも<event class="STATE" eid="e363">なく</event><event class="" eid="e364">言った</event>。</sentence>
+<sentence>　「ブティック？</sentence>
+<sentence>　また、どうして？」</sentence>
+<sentence>　正樹が<event class="" eid="e365">聞き返した</event>。</sentence>
+<sentence type="quasi">　「折角東京へ<event class="" eid="e366">来たんだ</event>から、何か記念に<event class="" eid="e367">なる</event>ものを<event class="" eid="e368">買っ</event>て<event class="" eid="e369">帰ろう</event>かと<event class="" eid="e370">思っ</event>て…」</sentence>
+<sentence>　「ああ、それなら表参道まで<event class="" eid="e371">出れ</event>ば、その手の店がズラリと<event class="" eid="e372">並んでる</event>よ。</sentence>
+<sentence>ねえ？」</sentence>
+<sentence>　正樹は嘉子を<event class="" eid="e373">振り返った</event>。</sentence>
+<sentence type="quasi">　「どんなものを、ご希望なんですか？」</sentence>
+<sentence>　嘉子が<event class="" eid="e374">頷い</event>てから志津を<event class="" eid="e375">見返った</event>。</sentence>
+<sentence>　「そうね。</sentence>
+<sentence type="quasi">ブラウスとか、スカーフとか…」</sentence>
+<sentence>　自分のためにも<event class="" eid="e376">買いたい</event>と<event class="" eid="e377">思った</event>が、嘉子と三宝に<event class="" eid="e378">買ってやりたい</event>と<event class="" eid="e379">思い立ったのだ</event>。</sentence>
+<sentence>　正樹と嘉子が<event class="" eid="e380">目配せし合った</event>。</sentence>
+<sentence type="quasi">　「少し先だけど、車を<event class="" eid="e381">拾う</event>ほどでも<event class="STATE" eid="e382">ない</event>から、<event class="" eid="e383">歩く</event>？」</sentence>
+<sentence type="quasi">　自分の年を<event class="" eid="e384">慮っ</event>ての言葉と<event class="" eid="e385">受けとめた</event>が、</sentence>
+<sentence>　「<TIMEX3 definite="FALSE" tid="t27" type="DURATION" value="PT1H" valueFromSurface="PT1H">一時間</TIMEX3>も<event class="" eid="e386">歩く</event>のはごめんだけど、<event class="STATE" eid="e387">そんなに</event><event class="STATE" eid="e388">ない</event>わよね？</sentence>
+<sentence>　さっき車で<event class="" eid="e389">曲った</event>辺りよね？」</sentence>
+<sentence>　車は左に<event class="" eid="e390">折れた</event>が、あっちへ<event class="" eid="e391">曲れ</event>ば表参道と<event class="" eid="e392">言った</event>のを<event class="" eid="e393">思い出し</event>て念を<event class="" eid="e394">押した</event>。</sentence>
+<sentence>正樹と嘉子が<event class="" eid="e395">頷いた</event>。</sentence>
+<sentence>四人は<event class="" eid="e396">歩き出した</event>。</sentence>
+<sentence type="quasi">　「ああ、ホント、風情が<event class="" eid="e397">あっ</event>て<event class="STATE" eid="e398">いい</event>所ね」</sentence>
+<sentence>　青山通りを<event class="" eid="e399">よぎっ</event>て表参道に<event class="" eid="e400">さしかかった</event>ところで、志津は感嘆の声を<event class="" eid="e401">上げた</event>。</sentence>
+<sentence type="quasi">　「森英恵さんのお店も<event class="" eid="e402">あります</event>けど…」</sentence>
+<sentence>　嘉子が前方を<event class="" eid="e403">指さし</event>て<event class="" eid="e404">言った</event>。</sentence>
+<sentence>　「えっ？</sentence>
+<sentence>　あの<event class="STATE" eid="e405">有名な</event>モリハナエ、さん？」</sentence>
+<sentence>　「ええ。</sentence>
+<sentence type="quasi">お店と言っても、<event class="STATE" eid="e406">立派な</event>ビルですけど…」</sentence>
+<sentence type="quasi">　「あ、ホントッ！」</sentence>
+<sentence>　アレだとばかり正樹が<event class="" eid="e407">指さし</event>て<event class="" eid="e408">見せた</event>ガラス張りの建物を<event class="" eid="e409">見上げ</event>て、志津はまた驚きの声を<event class="" eid="e410">放った</event>。</sentence>
+<sentence>　「一階はテラスが<event class="" eid="e411">あっ</event>て屋外喫茶の趣向に<event class="" eid="e412">なってる</event>のね？</sentence>
+<sentence>　<event class="STATE" eid="e413">すごーい</event>。</sentence>
+<sentence type="quasi">さすがは世界のハナエ・モリね」</sentence>
+<sentence>　新聞やテレビで国際的ファッション・デザイナーとして<event class="" eid="e414">紹介される</event>目鼻立ちの<event class="" eid="e415">はっきりした</event>初老の―と言っても実際の年齢より随分<event class="STATE" eid="e416">若く</event><event class="" eid="e417">見える</event>―婦人の顔を志津は<event class="" eid="e418">思い浮かべた</event>。</sentence>
+<sentence type="quasi">　「<event class="STATE" eid="e419">いい</event>わ、まず、そこへ<event class="" eid="e420">入りましょ</event>」</sentence>
+<sentence>　その実、幾つもの店を<event class="" eid="e421">見</event>て<event class="" eid="e422">回る</event>つもりは<event class="STATE" eid="e423">なかった</event>。</sentence>
+<sentence>足が少し<event class="STATE" eid="e424">重たく</event><event class="" eid="e425">なっていた</event>し、右肩の違和感も<event class="STATE" eid="e426">強く</event><event class="" eid="e427">なっていた</event>。</sentence>
+<sentence>　店は、<event class="STATE" eid="e428">若い</event>女性から中年の女性客で結構<event class="" eid="e429">賑わっていた</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t28" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">近頃</TIMEX3>の女性は独身貴族で懐は結構<event class="STATE" eid="e430">温かい</event>とどこかで<event class="" eid="e431">読んだ</event>か<event class="" eid="e432">聞いた</event>覚えは<event class="" eid="e433">ある</event>が、それにしても目玉が<event class="" eid="e434">飛び出す</event>ほどのことは<event class="" eid="e435">あるまい</event>と<event class="" eid="e436">思い</event>ながら値札を<event class="" eid="e437">見</event>て<event class="" eid="e438">回る</event>。</sentence>
+<sentence>なるほど日頃<event class="" eid="e439">買っている</event>仙台の百貨店辺りよりは二、三割値が<event class="" eid="e440">張っている</event>が<event class="" eid="e441">思った</event>ほどではない。</sentence>
+<sentence>　志津は気に<event class="" eid="e442">入った</event>ブラウスを一つ<event class="" eid="e443">選び</event>、鏡の前で胸に<event class="" eid="e444">当てた</event>が、その時また右腕の付け根が<event class="" eid="e445">疼く</event>のを<event class="" eid="e446">覚え</event>、サッサと<event class="" eid="e447">おろした</event>。</sentence>
+<sentence><event class="" eid="e448">試着されます</event>かと店員が<event class="" eid="e449">促す</event>ように<event class="" eid="e450">言った</event>が、いえ、気に<event class="" eid="e451">入りました</event>からそれを<event class="" eid="e452">いただきます</event>、と<event class="" eid="e453">答えた</event>。</sentence>
+<sentence>　<event class="" eid="e454">遠慮する</event>嘉子を<event class="" eid="e455">口説い</event>て、何か気に<event class="" eid="e456">入った</event>ものを<event class="" eid="e457">選ぶ</event>よう<event class="" eid="e458">強いた</event>。</sentence>
+<sentence type="quasi">　「折角そう<event class="" eid="e459">言ってくれるんだ</event>から、二、三着<event class="" eid="e460">買ってもらったら</event>」</sentence>
+<sentence>　正樹が<event class="" eid="e461">けしかける</event>ように<event class="" eid="e462">言っ</event>て、笑いを<event class="" eid="e463">誘った</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t29" type="DURATION" value="PT30M" valueFromSurface="PT30M">三十分後</TIMEX3>には、女三人は思い思いのブラウスを手にテラスの喫茶室に<event class="" eid="e464">落ち着いた</event>。</sentence>
+<sentence>そこでまた<TIMEX3 definite="FALSE" mod="APPROX" tid="t30" type="DURATION" value="PT1H" valueFromSurface="PT1H">半時</TIMEX3>ほど<event class="" eid="e465">談笑し</event>てから外へ<event class="" eid="e466">出た</event>。</sentence>
+<sentence>　タクシーを<event class="" eid="e467">拾っ</event>て上野駅へ<event class="" eid="e468">向かった</event>。</sentence>
+<sentence>ここで<event class="" eid="e469">サヨナラしましょ</event>と志津は<event class="" eid="e470">言った</event>が、駅まで<event class="" eid="e471">送る</event>よ、と正樹が<event class="" eid="e472">言い</event>、嘉子と三宝も相槌を<event class="" eid="e473">打った</event>。</sentence>
+<sentence type="quasi">　「あそこで、初めてお父さんにこの人を<event class="" eid="e474">紹介した</event>っけなあ」</sentence>
+<sentence>　公園口で車を<event class="" eid="e475">降り</event>て信号が青に<event class="" eid="e476">変る</event>のを<event class="" eid="e477">並ん</event>で<event class="" eid="e478">待つ</event>格好に<event class="" eid="e479">なった</event>ところで、目の前の改札口を<event class="" eid="e480">指さし</event>て正樹が<event class="" eid="e481">言った</event>。</sentence>
+<sentence>　「えっ？</sentence>
+<sentence>　そんなことが<event class="" eid="e482">あった</event>の？</sentence>
+<sentence>　いつ？」</sentence>
+<sentence>　志津が驚きの声を<event class="" eid="e483">放った</event>次の刹那、三宝もハッと正樹の顔を<event class="" eid="e484">見上げた</event>。</sentence>
+<sentence type="quasi">　「いつだったかなあ…？」</sentence>
+<sentence>　言葉を<event class="" eid="e485">濁し</event>て、正樹は助けを<event class="" eid="e486">求める</event>ように嘉子のほうを<event class="" eid="e487">見返った</event>。</sentence>
+<sentence>他意も<event class="STATE" eid="e488">なく</event>、ただ話題に<event class="" eid="e489">供する</event>だけのつもりだったのが、<TIMEX3 definite="TRUE" tid="t31" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">あの時</TIMEX3>ここで父親と<event class="" eid="e490">会った</event>ことは母も妹も<event class="" eid="e491">知らない</event>ことだったのだ、と<event class="" eid="e492">思い至る</event>のに、<event class="STATE" eid="e493">そんなに</event>時間は<event class="" eid="e494">かからなかった</event>。</sentence>
+<sentence type="quasi">　（<event class="" eid="e495">しまった</event>！）</sentence>
+<sentence>　正樹が失言を<event class="" eid="e496">悔い</event>、嘉子が何か<event class="" eid="e497">言い出そう</event>と<event class="" eid="e498">した</event>時、信号が<event class="" eid="e499">変った</event>。</sentence>
+<sentence type="quasi">　「あ、青だよ、<event class="" eid="e500">行こう</event>」</sentence>
+<sentence>　正樹はホッと<event class="" eid="e501">救われた</event>思いで先に<event class="" eid="e502">立っ</event>て<event class="" eid="e503">歩き出した</event>。</sentence>
+<sentence>　ホームまで三人に見送りを<event class="" eid="e504">受け</event>て新幹線に<event class="" eid="e505">乗っ</event>てから、志津は先刻フッと正樹が<event class="" eid="e506">漏らした</event>言葉を<event class="" eid="e507">思い返していた</event>。</sentence>
+<sentence>　（あの人が、東京へ？</sentence>
+<sentence>　このふたりに<event class="" eid="e508">会い</event>に？）</sentence>
+<sentence>　息子の<event class="" eid="e509">口走った</event>言葉に頭が一瞬<event class="STATE" eid="e510">白く</event><event class="" eid="e511">なった</event>が、我に<event class="" eid="e512">返った</event>刹那、こんな疑問が胸に<event class="" eid="e513">よぎっていた</event>。</sentence>
+<sentence>　（<event class="" eid="e514">聞いてない</event>。</sentence>
+<sentence>そんなこと、あの人は一言も<event class="" eid="e515">言わなかった</event>。</sentence>
+<sentence>なぜだろう？）</sentence>
+<sentence>　折に<event class="" eid="e516">触れ</event><event class="" eid="e517">上京する</event>機会が<event class="" eid="e518">あるなら</event>いざ<event class="" eid="e519">知らず</event>、正男が<event class="" eid="e520">上京した</event>ことは手術を<event class="" eid="e521">受け</event>てからこのかた<event class="" eid="e522">聞いた</event>ことが<event class="STATE" eid="e523">ない</event>。</sentence>
+<sentence type="quasi">なぜか答を<event class="" eid="e524">はぐらかす</event>ようにさっさと先に<event class="" eid="e525">歩い</event>て<event class="" eid="e526">行く</event>正樹の後ろ姿を<event class="" eid="e527">追い</event>ながら、</sentence>
+<sentence type="quasi">　「それ、あたしが手術を<event class="" eid="e528">受け</event>てからのこと？」</sentence>
+<sentence>と志津はそっと嘉子に<event class="" eid="e529">問いただした</event>。</sentence>
+<sentence>　「ええ、お母様が秋田の病院から<event class="" eid="e530">戻られ</event>て間も<event class="STATE" eid="e531">なくだった</event>と<event class="" eid="e532">思います</event>。</sentence>
+<sentence>私、お母様のお見舞いを<event class="" eid="e533">させてください</event>、て正樹さんに<event class="" eid="e534">お願いしたんです</event>けど、母は<event class="STATE" eid="e535">遠い</event>所へ手術を<event class="" eid="e536">受け</event>に<event class="" eid="e537">行った</event>から、て。</sentence>
+<sentence>どこと<event class="" eid="e538">聞い</event>てもなかなか<event class="" eid="e539">言ってくださらなかったんです</event>よ。</sentence>
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t32" type="DURATION" value="PXD" valueFromSurface="PXD">何日</TIMEX3>か<event class="" eid="e540">し</event>ていきなり、母は無事<event class="" eid="e541">退院し</event>て<event class="" eid="e542">きた</event>からそのうち<event class="" eid="e543">会ってもらう</event>けど、その前に父に<event class="" eid="e544">会ってほしい</event>、あしたこちらへ<event class="" eid="e545">出</event>て<event class="" eid="e546">来る</event>から、て<event class="" eid="e547">言われ</event>て、<event class="" eid="e548">戸惑いました</event>」</sentence>
+<sentence>　ついでと<event class="" eid="e549">いうなら</event>まだしも、子供が親をわざわざ<event class="" eid="e550">呼びつけ</event>て自分の恋人に<event class="" eid="e551">会わせる</event>なんてのは本末転倒も<event class="STATE" eid="e552">甚だしい</event>。</sentence>
+<sentence>嘉子も郷里は仙台に<event class="STATE" eid="e553">近い</event>東仙台なのだから、<event class="" eid="e554">会わせたいなら</event>嘉子を<event class="" eid="e555">伴っ</event>て正樹のほうから<event class="" eid="e556">出向い</event>て<event class="" eid="e557">くるべきだろう</event>。</sentence>
+<sentence><event class="STATE" eid="e558">不可解な</event>のは、夫が二人に<event class="" eid="e559">会った</event>ことなど自分にひと言も<event class="" eid="e560">言わなかった</event>ことだ。</sentence>
+<sentence>病後の身とて、嘉子のことは別に<event class="STATE" eid="e561">悪い</event>話ではない、自分に<event class="" eid="e562">秘めおく</event>必要は何も<event class="STATE" eid="e563">ない</event>はずだった。</sentence>
+<sentence>　だが、今更そんな<event class="" eid="e564">過ぎ去った</event>ことを<event class="" eid="e565">咎めだてた</event>とて仕方が<event class="STATE" eid="e566">ない</event>―ややも<event class="" eid="e567">し</event>てそう<event class="" eid="e568">思い直す</event>と、気持を<event class="" eid="e569">改め</event>て便箋を<event class="" eid="e570">取り出した</event>。</sentence>
+<sentence>　<TIMEX3 tid="t202" type="DATE" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">ゆうべ</TIMEX3>遅くまで三宝と<event class="" eid="e571">語り合った</event>が、<event class="" eid="e572">言いそびれた</event>ことが一つ<event class="" eid="e573">あった</event>。</sentence>
+<sentence>そのことは、佐倉に<event class="STATE" eid="e574">きつく</event>念を<event class="" eid="e575">押されていた</event>から話題に<event class="" eid="e576">しなけれ</event>ばと<event class="" eid="e577">心してきた</event>はずだったし、三宝が佐倉の名を口に<event class="" eid="e578">した</event>時こそそのチャンスだったのだが、なぜか<event class="" eid="e579">言いそびれたのである</event>。</sentence>
+<sentence>他でも<event class="STATE" eid="e580">ない</event>、運命のいたずらとしか言いようが<event class="STATE" eid="e581">ない</event>が、佐倉の息子が<event class="" eid="e582">起した</event>交通事故に<event class="" eid="e583">まつわる</event>一件で依頼に<event class="" eid="e584">及んだ</event>弁護士が宏の父親だったこと、実際志津も<event class="" eid="e585">会ってみ</event>て想像と<event class="" eid="e586">食い違う</event>ことの<event class="STATE" eid="e587">なかった</event>宏のイメージとは<event class="STATE" eid="e588">裏腹に</event>、弁護士である父親は、金銭に<event class="" eid="e589">飽く</event><event class="STATE" eid="e590">なき</event>執着を<event class="" eid="e591">持った</event>俗物であると佐倉が<event class="" eid="e592">いきまいていた</event>こと、たとえ人格は別とは<event class="" eid="e593">言え</event>、そんな父親を<event class="" eid="e594">持った</event>息子と三宝が恋仲であることを<event class="" eid="e595">知っ</event>て佐倉がいたく<event class="" eid="e596">驚き悲しんでいた</event>、等々を、<event class="" eid="e597">綴った</event>。</sentence>
+<sentence>肩の違和感と電車の揺れで文字はやや<event class="" eid="e598">乱れた</event>が、お陰で時の<event class="" eid="e599">経つ</event>のを<event class="" eid="e600">忘れた</event>。</sentence>
+<sentence>　自分が看護婦を<event class="" eid="e601">目指していなかったら</event>、そして、母親が癌と<event class="" eid="e602">闘っている</event>身でなかったら、<event class="" eid="e603">死ぬ</event>ことも<event class="" eid="e604">考えていたかも知れない</event>、と<event class="" eid="e605">言ってくれた</event>ことが<event class="STATE" eid="e606">どんなに</event><event class="STATE" eid="e607">嬉しかった</event>か<event class="" eid="e608">知れない</event>、この悲しみ、苦しみは、あなたの<event class="" eid="e609">言う</event>通り、<event class="" eid="e610">晴れ</event>て看護婦に<event class="" eid="e611">なった</event>時、患者のそれらを<event class="" eid="e612">思いやる</event>糧に<event class="" eid="e613">なる</event>ことを<event class="" eid="e614">信じています</event>、と最後に<event class="" eid="e615">認めた</event>。</sentence>
+<sentence>　<event class="" eid="e616">書き終えた</event>刹那、列車が仙台駅に<event class="" eid="e617">着いた</event>。</sentence>
+<sentence>便箋を<event class="" eid="e618">閉じた</event>ものの、スーツケースに<event class="" eid="e619">おさめる</event>暇は<event class="STATE" eid="e620">なく</event>、片手に<event class="" eid="e621">持った</event>ままプラットホームに<event class="" eid="e622">降りた</event>。</sentence>
+<sentence>　改札を<event class="" eid="e623">出</event>て階段を<event class="" eid="e624">下りかけた</event>ところで、便箋をバッグに<event class="" eid="e625">しまおう</event>と<event class="" eid="e626">し</event>て、一瞬足もとから注意が<event class="" eid="e627">それた</event>。</sentence>
+<sentence>刹那、右足が階段を一段<event class="" eid="e628">踏み違え</event>、はずみに<event class="" eid="e629">よろめいた</event>。</sentence>
+<sentence>バランスを<event class="" eid="e630">戻そう</event>と<event class="" eid="e631">した</event>が<event class="" eid="e632">空いた</event>スーツケースの中身が<event class="" eid="e633">飛び出し</event>そうに<event class="" eid="e634">なり</event>、<event class="STATE" eid="e635">反射的に</event>右手を<event class="" eid="e636">伸ばした</event>、次の一瞬、腕の付け根にギシッと<event class="" eid="e637">いう</event><event class="STATE" eid="e638">したたかな</event>衝撃を<event class="" eid="e639">覚え</event>、苦痛にアッと顔を<event class="" eid="e640">しかめた</event>志津は、それなり右腕がまるで<event class="" eid="e641">上がらなく</event><event class="" eid="e642">なっている</event>のに<event class="" eid="e643">気付いた</event>。</sentence>

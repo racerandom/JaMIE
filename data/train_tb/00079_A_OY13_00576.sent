@@ -1,0 +1,8 @@
+<sentence>異常なし。</sentence>
+<sentence>若干地盤が<event class="STATE" eid="e1">ゆるい</event>ところも<event class="" eid="e2">あった</event>がいつもの雨と<event class="" eid="e3">かわらん</event>程度。</sentence>
+<sentence>水はずいぶん<event class="" eid="e4">流れた</event>ようで<event class="" eid="e5">行く</event>先々笹濁り。</sentence>
+<sentence>山中の坂道は結構水が<event class="" eid="e6">流れた</event>のか痕が<event class="" eid="e7">わかる</event>ぐらいに<event class="" eid="e8">なっていた</event>。</sentence>
+<sentence>雨後で花粉ちょっと<event class="STATE" eid="e9">マシな</event>気が<event class="" eid="e10">した</event>。</sentence>
+<sentence>吐き気は<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>と<event class="" eid="e11">変わらん</event>。</sentence>
+<sentence>胃が<event class="" eid="e12">荒れてるのだろう</event>。</sentence>
+<sentence>飯<event class="" eid="e13">減らし</event>て様子<event class="" eid="e14">見る</event>。</sentence>

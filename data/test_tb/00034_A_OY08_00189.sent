@@ -1,0 +1,7 @@
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>は「後ろのヤツ」とは<event class="" eid="e1">しゃべらんかった</event>。</sentence>
+<sentence>まあ授業に<event class="" eid="e2">集中してました</event>からね。</sentence>
+<sentence>って<event class="" eid="e3">いう</event>よりは英語とプログラミングが移動なんでね。</sentence>
+<sentence>プロは<event class="" eid="e4">考えてる</event>暇すら<event class="" eid="e5">与えてくれない</event>よ。</sentence>
+<sentence>でも<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>は指の調子が<event class="STATE" eid="e6">良かったので</event>、<event class="STATE" eid="e7">早く</event><event class="" eid="e8">打ち終わることが出来まし</event>てん。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>は部活が<event class="" eid="e9">あった</event>けど<TIMEX3 definite="TRUE" tid="t4" type="TIME" value="2008-XX-XXT13:30" valueFromSurface="XXXX-XX-XXT13:30">１時半</TIMEX3>で<event class="" eid="e10">帰れた</event>のよ〜ん。</sentence>
+<sentence>そいじゃ、まったあしたぁ。</sentence>

@@ -1,0 +1,13 @@
+<sentence><event class="" eid="e1">教えて下さい</event>。</sentence>
+<sentence><event class="STATE" eid="e2">まれに</event>銀行振込の方って<event class="" eid="e3">いらっしゃいます</event>よね？</sentence>
+<sentence>すぐ<event class="" eid="e4">行ける</event>場所に銀行が<event class="STATE" eid="e5">ないので</event>、ネットバンクを<event class="" eid="e6">申込しよう</event>かと<event class="" eid="e7">思うのです</event>が、どこが<event class="" eid="e8">おすすめです</event>か？</sentence>
+<sentence>その理由は？</sentence>
+<sentence type="quasi"><event class="" eid="e9">お願いします</event></sentence>
+<sentence>ネットで<event class="" eid="e10">送金できる</event>銀行でオススメは下記です。</sentence>
+<sentence type="quasi">①新生銀行　新生パワーダイレクト</sentence>
+<sentence type="quasi">同行間の振込手数料は無料・他行宛の振込手数料は<TIMEX3 definite="FALSE" freq="5X" tid="t1" type="SET" value="P1M" valueFromSurface="P1M">月５回</TIMEX3>無料です♪</sentence>
+<sentence type="quasi">②イーバンク銀行</sentence>
+<sentence type="quasi">同行間の振込手数料は無料・他行宛の振込手数料は１６０円</sentence>
+<sentence type="quasi">メルマネ（裏技）を<event class="" eid="e11">使え</event>ば、他行宛も郵便貯金宛も送金手数料が<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2005-03" valueFromSurface="XXXX-03">３月</TIMEX3>まで無料</sentence>
+<sentence type="quasi">メルマネキャンペーン終了後は、１００円</sentence>
+<sentence>①の他行宛て<TIMEX3 definite="FALSE" freq="5X" tid="t3" type="SET" value="P1M" valueFromSurface="P1M">月５回</TIMEX3>無料を<event class="" eid="e12">利用し</event>て②の振込入金口座に<event class="" eid="e13">振込する</event>と<webBr />３万円以下１０５円、３万円以上２１０円が<TIMEX3 definite="FALSE" freq="1X" quant="EACH" tid="t4" type="SET" value="P1M" valueFromSurface="P1M">毎月１回</TIMEX3><event class="" eid="e14">キャッシュバックされます</event>。</sentence>

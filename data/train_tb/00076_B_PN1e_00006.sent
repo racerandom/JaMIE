@@ -1,0 +1,30 @@
+<sentence type="quasi"><sampling type="start" />狂牛病検査、１次は非公開なのに</sentence>
+<sentence type="quasi">函館市　情報公開ではＯＫ</sentence>
+<sentence type="quasi">【函館】</sentence>
+<sentence>　狂牛病の一次検査で、道内の保健所と食肉検査所の中で唯一、検査頭数を<event class="" eid="e1">公表していない</event>函館市が、条例に<event class="" eid="e2">基づく</event>情報公開請求に対し、検査頭数と結果を<event class="" eid="e3">開示していた</event>ことが<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2001-11-02" valueFromSurface="XXXX-XX-02">二日</TIMEX3>、<event class="STATE" eid="e4">明らかに</event><event class="" eid="e5">なった</event>。</sentence>
+<sentence>市立函館保健所は一次検査結果の陰性頭数しか<event class="" eid="e6">公表しておらず</event>、一方では情報公開には<event class="" eid="e7">答えざるを得ない</event>、<event class="STATE" eid="e8">ちぐはぐな</event>対応に<event class="" eid="e9">なっている</event>。</sentence>
+<sentence>　市立函館保健所は<quote>「確定診断前の公表は市民の混乱を<event class="" eid="e10">招く</event>」</quote>と<event class="" eid="e11">し</event>て<TIMEX3 tid="t201" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当初</TIMEX3>、一次検査結果は<event class="" eid="e12">公表せず</event>、<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2001-10-29" valueFromSurface="XXXX-10-29">十月二十九日</TIMEX3>から一次の陰性頭数のみ公表、検査頭数は<event class="" eid="e13">発表していない</event>。</sentence>
+<sentence>しかし、<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2001-10-24" valueFromSurface="XXXX-XX-24">同二十四日</TIMEX3>に、市議が<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2001-10-22" valueFromSurface="XXXX-XX-22">二十二日</TIMEX3>の一次検査結果について<event class="" eid="e14">情報公開請求し</event>たところ、市は<TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2001-10-30" valueFromSurface="XXXX-XX-30">三十日</TIMEX3>に公開決定を<event class="" eid="e15">通知した</event>。</sentence>
+<sentence>　この市議によると、公開内容は同保健所が厚生労働省に<event class="" eid="e16">報告した</event><TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2001-10-23" valueFromSurface="XXXX-XX-23">二十三日</TIMEX3>付の日報で、<TIMEX3 definite="FALSE" tid="t7" type="DATE" value="2001-10-22" valueFromSurface="XXXX-XX-22">二十二日</TIMEX3>の検査の頭数と陽性、陰性、検査中頭数の内訳が<event class="" eid="e17">記載され</event>、陽性の事例は<event class="STATE" eid="e18">なかった</event>。</sentence>
+<sentence type="fragment">　同保健所は</sentence>
+<sentence>「公表は行政判断で<event class="STATE" eid="e19">積極的に</event><event class="" eid="e20">情報提供する</event>のに対して、公開は市の条例に<event class="" eid="e21">従っ</event>て<event class="" eid="e22">開示しなければならない</event><event class="STATE" eid="e23">受け身的な</event>もの。</sentence>
+<sentence type="quasi"><event class="" eid="e24">矛盾する</event>わけではない」</sentence>
+<sentence type="fragment">と<event class="" eid="e25">説明している</event>。</sentence>
+<sentence type="quasi">５３６頭が陰性</sentence>
+<sentence type="quasi">道内狂牛病検査</sentence>
+<sentence>　狂牛病の全頭検査で、道は<TIMEX3 definite="FALSE" tid="t8" type="DATE" value="2001-11-02" valueFromSurface="XXXX-XX-02">二日</TIMEX3>、函館を<event class="" eid="e26">除く</event>全道の五百三十六頭が<event class="STATE" eid="e27">陰性だった</event>と<event class="" eid="e28">発表した</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t9" type="DATE" value="2001-11-01" valueFromSurface="XXXX-XX-01">一日</TIMEX3>に結果待ちだった二百四十四頭のほか、<TIMEX3 definite="FALSE" tid="t10" type="DATE" value="2001-11-02" valueFromSurface="XXXX-XX-02">二日</TIMEX3>に<event class="" eid="e29">検査した</event>五百四十八頭のうち二百九十二頭が陰性。</sentence>
+<sentence>残り二百五十六頭は<TIMEX3 definite="FALSE" tid="t11" type="TIME" value="2001-11-02T18" valueFromSurface="XXXX-XX-XXT18">午後六時</TIMEX3>までに結果が<event class="" eid="e30">判明しなかった</event>。</sentence>
+<sentence>　また市立函館保健所は<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="2001-11-02" valueFromSurface="XXXX-XX-02">二日</TIMEX3>、<TIMEX3 definite="FALSE" tid="t13" type="DATE" value="2001-11-01" valueFromSurface="XXXX-XX-01">一日</TIMEX3>の全頭検査の一次検査の結果、陰性頭数は二十七頭と<event class="" eid="e31">公表した</event>。</sentence>
+<sentence type="quasi">狂牛病対策</sentence>
+<sentence type="quasi">食品回収は２２品目に</sentence>
+<sentence type="quasi">厚労省最終報告　上磯のメーカーなど</sentence>
+<sentence>　狂牛病（牛海綿状脳症）問題で、<event class="STATE" eid="e32">まれに</event><event class="" eid="e33">感染する</event>危険が<event class="" eid="e34">ある</event>牛の脊髄（せきずい）などが<event class="" eid="e35">混入していた</event>などと<event class="" eid="e36">し</event>て、北海道や東京都に本社や工場が<event class="" eid="e37">ある</event>メーカー六社が、<event class="STATE" eid="e38">新たに</event>自社の加工食品計十九品目を<event class="" eid="e39">自主回収していた</event>ことが<TIMEX3 definite="FALSE" tid="t14" type="DATE" value="2001-11-02" valueFromSurface="XXXX-XX-02">二日</TIMEX3>、厚生労働省が<event class="" eid="e40">まとめた</event>加工食品点検の最終報告で<event class="STATE" eid="e41">明らかに</event><event class="" eid="e42">なった</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t15" type="DATE" value="2001-10-18" valueFromSurface="XXXX-XX-18">十月十八日</TIMEX3>に<event class="" eid="e43">発表された</event>中間まとめと<event class="" eid="e44">合わせ</event>、自主回収は九社の二十二品目に<event class="" eid="e45">なった</event>。</sentence>
+<sentence>　<event class="" eid="e46">回収された</event>のは、渡島管内上磯町の食品加工会社「時兼畜販」の総菜「牛もつ煮込み」や東京都の有機農産物宅配会社「大地」が<event class="" eid="e47">扱っている</event>四製造会社の牛エキスやカレールーなど十九品目。</sentence>
+<sentence>　時兼畜販によると、牛もつ煮込みは、函館市内に<event class="" eid="e48">ある</event>同社直営の内臓専門店三店で<event class="" eid="e49">販売していた</event>が、<TIMEX3 definite="FALSE" mod="END" tid="t16" type="DATE" value="2001-09" valueFromSurface="XXXX-09">九月末</TIMEX3>に店頭からすべて<event class="" eid="e50">引き揚げた</event>と<event class="" eid="e51">いう</event>。</sentence>
+<sentence>また<quote>「大地」</quote>によると、同社の<event class="" eid="e52">扱っていた</event>製品は、肉骨粉を<event class="" eid="e53">与えていない</event>牛が原料で、安全性には自信が<event class="" eid="e54">ある</event>が厚労省の指導に<event class="" eid="e55">従った</event>と<event class="" eid="e56">いう</event>。</sentence>
+<sentence type="fragment">　<event class="" eid="e57">自主<sampling type="end" />回収した</event>会社について厚労省は、</sentence>
+<sentence>「これらの会社は消費者の信頼を<event class="" eid="e58">守る</event>ため、<event class="" eid="e59">自主点検し</event>自主回収を<event class="" eid="e60">した</event><event class="STATE" eid="e61">まじめな</event>企業だ。</sentence>
+<sentence type="quasi">このことで、風評被害が<event class="" eid="e62">広がらない</event>ように<event class="" eid="e63">願いたい</event>」</sentence>
+<sentence type="fragment">（監視安全課）と<event class="" eid="e64">している</event>。</sentence>

@@ -1,0 +1,18 @@
+<sentence>子供２人の病気＆自分も<event class="" eid="e1">うつっ</event>たり<event class="" eid="e2">し</event>て、<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">来週</TIMEX3>で<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P3W" valueFromSurface="P3W">３週間目</TIMEX3>突入です。</sentence>
+<sentence>病院くらいしか<event class="" eid="e3">行ってないので</event>、<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>ストレスが<event class="" eid="e4">たまってる</event>感じです。</sentence>
+<sentence>なんとか自分が<event class="" eid="e5">回復したので</event>まだ<event class="STATE" eid="e6">いいのです</event>が、<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="2005-WXX-WE" valueFromSurface="2005-WXX-WE">先週末</TIMEX3>は子供達の姿を<event class="" eid="e7">見る</event>のも<event class="STATE" eid="e8">いやでした</event>。</sentence>
+<sentence><event class="" eid="e9">話しかけられ</event>ても、<event class="STATE" eid="e10">まじで</event><event class="" eid="e11">反応できず</event>返事も<event class="" eid="e12">しなかっ</event>たり<event class="" eid="e13">しました</event>。</sentence>
+<sentence>こんな私は母失格ですよね。</sentence>
+<sentence>ずっと家の中って<event class="STATE" eid="e14">すごく</event><event class="STATE" eid="e15">辛く</event><event class="" eid="e16">ありません</event>か？</sentence>
+<sentence>病気の子供達の方が<event class="STATE" eid="e17">辛い</event>のに、<event class="" eid="e18">甘えてます</event>か？</sentence>
+<sentence>そんなこと<event class="STATE" eid="e19">ないです</event>よ、私も子供が３人<event class="" eid="e20">います</event>が、同じ気持ちに<event class="" eid="e21">なります</event>よ〜。</sentence>
+<sentence>子供って先の子が<event class="" eid="e22">治ったら</event>次の子に…と順番に病気に<event class="" eid="e23">なるのです</event>よね。</sentence>
+<sentence>普段は順番を<event class="" eid="e24">守らない</event>のに、病気の場合は必ずと<event class="" eid="e25">言っ</event>て<event class="STATE" eid="e26">いい</event>ほど<event class="STATE" eid="e27">お行儀よく</event>順番に<event class="" eid="e28">かかります</event>。</sentence>
+<sentence type="fragment">次の子に<event class="" eid="e29">なった</event>時、「</sentence>
+<sentence><event class="" eid="e30">勘弁し</event>てよ〜、またかよ〜。</sentence>
+<sentence type="fragment">」と心の中で<event class="" eid="e31">思っ</event>たりも<event class="" eid="e32">します</event>。</sentence>
+<sentence>病気の心配より先に…です。</sentence>
+<sentence>母親も人間ですから、<event class="" eid="e33">イライラする</event>のは<event class="STATE" eid="e34">当然です</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t5" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>は上の子達が<event class="" eid="e35">成長し</event>、そんなこともあまり<event class="" eid="e36">考えなく</event>て<event class="STATE" eid="e37">よい</event>ように<event class="" eid="e38">なりました</event>。</sentence>
+<sentence>子供が病気を<event class="STATE" eid="e39">頻繁に</event><event class="" eid="e40">する</event>のは、<event class="STATE" eid="e41">小さい</event>うちだけのような気が<event class="" eid="e42">します</event>。</sentence>
+<sentence>しばらくの辛抱です、<event class="" eid="e43">がんばって下さい</event>！</sentence>

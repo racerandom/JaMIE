@@ -1,0 +1,7 @@
+<sentence>カローラフィールダーですが、ラジオの感度が<event class="STATE" eid="e1">悪く</event><event class="STATE" eid="e2">ないです</event>か？</sentence>
+<sentence>営業車で３台同時に<event class="" eid="e3">購入したのです</event>が、３台ともＡＭラジオの雑音が<event class="STATE" eid="e4">ひどいです</event>。</sentence>
+<sentence>少し郊外に<event class="" eid="e5">でる</event>と、音声が<event class="" eid="e6">聞き取れません</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>の車のラジオは皆そうなのでしょうか？</sentence>
+<sentence>そうですね。</sentence>
+<sentence>アンテナもデザインとＦＭ重視ですから。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>のトヨタの車は<event class="STATE" eid="e7">全体的に</event>そうですよね〜。</sentence>

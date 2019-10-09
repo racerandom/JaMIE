@@ -1,0 +1,1 @@
+<d certainty="positive">左肺癌</d>に対して陽子線治療後。<a>左肺下葉</a>に<f>３．７×２．５Ｃｍ</f>の<d certainty="positive">ｃｏｎｓｏｌｉｄａｔｉｏｎ</d>を認めます。既知の<d certainty="positive">再発腫瘤</d>です。<d certainty="positive">左胸水貯留</d>あり。<a>下葉気管支内側</a>に<d certainty="positive">造影効果のあるリンパ節腫大</d>あり、<d certainty="suspicious">左肺門リンパ節転移</d>疑い。<d certainty="positive">陳旧性炎症による網状影</d>あり。<d certainty="positive">肝嚢疱</d>あり。

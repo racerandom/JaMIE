@@ -1,0 +1,5 @@
+<sentence type="quasi">クレヨンしんちゃんを<event class="" eid="e1">みたのです</event>が<webBr />しんちゃんは、ぴちぴちおねいさんが<event class="STATE" eid="e2">大好きです</event>が<webBr />実際の<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P5Y" valueFromSurface="P5Y">５歳児</TIMEX3>もしんちゃんのように<webBr />おねいさんが<event class="STATE" eid="e3">好きなのでしょう</event>か</sentence>
+<sentence><event class="STATE" eid="e4">嫌いではないでしょう</event>。</sentence>
+<sentence>むしろ<event class="STATE" eid="e5">大好きでしょう</event>。</sentence>
+<sentence>ただ、しんちゃんみたいに、<event class="STATE" eid="e6">積極的</event>かどうか疑問です。</sentence>
+<sentence type="quasi">男の子だから、しょうが<event class="STATE" eid="e7">ない</event>と<event class="" eid="e8">言ってしまえ</event>ばそれまでですが・・・</sentence>

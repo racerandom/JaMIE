@@ -1,0 +1,4 @@
+<sentence>高校生でバイトですが、すぐ<event class="" eid="e1">辞める</event>（<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3><event class="" eid="e2">言ったなら</event><TIMEX3 definite="TRUE" tid="t2" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">明日</TIMEX3><event class="" eid="e3">辞める</event>）ことは、<event class="" eid="e4">できるのでしょう</event>か？</sentence>
+<sentence><event class="STATE" eid="e5">非常識な</event>事では<event class="" eid="e6">あります</event>が<event class="" eid="e7">辞める</event>ことは<webBr /><event class="STATE" eid="e8">可能だ</event>と<event class="" eid="e9">思います</event>。</sentence>
+<sentence>バイトを<event class="" eid="e10">選ぶ</event>時は<event class="STATE" eid="e11">慎重に</event><event class="" eid="e12">なってください</event>。</sentence>
+<sentence>回りの皆に<event class="STATE" eid="e13">多大な</event>迷惑を<event class="" eid="e14">かけることになりますので</event>。</sentence>

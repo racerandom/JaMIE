@@ -1,0 +1,10 @@
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">本日</TIMEX3>最後のレトロ広告は、</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t2" type="DATE" value="1970" valueFromSurface="1970">１９７０年</TIMEX3>、ユニチカ「マーガレットワンピース」の広告です。</sentence>
+<sentence>名前の通り、ユニチカと週刊マーガレットの<event class="" eid="e1">コラボした</event>ワンピースですね。</sentence>
+<sentence type="quasi">うーーーん、ハイソックスが<event class="STATE" eid="e2">懐かしいです</event>ね、、、</sentence>
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当時</TIMEX3>、<event class="STATE" eid="e3">若い</event>女性は、ミニスカートブームだったので、少女達のワンピースの丈も</sentence>
+<sentence><event class="STATE" eid="e4">短めです</event>ね。。。</sentence>
+<sentence type="quasi">しかし、<event class="STATE" eid="e5">お花畑風</event>のセットにブランコですからね、、、<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当時</TIMEX3>の少女漫画の世界を</sentence>
+<sentence>そのまま<event class="" eid="e6">表現した</event>様です、、、（笑）</sentence>
+<sentence>では、どうぞ。</sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t5" type="DATE" value="1970" valueFromSurface="1970">１９７０年</TIMEX3>、週刊マーガレットより</sentence>

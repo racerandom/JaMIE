@@ -1,0 +1,8 @@
+<sentence><event class="" eid="e1">日焼けし</event>て顔が<event class="" eid="e2">ひりひりし</event>て<event class="STATE" eid="e3">痛いです</event>・・日焼け止め<event class="" eid="e4">使えばよかった</event>・・顔がなんか<event class="" eid="e5">酔っぱらった</event>感じで・・<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P1D" valueFromSurface="P1D">一日</TIMEX3><event class="" eid="e6">たっ</event>ても<event class="" eid="e7">治らない</event>・・どう<event class="" eid="e8">したらいいです</event>か？</sentence>
+<sentence>軽度の火傷です。</sentence>
+<sentence><event class="STATE" eid="e9">冷たく</event><event class="" eid="e10">した</event>【タオル】などで<event class="" eid="e11">冷やすしかないでしょう</event>。</sentence>
+<sentence>火傷だから、あんまり色んな物<event class="" eid="e12">塗る</event>より、まずは、<event class="STATE" eid="e13">すなおに</event><event class="" eid="e14">冷やす</event>方が<event class="STATE" eid="e15">賢明だ</event>よ。</sentence>
+<sentence>あと、水分を<event class="" eid="e16">取りましょう</event>。</sentence>
+<sentence>日焼けは火傷と<event class="STATE" eid="e17">同じで</event>、後に<event class="" eid="e18">残る</event>場合も<event class="" eid="e19">あります</event>。</sentence>
+<sentence><event class="STATE" eid="e20">軽く</event><event class="" eid="e21">考えないでください</event>。</sentence>
+<sentence type="quasi">（シミに<event class="" eid="e22">なったら</event><event class="" eid="e23">消えない</event>よ）</sentence>

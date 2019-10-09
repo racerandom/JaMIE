@@ -1,0 +1,50 @@
+<sentence type="quasi">練りと鍛えが<event class="STATE" eid="e1">大切な</event>鉄</sentence>
+<sentence type="quasi">青山</sentence>
+<sentence>　ところで砥石というのは、カンナやノミには絶対に<event class="STATE" eid="e2">必要な</event>ものやけども、ノコギリは目立てですわな。</sentence>
+<sentence>ノコギリはどうですねん。</sentence>
+<sentence type="quasi">西岡</sentence>
+<sentence>　ノコギリも<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">むかし</TIMEX3>はみな玉鋼を<event class="" eid="e3">重ね</event>て<event class="" eid="e4">打ってます</event>ねんな。</sentence>
+<sentence>だからヤスリうけが<event class="STATE" eid="e5">非常に</event><event class="STATE" eid="e6">やわらかい</event>。</sentence>
+<sentence>そのくせによう<event class="" eid="e7">切れます</event>ねん。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>のは板ガネをローラーで<event class="" eid="e8">延ばす</event>だけでっしゃろ。</sentence>
+<sentence>そして目を<event class="" eid="e9">切っている</event>だけですわ。</sentence>
+<sentence>だから<event class="STATE" eid="e10">かたく</event>て<event class="" eid="e11">つるんつるんし</event>てヤスリうけが<event class="STATE" eid="e12">悪い</event>。</sentence>
+<sentence>そのくせわりに<event class="" eid="e13">切れま<sampling type="start" />せん</event>ねん。</sentence>
+<sentence>結局、ノコギリ<event class="" eid="e14">いう</event>もんは堅刃で<event class="" eid="e15">切るんじゃ</event>なしに、<event class="" eid="e16">鍛えた</event>ねばさで<event class="" eid="e17">切る</event>と<event class="" eid="e18">いうんです</event>か。</sentence>
+<sentence>ケヤキなんかの<event class="STATE" eid="e19">かたい</event>木を<event class="" eid="e20">切る</event>のに、<event class="STATE" eid="e21">かたい</event><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>のノコギリを<event class="" eid="e22">持っ</event>て<event class="" eid="e23">いく</event>と、目がみんな<event class="" eid="e24">飛んでしまいます</event>ねんで。</sentence>
+<sentence type="quasi">青山</sentence>
+<sentence>　ほう。</sentence>
+<sentence>あの<event class="STATE" eid="e25">ギザギザ</event>の歯が<event class="" eid="e26">とびます</event>か。</sentence>
+<sentence type="quasi">西岡</sentence>
+<sentence>　目が。</sentence>
+<sentence><event class="STATE" eid="e27">かたい</event>さかいに、<event class="" eid="e28">挽き出す</event>ときに、目がちゃっと<event class="" eid="e29">ひっかかる</event>わけですわ。</sentence>
+<sentence>そ<event class="" eid="e30">したら</event>目が<event class="STATE" eid="e31">もろい</event>もんやから、ぱっと先が<event class="" eid="e32">折れ</event>て<event class="" eid="e33">飛んでしまいます</event>のや、<event class="" eid="e34">切れん</event>と。</sentence>
+<sentence>ところが<event class="" eid="e35">鍛えた</event>ノコギリですと、ヤスリでは鉛のようによく<event class="" eid="e36">おりる</event>のに、<event class="STATE" eid="e37">かたい</event>ケヤキを<event class="" eid="e38">切ったら</event>、木に<event class="" eid="e39">食い込ん</event>ですかっと<event class="" eid="e40">切れる</event>わけですわな。</sentence>
+<sentence>そやから、カネちゅうやつも<event class="STATE" eid="e41">妙な</event>やつで、<event class="STATE" eid="e42">かたい</event>さかい<event class="" eid="e43">切れる</event>と<event class="" eid="e44">いうんで</event>なしに、やっぱり練りと<event class="" eid="e45">いうんです</event>か、鍛えと<event class="" eid="e46">いうんです</event>か、そいつが<event class="STATE" eid="e47">ない</event>と<event class="" eid="e48">あかん</event>わけですわな。</sentence>
+<sentence type="quasi">青山</sentence>
+<sentence>　ふつうしろうと考えで<event class="" eid="e49">いう</event>と、<event class="STATE" eid="e50">かたい</event>もん<event class="" eid="e51">切る</event>には<event class="STATE" eid="e52">かたい</event>刃が<event class="" eid="e53">いる</event>というふうに<event class="" eid="e54">考える</event>けどね。</sentence>
+<sentence type="quasi">西岡</sentence>
+<sentence>　そうは<event class="" eid="e55">いきまへん</event>ねん。</sentence>
+<sentence type="quasi">青山</sentence>
+<sentence>　うーん、<event class="STATE" eid="e56">不思議な</event>もんやなあ。</sentence>
+<sentence type="quasi">西岡</sentence>
+<sentence>　そしてなんちゅうても、ノコギリというやつは、ノコギリの<event class="" eid="e57">目立てしてある</event>板の<ruby rubyText="つら">面</ruby>が刃の先に<event class="" eid="e58">なる</event>わけやから、この面を<event class="" eid="e59">さびささん</event>ようにいつも<event class="" eid="e60">手入れしておかん</event>と<event class="STATE" eid="e61">だめです</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>のはちょっと雨が<event class="" eid="e62">かかる</event>とすぐ<event class="" eid="e63">さびます</event>わ。</sentence>
+<sentence><event class="" eid="e64">鍛えた</event>やつは<event class="" eid="e65">さびまへん</event>のや。</sentence>
+<sentence>雨が<event class="" eid="e66">かかったら</event>、すっと<event class="" eid="e67">ふいときゃ</event>それでしまいでんねん。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t5" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>のものは雨が<event class="" eid="e68">かかった</event>ところをすっと<event class="" eid="e69">ふいといた</event>だけやったら、<TIMEX3 definite="TRUE" tid="t6" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">翌る日</TIMEX3>に<event class="" eid="e70">なったら</event>その雨のとこにちゃんとさびが<event class="" eid="e71">出てます</event>わ。</sentence>
+<sentence>そう<event class="" eid="e72">いう</event>ふうに<event class="" eid="e73">鍛えた</event>ものと、<event class="" eid="e74">鍛えてない</event>もんとは<event class="STATE" eid="e75">えらい</event>違いでんな。</sentence>
+<sentence>だから<event class="" eid="e76">できれ</event>ば<event class="" eid="e77">鍛えた</event>もんを<event class="" eid="e78">使いたい</event>、ところが<event class="STATE" eid="e79">高い</event>、とこう<event class="" eid="e80">なりまん</event>ねん。</sentence>
+<sentence>だからなんちゅうかな、鍛冶屋さんも<TIMEX3 definite="TRUE" tid="t7" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">むかし</TIMEX3>のようにテンカン、テンカンと<event class="" eid="e81">打ってる</event>ような人も<event class="STATE" eid="e82">少のう</event><event class="" eid="e83">なりました</event>しな。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t8" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>のやり方で<event class="" eid="e84">いけ</event>ばそりゃ<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="P1D" valueFromSurface="P1D">一日</TIMEX3>に何十梃も<event class="" eid="e85">できます</event>わな。</sentence>
+<sentence>でも<TIMEX3 definite="TRUE" tid="t10" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">むかし</TIMEX3>どおりの<event class="" eid="e86">鍛えた</event>ノコギリを<event class="" eid="e87">つくろう</event>と<event class="" eid="e88">思え</event>ば<TIMEX3 definite="FALSE" tid="t11" type="DURATION" value="P1D" valueFromSurface="P1D">一日</TIMEX3>に二梃やそうですわ。</sentence>
+<sentence>玉鋼から<event class="" eid="e89">熔かし</event>て<event class="" eid="e90">やってたんで</event>は<TIMEX3 definite="FALSE" tid="t12" type="DURATION" value="P1D" valueFromSurface="P1D">一日</TIMEX3>に二梃だそうですな。</sentence>
+<sentence><event class="" eid="e91">熔かし</event>て<event class="" eid="e92">たたい</event>て、そこから目を<event class="" eid="e93">切っ</event>て、<event class="" eid="e94">仕上げ</event>てちゃんと<event class="" eid="e95">したら</event>、そりゃだいぶ<event class="" eid="e96">かかるんでっしゃろ</event>な。</sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t13" type="DURATION" value="P0.5D" valueFromSurface="P0.5D">半日</TIMEX3><event class="" eid="e97">かかっ</event>ても損でない目立て</sentence>
+<sentence type="quasi">青山</sentence>
+<sentence>　目立ても自分で<event class="" eid="e98">する</event>わけですか。</sentence>
+<sentence type="quasi">西岡</sentence>
+<sentence>　ノコギリは、<event class="" eid="e99">鍛造した</event>カネですから、やっぱり一本一本くせが<event class="" eid="e100">ある</event>わけです。</sentence>
+<sentence>それを目立て屋はんに<event class="" eid="e101">出す</event>と、くせは抜きに<event class="" eid="e102">し</event>て、とにかく目を<event class="STATE" eid="e103">きれいに</event><event class="" eid="e104">立てておく</event>と<event class="" eid="e105">いうことになります</event>わな。</sentence>
+<sentence>そ<event class="" eid="e106">したら</event>ノコギリのくせによって右へ<event class="" eid="e107">ながれる</event>、左へ<event class="" eid="e108">ながれるちゅう</event>ふうに<event class="" eid="e109">なる</event>わけですわ。</sentence>
+<sentence>だから、自分のノコギリのくせをいちばんよく<event class="" eid="e110">知ってる</event>のは、やっ<sampling type="end" />ぱり自分やから、結局は自分で目立てを<event class="" eid="e111">せにゃ</event><event class="" eid="e112">ならん</event>。</sentence>

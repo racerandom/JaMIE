@@ -1,0 +1,1 @@
+<a>頭部ＣＴ左基底核内側</a>に<f>若干</f><d certainty="suspicious">造影効果</d>が目立つ部位がありますが、正常の<a>脈管</a>を見ている可能性あり。<f>明らかな</f><d certainty="suspicious">脳転移</d>とは断定できません。２０１６・５・２４ＣＴでも同様の所見です。その他、<a>脳実質</a>に<d certainty="negative">異常造影域</d>や<d certainty="negative">異常濃度域</d>を指摘できません。<d certainty="positive">全般性脳萎縮</d>あり。<a>脳室脳槽系</a>は正常範囲です。

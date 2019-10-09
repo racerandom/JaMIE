@@ -1,0 +1,39 @@
+<sentence type="quasi">路面電車の<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">あした</TIMEX3>　<enclosedCharacter description="○">１</enclosedCharacter></sentence>
+<sentence type="quasi">ＬＲＴ</sentence>
+<sentence type="quasi">廃線回避へ<sampling type="start" />新システム</sentence>
+<sentence>　１両のディーゼルカーが住宅街を<event class="" eid="e1">走る</event>。</sentence>
+<sentence>ＪＲ富山港線は富山駅と富山市北部の岩瀬浜を<event class="" eid="e2">結ぶ</event>８キロの赤字ローカル線だ。</sentence>
+<sentence>　このミニ路線に、全国の自治体や路面電車会社から注目が<event class="" eid="e3">集まっている</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2006-04" valueFromSurface="XX06-04">０６年４月</TIMEX3>、全国で初めてＪＲから路面電車へ<event class="" eid="e4">転換する</event>からだ。</sentence>
+<sentence>　富山港線は<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">近年</TIMEX3>、利用者が<event class="" eid="e5">減ってきた</event>。</sentence>
+<sentence>富山市によると、<TIMEX3 definite="FALSE" mod="START" tid="t4" type="DATE" value="199X" valueFromSurface="XX9X">９０年代初め</TIMEX3>には<TIMEX3 definite="FALSE" tid="t5" type="DURATION" value="P1D" valueFromSurface="P1D">１日</TIMEX3>６千人台だったのが、<TIMEX3 definite="FALSE" tid="t6" type="DATE" value="FY2002" valueFromSurface="FYXX02">０２年度</TIMEX3>には約３４００人まで<event class="" eid="e6">減った</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t7" type="DATE" value="2001" valueFromSurface="XX01">０１年</TIMEX3>、富山までの北陸新幹線の着工が<event class="" eid="e7">認可され</event>、富山駅周辺の連続立体交差事業も実現に<event class="" eid="e8">向け</event><event class="" eid="e9">動き出した</event>ことが、路面電車化のきっかけに<event class="" eid="e10">なった</event>。</sentence>
+<sentence>　先行きが<event class="STATE" eid="e11">不透明な</event>富山港線まで<event class="STATE" eid="e12">膨大な</event>費用を<event class="" eid="e13">かけ</event>て<event class="" eid="e14">立体化する</event>か、廃線に<event class="" eid="e15">する</event>のか。</sentence>
+<sentence>検討を<event class="" eid="e16">迫られた</event>市は、普通の鉄道に<event class="" eid="e17">比べ</event>て線路などの維持費が<event class="STATE" eid="e18">安い</event>路面電車に<event class="" eid="e19">転換し</event>、利便性を<event class="" eid="e20">上げ</event>て<event class="" eid="e21">存続する</event>ことを<event class="" eid="e22">決めた</event>。</sentence>
+<sentence>　富山県などの調査（<TIMEX3 definite="FALSE" tid="t8" type="DATE" value="1999" valueFromSurface="XX99">９９年</TIMEX3>）では、富山・高岡都市圏では、<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="P1D" valueFromSurface="P1D">１日</TIMEX3>の移動で主な手段として自動車を<event class="" eid="e23">使う</event>割合は７２％。</sentence>
+<sentence>保有台数がほぼ同規模の福井市や群馬県の前橋市、高崎市は約６０％で、自動車への依存度は他地域よりも<event class="STATE" eid="e24">高い</event>。</sentence>
+<sentence>　だが、市新幹線・富山駅周辺整備課の室哲雄課長は<quote>「車に<event class="" eid="e25">乗れない</event>高齢者の増加や環境問題を<event class="" eid="e26">考えれ</event>ば、廃線は時代に<event class="" eid="e27">逆行する</event>」</quote>と<event class="" eid="e28">話す</event>。</sentence>
+<sentence>　沿線には約４万５千人が<event class="" eid="e29">住み</event>、企業の工場も複数<event class="" eid="e30">ある</event>。</sentence>
+<sentence>結局、市は<quote>「増発などのサービス改善で<event class="" eid="e31">再生できる</event>」</quote>と判断。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t10" type="DATE" value="2004-05" valueFromSurface="XXXX-05">昨年５月</TIMEX3>にＪＲ西日本と基本協定を<event class="" eid="e32">結び</event>、市や地元企業が<event class="" eid="e33">出資した</event>第三セクター「富山ライトレール」が路線を<event class="" eid="e34">引き継ぐことになった</event>。</sentence>
+<sentence>　富山ライトレールは欧米で<event class="" eid="e35">普及する</event>路面電車システム「ＬＲＴ」を<event class="" eid="e36">目指す</event>。</sentence>
+<sentence>バリアフリー対応の超低床電車（ＬＲＶ）を<event class="" eid="e37">使い</event>、現行の<TIMEX3 definite="FALSE" freq="1X" tid="t11" type="SET" value="PT1H" valueFromSurface="PT1H">１時間１本</TIMEX3>から<TIMEX3 tid="t201" type="TIME" value="XXXX-XX-XXTDT" valueFromSurface="XXXX-XX-XXTDT">日中</TIMEX3>でも<TIMEX3 definite="FALSE" quant="EVERY" tid="t12" type="SET" value="PT15M" valueFromSurface="PT15M">１５分ごと</TIMEX3>の運行間隔に<event class="" eid="e38">増発する</event>。</sentence>
+<sentence>　国交省は<TIMEX3 definite="FALSE" tid="t13" type="DATE" value="FY2005" valueFromSurface="FYXX05">０５年度</TIMEX3>予算案で<quote>「ＬＲＴシステム整備費補助」</quote>を<event class="" eid="e39">盛り込んだ</event>。</sentence>
+<sentence>ＬＲＶなどを<event class="" eid="e40">導入する</event>場合、鉄道事業者に費用の４分の１を<event class="" eid="e41">補助する</event>制度で、財務省との折衝では富山港線の路面電車化を例に<event class="" eid="e42">説明した</event>と<event class="" eid="e43">いう</event>。</sentence>
+<sentence>　同省鉄道局財務課は<quote>「外国では数十万人の都市でＬＲＴを<event class="" eid="e44">持つ</event>所は<event class="STATE" eid="e45">多く</event>、富山市（３２万人）がＬＲＴを<event class="" eid="e46">入れる</event>インパクトは日本では<event class="STATE" eid="e47">大きい</event>」</quote>と<event class="" eid="e48">指摘する</event>。</sentence>
+<sentence>　しかし、ライトレールの経営は<event class="STATE" eid="e49">楽ではない</event>。</sentence>
+<sentence>　当初は<TIMEX3 definite="FALSE" tid="t14" type="DURATION" value="P1D" valueFromSurface="P1D">１日</TIMEX3>４千〜５千人の利用を<event class="" eid="e50">目指す</event>が、それでも<TIMEX3 definite="FALSE" tid="t15" type="DURATION" value="P1Y" valueFromSurface="P1Y">年間</TIMEX3>２千万〜３千万円の赤字に<event class="" eid="e51">なる</event>。</sentence>
+<sentence>車両購入や軌道建設などの初期投資額約５８億円は、国の補助や県、市の負担で<event class="" eid="e52">まかなう</event>。</sentence>
+<sentence>　環境に<event class="STATE" eid="e53">やさしい</event>都市交通として脚光を<event class="" eid="e54">浴びつつある</event>路面電車。</sentence>
+<sentence>各地で<quote>「ＬＲＴ」</quote>を中心に復活を<event class="" eid="e55">目指す</event>動きが<event class="" eid="e56">起きている</event>。</sentence>
+<sentence>その一方、<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="2005-SP" valueFromSurface="XXXX-SP">この春</TIMEX3>、廃線に<event class="" eid="e57">なる</event>都市も<event class="" eid="e58">ある</event>。</sentence>
+<sentence>日本の路面電車はどこへ<event class="" eid="e59">行く</event>のか。</sentence>
+<sentence type="quasi">（北沢卓也）</sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t17" type="DATE" value="2006-04" valueFromSurface="XX06-04">０６年４<sampling type="end" />月</TIMEX3>に路面電車化が<event class="" eid="e60">予定される</event>ＪＲ富山港線＝富山市中島１丁目で</sentence>
+<sentence type="quasi">キーワード</sentence>
+<sentence type="quasi">ＬＲＴ</sentence>
+<sentence>　Ｌｉｇｈｔ　Ｒａｉｌ　Ｔｒａｎｓｉｔの略。</sentence>
+<sentence><TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">従来</TIMEX3>の路面電車より輸送力や速達性、定時性を<event class="" eid="e61">高めた</event><event class="STATE" eid="e62">新たな</event>交通機関。</sentence>
+<sentence>他の交通機関との乗り継ぎやバリアフリー、車両デザインなどでの都市との一体性まで<event class="" eid="e63">意識している</event>のが特徴。</sentence>
+<sentence>国内で<event class="" eid="e64">新設する</event>場合、１キロあたりの費用は２０億〜４０億円と<event class="" eid="e65">言われる</event>。</sentence>
+<sentence>すでに日本でも路面電車に<event class="" eid="e66">導入されている</event>超低床車は<quote>「ＬＲＶ」</quote>（Ｌｉｇｈｔ　Ｒａｉｌ　Ｖｅｈｉｃｌｅ）と<event class="" eid="e67">呼ばれ</event>、低床車導入だけではＬＲＴには<event class="" eid="e68">ならない</event>。</sentence>

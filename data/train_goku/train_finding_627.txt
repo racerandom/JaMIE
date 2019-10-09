@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺下葉Ｓ６</a>の腫瘤は<f>５．３×３．２ｃｍ</f>に<c>増大</c>を認めます。<d certainty="positive">原発性肺癌</d>と考えます。<a>下行大動脈</a>とは<f>広く接し</f>ますが、<a>脂肪層</a>が介在しています。<d certainty="positive">ｃＴ３</d>
+<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水貯留</d>なし。<a>肝内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>胆，膵，脾，腎，副腎</a>には異常はみられません．<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>骨盤内</a>に<f>明らかな</f><d certainty="negative">腫瘤</d>なし．<d certainty="negative">腹水</d>なし．<d certainty="negative">脳転移</d>を疑う所見なし。<d certainty="negative">骨転移</d>を疑う所見なし。

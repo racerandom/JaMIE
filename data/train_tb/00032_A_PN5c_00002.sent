@@ -1,0 +1,42 @@
+<sentence type="quasi">評</sentence>
+<sentence type="quasi">ゴッドスペル</sentence>
+<sentence type="quasi">（オン・タイム）</sentence>
+<sentence type="quasi">心に<EVENT class="OCCURRENCE" eid="e1">響く</EVENT>メッセージ</sentence>
+<sentence>　<EVENT class="NULL" eid="e2">カラフルな</EVENT>ジャングルジムが<EVENT class="NULL" eid="e3">そびえる</EVENT>広場で、おもちゃの<EVENT class="NULL" eid="e4">人形風</EVENT>の衣装を<EVENT class="OCCURRENCE" eid="e5">着けた</EVENT>役者たちが<EVENT class="OCCURRENCE" eid="e6">駆け回る</EVENT>。</sentence>
+<sentence>そんな遊び場のような舞台で、新約聖書のエピソードとキリストの後半生を<EVENT class="NULL" eid="e7">描く</EVENT>ロック・ミュージカルが<EVENT class="OCCURRENCE" eid="e8">繰り広げられる</EVENT>。</sentence>
+<sentence>　世界初演は<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="1971" valueFromSurface="1971">１９７１年</TIMEX3>のニューヨーク。</sentence>
+<sentence><TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当時</TIMEX3>はベトナム戦争が<EVENT class="OCCURRENCE" eid="e9">泥沼化し</EVENT>、心のよりどころを<EVENT class="I_ACTION" eid="e10">求める</EVENT>若者たちが<EVENT class="NULL" eid="e11">熱狂的に</EVENT><EVENT class="I_ACTION" eid="e12">支持した</EVENT>と<EVENT class="REPORTING" eid="e13">いう</EVENT>。</sentence>
+<sentence>今回は<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2001" valueFromSurface="Q-4Y">４年前</TIMEX3>に青井陽治が<EVENT class="OCCURRENCE" eid="e14">演出した</EVENT>日本語版の再演。</sentence>
+<sentence>ヒッピー文化といった<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="197X" valueFromSurface="XX7X">７０年代</TIMEX3>のにおいを<EVENT class="OCCURRENCE" eid="e15">抜き去り</EVENT>、登場人物の生き生きと<EVENT class="NULL" eid="e16">した</EVENT>やりとりを<EVENT class="NULL" eid="e17">通し</EVENT>て、作品に<EVENT class="OCCURRENCE" eid="e18">込められ</EVENT><sampling type="start" />た<EVENT class="NULL" eid="e19">普遍的な</EVENT>テーマを<EVENT class="OCCURRENCE" eid="e20">浮き立たせた</EVENT>。</sentence>
+<sentence>　道化のメークを<EVENT class="OCCURRENCE" eid="e21">施した</EVENT>ジーザス（<ruby rubyText="にいろ">新納</ruby>慎也＝写真中央）は、救世主と<EVENT class="NULL" eid="e22">いう</EVENT>よりも歌の<EVENT class="NULL" eid="e23">お兄さん風</EVENT>。</sentence>
+<sentence><quote>「二人の兄弟」</quote><quote>「種まきのたとえ」</quote>といった<ruby rubyText="ぐう">寓</ruby><ruby rubyText="わ">話</ruby>を、幼児に<EVENT class="I_ACTION" eid="e24">教え諭す</EVENT>ようにゲームを<EVENT class="OCCURRENCE" eid="e25">交え</EVENT>て<EVENT class="NULL" eid="e26">楽しく</EVENT><EVENT class="OCCURRENCE" eid="e27">見せる</EVENT>。</sentence>
+<sentence>　新納をはじめ、ユダ役の大沢樹生、何役も<EVENT class="OCCURRENCE" eid="e28">演じ分ける</EVENT>堀内敬子、宮川浩ら１７人の出演者の半分は青井演出の経験者。</sentence>
+<sentence>それだけに、足場の<EVENT class="NULL" eid="e29">悪い</EVENT>ジャングルジム上の演技にも<EVENT class="I_STATE" eid="e30">慣れてい</EVENT>て、縦横無尽に<EVENT class="OCCURRENCE" eid="e31">動き回っ</EVENT>て<EVENT class="NULL" eid="e32">様々な</EVENT>状況を<EVENT class="OCCURRENCE" eid="e33">作り出し</EVENT>、歌声も<EVENT class="OCCURRENCE" eid="e34">乱れない</EVENT>。</sentence>
+<sentence>　彼らはジーザスに<EVENT class="OCCURRENCE" eid="e35">触れ</EVENT>、<EVENT class="I_STATE" eid="e36">信じられる</EVENT>ものを<EVENT class="OCCURRENCE" eid="e37">得た</EVENT>喜びを<EVENT class="NULL" eid="e38">躍動的な</EVENT>音楽に<EVENT class="OCCURRENCE" eid="e39">乗せ</EVENT>、ソロから二重唱、大合唱へと<EVENT class="OCCURRENCE" eid="e40">発展させ</EVENT>て<EVENT class="OCCURRENCE" eid="e41">歌い継ぐ</EVENT>。</sentence>
+<sentence>バンドとも<EVENT class="OCCURRENCE" eid="e42">掛け合い</EVENT>、観客にも<EVENT class="OCCURRENCE" eid="e43">呼びかけ</EVENT>てライブならではの一体感を<EVENT class="OCCURRENCE" eid="e44">作り出す</EVENT>。</sentence>
+<sentence>　<EVENT class="NULL" eid="e45">伸びやかな</EVENT>アンサンブルが、<quote>「暴力に暴力で<EVENT class="OCCURRENCE" eid="e46">向かってはいけない</EVENT>」</quote>など聖書に<EVENT class="OCCURRENCE" eid="e47">基づく</EVENT>メッセージを<EVENT class="NULL" eid="e48">力強く</EVENT><EVENT class="REPORTING" eid="e49">伝える</EVENT>。</sentence>
+<sentence>初演から<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P34Y" valueFromSurface="P34Y">３４年</TIMEX3>が<EVENT class="OCCURRENCE" eid="e50">過ぎ</EVENT>てもなお戦火が<EVENT class="STATE" eid="e51">絶えない</EVENT>時代に、彼らの叫びは心に<EVENT class="OCCURRENCE" eid="e52">響いた</EVENT>。</sentence>
+<sentence>　新納と大沢は、ジーザスとユダの友情、裏切りを<EVENT class="NULL" eid="e53">様々な</EVENT>伏線を<EVENT class="OCCURRENCE" eid="e54">敷き</EVENT>ながら<EVENT class="OCCURRENCE" eid="e55">演じていた</EVENT>が、全体の高揚感の中で<EVENT class="NULL" eid="e56">埋没しがちだった</EVENT>のが<EVENT class="NULL" eid="e57">惜しい</EVENT>。</sentence>
+<sentence type="quasi">祐成秀樹</sentence>
+<sentence>　―<TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2005-10-02" valueFromSurface="XXXX-10-02">１０月２日</TIMEX3>まで、池袋・東京芸術劇場。</sentence>
+<sentence type="quasi">撮影・阿部章仁</sentence>
+<sentence type="quasi">評</sentence>
+<sentence type="quasi">吉原御免状</sentence>
+<sentence type="quasi">（劇団☆新感線、ヴィレッヂ）</sentence>
+<sentence type="quasi">娯楽性<EVENT class="PERCEPTION" eid="e58">熟知した</EVENT>作・演出</sentence>
+<sentence>　隆慶一郎の時代小説の舞台化、映像化は、<EVENT class="NULL" eid="e59">そんなに</EVENT><EVENT class="NULL" eid="e60">多く</EVENT>は<EVENT class="NULL" eid="e61">ない</EVENT>。</sentence>
+<sentence>階級社会の枠を<EVENT class="NULL" eid="e62">超えた</EVENT>自由民の存在や、波乱万丈の展開を、<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">従来</TIMEX3>のスタイルでは観客や視聴者に<EVENT class="NULL" eid="e63">分かりやすく</EVENT><EVENT class="REPORTING" eid="e64">見せる</EVENT>ことが<EVENT class="NULL" eid="e65">難しい</EVENT>からだろう。</sentence>
+<sentence>　だが、<EVENT class="NULL" eid="e66">一般的に</EVENT>は難点と<EVENT class="OCCURRENCE" eid="e67">なる</EVENT>ポイントも、劇団☆新感線にとっては格好の武器に<EVENT class="OCCURRENCE" eid="e68">なる</EVENT>。</sentence>
+<sentence><EVENT class="NULL" eid="e69">激しい</EVENT>アクションとスピード感<EVENT class="OCCURRENCE" eid="e70">あふれる</EVENT>展開に<EVENT class="OCCURRENCE" eid="e71">支えられた</EVENT>伝奇的時代劇こそが、この劇団の売り物だからだ。</sentence>
+<sentence>そして、<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">今度</TIMEX3>の作品も、期待を<EVENT class="OCCURRENCE" eid="e72">裏切らない</EVENT>出来だった。</sentence>
+<sentence>　舞台は江戸の不夜城、吉原。</sentence>
+<sentence>肥後の山奥から<EVENT class="OCCURRENCE" eid="e73">上京した</EVENT>松永誠一郎（堤真一＝写真左）は、いきなり“裏柳生”の侍たちと斬り合いに<EVENT class="OCCURRENCE" eid="e74">なる</EVENT>。</sentence>
+<sentence>そして誠一郎は、吉原の長老、幻斎（藤村俊二）から、色里の客人として<EVENT class="OCCURRENCE" eid="e75">迎えられることになる</EVENT>。</sentence>
+<sentence>　なぜ“裏柳生”は吉原を<EVENT class="OCCURRENCE" eid="e76">狙う</EVENT>のか。</sentence>
+<sentence><EVENT class="NULL" eid="e77">きらびやかな</EVENT>“この世の極楽”に<EVENT class="NULL" eid="e78">隠された</EVENT>真実とは。</sentence>
+<sentence><EVENT class="NULL" eid="e79">スケール雄大な</EVENT>隆慶一郎の世界を、脚本・中島かずき、演出・いのうえひでのりのコンビは、<EVENT class="NULL" eid="e80">忠実</EVENT>かつ<EVENT class="NULL" eid="e81">魅力的に</EVENT><EVENT class="OCCURRENCE" eid="e82">再現した</EVENT>。</sentence>
+<sentence>　古くからの新感線ファンは、ギャグが<EVENT class="OCCURRENCE" eid="e83">無くなった</EVENT>ことが<EVENT class="NULL" eid="e84">寂しいかもしれない</EVENT>。</sentence>
+<sentence>もともとの時代劇ファンには、少し癖の<EVENT class="NULL" eid="e85">ある</EVENT>芝居が鼻に<EVENT class="OCCURRENCE" eid="e86">つくかもしれない</EVENT>。</sentence>
+<sentence>だが、そう<EVENT class="NULL" eid="e87">いう</EVENT>点を<EVENT class="OCCURRENCE" eid="e88">割り引い</EVENT>ても、この作品は<EVENT class="NULL" eid="e89">面白い</EVENT>。</sentence>
+<sentence>エンターテインメントを<EVENT class="PERCEPTION" eid="e90">熟知した</EVENT>作・演出の上で、俳優たちが<EVENT class="NULL" eid="e91">的確に</EVENT><EVENT class="OCCURRENCE" eid="e92">配置されている</EVENT>からだ。</sentence>
+<sentence>　堤の誠一郎は、<EVENT class="NULL" eid="e93">さわやかで</EVENT><EVENT class="NULL" eid="e94">力強く</EVENT>、勝山太夫の松雪泰子＝写真右＝は“滅びの<sampling type="end" />美”を<EVENT class="NULL" eid="e95">色っぽく</EVENT><EVENT class="OCCURRENCE" eid="e96">体現する</EVENT>。</sentence>

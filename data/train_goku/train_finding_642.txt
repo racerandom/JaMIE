@@ -1,0 +1,3 @@
+<a>左肺上葉Ｓ１＋２ａ</a>に<f>２．４×１．０Ｃｍ</f>の<d certainty="positive">充実結節</d>を認めます。<d certainty="positive">原発性肺癌</d>と考えます。<a>左鎖骨下動脈</a>に接しますが、<f>境界</f>に<a>脂肪層</a>がみられ<f>明らかな</f><d certainty="negative">浸潤</d>はみられません。<d certainty="positive">ｃＴ１ｃ</d>
+<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水貯留</d>なし。<d certainty="positive">気腫肺</d>です。<a>肝内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<d certainty="positive">嚢疱</d>あり。<a>胆，膵，脾，腎，副腎</a>には異常はみられません．<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>骨盤内</a>に<f>明らかな</f><d certainty="negative">腫瘤</d>なし．<d certainty="negative">腹水</d>なし．<d certainty="negative">骨転移</d>を疑う所見なし。

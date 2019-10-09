@@ -1,0 +1,5 @@
+<a>両側肺</a>に<d certainty="positive">収縮</d>を伴った<d certainty="positive">濃度上昇や線状影、牽引性気管支拡張</d>をみとめます。前回CT(2016.12.20)と著変ありません。
+<a>左肺尖部</a>に<f>少量</f>の<d certainty="positive">気胸腔</d>あり。前回よりは<c>軽減</c>しています。
+<a>左肺上葉および左肺下葉</a>に術後の金属が認められ、その<f>近傍</f>に<d certainty="positive">軟部組織陰影やfluid</d>が認められます。前回同様です。
+<a>縦隔</a>に<d certainty="negative">リンパ節腫大</d>を認めません。
+<d certainty="negative">胸水</d>なし。

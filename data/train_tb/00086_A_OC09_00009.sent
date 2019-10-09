@@ -1,0 +1,11 @@
+<sentence>脂性で<event class="" eid="e1">困ってます</event>。</sentence>
+<sentence>特に顔が<event class="" eid="e2">てかてかしてます</event>。</sentence>
+<sentence>対策を<event class="" eid="e3">教えてください</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P25Y" valueFromSurface="P25Y">２５歳</TIMEX3>男です。</sentence>
+<sentence>顔を<event class="" eid="e4">洗顔した</event>後なにか<event class="" eid="e5">ぬっています</event>か？</sentence>
+<sentence>肌は<event class="" eid="e6">乾燥する</event>とそれを<event class="" eid="e7">補う</event>ために油を<event class="" eid="e8">出します</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>は男性用も化粧品が<event class="" eid="e9">あります</event>よね？</sentence>
+<sentence>化粧水で水分を<event class="" eid="e10">補給し</event>て<event class="" eid="e11">あげてください</event>。</sentence>
+<sentence>小さなことをこつこつ<event class="" eid="e12">やる</event>ことで<webBr />いつの間にか成果が<event class="" eid="e13">出てる</event>と<event class="" eid="e14">思います</event>。</sentence>
+<sentence>あとギャッツビーとかから顔を<event class="" eid="e15">拭く</event>クロス（ウエットティッシュみたいなの）も<event class="" eid="e16">でてます</event>よね？</sentence>
+<sentence>あれ、女性の私でもとっても気持ち<event class="STATE" eid="e17">いいので</event><event class="" eid="e18">使ってみてください</event>。</sentence>

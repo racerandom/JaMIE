@@ -1,0 +1,55 @@
+<sentence type="quasi">想像<event class="" eid="e1">超える</event><sampling type="start" />カラスの賢さ</sentence>
+<sentence type="quasi"><event class="" eid="e2">優れた</event>記憶力変化にも適応</sentence>
+<sentence type="quasi">大脳他の鳥より発達</sentence>
+<sentence type="quasi">体重比　犬や猫よりも<event class="STATE" eid="e3">重い</event></sentence>
+<sentence>　貝を空から<event class="" eid="e4">落とし</event>て<event class="" eid="e5">割っ</event>たり、クルミを車に<event class="" eid="e6">ひかせ</event>たり<event class="" eid="e7">し</event>て<event class="" eid="e8">食べる</event>。</sentence>
+<sentence>線路に置き石を<event class="" eid="e9">し</event>て、世間を<event class="" eid="e10">騒がせ</event>たりも<event class="" eid="e11">する</event>。</sentence>
+<sentence><event class="" eid="e12">嫌われ</event>ては<event class="" eid="e13">いる</event>が、カラスの賢さには人間も舌を<event class="" eid="e14">巻く</event>ほどだ。</sentence>
+<sentence>カラスはなぜ、これほど<event class="STATE" eid="e15">利口な</event>のか。</sentence>
+<sentence>他の鳥には<event class="" eid="e16">見られない</event>行動から、その知能の高さを<event class="" eid="e17">調べよう</event>という試みも<event class="" eid="e18">始まっている</event>。</sentence>
+<sentence>　日本でカラスと<event class="" eid="e19">いえ</event>ば、都会に<event class="STATE" eid="e20">多い</event>ハシブトガラスと、農村に<event class="STATE" eid="e21">多い</event>ハシボソガラスの二種類が<event class="STATE" eid="e22">代表的だ</event>。</sentence>
+<sentence>都会では生ゴミを<event class="" eid="e23">食い散らかし</event>、農村では作物を<event class="" eid="e24">荒らす</event><event class="" eid="e25">嫌われ</event>者でもある。</sentence>
+<sentence>より<event class="STATE" eid="e26">器用な</event>のはハシボソガラスの方で、貝を空から<event class="" eid="e27">落とし</event>たり、車にクルミを<event class="" eid="e28">ひかせ</event>たり<event class="" eid="e29">し</event>て<event class="" eid="e30">食べる</event>行動で<event class="" eid="e31">知られている</event>。</sentence>
+<sentence>　記憶力はどうか。</sentence>
+<sentence>カラスは、エサを広告塔の裏や植木鉢の陰など<event class="STATE" eid="e32">さまざまな</event>場所に<event class="" eid="e33">隠す</event><quote>「貯食」</quote>という行動を<event class="" eid="e34">とる</event>が、ハシブト、ハシボソのどちらも<event class="" eid="e35">隠した</event>場所を<event class="" eid="e36">忘れる</event>ことは決して<event class="STATE" eid="e37">ない</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="1996" valueFromSurface="Q-5Y">五年前</TIMEX3>、世間を<event class="" eid="e38">騒がせた</event>東海道線の置き石事件は、カラスの貯食が原因だった。</sentence>
+<sentence>パンを<event class="" eid="e39">隠す</event>ために線路の石を<event class="" eid="e40">持ち上げ</event>、レール上に<event class="" eid="e41">置いていたのだ</event>。</sentence>
+<sentence>　<quote>「遊び」</quote>としか<event class="" eid="e42">思えない</event>行動も<event class="" eid="e43">とる</event>。</sentence>
+<sentence>電線に<event class="" eid="e44">ぶら下がっ</event>たり、上昇気流にふわふわ<event class="" eid="e45">乗っ</event>たり。</sentence>
+<sentence>雪の斜面や公園の滑り台で<event class="" eid="e46">楽しんでいる</event>姿も<event class="" eid="e47">目撃されている</event>。</sentence>
+<sentence>　海外には道具を<event class="" eid="e48">使う</event>カラスすら<event class="" eid="e49">いる</event>。</sentence>
+<sentence>ニューカレドニア島のカレドニアガラスは、葉を<event class="" eid="e50">落とし</event>て<event class="" eid="e51">加工した</event>枝を木の穴に<event class="" eid="e52">差し入れ</event>、虫を<event class="" eid="e53">引っかけ</event>たり、<event class="" eid="e54">釣り上げ</event>たり<event class="" eid="e55">し</event>て<event class="" eid="e56">食べる</event>。</sentence>
+<sentence>北欧のズキンガラスは、氷の穴に釣り人が<event class="" eid="e57">垂らしておいた</event>糸を<event class="" eid="e58">たぐり</event>、<event class="" eid="e59">かかっていた</event>魚を<event class="" eid="e60">食べてしまう</event>。</sentence>
+<sentence>　都市鳥研究家の唐沢孝一さんは、テントに<event class="" eid="e61">隠れ</event>て近くの野鳥の巣を<event class="" eid="e62">観察していた</event>人たちの話を<event class="" eid="e63">紹介してくれた</event>。</sentence>
+<sentence>「カラスは、テントから何人<event class="" eid="e64">出たら</event>空に<event class="" eid="e65">なる</event>かを<event class="" eid="e66">数え</event>、全員が<event class="" eid="e67">いなく</event><event class="" eid="e68">なる</event>とその鳥の巣を<event class="" eid="e69">襲った</event>そうです。</sentence>
+<sentence><event class="STATE" eid="e70">簡単な</event>計算が<event class="" eid="e71">できる</event>のかもしれない。</sentence>
+<sentence type="quasi">人間の<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P4Y" valueFromSurface="P4Y">四</TIMEX3>、<TIMEX3 definite="FALSE" mod="APPROX" tid="t3" type="DURATION" value="P5Y" valueFromSurface="P5Y">五歳程度</TIMEX3>の知能が<event class="" eid="e72">あるのではないでしょう</event>か」</sentence>
+<sentence>　宇都宮大農学部の杉田昭栄教授の研究室では、カラスのそんな賢さを実験で<event class="" eid="e73">解き明かそう</event>と<event class="" eid="e74">している</event>。</sentence>
+<sentence>　エサを<event class="" eid="e75">入れた</event><event class="STATE" eid="e76">丸い</event>容器に<event class="STATE" eid="e77">さまざまな</event>人の顔写真を<event class="" eid="e78">はっ</event>てふたを<event class="" eid="e79">する</event>。</sentence>
+<sentence>うち、一つは写真を<event class="" eid="e80">破れ</event>ばエサを<event class="" eid="e81">得られる</event>ように<event class="" eid="e82">し</event>、それ以外は内側にふたを<event class="" eid="e83">し</event>て<event class="" eid="e84">食べられない</event>ように<event class="" eid="e85">する</event>。</sentence>
+<sentence>これをカラスの前に<TIMEX3 definite="FALSE" freq="5X" tid="t4" type="SET" value="P1D" valueFromSurface="P1D">一日五回</TIMEX3><event class="" eid="e86">置い</event>て、その結果を<event class="" eid="e87">調べてみた</event>（写真<enclosedCharacter description="○">上</enclosedCharacter>）。</sentence>
+<sentence>　すると、カラスは、<TIMEX3 definite="FALSE" mod="APPROX" tid="t5" type="DURATION" value="P2D" valueFromSurface="P2D">ほぼ二日</TIMEX3>でエサが<event class="" eid="e88">得られる</event>顔を<event class="" eid="e89">学習する</event>ことが<event class="" eid="e90">分かった</event>。</sentence>
+<sentence>写真を十五人に<event class="" eid="e91">増やし</event>ても、ほぼ<event class="STATE" eid="e92">完ぺきに</event>特定の顔を<event class="" eid="e93">識別できた</event>。</sentence>
+<sentence>顔の向きを<event class="" eid="e94">変えてみた</event>写真でも<event class="" eid="e95">間違えなかった</event>ことから、顔全体の特徴を<event class="" eid="e96">つかんでいるらしい</event>と<event class="" eid="e97">推<sampling type="end" />測できた</event>。</sentence>
+<sentence>　さらに<event class="STATE" eid="e98">興味深い</event>のは、写真で鳥と犬、動物と植物といったカテゴリーを<event class="" eid="e99">認識できた</event>ことだ。</sentence>
+<sentence>顔の識別と<event class="STATE" eid="e100">同様な</event>方法で<event class="" eid="e101">調べ</event>たところ、正答率は８４％。</sentence>
+<sentence>初めて<event class="" eid="e102">見た</event>写真でも、ほぼ<event class="STATE" eid="e103">正確に</event><event class="" eid="e104">分類できた</event>。</sentence>
+<sentence>　状況変化に<event class="" eid="e105">適応する</event>力も<event class="" eid="e106">調べてみた</event>。</sentence>
+<sentence>色が<event class="" eid="e107">違う</event>五個の紙風船のうち特定の二個にエサを<event class="" eid="e108">入れ</event>、<TIMEX3 definite="FALSE" freq="5X" tid="t6" type="SET" value="P1D" valueFromSurface="P1D">一日五回</TIMEX3><event class="" eid="e109">与える</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" mod="APPROX" tid="t7" type="DURATION" value="P1W" valueFromSurface="P1W">約一週間</TIMEX3>で、カラスはエサが<event class="" eid="e110">入っている</event>風船の色を<event class="" eid="e111">覚え</event>、最初にその二個を<event class="" eid="e112">つつく</event>ように<event class="" eid="e113">なった</event>。</sentence>
+<sentence>その後、<event class="STATE" eid="e114">別</event>の色の風船にエサを<event class="" eid="e115">入れ</event>て反応を<event class="" eid="e116">みる</event>と、<TIMEX3 definite="FALSE" mod="APPROX" tid="t8" type="DURATION" value="P1W" valueFromSurface="P1W">約一週間</TIMEX3>で元の記憶を<event class="" eid="e117">修正できた</event>。</sentence>
+<sentence>　カラスが人の表情も<event class="" eid="e118">識別できる</event>ことを<event class="" eid="e119">突き止めた</event>のは、慶応大の渡辺茂教授研究室の大学院生、草山太一さんだ。</sentence>
+<sentence>ある人物の笑顔の写真を<event class="" eid="e120">つつけ</event>ば、エサを<event class="" eid="e121">もらえる</event>ように訓練、写真を笑顔から真顔へ<event class="" eid="e122">変えていった</event>時の反応を<event class="" eid="e123">調べた</event>。</sentence>
+<sentence>すると、<event class="" eid="e124">つつく</event>頻度は<event class="STATE" eid="e125">段階的に</event><event class="" eid="e126">減っていった</event>。</sentence>
+<sentence>　また、初めて<event class="" eid="e127">見る</event>人物でも真顔より笑顔の方に<event class="STATE" eid="e128">圧倒的に</event><event class="STATE" eid="e129">高い</event>頻度で<event class="" eid="e130">反応した</event>。</sentence>
+<sentence><quote>「次は写真でなく、本物の人間の顔を<event class="" eid="e131">使っ</event>て<event class="" eid="e132">調べてみたい</event>と<event class="" eid="e133">思っています</event>」</quote>と草山さん。</sentence>
+<sentence>　<event class="STATE" eid="e134">こんなに</event><event class="STATE" eid="e135">賢い</event>カラスの脳はどう<event class="" eid="e136">なっている</event>のか。</sentence>
+<sentence>杉田教授が<event class="" eid="e137">調べ</event>たところ、カラスはカモやニワトリと<event class="" eid="e138">比べ</event>、記憶や学習などを<event class="" eid="e139">司る</event>大脳が発達。</sentence>
+<sentence>脳幹に対する大脳の重さの比率はニワトリ一・六倍、カモ三・五倍に対し、カラスは六・五倍と<event class="STATE" eid="e140">大きく</event>、情報処理機能の分化を<event class="" eid="e141">示す</event>層構造も<event class="" eid="e142">みられた</event>。</sentence>
+<sentence>体重に<event class="" eid="e143">占める</event>脳の重さを<event class="" eid="e144">示す</event>脳化指数は〇・一六で、犬や猫よりも<event class="STATE" eid="e145">高い</event>。</sentence>
+<sentence>　杉田教授は<quote>「<event class="STATE" eid="e146">単純に</event>他の動物と頭の良さを<event class="" eid="e147">比較できない</event>が、識別能力に<event class="" eid="e148">優れ</event>、実験を<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="P40D" valueFromSurface="P40D">四十日間</TIMEX3><event class="" eid="e149">中断し</event>ても<event class="" eid="e150">正解する</event>ほど記憶力が<event class="STATE" eid="e151">いい</event>ことは<event class="STATE" eid="e152">確かだ</event>」</quote>と<event class="" eid="e153">話している</event>。</sentence>
+<sentence type="quasi">藤田　勝</sentence>
+<sentence type="quasi">容器に<event class="" eid="e154">はられた</event>顔の写真を<event class="" eid="e155">識別し</event>て、えさを<event class="" eid="e156">食べられる</event>容器を<event class="" eid="e157">つつく</event>カラス（杉田教授提供）</sentence>
+<sentence>下から<event class="" eid="e158">見た</event>鳥の脳。</sentence>
+<sentence>右からカラス、カモ、ニワトリ。</sentence>
+<sentence type="quasi">カラスは大脳の発達が<event class="STATE" eid="e159">著しい</event></sentence>

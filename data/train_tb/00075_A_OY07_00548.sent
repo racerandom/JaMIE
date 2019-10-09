@@ -1,0 +1,73 @@
+<sentence type="quasi"><image description="" no="1" />　<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>の記録</sentence>
+<sentence>　　・<TIMEX3 definite="TRUE" tid="t2" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">今朝</TIMEX3>の体重　　　　？？？ｋｇ　（<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">前日</TIMEX3>比　‐０．４ｋｇ）　</sentence>
+<sentence>　　・<TIMEX3 definite="TRUE" tid="t4" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">今朝</TIMEX3>の体脂肪率　　？？？％　（<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">前日</TIMEX3>比　＋０．１％）</sentence>
+<sentence>しばらくは　<TIMEX3 definite="TRUE" tid="t6" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">前日</TIMEX3>比を<event class="" eid="e1">記載します</event>。</sentence>
+<sentence type="quasi">　</sentence>
+<sentence type="quasi">・<TIMEX3 definite="TRUE" tid="t7" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3><event class="" eid="e2">した</event>こと</sentence>
+<sentence>※腹筋・スクワットは　「それなり」です。</sentence>
+<sentence>「ガッツリ」ではありません。</sentence>
+<sentence type="quasi">・<TIMEX3 definite="TRUE" tid="t8" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>の万歩計</sentence>
+<sentence type="quasi">　総歩数　　</sentence>
+<sentence type="quasi">　２４６０５歩</sentence>
+<sentence type="quasi">　移動距離　　※歩幅４０ｃｍで設定</sentence>
+<sentence type="quasi">　９．８ｋｍ</sentence>
+<sentence type="quasi">　消費カロリー　</sentence>
+<sentence type="quasi">　７９１ｋｃａｌ</sentence>
+<sentence type="quasi">・<TIMEX3 definite="TRUE" tid="t9" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>の食事　</sentence>
+<sentence type="quasi">　</sentence>
+<sentence type="quasi">　朝食　　</sentence>
+<sentence type="quasi">　●コーヒー牛乳</sentence>
+<sentence type="quasi">　●塩おにぎり</sentence>
+<sentence type="quasi">　昼食　　</sentence>
+<sentence type="quasi">　●鶏そぼろ・うどんセット</sentence>
+<sentence type="quasi">　●いかフライ</sentence>
+<sentence type="quasi">　●クリスピーリング　</sentence>
+<sentence type="quasi">　夕食　</sentence>
+<sentence type="quasi">　●フクスケベーカリー　ドイツコッペ＜小倉クリーム＞</sentence>
+<sentence type="quasi">　夜食　　・・・しかも<event class="" eid="e3">寝る</event>直前に</sentence>
+<sentence type="quasi">　●クリスピーリング　×２</sentence>
+<sentence>おっや〜？？？</sentence>
+<sentence type="quasi"><image description="" no="2" /></sentence>
+<sentence>なんか　<event class="" eid="e4">減ってる</event>わ。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t10" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>は　かなり<event class="" eid="e5">喰ったんだ</event>けどなぁ？？？</sentence>
+<sentence>　ふっしぎー！</sentence>
+<sentence type="quasi"><image description="" no="3" /></sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t11" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>は　<event class="" eid="e6">食べる</event>つもりの<event class="STATE" eid="e7">なかった</event>夜食を・・・。</sentence>
+<sentence>　しかも<event class="" eid="e8">寝る</event>直前に・・・。</sentence>
+<sentence type="quasi"><image description="" no="4" /></sentence>
+<sentence>でもね！</sentence>
+<sentence>　コレには　<event class="STATE" eid="e9">深〜い</event>ワケが　<event class="" eid="e10">あるので</event><event class="" eid="e11">ございます</event>よ？</sentence>
+<sentence>カバンにね　<event class="" eid="e12">入れてた</event>のよ　クリスピーリング。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t12" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3><event class="" eid="e13">食べよう</event>と<event class="" eid="e14">思ってた</event>のよ。</sentence>
+<sentence><event class="" eid="e15">出す</event>の<event class="" eid="e16">忘れて</event>てさ　ベッドの近くに<event class="" eid="e17">置いてた</event>のさ　カバン。</sentence>
+<sentence>で　<event class="STATE" eid="e18">眠たく</event><event class="" eid="e19">なった</event>　雛姫がさ　ベッドに<event class="" eid="e20">上がっ</event>て<event class="" eid="e21">き</event>てから　しばらく<event class="" eid="e22">し</event>て<webBr /><webBr />な〜んか　様子が<event class="STATE" eid="e23">おかしい</event>の〜。</sentence>
+<sentence>な〜んか　<event class="" eid="e24">探してる</event>の〜。</sentence>
+<sentence>あっ！</sentence>
+<sentence>と<event class="" eid="e25">思ったら</event>　やっぱ　カバンを　<event class="" eid="e26">くんくんしとる</event>ワケですがな。</sentence>
+<sentence type="quasi"><image description="" no="5" /></sentence>
+<sentence>もう　雛姫が　くれくれモードＭＡＸでさぁ。</sentence>
+<sentence type="quasi"><image description="" no="6" /></sentence>
+<sentence>・・・<event class="STATE" eid="e27">仕方ないので</event>　<event class="" eid="e28">分け合っ</event>て　<event class="" eid="e29">食べました</event>とさ。</sentence>
+<sentence type="quasi"><image description="" no="7" /></sentence>
+<sentence type="fragment">あっ　「</sentence>
+<sentence>クリスピーリングって　何？</sentence>
+<sentence>　どんなの？？？</sentence>
+<sentence type="fragment">」って<event class="" eid="e30">思った</event>？</sentence>
+<sentence>えーっとね　形は　ドーナツみたいなんだけど<webBr /><webBr />生地がねぇ　<TIMEX3 definite="TRUE" tid="t13" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>　<event class="" eid="e31">流行った</event>　クイニーアマンだっけ？</sentence>
+<sentence>　あんな感じの　焼き菓子ずらよ。</sentence>
+<sentence>ケッコー　<event class="STATE" eid="e32">甘々やった</event>。</sentence>
+<sentence type="quasi"><image description="" no="8" /></sentence>
+<sentence>でも　この夜食・・・　絶対　<TIMEX3 definite="TRUE" tid="t14" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">明日</TIMEX3>の体重とかに　影響<event class="" eid="e33">出</event>そうだよねぇ。</sentence>
+<sentence>　時間差で・・・。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t15" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>も　いっぱい　<event class="" eid="e34">頑張らなくっ</event>ちゃ〜。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t16" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>から　小銭稼ぎ<image description="" no="9" />の<event class="" eid="e35">残業生活しております</event>よ。</sentence>
+<sentence>なので　<TIMEX3 definite="TRUE" tid="t17" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今週</TIMEX3>・<TIMEX3 definite="TRUE" tid="t18" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">来週</TIMEX3>は　ロデオが　<TIMEX3 definite="TRUE" tid="t19" type="DATE" value="XXXX-WXX-WE" valueFromSurface="XXXX-WXX-WE">週末</TIMEX3>しか<event class="" eid="e36">できない</event>のよねぇ。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t20" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>は　<TIMEX3 definite="FALSE" tid="t21" type="DURATION" value="PT1H" valueFromSurface="PT1H">１時間</TIMEX3>残業の予定だったから　<event class="" eid="e37">帰っ</event>て　<event class="" eid="e38">ロデる</event>つもりだったんだけどぉ〜<webBr /><webBr /><event class="STATE" eid="e39">モノスッゴイ</event><event class="STATE" eid="e40">絶妙な</event>タイミングで　お召しが・・・。</sentence>
+<sentence type="quasi"><image description="" no="10" /></sentence>
+<sentence>何？</sentence>
+<sentence>　何なの？？？</sentence>
+<sentence>　どーして　いつも　<event class="STATE" eid="e41">こんなに</event>　<event class="STATE" eid="e42">見事な</event>タイミングで　<event class="" eid="e43">来やがるんス</event>か？</sentence>
+<sentence>わけ<event class="" eid="e44">わかんね</event>。</sentence>
+<sentence>　どっかで　<event class="" eid="e45">見てん</event>のか？？？</sentence>
+<sentence>さて　<TIMEX3 definite="TRUE" tid="t22" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>も　後半　<event class="" eid="e46">頑張っちゃう</event>ぞー！</sentence>
+<sentence type="quasi"><image description="" no="11" /></sentence>

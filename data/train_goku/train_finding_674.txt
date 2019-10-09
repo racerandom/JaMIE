@@ -1,0 +1,4 @@
+<a>左肺下葉Ｓ６ｂ、Ｓ８、Ｓ９</a>に<f>２．５×２．４Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>を認めます。<a>内部</a>の<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>は<f>２．７×１．９Ｃｍ</f>です。<a>辺縁</a>に<d certainty="positive">すりガラス状陰影</d>あり。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｃ</d>
+<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水貯留</d>なし。<d certainty="positive">左副腎腫大</d>あり。<d certainty="positive">ＦＤＧ集積</d>があり、<d certainty="suspicious">副腎転移</d>疑い。<d certainty="suspicious">Ｍ１ｂ</d>
+<a>肝内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>胆，膵，脾，腎，副腎</a>には異常はみられません．<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>骨盤内</a>に<f>明らかな</f><d certainty="negative">腫瘤</d>なし．<d certainty="negative">腹水</d>なし．<d certainty="negative">脳転移</d>を疑う所見なし。<d certainty="negative">骨転移</d>を疑う所見なし。

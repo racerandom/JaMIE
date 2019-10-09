@@ -1,0 +1,12 @@
+<a>肝</a>：<d certainty="negative">SOL</d>なし。
+<a>胆</a>：n.p.
+<a>脾</a>：n.p.
+<a>膵</a>：n.p.
+<a>副腎</a>：n.p.
+<a>腎</a>：n.p.
+<a>リンパ節</a>：<d certainty="negative">腫大</d>なし。
+<d certainty="negative">腹水</d>：なし
+1.　<a>腹部領域</a>に著変ありません。
+<a>両側肺</a>に<a>下葉優位、胸膜下優位</a>で<d certainty="positive">網状影やすりガラス状陰影</d>を認め、<d certainty="positive">牽引性気管支拡張像</d>を伴っています。 また<a>両側肺底部</a>には<d certainty="positive">蜂巣肺</d>も認められます。 <d certainty="positive">間質性肺炎</d>の経過を見ていると考えます。
+<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>が<f>散在</f>していますが、<f>有意な</f><d certainty="negative">リンパ節腫大</d>は指摘できません。
+<d certainty="negative">胸水貯留</d>を認めません。

@@ -1,0 +1,13 @@
+<a>両側肺</a>に<a>下葉優位、胸膜下優位</a>で<d certainty="positive">網状影やすりガラス状陰影、蜂巣肺</d>を認めます。　前回(2012/10/26)と比較して大差なく、<d certainty="positive">UIPパターンの間質性肺炎</d>の経過を見ていると考えます。
+<a>両側肺</a>に<f>散見</f>される<d certainty="positive">小結節影</d>は前回と比較してほぼ変化なく、<d certainty="positive">炎症後変化</d>を見ていると考えます。　また<a>右肺上葉</a>に<d certainty="positive">石灰化</d>を<f>一部</f>伴う<d certainty="positive">小結節影や索状影</d>を前回同様認め<d certainty="positive">陳旧性肺結核</d>に伴う変化を見ていると考えます。
+<a>両側肺</a>に<d certainty="positive">気腫性変化</d>を認めます。
+<a>鎖骨上窩や縦隔内</a>に<d certainty="positive">小リンパ節</d>が<f>散在</f>していますが前回と比較して大差なく、<d certainty="positive">反応性腫大</d>の経過を見ていると考えます。
+<d certainty="negative">胸水貯留</d>を認めません。
+<a>冠動脈、大動脈弁</a>に<d certainty="positive">石灰化</d>を認めます。
+<a>両側肺</a>に<a>下葉優位、胸膜下優位</a>で<d certainty="positive">網状影やすりガラス状陰影、蜂巣肺</d>を認めます。　前回(2014/04/04)と比較して大差なく、<d certainty="positive">UIPパターンの間質性肺炎</d>の経過を見ていると考えます。
+<a>左肺S9</a>に前回明らかでない<f>径10mm大</f>の<d certainty="positive">不整形結節状陰影</d>が出現しています。  <d certainty="suspicious">原発性肺癌など悪性病変</d>の疑いがあります。
+その他<a>両側肺</a>に<f>散見</f>される<d certainty="positive">小結節影</d>は前回と比較してほぼ変化なく、<d certainty="positive">炎症後変化</d>を見ていると考えます。　また<a>右肺上葉</a>に<d certainty="positive">石灰化</d>を<f>一部</f>伴う<d certainty="positive">小結節影や索状影</d>を前回同様認め<d certainty="positive">陳旧性肺結核</d>に伴う変化を見ていると考えます。
+<a>両側肺</a>に<d certainty="positive">気腫性変化</d>を認めます。
+<a>鎖骨上窩や縦隔内</a>に<d certainty="positive">小リンパ節</d>が<f>散在</f>していますが前回と比較して大差指摘できません。
+<d certainty="negative">胸水貯留</d>を認めません。
+<a>冠動脈、大動脈弁</a>に<d certainty="positive">石灰化</d>を認めます。

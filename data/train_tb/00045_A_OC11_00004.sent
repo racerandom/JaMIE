@@ -1,0 +1,8 @@
+<sentence>友人が家を<event class="" eid="e1">新築したのです</event>が、私の出産や子供の病気やら友人の都合も<event class="" eid="e2">あり</event>、なかなか<event class="" eid="e3">行けず</event>に<event class="" eid="e4">いました</event>が<TIMEX3 tid="t201" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今度</TIMEX3>やっと予定が<event class="" eid="e5">合っ</event>て<event class="" eid="e6">遊び</event>に<event class="" eid="e7">行くことになりました</event>。</sentence>
+<sentence>築<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P1Y" valueFromSurface="P1Y">１年</TIMEX3><event class="" eid="e8">経っている</event>のに新築祝いって<event class="STATE" eid="e9">おかしいです</event>よね？</sentence>
+<sentence>こう<event class="" eid="e10">いった</event>時はどんなものを<event class="" eid="e11">持っ</event>て<event class="" eid="e12">いったらよいのでしょう</event>か？</sentence>
+<sentence>いえいえ<event class="STATE" eid="e13">おかしく</event><event class="STATE" eid="e14">ないです</event>よ。</sentence>
+<sentence>「すっかり<event class="STATE" eid="e15">おそく</event><event class="" eid="e16">なっちゃった</event>けど」って<event class="" eid="e17">差し上げましょう</event>。</sentence>
+<sentence><event class="STATE" eid="e18">嬉しい</event>事ですからね。</sentence>
+<sentence>私なら「何に<event class="" eid="e19">し</event>て<event class="STATE" eid="e20">いい</event>か<event class="" eid="e21">迷ってしまっ</event>て・・記念に<event class="" eid="e22">なる</event>物に<event class="" eid="e23">したかった</event>けどもう<event class="" eid="e24">揃ってるだろう</event>から」って５０００円ギフト券<event class="" eid="e25">くれる</event>と<event class="STATE" eid="e26">うれしい</event>ね。</sentence>
+<sentence>手土産にクッキーも<event class="" eid="e27">あれ</event>ば一緒に<event class="" eid="e28">お茶し</event>ながら<event class="" eid="e29">食べれ</event>て<event class="" eid="e30">あまっ</event>ても<event class="STATE" eid="e31">大丈夫だ</event>から<event class="STATE" eid="e32">ＧＯＯＤだ</event>わぁ。</sentence>

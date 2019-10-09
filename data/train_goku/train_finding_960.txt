@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<d certainty="positive">鼻背部Ｂａｓｏｓｑｕａｍｏｕｓ　ｃｅｌｌ　ｃａｒｃｉｎｏｍａ</d>　に対して術後。<a>右頸部</a>郭清術後。<a>右眼球</a>も摘出されている。<a>右眼窩底</a>には<d certainty="positive">軟部構造</d>あり（ＸＸＸＸ年ＸＸ月ＸＸ日のＰＥＴ−ＣＴ検査の結果と比較）、<a>頭蓋底</a>へと<d certainty="positive">浸潤</d>している模様です。<d certainty="suspicious">再発</d>と疑います。<a>左肺上葉Ｓ３ｂ</a>に<f>１．０×１．７Ｃｍ</f>の<d certainty="positive">充実結節</d>を認めます。<a>辺縁</a>に<d certainty="positive">小棘形成</d>あり、<d certainty="positive">集束変化</d>を伴います。ＸＸＸＸ年１月より<c>増大</c>、<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｂ</d>
+　鑑別として<d certainty="suspicious">肺転移</d>があがります。<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水貯留</d>なし。

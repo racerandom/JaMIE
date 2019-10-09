@@ -1,0 +1,11 @@
+<sentence>ケーキの中で１番<event class="STATE" eid="e1">好きな</event>のは・・・と<event class="" eid="e2">聞かれたら</event>、<webBr />『モンブラン』と<event class="" eid="e3">答えるでしょう</event>。</sentence>
+<sentence type="quasi">酒も<event class="STATE" eid="e4">好きだ</event>けど<event class="STATE" eid="e5">甘い</event>物も<event class="STATE" eid="e6">好きな</event>ＫＡＷＡです♪</sentence>
+<sentence type="quasi">　　　　　　　　　　（<TIMEX3 tid="t201" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">以前</TIMEX3>同じ事を<event class="" eid="e7">書きました</event>ね・・・<event class="STATE" eid="e8">しつこいです</event>ね）（笑）</sentence>
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t1" type="TIME" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">昨晩</TIMEX3>夕食<event class="" eid="e9">終っ</event>てから『ケーキ<event class="" eid="e10">ある</event>けど』と<event class="" eid="e11">云われたのだ</event>けど、<webBr /><event class="" eid="e12">飲ん</event>で<event class="" eid="e13">食事した</event>後、<TIMEX3 definite="TRUE" tid="t2" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">翌朝</TIMEX3><event class="" eid="e14">食べる事にしました</event>♪</sentence>
+<sentence type="quasi">三種類<event class="" eid="e15">買っ</event>て<event class="" eid="e16">来た</event>中で、モンブランを<event class="" eid="e17">残して置いた</event>ようです（＾＿＾）</sentence>
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t3" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">今朝</TIMEX3>コーヒー<event class="" eid="e18">飲み</event>ながらモンブラン<event class="" eid="e19">食べました</event>♪</sentence>
+<sentence><TIMEX3 tid="t202" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>・北京オリンピック中、日本が<event class="" eid="e20">活躍した</event><TIMEX3 definite="TRUE" tid="t4" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">翌日</TIMEX3>は新聞<event class="" eid="e21">見る</event>のも<event class="STATE" eid="e22">楽しいです</event>ね。</sentence>
+<sentence type="quasi">　</sentence>
+<sentence>野球韓国に<event class="" eid="e23">負けてしまいました</event>ね。</sentence>
+<sentence type="quasi">いよいよ<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>は女子マラソンです♪</sentence>
+<sentence type="quasi">野口みずきが<event class="" eid="e24">出ない</event>のは<event class="STATE" eid="e25">残念だ</event>けど、<event class="" eid="e26">見たい</event>と<event class="" eid="e27">思っています</event>（＾＿＾）</sentence>

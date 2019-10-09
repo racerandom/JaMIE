@@ -1,0 +1,9 @@
+<a>両側肺胸膜下優位</a>に<d certainty="positive">網状影、すりガラス影、浸潤影</d>を認めます。<d certainty="positive">volume loss</d>を伴っており、<d certainty="suspicious">牽引性気管支拡張や蜂窩肺</d>を疑う<d certainty="positive">嚢胞腔の集簇像</d>を認めます。<d certainty="suspicious">間質性肺炎</d>の経過を疑います。前回(2010/11/04/05)と比較して、<a>左肺舌区</a>の<d certainty="positive">均等影</d>が<c>増強</c>し、また、<a>右肺S6背側</a>の<d certainty="positive">均等影</d>が<c>軽度増強</c>しています。<a>舌区</a>の<d certainty="positive">陰影</d>は、<d certainty="suspicious">炎症性変化</d>によるものかもしれません。
+<a>縦隔</a>に<d certainty="positive">小リンパ節腫大</d>を<f>散見</f>するが、前回と概ね変化ありません。<d certainty="suspicious">反応性腫大</d>の疑う。
+<a>左胸膜</a>に<d certainty="positive">石灰化</d>あり。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。
+<a>両側肺</a>に<a>胸膜下優位</a>に<d certainty="positive">網状影、すりガラス状陰影</d>、<f>軽度</f>の<d certainty="positive">均等影</d>を認めます。<d certainty="suspicious">牽引性気管支拡張像や蜂窩肺</d>を疑う<d certainty="positive">嚢胞腔の集簇像</d>も認めます。既知の<d certainty="positive">間質性肺炎</d>を見ていると考えます。前回（2013/5/29）に比して、<a>左肺上葉、下葉</a>の<d certainty="positive">陰影</d>は<c>軽減</c>して見えます。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節腫大</d>を認めません。
+<d certainty="negative">胸水</d>なし。
+<a>左胸膜</a>に<d certainty="positive">石灰化</d>あり。
+<a>大動脈弁や冠動脈</a>に<d certainty="positive">石灰化</d>が見られます。

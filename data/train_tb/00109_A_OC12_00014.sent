@@ -1,0 +1,4 @@
+<sentence>たぶんカテが<event class="" eid="e1">違う</event>と<event class="" eid="e2">思います</event>けど、女性が１キロ<event class="" eid="e3">歩く</event>のに平均どれぐらい時間が<event class="" eid="e4">かかります</event>か？</sentence>
+<sentence>不動産会社の<event class="" eid="e5">表示する</event>徒歩<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="PT1M" valueFromSurface="PT1M">１分</TIMEX3>は８０メートルを<event class="" eid="e6">表しています</event>。</sentence>
+<sentence>これは某不動産会社の女子社員が自分の<event class="" eid="e7">歩く</event>速度を何度も<event class="" eid="e8">計測し</event>、業界が<event class="" eid="e9">標準化された</event>ものです。</sentence>
+<sentence>よって、１キロを<event class="" eid="e10">歩く</event>には<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="PT12M30S" valueFromSurface="PT12M30S">１２分３０秒</TIMEX3>って事になるでしょう。</sentence>

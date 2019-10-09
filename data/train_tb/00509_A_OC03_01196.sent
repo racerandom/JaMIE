@@ -1,0 +1,5 @@
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P60Y" valueFromSurface="P60Y">６０歳</TIMEX3>の厚生年金受給者について<event class="" eid="e1">教えてください</event>。</sentence>
+<sentence><event class="" eid="e2">退職し</event>、失業給付を<event class="" eid="e3">受けたら</event>その間は国の年金が<event class="" eid="e4">停止されます</event>が、職業訓練ということで失業給付の受給期間が<event class="" eid="e5">延長された</event>場合には国の年金の停止期間も<event class="" eid="e6">延びるのでしょう</event>か？</sentence>
+<sentence type="quasi"><event class="" eid="e7">支給停止されます</event></sentence>
+<sentence type="quasi">まず　失業保険の基本手当てを受給中<webBr />　支給停止　しかし　事後精算のけいさんで　年金停止月数　−　基本手当て支給対象日数÷３０の計算で　１以上なら　その分停止解除で　<event class="" eid="e8">もどっ</event>て<event class="" eid="e9">きます</event>（端数は１に繰り上げ）</sentence>
+<sentence type="quasi">職業訓練も基本手当てを<event class="" eid="e10">もらっている</event>か　どうかで　<event class="" eid="e11">計算されます</event></sentence>

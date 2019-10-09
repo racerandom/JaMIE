@@ -1,0 +1,13 @@
+<sentence>もうすぐ<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P2Y2M" valueFromSurface="P2Y2M">２歳２ヶ月</TIMEX3>に<event class="" eid="e1">なる</event>娘を<event class="" eid="e2">持つ</event>専業主婦です。</sentence>
+<sentence>子供を保育園に<event class="" eid="e3">入れ</event>て<event class="" eid="e4">働きたい</event>と<event class="" eid="e5">思っています</event>。</sentence>
+<sentence>しかし、保育園に<event class="" eid="e6">入れる</event>には<event class="STATE" eid="e7">基本的に</event>両親とも<event class="" eid="e8">働いている</event>のが条件に<event class="" eid="e9">なります</event>よね。</sentence>
+<sentence>実際待機児童が<event class="STATE" eid="e10">多く</event>求職中だと、なかなか<event class="" eid="e11">入れない</event>と<event class="" eid="e12">聞きました</event>。</sentence>
+<sentence>でも、いざ仕事を<event class="" eid="e13">決め</event>ても子供の預け先が<event class="" eid="e14">決まっていない</event>と<event class="" eid="e15">働けません</event>よね。</sentence>
+<sentence>保育園の入園手続き・就職活動はどう<event class="" eid="e16">進めていくべきです</event>か？</sentence>
+<sentence>ホントに、その辺の手続きには矛盾が<event class="" eid="e17">あります</event>。</sentence>
+<sentence type="quasi">（私も<event class="" eid="e18">苦労しました</event>）</sentence>
+<sentence>私の周りの人は、内職をとりあえず<event class="" eid="e19">し</event>たり（内職を<event class="" eid="e20">上回る</event>保育料で<event class="STATE" eid="e21">おかしいです</event>が）、知り合いの人に就業証明書を<event class="" eid="e22">書いて貰っ</event>たり<event class="" eid="e23">していました</event>よ。</sentence>
+<sentence>上の子が保育園<event class="" eid="e24">通っている</event>最中に、下の子が<event class="" eid="e25">生まれ</event>上の子を保育園に<event class="" eid="e26">通わせ</event>ながら<event class="" eid="e27">子育てしている</event>人もたくさん<event class="" eid="e28">いました</event>から、実際入学手続きまでは<event class="STATE" eid="e29">面倒であっ</event>ても、一度<event class="" eid="e30">入ってしまえ</event>ば黙認です。</sentence>
+<sentence>私も上の子が保育園に<event class="" eid="e31">通っている</event>最中に<event class="" eid="e32">妊娠し</event>、<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P9M" valueFromSurface="P9M">９ヶ月</TIMEX3>までパートで<event class="" eid="e33">働いていました</event>。</sentence>
+<sentence>地方で車で送り迎えだったので<event class="" eid="e34">出来たのであっ</event>て、これが都内で電車通勤だったら<event class="" eid="e35">覚悟してください</event>。</sentence>
+<sentence>かなり<event class="STATE" eid="e36">たいへんだ</event>と<event class="" eid="e37">おもいます</event>。</sentence>

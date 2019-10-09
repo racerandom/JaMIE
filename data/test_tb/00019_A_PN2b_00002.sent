@@ -1,0 +1,43 @@
+<sentence type="quasi">ワークシェア導入支援策<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2002-04-27" valueFromSurface="XXXX-XX-27">２７日</TIMEX3>までに</sentence>
+<sentence type="quasi">坂口厚労相</sentence>
+<sentence>　坂口力厚生労働相は<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2002-04-20" valueFromSurface="XXXX-XX-20">２０日</TIMEX3>、大阪府守口市で<EVENT class="I_ACTION" eid="e1">あった</EVENT>政府主催の「雇用創出タウンミーティング」後の会見で、仕事を<EVENT class="OCCURRENCE" eid="e2">分かち合う</EVENT>ことで雇用を<EVENT class="I_ACTION" eid="e3">確保する</EVENT>ワークシェアリング導入企業への政府の財政支援策を<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2002-04-27" valueFromSurface="XXXX-XX-27">２７日</TIMEX3>の連合メーデーまでに<EVENT class="OCCURRENCE" eid="e4">まとめる</EVENT>意向を<sampling type="start" /><EVENT class="NULL" eid="e5">明らかに</EVENT><EVENT class="I_ACTION" eid="e6">した</EVENT>。</sentence>
+<sentence>坂口氏は雇用調整助成金（特別会計）からの支出とは<EVENT class="NULL" eid="e7">別に</EVENT><quote>「一般財源から<EVENT class="OCCURRENCE" eid="e8">支援する</EVENT>道が<EVENT class="NULL" eid="e9">ない</EVENT>か財務省と<EVENT class="I_ACTION" eid="e10">議論している</EVENT>」</quote>と<EVENT class="REPORTING" eid="e11">述べた</EVENT>。</sentence>
+<sentence>　ワークシェアリングについては<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2002-03-29" valueFromSurface="XXXX-XX-20">先月２９日</TIMEX3>の政労使合意で、<quote>「政府は<EVENT class="NULL" eid="e12">具体的な</EVENT>支援方法を<EVENT class="OCCURRENCE" eid="e13">検討する</EVENT>」</quote>と<EVENT class="I_ACTION" eid="e14">明記されている</EVENT>。</sentence>
+<sentence>　また坂口氏はタウンミーティングの中で、ひきこもりの若者の就労を<EVENT class="I_ACTION" eid="e15">支援する</EVENT>ため、<quote>「“職親”制度を<EVENT class="OCCURRENCE" eid="e16">実現できる</EVENT>よう<EVENT class="I_ACTION" eid="e17">努力したい</EVENT>」</quote>と<EVENT class="REPORTING" eid="e18">述べた</EVENT>。</sentence>
+<sentence type="quasi">雪舟に<EVENT class="OCCURRENCE" eid="e19">会う</EVENT>　<enclosedCharacter description="○">４</enclosedCharacter></sentence>
+<sentence type="quasi"><ruby rubyText="し">四</ruby><ruby rubyText="き">季</ruby><ruby rubyText="か">花</ruby><ruby rubyText="ちょう">鳥</ruby><ruby rubyText="ず">図</ruby><ruby rubyText="びょう">屛</ruby><ruby rubyText="ぶ">風</ruby>（左隻、重要文化財）</sentence>
+<sentence type="quasi">紙本着色、六曲一双　各縦１８１．６センチ　横３７５．２センチ　京都国立博物館蔵</sentence>
+<sentence>　山水画のイメージが<EVENT class="NULL" eid="e20">強い</EVENT>雪舟だが、花鳥画も<EVENT class="OCCURRENCE" eid="e21">手掛けた</EVENT>。</sentence>
+<sentence>雪舟作と<EVENT class="OCCURRENCE" eid="e22">伝えられる</EVENT>花鳥図屛風は、１０点余りが<EVENT class="OCCURRENCE" eid="e23">知られている</EVENT>。</sentence>
+<sentence>その中で唯一、真筆に違いないと<EVENT class="I_STATE" eid="e24">考えられている</EVENT>のがこの作品である。</sentence>
+<sentence><TIMEX3 general="TRUE" type="DATE" value="XXXX-SP" valueFromSurface="XXXX-SP">春</TIMEX3><TIMEX3 general="TRUE" type="DATE" value="XXXX-SP" valueFromSurface="XXXX-SU">夏</TIMEX3>を<EVENT class="OCCURRENCE" eid="e25">描いた</EVENT>右隻に対し、この左隻では<TIMEX3 general="TRUE" type="DATE" value="XXXX-FA" valueFromSurface="XXXX-FA">秋</TIMEX3><TIMEX3 general="TRUE" type="DATE" value="XXXX-WI" valueFromSurface="XXXX-WI">冬</TIMEX3>の情景が<EVENT class="OCCURRENCE" eid="e26">描かれる</EVENT>。</sentence>
+<sentence>　<EVENT class="NULL" eid="e27">向かっ</EVENT>て左、<TIMEX3 general="TRUE" type="DATE" value="XXXX-WI" valueFromSurface="XXXX-WI">冬</TIMEX3>景の場面。</sentence>
+<sentence>身を<EVENT class="NULL" eid="e28">切る</EVENT>ような寒風が<EVENT class="OCCURRENCE" eid="e29">吹き抜ける</EVENT>。</sentence>
+<sentence><EVENT class="NULL" eid="e30">冷たい</EVENT>水気を<EVENT class="OCCURRENCE" eid="e31">含んだ</EVENT>空気の感触も寒さを<EVENT class="OCCURRENCE" eid="e32">誘う</EVENT>。</sentence>
+<sentence>水鳥など<EVENT class="NULL" eid="e33">わずかな</EVENT>色彩は、かえって雪の白さを<EVENT class="OCCURRENCE" eid="e34">強調する</EVENT>。</sentence>
+<sentence>でもじっと<EVENT class="OCCURRENCE" eid="e35">眺めている</EVENT>うち、<EVENT class="NULL" eid="e36">怖い</EVENT>と<EVENT class="I_STATE" eid="e37">感じ始めた</EVENT>。</sentence>
+<sentence>　理由はすぐに<EVENT class="OCCURRENCE" eid="e38">分かった</EVENT>。</sentence>
+<sentence><EVENT class="NULL" eid="e39">不気味な</EVENT>枝ぶりを<EVENT class="OCCURRENCE" eid="e40">誇る</EVENT>樹木が、<EVENT class="OCCURRENCE" eid="e41">たけり狂う</EVENT>竜か化け物に<EVENT class="PERCEPTION" eid="e42">見えた</EVENT>からだ。</sentence>
+<sentence>だが<EVENT class="NULL" eid="e43">上品な</EVENT>画題とは<EVENT class="OCCURRENCE" eid="e44">似</EVENT>ても<EVENT class="OCCURRENCE" eid="e45">似つかぬ</EVENT>印象は、この屛風が<EVENT class="NULL" eid="e46">型破りな</EVENT>作品を生涯<EVENT class="OCCURRENCE" eid="e47">描き続けた</EVENT>雪舟のまさに真筆だと<EVENT class="I_ACTION" eid="e48">明かしている</EVENT>ようにも<EVENT class="I_STATE" eid="e49">思う</EVENT>。</sentence>
+<sentence type="quasi">【石川健次】</sentence>
+<sentence type="quasi">＝<EVENT class="OCCURRENCE" eid="e50">つづく</EVENT></sentence>
+<sentence type="quasi">没後<TIMEX3 definite="FALSE" tid="t5" type="DURATION" value="P500Y" valueFromSurface="P500Y">５００年</TIMEX3>特別展「雪舟」</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2002-04-23" valueFromSurface="XXXX-04-23">４月２３日</TIMEX3>から<TIMEX3 definite="FALSE" tid="t7" type="DATE" value="2002-05-19" valueFromSurface="XXXX-05-19">５月１９日</TIMEX3>まで東京国立博物館。</sentence>
+<sentence>会期中無休。</sentence>
+<sentence>前売り入場券は一般１２００（１４００）円、大高生８００（９００）円、中小生３００（４００）円。</sentence>
+<sentence>カッコ内は当日料金。</sentence>
+<sentence>ハローダイヤルは０３・５７７７・８６００。</sentence>
+<sentence type="quasi">（余録）</sentence>
+<sentence>　松田道雄さんが<TIMEX3 definite="FALSE" tid="t8" type="DURATION" value="P89Y" valueFromSurface="P89Y">８９歳</TIMEX3>で<EVENT class="OCCURRENCE" eid="e51">亡くなった</EVENT>のは<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="1998-06-01" valueFromSurface="1998-06-01">１９９８年６月１日</TIMEX3>だった。</sentence>
+<sentence type="quasi">多くの人（とりわけ母親たち）には、名著<quote>「育児の百科」</quote>を<EVENT class="OCCURRENCE" eid="e52">書いた</EVENT><EVENT class="STATE" eid="e53">頼れる</EVENT>小児科の先生として親しみが<EVENT class="STATE" eid="e54">あっただろう</EVENT></sentence>
+<sentence>　▲最後の著書は<TIMEX3 definite="FALSE" tid="t10" type="DATE" value="2001-04" valueFromSurface="XXXX-04">前年４月</TIMEX3>刊行の<quote>「<EVENT class="NULL" eid="e55">安楽に</EVENT><EVENT class="OCCURRENCE" eid="e56">死にたい</EVENT>」</quote>（岩波書店）だった。</sentence>
+<sentence>「どうせ<EVENT class="OCCURRENCE" eid="e57">死ぬ</EVENT>のなら<EVENT class="NULL" eid="e58">安楽に</EVENT><EVENT class="OCCURRENCE" eid="e59">死にたい</EVENT>。</sentence>
+<sentence type="quasi">痛みだの、息苦しさだの、<ruby rubyText="どう">動</ruby><ruby rubyText="き">悸</ruby>だのはごめんだ、<EVENT class="NULL" eid="e60">安楽に</EVENT><EVENT class="OCCURRENCE" eid="e61">死にたい</EVENT>と<EVENT class="I_STATE" eid="e62">思うのです</EVENT>」</sentence>
+<sentence type="fragment">。</sentence>
+<sentence type="quasi">松田さんはこう<EVENT class="REPORTING" eid="e63">書いた</EVENT></sentence>
+<sentence>　▲川崎市の病院で<EVENT class="I_ACTION" eid="e64">起きた</EVENT>「安楽死」事件は<EVENT class="OCCURRENCE" eid="e65">分からない</EVENT>ことが<EVENT class="NULL" eid="e66">多い</EVENT>。</sentence>
+<sentence><quote>「これ以上の延命は<EVENT class="I_STATE" eid="e67">忍びない</EVENT>」</quote><quote>「<EVENT class="NULL" eid="e68">楽に</EVENT><EVENT class="OCCURRENCE" eid="e69">し</EVENT>て<EVENT class="I_ACTION" eid="e70">あげる</EVENT>から」</quote>と主治医が家族に<EVENT class="I_ACTION" eid="e71">持ちかけた</EVENT>と<EVENT class="REPORTING" eid="e72">いう</EVENT>。</sentence>
+<sentence type="quasi">しかし、病院長も<EVENT class="I_ACTION" eid="e73">認める</EVENT>ように、医療の倫理を<EVENT class="OCCURRENCE" eid="e74">逸脱した</EVENT>行為と<EVENT class="REPORTING" eid="e75">いわざるをえないだろう</EVENT></sentence>
+<sentence>　▲<quote>「<EVENT class="NULL" eid="e76">安楽に</EVENT><EVENT class="OCCURRENCE" eid="e77">死にたい</EVENT>」</quote>の中で、松田さんは<quote>「安楽死」</quote>を自分の生き方を自分で<EVENT class="OCCURRENCE" eid="e78">決める</EVENT>市民の自己決定の思想と<EVENT class="OCCURRENCE" eid="e79">結びつけている</EVENT>。</sentence>
+<sentence>近代医学は延命至上主義の立場から終末期の高齢患者に対しても高度医療を<EVENT class="OCCURRENCE" eid="e80">行ってきた</EVENT>。</sentence>
+<sentence type="quasi">それは死を<EVENT class="I_STATE" eid="e81">受容しつつある</EVENT>患者にとっては<quote>「<EVENT class="NULL" eid="e82">無益</EVENT>」</quote>なこと<sampling type="end" />だと<EVENT class="REPORTING" eid="e83">いうのだ</EVENT></sentence>

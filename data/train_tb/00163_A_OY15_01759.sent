@@ -1,0 +1,6 @@
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>はマリーナーズの監督がイチローが<event class="" eid="e1">三振した</event>ボールのクレームで<webBr />退場でした・・・<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>はヤンキースの監督がクレームで退場で、<webBr />監督激怒は<event class="STATE" eid="e2">面白いです</event>ね・・・・</sentence>
+<sentence>なんか試合が<event class="" eid="e3">盛り上がります</event>ね！</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>のイチローはノーヒットですが、<event class="STATE" eid="e4">確かに</event>ボール判定でも<event class="STATE" eid="e5">おかしく</event><event class="STATE" eid="e6">ない</event>球で、<webBr />２打席連続見逃し三振！</sentence>
+<sentence>僕だったら、<event class="" eid="e7">カットしたい</event>球ですが、このあたりが野球の<event class="STATE" eid="e8">微妙な</event>戦いかも<webBr />しれません。</sentence>
+<sentence>イチローは<event class="STATE" eid="e9">不利な</event>球で<event class="STATE" eid="e10">あやしい</event>ボールはボール判定に<event class="" eid="e11">してもらう</event><webBr />ほうが<event class="STATE" eid="e12">いい</event>わけで、次の試合まで<event class="" eid="e13">考えた</event>？？？</sentence>
+<sentence type="quasi"><event class="STATE" eid="e14">イチローらしい</event>、審判攻撃かも<webBr />しれません・・・</sentence>

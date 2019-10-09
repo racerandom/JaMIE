@@ -1,0 +1,4 @@
+<a>右乳腺</a>術後。
+<a>両側肺下葉優位</a>に<d certainty="positive">すりガラス影や網状影、牽引性気管支拡張</d>が認められます。<d certainty="suspicious">間質性肺炎</d>が疑われます。前回6/11と著変ありません。
+<f>positive size</f>の<d certainty="negative">LN</d>は認められません。
+<d certainty="positive">fatty liver</d>.

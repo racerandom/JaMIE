@@ -1,0 +1,3 @@
+<sentence>ゲレンデに<event class="" eid="e1">ある</event>リフトとロープウェイは<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P1D" valueFromSurface="P1D">一日</TIMEX3>券を<event class="" eid="e2">購入すれ</event>ば<event class="" eid="e3">乗れるんです</event>か？</sentence>
+<sentence>私が<event class="" eid="e4">通う</event>ところでは、リフトだけしか<event class="" eid="e5">乗れない</event>リフト<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P1D" valueFromSurface="P1D">一日</TIMEX3>券と、リフトとロープウェイに<event class="" eid="e6">乗れる</event>共通<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P1D" valueFromSurface="P1D">一日</TIMEX3>券とが<event class="" eid="e7">あります</event>。</sentence>
+<sentence>場所にも<event class="" eid="e8">よります</event>ね。</sentence>

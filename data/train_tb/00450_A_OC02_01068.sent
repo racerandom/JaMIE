@@ -1,0 +1,7 @@
+<sentence>アウトルックを<event class="" eid="e1">つかってい</event>て送受信を<event class="" eid="e2">した</event>ときにこんなメッセージが<event class="" eid="e3">出ました</event>。</sentence>
+<sentence>どう<event class="" eid="e4">いう</event>ものなんでしょうか？</sentence>
+<sentence>どう<event class="" eid="e5">対処したらいいでしょう</event>か？</sentence>
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">以前</TIMEX3>はメールはアウトルックに<event class="" eid="e6">入っていました</event>がこのメッセージが<event class="" eid="e7">で</event>て<event class="" eid="e8">はいらなく</event><event class="" eid="e9">なりました</event></sentence>
+<sentence>＜サーバーは接続を<event class="" eid="e10">解除しました</event>。</sentence>
+<sentence type="quasi">　サーバーまたはネットワークに問題が<event class="" eid="e11">ある</event>か、またはアイドル時間が<event class="" eid="e12">長すぎた</event>可能性が<event class="" eid="e13">あります</event>。＞</sentence>
+<sentence>よく<event class="" eid="e14">わかりません</event>が、どうもウイルスソフト（Ｎｏｒｔｏｎ・・）のメールスキャンの関係で<event class="" eid="e15">なる</event>と<event class="" eid="e16">思います</event>。</sentence>

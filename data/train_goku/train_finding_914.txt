@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺上葉Ｓ２ａ</a>に<f>２．６×２．９Ｃｍ</f>の<d certainty="positive">ｐｕｒｅ　ＧＧＮ</d>を認めます。<a>辺縁</a>の<d certainty="positive">すりガラス状陰影</d>と<a>正常肺野の境界</a>は<f>明瞭</f>です。前回とサイズ形態に著変なし。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴｉｓ</d>
+<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水貯留</d>なし。前回にみられた、<a>右肺下葉胸膜下</a>に<f>限局的な</f><a>胸膜</a>の<f>整な</f><d certainty="positive">肥厚</d>は<c>消退</c>、<d certainty="suspicious">炎症性変化の経過</d>を疑います。

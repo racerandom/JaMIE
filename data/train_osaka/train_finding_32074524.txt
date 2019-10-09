@@ -1,0 +1,4 @@
+<a>両側肺</a>に<d certainty="positive">すりガラス影や網状影、牽引性気管支拡張、蜂巣肺</d>が認められます。<d certainty="positive">すりガラス影</d>は<a>小葉間隔壁</a>で境界されている部分が認められます。<d certainty="positive">UIPパターンの間質性肺炎</d>に<d certainty="positive">DAD</d>の変化が重なった<d certainty="positive">陰影</d>ではないかと思われます。(D/D　<d certainty="suspicious">ウィルス性肺炎などの合併</d> etc.)
+<a>coronary a.</a>に<d certainty="positive">石灰化</d>。
+<a>縦隔内</a>に<f>短径1.2cm程度</f>までの<d certainty="positive">LNs</d>が認められます。<d certainty="suspicious">reactive nodes</d>を疑います。
+imp)　<d certainty="positive">特発性間質性肺炎</d>の<c>急性増悪</c>に矛盾しません。

@@ -1,0 +1,11 @@
+<a>両側肺</a>に<d certainty="positive">収縮</d>を伴った<d certainty="positive">濃度上昇や索状影、牽引性気管支拡張</d>が認められます。分布は<a>下葉優位</a>で、<a>気管支血管束</a>に<p>親和性</p>があるように見えます。<d certainty="suspicious">サルコイドーシス</d>の否定はできませんが、典型的ではありません。CT上は<d certainty="suspicious">NSIPパターンの間質性肺炎</d>を疑います。
+<a>縦隔内</a>に<f>短径1.6cm大まで</f>の<d certainty="positive">LNs</d>が認められます。<d certainty="suspicious">reactive nodesやサルコイドーシス</d>などの可能性があります。
+<a>coronary a.</a>に<d certainty="positive">石灰化</d>。
+<d certainty="positive">hiatus hernia</d>.
+<a>甲状腺右葉</a>に<f>約1cm大</f>の<d certainty="positive">low density nodule</d>が認められます。エコーにて精査してください。
+<a>両側肺</a>に<d certainty="positive">収縮性変化</d>を伴った<d certainty="positive">すりガラス影、軽度均等影、網状影、線状・索状影</d>を認めます。<d certainty="positive">牽引性気管支拡張</d>を認めますが、<d certainty="negative">蜂巣肺</d>を認めません。<d certainty="positive">陰影</d>の分布は、<a>全肺</a><f>びまん性</f>ですが、<a>下葉優位</a>で、<a>気管支血管束</a>に<p>親和性</p>があるように見えます。
+<d certainty="suspicious">間質性肺炎</d>（<d certainty="suspicious">NSIP pattern</d>）を疑います。<d certainty="suspicious">膠原病</d>などの精査もして下さい。<d certainty="suspicious">サルコイドーシス</d>の否定はできませんが、画像は典型的ではありません。
+<a>縦隔内</a>に<f>短径14mm大まで</f>の<f>大小多数</f>の<d certainty="positive">リンパ節</d>を認めます。<d certainty="positive">石灰化リンパ節</d>も認められます。前回とほぼ同程度。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。
+<d certainty="positive">食道裂孔ヘルニア</d>あり。
+<a>甲状腺右葉</a>に<f>約1cm大</f>の<d certainty="positive">low density nodule</d>あり。

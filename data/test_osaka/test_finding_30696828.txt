@@ -1,0 +1,16 @@
+<a>両肺下葉辺縁優位</a>に<f>強い</f><d certainty="positive">牽引性気管支拡張</d>を伴う<d certainty="positive">容積減少、索状影、すりガラス陰影</d>を認めます。<d certainty="suspicious">NSIPパターンの間質性肺炎</d>を疑い。前回CT(1/29)と比較して<d certainty="positive">すりガラス陰影</d>が<f>広範</f>に<c>増大</c>しており、<f>炎症活動性</f>の<c>増強</c>が疑われます。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>を認めます。
+<f>有意な</f><d certainty="negative">リンパ節腫大</d>は認めません。
+<a>肝</a>：<a>S4のリピオドール貯留部位の腹側</a>に接して<f>径約12mm</f>の<d certainty="positive">早期濃染、washoutを示す結節</d>を認めます。<d certainty="suspicious">HCC再発</d>疑い。
+<a>門脈</a>に<d certainty="negative">腫瘍栓</d>を認めません。
+<a>脾</a>：n.p.
+<a>胆嚢</a>：n.p.
+<a>膵</a>：<a>尾部</a>に<d certainty="suspicious">膵内副脾</d>疑い。
+<a>腎</a>：<a>左右腎</a>に<d certainty="positive">嚢胞</d>を認めます。
+<a>副腎</a>：n.p.
+<a>右側腹部</a>に<d certainty="positive">瘢痕ヘルニア</d>を認めます。<a>腸管</a>が<d certainty="positive">脱出</d>。
+<d certainty="negative">リンパ節腫大</d>を認めません。
+<d certainty="negative">腹水</d>を認めません。
+Imp) <d certainty="positive">HCC再発</d>
+
+

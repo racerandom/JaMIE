@@ -1,0 +1,1 @@
+<a>右肺上葉Ｓ１</a>に<d certainty="positive">腫瘤</d>を認め前回より<c>増大</c>。<a>胸膜</a>とは<a>一層の脂肪層</a>あり。<d certainty="positive">原発性肺癌</d>と考えます。<a>＃１０肺門</a>に<f>病的有意な</f><d certainty="positive">リンパ節腫大</d>を認めます。<c>増大傾向</c>。<a>気管分岐部腹側</a>に<d certainty="positive">リンパ節</d>あり。<f>短径は１０ｍｍ程度</f>です。前回同様です他、撮像範囲内に<d certainty="negative">新病変</d>なし<d certainty="positive">腹部大動脈瘤</d>あり。

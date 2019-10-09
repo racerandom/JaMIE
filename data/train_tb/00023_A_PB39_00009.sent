@@ -1,0 +1,81 @@
+<sentence type="quasi">鉄船</sentence>
+<sentence type="quasi">１</sentence>
+<sentence>　戦争が<event class="" eid="e1">終わった</event><TIMEX3 type="DATE" value="1945" valueFromSurface="XXXX">年</TIMEX3>の<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="1945-SU" valueFromSurface="XXXX-SU">夏</TIMEX3>は<event class="STATE" eid="e2">暑かった</event>。</sentence>
+<sentence>　私は警察署長だった父の転勤でこの町に<event class="" eid="e3">移っ</event>て<event class="" eid="e4">きた</event>。</sentence>
+<sentence>町が戦前の小さな漁師町から、良港を<event class="" eid="e5">有している</event>ことで、大型船の<event class="STATE" eid="e6">停泊可能な</event>遠洋漁業の基地と<event class="" eid="e7">なるべく</event><event class="STATE" eid="e8">急激な</event>発展を<event class="" eid="e9">していた</event>頃である。</sentence>
+<sentence>　海岸は家から徒歩で<TIMEX3 definite="FALSE" mod="APPROX" tid="t2" type="DURATION" value="PT20M" valueFromSurface="PT20M">二十分くらい</TIMEX3>の場所であった。</sentence>
+<sentence><TIMEX3 definite="TRUE" general="TRUE" tid="t3" type="DATE" value="XXXX-SU" valueFromSurface="XXXX-SU">夏</TIMEX3>に<event class="" eid="e10">なる</event>と町中の子どもたちが大勢でその浜辺に<event class="" eid="e11">泳ぎ</event>に<event class="" eid="e12">来た</event>。</sentence>
+<sentence>私は都会育ちだったし、<event class="STATE" eid="e13">長い</event>戦争のために泳ぎを<event class="" eid="e14">おぼえる</event>チャンスも<event class="STATE" eid="e15">なかった</event>。</sentence>
+<sentence>それに<event class="" eid="e16">比べ</event>て、この町の子どもたちはまるで魚のように水と友だちだった。</sentence>
+<sentence><event class="STATE" eid="e17">明らかに</event>、まだ小学校前の小さな子どもですら、すいすいと<event class="STATE" eid="e18">かなり</event>の距離を<event class="" eid="e19">泳ぐことが出来た</event>。</sentence>
+<sentence>小学<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P3Y" valueFromSurface="P3Y">三年生</TIMEX3>にも<event class="" eid="e20">なっ</event>てろくに<event class="" eid="e21">泳げない</event>私は、彼らから<event class="" eid="e22">見る</event>と<event class="STATE" eid="e23">のろまな</event>白豚のように<event class="" eid="e24">思えたかもしれない</event>。</sentence>
+<sentence>　<event class="STATE" eid="e25">真っ黒に</event><event class="" eid="e26">日焼けした</event><event class="STATE" eid="e27">スリムな</event>体の彼らに、<event class="STATE" eid="e28">白い</event>ふんどしが<event class="STATE" eid="e29">格好よく</event><event class="" eid="e30">映え</event>て<event class="STATE" eid="e31">羨ましかった</event>。</sentence>
+<sentence><event class="STATE" eid="e32">色白で</event>、父親ゆずりの少し<event class="" eid="e33">ふっくらした</event>体型で、ふんどしの代わりに<event class="STATE" eid="e34">白い</event>木綿のパンツを<event class="" eid="e35">はい</event>て波打ち際を<event class="" eid="e36">さまよう</event>ように<event class="" eid="e37">泳いでいる</event>私を、彼らが<event class="" eid="e38">からかう</event>のは<event class="STATE" eid="e39">当然だった</event>。</sentence>
+<sentence>　私が<event class="" eid="e40">遊んでいた</event>その海岸の沖に大きな船が<event class="" eid="e41">座礁していた</event>。</sentence>
+<sentence>その船体は<event class="STATE" eid="e42">赤黒く</event><event class="" eid="e43">錆び</event>、船首に<event class="" eid="e44">向かっ</event>て左に<event class="STATE" eid="e45">大きく</event><event class="" eid="e46">傾い</event>て<event class="" eid="e47">横たわっていた</event>。</sentence>
+<sentence>満潮時には沖合二百五十メートルくらいの距離に<event class="" eid="e48">なる</event>が、干潮時には五十メートルくらいまで<event class="" eid="e49">近寄っ</event>て<event class="" eid="e50">くる</event>。</sentence>
+<sentence>この座礁船はみんなの格好の目標であり、スリルの<event class="" eid="e51">ある</event>飛び込み場だった。</sentence>
+<sentence>子どもだけでなく、大人にとっても<event class="STATE" eid="e52">魅力的な</event>スポットだった。</sentence>
+<sentence>　その船は<quote>「<ruby rubyText="てっ">鉄</ruby><ruby rubyText="せん">船</ruby>」</quote>と親しみと畏敬の念を<event class="" eid="e53">もっ</event>て土地の人から<event class="" eid="e54">呼ばれていた</event>。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当時</TIMEX3>、この町で<event class="" eid="e55">使われていた</event>漁船のほとんどが十五トン未満の小さな木造船だったのに対して、<event class="" eid="e56">座礁した</event>鉄船は五百トンを<event class="" eid="e57">超す</event>大型船である。</sentence>
+<sentence>しかし、どうしてこの船がここに<event class="" eid="e58">座礁している</event>のか誰も<event class="" eid="e59">知らない</event>ようであった。</sentence>
+<sentence>　その時の私は、そんな詮索よりいかに<event class="" eid="e60">したら</event>この鉄船に<event class="" eid="e61">たどり着ける</event>かしか<event class="" eid="e62">考えていなかったのだ</event>。</sentence>
+<sentence>鉄船から<event class="" eid="e63">飛び込む</event>友人たちを海岸から指を<event class="" eid="e64">くわえ</event>て<event class="" eid="e65">見ている</event>自分が<event class="STATE" eid="e66">口惜しかった</event>。</sentence>
+<sentence>犬かきで十メートルほど<event class="" eid="e67">進み</event>、<event class="STATE" eid="e68">怖く</event><event class="" eid="e69">なっ</event>て足の<event class="" eid="e70">立つ</event>浅瀬に<event class="" eid="e71">引き返し</event>て<event class="" eid="e72">くる</event>私の横を、年下の子どもが<event class="STATE" eid="e73">きれいな</event>平泳ぎですいすいと鉄船に<event class="" eid="e74">向かう</event>のを<event class="" eid="e75">見る</event>のが常だった。</sentence>
+<sentence type="quasi">２</sentence>
+<sentence>　<TIMEX3 general="TRUE" type="DATE" value="XXXX-SU" valueFromSurface="XXXX-SU">夏</TIMEX3>休みも<TIMEX3 definite="FALSE" mod="APPROX" tid="t6" type="DURATION" value="P10D" valueFromSurface="P10D">十日ほど</TIMEX3><event class="" eid="e76">過ぎた</event>頃である。</sentence>
+<sentence>波打ち際に<event class="" eid="e77">座っている</event>私の肩を、同じ町内に<event class="" eid="e78">住む</event>老人が<event class="" eid="e79">たたいた</event>。</sentence>
+<sentence type="quasi">　「これで鉄船まで<event class="" eid="e80">行ってみる</event>か」</sentence>
+<sentence>　一メートル<event class="STATE" eid="e81">近い</event>板を私に<event class="" eid="e82">見せた</event>。</sentence>
+<sentence type="quasi">　「けん坊、一緒に<event class="" eid="e83">行ってやれ</event>」</sentence>
+<sentence>　傍に<event class="" eid="e84">いる</event>孫にそう<event class="" eid="e85">命じ</event>ながら、私にその板を<event class="" eid="e86">渡した</event>。</sentence>
+<sentence>ずっしりと<event class="STATE" eid="e87">重く</event>、<event class="" eid="e88">黒ずんでいた</event>。</sentence>
+<sentence>　心臓が皮膚を<event class="" eid="e89">破る</event>かと<event class="" eid="e90">思われる</event>ほど<event class="" eid="e91">高鳴った</event>。</sentence>
+<sentence>けん坊は、私の進みに<event class="" eid="e92">あわせ</event>てゆっくりと<event class="" eid="e93">泳いでくれていた</event>。</sentence>
+<sentence>　行程の半分を<event class="" eid="e94">過ぎる</event>と水温が<event class="STATE" eid="e95">急激に</event><event class="" eid="e96">下がってきた</event>。</sentence>
+<sentence>私の心臓はそれを<event class="STATE" eid="e97">敏感に</event><event class="" eid="e98">感じ</event>て、なお<event class="STATE" eid="e99">強く</event>血液を体内に<event class="" eid="e100">送り出す</event>。</sentence>
+<sentence>恐怖で岸に<event class="" eid="e101">帰りたい</event>思いが<event class="" eid="e102">湧きあがってきた</event>。</sentence>
+<sentence>　一メートルの板を渾身の力で<event class="" eid="e103">抱きしめ</event>ながら波に<event class="" eid="e104">押される</event>ように<event class="" eid="e105">し</event>て<event class="" eid="e106">進んでいる</event>と、<event class="STATE" eid="e107">急に</event>目の前が<event class="STATE" eid="e108">暗く</event><event class="" eid="e109">なった</event>。</sentence>
+<sentence>そっと顔を<event class="" eid="e110">あげる</event>と鉄船の影の中に<event class="" eid="e111">いる</event>ことに気が<event class="" eid="e112">ついた</event>。</sentence>
+<sentence type="quasi">　「こっちだ」</sentence>
+<sentence>　けん坊の声が<event class="" eid="e113">する</event>。</sentence>
+<sentence>私はその声の方に<event class="" eid="e114">向かった</event>。</sentence>
+<sentence>陽の中に<event class="" eid="e115">出る</event>と<event class="" eid="e116">ほっとし</event>て、安<sampling type="start" />堵感と達成感が<event class="" eid="e117">湧いてきた</event>。</sentence>
+<sentence>　大きな鉄船は<event class="STATE" eid="e118">巨大な</event>壁のように目の前を<event class="" eid="e119">ふさいでいる</event>。</sentence>
+<sentence>近くで<event class="" eid="e120">見る</event>と<event class="" eid="e121">錆び</event>て黒に<event class="STATE" eid="e122">近い</event>色であった。</sentence>
+<sentence>船側には<event class="STATE" eid="e123">無数</event>の貝が<event class="" eid="e124">付着し</event>て、船に<event class="" eid="e125">登っ</event>て<event class="" eid="e126">来る</event>者を<event class="" eid="e127">威嚇している</event>ようだった。</sentence>
+<sentence>　けん坊の指示通りに<event class="" eid="e128">進む</event>とタラップが<event class="" eid="e129">あり</event>、甲板の一部に<event class="" eid="e130">通じていた</event>。</sentence>
+<sentence>命綱である板切れを<event class="STATE" eid="e131">大切に</event><event class="" eid="e132">かかえ</event>て甲板まで<event class="" eid="e133">登った</event>。</sentence>
+<sentence>　甲板は<event class="" eid="e134">傾いてい</event>て、かなり<event class="" eid="e135">意識し</event>てバランスを<event class="" eid="e136">とらない</event>と<event class="" eid="e137">立っていられない</event>状態であった。</sentence>
+<sentence><event class="STATE" eid="e138">白い</event>波が舷側を<event class="" eid="e139">洗っている</event>のが<event class="" eid="e140">見えた</event>。</sentence>
+<sentence>その高さを<event class="" eid="e141">意識する</event>と再び恐怖が<event class="" eid="e142">もどってきた</event>。</sentence>
+<sentence type="quasi">　「唇が<event class="STATE" eid="e143">真っ青でねえ</event>か」</sentence>
+<sentence>　けん坊がばかに<event class="" eid="e144">した</event>ような顔で<event class="" eid="e145">笑っている</event>。</sentence>
+<sentence>しかし、私の心もだんだん平常心を<event class="" eid="e146">取り戻してき</event>て、あたりを<event class="" eid="e147">見る</event>余裕が<event class="" eid="e148">出てきていた</event>。</sentence>
+<sentence>　船の設備のほとんどは<event class="" eid="e149">取り除かれてい</event>て、裸同然の状態だった。</sentence>
+<sentence>船はゆったりと左に<event class="" eid="e150">傾い</event>て浅瀬に<event class="" eid="e151">座っている</event>。</sentence>
+<sentence>どうしてこの船はここに<event class="" eid="e152">あるのだろう</event>か、どこから<event class="" eid="e153">きたのだろう</event>か、<event class="" eid="e154">乗っていた</event>人たちはどう<event class="" eid="e155">したのだろう</event>か。</sentence>
+<sentence>余裕が<event class="" eid="e156">出てきた</event>私に、<TIMEX3 tid="t201" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>まであまり関心の<event class="STATE" eid="e157">なかった</event>疑問が<event class="" eid="e158">生じてきた</event>。</sentence>
+<sentence>待望の鉄船に<event class="" eid="e159">たどり着け</event>て少しばかり大人に<event class="" eid="e160">なった</event>気分だったのだ。</sentence>
+<sentence>　上空を飛行機が<event class="" eid="e161">飛んでいた</event>。</sentence>
+<sentence>太陽にジュラルミンの機体がキラキラと<event class="" eid="e162">反射している</event>。</sentence>
+<sentence>　伊豆半島の方角に目を<event class="" eid="e163">移す</event>と、その上空に<event class="STATE" eid="e164">巨大な</event>入道雲が<event class="" eid="e165">立ち上がっていた</event>。</sentence>
+<sentence>飛行機はその雲から<event class="" eid="e166">逃げる</event>ように<event class="" eid="e167">飛んでいるのだ</event>、と私には<event class="" eid="e168">思えた</event>。</sentence>
+<sentence>太陽が<event class="STATE" eid="e169">いっぱい</event>の<TIMEX3 definite="TRUE" general="TRUE" tid="t7" type="DATE" value="XXXX-SU" valueFromSurface="XXXX-SU">夏</TIMEX3>の<TIMEX3 definite="TRUE" tid="t8" type="TIME" value="XXXX-XX-XXTAF" valueFromSurface="XXXX-XX-XXTAF">午後</TIMEX3>だった。</sentence>
+<sentence>　岸辺には魚網を<event class="STATE" eid="e170">大きく</event><event class="" eid="e171">広げ</event>て<event class="" eid="e172">干してある</event>。</sentence>
+<sentence>子どもたちの一団が歓声<event class="" eid="e173">あげ</event>て水に<event class="" eid="e174">飛び込み</event>、この船<event class="" eid="e175">めがけ</event>て<event class="" eid="e176">泳ぎ出した</event>。</sentence>
+<sentence>　板切れの援助は<event class="" eid="e177">あった</event>が、私はとにかく念願の鉄船の上に<event class="" eid="e178">立て</event>て至極<event class="STATE" eid="e179">満足だった</event>。</sentence>
+<sentence type="quasi">老人の家族</sentence>
+<sentence type="quasi">１</sentence>
+<sentence>　老人とけん坊の家は、私の家からほんの少しのところに<event class="" eid="e180">ある</event>。</sentence>
+<sentence>けん坊は私より<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="P2Y" valueFromSurface="P2Y">二歳</TIMEX3>年上で、町内の子どもたちを<event class="" eid="e181">仕切る</event>ガキ大将だった。</sentence>
+<sentence>老人の息子は<event class="" eid="e182">戦死してい</event>て、家では息子の嫁であるけん坊の母親との三人暮らしだった。</sentence>
+<sentence>　鉄船の日以来、私はこの一家に<event class="" eid="e183">出入りする</event>ことが常と<event class="" eid="e184">なった</event>。</sentence>
+<sentence>けん坊も私に目を<event class="" eid="e185">かけてくれる</event>ように<event class="" eid="e186">なり</event>、ほかの子どもから<event class="" eid="e187">いじめられ</event>たり、ばかに<event class="" eid="e188">される</event>ことも<event class="STATE" eid="e189">少なく</event><event class="" eid="e190">なった</event>。</sentence>
+<sentence>　父が警察官ということで<event class="STATE" eid="e191">特殊な</event>感情を<event class="" eid="e192">いだく</event>人間も<event class="STATE" eid="e193">少なく</event><event class="STATE" eid="e194">なかった</event>が、老人の家族はそんなことを少しも<event class="" eid="e195">感じさせなかった</event>。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t10" type="DATE" value="XXXX-08" valueFromSurface="XXXX-08">八月</TIMEX3>に<event class="" eid="e196">はいる</event>と海はほんの少し機嫌を<event class="STATE" eid="e197">悪く</event><event class="" eid="e198">する</event>時が<event class="" eid="e199">ある</event>。</sentence>
+<sentence><event class="STATE" eid="e200">透明</event>のクラゲを<event class="" eid="e201">ばらまき</event>、<event class="" eid="e202">泳いでいる</event>人間にそろそろ<TIMEX3 definite="TRUE" tid="t11" type="DATE" value="XXXX" valueFromSurface="XXXX">今年</TIMEX3>の<TIMEX3 definite="TRUE" tid="t12" type="DATE" value="XXXX-SU" valueFromSurface="XXXX-SU">夏</TIMEX3>は終わりだぞと警告を<event class="" eid="e203">出しはじめるのである</event>。</sentence>
+<sentence type="quasi">　「<TIMEX3 definite="FALSE" tid="t13" type="DATE" value="XXXX-SU" valueFromSurface="XXXX-SU">盆</TIMEX3>が<event class="" eid="e204">過ぎたら</event><event class="" eid="e205">泳ぐんじゃない</event>」</sentence>
+<sentence>　老人は、けん坊と私の前で<event class="STATE" eid="e206">厳しい</event>目を<event class="" eid="e207">し</event>て<event class="" eid="e208">言った</event>ものである。</sentence>
+<sentence type="quasi">２</sentence>
+<sentence>　けん坊は私を川に<event class="" eid="e209">連れ出し</event>て、泳ぎの特訓を<event class="" eid="e210">してくれた</event><sampling type="end" />。</sentence>

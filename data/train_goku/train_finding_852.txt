@@ -1,0 +1,3 @@
+<a>右肺上葉Ｓ３ａ</a>に<f>２．７×１．２Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>を認めます。<a>内部</a>に<f>０．５×０．１Ｃｍ</f>の<f>濃い</f><d certainty="positive">すりガラス状陰影〜充実成分</d>あり。<d certainty="positive">胸膜陥入像</d>を伴います。ＸＸＸＸ年３月の胸部Ｘ線写真にて<d certainty="positive">陰影</d>は確認できます。<d certainty="suspicious">原発性肺癌</d>を疑います。<d certainty="suspicious">ｃＴ１ａ</d>
+<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水貯留</d>なし。<a>肝内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<d certainty="positive">血管腫</d>あり。<a>胆，膵，脾，腎，副腎</a>には異常はみられません．<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">子宮筋腫</d>あり。<d certainty="positive">骨盤内腹水</d>あり．

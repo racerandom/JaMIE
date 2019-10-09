@@ -1,0 +1,6 @@
+<a>右肺上中葉</a>に分布していた<d certainty="positive">すりガラス影、索状影</d>は<c>軽減</c>。<d certainty="positive">慢性過敏性肺炎などの慢性炎症</d>の経過、<d certainty="positive">肺胞蛋白症、肺胞出血</d>などを考えます。base に<f>軽度</f>の<d certainty="suspicious">間質性肺炎</d>が存在する可能性もあります。
+他<d certainty="positive">両側末梢気管支拡張とすりガラス影、線状影</d>の分布に変化なし。
+<d certainty="negative">腫大リンパ節</d>なし。
+<d certainty="negative">胸水</d>なし。
+<a>胸部大動脈</a>に<d certainty="negative">拡張</d>なし。
+<a>胸部大動脈および分枝、冠動脈</a>に<d certainty="positive">石灰化</d>あり。

@@ -1,0 +1,5 @@
+<a>両側下葉胸膜下優位</a>に<d certainty="positive">すりガラス状陰影、網状影、牽引性気管支拡張</d>を認めます。前回2012.10.29と変化なく、<d certainty="suspicious">NSIPのような間質性肺炎</d>の経過を疑います。
+<a>左肺S1+2</a>の<d certainty="positive">限局性すりガラス影</d>は前回と変化ありません。
+<a>縦隔</a>に<f>短径1cm未満</f>の<d certainty="positive">リンパ節</d>を認めます。前回と変化なく、<d certainty="positive">反応性腫大</d>と思われます。
+<d certainty="negative">胸水貯留</d>なし。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。

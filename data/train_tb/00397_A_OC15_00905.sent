@@ -1,0 +1,8 @@
+<sentence type="fragment">友人が「</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>パチスロで５０万<event class="" eid="e1">勝った</event>！</sentence>
+<sentence type="fragment">」と<event class="" eid="e2">言うのです</event>が、<event class="" eid="e3">ありえます</event>か？</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>、アラジンで４６万位なら<event class="" eid="e4">勝った事が有ります</event>が生涯で１回きりです。</sentence>
+<sentence>その後は１０万から３０万前後で結局<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P20Y" valueFromSurface="P20Y">２０年間</TIMEX3><event class="" eid="e5">して見</event>て３００万位<event class="" eid="e6">負け越しています</event>。</sentence>
+<sentence>ギャンブルは<event class="" eid="e7">謝金する</event>前に<event class="" eid="e8">辞めましょう</event>。</sentence>
+<sentence>友人に真偽は<event class="" eid="e9">分りません</event>がジリ貧の金に縁の<event class="STATE" eid="e10">ない</event>人間がパチスロでセルシオを<event class="" eid="e11">購入した</event>者が<event class="" eid="e12">います</event>。</sentence>
+<sentence type="quasi">一時期、セルシオで<event class="" eid="e13">寝泊りしていました</event>が<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>は何処に<event class="" eid="e14">居るんだ</event>か…</sentence>

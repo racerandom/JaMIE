@@ -1,0 +1,3 @@
+<sentence>ジャマール・マシュバーンって<TIMEX3 tid="t201" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>どこのチームで<event class="" eid="e1">プレーしています</event>か？</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今季</TIMEX3>はニューオーリンズ・ホーネッツで<event class="" eid="e2">迎えました</event>が怪我で１試合も<event class="" eid="e3">出場しない</event>まま<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2005-02" valueFromSurface="XXXX-02">２月</TIMEX3>にフィラデルフィア・７６ｅｒｓに<event class="" eid="e4">トレードされました</event>。</sentence>
+<sentence>噂によると７６ｅｒｓでも<event class="" eid="e5">プレイし</event>まいまま<event class="" eid="e6">引退し</event>そうって話です。</sentence>

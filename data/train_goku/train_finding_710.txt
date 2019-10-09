@@ -1,0 +1,1 @@
+<a>左房背側</a>に<f>３ｃｍ大</f>の<d certainty="positive">楕円形腫瘤</d>を認めます。<a>肺野</a>：<f>明らかな</f><d certainty="negative">転移</d>を疑う所見なし。<a>リンパ節</a>：<f>有意な</f><d certainty="negative">腫大</d>なし。<d certainty="negative">胸水</d>なし。<d certainty="negative">新病変</d>なし。

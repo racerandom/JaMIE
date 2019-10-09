@@ -1,0 +1,4 @@
+<sentence>ある機器を<event class="" eid="e1">探しています</event>。</sentence>
+<sentence>一定の時間内、<TIMEX3 definite="TRUE" quant="EVERY" tid="t1" type="SET" value="PTXM" valueFromSurface="PTXM">何分かおき</TIMEX3>に音で<event class="" eid="e2">知らせてくれる</event>ような機械です。</sentence>
+<sentence>エクササイズで<event class="" eid="e3">使いたいのです</event>が。。。</sentence>
+<sentence>そんな感じの機器をどなたかご存知<event class="STATE" eid="e4">ないでしょう</event>か。</sentence>

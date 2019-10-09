@@ -1,0 +1,1 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。下咽頭癌術後．<f>明らかな</f><d certainty="negative">局所再発</d>を認めません．<a>肺上葉</a>の切除後。<d certainty="positive">右胸水</d>あり。<d certainty="negative">活動性肺炎像</d>、<a>肺野</a>の<f>新たな</f><d certainty="negative">結節</d>の出現は認めません。<d certainty="positive">胆嚢結石</d>あり。

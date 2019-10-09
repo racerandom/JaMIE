@@ -1,0 +1,43 @@
+<sentence type="quasi">ソルトレーク<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2002" valueFromSurface="2002">２００２</TIMEX3></sentence>
+<sentence type="quasi">スケート男子５００メートル</sentence>
+<sentence type="quasi">五輪やはり魔物<EVENT class="OCCURRENCE" eid="e1">すむ</EVENT></sentence>
+<sentence type="quasi">ウォザースプーン５歩で幕<sampling type="start" />切れ</sentence>
+<sentence type="quasi">長野以来の宿敵清水も『まさか』</sentence>
+<sentence type="quasi">【ソルトレークシティー<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2002-02-11" valueFromSurface="XXXX-XX-11">１１日</TIMEX3>　吉岡潤】</sentence>
+<sentence>　だれもが目を<EVENT class="OCCURRENCE" eid="e2">疑う</EVENT>ような<EVENT class="NULL" eid="e3">衝撃的な</EVENT>光景だった。</sentence>
+<sentence>五輪オーバルで<EVENT class="OCCURRENCE" eid="e4">開かれた</EVENT>スピードスケート男子五百メートルの一回目。</sentence>
+<sentence>清水宏保選手の最大のライバルであるウォザースプーン選手が最終組でスタートを<EVENT class="I_ACTION" eid="e5">切っ</EVENT>て、わずか５歩目だった。</sentence>
+<sentence>左足つま先が氷を<EVENT class="OCCURRENCE" eid="e6">削った</EVENT>。</sentence>
+<sentence><EVENT class="OCCURRENCE" eid="e7">つまずき</EVENT>、一九〇センチの体が<EVENT class="OCCURRENCE" eid="e8">崩れ落ちた</EVENT>。</sentence>
+<sentence>　長野五輪で清水選手に<EVENT class="OCCURRENCE" eid="e9">敗れ</EVENT>、銀メダルに<EVENT class="OCCURRENCE" eid="e10">甘んじ</EVENT>てから<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P4Y" valueFromSurface="P4Y">四年</TIMEX3>。</sentence>
+<sentence>　さらに安定感と強さを<EVENT class="OCCURRENCE" eid="e11">加え</EVENT>て、<EVENT class="I_ACTION" eid="e12">迎えた</EVENT>勝負のとき。</sentence>
+<sentence>それが、一瞬に<EVENT class="NULL" eid="e13">し</EVENT>て戦いは<EVENT class="ASPECTUAL" eid="e14">終わった</EVENT>。</sentence>
+<sentence>　<EVENT class="OCCURRENCE" eid="e15">立ち上がり</EVENT>、ぼう然と<EVENT class="NULL" eid="e16">した</EVENT>表情でゆっくり<EVENT class="OCCURRENCE" eid="e17">滑り始めた</EVENT>ウォザースプーン選手の顔は、みるみる<EVENT class="NULL" eid="e18">険しく</EVENT><EVENT class="OCCURRENCE" eid="e19">変化した</EVENT>。</sentence>
+<sentence>氷上に<EVENT class="OCCURRENCE" eid="e20">置かれた</EVENT>コースを<EVENT class="OCCURRENCE" eid="e21">仕切る</EVENT>ポイントを<EVENT class="NULL" eid="e22">悔し</EVENT>そうに<EVENT class="OCCURRENCE" eid="e23">けり上げた</EVENT>。</sentence>
+<sentence>　先に<EVENT class="OCCURRENCE" eid="e24">滑った</EVENT>清水選手は<EVENT class="OCCURRENCE" eid="e25">思う</EVENT>ようなタイムが<EVENT class="OCCURRENCE" eid="e26">出なかった</EVENT>。</sentence>
+<sentence>フィッツランドルフ選手（米国）がトップタイムを<EVENT class="OCCURRENCE" eid="e27">出した</EVENT>ものの、実力通りなら、この<EVENT class="NULL" eid="e28">大柄な</EVENT>カナダ人が首位に<EVENT class="OCCURRENCE" eid="e29">躍り出るに違いない</EVENT>とだれもが<EVENT class="I_STATE" eid="e30">考えていた</EVENT>。</sentence>
+<sentence>　前世界記録保持者で、<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2002-WI" valueFromSurface="XXXX-XX">今季</TIMEX3>のワールドカップ（Ｗ杯）では、この種目６戦４勝という<EVENT class="NULL" eid="e31">圧倒的な</EVENT>強さを<EVENT class="OCCURRENCE" eid="e32">見せつけていた</EVENT>。</sentence>
+<sentence type="fragment">　<EVENT class="NULL" eid="e33">無念</EVENT>のレース後、報道陣へのコメントは<EVENT class="STATE" eid="e34">なく</EVENT>、<EVENT class="OCCURRENCE" eid="e35">代わっ</EVENT>て<EVENT class="OCCURRENCE" eid="e36">出された</EVENT>コーチの談話には</sentence>
+<sentence>「<EVENT class="NULL" eid="e37">技術的な</EVENT>エラー。</sentence>
+<sentence>彼は<EVENT class="OCCURRENCE" eid="e38">がっかりしている</EVENT>。</sentence>
+<sentence type="quasi"><EVENT class="NULL" eid="e39">いい</EVENT>滑りを<EVENT class="I_ACTION" eid="e40">し</EVENT>てメダルを<EVENT class="OCCURRENCE" eid="e41">望んでいたのだ</EVENT>から」</sentence>
+<sentence type="fragment">と<EVENT class="NONE" eid="e42">あった</EVENT>。</sentence>
+<sentence type="fragment">　清水選手は</sentence>
+<sentence>「<EVENT class="NULL" eid="e43">ショックだった</EVENT>。</sentence>
+<sentence type="quasi"><EVENT class="OCCURRENCE" eid="e44">勝負したかった</EVENT>」</sentence>
+<sentence type="fragment">と<EVENT class="NULL" eid="e45">残念</EVENT>そうに<EVENT class="I_ACTION" eid="e46">繰り返した</EVENT>。</sentence>
+<sentence>　フィッツランドルフ選手も自分の結果に<EVENT class="I_STATE" eid="e47">喜ぶ</EVENT>より、練習仲間の悲劇に顔を<EVENT class="OCCURRENCE" eid="e48">曇らせた</EVENT>。</sentence>
+<sentence>　「とても<EVENT class="OCCURRENCE" eid="e49">見ていられない</EVENT>気持ちだった。</sentence>
+<sentence>彼は<EVENT class="NULL" eid="e50">最高</EVENT>のライバル。</sentence>
+<sentence type="quasi">僕にとっては金メダルより、<EVENT class="NULL" eid="e51">最高</EVENT>の選手に<EVENT class="OCCURRENCE" eid="e52">勝つ</EVENT>ことが<EVENT class="NULL" eid="e53">大切なんだ</EVENT>」</sentence>
+<sentence>　力を<EVENT class="OCCURRENCE" eid="e54">出し切っ</EVENT>て<EVENT class="OCCURRENCE" eid="e55">敗れた</EVENT>わけではない。</sentence>
+<sentence>敗者と<EVENT class="OCCURRENCE" eid="e56">呼ぶ</EVENT>には、<EVENT class="NULL" eid="e57">あまりに</EVENT><EVENT class="NULL" eid="e58">残酷な</EVENT>幕切れだった。</sentence>
+<sentence type="quasi">男子５００メートル１回目、スタート直後に<EVENT class="OCCURRENCE" eid="e59">転倒した</EVENT>カナダのジェレミー・ウォザースプーン＝<TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2002-02-11" valueFromSurface="XXXX-XX-11">１１日</TIMEX3>、五輪オーバルで（田中健撮影）</sentence>
+<sentence type="quasi">『<TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2002-02-12" valueFromSurface="XXXX-XX-12">１２日</TIMEX3>にもテロ』ＦＢＩが“警報”</sentence>
+<sentence type="quasi">【ワシントン<TIMEX3 definite="FALSE" tid="t7" type="DATE" value="2002-02-11" valueFromSurface="XXXX-XX-11">１１日</TIMEX3>　共同】</sentence>
+<sentence>　米連邦捜査局（ＦＢＩ）は<TIMEX3 definite="FALSE" tid="t8" type="DATE" value="2002-02-11" valueFromSurface="XXXX-XX-11">十一日</TIMEX3>、イエメン人一人とそのグループが米国人を標的に<EVENT class="OCCURRENCE" eid="e60">した</EVENT>テロを<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="2002-02-12" valueFromSurface="XXXX-XX-12">十二日</TIMEX3>にも<EVENT class="I_ACTION" eid="e61">引き起こす</EVENT>恐れが<EVENT class="STATE" eid="e62">ある</EVENT>と<EVENT class="NULL" eid="e63">し</EVENT>て異例の厳戒を<EVENT class="I_ACTION" eid="e64">呼び掛けた</EVENT>。</sentence>
+<sentence>　ＦＢＩによると、<TIMEX3 definite="FALSE" tid="t10" type="DATE" value="1979" valueFromSurface="1979">一九七九年</TIMEX3>にサウジアラビアで<EVENT class="OCCURRENCE" eid="e65">生まれた</EVENT>イエメン人、<delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete>氏とそのグループがテロを<EVENT class="I_ACTION" eid="e66">企てている</EVENT>可能性が<EVENT class="STATE" eid="e67">ある</EVENT>と<EVENT class="REPORTING" eid="e68">いう</EVENT>。</sentence>
+<sentence type="quasi"><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete>被告に厳刑求刑へ</sentence>
+<sentence type="quasi">両サリン事件</sentence>
+<sentence>　地下鉄、松本の両サリン事件をはじめ五事件に<EVENT class="I_ACTION" eid="e69">関与した</EVENT>と<EVENT class="I_ACTION" eid="e70">し</EVENT>て、殺人などの罪に<EVENT class="OCCURRENCE" eid="e71">問われた</EVENT>オウム真理教元幹部<delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete>被告（<TIMEX3 definite="FALSE" tid="t11" type="DURATION" value="P41Y" valueFromSurface="P41Y">四一</TIMEX3>）の論告求刑公判が<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="2002-02-12" valueFromSurface="XXXX-XX-12">十二日</TIMEX3>、東京地裁（服部悟裁判長）で<EVENT class="OCCURRENCE" eid="e72">開かれた</EVENT>。</sentence>
+<sentence>　<delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete>被告は教団の化学、細菌兵器開発の中心人物の<sampling type="end" />一人として、地下鉄で<EVENT class="OCCURRENCE" eid="e73">まかれた</EVENT>サリン製造に<EVENT class="I_ACTION" eid="e74">かかわった</EVENT>と<EVENT class="I_ACTION" eid="e75">され</EVENT>、極めて<EVENT class="NULL" eid="e76">厳しい</EVENT>求刑が<EVENT class="I_STATE" eid="e77">予想される</EVENT>。</sentence>

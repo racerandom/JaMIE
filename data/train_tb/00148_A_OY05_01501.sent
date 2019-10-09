@@ -1,0 +1,40 @@
+<sentence>全１０回の親子水泳も<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>で最後。</sentence>
+<sentence><TIMEX3 definite="TRUE" mod="BEFORE" tid="t2" type="TIME" value="2008-XX-XXT10" valueFromSurface="Q-XXXX-XX-XXT10">１０時前</TIMEX3>に駐車場に<event class="" eid="e1">ついた</event>のに前の車が<event class="" eid="e2">入る</event>と満車。。。</sentence>
+<sentence>タイミングが<event class="STATE" eid="e3">悪い</event>。。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="PT25M" valueFromSurface="PT25M">２５分</TIMEX3><event class="" eid="e4">待っ</event>てやっと<event class="" eid="e5">入れた</event>よ。</sentence>
+<sentence><event class="" eid="e6">急い</event>で<event class="" eid="e7">着替え</event>てプールに<event class="" eid="e8">行ったら</event>すぐ<event class="" eid="e9">始まった</event>よ。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>は総復習って感じの内容だったよ。</sentence>
+<sentence>はじめは抱っこ〜とママに<event class="" eid="e10">くっついてた</event>けど次第に調子が<event class="" eid="e11">出てきた</event>。</sentence>
+<sentence>ママに輪っかを<event class="" eid="e12">とっ</event>て<event class="" eid="e13">き</event>て<event class="" eid="e14">渡す</event>のを<event class="" eid="e15">やっ</event>てねって<event class="" eid="e16">言われてる</event>のにたくさん<event class="" eid="e17">とっ</event>ては<event class="" eid="e18">投げ</event>てママのところには最後まで<event class="" eid="e19">帰っ</event>て<event class="" eid="e20">こなかった</event>ちびです。</sentence>
+<sentence>学童プールでジャンプを<event class="" eid="e21">やってる</event>と手を<event class="" eid="e22">離し</event>て<event class="" eid="e23">ジャンプさせてみよう</event>と<event class="" eid="e24">やってる</event>と、ちびは手を<event class="" eid="e25">離し</event>てのジャンプは<event class="STATE" eid="e26">不安らしく</event>なかなかジャンプを<event class="" eid="e27">してくれなかった</event>よ。</sentence>
+<sentence>でも２回くらい指先が<event class="" eid="e28">触れる</event>か<event class="" eid="e29">触れない</event>かというところで<event class="" eid="e30">ジャンプしてた</event>。</sentence>
+<sentence>すっかり水に<event class="" eid="e31">入っ</event>ても<event class="STATE" eid="e32">大丈夫な</event>ちびです。</sentence>
+<sentence>ただ自分が<event class="" eid="e33">意識してなく</event>て水の中に<event class="" eid="e34">入る</event>のは鼻に水が<event class="" eid="e35">入っ</event>て<event class="STATE" eid="e36">嫌</event>みたい。</sentence>
+<sentence>背面で頭を水に<event class="" eid="e37">浸ける</event>のも<event class="STATE" eid="e38">苦手な</event>ようで頭を<event class="" eid="e39">持ち上げ</event>てなかなか赤ちゃんの時のお風呂のようには<event class="" eid="e40">できなかった</event>よ。</sentence>
+<sentence>最後のあいさつの後シャワーに<event class="" eid="e41">行く</event>と大行列。</sentence>
+<sentence type="fragment">ちびに順番<event class="STATE" eid="e42">長い</event>からプールに<event class="" eid="e43">行く</event>？と<event class="" eid="e44">聞い</event>ても「<event class="" eid="e45">行かない</event>」と<event class="" eid="e46">答えてた</event>のに、<event class="" eid="e47">待つ</event>のが<event class="STATE" eid="e48">嫌に</event><event class="" eid="e49">なった</event>のか<event class="STATE" eid="e50">急に</event>「</sentence>
+<sentence>ぷーる！</sentence>
+<sentence type="fragment">」と。。</sentence>
+<sentence>プールで<event class="" eid="e51">遊ばせてたら</event>先生たちもお話が<event class="" eid="e52">終わっ</event>て「<event class="" eid="e53">かえる</event>よ〜」と。</sentence>
+<sentence>そのころにはシャワーも<event class="" eid="e54">空いてた</event>からそのまま<event class="" eid="e55">入ろう</event>としたら<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">今度</TIMEX3>は「おしっこ〜」と。。。</sentence>
+<sentence>トイレに<event class="" eid="e56">連れ</event>て<event class="" eid="e57">行き</event>和式で用を<event class="" eid="e58">足させよう</event>としたら水着が<event class="" eid="e59">邪魔し</event>て<event class="STATE" eid="e60">うまく</event><event class="" eid="e61">またげなかった</event>。</sentence>
+<sentence>ママがちょっと<event class="" eid="e62">引っ張っ</event>て足が便器に<event class="" eid="e63">入らない</event>ように<event class="" eid="e64">しよう</event>としたらちびは<event class="" eid="e65">滑っ</event>て<event class="" eid="e66">転んだ</event>。</sentence>
+<sentence><event class="" eid="e67">転んだ</event>ちびは大泣き。</sentence>
+<sentence type="fragment">泣き方が<event class="STATE" eid="e68">激しい</event>割に、<event class="" eid="e69">けがしてる</event>風でも<event class="STATE" eid="e70">なかった</event>から「</sentence>
+<sentence><event class="" eid="e71">びっくりした</event>？</sentence>
+<sentence type="fragment">」って<event class="" eid="e72">聞く</event>と「<event class="" eid="e73">びっくりした</event>」と<event class="" eid="e74">言い</event>ながら<event class="" eid="e75">泣いてる</event>。</sentence>
+<sentence>近くに<event class="" eid="e76">いた</event>先生もなき声で<event class="" eid="e77">びっくりしてたらしい</event>よ。。</sentence>
+<sentence type="fragment"><event class="" eid="e78">着替え</event>てプールの観覧席でおにぎりを<event class="" eid="e79">食べた</event>のにまだ「</sentence>
+<sentence>ごはん<event class="" eid="e80">食べよ</event>！</sentence>
+<sentence type="fragment">」と喫茶店に<event class="" eid="e81">入ろう</event>と<event class="" eid="e82">してる</event>ちび。。。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2008-09" valueFromSurface="XXXX-09">９月</TIMEX3>から<TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2008-11" valueFromSurface="XXXX-11">１１月</TIMEX3>にも同じ親子水泳が<event class="" eid="e83">あるらしい</event>。</sentence>
+<sentence><event class="STATE" eid="e84">寒い</event>季節に<event class="" eid="e85">なる</event>しどう<event class="" eid="e86">しよう</event>かな。。。</sentence>
+<sentence>感じが<event class="" eid="e87">つかめた</event>からパパと３人で<event class="" eid="e88">行ってもいい</event>気も<event class="" eid="e89">する</event>しな。。。</sentence>
+<sentence>帰りに買い物に<event class="" eid="e90">行こう</event>と<event class="" eid="e91">思っていた</event>けどちびは車の中で<event class="STATE" eid="e92">眠</event>そう。。。と帰路を<event class="" eid="e93">変えたら</event>ちびは<event class="" eid="e94">寝始めた</event>。</sentence>
+<sentence>久し振りに大泣きも<event class="" eid="e95">し</event>て<event class="" eid="e96">疲れた</event>かな？</sentence>
+<sentence type="quasi"><enclosedCharacter description="○">１</enclosedCharacter>キック</sentence>
+<sentence type="quasi"><enclosedCharacter description="○">２</enclosedCharacter>水中歩行〜島泳ぎ</sentence>
+<sentence type="quasi"><enclosedCharacter description="○">３</enclosedCharacter>潜り</sentence>
+<sentence type="quasi"><enclosedCharacter description="○">４</enclosedCharacter>板キック</sentence>
+<sentence type="quasi"><enclosedCharacter description="○">５</enclosedCharacter>ノーブレキック</sentence>
+<sentence type="quasi"><enclosedCharacter description="○">６</enclosedCharacter>ゲーム</sentence>

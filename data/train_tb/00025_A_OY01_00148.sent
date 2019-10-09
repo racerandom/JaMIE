@@ -1,0 +1,52 @@
+<sentence type="quasi">電子回路設計、デジタル回路設計が<event class="STATE" eid="e1">論理的に</event><event class="" eid="e2">解る</event>，図解で初心者でも<event class="STATE" eid="e3">わかりやすい</event>電子回路の本、簡単電子回路の基礎、教科書（回路設計の本）基礎から応用まで</sentence>
+<sentence type="quasi">ＡＳＩＣの設計を前提と<event class="" eid="e4">した</event>デジタル回路設計（大規模ＩＣ設計）</sentence>
+<sentence type="quasi">　電子回路が<event class="STATE" eid="e5">面白い</event>ように<event class="" eid="e6">書ける</event>本、初めて（初級者）でもＯＫ</sentence>
+<sentence type="quasi">目　　　　　　　　次</sentence>
+<sentence type="quasi">１・同期式回路について</sentence>
+<sentence>　　職人技、非同期回路との違いと利点は？</sentence>
+<sentence type="quasi">２・コード変換技術</sentence>
+<sentence type="quasi">　　真理値表を<event class="" eid="e7">書こう</event></sentence>
+<sentence type="quasi">　　ＡＮＤ　ＯＲ　ＮＡＮＤ　ＮＯＲ　などで<event class="" eid="e8">書いてみよう</event></sentence>
+<sentence type="quasi">　　基本は積（ＡＮＤ）、和（ＯＲ）での回路</sentence>
+<sentence type="quasi">　　カルノー図、ブール代数で論理の圧縮を<event class="" eid="e9">してみよう</event></sentence>
+<sentence type="quasi">３・シーケンサの設計</sentence>
+<sentence>　全ての出来事は、カウンタで<event class="" eid="e10">動作している</event>。</sentence>
+<sentence type="quasi">　<event class="STATE" eid="e11">良い</event>カウンタ、<event class="STATE" eid="e12">悪い</event>カウンタ</sentence>
+<sentence type="quasi">　自分でカウンタを<event class="" eid="e13">設計しよう</event></sentence>
+<sentence type="quasi">　シーケンサの設計について（順序回路の設計）</sentence>
+<sentence type="quasi">　状態遷移図を<event class="" eid="e14">描こう</event>（ステートマシン）</sentence>
+<sentence>　規模が<event class="STATE" eid="e15">大きい</event>回路は状態遷移図を<event class="" eid="e16">掘り下げる</event>。</sentence>
+<sentence type="quasi">（階層設計）</sentence>
+<sentence type="quasi">　回路設計を図面に<event class="" eid="e17">落す</event></sentence>
+<sentence>　　　実際の回路設計はどう<event class="" eid="e18">する</event>のか？</sentence>
+<sentence type="quasi">３・<event class="" eid="e19">いけない</event>設計と<event class="STATE" eid="e20">よい</event>設計</sentence>
+<sentence type="quasi">　信頼性の<event class="STATE" eid="e21">高い</event>回路設計とは</sentence>
+<sentence type="quasi">４・<event class="STATE" eid="e22">具体的な</event>設計演習</sentence>
+<sentence type="quasi">　シリアルーパラレル変換回路の設計演習</sentence>
+<sentence type="quasi">５・その他</sentence>
+<sentence>このテキストであなたも<event class="STATE" eid="e23">立派な</event>システム設計者に<event class="" eid="e24">なれます</event>。</sentence>
+<sentence type="quasi">著者略歴　　〓〓〓〓〓　<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="1964-05-07" valueFromSurface="1964-05-07">１９６４．５．７</TIMEX3>生</sentence>
+<sentence type="quasi">　<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="1987" valueFromSurface="1987">１９８７</TIMEX3>　墨総合研究所入社</sentence>
+<sentence type="quasi">　<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="1997" valueFromSurface="1997">１９９７</TIMEX3>　ＡＩＳＩＮ精機入社</sentence>
+<sentence type="quasi">　<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2001" valueFromSurface="2001">２００１</TIMEX3>　株式会社北島製作所設立</sentence>
+<sentence type="quasi">　独学で電子回路に関する<event class="STATE" eid="e25">様々な</event>経験を<event class="" eid="e26">持ち</event>、得にゲートアレイではその設計手法は<webBr /><event class="" eid="e27">すぐれた</event>ものが<event class="" eid="e28">ある</event></sentence>
+<sentence type="quasi">ご購入は</sentence>
+<sentence type="quasi">〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓</sentence>
+<sentence>に見積もり依頼を<event class="" eid="e29">してください</event>。</sentence>
+<sentence>尚、<event class="" eid="e30">授かった</event>お客様の情報は他へ<event class="" eid="e31">漏れる</event>ことは<event class="" eid="e32">ありません</event>。</sentence>
+<sentence><event class="" eid="e33">ご安心下さい</event>。</sentence>
+<sentence type="quasi">北島製作所は・↓・</sentence>
+<sentence type="quasi">ｈｔｔｐ：／／ｗｗｗ．ｋｉｔａｊｉｍａ−ｓ．ｊｐ／</sentence>
+<sentence type="quasi">☆☆☆　一冊　５１５円　（税込み、代引きです）（送料別）</sentence>
+<sentence type="quasi">図解と具体例で<event class="STATE" eid="e34">わかりやすく</event>、<event class="STATE" eid="e35">よけいな</event>ものは一切<event class="" eid="e36">省きました</event></sentence>
+<sentence>☆　１章ごとの注文も<event class="" eid="e37">承ります</event>。</sentence>
+<sentence type="quasi">２１５円／章（税込み、代引き　<webBr />送料別）</sentence>
+<sentence>内容を<event class="" eid="e38">確認し</event>ながら<event class="" eid="e39">進められます</event>。</sentence>
+<sentence type="quasi">☆☆☆☆☆　データサービス</sentence>
+<sentence>　一冊のみです。</sentence>
+<sentence>あらかじめ弊社指定講座に振込みを<event class="" eid="e40">していただいた</event>場合、弊社の方から、メールでテキスト（本）を<event class="" eid="e41">送付いたします</event>。</sentence>
+<sentence type="quasi">６５０円／冊（税込み）（振込み手数料はお客さま負担で<event class="" eid="e42">お願いします</event>）</sentence>
+<sentence type="quasi">口座　〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓　</sentence>
+<sentence type="quasi">　　　〓〓〓〓〓</sentence>
+<sentence type="quasi">メールで<event class="" eid="e43">送金した</event>と<event class="" eid="e44">連絡下さい</event>　</sentence>
+<sentence type="quasi">〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓</sentence>

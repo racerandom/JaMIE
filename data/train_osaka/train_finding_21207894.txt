@@ -1,0 +1,5 @@
+<a>両側肺下葉優位</a>に<d certainty="positive">収縮性変化</d>を伴う<d certainty="positive">網状影やすりガラス影、索状影</d>を認めます。<a>両肺下葉や左舌区</a>では<a>気管支血管束</a>に沿うように分布し、<a>両肺上葉</a>では<a>胸膜直下</a>に<d certainty="positive">陰影</d>を認めます。<d certainty="suspicious">NSIP型の間質性肺炎</d>を疑います。前回CT(2017/3/29)と比較して、<d certainty="positive">陰影</d>に<f>明らかな</f>変化を認めませんが、<a>左下葉</a>は<d certainty="positive">軽度容積減少</d>しています。
+<f>有意</f>な<d certainty="negative">リンパ節腫大</d>を認めません。
+<a>大動脈弁、冠動脈</a>に<d certainty="positive">石灰化</d>あり。
+<d certainty="negative">胸水</d>なし。
+<d certainty="positive">肋骨多発骨折</d>に変化なし。

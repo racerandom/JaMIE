@@ -1,0 +1,5 @@
+<a>両側下葉優位</a>に<d certainty="positive">収縮性変化</d>を伴う<d certainty="positive">すりガラス状陰影・網状影・索状影・気管支拡張像</d>を認めます。前回(13/08/02)と著変ありません。<d certainty="positive">皮膚筋炎</d>に伴う<d certainty="suspicious">間質性肺炎</d>(<d certainty="suspicious">NSIP pattern</d>)を疑います。
+<a>縦隔内・肺門部</a>に<d certainty="positive">小リンパ節</d>を<f>多数</f>認めます。前回より<c>縮小</c>しています。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>を認めます。
+<a>甲状腺両葉</a>に<d certainty="positive">small LDA(+)</d>。前回と著変ありません。
+<d certainty="negative">胸水(-)</d>。

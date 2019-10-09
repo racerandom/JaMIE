@@ -1,0 +1,5 @@
+<sentence><event class="" eid="e1">結婚する</event>予定の彼の両親が、我が家に挨拶に<event class="" eid="e2">来てくれます</event>。</sentence>
+<sentence>結納をどう<event class="" eid="e3">する</event>か等の、話し合いも<event class="" eid="e4">兼ね</event>てなのですが<webBr />その際に、こちらで<event class="" eid="e5">用意する</event>ものは<event class="" eid="e6">あります</event>か？</sentence>
+<sentence>食事等の気遣いは<event class="" eid="e7">しない</event>ようにと、<TIMEX3 definite="TRUE" mod="ON_OR_AFTER" tid="t1" type="TIME" value="XXXX-XX-XXTAF" valueFromSurface="XXXX-XX-XXTAF">昼以降</TIMEX3>に<event class="" eid="e8">来てくれるのです</event>が<webBr />お茶等を<event class="" eid="e9">お出しする</event>だけで、<event class="STATE" eid="e10">良いのでしょう</event>か？</sentence>
+<sentence>お茶やお茶菓子だけで<event class="STATE" eid="e11">いい</event>と<event class="" eid="e12">思います</event>よ。</sentence>
+<sentence>お茶菓子はなるべく<event class="STATE" eid="e13">食べやすい</event>物を！</sentence>

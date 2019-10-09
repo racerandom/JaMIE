@@ -1,0 +1,39 @@
+<sentence type="quasi">無形文化財保護へ</sentence>
+<sentence type="quasi">ユネスコ条約を日本政府が締結</sentence>
+<sentence type="quasi">【パリ<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2004-06-15" valueFromSurface="XXXX-XX-15">１５日</TIMEX3>　坂井政美】</sentence>
+<sentence>　日本政府は<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2004-06-15" valueFromSurface="XXXX-XX-15">十五日</TIMEX3>、世界の民族文化財や口承伝統などの保存を<EVENT class="I_ACTION" eid="e1">目指した</EVENT>国連教育科学文化機関（ユネスコ）の無形文化遺産保護条約を<EVENT class="OCCURRENCE" eid="e2">締結した</EVENT>。</sentence>
+<sentence>ユネスコ日本政府代表部の佐藤禎一大使がパリのユネスコ本部に締約受諾書を<EVENT class="OCCURRENCE" eid="e3">提出した</EVENT>。</sentence>
+<sentence>　同条約は<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2003-10" valueFromSurface="XXXX-10">昨年十月</TIMEX3>のユネスコ総会で<EVENT class="I_ACTION" eid="e4">採択された</EVENT>。</sentence>
+<sentence>締結はアルジェリアなどに<EVENT class="OCCURRENCE" eid="e5">続い</EVENT>て三カ国目。</sentence>
+<sentence>　条約締結国に国内の無形文化遺産の保護や目録の作成を<EVENT class="I_ACTION" eid="e6">求める</EVENT>とともに、国際協力のための基金設置などを<EVENT class="I_ACTION" eid="e7">盛り込んでいる</EVENT>。</sentence>
+<sentence>条約締結国で<EVENT class="NULL" eid="e8">つくる</EVENT>無形文化遺産保護のための委員会は<quote>「人類の無形文化遺産リスト」</quote>を<EVENT class="OCCURRENCE" eid="e9">策定し</EVENT>、<EVENT class="NULL" eid="e10">代表的な</EVENT>無形遺産や<EVENT class="NULL" eid="e11">緊急に</EVENT><EVENT class="OCCURRENCE" eid="e12">保護する</EVENT>必要の<EVENT class="STATE" eid="e13">ある</EVENT>口承伝統などを<EVENT class="OCCURRENCE" eid="e14">指定する</EVENT>。</sentence>
+<sentence>　同条約は、三十カ国が<EVENT class="OCCURRENCE" eid="e15">批准し</EVENT>てから<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P3M" valueFromSurface="P3M">三カ月後</TIMEX3>に<EVENT class="OCCURRENCE" eid="e16">発効する</EVENT>。</sentence>
+<sentence>　日本は世界に<EVENT class="OCCURRENCE" eid="e17">先駆け</EVENT><sampling type="start" />て無形文化財の保護に<EVENT class="I_ACTION" eid="e18">取り組んでおり</EVENT>、<TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2000" valueFromSurface="2000">二〇〇〇年</TIMEX3>の主要国首脳会議（九州・沖縄サミット）でユネスコによる世界の無形文化財保護を提唱。</sentence>
+<sentence>同条約の採択に<EVENT class="I_ACTION" eid="e19">向け</EVENT>て<EVENT class="NULL" eid="e20">主導的な</EVENT>役割を<EVENT class="I_ACTION" eid="e21">果たしてきた</EVENT>。</sentence>
+<sentence type="quasi">米、台湾参加を支持　ＷＨＯ総会</sentence>
+<sentence type="quasi">【ワシントン<TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2004-06-14" valueFromSurface="XXXX-XX-14">１４日</TIMEX3>　共同】</sentence>
+<sentence>　ブッシュ米大統領は<TIMEX3 definite="FALSE" tid="t7" type="DATE" value="2004-06-14" valueFromSurface="XXXX-XX-14">十四日</TIMEX3>、世界保健機関（ＷＨＯ）総会への台湾の参加を<EVENT class="I_ACTION" eid="e22">支持し</EVENT>、参加を<EVENT class="I_ACTION" eid="e23">実現させる</EVENT>ための法案に<EVENT class="OCCURRENCE" eid="e24">署名した</EVENT>。</sentence>
+<sentence>　大統領は<TIMEX3 definite="FALSE" tid="t8" type="DATE" value="2004-06-14" valueFromSurface="XXXX-XX-XX">同日</TIMEX3><EVENT class="REPORTING" eid="e25">発表した</EVENT>声明で<quote>「米国はオブザーバーの地位を<EVENT class="NULL" eid="e26">含め</EVENT>台湾がＷＨＯの活動に<EVENT class="I_ACTION" eid="e27">参加する</EVENT>ことを<EVENT class="NULL" eid="e28">全面的に</EVENT><EVENT class="I_ACTION" eid="e29">支持する</EVENT>」</quote>と指摘。</sentence>
+<sentence>同時に<quote>「一つの中国政策は不変」</quote>と<EVENT class="I_ACTION" eid="e30">し</EVENT>、米政府の対中政策に変更は<EVENT class="STATE" eid="e31">ない</EVENT>と<EVENT class="I_ACTION" eid="e32">表明した</EVENT>。</sentence>
+<sentence>　ＷＨＯは<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="2004-05-18" valueFromSurface="XXXX-05-18">五月十八日</TIMEX3>、ジュネーブで<EVENT class="I_ACTION" eid="e33">開いた</EVENT>総会で台湾の総会へのオブザーバー参加問題を議題と<EVENT class="I_ACTION" eid="e34">しない</EVENT>ことを<EVENT class="I_ACTION" eid="e35">決め</EVENT>、オブザーバー参加を<EVENT class="I_ACTION" eid="e36">認めなかった</EVENT>。</sentence>
+<sentence>これまでにもブッシュ政権閣僚は台湾のオブザーバー参加を<EVENT class="I_ACTION" eid="e37">支持する</EVENT>立場を<EVENT class="I_ACTION" eid="e38">表明している</EVENT>が、中国政府は台湾の参加に<EVENT class="NULL" eid="e39">強く</EVENT><EVENT class="I_ACTION" eid="e40">反対している</EVENT>。</sentence>
+<sentence type="quasi">台湾外交部が歓迎</sentence>
+<sentence type="quasi">【台北<TIMEX3 definite="FALSE" tid="t10" type="DATE" value="2004-06-15" valueFromSurface="XXXX-XX-15">１５日</TIMEX3>　竜口英幸】</sentence>
+<sentence>　台湾外交部は<TIMEX3 definite="FALSE" tid="t11" type="DATE" value="2004-06-15" valueFromSurface="XXXX-XX-15">十五日</TIMEX3>、ブッシュ大統領が世界保健機関（ＷＨＯ）への台湾の参加を<EVENT class="I_ACTION" eid="e41">実現させる</EVENT>ための法案に<EVENT class="OCCURRENCE" eid="e42">署名した</EVENT>ことについて、歓迎声明を<EVENT class="OCCURRENCE" eid="e43">発表した</EVENT>。</sentence>
+<sentence type="fragment">　声明は、同大統領の法案署名へ歓迎と感謝を<EVENT class="I_ACTION" eid="e44">表明し</EVENT></sentence>
+<sentence>「米国の支持は、台湾の（ＷＨＯ参加への）努力が既に友邦の理解を<EVENT class="I_ACTION" eid="e45">得た</EVENT>ことを<EVENT class="STATE" eid="e46">意味する</EVENT>。</sentence>
+<sentence type="quasi"><TIMEX3 type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今後</TIMEX3>、全力を<EVENT class="OCCURRENCE" eid="e47">挙げ</EVENT>て国際社会の<EVENT class="NULL" eid="e48">全面的な</EVENT>賛同を<EVENT class="I_ACTION" eid="e49">得られる</EVENT>よう<EVENT class="I_ACTION" eid="e50">努力する</EVENT>」</sentence>
+<sentence type="fragment">と<EVENT class="REPORTING" eid="e51">述べている</EVENT>。</sentence>
+<sentence type="quasi">シャロン首相不起訴処分に</sentence>
+<sentence type="quasi">リゾート汚職疑惑</sentence>
+<sentence type="quasi">【エルサレム<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="2004-06-15" valueFromSurface="XXXX-XX-15">１５日</TIMEX3>　共同】</sentence>
+<sentence>　ギリシャのリゾート買収に<EVENT class="I_ACTION" eid="e52">絡む</EVENT>イスラエルのシャロン首相の汚職疑惑で、同国のマズーズ検事総長は<TIMEX3 definite="FALSE" tid="t13" type="DATE" value="2004-06-15" valueFromSurface="XXXX-XX-15">十五日</TIMEX3>、首相を<EVENT class="NULL" eid="e53">証拠不十分</EVENT>で不起訴処分と<EVENT class="I_ACTION" eid="e54">する</EVENT>ことを<EVENT class="I_ACTION" eid="e55">決めた</EVENT>。</sentence>
+<sentence><EVENT class="OCCURRENCE" eid="e56">起訴されれ</EVENT>ば辞任を<EVENT class="I_ACTION" eid="e57">迫られる</EVENT>ことも<EVENT class="I_STATE" eid="e58">予想された</EVENT>だけに、ガザ地区撤退などの推進に弾みが<EVENT class="OCCURRENCE" eid="e59">つき</EVENT>そうだ。</sentence>
+<sentence>　首相は外相だった<TIMEX3 definite="FALSE" tid="t14" type="DATE" value="1998" valueFromSurface="1998">一九九八</TIMEX3>―<TIMEX3 definite="FALSE" tid="t15" type="DATE" value="1999" valueFromSurface="XX99">九九年</TIMEX3>に<EVENT class="OCCURRENCE" eid="e60">かけ</EVENT>、ギリシャのリゾート買収で便宜を<EVENT class="I_ACTION" eid="e61">図る</EVENT>見返りに、息子を<EVENT class="OCCURRENCE" eid="e62">通じ</EVENT>イスラエル人実業家から現金三百万ドルの支払いを<EVENT class="I_ACTION" eid="e63">約束された</EVENT>疑いが<EVENT class="I_ACTION" eid="e64">持たれていた</EVENT>。</sentence>
+<sentence type="quasi">アフガン選挙　米に支援要請</sentence>
+<sentence type="quasi">カルザイ大統領</sentence>
+<sentence type="quasi">【ワシントン<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="2004-06-15" valueFromSurface="XXXX-XX-15">１５日</TIMEX3>　共同】</sentence>
+<sentence>　ブッシュ米大統領は<TIMEX3 definite="FALSE" tid="t17" type="DATE" value="2004-06-15" valueFromSurface="XXXX-XX-15">十五日</TIMEX3>、ホワイトハウスで訪米中のアフガニスタンのカルザイ大統領と首脳会談を<EVENT class="I_ACTION" eid="e65">行った</EVENT>。</sentence>
+<sentence>カルザイ大統領は、恒久政権樹立のため<TIMEX3 definite="FALSE" tid="t18" type="DATE" value="2004-09" valueFromSurface="XXXX-09">九月</TIMEX3>に<EVENT class="I_STATE" eid="e66">予定している</EVENT>選挙に<EVENT class="I_ACTION" eid="e67">向けた</EVENT>支援強化を要請。</sentence>
+<sentence>　アフガンでは、有権者登録など手続きの遅れや治安上の問題から、<TIMEX3 definite="FALSE" tid="t19" type="DATE" value="2004-06" valueFromSurface="XXXX-06">今年六月</TIMEX3>から<TIMEX3 definite="FALSE" tid="t20" type="DATE" value="2004-09" valueFromSurface="XXXX-09">九月</TIMEX3>への延期に<EVENT class="I_ACTION" eid="e68">続き</EVENT>、選挙が<EVENT class="I_ACTION" eid="e69">再延期される</EVENT>可能性が<EVENT class="I_ACTION" eid="e70">指摘されており</EVENT>、カルザイ大統領は米国の支援強化により、こう<EVENT class="NULL" eid="e71">した</EVENT>懸念を払しょく、予定通りの選挙実現を<EVENT class="I_STATE" eid="e72">図りたい</EVENT>考えだ。</sentence>
+<sentence>　アフガ<sampling type="end" />ン問題は<TIMEX3 definite="FALSE" tid="t21" type="DATE" value="2004-06-3J" valueFromSurface="XXXX-XX-3J">今月下旬</TIMEX3>にイスタンブールで<EVENT class="I_ACTION" eid="e73">開かれる</EVENT>ＮＡＴＯ首脳会議で議題と<EVENT class="OCCURRENCE" eid="e74">なる</EVENT>見通し。</sentence>

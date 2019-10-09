@@ -1,0 +1,5 @@
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2005-03" valueFromSurface="XXXX-03">３月</TIMEX3>に大学を<event class="" eid="e1">卒業し</event>て、<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">明日</TIMEX3>が初出勤です。</sentence>
+<sentence>そのとき、菓子折りは<event class="" eid="e2">持っ</event>て<event class="" eid="e3">いった</event>ほうが<event class="STATE" eid="e4">良いのでしょう</event>か？？</sentence>
+<sentence><event class="" eid="e5">要りません</event>。</sentence>
+<sentence><event class="STATE" eid="e6">不要です</event>。</sentence>
+<sentence>それより、最初の給料、ボーナスで、<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>まで、<event class="" eid="e7">支えてくれた</event>ご両親のプレゼント・感謝の印に<event class="" eid="e8">使いましょう</event>。</sentence>

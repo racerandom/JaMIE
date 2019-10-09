@@ -1,0 +1,13 @@
+<a>両肺下葉胸膜下優位</a>に<d certainty="positive">volume loss網状影、すりガラス影</d>を認めます。<d certainty="positive">牽引性気管支拡張像</d>を認める他、<d certainty="positive">嚢胞性陰影</d>を認めます。治療経過中の<d certainty="positive">間質性肺炎</d>と考えます。前回（2011/5/20）と比較して、<a>左下葉</a>の<d certainty="positive">陰影</d>は<c>軽度増強</c>しているように見えます。また、<a>末梢胸膜直下</a>の<d certainty="positive">嚢胞性陰影</d>は、<c>増大</c>するものや<c>縮小</c>するものが<f>混在</f>しています。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節腫大</d>は指摘できません。
+<d certainty="negative">胸水</d>なし。
+<a>上行大動脈径、肺動脈主幹部径</a>、ともに前回と著変ありません。
+<a>右第8肋骨</a>に<d certainty="positive">陳旧性骨折</d>が認められます。
+<d certainty="positive">胆石</d>あり。
+<a>両肺下葉胸膜下優位</a>に<d certainty="positive">volume loss</d>を伴った<d certainty="positive">網状影、すりガラス影</d>を認めます。<d certainty="positive">牽引性気管支拡張像</d>を認める他、<d certainty="positive">蜂巣肺</d>と思われる<d certainty="positive">嚢胞性陰影</d>を認めます。治療経過中の<d certainty="positive">間質性肺炎</d>と考えます。前回（2013/2/20）と比較して、<a>両側肺</a>の吸気状態がやや良いため、<a>両側下葉</a>の<d certainty="positive">すりガラス影</d>は<c>やや軽減</c>して見えます。また、<a>末梢胸膜直下</a>の<d certainty="positive">嚢胞性陰影</d>は、<c>増大</c>するものや<c>縮小</c>するものが<f>混在</f>しています。
+<a>中葉</a>に<d certainty="positive">小結節</d>あり。前回と同様です。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節腫大</d>は指摘できません。
+<d certainty="negative">胸水</d>なし。
+<a>上行大動脈径、肺動脈主幹部径</a>、ともに前回と著変ありません。
+<a>右第8肋骨</a>に<d certainty="positive">陳旧性骨折後変化</d>あり。
+<d certainty="positive">胆石</d>あり。

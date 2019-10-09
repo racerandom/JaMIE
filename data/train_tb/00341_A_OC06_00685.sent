@@ -1,0 +1,20 @@
+<sentence>よくスポーツカーとかに<event class="" eid="e1">ある</event>、アーシングて何でしょうか？</sentence>
+<sentence>また、どう<event class="" eid="e2">いった</event>使い方を<event class="" eid="e3">するのでしょう</event>か？</sentence>
+<sentence>ある回答を<event class="" eid="e4">見</event>て、自分も<event class="" eid="e5">やってみました</event>。</sentence>
+<sentence>車は、<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2005-04" valueFromSurface="XXXX-04">本年４月</TIMEX3>購入のフォレスターです。</sentence>
+<sentence>私は、ＫＩＶ５．５スクエア電線で、シリンダブロック、ヘッド、シャーシの左右に各１点、ＡＴに１点<event class="" eid="e6">設けました</event>。</sentence>
+<sentence>バッテリーとの間に、接点容量２７Ａのリレーを<event class="" eid="e7">設け</event>て車内から接続／切断が<event class="" eid="e8">できる</event>ように<event class="" eid="e9">しました</event>。</sentence>
+<sentence>実験は、接続／切断の切換を<event class="" eid="e10">行っ</event>ての比較です。</sentence>
+<sentence>１．エンジンの振動が<event class="STATE" eid="e11">大きく</event><event class="" eid="e12">なった</event>。</sentence>
+<sentence type="quasi">（はっきり<event class="" eid="e13">わかる</event>）</sentence>
+<sentence>２．排気音は<event class="" eid="e14">変わらない</event>？</sentence>
+<sentence type="quasi">（違いが<event class="" eid="e15">わかりません</event>）</sentence>
+<sentence>３．エンジン自体が<event class="STATE" eid="e16">うるさく</event><event class="" eid="e17">なった</event>。</sentence>
+<sentence type="quasi">（はっきりではありませんが、<event class="" eid="e18">わかります</event>。）</sentence>
+<sentence>４．出だしは<event class="" eid="e19">変わりません</event>？</sentence>
+<sentence type="quasi">（違いが<event class="" eid="e20">わかりません</event>）</sentence>
+<sentence>５．エンジンの伸びが<event class="STATE" eid="e21">良く</event><event class="" eid="e22">なった</event>。</sentence>
+<sentence type="quasi">（はっきり<event class="" eid="e23">わかる</event>）</sentence>
+<sentence>６．燃費は<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="2005-XX" valueFromSurface="XXXX-XX">今月</TIMEX3>から<event class="" eid="e24">始めたので</event>、まだ良く<event class="" eid="e25">わかりません</event>。</sentence>
+<sentence>伸びは<event class="STATE" eid="e26">良く</event><event class="" eid="e27">なります</event>が、振動と騒音が<event class="" eid="e28">悪化する</event>事が<event class="" eid="e29">わかりました</event>。</sentence>
+<sentence>ちなみにリレーを<event class="" eid="e30">ＯＮ／ＯＦＦする</event>と接点で結構火花が<event class="" eid="e31">出るので</event>、<event class="STATE" eid="e32">かなり</event>の電流が<event class="" eid="e33">流れている</event>ようです。</sentence>

@@ -1,0 +1,56 @@
+<sentence type="quasi">Ｓｏｆｔｗａｒｅ</sentence>
+<sentence type="quasi">ＶｏＩＰの音声品質を遠隔監視</sentence>
+<sentence type="quasi">「Ａｒｔｉｚａ　Ｓｏｆｔｗａｒｅ　Ｐｒｏｂｅ」</sentence>
+<sentence type="quasi">●アルチザネットワークス</sentence>
+<sentence>　ＶｏＩＰ（Ｖｏｉｃｅ　ｏｖｅｒ　ＩＰ）ネットワーク上の複数拠点の音声品質を、遠隔地からリアルタイムで<event class="" eid="e1">集中管理できる</event>ソフト。</sentence>
+<sentence>ＶｏＩＰモニタリングソフト<quote>「Ａｒｔｉｚａ　ＶｏＩＰ　Ａｎａｌｙｚｅｒ」</quote>と、データの収集および測定を<event class="" eid="e2">行なう</event><quote>「ソフトウェアプローブ（ＳＰ）」</quote>、ＳＰを<event class="" eid="e3">コントロールする</event><quote>「ＳＰマネージャ」</quote>で<event class="" eid="e4">構成される</event>。</sentence>
+<sentence>　<event class="STATE" eid="e5">具体的に</event>は、プロミスキャスモード機能付きＮＩＣを<event class="" eid="e6">搭載した</event>ＰＣにＳＰを<event class="" eid="e7">インストールし</event>、これを監視対象拠点に<event class="" eid="e8">設置する</event>。</sentence>
+<sentence>こう<event class="" eid="e9">する</event>ことで、対象と<event class="" eid="e10">なる</event>ネットワークに<event class="" eid="e11">流れる</event>パケットを<event class="" eid="e12">収集できる</event>ように<event class="" eid="e13">なる</event>。</sentence>
+<sentence><event class="" eid="e14">収集できる</event>データは、ＲＴＰ（Ｒｅａｌｔｉｍｅ　Ｔｒａｎｓｐｏｒｔ　Ｐｒｏｔｏｃｏｌ）のパケット数やネットワークのＲ値、回線使用率などで、管理者はＳＰマネージャで<event class="" eid="e15">分析する</event>。</sentence>
+<sentence>また、管理者が任意に<event class="" eid="e16">設定した</event>スケジュールに<event class="" eid="e17">従っ</event>て、<event class="STATE" eid="e18">定期的に</event>データを<event class="" eid="e19">収集する</event>ことも<event class="" eid="e20">できる</event>。</sentence>
+<sentence type="quasi">［プロミスキャスモード］</sentence>
+<sentence>　通常のＮＩＣ（Ｎｅｔｗｏｒｋ　Ｉｎｔｅｒｆａｃｅ　Ｃａｒｄ）は、Ｅｔｈｅｒｎｅｔフレームの宛先ＭＡＣ（Ｍｅｄｉａ　Ａｃｃｅｓｓ　Ｃｏｎｔｒｏｌ）アドレスが自分と<event class="" eid="e21">異なる</event>場合、自分宛ではないと<event class="" eid="e22">判断し</event>、そのフレームを<event class="" eid="e23">破棄する</event>。</sentence>
+<sentence>しかし、プロミスキャスモードに<event class="" eid="e24">設定しておけ</event>ば、自分宛ではないフレーム（パケット）もすべて<event class="" eid="e25">取り込むことができる</event>。</sentence>
+<sentence>パケットキャプチャ系のソフトを<event class="" eid="e26">使う</event>場合、このモードが<event class="" eid="e27">利用できる</event>ＮＩＣが<event class="STATE" eid="e28">必須に</event><event class="" eid="e29">なっている</event>ことが<event class="STATE" eid="e30">多い</event>。</sentence>
+<sentence type="quasi">［Ｒ値］</sentence>
+<sentence>　ＴＴＣ（Ｔｈｅ　Ｔｅｌｅｃｏｍｍｕｎｉｃａｔｉｏｎ　Ｔｅｃｈｎｏｌｏｇｙ　Ｃｏｍｍｉｔｔｅｅ、社団法人情報通信技術委員会）が<event class="" eid="e31">指定した</event>ＩＰ電話サービスの品質評価値。</sentence>
+<sentence><event class="STATE" eid="e32">機械的に</event><event class="" eid="e33">測定した</event><event class="STATE" eid="e34">客観的な</event>値で、ＩＴＵ（Ｉｎｔｅｒｎａｔｉｏｎａｌ　Ｔｅｌｅｃｏｍｍｕｎｉｃａｔｉｏｎ　Ｕｎｉｏｎ、国際電気通信連合）勧告Ｇ．１０７に<event class="" eid="e35">準拠している</event>。</sentence>
+<sentence><event class="" eid="e36">対し</event>て、評価者が耳で<event class="" eid="e37">聞い</event>て<event class="STATE" eid="e38">主観的に</event><event class="" eid="e39">評価した</event>値は<quote>「ＭＯＳ（Ｍｅａｎ　Ｏｐｉｎｉｏｎ　Ｓｃｏｒｅ）値」</quote>と<event class="" eid="e40">呼ばれている</event>。</sentence>
+<sentence>　対応ＯＳはＷｉｎｄｏｗｓ　ＮＴ　４．０／２０００／ＸＰ　Ｐｒｏｆｅｓｓｉｏｎａｌで、価格は３２０万円。</sentence>
+<sentence>この中には、Ａｒｔｉｚａ　ＶｏＩＰ　Ａｎａｌｙｚｅｒが１ライセン<sampling type="start" />ス、ＳＰが２ライセンス、ＳＰマネージャが１ライセンス<event class="" eid="e41">含まれる</event>。</sentence>
+<sentence type="quasi">［Ｅ‐ｍａｉｌ］　ｖｏｉｐ＠ａｒｔｉｚａ．ｃｏ．ｊｐ</sentence>
+<sentence type="quasi">［ＵＲＬ］　ｈｔｔｐ：／／ｗｗｗ．ａｒｔｉｚａ．ｃｏ．ｊｐ／</sentence>
+<sentence type="quasi">ＨＤＤデータ消去ユーティリティ</sentence>
+<sentence type="quasi">「ＣＬＥＡＲ‐ＤＡ　Ｖ２．５０」</sentence>
+<sentence type="quasi">●日立製作所</sentence>
+<sentence>ＨＤＤ内のデータを<event class="STATE" eid="e42">完全に</event><event class="" eid="e43">消去し</event>、機密情報や個人情報の第３者への漏えいを<event class="" eid="e44">防止する</event>ソフトのバージョンアップ版。</sentence>
+<sentence>ドライブ内の全消去に<event class="" eid="e45">加え</event>、<event class="" eid="e46">指定した</event>パーティションのみ<event class="" eid="e47">消去する</event>機能を<event class="" eid="e48">追加した</event>。</sentence>
+<sentence>データの消去方法には、<quote>「００」</quote>か<quote>「ＦＦ」</quote>を、<event class="" eid="e49">指定した</event>パーティションに<event class="" eid="e50">書き込む</event>方式や、２種類の<event class="" eid="e51">異なる</event>ランダムデータの次に<quote>「００」</quote>を<event class="" eid="e52">書き込む</event>作業を３回<event class="" eid="e53">繰り返す</event><quote>「ＮＳＡ標準方式」</quote>など、６種類の方法が<event class="" eid="e54">選択できる</event>。</sentence>
+<sentence>１回<event class="" eid="e55">消去する</event>ごとに１ライセンス（６００円）が<event class="STATE" eid="e56">必要に</event><event class="" eid="e57">なる</event>。</sentence>
+<sentence type="quasi">［Ｆｒｅｅｄｉａｌ］　０１２０‐２５８０１２</sentence>
+<sentence type="quasi">［ＵＲＬ］　ｈｔｔｐ：／／ｄｉｒｅｃｔ．ｈｉｔａｃｈｉ．ｃｏ．ｊｐ／</sentence>
+<sentence type="quasi">Ｌｉｎｕｘディストリビューションの最新版</sentence>
+<sentence type="quasi">「Ｒｅｄ　Ｈａｔ　Ｌｉｎｕｘ　９」</sentence>
+<sentence type="quasi">●レッドハット</sentence>
+<sentence>Ｒｅｄ　Ｈａｔ　Ｌｉｎｕｘの最新版で、同８から<event class="" eid="e58">採用された</event>デスクトップ環境の<quote>「Ｂｌｕｅｃｕｒｖｅ」</quote>を<event class="" eid="e59">強化した</event>バージョン。</sentence>
+<sentence><event class="" eid="e60">収録した</event>主なコンポーネントのバージョンは、ｇｃｃ　３．２．２、ＧＮＵ　ｌｉｂｃ　２．３．２、ＧＮＯＭＥ　２．２．０、ＧＮＵ　Ｅｍａｃｓ　２１．２、ＫＤＥ　３．１などで、ｋｅｒｎｅｌは２．４．２０を<event class="" eid="e61">採用した</event>。</sentence>
+<sentence>また、オフィスアプリケーションとしてオープンソースの<quote>「ＯｐｅｎＯｆｆｉｃｅ．ｏｒｇ　１．０．２」</quote>やＷｅｂブラウザの<quote>「Ｍｏｚｉｌｌａ　１．２．１」</quote>を<event class="" eid="e62">同梱する</event>。</sentence>
+<sentence>価格は６８００円。</sentence>
+<sentence type="quasi">［Ｅ‐ｍａｉｌ］　ｓａｌｅｓ‐ｊｐ＠ｒｅｄｈａｔ．ｃｏｍ</sentence>
+<sentence type="quasi">［ＵＲＬ］　ｈｔｔｐ：／／ｗｗｗ．ｒｅｄｈａｔ．ｃｏ．ｊｐ／</sentence>
+<sentence type="quasi">個人ユーザー向けのＩＤＳ</sentence>
+<sentence type="quasi">「ＲｅａｌＳｅｃｕｒｅ　ＢｌａｃｋＩＣＥ　ＰＣ　Ｐｒｏｔｅｃｔｉｏｎ」</sentence>
+<sentence type="quasi">●アクト・ツー</sentence>
+<sentence>個人向けのＩＤＳ（Ｉｎｔｒｕｓｉｏｎ　Ｄｅｔｅｃｔｉｏｎ　Ｓｙｓｔｅｍ、不正侵入検知・防御）ソフト。</sentence>
+<sentence>攻撃を<event class="" eid="e63">検知した</event>際にリアルタイムでファイアウォールのポート設定などを<event class="" eid="e64">変更する</event>自動設定ファイアウォールを<event class="" eid="e65">搭載する</event>。</sentence>
+<sentence>また、ユーザーが<event class="" eid="e66">登録していない</event>プログラムが<event class="" eid="e67">活動した</event>際に<event class="" eid="e68">警告・阻止する</event><quote>「アプリケーション制御機能」</quote>を<event class="" eid="e69">搭載している</event>。</sentence>
+<sentence>対応ＯＳは９８以降のすべてのＷｉｎｄｏｗｓで、価格は９８００円。<info arg="page" value="delimiter" /></sentence>
+<sentence type="quasi">［Ｐｈｏｎｅ］　０３‐３３２８‐８４３１</sentence>
+<sentence type="quasi">［ＵＲＬ］　ｈｔｔｐ：／／ｗｗｗ．ｂｌａｃｋｉｃｅ．ｊｐ／</sentence>
+<sentence type="quasi">Ｅｖｅｎｔ　Ｃａｌｅｎｄａｒ</sentence>
+<sentence>◆開催場所／◇連絡先　このカレンダーはあくまで予定です。</sentence>
+<sentence><event class="" eid="e70">お出かけ</event>の際はあらかじめ連絡先に開催日時・場所などを<event class="" eid="e71">ご確認ください</event>。</sentence>
+<sentence type="quasi">国内</sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2003-05-20" valueFromSurface="XXXX-05-20">５　２０</TIMEX3>…<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2003-05-23" valueFromSurface="XXXX-XX-23">２３</TIMEX3></sentence>
+<sentence type="quasi">Ｃｏｍｐｕｔｅｒ　Ｔｅｌｅｐｈｏｎｙ　Ｗｏｒｌｄ　Ｅｘｐｏ／Ｔｏｋｙｏ　<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2003" valueFromSurface="2003">２００３</TIMEX3></sentence>
+<sentence type="quasi">◆東京都江東<sampling type="end" />区・東京ビッグサイト</sentence>

@@ -1,0 +1,18 @@
+
+<a>両側肺</a>に<a>中・下葉優位</a>に<d certainty="positive">すりガラス影や網状影</d>を認め、<d certainty="suspicious">間質性肺炎</d>の経過像を疑います。　前回CT(2011/05/18)と比較して、大差指摘できません。。
+<a>左肺舌区S5</a>に<f>径数mm大</f>の<d certainty="positive">結節</d>を認めますが前回より著変ありません。
+<a>左肺S1+2</a>に<a>胸膜直下</a>に<d certainty="positive">均等影</d>あり。　前回同様で<d certainty="suspicious">炎症後変化</d>を疑います。
+<a>縦隔内や肺門部</a>に<c>軽度増大</c>した<d certainty="positive">リンパ節</d>が<f>散在</f>していますが前回と比較して大差なさそうです。
+<a>冠動脈</a>の<d certainty="positive">石灰化</d>あり。
+<d certainty="negative">胸水貯留</d>を認めません。
+<a>甲状腺</a>術後です。
+<a>肝右葉</a>に<d certainty="positive">嚢胞</d>あり。
+<a>脾動脈</a>に<d certainty="positive">石灰化</d>を伴う<d certainty="positive">瘤</d>を前回同様認めます。
+<a>左副腎</a>の<d certainty="positive">腫大</d>を認めますが前回とサイズに著変を認めません。
+<a>両側肺</a>に<a>下葉優位、胸膜下優位</a>で<d certainty="positive">網状影やすりガラス状陰影</d>を認め<d certainty="suspicious">間質性肺炎</d>の経過が疑われます。　前回(2014/09/19)より病勢に大差指摘できません。
+<a>左肺S1+2胸膜直下</a>に認められる<d certainty="positive">均等影</d>や<a>S5</a>の<d certainty="positive">小結節影</d>は前回よりほぼ変化なく、<d certainty="suspicious">炎症後変化</d>をまず疑います。
+<a>縦隔内や肺門部</a>に<d certainty="positive">小リンパ節</d>が<f>散在</f>していますが<f>有意な</f><d certainty="negative">リンパ節腫大</d>は指摘できません。
+<d certainty="negative">胸水貯留</d>を認めません。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>を認めます。
+<a>甲状腺</a>術後です。
+<a>左副腎</a>に認めれる<d certainty="positive">低吸収結節</d>のサイズや性状は前回よりほぼ変化ありません。　<d certainty="suspicious">腺腫などの良性病変</d>の経過を疑います。

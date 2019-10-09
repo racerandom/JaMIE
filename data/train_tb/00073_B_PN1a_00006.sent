@@ -1,0 +1,54 @@
+<sentence type="quasi">ＫＳＤ事<sampling type="start" />件　おわび強調</sentence>
+<sentence type="quasi">機密費流用　<quote>「<event class="STATE" eid="e1">許し難い</event>」</quote></sentence>
+<sentence type="quasi">自民の運動方針・党則改正原案</sentence>
+<sentence type="quasi">参院選へ無党派層意識</sentence>
+<sentence>　自民党が<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2001-03-13" valueFromSurface="XXXX-XX-13">来月十三日</TIMEX3>の党大会に<event class="" eid="e2">出す</event>運動方針と党則改正の原案が<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2001-02-27" valueFromSurface="XXXX-XX-27">二十七日</TIMEX3><event class="STATE" eid="e3">明らかに</event><event class="" eid="e4">なった</event>。</sentence>
+<sentence>ＫＳＤ事件など不祥事が<event class="" eid="e5">続出している</event>ことから、<quote>「公党として<event class="STATE" eid="e6">申し訳ない</event>」</quote>と<quote>「おわび」</quote>を<event class="" eid="e7">強調する</event>とともに党の政治倫理審査会を新設。</sentence>
+<sentence>党所属の国会議員が逮捕や<event class="" eid="e8">起訴された</event>時には<event class="STATE" eid="e9">自動的に</event>除名や党員資格停止処分と<event class="" eid="e10">なる</event>よう党則も<event class="" eid="e11">改正する</event>。</sentence>
+<sentence>また参院選に<event class="" eid="e12">向け</event>て支持層を無党派層にも<event class="" eid="e13">広げる</event>ことが<event class="STATE" eid="e14">重要だ</event>と<event class="" eid="e15">指摘する</event>など危機感が前面に<event class="" eid="e16">出た</event>内容に<event class="" eid="e17">なっている</event>。</sentence>
+<sentence>　方針案は、まずＫＳＤ問題などに<event class="" eid="e18">関連し</event>て、自民党の国会議員が<event class="" eid="e19">逮捕された</event>事態についておわびを<event class="" eid="e20">し</event>、<quote>「自民党は<event class="" eid="e21">変わった</event>」</quote>と、圧倒的支持を<event class="" eid="e22">得られる</event>ような具体的行動を<event class="" eid="e23">起こす</event>ことを<event class="" eid="e24">約束している</event>。</sentence>
+<sentence type="fragment">　外交機密費流用問題についても</sentence>
+<sentence>「前代未聞の醜聞で、外交に対する国民の信頼を<event class="STATE" eid="e25">著しく</event><event class="" eid="e26">損ね</event>、断じて<event class="STATE" eid="e27">許し難い</event>。</sentence>
+<sentence type="quasi">外務省は<event class="STATE" eid="e28">徹底的な</event>内部調査を<event class="" eid="e29">継続する</event>とともに再発防止策を<event class="" eid="e30">講じ</event>、国民の<event class="" eid="e31">失われた</event>信頼を早期に<event class="" eid="e32">回復すべきだ</event>」</sentence>
+<sentence type="fragment">と<event class="" eid="e33">している</event>。</sentence>
+<sentence>　政策面では、金融については日銀に対し、量的緩和と<event class="STATE" eid="e34">機動的な</event>金融政策を<event class="" eid="e35">要請する</event>と<event class="" eid="e36">いう</event>。</sentence>
+<sentence>ただ、郵政事業については<quote>「ポスト森」</quote>の最右翼の一人と<event class="" eid="e37">いわれる</event>小泉純一郎元厚相の主張とは<event class="STATE" eid="e38">逆に</event>、国営と三事業一体を堅持、地域生活拠点として<event class="STATE" eid="e39">新たな</event>役割を<event class="" eid="e40">果たす</event>と<event class="" eid="e41">した</event>。</sentence>
+<sentence>　また靖国神社問題では、閣僚や外国からの賓客が戦没者に感謝と慰霊の念を<event class="" eid="e42">表せる</event>よう<event class="" eid="e43">努める</event>と<event class="" eid="e44">し</event>、防衛問題では防衛庁の「省」移行の実現を<event class="" eid="e45">図り</event>、自衛隊の機能を<event class="" eid="e46">強化し</event>、有事法制の整備を<event class="" eid="e47">盛り込んだ</event>。</sentence>
+<sentence>　さらに党則改正については幹事長の権限を<event class="" eid="e48">強化し</event>、党の役職停止や国会・政府の役職の辞任勧告を<event class="" eid="e49">できる</event>ように<event class="" eid="e50">する</event>。</sentence>
+<sentence>　この両案は<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2001-02-27" valueFromSurface="XXXX-XX-27">二十七日</TIMEX3>の役員連絡会で<event class="" eid="e51">検討された</event>。</sentence>
+<sentence type="fragment">亀井静香政調会長が</sentence>
+<sentence>「自民党が何で<event class="" eid="e52">変わる</event>必要が<event class="" eid="e53">ある</event>のか。</sentence>
+<sentence>固定客を<event class="STATE" eid="e54">大事に</event><event class="" eid="e55">すべきだ</event>。</sentence>
+<sentence type="quasi"><event class="" eid="e56">迎合している</event>」</sentence>
+<sentence type="fragment">と<event class="" eid="e57">述べた</event>。</sentence>
+<sentence type="fragment">　それに対し、鈴木宗男総務局長や野中広務前幹事長が</sentence>
+<sentence>「選挙のことを<event class="" eid="e58">考えてほしい</event>。</sentence>
+<sentence type="quasi"><event class="STATE" eid="e59">謙虚に</event><event class="" eid="e60">反省し</event>て<event class="" eid="e61">変わるべきだ</event>」</sentence>
+<sentence type="fragment">と反論。</sentence>
+<sentence>また、野中氏が防衛庁の「省」移行の記述に異論を<event class="" eid="e62">唱え</event>、表現が<event class="" eid="e63">弱められることになった</event>。</sentence>
+<sentence type="quasi">自民党運動方針案（要旨）</sentence>
+<sentence>　自民党運動方針案と党則改正の原案（要旨）は次の通り。</sentence>
+<sentence type="quasi">【運動方針案】</sentence>
+<sentence type="quasi">一、新世紀へ決意と誓い</sentence>
+<sentence>　<TIMEX3 type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">将来</TIMEX3>像の検討と<event class="STATE" eid="e64">独自</event>のアイデンティティー確立のため、国民的議論を<event class="" eid="e65">ふまえ</event><quote>「国民の憲法」</quote>を提案。</sentence>
+<sentence>　国会議員が<event class="" eid="e66">逮捕・起訴される</event>という国民の信頼を<event class="" eid="e67">損ねる</event>不祥事は誠に<event class="STATE" eid="e68">遺憾で</event>公党として<event class="STATE" eid="e69">申し訳なく</event>、心より<event class="" eid="e70">おわびする</event>。</sentence>
+<sentence><quote>「自民党は<event class="" eid="e71">変わった</event>」</quote>と圧倒的支持を<event class="" eid="e72">得られる</event>ような具体的行動を<event class="" eid="e73">起こす</event>ことを<event class="" eid="e74">約束する</event>。</sentence>
+<sentence type="quasi">二、参院選に<event class="" eid="e75">勝<sampling type="end" />利しよう</event></sentence>
+<sentence>　あらゆる党組織に女性を登用、たとえばトップとナンバー２を男女ペアと<event class="" eid="e76">し</event>て女性が責任の半分を<event class="" eid="e77">担う</event>。</sentence>
+<sentence>　責任政党として本音で<event class="STATE" eid="e78">わかりやすく</event><event class="" eid="e79">説明する</event>説明責任が<event class="STATE" eid="e80">不可欠だ</event>。</sentence>
+<sentence>　衆院比例代表候補の<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P73Y" valueFromSurface="P73Y">七十三歳</TIMEX3>定年制を、<TIMEX3 definite="FALSE" mod="ON_OR_AFTER" tid="t5" type="DATE" value="2001-10" valueFromSurface="XXXX-10">十月以降</TIMEX3><event class="STATE" eid="e81">確実に</event>実施。</sentence>
+<sentence>総裁はじめ、党役員の任期を<event class="" eid="e82">見直し</event>、リーダーシップの強化を<event class="" eid="e83">図る</event>。</sentence>
+<sentence>　財政構造改革の際には、国会議員歳費を一〇％削減。</sentence>
+<sentence type="quasi">三、重点政策</sentence>
+<sentence>　日本銀行に対し、量的緩和策と<event class="STATE" eid="e84">機動的な</event>金融改策を<event class="" eid="e85">行う</event>よう<event class="" eid="e86">要請する</event>。</sentence>
+<sentence>　郵便局の国営・三事業一体を堅持、地域生活拠点として<event class="STATE" eid="e87">新たな</event>役割を<event class="" eid="e88">果たす</event>ように<event class="" eid="e89">する</event>。</sentence>
+<sentence>　基本教科の二十人授業の実現、奉仕・体験活動や環境教育の拡充。</sentence>
+<sentence>教育基本法の<event class="STATE" eid="e90">積極的な</event>見直しを<event class="" eid="e91">行う</event>。</sentence>
+<sentence>　凶悪犯罪に対する罰則の強化等法体系を<TIMEX3 definite="FALSE" mod="EQUAL_OR_LESS" tid="t6" type="DURATION" value="P2Y" valueFromSurface="P2Y">二年以内</TIMEX3>に整備。</sentence>
+<sentence>民法、刑法の基本法を<event class="STATE" eid="e92">抜本的に</event><event class="" eid="e93">改正し</event>、司法制度を<TIMEX3 definite="FALSE" mod="EQUAL_OR_LESS" tid="t7" type="DURATION" value="P3Y" valueFromSurface="P3Y">三年以内</TIMEX3>に再構築。</sentence>
+<sentence>　靖国神社問題は、外国からの賓客やわが国閣僚、国民<event class="" eid="e94">こぞっ</event>て戦没者の英霊に感謝と慰霊の念を<event class="" eid="e95">表せる</event>よう<event class="" eid="e96">努める</event>。</sentence>
+<sentence>　自衛隊の機能強化、有事法制等の整備、自衛官の処遇改善を推進、防衛庁の「省」移行の実現を<event class="" eid="e97">図る</event>。</sentence>
+<sentence type="quasi">【党則改正案】</sentence>
+<sentence>　政治倫理審査会を<event class="" eid="e98">立ち上げる</event>。</sentence>
+<sentence>刑事事件で<event class="" eid="e99">「逮捕・起訴」された</event>ときは「党員資格の停止または除名」処分と<event class="" eid="e100">する</event>。</sentence>
+<sentence>幹事長が<event class="" eid="e101">行い得る</event>処分は<enclosedCharacter description="○">１</enclosedCharacter>党則順守の勧告<enclosedCharacter description="○">２</enclosedCharacter>戒告<enclosedCharacter description="○">３</enclosedCharacter>党の役職停止<enclosedCharacter description="○">４</enclosedCharacter>国会及び政府の役職の辞任勧告―と<event class="" eid="e102">し</event>、党紀委員長の審査が必要と<event class="" eid="e103">する</event>。</sentence>

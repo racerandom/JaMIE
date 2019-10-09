@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺上葉</a>切除術後。<d certainty="negative">局所再発</d>なし<a>左肺下葉Ｓ１０ａ</a>の<d certainty="positive">充実結節</d>は<f>１．３×１．３Ｃｍ</f>に<c>増大</c>を認めます。<a>辺縁</a>に<d certainty="positive">小棘形成</d>あり。ｒｅｔｒｏｓｐｅｃｔｉｖｅにみるとＸＸＸＸ年に<d certainty="suspicious">点状構造</d>があるようにもみえますが、断定できません。存在していたとすれば<d certainty="suspicious">二次癌</d>の可能性、<f>新たな</f><d certainty="suspicious">原発性肺癌</d>が疑われます。<d certainty="suspicious">ｃＴ１ｂ</d>
+<f>小さな</f><d certainty="positive">縦隔リンパ節</d>がみられますが、<f>有意な</f><d certainty="negative">腫大</d>なし。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水</d>なし。

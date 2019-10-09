@@ -1,0 +1,4 @@
+<sentence>バイクのカバーもピンキリですよね。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>までは最安値帯のものしか<event class="" eid="e1">使った</event>ことが<event class="STATE" eid="e2">ないのです</event>が、<webBr /><event class="STATE" eid="e3">高い</event>ものと<event class="STATE" eid="e4">安い</event>ものでは何が<event class="" eid="e5">違います</event>か？</sentence>
+<sentence>ロックを<event class="" eid="e6">通す</event>穴、バイクを<event class="" eid="e7">傷つけない</event>裏起毛、風を<event class="" eid="e8">通す</event>ベンチレーション、防炎等の有無ですかね。</sentence>
+<sentence><event class="STATE" eid="e9">安い</event>のは防水すら<event class="STATE" eid="e10">怪しいので</event>は？</sentence>

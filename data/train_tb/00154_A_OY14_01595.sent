@@ -1,0 +1,45 @@
+<sentence>　<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2008" valueFromSurface="XXXX">今年</TIMEX3>、演歌を<event class="" eid="e1">聴き</event>に<event class="" eid="e2">行く</event>のは２回目だよ。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="2008-XX" valueFromSurface="XXXX-XX">今月</TIMEX3>、新歌舞伎座は<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="2008-XX-05" valueFromSurface="XXXX-XX-05">５日</TIMEX3>から<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="2008-XX-31" valueFromSurface="XXXX-XX-31">３１日</TIMEX3>まで「石川さゆり特別公演」ということである。</sentence>
+<sentence>本来は普通のコンサートに<event class="" eid="e3">行きたかった</event>が、それは<TIMEX3 definite="FALSE" mod="END" tid="t5" type="DATE" value="2008-08" valueFromSurface="XXXX-08">８月末</TIMEX3>まで<event class="STATE" eid="e4">ない</event>し、しかも神戸、またその日は詩吟の発表会なので断念。</sentence>
+<sentence>まあ<TIMEX3 definite="TRUE" tid="t6" type="DATE" value="2008-XX" valueFromSurface="XXXX-XX">今月</TIMEX3>中なら<event class="STATE" eid="e5">好きな</event>日に<event class="" eid="e6">行ける</event>ということで、こちらを<event class="" eid="e7">選んだ</event>。</sentence>
+<sentence>　公演初日ということでか、客席もほぼ満員。</sentence>
+<sentence>やっぱり客席の<TIMEX3 type="DURATION" value="PXY" valueFromSurface="PXY">年齢層</TIMEX3>は<event class="STATE" eid="e8">高い</event>。</sentence>
+<sentence>芝居とコンサートの２本立てということで、芝居がどんなのか予想も<event class="" eid="e9">つかなかった</event>し、そちらは<event class="" eid="e10">退屈せず</event>に<event class="" eid="e11">観れる</event>かなあ？というのが<event class="STATE" eid="e12">心配だった</event>。</sentence>
+<sentence type="quasi">第１部：「奇想天外：マダム貞奴オッペケペー人生」</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t7" type="DATE" value="MXX" valueFromSurface="MXX">明治時代</TIMEX3>を舞台に<event class="" eid="e13">した</event>、人情劇。</sentence>
+<sentence>近藤正臣が共演で、笑いあり涙ありの話だったが、ここ<TIMEX3 definite="TRUE" tid="t8" type="DURATION" value="PXD" valueFromSurface="PXD">数日</TIMEX3>あまり<event class="" eid="e14">寝てなかったので</event>、私は途中<event class="" eid="e15">ウトウトしてしまった</event>。</sentence>
+<sentence>でも話自体はまあまあ<event class="STATE" eid="e16">面白かった</event>。</sentence>
+<sentence type="quasi">第２部：「石川さゆりオンステージ：<event class="" eid="e17">流れゆく</event>歌」</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="PT30M" valueFromSurface="PT30M">３０分</TIMEX3>の休憩を<event class="" eid="e18">挟み</event>、やっと<event class="" eid="e19">お待ちかね</event>のコンサート。</sentence>
+<sentence>　最初は着物でなく、<event class="STATE" eid="e20">白い</event>ドレスで登場。</sentence>
+<sentence>いきなり「<event class="" eid="e21">聴いた</event>こと<event class="" eid="e22">ある</event>曲だなあ」と<event class="" eid="e23">思ったら</event>、「ゴンドラの唄」というかなり<event class="STATE" eid="e24">古い</event>歌だった。</sentence>
+<sentence>そうそう、遊佐未森が<event class="" eid="e25">カバーしてたんだ</event>。</sentence>
+<sentence>その後も、淡谷のり子の「別れのブルース」をはじめ、「演歌」とは少し<event class="" eid="e26">違う</event><TIMEX3 definite="TRUE" tid="t10" type="DATE" value="SXX" valueFromSurface="SXX">昭和</TIMEX3>歌謡が<event class="" eid="e27">続く</event>。</sentence>
+<sentence>　淡谷さんの物真似を<event class="" eid="e28">やっ</event>て笑いを<event class="" eid="e29">とっ</event>たり<event class="" eid="e30">し</event>て、その後も童謡や<TIMEX3 definite="TRUE" tid="t11" type="DATE" value="SXX" valueFromSurface="SXX">昭和</TIMEX3>歌謡が<event class="" eid="e31">続き</event>、それで前半は<event class="" eid="e32">終わった</event>。</sentence>
+<sentence>　その後バンドのメンバー紹介を<event class="" eid="e33">する</event>が、二人<event class="" eid="e34">いた</event>ギターの片方がストラトを<event class="" eid="e35">弾き</event>、しかもアームまで<event class="" eid="e36">使った</event>とこは、「この人、本当はロックの<event class="STATE" eid="e37">好きな</event>人なんかなあ」と<event class="" eid="e38">思わせた</event>。</sentence>
+<sentence>　その後、着物に<event class="" eid="e39">着替え</event>て自身のオリジナル曲を<event class="" eid="e40">続け</event>て<event class="" eid="e41">歌う</event>。</sentence>
+<sentence>まずは「津軽海峡・冬景色」。</sentence>
+<sentence>そうそう、これが<event class="" eid="e42">聴きたかった</event>のよ。</sentence>
+<sentence>私がこの歌を初めて<event class="" eid="e43">聴いた</event>のは小学生の時、しかも彼女が<TIMEX3 definite="FALSE" mod="APPROX" tid="t12" type="DURATION" value="P19Y" valueFromSurface="P19Y">１９歳くらい</TIMEX3>の時だった。</sentence>
+<sentence>それから<event class="STATE" eid="e44">かなり</event>の<TIMEX3 type="DURATION" value="PX(Y|M)" valueFromSurface="PX(Y|M)">年月</TIMEX3>が<event class="" eid="e45">たち</event>、彼女は<TIMEX3 definite="FALSE" tid="t13" type="DURATION" value="P50Y" valueFromSurface="P50Y">５０歳</TIMEX3>に<event class="" eid="e46">なった</event>が、<event class="STATE" eid="e47"><TIMEX3 type="DURATION" value="P50Y" valueFromSurface="PXY">年</TIMEX3>相応</event>の味わい<event class="" eid="e48">ある</event>歌声が<event class="" eid="e49">楽しめた</event>。</sentence>
+<sentence>　それから<event class="" eid="e50">歌った</event>曲は正直ほとんど<event class="" eid="e51">知らず</event>、せいぜい「夫婦善哉」くらいだったが、別に<event class="" eid="e52">退屈することはなかった</event>。</sentence>
+<sentence>「能登半島」くらいは<event class="" eid="e53">歌って欲しかった</event>が。</sentence>
+<sentence>そして「天城越え」。</sentence>
+<sentence>ＴＶで<event class="" eid="e54">おなじみ</event>の<event class="STATE" eid="e55">怖い</event>顔で<event class="" eid="e56">歌っ</event>ては<event class="" eid="e57">いなかった</event>ように<event class="" eid="e58">思う</event>が、やはりこの曲は<event class="STATE" eid="e59">素晴らしい</event>。</sentence>
+<sentence>そしてこの曲で全ステージが<event class="" eid="e60">終了した</event>。</sentence>
+<sentence>　第１部・第２部<event class="" eid="e61">合わせ</event>て<TIMEX3 mod="APPROX" tid="t201" type="DURATION" value="PT3H40M" valueFromSurface="PT3H40M">３時間４０分くらい</TIMEX3>。</sentence>
+<sentence>その内休憩<TIMEX3 definite="FALSE" tid="t14" type="DURATION" value="PT30M" valueFromSurface="PT30M">３０分</TIMEX3>を<event class="" eid="e62">省き</event>、コンサート自体は<TIMEX3 definite="FALSE" mod="APPROX" tid="t15" type="DURATION" value="PT1H40M" valueFromSurface="PT1H40M">１時間４０分くらい</TIMEX3>。</sentence>
+<sentence>芝居との２本立てならこんなもんだろうか。</sentence>
+<sentence>しかし、芝居も<event class="" eid="e63">合わせる</event>と、やっぱり<event class="STATE" eid="e64">結構な</event>長丁場だった。</sentence>
+<sentence type="fragment">　この人は写真映りが<event class="STATE" eid="e65">悪く</event>、ＣＤのジャケット等では結構<event class="" eid="e66">老け</event>て<event class="" eid="e67">見えるのだ</event>が、私の席から<event class="" eid="e68">見た</event>限りでは（</sentence>
+<sentence>３階席の前の方。</sentence>
+<sentence type="quasi">奥行きが<event class="STATE" eid="e69">ないので</event>、わりとはっきり<event class="" eid="e70">見えた</event></sentence>
+<sentence type="fragment">）<event class="" eid="e71">思った</event>より<event class="STATE" eid="e72">若く</event><event class="" eid="e73">見えた</event>。</sentence>
+<sentence>やっぱり美人には違い<event class="STATE" eid="e74">ない</event>。</sentence>
+<sentence>　声の方もよく<event class="" eid="e75">出ていた</event>。</sentence>
+<sentence>まあ、演歌歌手で「<TIMEX3 type="DURATION" value="PXY" valueFromSurface="PXY">年</TIMEX3><event class="" eid="e76">とっ</event>て声<event class="" eid="e77">出なく</event><event class="" eid="e78">なった</event>」というのはあまり<event class="" eid="e79">聞いた</event>ことが<event class="STATE" eid="e80">ない</event>が。</sentence>
+<sentence>この人の歌い方は、「天城越え」で<event class="" eid="e81">お分かり</event>の通り、裏声を<event class="" eid="e82">多用する</event>歌い方だ。</sentence>
+<sentence>と<event class="" eid="e83">言っ</event>ても、別に高音が<event class="" eid="e84">出ない</event>わけではないらしい。</sentence>
+<sentence>　演歌のコンサートに<event class="" eid="e85">行った</event>のは、坂本冬美、北島三郎、藤あや子、そしてこの人で４回と<event class="" eid="e86">なった</event>。</sentence>
+<sentence>他には、<event class="STATE" eid="e87">凄く</event><event class="" eid="e88">行きたい</event>という人も<event class="" eid="e89">いないので</event>、おそらく当分このジャンルを<event class="" eid="e90">聴き</event>に<event class="" eid="e91">行くことはない</event>と<event class="" eid="e92">思う</event>。</sentence>
+<sentence>でもまあ、演歌も<event class="" eid="e93">馴染める</event>年に<event class="" eid="e94">なってきたので</event>、たまには<event class="STATE" eid="e95">いいだろう</event>。</sentence>

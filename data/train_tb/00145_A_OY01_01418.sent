@@ -1,0 +1,11 @@
+<sentence type="quasi">先物トレードなし</sentence>
+<sentence type="quasi">為替トレード</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>の為替は動きが<event class="STATE" eid="e1">非常に</event><event class="STATE" eid="e2">素直だ</event>。</sentence>
+<sentence>先物はトレンドなしのためトレードなし。</sentence>
+<sentence>為替は<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>からのダウントレンド上限を<event class="" eid="e3">試す</event>動きを<event class="" eid="e4">した</event>が、<event class="" eid="e5">跳ね返される</event>動きと<event class="" eid="e6">なっている</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t3" type="TIME" value="XXXX-XX-XXT10" valueFromSurface="XXXX-XX-XXT10">１０時</TIMEX3>までは<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>の上昇トレンドを<event class="" eid="e7">キープしていた</event>が<event class="" eid="e8">割れ</event>てもみあいと<event class="" eid="e9">なった</event>。</sentence>
+<sentence>後場からも方向感の<event class="STATE" eid="e10">ない</event>相場が<event class="" eid="e11">予想される</event>。</sentence>
+<sentence>動きが<event class="" eid="e12">出る</event>までは先物為替ともに様子見と<event class="" eid="e13">なる</event>可能性が<event class="STATE" eid="e14">高い</event>。</sentence>
+<sentence>為替主導と<event class="" eid="e15">すれ</event>ば１０８．７０を<event class="" eid="e16">超え</event>て<event class="" eid="e17">くる</event>と動きが<event class="" eid="e18">出よう</event>。</sentence>
+<sentence>ついでだが<TIMEX3 definite="TRUE" mod="END" tid="t5" type="DATE" value="2008-XX" valueFromSurface="XXXX-XX">先月末</TIMEX3>発表に<event class="" eid="e19">なった</event>鉱工業生産から一般機械工業の出荷の<TIMEX3 tid="t201" type="DATE" value="2007" valueFromSurface="XXXX">前年</TIMEX3>比のグラフを<event class="" eid="e20">掲載しておきます</event>。</sentence>
+<sentence>機械は<event class="STATE" eid="e21">悪い</event>トレンドの中に<event class="" eid="e22">いる</event>ことが<event class="" eid="e23">理解できる</event>と<event class="" eid="e24">思います</event>。</sentence>

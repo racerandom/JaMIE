@@ -1,0 +1,13 @@
+<a>両側肺野下葉優位</a>に<d certainty="positive">すりガラス状陰影、網状影、牽引性気管支拡張像、蜂巣肺</d>を認めます。<d certainty="suspicious">間質性肺炎</d>を疑います。patternとしては<d certainty="suspicious">NSIP</d>を疑いますが、<d certainty="suspicious">UIP</d>の可能性もあります。
+<d certainty="positive">心拡大</d>を認めます。
+<f>明らかな</f><d certainty="negative">リンパ節腫大</d>は認めません。
+<d certainty="negative">胸水(-）</d>。
+<a>肝</a>：<d certainty="negative">鬱血肝</d>を認めません。SOLなし。
+<a>胆嚢</a>：摘出後。
+<a>膵</a>：n.p.
+<a>脾</a>：<d certainty="positive">軽度脾腫</d>あり。
+<a>副腎</a>：<d certainty="negative">腫大</d>なし。
+<a>腎</a>：<a>右腎</a>に<d certainty="positive">小嚢胞</d>あり。
+<a>リンパ節</a>：<d certainty="negative">腫大</d>なし。
+<d certainty="negative">腹水</d>：<d certainty="negative">貯留</d>なし。
+Imp) <d certainty="negative">鬱血肝や腹水貯留</d>を認めません。

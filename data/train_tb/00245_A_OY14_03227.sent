@@ -1,0 +1,12 @@
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>は，二人とも<event class="STATE" eid="e1">新しい</event>パスポートが手に<event class="" eid="e2">入ったので</event>，旅行会社へ<event class="" eid="e3">行っ</event>て<event class="" eid="e4">きます</event>。</sentence>
+<sentence>なんの旅行？と<event class="" eid="e5">おもわれる</event>と<event class="" eid="e6">おもいます</event>が『新婚旅行』です。</sentence>
+<sentence type="quasi"><image description="" no="1" /></sentence>
+<sentence>で，場所はと<event class="" eid="e7">いえ</event>ばイタリアです。</sentence>
+<sentence type="quasi"><image description="" no="2" /></sentence>
+<sentence><event class="" eid="e8">行く</event>のは<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2008-10" valueFromSurface="XXXX-10">１０月</TIMEX3>です。</sentence>
+<sentence>この頃ぐらいに<event class="" eid="e9">なる</event>と<event class="STATE" eid="e10">安く</event><event class="" eid="e11">なる</event>もので。</sentence>
+<sentence>僕は１度<event class="" eid="e12">いったことがあるのです</event>が，その際新婚旅行は絶対イタリアと<event class="" eid="e13">決めていたんです</event>。</sentence>
+<sentence type="quasi"><image description="" no="3" /></sentence>
+<sentence>申し込みが<event class="" eid="e14">終わったら</event><TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">今度</TIMEX3>は，式場のホテルで夕食を<event class="" eid="e15">食べ</event>て<event class="" eid="e16">きます</event>。</sentence>
+<sentence type="quasi"><image description="" no="4" /></sentence>
+<sentence>これは，式では料理なんて<event class="" eid="e17">食べれないので</event>，別途お食事券が<event class="" eid="e18">でてい</event>てそれを<event class="" eid="e19">使う</event>というものです。</sentence>

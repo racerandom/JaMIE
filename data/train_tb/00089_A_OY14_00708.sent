@@ -1,0 +1,33 @@
+<sentence type="quasi">仕事を<event class="" eid="e1">終え</event>、<TIMEX3 definite="TRUE" tid="t1" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3><TIMEX3 definite="TRUE" mod="APPROX" tid="t2" type="TIME" value="XXXX-XX-XXT10" valueFromSurface="XXXX-XX-XXT10">１０時頃</TIMEX3>帰宅<event class="STATE" eid="e2">軽く</event>食事を<event class="" eid="e3">し</event>ながらＴＶを<event class="" eid="e4">観</event>つつ<TIMEX3 definite="TRUE" tid="t3" type="TIME" value="XXXX-XX-XXT11" valueFromSurface="XXXX-XX-XXT11">１１時</TIMEX3>に就寝…</sentence>
+<sentence type="quasi">…<TIMEX3 definite="TRUE" tid="t4" type="TIME" value="XXXX-XX-XXT12:30" valueFromSurface="XXXX-XX-XXT12:30">１２時半</TIMEX3>に携帯、家電、あらゆる呼び出しが<event class="" eid="e5">鳴る</event></sentence>
+<sentence type="quasi">「<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>家の前に<event class="" eid="e6">おる</event>」</sentence>
+<sentence type="quasi">服を<event class="" eid="e7">着</event>、外に<event class="" eid="e8">出る</event>と友人が<event class="STATE" eid="e9">新しい</event>マイカーで<event class="" eid="e10">お出迎え</event></sentence>
+<sentence><event class="STATE" eid="e11">あまりに</event><event class="" eid="e12">寝起き過ぎ</event>て頭が<event class="" eid="e13">廻らない</event>僕。</sentence>
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t6" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>、<event class="STATE" eid="e14">確かに</event>飯を<event class="" eid="e15">食い</event>に<event class="" eid="e16">行く</event>約束を<event class="" eid="e17">した</event></sentence>
+<sentence>「ヨッシャ！</sentence>
+<sentence type="quasi"><event class="" eid="e18">釣りいく</event>ぞ、釣り」</sentence>
+<sentence type="quasi">意識朦朧な僕を<event class="" eid="e19">載せ</event>、<TIMEX3 definite="FALSE" mod="APPROX" tid="t7" type="DURATION" value="PT1H" valueFromSurface="PT1H">１時間程</TIMEX3>車を<event class="" eid="e20">走らせ</event>川崎市麻生区に<event class="" eid="e21">ある</event></sentence>
+<sentence type="quasi">［ＦＩＳＨ・ＯＮ　王禅寺］</sentence>
+<sentence type="quasi">という<event class="STATE" eid="e22">デカい</event>釣り堀へ</sentence>
+<sentence type="quasi">（小田急線の新百合ヶ丘や東急田園都市線のたまプラーザの近辺らしい…）</sentence>
+<sentence type="quasi">竿を<event class="" eid="e23">借り</event>、餌（イクラとぶどう虫）を<event class="" eid="e24">買い</event>、釣り開始</sentence>
+<sentence>友人が糸を<event class="" eid="e25">垂らし</event>て<TIMEX3 definite="FALSE" tid="t8" type="DURATION" value="PT10S" valueFromSurface="PT10S">１０秒</TIMEX3>も<event class="" eid="e26">しない</event>うちに１匹ゲット！</sentence>
+<sentence>僕も竿を<event class="" eid="e27">握っ</event>て<TIMEX3 definite="FALSE" mod="APPROX" tid="t9" type="DURATION" value="PT10S" valueFromSurface="PT10S">１０秒程</TIMEX3>で一匹ゲット！</sentence>
+<sentence type="quasi">イワナ</sentence>
+<sentence>『入れ食いかよ！？</sentence>
+<sentence type="fragment">』などと<event class="" eid="e28">思い</event>ながらも、その後も<event class="" eid="e29">釣れる</event>事<event class="" eid="e30">釣れる</event>事（笑）</sentence>
+<sentence>当たりが<event class="" eid="e31">早過ぎ</event>て<event class="STATE" eid="e32">逆に</event><event class="" eid="e33">合わせる</event>のが<event class="STATE" eid="e34">難しい</event>。</sentence>
+<sentence type="quasi">かなり針を<event class="" eid="e35">呑まれてしまった</event></sentence>
+<sentence type="quasi"><event class="" eid="e36">呑まれる</event>と今度は<event class="" eid="e37">外す</event>のが<event class="STATE" eid="e38">大変なのだ</event></sentence>
+<sentence>友人の<event class="" eid="e39">持っ</event>て<event class="" eid="e40">きた</event>［針外し］が<event class="STATE" eid="e41">異様に</event>大活躍！！</sentence>
+<sentence><event class="" eid="e42">釣れすぎ</event>て<TIMEX3 definite="FALSE" mod="APPROX" tid="t10" type="DURATION" value="PT1H" valueFromSurface="PT1H">１時間程</TIMEX3>で<event class="" eid="e43">飽きてしまった</event>。</sentence>
+<sentence type="quasi">手が<event class="STATE" eid="e44">生臭く</event>て相当<event class="" eid="e45">笑える</event></sentence>
+<sentence>魚は友人がクーラーボックスに<event class="" eid="e46">入れ</event>て<event class="" eid="e47">持ち帰る</event>。</sentence>
+<sentence>２人で２０匹程。</sentence>
+<sentence type="quasi">魚はすぐにエラやワタを<event class="" eid="e48">抜かない</event>とすぐに<event class="" eid="e49">腐ってくる</event>と<event class="" eid="e50">思うのだ</event>が…<event class="STATE" eid="e51">大丈夫だろう</event>か</sentence>
+<sentence>その後、東京に<event class="" eid="e52">戻り</event>二人で鍋を<event class="" eid="e53">つつき</event>、その後<event class="" eid="e54">別れる</event>。</sentence>
+<sentence type="quasi">しかし都内はホントに車が<event class="" eid="e55">動かない</event>ね…</sentence>
+<sentence>ガソリンスタンド前はどこも<TIMEX3 definite="TRUE" tid="t11" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>話題の渋滞中。</sentence>
+<sentence type="quasi">車持ちにはガソリン値上げは死活問題に違いない</sentence>
+<sentence type="quasi">久し振りに<event class="STATE" eid="e56">暖かい</event>日を身体に<event class="" eid="e57">浴び</event>、『アウトドア』って感じの<TIMEX3 tid="t201" type="DURATION" value="P1D" valueFromSurface="P1D">一日</TIMEX3></sentence>
+<sentence type="quasi">さて、<TIMEX3 definite="TRUE" tid="t12" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">明日</TIMEX3>は稽古にでも顔を<event class="" eid="e58">出してみよう</event>か…</sentence>

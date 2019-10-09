@@ -1,0 +1,1 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺中葉Ｓ４ａ</a>に<f>１２×１１</f>・の<d certainty="positive">類円形結節</d>を認め、<d certainty="positive">肺転移</d>の所見と考えます。前回とは概ね変化なし。<a>右中葉末梢</a>に<d certainty="positive">陳旧性変化</d>あり。<f>有意な</f><d certainty="negative">リンパ節腫大</d>なし．<d certainty="negative">胸水貯留</d>なし

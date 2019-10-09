@@ -1,0 +1,3 @@
+<a>両側下肺野優位</a>に<d certainty="positive">すりガラス影、嚢胞性陰影</d>を認めます。前回(2013/4/17）と比較して、<d certainty="positive">網状影、線状・索状影</d>は<c>改善傾向</c>です。<d certainty="positive">SLE</d>に伴う<d certainty="suspicious">間質性肺炎</d>（<d certainty="suspicious">NSIP or LIP</d>)の経過がうたがわれます。
+<a>縦隔、腋窩</a>に<d certainty="positive">小リンパ節</d>を認めます。前回に比して、<c>一部やや縮小傾向</c>です。
+<d certainty="negative">胸水</d>なし。

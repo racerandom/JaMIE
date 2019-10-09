@@ -1,0 +1,5 @@
+<a>右肺中下葉や左肺舌区・下葉</a>に<f>軽度</f>の<d certainty="positive">すりガラス影や小葉内網状影</d>を認めます。前回（2013/8/16）と比較して、著変ありません。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>を認めません。
+<d certainty="negative">胸水</d>なし。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>。
+<a>右腎</a>は<d certainty="positive">萎縮</d>し、<d certainty="positive">右水腎症</d>の状態。

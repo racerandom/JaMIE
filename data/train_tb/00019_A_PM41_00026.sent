@@ -1,0 +1,92 @@
+<sentence type="quasi">開発者を逮捕</sentence>
+<sentence>騒然！</sentence>
+<sentence type="quasi">これは<event class="STATE" eid="e1">ヤバイ</event></sentence>
+<sentence>『<ruby rubyText="違法ソフト">Ｗｉｎｎｙ</ruby>』<event class="" eid="e2">使った</event>人間にも捜査の手が！</sentence>
+<sentence>　「京都府警は<event class="STATE" eid="e3">本気です</event>。</sentence>
+<sentence>Ｗｉｎｎｙの開発者を<event class="" eid="e4">逮捕した</event>のに<event class="" eid="e5">続い</event>て、捜査の対象は一般ユーザーに<event class="" eid="e6">移ります</event>。</sentence>
+<sentence>Ｗｉｎｎｙのユーザーは全国で１００万人を<event class="" eid="e7">越える</event>と<event class="" eid="e8">推測されている</event>。</sentence>
+<sentence type="quasi">捜査の進行次第では、<event class="STATE" eid="e9">大量</event>の検挙者が<event class="" eid="e10">発生する</event>可能性も<event class="" eid="e11">否定できません</event>」</sentence>
+<sentence type="quasi">（京都府警担当記者）</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2004-05-10" valueFromSurface="XXXX-05-10">５月１０日</TIMEX3>、京都府警はファイル共有ソフトＷｉｎｎｙの開発者の金子勇容疑者（<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P33Y" valueFromSurface="P33Y">３３歳</TIMEX3>）を、著作権法違反の<ruby rubyText="ほう">幇</ruby><ruby rubyText="じょ">助</ruby>容疑で<event class="" eid="e12">逮捕した</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2003-11" valueFromSurface="XXXX-11">昨年１１月</TIMEX3>、市販のゲームソフトや映画ファイルを不特定多数に<event class="" eid="e13">送信した</event>疑いで、二人のＷｉｎｎｙユーザーが<event class="" eid="e14">逮捕されている</event>。</sentence>
+<sentence>金子容疑者は二人の<event class="" eid="e15">使用した</event>Ｗｉｎｎｙを<event class="" eid="e16">開発・配布した</event>ことで、彼らの違法行為を<event class="" eid="e17">手助けした</event>と<event class="" eid="e18">見なされたのだ</event>。</sentence>
+<sentence>　開発者を<event class="" eid="e19">逮捕した</event>が、京都府警は捜査の手を<event class="" eid="e20">ゆるめない</event>。</sentence>
+<sentence>逮捕直後にすかさず、Ｗｉｎｎｙ関連サイトの運営者までも家宅捜索を<event class="" eid="e21">行い</event>、サイトを閉鎖に<event class="" eid="e22">追い込んでいる</event>ほどだ。</sentence>
+<sentence>インターネット事情に<event class="STATE" eid="e23">詳しい</event>フリーライターの結城宏之氏も、<TIMEX3 type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今後</TIMEX3>逮捕者が<event class="" eid="e24">続出する</event>可能性を<event class="" eid="e25">指摘する</event>。</sentence>
+<sentence>　「Ｗｉｎｎｙはコンピュータ同士が直接<event class="" eid="e26">つながりあい</event>、<event class="" eid="e27">暗号化された</event>ファイルを<event class="" eid="e28">交換する</event>ため、匿名性が<event class="STATE" eid="e29">非常に</event><event class="STATE" eid="e30">高い</event>と<event class="" eid="e31">されています</event>。<event class="STATE" eid="e32">違法な</event>ファイルが<event class="" eid="e33">流通してい</event>ても誰が<event class="" eid="e34">配信し</event>、誰が<event class="" eid="e35">受信している</event>のか、<event class="STATE" eid="e36">容易に</event>は<event class="" eid="e37">分からない</event>ように<event class="" eid="e38">なっているんです</event>。<TIMEX3 tid="t201" type="DATE" value="2003" valueFromSurface="XXXX">昨年</TIMEX3><event class="" eid="e39">逮捕された</event>二人は、違法ファイルを<event class="" eid="e40">流す</event>ことを<event class="" eid="e41">予告する</event>書き込みを掲示板に<event class="" eid="e42">行い</event>、掲示板の通信記録から足が<event class="" eid="e43">ついた</event>と<event class="" eid="e44">言われています</event>。</sentence>
+<sentence>　しかし、開発者が<event class="" eid="e45">逮捕された</event>ことで暗号の解読も<event class="" eid="e46">進む</event>はず。</sentence>
+<sentence type="quasi">特に<event class="STATE" eid="e47">悪質な</event>ユーザーを<event class="" eid="e48">狙い撃ちし</event>て、見せしめに<event class="" eid="e49">逮捕する</event>可能性が<event class="" eid="e50">あります</event>」</sentence>
+<sentence>　Ｗｉｎｎｙとは、インターネット上で無料で<event class="" eid="e51">公開されている</event>ファイル共有ソフトである。</sentence>
+<sentence>このソフトを<event class="" eid="e52">使う</event>と、ほかのＷｉｎｎｙユーザーのパソコン内に<event class="" eid="e53">保存されている</event>音楽や映画ファイル、パソコンソフトなどを<event class="" eid="e54">交換しあうことができる</event>。</sentence>
+<sentence>操作方法はいたって<event class="STATE" eid="e55">簡単だ</event>。</sentence>
+<sentence><event class="STATE" eid="e56">欲しい</event>ソフトのタイトルを<event class="" eid="e57">入力する</event>だけで、Ｗｉｎｎｙが<event class="STATE" eid="e58">自動的に</event>ほかのユーザーのパソコンから希望のファイルを<event class="" eid="e59">探し出し</event>、<event class="" eid="e60">ダウンロードしてくれるのだ</event>。</sentence>
+<sentence>　しかし、落とし穴も<event class="" eid="e61">ある</event>。</sentence>
+<sentence><event class="" eid="e62">解説する</event>のはネット犯罪に<event class="" eid="e63">精通する</event>牧野二郎弁護士だ。</sentence>
+<sentence>　「著作権法では、著作物を無断で不特定多数に<event class="" eid="e64">配信できる</event>状態に<event class="" eid="e65">置く</event>ことを<event class="" eid="e66">禁じています</event>。</sentence>
+<sentence type="quasi">多くのユーザー同士でファイルを<event class="" eid="e67">交換し合う</event>Ｗｉｎｎｙで著作物を<event class="" eid="e68">やりとりする</event>ことは、違法行為に<event class="" eid="e69">なることがあります</event>」</sentence>
+<sentence>　Ｗｉｎｎｙが<event class="" eid="e70">誕生し</event>て、すでに<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P2Y" valueFromSurface="P2Y">２年</TIMEX3>が<event class="" eid="e71">経過する</event>。</sentence>
+<sentence>その間に<event class="" eid="e72">行われた</event>著作権侵害の被害額は、一説では数千億円にも<event class="" eid="e73">上る</event>と<event class="" eid="e74">されている</event>。</sentence>
+<sentence type="quasi">開発者は天才プログラマー</sentence>
+<sentence>　金子容疑者は栃木県出身で、名門校の県立栃木高校在学中に、コンピュータに<event class="" eid="e75">目覚めた</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t5" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当時</TIMEX3>を<event class="" eid="e76">知る</event>学校関係者が<event class="" eid="e77">振り返る</event>。</sentence>
+<sentence>　「独学でプログラミングの勉強を<event class="" eid="e78">していました</event>。</sentence>
+<sentence>コンピュータに関する知識は玄人はだしでしたが、<event class="STATE" eid="e79">惜しい</event>ことに文系科目の成績が<event class="STATE" eid="e80">芳しく</event><event class="STATE" eid="e81">なかった</event>。</sentence>
+<sentence>国立大学の工学部、特に東大か東工大を<event class="" eid="e82">志望していた</event>ようですが、成績が<event class="" eid="e83">足りなかった</event>ため茨城大学に<event class="" eid="e84">進んだんです</event>。</sentence>
+<sentence type="quasi">『入試科目がコンピュータだけなら東大に<event class="" eid="e85">行けたんだ</event>けど』と、<event class="STATE" eid="e86">未練</event>の<event class="" eid="e87">ある</event>表情で<event class="" eid="e88">話していた</event>のが印象に<event class="" eid="e89">残っています</event>」</sentence>
+<sentence>　茨城大学では、パソコンの画面上で<event class="STATE" eid="e90">立体的な</event>動きを<event class="" eid="e91">表現する</event>３Ｄプログラミングを<event class="" eid="e92">専攻し</event>、博士課程まで<event class="" eid="e93">進んだ</event>。</sentence>
+<sentence>大学院修了後は日本原子力研究所やソフト開発会社で活躍。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2002-01" valueFromSurface="XX02-01">’０２年１月</TIMEX3>に東大大学院の特任助手に<event class="" eid="e94">応募し</event>、<event class="" eid="e95">採用された</event>。</sentence>
+<sentence>東大大学院の関係者は、<quote>「金子容疑者の実力は、学内でも<event class="STATE" eid="e96">高く</event><event class="" eid="e97">評価されていた</event>」</quote>と、次のように<event class="" eid="e98">話す</event>。</sentence>
+<sentence>　「物理演算や運動力学など、<event class="STATE" eid="e99">さまざまな</event>要素を<event class="" eid="e100">統合した</event>プログラムを<event class="" eid="e101">作れる</event>開発者でした。</sentence>
+<sentence>つまりコンピュータの知識だけでなく、理系全般の<event class="STATE" eid="e102">幅広い</event>分野の知識を<event class="" eid="e103">使いこなしていたんです</event>。</sentence>
+<sentence type="quasi">ソフト開発者としては、ほとんど天才と<event class="" eid="e104">言っ</event>て<event class="STATE" eid="e105">いいでしょう</event>ね」</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t7" type="DATE" value="2002-04" valueFromSurface="XXXX-04">同年４月</TIMEX3>、金子容疑者は突然、インターネットの巨大掲示板「２ちゃんねる」で、Ｗｉｎｎｙの開発を<event class="" eid="e106">宣言した</event>。</sentence>
+<sentence>以下は、<TIMEX3 definite="TRUE" tid="t8" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当時</TIMEX3>の金子容疑者による書き込みだ。</sentence>
+<sentence type="quasi">　〈<event class="STATE" eid="e107">暇なんで</event>…２<ruby rubyText="チャン">ｃｈ</ruby>ネラー（２ちゃんねるのユーザー）向きのファイル共有ソフトを<event class="" eid="e108">作ってみる</event>わ〉</sentence>
+<sentence type="quasi">　〈ユーザーはクリエイターに直接、金を<event class="" eid="e109">払うべきであっ</event>てＣＤ業者などへの中間マージンは<event class="STATE" eid="e110">無くてもいい</event>はず〉</sentence>
+<sentence>　金子容疑者がＷｉｎｎｙを<event class="" eid="e111">開発した</event>動機は、ネット社会が<event class="" eid="e112">到来しつつある</event>中で、<event class="STATE" eid="e113">旧態依然な</event>ビジネスモデルに<event class="" eid="e114">安住する</event>ソフト流通業者を<event class="STATE" eid="e115">快く</event><event class="" eid="e116">思っていなかった</event>からだ。</sentence>
+<sentence>　茨城大学時代の友人は、こう<event class="" eid="e117">推測する</event>。</sentence>
+<sentence>　「彼はよく『クリエイターが<event class="STATE" eid="e118">正しく</event><event class="" eid="e119">評価される</event>世の中を<event class="" eid="e120">作るべきだ</event>』と<event class="" eid="e121">言っていました</event>。</sentence>
+<sentence>音楽にしても映画にしてもコンピュータソフトにしても、クリエイターが最も利益を<event class="" eid="e122">得るべきで</event>、中間に<event class="" eid="e123">入っ</event>て<event class="STATE" eid="e124">不当に</event>利益を<event class="" eid="e125"><ruby rubyText="むさぼ">貪</ruby>っている</event>業者は<event class="" eid="e126">排除するべきだ</event>と<event class="" eid="e127">考えていたんです</event>。</sentence>
+<sentence type="quasi">この<event class="STATE" eid="e128">徹底的な</event>クリエイター至上主義の裏には、有名大学に<event class="" eid="e129">進学できなかった</event>自分は技術で<event class="" eid="e130">認めてもらうしかない</event>というコンプレックスが<event class="" eid="e131">あるのではない</event>かと、私は<event class="" eid="e132">思います</event>」</sentence>
+<sentence type="quasi">　金子容疑者本人も、逮捕後の事情聴取で、</sentence>
+<sentence>　「ネット社会のビジネスモデルに疑問を<event class="" eid="e133">感じ</event>、著作権侵害を<event class="" eid="e134">蔓延させる</event>ため<event class="" eid="e135">開発した</event>。</sentence>
+<sentence type="quasi">自分の考えが法律と<event class="" eid="e136">ぶつかった</event>ため<event class="" eid="e137">逮捕され</event>ても<event class="STATE" eid="e138">仕方ない</event>」</sentence>
+<sentence>と<event class="" eid="e139">語っている</event>。</sentence>
+<sentence type="quasi">警察は<event class="STATE" eid="e140">徹底的に</event><event class="" eid="e141">やる</event></sentence>
+<sentence>　それでは、金子容疑者の有罪は<event class="STATE" eid="e142">確定的な</event>のか。</sentence>
+<sentence><event class="STATE" eid="e143">意外に</event>も、法曹関係者からは<quote>「不当逮捕ではないか」</quote>という声が<event class="" eid="e144">挙がっている</event>。</sentence>
+<sentence>Ｗｉｎｎｙはあくまでファイル交換を<event class="" eid="e145">する</event>ための道具であり、それを<event class="" eid="e146">使っ</event>て<event class="STATE" eid="e147">違法な</event>ファイルを<event class="" eid="e148">やりとりする</event>のはユーザー各自の判断と<event class="" eid="e149">なる</event>。</sentence>
+<sentence>米国など海外ではソフト開発者は<event class="" eid="e150">訴追されず</event>、ユーザーが<event class="" eid="e151">罰せられる</event>のが<event class="STATE" eid="e152">一般的だ</event>。</sentence>
+<sentence>前出の牧野弁護士も疑問を<event class="" eid="e153">呈する</event>。</sentence>
+<sentence>　「問題は金子容疑者のどの行動が幇助に<event class="" eid="e154">あたる</event>のか、という点です。</sentence>
+<sentence>単に自らが<event class="" eid="e155">開発した</event>Ｗｉｎｎｙをホームページで<event class="" eid="e156">公開していた</event>と<event class="" eid="e157">いう</event>だけでは、幇助罪に<event class="" eid="e158">問う</event>のは<event class="STATE" eid="e159">難しい</event>。</sentence>
+<sentence type="quasi">違法行為を<event class="" eid="e160">行っていた</event>個々の利用者に対して、メールでアドバイスを<event class="" eid="e161">送る</event>などの<event class="STATE" eid="e162">積極的な</event>関わりを<event class="" eid="e163">持っていなけれ</event>ば、幇助には<event class="" eid="e164">なりま<sampling type="start" />せん</event>」</sentence>
+<sentence>　前出の京都府警担当記者が、捜査の内幕を<event class="" eid="e165">明かす</event>。</sentence>
+<sentence>　「金子容疑者の逮捕に無理が<event class="" eid="e166">あるのではない</event>かという声は、府警内部でも<event class="STATE" eid="e167">少なからず</event><event class="" eid="e168">ありました</event>。</sentence>
+<sentence><event class="" eid="e169">逮捕し</event>ても、仮に不起訴、もしくは公判で無罪と<event class="" eid="e170">なれ</event>ば、かえってＷｉｎｎｙユーザーを<event class="" eid="e171">勢いづかせる</event>ことに<event class="" eid="e172">なりかねない</event>からです。</sentence>
+<sentence>しかし、警察関係者や自衛隊員がＷｉｎｎｙを<event class="" eid="e173">使用し</event>、内部資料を<event class="" eid="e174">流出させる</event>事件が<event class="" eid="e175">相次ぎ</event>、Ｗｉｎｎｙの広まりを<event class="" eid="e176">看過できなく</event><event class="" eid="e177">なった</event>警察庁は、京都府警に<event class="STATE" eid="e178">徹底的に</event><event class="" eid="e179">やる</event>よう指示を<event class="" eid="e180">出したんです</event>。</sentence>
+<sentence type="quasi">その勢いに<event class="" eid="e181">押される</event>形で捜査は<event class="" eid="e182">動いています</event>」</sentence>
+<sentence>　金子容疑者の逮捕後も、<event class="STATE" eid="e183">根強い</event>ファンに<event class="" eid="e184">支えられた</event>Ｗｉｎｎｙは依然と<event class="" eid="e185">し</event>て<event class="" eid="e186">稼働し</event>、違法ファイルのやりとりは<event class="" eid="e187">続けられている</event>。</sentence>
+<sentence>いつ何時、それらのユーザーにも警察から呼び出しが<event class="" eid="e188">かからない</event>とも<event class="" eid="e189">限らない</event>。<info arg="page" value="delimiter" /></sentence>
+<sentence type="quasi">▲（上の写真）スピッツ、サイモン＆ガーファンクルなどの有名歌手のほか、ＡＶビデオ、映画のコピーなども<event class="" eid="e190">交換されている</event></sentence>
+<sentence>超プレミア社内報を入手！</sentence>
+<sentence type="quasi">フジ新人女子アナ<quote>「<event class="STATE" eid="e191">恥ずかしい</event>」</quote>エピソード集</sentence>
+<sentence type="quasi">▲フジテレビ社内報の表紙（左）と女子アナ紹介ページ</sentence>
+<sentence>　「フジテレビには、ウッチーこと内田恭子、チノパン（千野<ruby rubyText="し">志</ruby><ruby rubyText="お">麻</ruby>）、アヤパン（高島彩）、ナカミー（中野美奈子）など愛称も世間に<event class="" eid="e192">認知される</event>ほどの人気女子アナが次々と<event class="" eid="e193">育っています</event>。</sentence>
+<sentence>ところが<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="2004" valueFromSurface="XXXX">今年</TIMEX3>の新人は彼らを<event class="" eid="e194">上回る</event>ほどの大物なんです。</sentence>
+<sentence type="quasi">入社前にすでに話題に<event class="" eid="e195">なっていた</event>ほどですから」</sentence>
+<sentence type="quasi">（芸能評論家・肥留間正明氏）</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t10" type="DATE" value="2004-04-01" valueFromSurface="XXXX-04-01">４月１日</TIMEX3>付で入社、<TIMEX3 definite="FALSE" tid="t11" type="DATE" value="2004-05-10" valueFromSurface="XXXX-05-10">５月１０日</TIMEX3>付でフジテレビのアナウンス部に<event class="" eid="e196">配属された</event>新人女子アナは２人<event class="" eid="e197">いる</event>。</sentence>
+<sentence>齋藤舞子（<TIMEX3 definite="FALSE" tid="t12" type="DURATION" value="P22Y" valueFromSurface="P22Y">２２歳</TIMEX3>・慶応義塾大学経済学部卒）と<ruby rubyText="たか">高</ruby><ruby rubyText="はし"><missingCharacter attribute="HanIdeograph" daikanwa="M99999" description="橋の異体字" unicode="U+FFFD">〓</missingCharacter></ruby><ruby rubyText="ま">真</ruby><ruby rubyText="あさ">麻</ruby>（<TIMEX3 definite="FALSE" tid="t13" type="DURATION" value="P22Y" valueFromSurface="P22Y">２２歳</TIMEX3>・東京女子大学文理学部卒）のご両人だ。</sentence>
+<sentence>　本誌は『ＪＯＣＸ　ＮＥＷＳ』と<event class="" eid="e198">題された</event>フジテレビの社内報新入社員紹介号を<event class="" eid="e199">入手した</event>。</sentence>
+<sentence>“アイドルアナ候補生”の素顔が<event class="STATE" eid="e200">赤裸々に</event><event class="" eid="e201">書かれ</event>、<TIMEX3 definite="TRUE" tid="t14" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">将来</TIMEX3>プレミアが<event class="" eid="e202">付く</event>こと必至の社内報である。</sentence>
+<sentence>全２０ページの小冊子には、新入社員全員の顔写真＆スナップ付きの自己紹介文と、<quote>「人生で一番<event class="STATE" eid="e203">恥ずかしかった</event>こと」</quote>のエピソードが<event class="" eid="e204">掲載されている</event>。</sentence>
+<sentence>　まず、齋藤アナの自己紹介ページを<event class="" eid="e205">覗いてみる</event>と、いきなり、目に<event class="" eid="e206">付いた</event>のが彼女のスナップ写真。</sentence>
+<sentence>カメラ目線でニッコリ<event class="" eid="e207">ほほ笑んでいる</event>のは<event class="STATE" eid="e208">いいのだ</event>が、なぜか両の頬にフジのロゴマークがベッタリと<event class="" eid="e209">ついているのだ</event>。</sentence>
+<sentence>　自己紹介文によるとフジの《目のマークが<event class="STATE" eid="e210">かわいい</event>なぁと<event class="" eid="e211">思い</event>、<event class="" eid="e212">フェイスペインティングしてみました</event>☆》（以下《　》内は社内報からの引用）とのこと。</sentence>
+<sentence>どうやら齋藤アナ、オチャメ系女子アナとしての自分を<event class="" eid="e213">アピールする</event>つもりらしい。</sentence>
+<sentence>文中にもやたらと☆マークが<event class="" eid="e214">出てくる</event>。</sentence>
+<sentence type="quasi">　あややとミキティの曲なら全曲振り付きで<event class="" eid="e215">歌える</event>ギャルっぽさ全開の齋藤アナの恥エピソードは、</sentence>
+<sentence type="quasi">　《高校の時、齋藤の<quote>「藤」</quote>の字がなぜか<event class="" eid="e216">書けなく</event>て<quote>「齋花舞子」</quote>と<event class="" eid="e217">書いていたら</event><event class="" eid="e218">卒業する</event>時に<event class="" eid="e219">呼ばれ</event>てついに<event class="" eid="e220">怒られてしまった</event>》</sentence>
+<sentence>と、かなり<sampling type="end" /><event class="STATE" eid="e221">情けない</event>。</sentence>

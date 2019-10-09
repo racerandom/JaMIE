@@ -1,0 +1,80 @@
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2002" valueFromSurface="2002">２００２年</TIMEX3>ＦＩＦＡワールドカップロゴ　あと<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P29D" valueFromSurface="P29D">２９日</TIMEX3></sentence>
+<sentence type="quasi">日本代表　<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2002-05-02" valueFromSurface="XXXX-XX-XX">きょう</TIMEX3>キリン杯ホンジュラス戦</sentence>
+<sentence type="quasi">強化試合　無敗</sentence>
+<sentence type="quasi"><EVENT class="OCCURRENCE" eid="e1">緩んだ</EVENT>空気<EVENT class="OCCURRENCE" eid="e2">引き締めろ</EVENT></sentence>
+<sentence>　サッカーのワールドカップ（Ｗ杯）へ調整を<EVENT class="ASPECTUAL" eid="e3">続ける</EVENT>日本代表は<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2002-05-02" valueFromSurface="XXXX-XX-02">２日</TIMEX3>、Ｗ杯会場と<EVENT class="OCCURRENCE" eid="e4">なる</EVENT>神戸市の神戸ウイングスタジアムでホンジュラスとのキリン・カップ第２戦に<EVENT class="I_ACTION" eid="e5">臨む</EVENT>。</sentence>
+<sentence>代表チームは<TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2002-05-01" valueFromSurface="XXXX-XX-01">１日</TIMEX3>、<EVENT class="OCCURRENCE" eid="e6">神戸入りし</EVENT>、試合会場で<EVENT class="OCCURRENCE" eid="e7">練習した</EVENT>。</sentence>
+<sentence>　練習にはＧＫ川口（ポーツマス）と、チームに<EVENT class="OCCURRENCE" eid="e8">同行している</EVENT>ＤＦ森岡（清水）も<EVENT class="OCCURRENCE" eid="e9">加わった</EVENT>。</sentence>
+<sentence>左手甲骨折のＦＷ柳沢（鹿島）とＭＦ戸田（清水）は別メニューで調整、<TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2002-05-02" valueFromSurface="XXXX-XX-02">２日</TIMEX3>は<EVENT class="OCCURRENCE" eid="e10">欠場する</EVENT>。</sentence>
+<sentence>ホンジュラスは神戸ユニバー記念競技場で<EVENT class="OCCURRENCE" eid="e11">練習した</EVENT>。</sentence>
+<sentence>　日本は<TIMEX3 definite="FALSE" tid="t7" type="DATE" value="2002-04-29" valueFromSurface="XXXX-04-29">４月２９日</TIMEX3>、スロバキアを１‐０で<EVENT class="OCCURRENCE" eid="e12">下し</EVENT>、ことしの強化試合の通算成績を３勝１分けと<EVENT class="OCCURRENCE" eid="e13">し</EVENT>、順調さを<EVENT class="OCCURRENCE" eid="e14">示している</EVENT>が、トルシエ監督は会見で<quote>「この試合は要注意」</quote>と<EVENT class="I_ACTION" eid="e15">警戒した</EVENT>。</sentence>
+<sentence>　ホンジュラスはＷ杯北中米・カリブ海最終予選で、最終戦にメキシコに<EVENT class="OCCURRENCE" eid="e16">敗れ</EVENT>出場を<EVENT class="I_ACTION" eid="e17">逃した</EVENT>。</sentence>
+<sentence>日本には<EVENT class="OCCURRENCE" eid="e18">侮れない</EVENT>実力国と<EVENT class="I_STATE" eid="e19">いえる</EVENT>。</sentence>
+<sentence type="quasi">ホンジュラス戦を<TIMEX3 definite="FALSE" tid="t8" type="DATE" value="2002-05-02" valueFromSurface="XXXX-XX-XX">翌日</TIMEX3>に<EVENT class="OCCURRENCE" eid="e20">控え</EVENT>、練習に<EVENT class="I_ACTION" eid="e21">臨む</EVENT>（右から）中沢、中村、三都主ら＝神戸ウイングスタジアムで</sentence>
+<sentence type="quasi">森岡、<EVENT class="NULL" eid="e22">順調な</EVENT>回復</sentence>
+<sentence>　右太ももの肉離れでリハビリ中の森岡が練習に参加、<EVENT class="NULL" eid="e23">順調な</EVENT>回復ぶりを<EVENT class="OCCURRENCE" eid="e24">見せた</EVENT>。</sentence>
+<sentence>　「ボールを<EVENT class="OCCURRENCE" eid="e25">回す</EVENT>くらいで、<EVENT class="NULL" eid="e26">そんなに</EVENT><EVENT class="NULL" eid="e27">ハードな</EVENT>練習じゃなかった。</sentence>
+<sentence type="quasi">（<EVENT class="NULL" eid="e28">単調な</EVENT>リハビリメニューから）やっと<EVENT class="NULL" eid="e29">面白く</EVENT><EVENT class="OCCURRENCE" eid="e30">なってきた</EVENT>感じ」</sentence>
+<sentence type="fragment">と、ボールが<EVENT class="OCCURRENCE" eid="e31">けれる</EVENT>ところまで<EVENT class="OCCURRENCE" eid="e32">回復している</EVENT>ことを<EVENT class="I_ACTION" eid="e33">明かした</EVENT>。</sentence>
+<sentence>　「<EVENT class="NULL" eid="e34">できる</EVENT>だけ<EVENT class="NULL" eid="e35">早い</EVENT>時期に試合に<EVENT class="I_ACTION" eid="e36">出たい</EVENT>。</sentence>
+<sentence type="quasi">天皇杯決勝（<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="2002-01-01" valueFromSurface="XXXX-XX-XX">元日</TIMEX3>）以来試合に<EVENT class="I_ACTION" eid="e37">出ていない</EVENT>から」</sentence>
+<sentence type="fragment">。</sentence>
+<sentence>復調のめどが<EVENT class="OCCURRENCE" eid="e38">立っている</EVENT>のか、表情は<EVENT class="NULL" eid="e39">明るかった</EVENT>。</sentence>
+<sentence type="quasi">戸田も欠場に</sentence>
+<sentence>　戸田が、古傷の左ひざ痛のため、ホンジュラス戦を<EVENT class="I_ACTION" eid="e40">欠場することになった</EVENT>。</sentence>
+<sentence type="fragment">　別メニューの調整に</sentence>
+<sentence>「Ｗ杯まであと<TIMEX3 definite="FALSE" tid="t10" type="DURATION" value="P1M" valueFromSurface="P1M">１カ月</TIMEX3>。</sentence>
+<sentence type="quasi">自分では<EVENT class="STATE" eid="e41">できる</EVENT>と<EVENT class="I_STATE" eid="e42">思っていた</EVENT>が、前日の全体練習に<EVENT class="I_ACTION" eid="e43">参加していない</EVENT>ということは、試合には<EVENT class="I_ACTION" eid="e44">出られない</EVENT>ということ」</sentence>
+<sentence type="fragment">と戸田。</sentence>
+<sentence>　代表２３人の発表が<TIMEX3 definite="FALSE" tid="t11" type="DATE" value="2002-05-17" valueFromSurface="XXXX-XX-17">１７日</TIMEX3>に<EVENT class="OCCURRENCE" eid="e45">迫っている</EVENT>。</sentence>
+<sentence><quote>「準備はしっかり<EVENT class="OCCURRENCE" eid="e46">やらない</EVENT>と」</quote>と口元を<EVENT class="OCCURRENCE" eid="e47">引き締めた</EVENT>。</sentence>
+<sentence type="quasi">代表入り　選手にも<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="2002-05-17" valueFromSurface="XXXX-XX-17">１７日</TIMEX3>に通<sampling type="start" />知</sentence>
+<sentence type="quasi">トルシエ監督会見</sentence>
+<sentence type="fragment">　サッカー日本代表のトルシエ監督は<TIMEX3 definite="FALSE" tid="t13" type="DATE" value="2002-05-01" valueFromSurface="XXXX-XX-01">１日</TIMEX3>、神戸ウイングスタジアムで<EVENT class="OCCURRENCE" eid="e48">記者会見し</EVENT>、<TIMEX3 definite="FALSE" tid="t14" type="DATE" value="2002-05-17" valueFromSurface="XXXX-XX-17">１７日</TIMEX3>に<EVENT class="OCCURRENCE" eid="e49">発表する</EVENT>Ｗ杯最終登録メンバー２３人について</sentence>
+<sentence>「<TIMEX3 definite="FALSE" tid="t15" type="DATE" value="2002-05-17" valueFromSurface="XXXX-XX-17">１７日</TIMEX3>まで選手にも協会関係者にも<EVENT class="OCCURRENCE" eid="e50">明かさない</EVENT>。</sentence>
+<sentence type="quasi"><EVENT class="OCCURRENCE" eid="e51">外れ</EVENT>て<EVENT class="OCCURRENCE" eid="e52">がっかりする</EVENT>選手も<EVENT class="OCCURRENCE" eid="e53">いるだろう</EVENT>が、このやり方を選手たちも<EVENT class="I_STATE" eid="e54">承知してくれる</EVENT>はずだ」</sentence>
+<sentence type="fragment">と、情報管理の徹底を<EVENT class="I_ACTION" eid="e55">強調した</EVENT>。</sentence>
+<sentence>　キリン・カップの後、日本代表は<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="2002-05-05" valueFromSurface="XXXX-XX-05">５日</TIMEX3>に欧州遠征へ出発。</sentence>
+<sentence>海外組や負傷者の回復具合を<EVENT class="OCCURRENCE" eid="e56">見</EVENT>ながら、<TIMEX3 definite="FALSE" tid="t17" type="DATE" value="2002-05-03" valueFromSurface="XXXX-XX-03">３日</TIMEX3>に<EVENT class="NULL" eid="e57">新たに</EVENT>最大で２８人を<EVENT class="OCCURRENCE" eid="e58">選出する</EVENT>。</sentence>
+<sentence type="fragment">　監督はこの２８人以外にもメンバー入りの可能性を<EVENT class="OCCURRENCE" eid="e59">残す</EVENT>方針だが、</sentence>
+<sentence>「４、５人の選手を<EVENT class="OCCURRENCE" eid="e60">外す</EVENT>のはとても<EVENT class="NULL" eid="e61">難しい</EVENT>。</sentence>
+<sentence>Ｗ杯初戦（<TIMEX3 definite="FALSE" tid="t18" type="DATE" value="2002-06-04" valueFromSurface="XXXX-06-04">６月４日</TIMEX3>）のベルギー戦のメンバーは頭に<EVENT class="STATE" eid="e62">ある</EVENT>。</sentence>
+<sentence type="quasi">中心と<EVENT class="OCCURRENCE" eid="e63">なる</EVENT>１５、１６人の選手も<EVENT class="OCCURRENCE" eid="e64">決まっている</EVENT>」</sentence>
+<sentence type="fragment">と胸の内を<EVENT class="OCCURRENCE" eid="e65">明かした</EVENT>。</sentence>
+<sentence>　ホンジュラス戦に<EVENT class="I_ACTION" eid="e66">向け</EVENT>ては、ともに左ひざを<EVENT class="OCCURRENCE" eid="e67">痛めている</EVENT>ＧＫ川口、戸田と柳沢を試合に<EVENT class="I_ACTION" eid="e68">出場させない</EVENT>ことを明言。</sentence>
+<sentence>スロバキア戦は<EVENT class="I_ACTION" eid="e69">完勝した</EVENT>が<quote>「勝利で<EVENT class="OCCURRENCE" eid="e70">得た</EVENT>自信とは<EVENT class="NULL" eid="e71">別に</EVENT>、<EVENT class="NULL" eid="e72">謙虚に</EVENT><EVENT class="OCCURRENCE" eid="e73">ならなければならない</EVENT>」</quote>と、周囲の雑音を<EVENT class="I_ACTION" eid="e74">消し去る</EVENT>のに躍起だった。</sentence>
+<sentence>「チームの規律を<EVENT class="OCCURRENCE" eid="e75">守り</EVENT>、前線から<EVENT class="NULL" eid="e76">激しく</EVENT><EVENT class="OCCURRENCE" eid="e77">プレーしなければならない</EVENT>。</sentence>
+<sentence type="quasi"><EVENT class="NULL" eid="e78">強い</EVENT>精神力を<EVENT class="OCCURRENCE" eid="e79">持っ</EVENT>て<EVENT class="OCCURRENCE" eid="e80">臨まなく</EVENT>ては」</sentence>
+<sentence type="fragment">と<EVENT class="ASPECTUAL" eid="e81">続け</EVENT>、<EVENT class="NULL" eid="e82">緩みがちな</EVENT>空気を<EVENT class="OCCURRENCE" eid="e83">引き締めた</EVENT>。</sentence>
+<sentence type="quasi"><EVENT class="NULL" eid="e84">不屈</EVENT>の鈴木<quote>「<TIMEX3 type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今度</TIMEX3>こそ」</quote></sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t19" type="DURATION" value="P4M" valueFromSurface="P4M">４ヵ月</TIMEX3>無得点も　『コンディション<EVENT class="NULL" eid="e85">いい</EVENT>』</sentence>
+<sentence>　鈴木（鹿島）がゴールの感触を<EVENT class="OCCURRENCE" eid="e86">忘れ</EVENT>て<TIMEX3 definite="FALSE" mod="APPROX" tid="t20" type="DURATION" value="P4M" valueFromSurface="P4M">４カ月余り</TIMEX3>が<EVENT class="OCCURRENCE" eid="e87">過ぎた</EVENT>。</sentence>
+<sentence>最後に<EVENT class="OCCURRENCE" eid="e88">得点した</EVENT>のが天皇杯・準々決勝（<TIMEX3 definite="FALSE" tid="t21" type="DATE" value="2001-12-24" valueFromSurface="XXXX-12-24">１２月２４日</TIMEX3>）のＣ大阪戦。</sentence>
+<sentence>以来、鹿島で公式戦１２試合（Ｊリーグ７試合<EVENT class="NULL" eid="e89">含む</EVENT>）、代表４試合で“沈黙”が<EVENT class="ASPECTUAL" eid="e90">続いている</EVENT>。</sentence>
+<sentence>　特にコスタリカ戦（<TIMEX3 definite="FALSE" tid="t22" type="DATE" value="2002-04-17" valueFromSurface="XXXX-04-17">４月１７日</TIMEX3>）では、三都主（清水）の絶妙クロスをことごとく<EVENT class="OCCURRENCE" eid="e91">外し</EVENT>、<quote>「決定力不足」</quote>という批判の矢面にも<EVENT class="OCCURRENCE" eid="e92">立たされた</EVENT>。</sentence>
+<sentence>それだけに<quote>「<TIMEX3 type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今度</TIMEX3>こそ」</quote>との思いは<EVENT class="NULL" eid="e93">強い</EVENT>。</sentence>
+<sentence>　鈴木の良さは攻撃面だけではない。</sentence>
+<sentence>ファウル寸前の<EVENT class="NULL" eid="e94">激しい</EVENT>チェック、時には守備ラインまで<EVENT class="OCCURRENCE" eid="e95">下がっ</EVENT>てボールを<EVENT class="OCCURRENCE" eid="e96">囲い込む</EVENT><EVENT class="NULL" eid="e97">豊富な</EVENT>運動量、<EVENT class="OCCURRENCE" eid="e98">倒され</EVENT>ても、何事も<EVENT class="STATE" eid="e99">なかった</EVENT>かのように<EVENT class="OCCURRENCE" eid="e100">よみがえってくる</EVENT><EVENT class="NULL" eid="e101">不屈</EVENT>の闘志など、魅力に<EVENT class="OCCURRENCE" eid="e102">あふれている</EVENT>。</sentence>
+<sentence>　トルシエ戦術でまずトップの選手に<EVENT class="OCCURRENCE" eid="e103">求められる</EVENT>のは、中盤の攻撃参加を<EVENT class="I_ACTION" eid="e104">促す</EVENT>ためのキープ力。</sentence>
+<sentence>ポストとして<EVENT class="OCCURRENCE" eid="e105">機能する</EVENT>ことでもある。</sentence>
+<sentence>だが、ストライカーとしての本能がそこに<EVENT class="OCCURRENCE" eid="e106">甘んじる</EVENT>ことを<EVENT class="I_ACTION" eid="e107">許してくれない</EVENT>。</sentence>
+<sentence>高原（磐田）は肺動脈血栓塞栓（そくせん）症でＷ杯出場は<EVENT class="NULL" eid="e108">微妙</EVENT>。</sentence>
+<sentence>柳沢は左手甲の骨折でフルパワーでのプレーが<EVENT class="I_STATE" eid="e109">できない</EVENT>。</sentence>
+<sentence>　西沢（Ｃ大阪）は先のスロバキア戦で<TIMEX3 definite="FALSE" mod="APPROX" tid="t23" type="DURATION" value="P1Y" valueFromSurface="P1Y">ほぼ１年ぶり</TIMEX3>に１点を<EVENT class="OCCURRENCE" eid="e110">挙げた</EVENT>が、森島（同）とのコンビが<EVENT class="STATE" eid="e111">あっ</EVENT>てこそ。</sentence>
+<sentence>代表では依然無得点の久保（広島）、山下（仙台）に<EVENT class="NULL" eid="e112">多く</EVENT>は<EVENT class="OCCURRENCE" eid="e113">望めない</EVENT>。</sentence>
+<sentence>　<quote>「コンディションは<TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3><EVENT class="NULL" eid="e114">すごく</EVENT><EVENT class="NULL" eid="e115">いい</EVENT>」</quote>と鈴木。</sentence>
+<sentence>ホンジュラス戦が復活へのきっかけと<EVENT class="I_ACTION" eid="e116">なる</EVENT>か。</sentence>
+<sentence type="quasi">（内田　修一）</sentence>
+<sentence type="quasi">練習で<EVENT class="OCCURRENCE" eid="e117">ダッシュする</EVENT>鈴木</sentence>
+<sentence type="quasi">敵将『わ<sampling type="end" />れわれは本気』</sentence>
+<sentence>　ホンジュラスはＤＦカバジェロ（ウディネーゼ）、ＦＷパボン（ナポリ）のイタリアで<EVENT class="OCCURRENCE" eid="e118">プレーする</EVENT>２人の中心選手も<EVENT class="OCCURRENCE" eid="e119">招集している</EVENT>。</sentence>
+<sentence>ルサルド監督は記者会見で<EVENT class="NULL" eid="e120">穏やかな</EVENT>口調ながら、今回の試合について<quote>「<EVENT class="NULL" eid="e121">本気で</EVENT><EVENT class="I_ACTION" eid="e122">臨んでいる</EVENT>」</quote>と<EVENT class="PERCEPTION" eid="e123">話した</EVENT>。</sentence>
+<sentence type="fragment">　<EVENT class="OCCURRENCE" eid="e124">同席した</EVENT>カバジェロはチームの特長について</sentence>
+<sentence>「スピードが<EVENT class="STATE" eid="e125">あり</EVENT>、ボールの扱いにも<EVENT class="OCCURRENCE" eid="e126">たけている</EVENT>。</sentence>
+<sentence type="quasi">ブラジルのサッカーに<EVENT class="NONE" eid="e127">似ている</EVENT>」</sentence>
+<sentence type="fragment">と胸を<EVENT class="OCCURRENCE" eid="e128">張っ</EVENT>て<EVENT class="I_ACTION" eid="e129">説明した</EVENT>。</sentence>
+<sentence>　チームは<TIMEX3 definite="FALSE" tid="t24" type="TIME" value="2002-05-02T19:30" valueFromSurface="XXXX-XX-XXT19:30">午後７時半</TIMEX3>から神戸ユニバー記念競技場で調整。</sentence>
+<sentence>試合時間に<EVENT class="OCCURRENCE" eid="e130">合わせる</EVENT>ため、急きょ会場を<EVENT class="OCCURRENCE" eid="e131">変更し</EVENT>ての練習は<EVENT class="OCCURRENCE" eid="e132">リラックスした</EVENT>雰囲気で<EVENT class="ASPECTUAL" eid="e133">続いた</EVENT>。</sentence>
+<sentence>　今回のメンバーでＷ杯予選に<EVENT class="I_ACTION" eid="e134">出場した</EVENT>主軸は数人。</sentence>
+<sentence>チームの広報担当は<quote>「若手を<EVENT class="OCCURRENCE" eid="e135">連れ</EVENT>て<EVENT class="OCCURRENCE" eid="e136">きているので</EVENT>、<EVENT class="OCCURRENCE" eid="e137">試す</EVENT>場に<EVENT class="OCCURRENCE" eid="e138">なるのではない</EVENT>か」</quote>と<EVENT class="REPORTING" eid="e139">話した</EVENT>。</sentence>
+<sentence type="quasi">日本戦を前に意気込みを<EVENT class="OCCURRENCE" eid="e140">語る</EVENT>ホンジュラスのルサルド監督＝神戸ウイングスタジアムで</sentence>

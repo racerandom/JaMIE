@@ -1,0 +1,184 @@
+<sentence type="quasi">Ⅲ　さて、サウードはこの<ruby rubyText="まち">街</ruby>で</sentence>
+<sentence>　シェーラたちがアイシャと<event class="" eid="e1">であった</event>、そのおなじ日のこと。</sentence>
+<sentence><ruby rubyText="あく">悪</ruby>の<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>つかいサウードもまた、この<ruby rubyText="まち">街</ruby>、“<ruby rubyText="うみ">海</ruby><ruby rubyText="べ">辺</ruby>の<ruby rubyText="おう">王</ruby><ruby rubyText="こく">国</ruby>”の<ruby rubyText="しゅ">首</ruby><ruby rubyText="と">都</ruby>に<event class="" eid="e2">たどりついていました</event>。</sentence>
+<sentence>　「魔法の<ruby rubyText="ち">地</ruby><ruby rubyText="ず">図</ruby>め。</sentence>
+<sentence>やはり、海のしっけに<event class="STATE" eid="e3"><ruby rubyText="よわ">弱</ruby>い</event>のか。</sentence>
+<sentence type="quasi">まるで<event class="" eid="e4">はたらかない</event>な」</sentence>
+<sentence>　その<TIMEX3 definite="TRUE" general="TRUE" tid="t1" type="TIME" value="XXXX-XX-XXTEV" valueFromSurface="XXXX-XX-XXTEV">夕方</TIMEX3>、<ruby rubyText="やど">宿</ruby><ruby rubyText="や">屋</ruby>で地図を<event class="" eid="e5">ひろげた</event>サウードは、<ruby rubyText="まゆ">眉</ruby>を<event class="" eid="e6">ひそめ</event>て、<event class="" eid="e7">つぶやきました</event>。</sentence>
+<sentence>　<quote>「まあ、<event class="STATE" eid="e8">いい</event>か」</quote>と、<ruby rubyText="かお">顔</ruby>を<event class="" eid="e9">あげました</event>。</sentence>
+<sentence><ruby rubyText="まど">窓</ruby><ruby rubyText="べ">辺</ruby>に<event class="" eid="e10">たち</event>、海のほうを<event class="" eid="e11">みました</event>。</sentence>
+<sentence type="quasi">　「あの海に“水色のかぎ”―アクアマリンが<event class="" eid="e12">ある</event>ことは<event class="" eid="e13">わかっているのだ</event>」</sentence>
+<sentence>　その<ruby rubyText="むかし"><TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3></ruby>、サウードは、ある国の王子さまでした。</sentence>
+<sentence>そのころに、<ruby rubyText="りょう">両</ruby><ruby rubyText="しん">親</ruby>から<event class="" eid="e14"><ruby rubyText="き">聞</ruby>かされた</event><ruby rubyText="でん">伝</ruby><ruby rubyText="せつ">説</ruby>に、<ruby rubyText="かい">海</ruby><ruby rubyText="てい">底</ruby>のアクアマリンの話が<event class="" eid="e15">あったのでした</event>。</sentence>
+<sentence>それを<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">このごろ</TIMEX3>、サウードは<event class="" eid="e16">思いだしたのです</event>。</sentence>
+<sentence>　<event class="STATE" eid="e17"><ruby rubyText="うつく">美</ruby>しい</event>母は、サウードに<event class="" eid="e18">いいました</event>。</sentence>
+<sentence>　「わたしたちの国からは<event class="STATE" eid="e19"><ruby rubyText="とお">遠</ruby>い</event>ところに<event class="" eid="e20">ある</event>海の<ruby rubyText="そこ">底</ruby>にね、“海のバラ”というなまえの<ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>の<ruby rubyText="おう">王</ruby><ruby rubyText="こく">国</ruby>が<event class="" eid="e21">ある</event>の。</sentence>
+<sentence type="quasi">その国には、海の色の<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>の<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>が<event class="" eid="e22">かざってある</event><ruby rubyText="おう">王</ruby><ruby rubyText="かん">冠</ruby>が<event class="" eid="e23">あっ</event>て、<ruby rubyText="だい">代</ruby>だいの王さまのあいだで、<event class="" eid="e24">うけつがれているんです</event>って」</sentence>
+<sentence type="quasi">　「魔法の宝石って、どんなものなの？」</sentence>
+<sentence>　<event class="STATE" eid="e25">やさしい</event>父王は、<ruby rubyText="み">身</ruby>を<event class="" eid="e26">かがめ</event>て<event class="" eid="e27">いいました</event>。</sentence>
+<sentence>　「それは、人間の<ruby rubyText="ねが">願</ruby>いごとを<event class="" eid="e28">かなえる</event>力を<event class="" eid="e29">もつ</event>石なのだそうだ。</sentence>
+<sentence type="quasi">あるいは、そう<event class="" eid="e30">いう</event><event class="STATE" eid="e31">ふしぎな</event>力を<event class="" eid="e32">もつ</event><ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>の<ruby rubyText="つえ">杖</ruby>を<event class="" eid="e33">さがす</event>ための<ruby rubyText="どう">道</ruby><ruby rubyText="ぐ">具</ruby>だとも<event class="" eid="e34">いう</event>な」</sentence>
+<sentence>　「<event class="STATE" eid="e35">すごい</event>ね。</sentence>
+<sentence>ぼく、<event class="STATE" eid="e36">ほしい</event>。</sentence>
+<sentence type="quasi"><event class="" eid="e37">みてみたい</event>な」</sentence>
+<sentence>　<event class="STATE" eid="e38">おさない</event>サウードは父王のひざに<event class="" eid="e39">すがりました</event>。</sentence>
+<sentence type="quasi">王は<ruby rubyText="むすこ">息子</ruby>の<ruby rubyText="あたま">頭</ruby>を<event class="" eid="e40">なで</event>て、</sentence>
+<sentence>　「そうだね。</sentence>
+<sentence>わたしも<event class="" eid="e41">みてみたい</event>よ。</sentence>
+<sentence>きっと<event class="STATE" eid="e42"><ruby rubyText="うつく">美</ruby>しい</event><ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>や杖なのだろう。</sentence>
+<sentence>けれ<sampling type="start" />どサウード、よく<event class="" eid="e43">おぼえ</event>て<event class="" eid="e44">おおき</event>。</sentence>
+<sentence>魔法の石も、それから杖も、本当には人間の<ruby rubyText="ねが">願</ruby>いごとを<event class="" eid="e45">かなえる</event>ことはできっこ<event class="STATE" eid="e46">ないのだ</event>よ。</sentence>
+<sentence type="quasi">なぜって、だれかを<event class="STATE" eid="e47"><ruby rubyText="しあわ">幸</ruby>せに</event><event class="" eid="e48">できる</event>のは魔法の力じゃない、人間の力と、人間の<ruby rubyText="いの">祈</ruby>りだけなのだからね」</sentence>
+<sentence>　その<ruby rubyText="でん">伝</ruby><ruby rubyText="せつ">説</ruby>を<event class="" eid="e49"><ruby rubyText="き">聞</ruby>いた</event>すぐあとに、<ruby rubyText="りょう">両</ruby><ruby rubyText="しん">親</ruby>は<event class="" eid="e50"><ruby rubyText="しん">信</ruby><ruby rubyText="らい">頼</ruby>していた</event><ruby rubyText="だい">大</ruby><ruby rubyText="じん">臣</ruby>たちのうらぎりに<event class="" eid="e51">あい</event>、<event class="" eid="e52"><ruby rubyText="ころ">殺</ruby>され</event>て、サウードはひとり、<ruby rubyText="とお">遠</ruby>くの国へ<event class="" eid="e53">のがれたのでした</event>。</sentence>
+<sentence><event class="" eid="e54">うばわれた</event>国は、その後、<ruby rubyText="た">他</ruby><ruby rubyText="こく">国</ruby>に<event class="" eid="e55">せめほろぼされ</event>て<TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>は<event class="" eid="e56">ありません</event>。</sentence>
+<sentence><ruby rubyText="あ">荒</ruby>れ<ruby rubyText="ち">地</ruby>が<event class="" eid="e57"><ruby rubyText="つづ">続</ruby>く</event>ばかりに<event class="" eid="e58">なっている</event>とうわさに<event class="" eid="e59">聞きました</event>。</sentence>
+<sentence>そうしてサウードはいつか<ruby rubyText="あく">悪</ruby>の魔法つかいと<event class="" eid="e60">なり</event>、<event class="" eid="e61"><ruby rubyText="なが">流</ruby>れ</event><event class="" eid="e62">流れ</event>て、この国に<event class="" eid="e63">きたのでした</event>。</sentence>
+<sentence>アクアマリンの<ruby rubyText="でん">伝</ruby><ruby rubyText="せつ">説</ruby>を<event class="" eid="e64"><ruby rubyText="き">聞</ruby>いた</event>ころには、一生<event class="" eid="e65">いくこともないだろう</event>と<event class="" eid="e66">思った</event>、<ruby rubyText="こ">故</ruby><ruby rubyText="きょう">郷</ruby>から<event class="STATE" eid="e67">はるかに</event><event class="STATE" eid="e68"><ruby rubyText="とお">遠</ruby>い</event>国へ。</sentence>
+<sentence>　サウードは<event class="STATE" eid="e69"><ruby rubyText="ひく">低</ruby>く</event><event class="" eid="e70">うなりました</event>。</sentence>
+<sentence>いらいらと、へやの中を<event class="" eid="e71">歩きました</event>。</sentence>
+<sentence>　もう<event class="" eid="e72">いない</event>父王に<event class="" eid="e73">むかっ</event>て、<event class="" eid="e74">いいました</event>。</sentence>
+<sentence>　「しかしおとうさま。</sentence>
+<sentence>もし、わたしが<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">あのとき</TIMEX3>に<event class="STATE" eid="e75">大きく</event>て、<TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>ほどの<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>を<event class="" eid="e76">つかえていたら</event>、<ruby rubyText="だい">大</ruby><ruby rubyText="じん">臣</ruby>たちなどに国を<event class="" eid="e77">うばわれ</event>は<event class="" eid="e78">しなかった</event>。</sentence>
+<sentence>あなたたちは<event class="" eid="e79">生きていられた</event>し、国土は<event class="STATE" eid="e80"><ruby rubyText="ゆた">豊</ruby>かな</event>まま、<ruby rubyText="こく">国</ruby><ruby rubyText="みん">民</ruby>は<event class="STATE" eid="e81"><ruby rubyText="しあわ">幸</ruby>せで</event><event class="" eid="e82">いられたでしょう</event>よ。</sentence>
+<sentence>あなたたちの<ruby rubyText="ぜん">善</ruby><ruby rubyText="い">意</ruby>も、<ruby rubyText="いの">祈</ruby>りもなんの力も<event class="" eid="e83">もたなかった</event>。</sentence>
+<sentence>そう。</sentence>
+<sentence type="quasi">もしあのとき、魔法の<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>が―<ruby rubyText="ねが">願</ruby>いごとを<event class="" eid="e84">かなえる</event><ruby rubyText="つえ">杖</ruby>が<event class="" eid="e85">あれ</event>ば…」</sentence>
+<sentence>　サウードは首を<event class="" eid="e86">ふる</event>と、<ruby rubyText="しん">寝</ruby><ruby rubyText="だい">台</ruby>にこしを<event class="" eid="e87">かけました</event>。</sentence>
+<sentence type="quasi">手でひたいを<event class="" eid="e88">おさえ</event>て、</sentence>
+<sentence type="quasi">　「なにを<event class="" eid="e89">いっているんだ</event>、わたしは？」</sentence>
+<sentence>　ダイヤモンド、サファイア、トパーズ。</sentence>
+<sentence>そして、もうすぐ手に<event class="" eid="e90">はいるだろう</event>、アクアマリン。</sentence>
+<sentence><ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>はこれで四<ruby rubyText="こ">個</ruby>、サウードのものと<event class="" eid="e91">なります</event>。</sentence>
+<sentence>そしてサウードはやがてきっと、まだ<event class="" eid="e92">みつかっていない</event>宝石をどこかで<event class="" eid="e93">さがしだし</event>、シェーラやハッサンの<event class="" eid="e94">もっている</event>のこりの宝石も、<event class="" eid="e95">とりあげるでしょう</event>。</sentence>
+<sentence>　七つの宝石を<event class="" eid="e96">そろえた</event>サウードは<ruby rubyText="でん">伝</ruby><ruby rubyText="せつ">説</ruby>の<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>の<ruby rubyText="つえ">杖</ruby>を手に<event class="" eid="e97">入れ</event>、そして…。</sentence>
+<sentence>　（わたしは<ruby rubyText="せ">世</ruby><ruby rubyText="かい">界</ruby>を<event class="" eid="e98">ほろぼすのだ</event>。</sentence>
+<sentence>人間の<ruby rubyText="まち">街</ruby>を<event class="" eid="e99"><ruby rubyText="は">破</ruby><ruby rubyText="かい">壊</ruby>しつくし</event>て、<event class="STATE" eid="e100">あたらしく</event><ruby rubyText="ま">魔</ruby><ruby rubyText="もの">物</ruby>たちが世の王と<event class="" eid="e101">なる</event>、<event class="STATE" eid="e102"><ruby rubyText="うつく">美</ruby>しい</event><ruby rubyText="せ">世</ruby><ruby rubyText="かい">界</ruby>を<event class="" eid="e103">作るのだ</event>。</sentence>
+<sentence>人間たちなど、魔物たちの<ruby rubyText="げ">下</ruby><ruby rubyText="ぼく">僕</ruby>に<event class="" eid="e104">なる</event>ていどに<event class="" eid="e105">生きのこっていればよい</event>。</sentence>
+<sentence type="quasi"><event class="STATE" eid="e106">あんな</event><event class="STATE" eid="e107">みにくい</event>生き物たちは、この世に<event class="" eid="e108">生きている</event><ruby rubyText="か">価</ruby><ruby rubyText="ち">値</ruby>など<event class="STATE" eid="e109">ないのだ</event>からな…）</sentence>
+<sentence>　魔物たちを<ruby rubyText="あるじ">主</ruby>と<event class="" eid="e110">する</event>世界―<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF"><ruby rubyText="い">以</ruby><ruby rubyText="ぜん">前</ruby></TIMEX3>は<event class="" eid="e111"><ruby rubyText="そう">想</ruby><ruby rubyText="ぞう">像</ruby>する</event>だけで、<event class="STATE" eid="e112"><ruby rubyText="こう">幸</ruby><ruby rubyText="ふく">福</ruby>な</event>気分に<event class="" eid="e113">ひたれた</event>サウードでしたが、<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">きょう</TIMEX3>はどう<event class="" eid="e114">いう</event>わけか、<ruby rubyText="まぼろし">幻</ruby>の<ruby rubyText="ふう">風</ruby><ruby rubyText="けい">景</ruby>が<event class="" eid="e115">色あせ</event>て<event class="" eid="e116">思えました</event>。</sentence>
+<sentence type="fragment">　そのとき、ふっとだれかが、<ruby rubyText="みみ">耳</ruby><ruby rubyText="もと">元</ruby>で、『</sentence>
+<sentence>人間は、<event class="STATE" eid="e117">みにくい</event>の？</sentence>
+<sentence type="fragment">』と、<event class="" eid="e118"><ruby rubyText="き">聞</ruby>きました</event>。</sentence>
+<sentence>小さな子どもの、声でした。</sentence>
+<sentence>　あたりを<event class="" eid="e119">みまわし</event>ても、だれも<event class="" eid="e120">いません</event>。</sentence>
+<sentence><ruby rubyText="そら">空</ruby><ruby rubyText="みみ">耳</ruby>かとサウードは首を<event class="" eid="e121">ふりました</event>。</sentence>
+<sentence>　このごろ、<ruby rubyText="たび">旅</ruby>の<ruby rubyText="つか">疲</ruby>れが<event class="" eid="e122">出てきた</event>ものか、体がどうも<event class="STATE" eid="e123">だるいのでした</event>。</sentence>
+<sentence>　サウードは、<ruby rubyText="に">荷</ruby><ruby rubyText="もつ">物</ruby><ruby rubyText="ぶくろ">袋</ruby>の中の<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>を、ざらりと<ruby rubyText="しん">寝</ruby><ruby rubyText="だい">台</ruby>の上に<event class="" eid="e124">あけました</event>。</sentence>
+<sentence>宝石は<event class="" eid="e125">ひかりかがやき</event>、<event class="" eid="e126">すんだ</event>ひかり<sampling type="end" />を<event class="" eid="e127"><ruby rubyText="はな">放</ruby>ちました</event>。</sentence>
+<sentence>　<quote>「…人間は、<event class="STATE" eid="e128">みにくいのだ</event>」</quote>と、サウードは、<event class="" eid="e129">つぶやきました</event>。</sentence>
+<sentence>　「<event class="" eid="e130">しんじてい</event>ても、きっと<event class="" eid="e131">うらぎる</event>。</sentence>
+<sentence><event class="STATE" eid="e132">やさしい</event>ふりを<event class="" eid="e133">してい</event>ても、心は<event class="STATE" eid="e134">はら<ruby rubyText="ぐろ">黒</ruby>い</event>。</sentence>
+<sentence><event class="" eid="e135">話す</event>ことときたら、うそばかりだ。</sentence>
+<sentence>わたしは、<event class="STATE" eid="e136">みにくい</event><ruby rubyText="すがた">姿</ruby>の<ruby rubyText="ま">魔</ruby><ruby rubyText="もの">物</ruby>が<event class="STATE" eid="e137">すきだ</event>。</sentence>
+<sentence><event class="STATE" eid="e138">みにくけれ</event>ば<event class="STATE" eid="e139">みにくい</event>ほど、<event class="STATE" eid="e140">すきだ</event>。</sentence>
+<sentence type="quasi"><event class="" eid="e141"><ruby rubyText="あらそ">争</ruby>う</event>ときはおたがいどうし、<event class="" eid="e142">生き</event>ながら<event class="" eid="e143">食いあう</event>という魔物たちを、その<ruby rubyText="じゅん">純</ruby><ruby rubyText="すい">粋</ruby>さを、わたしは<event class="" eid="e144"><ruby rubyText="あい">愛</ruby>している</event>」</sentence>
+<sentence>　<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>のかがやきは、<event class="STATE" eid="e145">おそろしい</event>ほど<event class="STATE" eid="e146"><ruby rubyText="うつく">美</ruby>しく</event>、きらめきが音として<event class="" eid="e147"><ruby rubyText="き">聞</ruby>こえる</event>ようでした。</sentence>
+<sentence type="quasi">サウードが目を<event class="" eid="e148">おおった</event>とき、</sentence>
+<sentence>　『ほんとうに、そう<event class="" eid="e149">思っている</event>の？</sentence>
+<sentence type="fragment">』と、また、子どもの声が<event class="" eid="e150">聞こえました</event>。</sentence>
+<sentence>　サウードは、<ruby rubyText="しん">寝</ruby><ruby rubyText="だい">台</ruby>から<event class="" eid="e151">たちあがりました</event>。</sentence>
+<sentence><ruby rubyText="がい">外</ruby><ruby rubyText="しゅつ">出</ruby>の<ruby rubyText="じゅん">準</ruby><ruby rubyText="び">備</ruby>を<event class="" eid="e152">はじめました</event>。</sentence>
+<sentence type="quasi">　「やくそくの<ruby rubyText="ま">待</ruby>ち<ruby rubyText="あ">合</ruby>わせの<ruby rubyText="じ">時</ruby><ruby rubyText="かん">間</ruby>は、そろそろだな」</sentence>
+<sentence>　サウードには<ruby rubyText="かい">海</ruby><ruby rubyText="てい">底</ruby>の<ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>の国に<event class="" eid="e153">ある</event>という<ruby rubyText="おう">王</ruby><ruby rubyText="かん">冠</ruby>をじぶんひとりの力で手に<event class="" eid="e154">いれる</event><ruby rubyText="じ">自</ruby><ruby rubyText="しん">信</ruby>は<event class="" eid="e155">ありませんでした</event>。</sentence>
+<sentence>そのために、ある<ruby rubyText="けい">計</ruby><ruby rubyText="かく">画</ruby>を<event class="" eid="e156">たてたのです</event>が…。</sentence>
+<sentence type="quasi">　「この<ruby rubyText="まち">街</ruby>も、あるいはじきに海の<ruby rubyText="そこ">底</ruby>か」</sentence>
+<sentence>　サウードは<event class="" eid="e157"><ruby rubyText="つか">疲</ruby>れた</event>声で、<event class="" eid="e158">つぶやきました</event>。</sentence>
+<sentence>　へやの<ruby rubyText="まど">窓</ruby>からは、<TIMEX3 definite="TRUE" general="TRUE" tid="t6" type="TIME" value="XXXX-XX-XXTEV" valueFromSurface="XXXX-XX-XXTEV"><ruby rubyText="ゆう">夕</ruby><ruby rubyText="ぐ">暮</ruby>れどき</TIMEX3>で<event class="" eid="e159">にぎわう</event>街の人びとの声が<event class="" eid="e160"><ruby rubyText="き">聞</ruby>こえていました</event>。</sentence>
+<sentence>　夜空に<event class="" eid="e161">うかびあがる</event>、<ruby rubyText="いし">石</ruby><ruby rubyText="づく">造</ruby>りの、<event class="STATE" eid="e162"><ruby rubyText="せい">西</ruby><ruby rubyText="よう">洋</ruby>ふう</event>の<event class="STATE" eid="e163">がんじょうな</event><ruby rubyText="しろ">城</ruby>は、<event class="" eid="e164">みあげる</event>サウードに、<TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>は<event class="STATE" eid="e165">ない</event><ruby rubyText="こ">故</ruby><ruby rubyText="きょう">郷</ruby>の城を<event class="" eid="e166">思い出させました</event>。</sentence>
+<sentence>　「<event class="" eid="e167">お<ruby rubyText="ま">待</ruby>ちしておりました</event>。</sentence>
+<sentence><ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>つかいどの！」</sentence>
+<sentence>　<ruby rubyText="だい">大</ruby><ruby rubyText="じん">臣</ruby>が<ruby rubyText="きゃく">客</ruby><ruby rubyText="じん">人</ruby>を<event class="" eid="e168">もてなす</event>ためのへやだという<event class="STATE" eid="e169"><ruby rubyText="ごう">豪</ruby><ruby rubyText="か">華</ruby>な</event>へやで、<ruby rubyText="はな">鼻</ruby>ひげを<event class="" eid="e170">生やした</event>大臣は、手を<event class="" eid="e171">ひろげ</event>てサウードを<event class="" eid="e172"><ruby rubyText="かん">歓</ruby><ruby rubyText="げい">迎</ruby>しました</event>。</sentence>
+<sentence type="quasi"><event class="STATE" eid="e173">わざとらしく</event>声を<event class="" eid="e174">ひそめ</event>、</sentence>
+<sentence>　「…<event class="" eid="e175">し</event>て、あなたさまのお手紙は、<event class="" eid="e176">しんじてもよい</event>ものなのでしょうな？</sentence>
+<sentence>　<ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>の国に、どんな<ruby rubyText="ねが">願</ruby>いごとでも<event class="" eid="e177">かなえる</event>力を<event class="" eid="e178">もつ</event>、<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>の<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>が<event class="" eid="e179">ある</event>というのは？</sentence>
+<sentence>　その宝石をわたしと<ruby rubyText="むすこ">息子</ruby>が手に<event class="" eid="e180">いれる</event>ために力を<event class="" eid="e181"><ruby rubyText="か">貸</ruby>してくださる</event>というのは？」</sentence>
+<sentence>　サウードのあとを<event class="" eid="e182"><ruby rubyText="お">追</ruby>った</event>ハイルが、そのへやの<ruby rubyText="まど">窓</ruby>のあたりに<event class="" eid="e183">たどりついた</event>のは、まさにそのときでした。</sentence>
+<sentence>ハイルは、空<event class="" eid="e184">とぶ</event>じゅうたんから<event class="" eid="e185">おりる</event>と、<ruby rubyText="しろ">城</ruby>の<ruby rubyText="かべ">壁</ruby>に<event class="" eid="e186">とりつき</event>、窓の外で耳を<event class="" eid="e187">すませました</event>。</sentence>
+<sentence>　<quote>「ええ」</quote>と、サウードは<event class="" eid="e188">うなずきました</event>。</sentence>
+<sentence>うそでした。</sentence>
+<sentence>そもそも魔法の宝石ひとつだけでは、願いごとを<event class="" eid="e189">かなえる</event>力が<event class="STATE" eid="e190">ない</event>ということをサウードは<event class="" eid="e191">しっています</event>。</sentence>
+<sentence>　「―<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>の<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>アクアマリンは、あなたがたに<event class="" eid="e192">さしあげます</event>。</sentence>
+<sentence type="quasi">わたしはただ、あなたがたに、その手で<ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>の宝石を<event class="" eid="e193">うばいとってほしいのです</event>」</sentence>
+<sentence type="quasi">　「なぜ、そう<event class="" eid="e194">おっしゃるのです</event>？」</sentence>
+<sentence>　<ruby rubyText="だい">大</ruby><ruby rubyText="じん">臣</ruby>のとなりに<event class="" eid="e195">いた</event><event class="STATE" eid="e196"><ruby rubyText="わか">若</ruby>い</event>男が、ぼそりと<event class="" eid="e197"><ruby rubyText="き">聞</ruby>きました</event>。</sentence>
+<sentence><ruby rubyText="だい">大</ruby><ruby rubyText="じん">臣</ruby>の<ruby rubyText="むすこ">息子</ruby>だという話でしたが、サウードには<ruby rubyText="せい">精</ruby><ruby rubyText="き">気</ruby>の<event class="STATE" eid="e198">ない</event>かんじに<event class="" eid="e199">みえました</event>。</sentence>
+<sentence>いっそ<event class="STATE" eid="e200"><ruby rubyText="ふ">不</ruby><ruby rubyText="し">自</ruby><ruby rubyText="ぜん">然</ruby>な</event>ほど、<ruby rubyText="かげ">影</ruby>が<event class="STATE" eid="e201">うすい</event>かんじなのです。</sentence>
+<sentence type="quasi">　サウードは、つと目を<event class="" eid="e202">ふせ</event>て、</sentence>
+<sentence>　「わたしには、<ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>たちへのうらみが<event class="" eid="e203">あるのです</event>。</sentence>
+<sentence>あれは<TIMEX3 definite="TRUE" tid="t7" type="DATE" value="XXXX" valueFromSurface="Q-1XY">十数年前</TIMEX3>のこと、<ruby rubyText="りょう">漁</ruby><ruby rubyText="し">師</ruby>だったわたしの父が、とつぜんのあらしに<event class="" eid="e204">みまわれ</event>て<event class="" eid="e205"><ruby rubyText="し">死</ruby>んだのです</event>が、それは、“海のバラ”の国王である人魚の王が、<event class="STATE" eid="e206">気まぐれで</event><event class="" eid="e207">おこした</event>あらしだったとあとで<event class="" eid="e208">しりました</event>。</sentence>
+<sentence>人魚どもには、人間の<ruby rubyText="いのち">命</ruby>など、気まぐれのついでに<event class="" eid="e209">なくなってもよい</event>ものなのでしょう。</sentence>
+<sentence>それから、わたしはその<ruby rubyText="はな">鼻</ruby>を<event class="" eid="e210">あかしてやりたい</event>と<ruby rubyText="なが">長</ruby><ruby rubyText="ねん">年</ruby><event class="" eid="e211">思っておりました</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t8" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先日</TIMEX3>、人魚たちの<ruby rubyText="ひ">秘</ruby><ruby rubyText="ほう">宝</ruby>の<ruby rubyText="でん">伝</ruby><ruby rubyText="せつ">説</ruby>のことを<event class="" eid="e212">しり</event>、ああこれだ、これを<event class="" eid="e213">うばいとってやればよいのだ</event>と、はたとひざを<event class="" eid="e214">打ったのです</event>。</sentence>
+<sentence>　<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>は人魚の王の<ruby rubyText="おう">王</ruby><ruby rubyText="かん">冠</ruby>に<event class="" eid="e215">かざられています</event>。</sentence>
+<sentence>あれを<event class="" eid="e216">うばうことができたら</event>、どれほどの<ruby rubyText="ふく">復</ruby><ruby rubyText="しゅう">讐</ruby>に<event class="" eid="e217">なる</event>ことでしょう。</sentence>
+<sentence>だがそれは、<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>つかいであるわたしでも、<event class="STATE" eid="e218">むずかしい</event>ことと<event class="" eid="e219">思われました</event>。</sentence>
+<sentence>そんなとき、この“<ruby rubyText="うみ">海</ruby><ruby rubyText="べ">辺</ruby>の<ruby rubyText="しろ">城</ruby>”に人の<ruby rubyText="なさ">情</ruby>けを<event class="" eid="e220">しり</event>、<event class="STATE" eid="e221">かしこい</event>と<ruby rubyText="ひょう">評</ruby><ruby rubyText="ばん">判</ruby>の<ruby rubyText="だい">大</ruby><ruby rubyText="じん">臣</ruby>さまが<event class="" eid="e222">いらっしゃる</event>とうわさに<event class="" eid="e223"><ruby rubyText="き">聞</ruby>き</event>、やもたても<event class="" eid="e224">たまらず</event>に、<event class="" eid="e225">たずね</event>て<event class="" eid="e226">きたのです</event>。</sentence>
+<sentence type="quasi"><ruby rubyText="ふく">復</ruby><ruby rubyText="しゅう">讐</ruby>に<event class="" eid="e227">ご<ruby rubyText="じょ">助</ruby><ruby rubyText="りょく">力</ruby>いただきたい</event>と<event class="" eid="e228">思いまし</event>て」</sentence>
+<sentence>　もちろん作り話です。</sentence>
+<sentence>サウードには<ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>の国にうらみなど<event class="" eid="e229">ありません</event>。</sentence>
+<sentence>大臣だって、<event class="STATE" eid="e230">はら<ruby rubyText="ぐろ">黒</ruby>い</event>と<ruby rubyText="ひょう">評</ruby><ruby rubyText="ばん">判</ruby>の男で、だからこそサウードは目を<event class="" eid="e231">つけたのでした</event>。</sentence>
+<sentence>　「ああ、サウードどの。</sentence>
+<sentence>人魚の王の<ruby rubyText="おう">王</ruby><ruby rubyText="かん">冠</ruby>には、<event class="STATE" eid="e232">たしかに</event><event class="STATE" eid="e233">みごとな</event>アクアマリンが<event class="" eid="e234">ついておる</event>わい！</sentence>
+<sentence type="quasi">　しかしあれが、<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>の<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>とは<event class="" eid="e235">しらなんだ</event>…」</sentence>
+<sentence type="quasi">　大臣は<event class="" eid="e236">つぶやく</event>と、<event class="STATE" eid="e237">ふいに</event><ruby rubyText="なみだ">涙</ruby>を<event class="" eid="e238">ふく</event>ようなふりを<event class="" eid="e239">し</event>て、</sentence>
+<sentence>　「しかし<event class="STATE" eid="e240">お<ruby rubyText="き">気</ruby>の<ruby rubyText="どく">毒</ruby>な</event>ことだ！</sentence>
+<sentence>　あの<ruby rubyText="はん">半</ruby><ruby rubyText="ぎょ">魚</ruby><ruby rubyText="じん">人</ruby>どもはあらしを<event class="" eid="e241">おこし</event>て<event class="" eid="e242"><ruby rubyText="あそ">遊</ruby>ぶこともある</event>とうわさに<event class="" eid="e243">聞いたことがある</event>が…そう<event class="" eid="e244">いう</event>ことなら、<ruby rubyText="むすこ">息子</ruby>よ。</sentence>
+<sentence type="quasi">われわれ、人の<ruby rubyText="なさ">情</ruby>けを<event class="" eid="e245">しる</event>ものとして、サウードどのの<ruby rubyText="ねが">願</ruby>いを<event class="" eid="e246">かなえ</event>て<event class="" eid="e247">さしあげね</event>ばな」</sentence>
+<sentence>　<quote>「はい父上」</quote>と、ぼんやりと息子は<event class="" eid="e248">こたえます</event>。</sentence>
+<sentence>　「サウードどの。</sentence>
+<sentence><event class="" eid="e249">てつだう</event>といっても、なにを<event class="" eid="e250">すればよいのだろう</event>か？」</sentence>
+<sentence>　「<event class="STATE" eid="e251">かんたんな</event>ことです。</sentence>
+<sentence><ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>の<ruby rubyText="しろ">城</ruby>へ、使いを<event class="" eid="e252">だしてくださればよい</event>。</sentence>
+<sentence>人魚の王に、手紙を<event class="" eid="e253">だすのです</event>。</sentence>
+<sentence type="quasi"><ruby rubyText="ぶん">文</ruby><ruby rubyText="めん">面</ruby>は、そう…<ruby rubyText="やまい">病</ruby>で<event class="" eid="e254">ふせっ</event>て<event class="" eid="e255">いらっしゃる</event>おきさきさま、あの方が<event class="" eid="e256">なくなった</event>、<ruby rubyText="そう">葬</ruby><ruby rubyText="しき">式</ruby>を<event class="" eid="e257">おこなう</event>、と、<event class="" eid="e258">したためてください</event>」</sentence>
+<sentence>　<ruby rubyText="だい">大</ruby><ruby rubyText="じん">臣</ruby>は、目をぱちくりと<event class="" eid="e259">しました</event>。</sentence>
+<sentence type="quasi">　「いやしかし…おきさきさまは、まだ…」</sentence>
+<sentence>　「うその手紙です。</sentence>
+<sentence><event class="" eid="e260"><ruby rubyText="き">聞</ruby>く</event>ところによると、おきさきさまは、城の<ruby rubyText="もの">者</ruby>だけではなく、海の者たちとも<ruby rubyText="こと">言</ruby><ruby rubyText="ば">葉</ruby>を<event class="" eid="e261">かわさず</event>に、<ruby rubyText="とう">塔</ruby>に<event class="" eid="e262">とじこもっている</event>とか。</sentence>
+<sentence>それならば、<event class="STATE" eid="e263">わずか</event>のあいだのことなら、うそは<event class="" eid="e264">ばれ</event>は<event class="" eid="e265">しないでしょう</event>。</sentence>
+<sentence>ようは、人魚の王に、しばらくのあいだ、地上に<event class="" eid="e266">きてもらえればよいのです</event>。</sentence>
+<sentence type="quasi">この城に<event class="" eid="e267">きたら</event>…」</sentence>
+<sentence>　サウードは、すうっと目を<event class="" eid="e268">あげました</event>。</sentence>
+<sentence>　「わたしが、王を<event class="" eid="e269"><ruby rubyText="ころ">殺</ruby>します</event>。</sentence>
+<sentence type="quasi">あなたがたは、その<ruby rubyText="おう">王</ruby><ruby rubyText="かん">冠</ruby>から<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>を<event class="" eid="e270">とればよい</event>」</sentence>
+<sentence>　<ruby rubyText="だい">大</ruby><ruby rubyText="じん">臣</ruby>は<event class="" eid="e271">青ざめ</event>て、<event class="" eid="e272">いいました</event>。</sentence>
+<sentence type="quasi">　「だがしかし…<ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>の王は、水を<event class="" eid="e273">あやつり</event>、まるで<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>つかいのように魔法を<event class="" eid="e274">つかう</event>と<event class="" eid="e275">いう</event>が…<ruby rubyText="しつ">失</ruby><ruby rubyText="れい">礼</ruby>ながら、サウードどのに、<event class="" eid="e276"><ruby rubyText="か">勝</ruby>てる</event>のか？」</sentence>
+<sentence>　「しょせんは海の中の<ruby rubyText="じゅう">住</ruby><ruby rubyText="にん">人</ruby>、<ruby rubyText="りく">陸</ruby>の上では<event class="" eid="e277">思う</event>とおりに魔法も<event class="" eid="e278">つかえますまい</event>。</sentence>
+<sentence>それにわたしは、<ruby rubyText="ふく">復</ruby><ruby rubyText="しゅう">讐</ruby>の日を<event class="" eid="e279"><ruby rubyText="ゆめ">夢</ruby>み</event>て、<ruby rubyText="しゅ">修</ruby><ruby rubyText="ぎょう">行</ruby>を<event class="" eid="e280">し</event>て<event class="" eid="e281">まいりました</event>。</sentence>
+<sentence>わたしを<event class="" eid="e282">しんじてください</event>。</sentence>
+<sentence type="quasi">―<event class="" eid="e283">しんじてくださらなけれ</event>ば、魔法の宝石はあなたがたの手に<event class="" eid="e284">はいりません</event>よ」</sentence>
+<sentence>　大臣は<ruby rubyText="むすこ">息子</ruby>と目を<event class="" eid="e285">あわせました</event>。</sentence>
+<sentence>　「…<event class="" eid="e286">わかった</event>。</sentence>
+<sentence>ではその、人魚の王への手紙は、いつ、<event class="" eid="e287">だせばよいのだ</event>？」</sentence>
+<sentence>　「そう。</sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="P3D" valueFromSurface="P3D"><ruby rubyText="みっ">三</ruby><ruby rubyText="か">日</ruby><ruby rubyText="ご">後</ruby></TIMEX3>にでも」</sentence>
+<sentence>　<quote>「<event class="" eid="e288">わかりました</event>」</quote>と、ぼんやりと<event class="" eid="e289">した</event>声で、<ruby rubyText="むすこ">息子</ruby>が<event class="" eid="e290">こたえました</event>。</sentence>
+<sentence type="quasi">　「…<ruby rubyText="よく">欲</ruby>が<event class="STATE" eid="e291"><ruby rubyText="ふか">深</ruby>い</event>、<event class="STATE" eid="e292">ばかな</event>やつらだ」</sentence>
+<sentence>　<ruby rubyText="しろ">城</ruby>の中を、出口を<event class="" eid="e293">さがし</event>て<event class="" eid="e294">歩き</event>ながら、サウードはひとり<event class="" eid="e295">つぶやきました</event>。</sentence>
+<sentence>　サウードには、<ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>の王と<event class="" eid="e296"><ruby rubyText="たたか">戦</ruby>う</event>つもりなど、<event class="" eid="e297">ありませんでした</event>。</sentence>
+<sentence>人魚の王にしばらくのあいだ、<ruby rubyText="かい">海</ruby><ruby rubyText="てい">底</ruby>を<event class="" eid="e298">はなれてもらえれ</event>ば、それで<event class="STATE" eid="e299">よかったのです</event>。</sentence>
+<sentence><event class="STATE" eid="e300">じゃまな</event>王が城を<event class="" eid="e301">あけている</event>あいだに、サウードは人魚の国で、<ruby rubyText="おう">王</ruby><ruby rubyText="かん">冠</ruby>―アクアマリンを<event class="" eid="e302">さがす</event>つもりだったのでした。</sentence>
+<sentence type="quasi">　（<ruby rubyText="おう">王</ruby><ruby rubyText="かん">冠</ruby>は、じつは、ふたつ<event class="" eid="e303">あるのだ</event>よ）</sentence>
+<sentence>　“<ruby rubyText="にん">人</ruby><ruby rubyText="ぎょ">魚</ruby>の王の王冠に<ruby rubyText="ま">魔</ruby><ruby rubyText="ほう">法</ruby>の<ruby rubyText="ほう">宝</ruby><ruby rubyText="せき">石</ruby>アクアマリンが<event class="" eid="e304">かざられている</event>”というのは、本当の話です。</sentence>
+<sentence>しかしそれは、<ruby rubyText="ほう">宝</ruby><ruby rubyText="もつ">物</ruby><ruby rubyText="こ">庫</ruby>に<event class="" eid="e305">おさめられている</event>、<ruby rubyText="たい">戴</ruby><ruby rubyText="かん">冠</ruby><ruby rubyText="しき">式</ruby><ruby rubyText="よう">用</ruby>の王冠の話。</sentence>
+<sentence>人魚の王がふだん<event class="" eid="e306">つけている</event>王冠に<event class="" eid="e307">かざられた</event>石は、<event class="STATE" eid="e308"><ruby rubyText="うつく">美</ruby>しく</event>とも、ただのアクアマリン。</sentence>
+<sentence>本物の王冠を<event class="" eid="e309"><ruby rubyText="も">模</ruby>し</event>て<event class="" eid="e310">作られた</event>、にせものなのでした。</sentence>
+<sentence>　本物の王冠さえ手に<event class="" eid="e311">はいれ</event>ば、この国、“<ruby rubyText="うみ">海</ruby><ruby rubyText="べ">辺</ruby>の<ruby rubyText="おう">王</ruby><ruby rubyText="こく">国</ruby>”に用など<event class="" eid="e312">ありません</event>。</sentence>
+<sentence>サウードはさっさと<event class="" eid="e313">たち<ruby rubyText="さ">去</ruby>る</event>つもりでした。</sentence>
+<sentence>そのあと、<ruby rubyText="さく">策</ruby><ruby rubyText="りゃく">略</ruby>に<event class="" eid="e314">きづき</event>、<event class="" eid="e315"><ruby rubyText="げき">激</ruby><ruby rubyText="ど">怒</ruby>するだろう</event>人魚の王が、<ruby rubyText="だい">大</ruby><ruby rubyText="じん">臣</ruby>親子や、この国の人びとになにを<event class="" eid="e316">しよう</event>が、サウードには<ruby rubyText="かん">関</ruby><ruby rubyText="けい">係</ruby>の<event class="STATE" eid="e317">ない</event>ことでした。</sentence>
+<sentence>　<event class="STATE" eid="e318">ひろい</event><ruby rubyText="しろ">城</ruby>の中は、明かりが<event class="" eid="e319">ゆきとどかず</event>、<event class="STATE" eid="e320">うすぐらく</event><event class="" eid="e321">みえました</event>。</sentence>
+<sentence>そのせいか、<ruby rubyText="いし">石</ruby><ruby rubyText="づく">造</ruby>りの<ruby rubyText="かい">階</ruby><ruby rubyText="だん">段</ruby>と<event class="" eid="e322">いい</event>、<ruby rubyText="ろう">廊</ruby><ruby rubyText="か">下</ruby>と<event class="" eid="e323">いい</event>、<event class="STATE" eid="e324">よけいに</event>、サウードの<ruby rubyText="き">記</ruby><ruby rubyText="おく">憶</ruby>の中の、<ruby rubyText="こ">故</ruby><ruby rubyText="きょう">郷</ruby>の<ruby rubyText="しろ">城</ruby>と<event class="" eid="e325"><ruby rubyText="に">似</ruby></event>て<event class="" eid="e326">みえました</event>。</sentence>
+<sentence><event class="" eid="e327"><ruby rubyText="つか">疲</ruby>れている</event>せいも<event class="" eid="e328">あったかもしれません</event>。</sentence>
+<sentence>　<event class="" eid="e329">歩く</event>うち、大広間のそばの<ruby rubyText="ろう">廊</ruby><ruby rubyText="か">下</ruby>に<event class="" eid="e330">かざってある</event>絵に、目が<event class="" eid="e331">とまりました</event>。</sentence>
+<sentence type="quasi">　「―おかあさま？」</sentence>
+<sentence>　体が<event class="" eid="e332">こおりつく</event>ようでした。</sentence>
+<sentence><event class="STATE" eid="e333"><ruby rubyText="わか">若</ruby>い</event><event class="STATE" eid="e334"><ruby rubyText="うつく">美</ruby>しい</event><ruby rubyText="じょ">女</ruby><ruby rubyText="せい">性</ruby>の<ruby rubyText="しょう">肖</ruby><ruby rubyText="ぞう">像</ruby><ruby rubyText="が">画</ruby>で、<event class="STATE" eid="e335">ながい</event><ruby rubyText="かみ">髪</ruby>のようすがとても、<ruby rubyText="き">記</ruby><ruby rubyText="おく">憶</ruby>の中の<event class="STATE" eid="e336"><ruby rubyText="な">亡</ruby>き</event>母に<event class="" eid="e337">似</event>て<event class="" eid="e338">思えたのでした</event>。</sentence>
+<sentence>しかしよく<event class="" eid="e339">見れ</event>ば、その髪は人のものではない<event class="STATE" eid="e340"><ruby rubyText="ふか">深</ruby>い</event>青の色、ああこれはこの城のおきさきの<event class="STATE" eid="e341">若い</event>ときの<ruby rubyText="すがた">姿</ruby>かとサウードはすぐに<event class="" eid="e342">気づいたのです</event>が、<ruby rubyText="しん">心</ruby><ruby rubyText="ぞう">臓</ruby>は<event class="STATE" eid="e343">はげしく</event><event class="" eid="e344">打っていました</event>。</sentence>
+<sentence type="quasi">　（わたしは、ここで、この<ruby rubyText="しろ">城</ruby>で、なにを<event class="" eid="e345">しているんだろう</event>？）</sentence>
+<sentence>　そんな思いが、ふと、心に<event class="" eid="e346">うかびました</event>。</sentence>
+<sentence type="quasi">　（いったいなにを―<event class="" eid="e347">しよう</event>と<event class="" eid="e348">している</event>？）</sentence>
+<sentence>　<event class="" eid="e349">かけ</event>て<event class="" eid="e350">ゆく</event>少年の<ruby rubyText="まぼろし">幻</ruby>が<event class="" eid="e351">みえた</event>ような気が<event class="" eid="e352">しました</event>。</sentence>
+<sentence>それは、子どものころのじぶんの姿で―しかし<ruby rubyText="つぎ">次</ruby>の<ruby rubyText="しゅん">瞬</ruby><ruby rubyText="かん">間</ruby>には、幻は<event class="" eid="e353"><ruby rubyText="き">消</ruby>えました</event>。</sentence>
+<sentence>　サウードは目を<event class="" eid="e354">おおっ</event>て<event class="" eid="e355">たちどまり</event>、<event class="STATE" eid="e356"><ruby rubyText="ふか">深</ruby>い</event>いきを<event class="" eid="e357">つきました</event>。</sentence>
+<sentence>じぶんはほんとうに<event class="" eid="e358"><ruby rubyText="つか">疲</ruby>れているのだ</event>と<event class="" eid="e359">思いました</event>。</sentence>
+<sentence><event class="" eid="e360">ふりかえれ</event>ば、<event class="STATE" eid="e361">ながい</event><event class="STATE" eid="e362">ながい</event>あいだ、ひとりで<ruby rubyText="たび">旅</ruby>を<event class="" eid="e363"><ruby rubyText="つづ">続</ruby>けてきたのだ</event>な、と<event class="" eid="e364">思ったのです</event>。</sentence>

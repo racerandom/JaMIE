@@ -1,0 +1,59 @@
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>は<TIMEX3 tid="t201" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>からバタバタだった。</sentence>
+<sentence>いつも、<TIMEX3 definite="TRUE" tid="t2" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3><event class="" eid="e1">起きる</event>とパソコンのスイッチを<event class="" eid="e2">入れるんです</event>。</sentence>
+<sentence>ウイルスソフトが<event class="" eid="e3">入ってる</event>せいで、<event class="" eid="e4">立ち上がる</event>のに<TIMEX3 definite="FALSE" mod="APPROX" tid="t3" type="DURATION" value="PT5M" valueFromSurface="PT5M">５分くらい</TIMEX3><event class="" eid="e5">掛かるんです</event>よね。</sentence>
+<sentence>だから、先に電源を<event class="" eid="e6">入れておくんです</event>。</sentence>
+<sentence type="quasi">それで、御飯も<event class="" eid="e7">食べ終わっ</event>て、<event class="" eid="e8">出かける</event>直前に<event class="" eid="e9">メールチェックし</event>たり、ブログを<event class="" eid="e10">確認し</event>たり</sentence>
+<sentence>お寝坊さんなので<TIMEX3 definite="FALSE" mod="APPROX" tid="t4" type="DURATION" value="PT5M" valueFromSurface="PT5M">５分くらい</TIMEX3>の時間なんだけど、それでも<event class="" eid="e11">ネットしちゃうんです</event>。</sentence>
+<sentence>あぁネット中毒・・・（汗）。</sentence>
+<sentence type="quasi">そ<event class="" eid="e12">したら</event>ブログの一番下に<event class="" eid="e13">表示される</event>「お気に入りブログ」のぽんたさんのトコで、<webBr /></sentence>
+<sentence>ＴＯＫＩＯライブの当落確認が電話で<event class="" eid="e14">始まった</event>という記事が<event class="" eid="e15">見えちゃったんです</event>。。</sentence>
+<sentence>時すでに<event class="" eid="e16">出かける</event><TIMEX3 definite="FALSE" tid="t5" type="DURATION" value="PT5M" valueFromSurface="PT5M">５分前</TIMEX3>！！</sentence>
+<sentence>トイレに<event class="" eid="e17">入り</event>ながら電話を<event class="" eid="e18">掛けてました</event>（爆）。</sentence>
+<sentence type="quasi">だって時間が<event class="STATE" eid="e19">無いんだ</event>もん（＞へ＜；）</sentence>
+<sentence type="quasi">チケットを<event class="" eid="e20">お取りすることが出来ました</event>☆</sentence>
+<sentence type="quasi">そんなアナウンスで<TIMEX3 definite="TRUE" tid="t6" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>から<event class="STATE" eid="e21">ＨＡＰＰＹな</event>気分に<event class="" eid="e22">なれるのです</event>♪</sentence>
+<sentence>ということで、一本勝負で<event class="" eid="e23">臨んだ</event>のが結果オーライに<event class="" eid="e24">なった</event>ＴＯＫＩＯライブ。</sentence>
+<sentence>今回はホールツアーということで、<event class="" eid="e25">落選した</event>方もイッパイ<event class="" eid="e26">居る</event>ようです。</sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t7" type="DATE" value="2008-08-31" valueFromSurface="XXXX-08-31">８月３１日</TIMEX3>（<TIMEX3 definite="TRUE" tid="t8" type="DATE" value="2008-WXX-7" valueFromSurface="XXXX-WXX-7">日</TIMEX3>）パシフィコ横浜国立大ホール　<TIMEX3 definite="FALSE" tid="t9" type="TIME" value="2008-08-31T14:00" valueFromSurface="XXXX-XX-XXT14:00">１４時</TIMEX3>開演</sentence>
+<sentence type="quasi"><image description="" no="1" />　</sentence>
+<sentence type="quasi">（この画像は<TIMEX3 definite="TRUE" tid="t10" type="DATE" value="XXXX-12-30" valueFromSurface="XXXX-12-30">１２月３０日</TIMEX3>に<event class="" eid="e27">撮影した</event>ものです）</sentence>
+<sentence>席には<event class="" eid="e28">こだわらない</event>。</sentence>
+<sentence>あそこの会場、４０列目でも遠くに<event class="" eid="e29">感じなかった</event>し。</sentence>
+<sentence>いっそ３階席でも一緒の空気を<event class="" eid="e30">吸える</event>だけで<event class="STATE" eid="e31">満足な</event>のよ。</sentence>
+<sentence type="quasi">職場に<event class="" eid="e32">着いた</event>瞬間、</sentence>
+<sentence>茂とのデート権を<event class="" eid="e33">獲得したぁ</event>〜！！</sentence>
+<sentence>とか<event class="" eid="e34">叫んでいた</event>アタシ（爆）。</sentence>
+<sentence>いっそ<event class="STATE" eid="e35">本気で</event>茂のファンに<event class="" eid="e36">なっちゃおう</event>かしら？（爆）</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t11" type="DATE" value="2008" valueFromSurface="XXXX">今年</TIMEX3>の<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="2008-SU" valueFromSurface="XXXX-SU">夏</TIMEX3>はａ−ｎａｔｉｏｎに<event class="" eid="e37">期待できない</event>分、ＴＯＫＩＯライブで<event class="" eid="e38">弾ける</event>か？！</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t13" type="DATE" value="2008-08-30" valueFromSurface="XXXX-08-30">８月３０日</TIMEX3>（<TIMEX3 definite="TRUE" tid="t14" type="DATE" value="2008-WXX-6" valueFromSurface="XXXX-WXX-6">土</TIMEX3>）に追加公演が<event class="" eid="e39">ある</event>かも？って<event class="" eid="e40">いう</event>期待は<event class="" eid="e41">抱かないでください</event>（爆）。</sentence>
+<sentence>そこは<event class="STATE" eid="e42">℃−ｕｔｅ</event>がライブ<event class="" eid="e43">やります</event>から・・・（汗）。</sentence>
+<sentence>え？</sentence>
+<sentence><event class="STATE" eid="e44">℃−ｕｔｅ</event>って何？って<event class="" eid="e45">聞かないでください</event>よぉ。</sentence>
+<sentence>そこは<event class="" eid="e46">スルーしといてください</event>（爆）。</sentence>
+<sentence>でも・・・ＴＯＫＩＯのスタッフも<TIMEX3 definite="FALSE" tid="t15" type="DATE" value="2008-08-31" valueFromSurface="XXXX-XX-XX">当日</TIMEX3>搬入＆<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="2008-08-31" valueFromSurface="XXXX-XX-XX">当日</TIMEX3>撤収でしょ？</sentence>
+<sentence><event class="STATE" eid="e47">大変です</event>よね。</sentence>
+<sentence>きっと、ステージは<event class="STATE" eid="e48">シンプルな</event>ものに<event class="" eid="e49">なる</event>と<event class="" eid="e50">思います</event>。</sentence>
+<sentence>ライブハウスツアーみたいにね。</sentence>
+<sentence>なんだろう・・・音で勝負って感じかな。</sentence>
+<sentence><event class="STATE" eid="e51">特別上手な</event>バンドだったらもっとイッパイ<event class="" eid="e52">ある</event>と<event class="" eid="e53">思う</event>。</sentence>
+<sentence>彼らは何だろう・・・心に<event class="" eid="e54">届くんだ</event>よね。</sentence>
+<sentence>一所懸命さが<event class="" eid="e55">伝わっ</event>て<event class="" eid="e56">くるんだ</event>よね。</sentence>
+<sentence>そんなＴＯＫＩＯの音が<event class="STATE" eid="e57">大好きです</event>。</sentence>
+<sentence>パシフィコは横に<event class="STATE" eid="e58">長い</event>会場です。</sentence>
+<sentence>国際フォーラムに<event class="" eid="e59">似ているかもしれません</event>。</sentence>
+<sentence>音響設備も<event class="" eid="e60">優れている</event>と<event class="" eid="e61">思いますので</event>、その辺は<event class="" eid="e62">期待できる</event>と<event class="" eid="e63">思います</event>よ。</sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t17" type="DATE" value="2008-SU" valueFromSurface="XXXX-SU">夏</TIMEX3>の楽しみが１つ<event class="" eid="e64">増えました</event>♪</sentence>
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t18" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>は２０人の方に下記のランキングに<event class="" eid="e65">ご協力いただけた</event>ようです☆</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t19" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">現在</TIMEX3>、<enclosedCharacter description="○">１</enclosedCharacter>では音楽で１位、Ｊ−ＰＯＰで１位、ライブ・コンサートでは１位です。</sentence>
+<sentence>「にほんブログ村」３部門で第１位を<event class="" eid="e66">獲得することができました</event>！！</sentence>
+<sentence>皆様のクリックによってランキングが<event class="" eid="e67">上がっ</event>たり<event class="" eid="e68">下がっ</event>たり<event class="" eid="e69">しております</event>。</sentence>
+<sentence><event class="" eid="e70">引き続き</event>、<event class="" eid="e71">クリックする</event>だけで<event class="STATE" eid="e72">よいので</event>、ご協力を<event class="" eid="e73">お願いします</event>！</sentence>
+<sentence><event class="" eid="e74">コメントできない</event>ようなら、クリックだけ<event class="" eid="e75">お願い</event>！！</sentence>
+<sentence>▼下記３つの「ブログランキング」のご協力を<event class="" eid="e76">お願いします</event>！</sentence>
+<sentence type="quasi"><event class="" eid="e77">コメントしなく</event>ても下記のブログランキングの『クリック』を<event class="" eid="e78">し</event>て<event class="" eid="e79">帰っ</event>てね☆</sentence>
+<sentence>※「<TIMEX3 definite="FALSE" freq="1X" tid="t20" type="SET" value="P1D" valueFromSurface="P1D">１日１クリックずつ</TIMEX3>」<event class="" eid="e80">お願いします</event>。</sentence>
+<sentence type="quasi">（゜゜）（。。）ペコリ</sentence>
+<sentence type="quasi"><enclosedCharacter description="○">１</enclosedCharacter>にほんブログ村　音楽ブログ　Ｊ−ＰＯＰ←文字を<event class="" eid="e81">クリックし</event>てね♪</sentence>
+<sentence type="quasi"><enclosedCharacter description="○">２</enclosedCharacter>ブログの殿堂←コレも文字をクリックで☆</sentence>
+<sentence type="quasi"><enclosedCharacter description="○">３</enclosedCharacter>人気ブログランキング←コレも文字をクリックで☆</sentence>
+<sentence type="quasi">ｈｔｔｐ：／／ｂｌｏｇｓｃｏｕｔｅｒ．ｃｙｂｅｒｂｕｚｚ．ｊｐ</sentence>

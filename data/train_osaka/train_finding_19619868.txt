@@ -1,0 +1,7 @@
+<a>両側下葉優位</a>、特に<a>左肺下葉の末梢側胸膜直下優位</a>に<d certainty="positive">蜂巣肺やすりガラス影、網状影、牽引性気管支拡張、嚢胞</d>が認められます。<d certainty="positive">UIPパターンの間質性肺炎</d>と思われます。他院2012/12/5と比較して<a>右肺中葉S4</a>に<d certainty="positive">すりガラス影</d>が出現しており、<d certainty="suspicious">肺炎のような炎症性変化</d>の経過を疑いますが、followしてください。
+また、<a>左肺S1+2</a>に<d certainty="positive">focalなconsolidation</d>が認められ(<d certainty="positive">Se2Im21</d>)、他院2012/12/5と比較して出現しています。<d certainty="suspicious">炎症性変化</d>の経過を疑いますが、こちらもfollowしてください。
+<a>頚部、縦隔、肺門部</a>に<d certainty="positive">小リンパ節</d>が認められますが、<f>positive size</f>の<d certainty="negative">LN</d>は認められません。
+<a>両側下葉優位</a>、特に<a>左肺下葉の末梢側胸膜直下優位</a>に<d certainty="positive">蜂巣肺やすりガラス状陰影、網状影、牽引性気管支拡張、嚢胞</d>を認めます。<d certainty="suspicious">間質性肺炎</d>(<d certainty="suspicious">UIPパターン</d>)を疑います。前回(2014/05/12)と比較して、<a>左肺上葉</a>の<d certainty="positive">嚢胞腔</d>が<c>やや縮小</c>し、同部に<d certainty="positive">均等影</d>が新たに出現しています。<d certainty="suspicious">炎症性変化</d>による<d certainty="suspicious">陰影</d>か。その他は、ほぼ著変ありません。
+<a>右中葉</a>の<d certainty="positive">浸潤影、すりガラス状陰影</d>は前回と同様です。
+<a>頚部、縦隔、肺門</a>に<d certainty="positive">小リンパ節</d>を<f>複数</f>認めますが、前回と概ね変化を認めません。
+<d certainty="negative">胸水</d>なし。

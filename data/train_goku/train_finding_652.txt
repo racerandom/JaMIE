@@ -1,0 +1,3 @@
+<a>右肺上葉Ｓ３ｂ</a>に<f>２．６×２．６Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>を認めます。<a>内部</a>は<f>不均一</f>に造影され、<d certainty="positive">ａｉｒ　ｂｒｏｎｃｈｏｇｒａｍ</d>を伴います。<a>辺縁</a>に<d certainty="positive">小棘形成</d>あり。<a>頭側と足側</a>に<d certainty="positive">すりガラス状陰影</d>がみられ、<a>正常肺野との境界</a>は<f>明瞭</f>です。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｂ</d>
+<d certainty="positive">＃４Ｒ縦隔リンパ節</d>がみられますが、<f>短径９ｍｍ程度</f>です。ＣＴ上は<d certainty="positive">Ｎ０</d>
+と考えますが、ＦＤＧ集積ともご対比ください。<d certainty="negative">胸水貯留</d>なし。

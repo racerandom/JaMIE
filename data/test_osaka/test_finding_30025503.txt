@@ -1,0 +1,34 @@
+<a>両側肺</a>に<d certainty="positive">すりガラス影や小葉内網状影、牽引性気管支拡張</d>を認めます。<d certainty="positive">間質性肺炎</d>の経過像と考えます。前回（2011/8/17）に比して、全体的に<d certainty="positive">陰影</d>は<c>増強</c>しています。
+<a>縦隔内</a>に<f>短径1cm程度</f>までの<d certainty="positive">リンパ節</d>を<f>複数</f>認めます。前回に比して、<c>一部増大</c>するものあり。<d certainty="positive">肺野病変</d>に伴う<d certainty="suspicious">反応性腫大</d>を疑います。
+<d certainty="negative">胸水</d>なし。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。
+<a>甲状腺右葉</a>に<d certainty="positive">LDA</d>あり。前回と同様。
+<a>両側肺下葉優位</a>に<d certainty="positive">すりガラス影や網状影、牽引性気管支拡張</d>を認め、<d certainty="positive">間質性肺炎</d>と思われます。前回(2012/11/6)に比べ<a>両側下葉</a>の<d certainty="positive">網状影、すりガラス影</d>は<c>広がっています</c>。
+<a>縦隔リンパ節</a>の<c>軽度腫大</c>を認めます。前回と著変ありません。<d certainty="positive">間質性肺炎</d>に伴う<d certainty="suspicious">reactive node</d>が疑われます。
+<a>甲状腺右葉</a>に<d certainty="positive">LDA</d>を認めます。著変ありません。
+<a>左乳腺C領域</a>に<d certainty="positive">粗大石灰化</d>を認めます。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>を認めます。
+<d certainty="positive">心嚢液貯留</d>を認めます。前回より<c>軽度増加</c>。
+<d certainty="positive">大動脈石灰化</d>を認めます。
+<a>肺動脈幹</a>は<f>径3.5㎝大</f>と<d certainty="positive">拡張</d>を認めます。前回と著変ありません。
+<a>間質性肺炎</a>の経過。
+前回（2013/12/24）見られた、<c certainty="suspicious">急性増悪</c>を疑う<d certainty="positive">すりガラス影</d>は<c>改善</c>しています。
+<d certainty="suspicious">線維化</d>を疑う<d certainty="positive">網状影・蜂窩肺</d>は前々回（2013/9/11）と比較して<c>やや増悪</c>しています。
+<d certainty="positive">肺動脈拡張</d>あり、<d certainty="positive">肺高血圧</d>の経過。著変ありません。
+<a>縦隔</a>に<d certainty="positive">小リンパ節</d>が<f>多発</f>しますが前回と著変ありません。<d certainty="suspicious">反応性腫大</d>疑い。
+<d certainty="negative">胸水貯留</d>なし。
+<a>甲状腺両葉</a>に<d certainty="positive">LDA</d>あり。
+前回他院CT(2015/10/09)と比較して、<a>両側肺</a>の<d certainty="positive">すりガラス影、網状影、牽引性気管支拡張</d>は著変ありません。前回当院CT(2014/10/20)と比較すると、<d certainty="positive">すりガラス影</d>はやや<c>軽減</c>しているように見えます。<d certainty="positive">間質性肺炎</d>経過像と考えます。
+<d certainty="positive">肺動脈拡張</d>あり、<d certainty="positive">肺高血圧</d>の経過。著変ありません。
+<a>縦隔</a>に<f>短径1cm程度</f>までの<d certainty="positive">リンパ節</d>が<f>散見</f>されますが、前回と著変ありません。<d certainty="suspicious">反応性腫大</d>疑い。
+<d certainty="positive">少量心嚢液貯留</d>あり。
+<d certainty="negative">胸水貯留</d>をみとめません。
+<d certainty="positive">冠動脈石灰化</d>あり。
+<a>甲状腺右葉</a>に<d certainty="positive">LDA</d>あり。
+<a>両側肺</a>に<d certainty="positive">すりガラス状陰影や網状影、牽引性気管支拡張像</d>を認めます。<d certainty="suspicious">間質性肺炎</d>の経過を疑います。前回CT(2015/11/6)と比較し概ね変化ありません。
+<a>肺動脈</a>に<d certainty="positive">径拡張</d>を認めます。<d certainty="suspicious">肺高血圧症</d>の経過が疑われます。前回
+に比して<c>わずかに拡大</c>しているように見えます。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>が見られます。
+<a>縦隔内</a>に<f>短径1cm強</f>までの<d certainty="positive">リンパ節</d>を<f>複数</f>認めます。<d certainty="suspicious">反応性腫大</d>を疑いますが、前回より<c>やや増大</c>しているものがあります。経過を見て下さい。
+<f>少量</f>の<d certainty="positive">心嚢液貯留</d>が見られます。
+<a>右腹部</a>に<d certainty="suspicious">腹壁ヘルニア</d>の疑い。

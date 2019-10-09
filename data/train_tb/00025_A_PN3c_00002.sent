@@ -1,0 +1,27 @@
+<sentence type="quasi">イ<sampling type="start" />ラク債務削減</sentence>
+<sentence type="quasi">欧露歩み寄り</sentence>
+<sentence type="quasi">米特使成果　フセイン拘束追い風</sentence>
+<sentence type="quasi">【パリ＝池村俊郎】</sentence>
+<sentence>　欧州とロシアを<EVENT class="OCCURRENCE" eid="e1">歴訪した</EVENT>ベーカー米大統領特使は、元大統領フセイン拘束の政治的追い風を<EVENT class="OCCURRENCE" eid="e2">受け</EVENT>て、フランス、ドイツ、イタリアからイラクの債務削減に基本合意を<EVENT class="I_ACTION" eid="e3">取り付け</EVENT>、ロシアからも債務削減交渉への参加の言質を<EVENT class="OCCURRENCE" eid="e4">得る</EVENT>成果を<EVENT class="OCCURRENCE" eid="e5">あげた</EVENT>。</sentence>
+<sentence>とくに、イラク戦争に<EVENT class="I_ACTION" eid="e6">反対してきた</EVENT>仏独露から<EVENT class="NULL" eid="e7">前向きな</EVENT>回答を<EVENT class="I_ACTION" eid="e8">引き出した</EVENT>意味は<EVENT class="NULL" eid="e9">大きい</EVENT>。</sentence>
+<sentence>一方、米国に<EVENT class="OCCURRENCE" eid="e10">歩み寄った</EVENT>フランスやドイツは、債務削減問題を、イラク復興で国際社会が<EVENT class="OCCURRENCE" eid="e11">再団結する</EVENT>きっかけに<EVENT class="I_STATE" eid="e12">したい</EVENT>意向だ。</sentence>
+<sentence>　ドビルパン仏外相は<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2003-12-18" valueFromSurface="XXXX-XX-18">十八日</TIMEX3>、仏記者団との内輪の懇談で、米欧対立の解消に<EVENT class="I_ACTION" eid="e13">向け</EVENT>、<quote>「フセイン拘束が大いに<EVENT class="OCCURRENCE" eid="e14">役立つ</EVENT>」</quote>と<EVENT class="REPORTING" eid="e15">述べ</EVENT>、独露両国と“反戦連合”を<EVENT class="OCCURRENCE" eid="e16">組んだ</EVENT>仏政府にも、イラク再建に<EVENT class="I_ACTION" eid="e17">積極関与していく</EVENT>環境が<EVENT class="OCCURRENCE" eid="e18">整ってきた</EVENT>ことを<EVENT class="I_ACTION" eid="e19">強調した</EVENT>。</sentence>
+<sentence>　仏政府には債務問題を財政面だけでなく、主権回復など政治プロセスに<EVENT class="OCCURRENCE" eid="e20">リンクさせ</EVENT>、イラク再建を国際社会全体で<EVENT class="I_ACTION" eid="e21">取り組む</EVENT>契機に<EVENT class="I_STATE" eid="e22">したい</EVENT>意向が<EVENT class="OCCURRENCE" eid="e23">働く</EVENT>。</sentence>
+<sentence>　ベーカー特使の訪仏を<EVENT class="I_ACTION" eid="e24">歓迎した</EVENT>シラク仏大統領が、債務問題を<EVENT class="OCCURRENCE" eid="e25">協議する</EVENT>場として、欧米、日本の十九か国で<EVENT class="NULL" eid="e26">構成する</EVENT>主要債権国会議（パリクラブ＝<image description="クリップ" no="1" />＝）の多国間の枠組みを改めて<EVENT class="OCCURRENCE" eid="e27">念押しした</EVENT>のも、そのためだった。</sentence>
+<sentence>パリクラブの各国のイラク債権は全体で約二百十億ドル。</sentence>
+<sentence>中でも日本、ロシア、仏、独、米が大口債権国だ。</sentence>
+<sentence>イラクはフセイン政権時代、軍備やインフラ整備のため、世界第二位の埋蔵石油を事実上の担保に<EVENT class="OCCURRENCE" eid="e28">借りまくった</EVENT>。</sentence>
+<sentence>債務総額は一千二百億ドルに<EVENT class="OCCURRENCE" eid="e29">上る</EVENT>。</sentence>
+<sentence type="quasi"><image description="クリップ" no="2" />パリクラブ</sentence>
+<sentence>　返済が<EVENT class="NULL" eid="e30">困難に</EVENT><EVENT class="OCCURRENCE" eid="e31">なった</EVENT>開発途上国の公的債務問題について<EVENT class="OCCURRENCE" eid="e32">協議する</EVENT>日米欧１９か国の非公式会合。</sentence>
+<sentence>パリで<EVENT class="OCCURRENCE" eid="e33">開かれる</EVENT>ためこの名が<EVENT class="NULL" eid="e34">ある</EVENT>。</sentence>
+<sentence>第１回会合は<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="1956" valueFromSurface="1956">１９５６年</TIMEX3>で、アルゼンチン債務問題がテーマだった。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t3" type="DATE" value="1983" valueFromSurface="XX83">８３年</TIMEX3>からの<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P20Y" valueFromSurface="P20Y">２０年間</TIMEX3>に累計４１６０億ドルの債務減免で<EVENT class="I_ACTION" eid="e35">合意した</EVENT>。</sentence>
+<sentence>　パリクラブ外では湾岸産油諸国の貸し付けが最大だが、返済方法や債務削減はパリクラブの決定が基本と<EVENT class="NULL" eid="e36">なる</EVENT>ため、欧米、日本の合意が何より<EVENT class="NULL" eid="e37">重要</EVENT>と<EVENT class="NULL" eid="e38">なる</EVENT>。</sentence>
+<sentence>　また、債務問題のカギを<EVENT class="STATE" eid="e39">にぎる</EVENT>パリクラブは、主権国家同士の取り決めを原則と<EVENT class="NULL" eid="e40">する</EVENT>ため、米軍主導のイラク占領が<EVENT class="ASPECTUAL" eid="e41">続く</EVENT>限り、<EVENT class="NULL" eid="e42">実質的な</EVENT>交渉は<EVENT class="I_STATE" eid="e43">難しい</EVENT>。</sentence>
+<sentence>このため、ドビルパン外相は<quote>「<EVENT class="OCCURRENCE" eid="e44">さる</EVENT><TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2003-10" valueFromSurface="XXXX-10">十月</TIMEX3>のマドリード支援国会議のような、政治的再建を<EVENT class="I_ACTION" eid="e45">話し合う</EVENT>国際会議を<EVENT class="I_ACTION" eid="e46">開催し</EVENT>てはどうか」</quote>と<EVENT class="REPORTING" eid="e47">提言する</EVENT>。</sentence>
+<sentence>　フセイン拘束は<EVENT class="NULL" eid="e48">間違いなく</EVENT>米欧対立の“雪解け”のきっかけと<EVENT class="OCCURRENCE" eid="e49">なりつつある</EVENT>。</sentence>
+<sentence>　仏政府関係者は<quote>「米国が多国間協力体制の確立に<EVENT class="I_STATE" eid="e50">本気</EVENT>かどうかを<EVENT class="I_ACTION" eid="e51">判断する</EVENT>上で、債務問題は格好の試金石」</quote>と<EVENT class="I_STATE" eid="e52">見ている</EVENT>。</sentence>
+<sentence type="quasi">イラクの対外債務</sentence>
+<sentence type="quasi">※パリクラブ、米ブルッキングズ研究所などに<EVENT class="NULL" eid="e53">よる</EVENT></sentence>
+<sentence type="quasi">国<sampling type="end" />連とイラク側　<TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2004-01-2J" valueFromSurface="XXXX-XX-2J">来月中旬</TIMEX3>に協議</sentence>

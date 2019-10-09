@@ -1,0 +1,9 @@
+<a>両肺下葉末梢優位</a>に<d certainty="positive">すりガラス影、網状影、線状・索状影、牽引性気管支拡張像</d>を認めます。<d certainty="suspicious">間質性肺炎</d>の可能性があります。
+<a>左肺S1+2</a>に<f>長径6mm</f>の<d certainty="positive">不整形結節</d>を認めます。まずは<d certainty="suspicious">炎症性結節</d>を疑いますが、サイズ経過を見て下さい。
+<d certainty="negative">胸水</d>はありません。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>を認めません。
+<a>冠動脈</a>の<d certainty="positive">石灰化</d>を認めます。
+<a>甲状腺右葉</a>に<f>径20mm大</f>の<d certainty="positive">腫瘤</d>あり。USにて精査して下さい。
+<a>肝</a>に<d certainty="suspicious">嚢胞</d>を疑う<d certainty="positive">低吸収域</d>を<f>多数</f>認めます。
+<d certainty="positive">胆石</d>を認めます。
+<d certainty="positive">両腎嚢胞</d>を認めます。

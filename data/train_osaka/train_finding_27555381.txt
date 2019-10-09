@@ -1,0 +1,11 @@
+<CHEST: CT>
+<a>両肺下葉優位</a>に<d certainty="positive">すりガラス影や小葉間隔壁肥厚、網状影、均等影</d>を認めます。前回(2017/7/6)と比較して、<f>一部</f><d certainty="positive">陰影</d>が<c>増強</c>する部分や<c>軽減</c>する部分が<f>混在</f>していますが、全体像として著明な変化はありません。
+<a>鎖骨上窩や縦隔内、肺門部</a>に<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>を認めません。
+<f>少量</f>の<d certainty="positive">両側胸水</d>あり。
+<d certainty="positive">両側女性化乳房</d>あり。
+<CHEST: CT>
+<a>両肺下葉・背側優位</a>に<d certainty="positive">すりガラス影や小葉間隔壁肥厚、網状影</d>を認め、<d certainty="positive">crazy-paving pattern</d>を呈している部分あり。また、<a>左肺S1+2、左肺舌区、右肺中葉</a>には<d certainty="positive">やや収縮性変化</d>を伴った<d certainty="positive">均等影</d>を認めます。前回(2017/7/19)と比較して、<d certainty="positive">すりガラス影</d>は<c>軽減</c>していますが、<d certainty="positive">収縮性変化</d>が<c>やや増強</c>している印象です。
+<a>鎖骨上窩や縦隔内、肺門部</a>に<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>を認めません。
+<f>微量</f>の<d certainty="positive">胸水</d>を認めます。
+<a>冠動脈</a>の<d certainty="positive">石灰化</d>を認めます。
+<d certainty="positive">両側女性化乳房</d>を認めます。

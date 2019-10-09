@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺上葉Ｓ３ｂ，　Ｓ４ｂ</a>の<d certainty="positive">充実腫瘤</d>は<f>６．５×４．６Ｃｍ</f>に<c>増大</c>を認めます。<d certainty="suspicious">縦隔脂肪浸潤</d>がうたがわれます。<d certainty="positive">ｃＴ４</d>
+　<a>周囲</a>に<d certainty="positive">網状影</d>あり、<d certainty="positive">喀血</d>の既往からは<d certainty="suspicious">血液の吸い込み像</d>がうたがわれます。<d certainty="positive">＃６縦隔リンパ節</d>あり。<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>ではありません。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水貯留</d>なし。

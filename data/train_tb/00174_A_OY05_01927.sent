@@ -1,0 +1,12 @@
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P2D" valueFromSurface="P2D">２日</TIMEX3>連続の<TIMEX3 definite="TRUE" mod="START" tid="t2" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">早朝</TIMEX3>対応で<event class="" eid="e1">起きれず</event>。</sentence>
+<sentence>徹遅扱いに<event class="" eid="e2">なる</event>から<event class="" eid="e3">かまへん</event>のやけど。</sentence>
+<sentence type="quasi">正直<TIMEX3 definite="TRUE" tid="t3" type="TIME" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">夕べ</TIMEX3>の飲みの影響も<event class="" eid="e4">あった</event>と<event class="" eid="e5">思う</event>けどね（笑）</sentence>
+<sentence>この前のナルトで<event class="" eid="e6">失敗した</event>合コンの時、後輩のグチ君が中々<event class="" eid="e7">頑張っ</event>て<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P2W" valueFromSurface="P2W">二週間</TIMEX3>で四キロ<event class="" eid="e8">やせたら</event>電話番号<event class="" eid="e9">ゲットし</event>てデート、<event class="STATE" eid="e10">無理なら</event>銀座でフレンチ<event class="" eid="e11">奢る</event>という約束を<event class="" eid="e12">とりつけた</event>んよね！</sentence>
+<sentence type="quasi">どっちに<event class="" eid="e13">転ん</event>でも<event class="" eid="e14">デートできる</event>んやけどさ（笑）</sentence>
+<sentence>グチ君<event class="STATE" eid="e15">真面目や</event>から一生懸命<event class="" eid="e16">ダイエットし</event>て<event class="STATE" eid="e17">順調に</event>減量中。</sentence>
+<sentence>そして<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">明日</TIMEX3>が期限日！</sentence>
+<sentence>ノルマクリアは<event class="" eid="e18">できる</event>と<event class="" eid="e19">信じてる</event>けど果たして彼のロマンスはどう<event class="" eid="e20">なる</event>のか。</sentence>
+<sentence type="quasi">楽しみだ（笑）</sentence>
+<sentence><event class="STATE" eid="e21">うまく</event><event class="" eid="e22">いったらええ</event>なぁ。</sentence>
+<sentence>恋に<event class="STATE" eid="e23">一生懸命な</event>人は<event class="STATE" eid="e24">ステキ</event>。</sentence>
+<sentence>グロリアス！</sentence>

@@ -1,0 +1,8 @@
+<sentence>バイオハザード４はゲームキューブのみの発売なんでしょうか？</sentence>
+<sentence>ＰＳ２ではないんでしょうか？？？</sentence>
+<sentence type="quasi">そうだとしたら<event class="STATE" eid="e1">ショックです</event>・・・</sentence>
+<sentence>ＰＳ２でも<event class="" eid="e2">発売されます</event>よ。</sentence>
+<sentence>ようやく<event class="" eid="e3">来た</event>かって感じです。</sentence>
+<sentence>ただ、ＧＣ版はもうすぐ発売なのに、ＰＳ２版は<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2005" valueFromSurface="XXXX">今年</TIMEX3>の<TIMEX3 definite="FALSE" mod="END" tid="t2" type="DATE" value="2005-12" valueFromSurface="XXXX-12">年末</TIMEX3>とのことです。</sentence>
+<sentence>ＧＣでバイオハザードが<event class="" eid="e4">売れない</event>ことに、<webBr />株主もプンプンみたいですね。</sentence>
+<sentence>株主の意見も<event class="" eid="e5">あっ</event>てＰＳ２へ<event class="" eid="e6">復帰した</event>ようです。</sentence>

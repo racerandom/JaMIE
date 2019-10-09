@@ -1,0 +1,5 @@
+<sentence>りんごを<event class="" eid="e1">買う</event>時、どう<event class="" eid="e2">やっ</event>て<event class="STATE" eid="e3">美味しい</event>りんごを<event class="" eid="e4">選びます</event>か？</sentence>
+<sentence>ＴＶで<event class="" eid="e5">見たのです</event>が・・・<webBr /><webBr />りんごごの下の凹み部分が<event class="STATE" eid="e6">深い</event>ほうが<event class="STATE" eid="e7">美味しい</event>そうですよ、<event class="" eid="e8">知っていました</event>か？</sentence>
+<sentence><event class="STATE" eid="e9">不味い</event>りんごは<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>は<event class="STATE" eid="e10">ないでしょう</event>けど、「より」<event class="STATE" eid="e11">美味しい</event>りんごを<event class="" eid="e12">選ぶなら</event>！</sentence>
+<sentence type="quasi">ですね（笑）</sentence>
+<sentence type="quasi">以来、私はりんごを<event class="" eid="e13">買う</event>と時は、必ずオシリの部分の<event class="STATE" eid="e14">深い</event>ものを<event class="" eid="e15">選んでいます</event>＾０＾</sentence>

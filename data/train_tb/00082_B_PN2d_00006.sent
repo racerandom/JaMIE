@@ -1,0 +1,47 @@
+<sentence type="quasi">ここが<event class="" eid="e1">知りたい</event>　ニュース解説</sentence>
+<sentence type="quasi">Ｗ杯チケット第３次販売</sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2002-05" valueFromSurface="XXXX-05">５月</TIMEX3>中１０万枚前後　最後のチャンス</sentence>
+<sentence>　日韓共同開催のサッカー<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2002" valueFromSurface="XXXX">二〇〇二年</TIMEX3>ワールドカップ（Ｗ杯）開幕まで、あと<TIMEX3 definite="FALSE" mod="MORE_THAN" tid="t3" type="DURATION" value="P2M" valueFromSurface="P2M">二カ月と少し</TIMEX3>。</sentence>
+<sentence><quote>「チケットが手に<event class="" eid="e2">入らない</event>」</quote>という声をよく耳に<event class="" eid="e3">する</event>。</sentence>
+<sentence>ファンにとって最後の頼みの綱とも<event class="" eid="e4">いえる</event>第三次販売の日程や発売枚数は、どう<event class="" eid="e5">なっている</event>のか。</sentence>
+<sentence type="quasi">（運動部　江目智則）</sentence>
+<sentence>　結論から<event class="" eid="e6">言う</event>と、まだ<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2002-05" valueFromSurface="XXXX-05">五月</TIMEX3>中に<event class="" eid="e7">行われる</event>と<event class="" eid="e8">いう</event>だけで、枚数も数万枚以上十万枚ぐらいまで、としか<event class="" eid="e9">わかっていない</event>。</sentence>
+<sentence>その<event class="STATE" eid="e10">詳しい</event>説明は後ほど<event class="" eid="e11">する</event>と<event class="" eid="e12">し</event>て、これまで<event class="" eid="e13">発売した</event>枚数と、どのような割り当てに<event class="" eid="e14">なっている</event>か、を<event class="" eid="e15">おさらいしてみよう</event>。</sentence>
+<sentence>　国内の総枚数は予選リーグから決勝まで三十二試合で約百三十五万枚。</sentence>
+<sentence>このうち、国内で<event class="" eid="e16">販売される</event>のが半分の六十七万五千枚で、あとの半分は海外のファンにインターネットなどを通じて<event class="" eid="e17">売られている</event>。</sentence>
+<sentence>海外分は、原則として日本人は<event class="" eid="e18">買えない</event>。</sentence>
+<sentence>国際サッカー連盟（ＦＩＦＡ）が<quote>「Ｗ杯は世界中のファンのための大会なんだから、日本人だけに<event class="" eid="e19">見せる</event>わけに<event class="" eid="e20">いかない</event>」</quote>と<event class="" eid="e21">している</event>ためだ。</sentence>
+<sentence>　Ｗ杯日本組織委員会（ＪＡＷＯＣ）が<event class="" eid="e22">行った</event>一次販売は<TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2001-02" valueFromSurface="XXXX-02">昨年二月</TIMEX3>から<TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2001-03" valueFromSurface="XXXX-03">三月</TIMEX3>に<event class="" eid="e23">かけ</event>て申し込みを<event class="" eid="e24">受け付けた</event>が、平均七〇―八〇倍の高倍率と<event class="" eid="e25">なり</event>、完売。</sentence>
+<sentence><TIMEX3 definite="FALSE" mod="END" tid="t7" type="DATE" value="2001" valueFromSurface="XXXX">昨年末</TIMEX3>の二次販売も日本戦などの人気カード以外はやや<event class="" eid="e26">苦戦した</event>が、結局は<event class="" eid="e27">売り切れた</event>。</sentence>
+<sentence>スポンサーや高額チケットに<event class="" eid="e28">回された</event>分も<event class="" eid="e29">あり</event>、国内で発売が<event class="" eid="e30">予定されている</event>チケットは<TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">現在</TIMEX3>、ＪＡＷＯＣの手元には<event class="STATE" eid="e31">ない</event>のが実情だ。</sentence>
+<sentence>　だが、もう国内で<event class="" eid="e32">発売する</event>チケットが<event class="STATE" eid="e33">ない</event>、というわけではない。</sentence>
+<sentence>海外での販売分の売れ行きが<event class="STATE" eid="e34">鈍く</event>、その売れ残り分や各国のサッカー協会に<event class="" eid="e35">割り当てられている</event>関係者用のチケットが、<TIMEX3 definite="FALSE" tid="t8" type="DATE" value="2002-04-30" valueFromSurface="XXXX-04-30">四月三十日</TIMEX3>までに、ＪＡＷＯＣに<event class="" eid="e36">戻され</event>て、改めて国内で三次販売として、売りに<event class="" eid="e37">出されることになっている</event>。</sentence>
+<sentence>だから、<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="2002-04-30" valueFromSurface="XXXX-XX-XX">この日</TIMEX3>を<event class="" eid="e38">過ぎ</event>て、いくら<event class="" eid="e39">戻った</event>かが<event class="" eid="e40">確定しない</event>と、<event class="STATE" eid="e41">正確な</event>数字がＪＡＷＯＣでも<event class="" eid="e42">分からない</event>というわけだ。</sentence>
+<sentence>　さらに、食事や限定ギフトなどの特典が<event class="" eid="e43">付いた</event>高額チケット『プレステージチケット』の第三次販売が<TIMEX3 definite="FALSE" tid="t10" type="DATE" value="2002-03-10" valueFromSurface="XXXX-XX-10">今月十日</TIMEX3>に<event class="" eid="e44">締め切られた</event>が、これらの<event class="" eid="e45">売れ残った</event>約六千枚のチケットは一般<sampling type="start" />用として、<TIMEX3 definite="FALSE" tid="t11" type="DATE" value="2002-05" valueFromSurface="XXXX-05">五月</TIMEX3>の一般販売に<event class="" eid="e46">回されることになっている</event>。</sentence>
+<sentence>そのため、両者を<event class="" eid="e47">合わせた</event>数が三次販売の枚数と<event class="" eid="e48">いうことになる</event>。</sentence>
+<sentence>　枚数は<event class="" eid="e49">確定していない</event>が、ＪＡＷＯＣでは、すでに発売総数を十万枚前後と<event class="" eid="e50">想定し</event>、第三次販売の準備を<event class="" eid="e51">進めている</event>。</sentence>
+<sentence>関係者の話では、二次販売と同じ電話による販売方法を<event class="" eid="e52">取る</event>可能性が<event class="STATE" eid="e53">高い</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t12" type="DATE" value="2002-04" valueFromSurface="XXXX-04">四月</TIMEX3>中に電話で事前登録を<event class="" eid="e54">受け付け</event>、<TIMEX3 definite="FALSE" mod="START" tid="t13" type="DATE" value="2002-05" valueFromSurface="XXXX-05">五月初め</TIMEX3>に枚数が<event class="" eid="e55">確定した</event>後に抽選を<event class="" eid="e56">し</event>て発売を<event class="" eid="e57">開始する</event>、というもので近く、<event class="STATE" eid="e58">正式に</event><event class="" eid="e59">発表される</event>手はずに<event class="" eid="e60">なっている</event>。</sentence>
+<sentence>　電話の問題点は、なかなか<event class="" eid="e61">つながらない</event>という点や、<event class="" eid="e62">予約した</event>のに実際に<event class="" eid="e63">入金されない</event>というケースが<event class="" eid="e64">出ている</event>ことだ。</sentence>
+<sentence><event class="" eid="e65">入金されなけれ</event>ば、チケットが<event class="" eid="e66">余ってしまう</event>。</sentence>
+<sentence>そう<event class="" eid="e67">なれ</event>ば、第四次販売ということが<event class="" eid="e68">考えられる</event>が、ＪＡＷＯＣは<quote>「当日券は<event class="" eid="e69">混乱するので</event><event class="" eid="e70">売らない</event>」</quote>と<event class="" eid="e71">しており</event>、その可能性は<TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>のところ<event class="STATE" eid="e72">低い</event>。</sentence>
+<sentence>　プロ野球やＪリーグのチケットと<event class="" eid="e73">違っ</event>て、Ｗ杯のチケットは記名式。</sentence>
+<sentence>すべてに名前が<event class="" eid="e74">印刷され</event>て<event class="" eid="e75">発送される</event>。</sentence>
+<sentence>病気や死亡など<event class="STATE" eid="e76">特別な</event>理由が<event class="STATE" eid="e77">ない</event>限り、名義変更は<event class="" eid="e78">できない</event>。</sentence>
+<sentence>ダフ屋やインターネット・オークションでチケットを<event class="" eid="e79">買った</event>としても、実際には<event class="" eid="e80">入場できない</event>リスクが<event class="" eid="e81">ある</event>。</sentence>
+<sentence>　そう<event class="" eid="e82">なる</event>と、どうしてもＷ杯のチケットが<event class="STATE" eid="e83">ほしい</event>人は最後のチャンスである三次販売に<event class="" eid="e84">かけるしかなさ</event>そうだ。</sentence>
+<sentence type="quasi">ニッポン　新安保考</sentence>
+<sentence type="quasi">１０</sentence>
+<sentence type="quasi">情報収集衛星</sentence>
+<sentence type="quasi"><event class="STATE" eid="e85">目敏く</event>聞き耳の<event class="STATE" eid="e86">早い</event>国に</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t14" type="DATE" value="2001-09" valueFromSurface="XXXX-09">昨年九月</TIMEX3>の米中枢部テロによって、世界の衛星市場に異変が<event class="" eid="e87">起きた</event>。</sentence>
+<sentence>米スペース・イメージング社が、米国家地図作成局（ＮＩＭＡ）と<event class="" eid="e88">協議し</event>、民間衛星によるアフガン周辺地域の画像を<event class="" eid="e89">市販しない</event>ことを湾岸諸国などに<event class="" eid="e90">通告した</event>からだ。</sentence>
+<sentence>　約一メートルの地上の物体を<event class="" eid="e91">識別できる</event>衛生写真によって、米軍の展開状況がウサマ・ビンラーディン一派に<event class="" eid="e92">把握される</event>のを<event class="" eid="e93">恐れた</event>ためだ。</sentence>
+<sentence>米国の国家安全保障に<event class="" eid="e94">影響する</event>場合、衛星による情報収集活動自体を<event class="" eid="e95">制約する</event>大統領令による措置であるが、衛星情報という生殺与奪の権を米国が<event class="" eid="e96">管理している</event>現実を<event class="" eid="e97">みせつけた</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t15" type="DATE" value="2003-02" valueFromSurface="XXXX-02">来年二月</TIMEX3>を皮切りに四基打ち上げ予定の日の丸「情報収集衛星」も、国産とは<event class="" eid="e98">いい</event>ながら、米国の協力なしでは開発・運用は<event class="" eid="e99">できない</event>。</sentence>
+<sentence>日本の<quote>「自立」</quote>も<event class="" eid="e100">絡み</event>、日米関係の<event class="STATE" eid="e101">複雑で</event><event class="STATE" eid="e102">微妙な</event>部分である。</sentence>
+<sentence>　国産衛星の導入が<event class="" eid="e103">閣議決定された</event>のは、<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="1998-08" valueFromSurface="H10-08">平成十年八月</TIMEX3>、北朝鮮が警告も<event class="STATE" eid="e104">なく</event>弾道ミサイル「テポドン」を日本列島に<event class="" eid="e105">向け</event>て<event class="" eid="e106">発射し</event>てから、<TIMEX3 definite="FALSE" tid="t17" type="DATE" value="1998-12" valueFromSurface="Q+4M">四カ月後</TIMEX3>であった。</sentence>
+<sentence>テポドンを<event class="" eid="e107">捕捉した</event>イージス艦「金剛」にしても、米国の衛星情報を頼りに日本海で<event class="" eid="e108">待機していた</event>。</sentence>
+<sentence>　この受け身への反省から、自前で情報を<event class="" eid="e109">収集することにし</event>、内閣衛星情報センターが<event class="" eid="e110">設置された</event>。</sentence>
+<sentence>陣容は三百人。</sentence>
+<sentence>総経費は二千五<sampling type="end" />百億円。</sentence>

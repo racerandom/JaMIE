@@ -1,0 +1,4 @@
+<sentence>ゴールデンウィークってなんですか？</sentence>
+<sentence>大型連休。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="XXXX" valueFromSurface="PXY">数年後</TIMEX3>は<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="XXXX-09" valueFromSurface="XXXX-09">９月</TIMEX3>もＧＷが<event class="" eid="e1">くる</event>そうです。</sentence>
+<sentence><event class="STATE" eid="e2">マジで</event>。</sentence>

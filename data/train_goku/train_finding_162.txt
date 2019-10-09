@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<d certainty="positive">甲状腺乳頭癌</d>にて<a>甲状腺右葉</a>切除後（他院）。<f>明らかな</f><d certainty="negative">局所再発腫瘤</d>なし。<a>右肺下葉Ｓ８</a>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>は<f>１．１×１．４Ｃｍ</f>です。<a>内部</a>の<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>は<f>０．０×０．１Ｃｍ</f>で、ＸＸＸＸ年と比べても<c>顕在化</c>しています。<d certainty="positive">すりガラス状陰影</d>と<a>正常肺野の境界</a>は<f>明瞭</f>です。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｍｉ</d>
+<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>なし。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水</d>はみられません。<a>肝　Ｓ５／８</a>には既知の　<d certainty="positive">ｈｅｍａｎｇｉｏｍａ</d>　と思われる<d certainty="positive">低濃度</d>認めます。

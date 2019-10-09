@@ -1,0 +1,4 @@
+<a>両側肺</a>に<a>下葉優位、胸膜下優位</a>で<d certainty="positive">網状影やすりガラス状陰影</d>を認め<d certainty="positive">牽引性気管支拡張像</d>を伴っています。 前回(2013/07/26)と比較して大差なく、<d certainty="positive">NSIP>UIPパターンの間質性肺炎</d>の経過を見ていると考えます。
+<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>が<f>散在</f>していますが前回と比較して大差なく、<f>有意な</f><d certainty="negative">リンパ節腫大</d>は認められません。
+<d certainty="negative">胸水貯留</d>を認めません。
+<a>右第4-6肋骨</a>に<d certainty="positive">骨折後変化</d>を認めます。

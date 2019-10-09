@@ -1,0 +1,9 @@
+<sentence type="quasi">研究室の皆さんへ</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>、新潟です。</sentence>
+<sentence>これから<webBr />空港へ<event class="" eid="e1">向かい</event><webBr />ハルピンに<event class="" eid="e2">行っ</event>て<event class="" eid="e3">きます</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t2" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>、帯広は<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2008-SU" valueFromSurface="XXXX-SU">真夏</TIMEX3>日だったようですね。</sentence>
+<sentence>ハウス等の管理をよろしく<event class="" eid="e4">お願いいたします</event>。</sentence>
+<sentence>向こうでネットが<event class="" eid="e5">使える</event>かどうか<event class="" eid="e6">わかりません</event>。</sentence>
+<sentence><event class="" eid="e7">使えたら</event><event class="" eid="e8">更新します</event>。</sentence>
+<sentence><event class="" eid="e9">できたら</event>、<webBr />研究室のできごとを<event class="" eid="e10">アップしてください</event>ネ。</sentence>
+<sentence type="quasi">　　　　　　　　　　　　　　　　　　　ＭＡＳＡ</sentence>

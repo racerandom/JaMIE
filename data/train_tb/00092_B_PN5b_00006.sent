@@ -1,0 +1,36 @@
+<sentence type="quasi">中西氏が出馬表明</sentence>
+<sentence type="quasi">東京４区</sentence>
+<sentence>　強制わい<sampling type="start" />せつ容疑で<event class="" eid="e1">逮捕され</event>、不起訴処分と<event class="" eid="e2">なった</event>元自民党衆院議員、中西一善氏（<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P41Y" valueFromSurface="P41Y">４１</TIMEX3>）は<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2005-08-12" valueFromSurface="XXXX-XX-12">１２日</TIMEX3>、衆院東京４区に<event class="" eid="e3">立候補する</event>ことを<event class="" eid="e4">正式表明した</event>。</sentence>
+<sentence>同党の候補者公募に<event class="" eid="e5">応募している</event>が、<event class="" eid="e6">認められない</event>場合も無所属で<event class="" eid="e7">立候補する</event>と<event class="" eid="e8">いう</event>。</sentence>
+<sentence type="quasi">【田中義宏】</sentence>
+<sentence type="quasi">◆北里大で学生ら２２９人食中毒</sentence>
+<sentence>　神奈川県相模原市保健所は<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2005-08-12" valueFromSurface="XXXX-XX-12">１２日</TIMEX3>、北里大（相模原市北里１）のオープンキャンパスで、昼食の中華弁当を<event class="" eid="e9">食べた</event>スタッフの学生や教職員ら２２９人が集団食中毒に<event class="" eid="e10">かかった</event>と<event class="" eid="e11">発表した</event>。</sentence>
+<sentence>入院患者は<event class="" eid="e12">いない</event>。</sentence>
+<sentence>弁当を<event class="" eid="e13">製造した</event>北里大東病院職員食堂（同市麻溝台２）を<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2005-08-12" valueFromSurface="XXXX-XX-XX">同日</TIMEX3>から<TIMEX3 definite="FALSE" tid="t5" type="DURATION" value="P4D" valueFromSurface="P4D">４日間</TIMEX3>の営業停止処分と<event class="" eid="e14">した</event>。</sentence>
+<sentence>　同保健所によると、弁当のチャーハンなどからＡ群溶血性連鎖球菌が<event class="" eid="e15">見つかった</event>。</sentence>
+<sentence type="quasi">◆日テレ、日刊ゲンダイを損賠提訴</sentence>
+<sentence>　大相撲の貴乃花親方の番組出演を<event class="" eid="e16">巡り</event>、夕刊紙「日刊ゲンダイ」の記事で名誉を<event class="" eid="e17">傷つけられた</event>と<event class="" eid="e18">し</event>て、日本テレビ（東京都港区）は<TIMEX3 definite="FALSE" tid="t6" type="DATE" value="2005-08-12" valueFromSurface="XXXX-XX-12">１２日</TIMEX3>、発行元の日刊現代（中央区）に総額１１００万円の損害賠償を<event class="" eid="e19">求める</event>訴訟を東京地裁に<event class="" eid="e20">起こした</event>。</sentence>
+<sentence>訴えによると、<TIMEX3 definite="FALSE" tid="t7" type="DATE" value="2005-06-13" valueFromSurface="XXXX-06-13">６月１３日</TIMEX3>の報道番組<quote>「ニュースプラス１」</quote>への貴乃花親方の出演について、同紙は<TIMEX3 definite="FALSE" tid="t8" type="DATE" value="2005-06-17" valueFromSurface="XXXX-XX-17">同１７日</TIMEX3>付紙面で<quote>「日テレから貴乃花親方に出演ギャラ１０００万円が<event class="" eid="e21">支払われていた</event>」</quote><quote>「金で<event class="" eid="e22">買った</event>視聴率という言い方が<event class="STATE" eid="e23">ピッタリだ</event>」</quote>との記事を掲載。</sentence>
+<sentence type="fragment">日テレ側は</sentence>
+<sentence>「まったくの虚偽。</sentence>
+<sentence type="quasi">社会的評価を<event class="STATE" eid="e24">著しく</event><event class="" eid="e25">低下させられた</event>」</sentence>
+<sentence type="fragment">と<event class="" eid="e26">している</event>。</sentence>
+<sentence type="quasi">◆杉田かおるさん離婚</sentence>
+<sentence>　女優の杉田かおるさん（<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="P40Y" valueFromSurface="P40Y">４０</TIMEX3>）＝写真＝が<TIMEX3 definite="FALSE" tid="t10" type="DATE" value="2005-08-12" valueFromSurface="XXXX-XX-12">１２日</TIMEX3>、会社経営者の鮎川純太さん（<TIMEX3 definite="FALSE" tid="t11" type="DURATION" value="P44Y" valueFromSurface="P44Y">４４</TIMEX3>）と<event class="" eid="e27">離婚した</event>ことを<event class="STATE" eid="e28">明らかに</event><event class="" eid="e29">した</event>。</sentence>
+<sentence type="fragment">　杉田さんは所属事務所を通じてファクスで</sentence>
+<sentence>「<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="2005-08-11" valueFromSurface="XXXX-XX-11">１１日</TIMEX3>に<event class="" eid="e30">協議離婚しました</event>。</sentence>
+<sentence>理由はお互いに信頼関係を<event class="" eid="e31">築くことができなかった</event>ということ。</sentence>
+<sentence type="quasi"><event class="" eid="e32">お騒がせした</event>ことをファンのみなさまに心より<event class="" eid="e33">おわびします</event>」</sentence>
+<sentence type="fragment">と<event class="" eid="e34">コメントした</event>。</sentence>
+<sentence>　２人は<TIMEX3 definite="FALSE" tid="t13" type="DATE" value="2005-01-11" valueFromSurface="XXXX-01-11">今年１月１１日</TIMEX3>に<event class="" eid="e35">結婚した</event>ばかりだった。</sentence>
+<sentence type="quasi">◆<delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete>監督に罰金　</sentence>
+<sentence type="quasi">【ロサンゼルスＡＦＰ時事】</sentence>
+<sentence>　米カリフォルニア州のロサンゼルス郡検察当局は<TIMEX3 definite="FALSE" tid="t14" type="DATE" value="2005-08-11-07:00" valueFromSurface="XXXX-XX-11">１１日</TIMEX3>、マリフアナを<event class="" eid="e36">所持していた</event>と<event class="" eid="e37">し</event>て<event class="" eid="e38">起訴された</event>映画監督<delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete><delete type="copyright_note_by_author">■</delete>氏に１００ドル（約１万１０００円）の罰金刑が<event class="" eid="e39">科せられた</event>ことを<event class="STATE" eid="e40">明らかに</event><event class="" eid="e41">した</event>。</sentence>
+<sentence type="quasi">◆アスベスト部会設置へ</sentence>
+<sentence>　国土交通省は<TIMEX3 definite="FALSE" tid="t15" type="DATE" value="2005-08-12" valueFromSurface="XXXX-XX-12">１２日</TIMEX3>、国交相の諮問機関、社会資本整備審議会の建築分科会にアスベスト（石綿）対策部会を<event class="" eid="e42">設置する</event>ことを<event class="STATE" eid="e43">明らかに</event><event class="" eid="e44">した</event>。</sentence>
+<sentence>建築基準法令によるアスベスト建材の規制のあり方を<event class="" eid="e45">検討する</event>のが狙いで、同法改正も念頭に<event class="" eid="e46">置いている</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t16" type="DATE" value="2005-08-19" valueFromSurface="XXXX-XX-19">１９日</TIMEX3>に初会合が<event class="" eid="e47">開かれる</event>。</sentence>
+<sentence type="quasi">日航機墜落<TIMEX3 definite="FALSE" tid="t17" type="DURATION" value="P20Y" valueFromSurface="P20Y">２０年</TIMEX3></sentence>
+<sentence>　日航ジャンボ機墜落事故から<TIMEX3 definite="FALSE" tid="t18" type="DURATION" value="P20Y" valueFromSurface="P20Y">２０年</TIMEX3><event class="" eid="e48">たった</event><TIMEX3 definite="FALSE" tid="t19" type="TIME" value="2005-08-12TEV" valueFromSurface="XXXX-XX-12TEV">１２日夕</TIMEX3>。</sentence>
+<sentence>群馬県上野村の<quote>「慰霊の園」</quote>では遺族らが鎮魂と空の安全への祈りを<event class="" eid="e49">ささげた</event>。</sentence>
+<sentence>その一方<sampling type="end" />、日本航空の関連会社「ＪＡＬウェイズ」のＤＣ１０型機がエンジンから火を<event class="" eid="e50">噴き</event>、福岡空港（福岡市）に<event class="" eid="e51">引き返す</event>事故を<event class="" eid="e52">起こした</event>。</sentence>

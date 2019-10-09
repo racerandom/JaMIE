@@ -1,0 +1,5 @@
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P2D" valueFromSurface="P2D">二日前</TIMEX3>より電源を<event class="" eid="e1">入れる</event>と画面が<event class="STATE" eid="e2">暗く</event><event class="STATE" eid="e3">微かに</event><event class="" eid="e4">起動している</event>様子が<event class="" eid="e5">判ります</event>バッテリーで<event class="" eid="e6">起動する</event>と<event class="STATE" eid="e7">良い</event>ようですが電源を<event class="" eid="e8">取る</event>と<event class="STATE" eid="e9">変なのです</event>、解決方法を<event class="" eid="e10">教えてください</event>。</sentence>
+<sentence type="quasi">東芝ノートパソコンを<event class="" eid="e11">使用しています</event>、</sentence>
+<sentence>私もダイナブックのときに　それに<event class="" eid="e12">似た</event>ようなことが<event class="" eid="e13">ありまし</event>てサポートに<event class="" eid="e14">説明したら</event>　ＰＣ内部の電圧制御チップが<event class="" eid="e15">破綻してるかもしれません</event>ねー　ということで修理でした。</sentence>
+<sentence>明細書には「電源基盤　交換」「液晶制御ユニット交換」と<event class="" eid="e16">書かれていました</event>。</sentence>
+<sentence><event class="STATE" eid="e17">おなじでない</event>ことを<event class="" eid="e18">祈ります</event>。</sentence>

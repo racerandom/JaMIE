@@ -1,0 +1,9 @@
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>ディズニーシーのショーでミッキーとミニーが<event class="" eid="e1">スケートしてます</event>があれって「ミッキー、ミニー役」の人が<event class="" eid="e2">スケート特訓したんです</event>か？</sentence>
+<sentence>それともスケート経験者が「ミッキー、ミニー役」なんですか？</sentence>
+<sentence>ディズニーオンアイスとディズニーリゾートのショーを<event class="" eid="e3">運営している</event>会社は<event class="STATE" eid="e4">別なので</event>、オリンピック級の腕前が<event class="STATE" eid="e5">必要</event>かどうかは<event class="" eid="e6">わかりません</event>が…。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2004" valueFromSurface="XXXX">去年</TIMEX3>の<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今頃</TIMEX3>、芸能人の誰かが<event class="STATE" eid="e7">いい</event>ともに<event class="" eid="e8">出た</event>ときにミッキーミニーがスケートを<TIMEX3 definite="FALSE" quant="EACH" tid="t4" type="SET" value="P1D" valueFromSurface="P1D">毎日</TIMEX3><event class="" eid="e9">練習したので</event><event class="" eid="e10">見</event>に<event class="" eid="e11">来てください</event>ねーって<event class="" eid="e12">言ってました</event>。</sentence>
+<sentence>どうやら特訓に<event class="" eid="e13">ついていた</event>ようです。</sentence>
+<sentence>確か、芸能界でも<event class="STATE" eid="e14">有名な</event>スケートの<event class="STATE" eid="e15">上手な</event>人でした。</sentence>
+<sentence>たぶん、もともとミッキーミニー役の人がスケートの特訓を<event class="" eid="e16">したんだ</event>と<event class="" eid="e17">思います</event>。</sentence>
+<sentence>もともと<event class="STATE" eid="e18">ものすごく</event><event class="STATE" eid="e19">厳しい</event>オーディションを<event class="" eid="e20">通過した</event>ダンサーさんです。</sentence>
+<sentence>練習しだいでは<event class="STATE" eid="e21">可能だ</event>と<event class="" eid="e22">思います</event>。</sentence>

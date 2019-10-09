@@ -1,0 +1,11 @@
+<sentence>友達が<event class="" eid="e1">結婚する事になりました</event>。</sentence>
+<sentence>とても<event class="STATE" eid="e2">嬉しいのです</event>が、どこか<event class="STATE" eid="e3">寂しい</event>ような気持ちも<event class="" eid="e4">あります</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今後</TIMEX3>も<event class="" eid="e5">変わらず</event>友達だよ。</sentence>
+<sentence><event class="" eid="e6">結婚し</event>ても<event class="STATE" eid="e7">大事な</event>友達だと<event class="" eid="e8">言うのです</event>が、<event class="" eid="e9">結婚し</event>て友人関係は付き合いも<event class="" eid="e10">含め</event><event class="" eid="e11">変わります</event>か？</sentence>
+<sentence>一番の親友が<event class="" eid="e12">結婚した</event>ときは、家族よりも本人よりも披露宴で一番<event class="" eid="e13">大泣きしました</event>。</sentence>
+<sentence><event class="STATE" eid="e14">すっごく</event><event class="STATE" eid="e15">寂しかったです</event>ね。</sentence>
+<sentence>県外へ<event class="" eid="e16">いってしまうこともあった</event>と<event class="" eid="e17">思います</event>が。</sentence>
+<sentence>県内に<event class="" eid="e18">とどまった</event>友達も、女は<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>までのように<TIMEX3 definite="TRUE" tid="t3" type="TIME" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">夜</TIMEX3><event class="STATE" eid="e19">自由に</event><event class="" eid="e20">遊ん</event>だりって<webBr />なかなか<event class="" eid="e21">出来ないです</event>から、<event class="" eid="e22">結婚したら</event>「<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>までのように」ってなかなか<event class="STATE" eid="e23">難しいです</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t5" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今現在</TIMEX3>私も<event class="" eid="e24">結婚し</event>、仲の<event class="STATE" eid="e25">よかった</event>仲間たちは、皆県外へ<event class="" eid="e26">散らばりました</event>。</sentence>
+<sentence>子供が<event class="" eid="e27">できたら</event>、ある程度<event class="STATE" eid="e28">大きく</event><event class="" eid="e29">ならない</event>と皆で<event class="" eid="e30">集まっ</event>たりとかも<event class="" eid="e31">できない</event>しね。</sentence>
+<sentence>女って<event class="STATE" eid="e32">悲しいです</event>ね・・・・・・。</sentence>

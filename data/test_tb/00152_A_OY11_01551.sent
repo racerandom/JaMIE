@@ -1,0 +1,20 @@
+<sentence>１）栗原社協の通常ボランティア・センターで活動中のボランティアに<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>、<event class="" eid="e1">電話したら</event>「足湯」を<event class="" eid="e2">やっている</event>そうな。</sentence>
+<sentence>　　<event class="STATE" eid="e3">忙しい</event>と<event class="" eid="e4">思うので</event>、それだけ<event class="" eid="e5">聞い</event>て電話を<event class="" eid="e6">切りました</event>。</sentence>
+<sentence type="quasi">２）避難所の状況</sentence>
+<sentence type="quasi">避難指示初の解除　栗原・金成の１世帯に笑顔　　河北新報　<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2008-07-04" valueFromSurface="2008-07-04">２００８年０７月０４日</TIMEX3><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="2008-WXX-5" valueFromSurface="XXXX-WXX-5">金曜日</TIMEX3></sentence>
+<sentence type="quasi">ｈｔｔｐ：／／ｗｗｗ．ｋａｈｏｋｕ．ｃｏ．ｊｐ／ｎｅｗｓ／２００８／０７／２００８０７０４ｔ１３０３９．ｈｔｍ</sentence>
+<sentence type="quasi">　</sentence>
+<sentence>＞避難指示は災害対策基本法に<event class="" eid="e7">基づく</event>措置で、国土交通省「土砂災害対策緊急支援チーム」の調査結果を<event class="" eid="e8">受け</event>、市災害対策本部が栗駒、花山、金成の５地区に<event class="" eid="e9">発令した</event>。</sentence>
+<sentence>避難指示が<event class="" eid="e10">続いている</event>のは栗駒で４４世帯１０７人、花山で１１世帯２４人、金成では１世帯２人の計５６世帯１３３人と<event class="" eid="e11">なった</event>。</sentence>
+<sentence type="quasi">　</sentence>
+<sentence><event class="" eid="e12">補足する</event>と、栗駒の「みちのく伝創館」に<event class="" eid="e13">避難している</event>耕英地区の住民の何割かは、麓の家や親戚で<event class="" eid="e14">過ごしています</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t4" type="TIME" value="XXXX-XX-XXTDT" valueFromSurface="XXXX-XX-XXTDT">日中</TIMEX3>、避難所に<event class="" eid="e15">いる</event>人の割合は、避難者より「避難所関係者＋ボランティア」の方が<event class="STATE" eid="e16">多い</event>状態です。</sentence>
+<sentence>　マスコミさんも<event class="" eid="e17">ウロウロしています</event>が、<event class="" eid="e18">コメントしてもらえない</event>状態なので<event class="STATE" eid="e19">可哀想な</event>気も<event class="" eid="e20">します</event>・・。</sentence>
+<sentence>ボランティアと<event class="" eid="e21">判る</event>服装で<event class="" eid="e22">行く</event>と、すぐに<event class="" eid="e23">取り囲まれる</event>そうですが、<event class="STATE" eid="e24">無闇に</event>記者の取材に<event class="" eid="e25">応じない</event>ように<event class="" eid="e26">指導されています</event>。</sentence>
+<sentence type="quasi">（社協の腕章を<event class="" eid="e27">していれ</event>ば、<event class="" eid="e28">取材されない</event>かも？）</sentence>
+<sentence type="quasi">「ボランティアの<event class="STATE" eid="e29">何気ない</event>感想が<event class="STATE" eid="e30">広く</event><event class="" eid="e31">報道され</event>、被災者を<event class="" eid="e32">傷つける</event>場合も<event class="" eid="e33">ある</event>そうです。」</sentence>
+<sentence>今回のように、ＴＶに<event class="" eid="e34">映し出される</event>被災者一人、一人。</sentence>
+<sentence type="quasi">ボランティア一人、一人が<event class="" eid="e35">特定される</event>状態では</sentence>
+<sentence>何か問題が<event class="" eid="e36">発生する</event>と責任を<event class="" eid="e37">問われる</event>事（<event class="STATE" eid="e38">参加しにくい</event>雰囲気に？）に<event class="" eid="e39">なり</event>そうです。</sentence>
+<sentence><event class="" eid="e40">お気をつけください</event>。</sentence>
+<sentence type="quasi">写真：栗原市社協さんの<event class="STATE" eid="e41">可愛い</event>二人乗りの車</sentence>

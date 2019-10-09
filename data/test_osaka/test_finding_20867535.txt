@@ -1,0 +1,20 @@
+<a>両側下葉気管支血管周囲</a>に<f>優位</f>に<d certainty="positive">すりガラス状陰影・網状影・牽引性気管支拡張像</d>を認めます。前回CT(13/04/19)と著変ありません。<d certainty="suspicious">間質性肺炎</d>(<d certainty="suspicious">NSIP pattern</d>)を疑います。<d certainty="positive">膠原病肺</d>として矛盾ない所見です。
+<a>縦隔内</a>の<d certainty="positive">リンパ節</d>は前回と著変ありません。<f>明らかな</f><d certainty="negative">リンパ節腫大</d>は認めません。
+<d certainty="negative">胸水(-)</d>。
+<d certainty="positive">甲状腺両葉small LDA</d>は前回と著変ありません。
+<a>両側肺下葉優位、気管支血管束周囲</a>を中心に、<d certainty="positive">収縮性変化</d>を伴う<d certainty="positive">すりガラス状陰影、網状影、牽引性気管支拡張像</d>を認めます。前回2013.10.3と比較し、<a>右中葉や両下葉</a>の<d certainty="positive">すりガラス影</d>が<c>軽減</c>しています。
+前回と比較して<d certainty="positive">縦隔リンパ節</d>の<c>縮小</c>を認めます。<f>positive size</f>の<d certainty="negative">LN</d>は認められません。
+<d certainty="negative">胸水貯留</d>なし。
+<a>両側下葉優位、気管支血管束周囲</a>を中心に<d certainty="positive">すりガラス陰影や網状影、牽引性気管支拡張</d>を認めます。<d certainty="positive">収縮性変化</d>により<a>右下葉</a>に<d certainty="positive">volume loss</d>目立ち、<a>右横隔膜</a>は<d certainty="positive">挙上</d>しています。前回CT（2014/07/15）と比較して、<c>やや増悪</c>しています。<d certainty="suspicious">間質性肺炎</d>（<d certainty="suspicious">NSIP pattern</d>)の経過を疑います。
+<a>気管前部</a>に<f>短径11mm大</f>の<d certainty="positive">リンパ節腫大</d>認めます（図1）。前回より<c>増大</c>しています。その他、<a>縦隔内や両側鎖骨上窩</a>に<d certainty="positive">小リンパ節</d>が<f>散見</f>され、前回より目立ちます。<d certainty="positive">反応性</d>で矛盾ありませんが、followください。
+<d certainty="negative">胸水貯留</d>認めません。
+<d certainty="positive">右腎嚢胞</d>（+）
+<胸部CT>
+<a>両肺末梢優位</a>に<d certainty="positive">すりガラス影や網状影、牽引性気管支拡張</d>を認めます。
+<a>両肺底部</a>で<d certainty="positive">やや陰影拡大</d>。
+<d certainty="negative">腫瘤性病変</d>を疑う所見を認めません。
+<a>縦隔内や肺門部</a>の<d certainty="positive">小リンパ節</d>に著変を認めません。
+<d certainty="negative">胸水</d>なし。
+<f>少量</f>の<d certainty="positive">心嚢液貯留</d>あり。
+<a>肝：S8</a>の<d certainty="positive">小嚢胞</d>に著変を認めません。
+<a>腎</a>：<d certainty="positive">右腎嚢胞</d>あり。

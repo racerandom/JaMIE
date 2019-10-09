@@ -1,0 +1,3 @@
+<a>左肺下葉Ｓ９ｂ</a>に<f>５．６×２．２Ｃｍ</f>の<d certainty="positive">充実腫瘤</d>を認めます。<a>内部</a>は不均一に造影されます。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ２ｂ</d>
+<a>右肺門＃１１ｉ</a>に<d certainty="suspicious">リンパ節転移</d>を疑います。<d certainty="suspicious">Ｎ１</d>
+<a>対側</a>を含めて<a>縦隔</a>に<d certainty="positive">小リンパ節</d>を認めますが、<d certainty="negative">病的腫大</d>ではありません。<d certainty="negative">胸水貯留</d>なし。<d certainty="positive">気腫肺</d>です。<a>肝内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>胆，膵，脾，腎，副腎</a>には異常はみられません．<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>骨盤内</a>に<f>明らかな</f><d certainty="negative">腫瘤</d>なし．<d certainty="negative">腹水</d>なし．<d certainty="negative">脳転移</d>を疑う所見なし。<d certainty="negative">骨転移</d>を疑う所見なし。

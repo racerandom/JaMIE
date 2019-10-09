@@ -1,0 +1,1 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺下葉Ｓ９ａ</a>の<d certainty="positive">転移</d>は<f>２２ｍｍ</f>に<c>増大</c>しています。<a>右肺中葉Ｓ５ａ</a>の<d certainty="positive">転移</d>は<f>１３ｍｍ</f>に<c>増大</c>しています。<a>右肺中葉Ｓ４ａ</a>に<d certainty="positive">結節</d>あり、<f>６ｍｍ長</f>で著変なし。<a>気管支・リンパ節</a>の<d certainty="positive">石灰化</d>を認める。<f>有意な</f><d certainty="negative">リンパ節腫大</d>なし．豊胸術後。

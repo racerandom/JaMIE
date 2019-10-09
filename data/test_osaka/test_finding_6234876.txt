@@ -1,0 +1,4 @@
+<a>両肺下葉背側</a>に<d certainty="positive">網状影・すりガラス影・牽引性気管支拡張像</d>を認めます。<d certainty="positive">間質性肺炎</d>の経過。前回（2014/3/26）や初回（2013/10/23）と著変ありません。
+<d certainty="positive">気腫性変化</d>あり。
+<f>有意な</f><d certainty="negative">リンパ節腫大</d>を認めません。
+<d certainty="negative">胸水貯留</d>無し。

@@ -1,0 +1,4 @@
+<sentence>ジャムが<event class="" eid="e1">入った</event>缶のふたが<event class="STATE" eid="e2">きつく</event>て私の手では<event class="" eid="e3">開きません</event>。</sentence>
+<sentence>何か<event class="STATE" eid="e4">良い</event>方法が<event class="" eid="e5">あれ</event>ば<event class="" eid="e6">教えて下さい</event>。</sentence>
+<sentence type="quasi">フタの部分を下に<event class="" eid="e7">し</event>て<TIMEX3 definite="FALSE" mod="APPROX" tid="t1" type="DURATION" value="PT30S" valueFromSurface="PT30S">３０秒くらい</TIMEX3>熱湯に<event class="" eid="e8">つけてみてください</event></sentence>
+<sentence type="quasi"><event class="STATE" eid="e9">簡単に</event><event class="" eid="e10">開きます</event>よー☆</sentence>

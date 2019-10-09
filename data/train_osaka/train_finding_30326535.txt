@@ -1,0 +1,13 @@
+<a>両側下葉優位</a>に<d certainty="positive">すりガラス状陰影・網状影・嚢胞影陰影</d>を認めます。<f>一部</f>では<d certainty="positive">蜂巣肺</d>を認めます。<d certainty="suspicious">間質性肺炎</d>(<d certainty="suspicious">UIP pattern</d>)疑い。前回(10/10/15)より<d certainty="positive">陰影</d>は<c>増強</c>しています。
+<f>明らかな</f><d certainty="negative">リンパ節腫大</d>は認めません。
+<a>大動脈弁・冠動脈</a>に<d certainty="positive">石灰化(+)</d>。
+<d certainty="negative">胸水(-)</d>。
+<a>両側下葉、胸膜直下優位</a>に<d certainty="positive">すりガラス影、網状影、嚢胞性陰影</d>を認めます。　<f>一部</f>で<d certainty="positive">蜂窩肺</d>を認めます。　<d certainty="suspicious">UIPやfibroticNSIPのような間質性肺炎</d>を疑います。　前回(2013/7/29)と比較して著変ありません。
+<f>明らかな</f><d certainty="negative">胸膜プラーク</d>を認めません。
+<d certainty="negative">リンパ節の病的腫大</d>を指摘できません。
+<a>大動脈弁や冠動脈</a>に<d certainty="positive">石灰化</d>を認めます。
+<d certainty="negative">胸水</d>なし。
+<a>両側肺下葉・胸膜直下優位</a>に<d certainty="positive">すりガラス状陰影・網状影・嚢胞影陰影</d>を認めます。<f>一部</f>では<d certainty="positive">蜂巣肺</d>を認めます。<d certainty="suspicious">UIPやfibrotic NSIPのような間質性肺炎</d>を疑います。前回4/23と比較して<a>両側肺</a>の<d certainty="positive">すりガラス影</d>が<c>増強</c>しています。<d certainty="suspicious">間質性肺炎</d>の<c certainty="suspicious>増悪</c>を疑います。(D/D <d certainty="suspicious">細菌・ウィルスなどの感染症</d> etc.)
+<a>縦隔内</a>に<f>短径1cm未満</f>の<d certainty="positive">LNs</d>が認められますが、<f>positive size</f>の<d certainty="negative">LN</d>は認められません。
+<a>両側肺下葉優位・末梢側優位</a>に<d certainty="positive">すりガラス影・網状影や嚢胞陰影</d>が認めらられます。<d certainty="positive">UIPやfibrotic NSIPのような間質性肺炎</d>と思われます。前回2/23と著変ありません。
+<f>positive size</f>の<d certainty="negative">LN</d>は認められません。

@@ -1,0 +1,5 @@
+<a>両側肺下葉肺底部優位</a>に<d certainty="positive">すりガラス影、網状影、牽引性気管支拡張像</d>を認めます。<d certainty="negative">蜂巣肺</d>は認めません。<d certainty="suspicious">SScに合併した間質性肺炎</d>（<d certainty="suspicious">NSIP pattern</d>）を疑います。前回(2017/7/5)と比較して<d certainty="positive">陰影</d>に著明な変化は認められません。
+<f>少量</f>の<d certainty="positive">右胸水貯留</d>あり。前回と同程度です。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節腫大</d>は認めません。
+<a>甲状腺両葉</a>に<d certainty="positive">LDAs</d>を認めます。
+<a>右乳腺C領域</a>に<f>10mm程度</f>の<d certainty="positive">腫瘤影</d>を認めます。前々回(2017/3/29)から著変ありません。

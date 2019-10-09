@@ -1,0 +1,42 @@
+<sentence type="quasi">英語でドッポ</sentence>
+<sentence type="quasi"><quote>「<EVENT class="NULL" eid="e1">が<sampling type="start" />まんする</EVENT>」</quote>は</sentence>
+<sentence type="quasi">ｐｕｔ　ｕｐ　ｗｉｔｈ〜</sentence>
+<sentence>　<quote>「<EVENT class="NULL" eid="e2">がまんする</EVENT>」</quote>は<quote>「ｐｕｔ　ｕｐ　ｗｉｔｈ〜」</quote>で、<quote>「寒さを<EVENT class="NULL" eid="e3">がまんする</EVENT>」</quote>ならｐｕｔ　ｕｐ　ｗｉｔｈ　ｔｈｅ　ｃｏｌｄ。</sentence>
+<sentence>「単に<EVENT class="NULL" eid="e4">ガマンしてるんだ</EVENT>ってば！」</sentence>
+<sentence type="fragment">はＩ　ａｍ　ｊｕｓｔ　ｐｕｔｔｉｎｇ　ｕｐ　ｗｉｔｈ　ｉｔ！</sentence>
+<sentence>と<EVENT class="NULL" eid="e5">言えばいい</EVENT>。</sentence>
+<sentence>　<quote>「<EVENT class="NULL" eid="e6">がまんする</EVENT>」</quote>はｅｎｄｕｒｅ（エンデュア）、ｓｔａｎｄなどもよく<EVENT class="NULL" eid="e7">使う</EVENT>。</sentence>
+<sentence>ただ、日常会話ではｐｕｔ　ｕｐ　ｗｉｔｈが最もよく<EVENT class="NULL" eid="e8">使われる</EVENT>そうだ。</sentence>
+<sentence>　エミヤのように<EVENT class="NULL" eid="e9">無理し</EVENT>て平常を<EVENT class="NULL" eid="e10">装う</EVENT><quote>「やせがまん」</quote>も、これらの単語で意味が<EVENT class="OCCURRENCE" eid="e11">通じる</EVENT>よ。</sentence>
+<sentence type="quasi">ニュースの数字<EVENT class="OCCURRENCE" eid="e12">計算してみよう</EVENT></sentence>
+<sentence type="quasi">Ｖ４強さのワケ</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2005-01-02" valueFromSurface="XXXX-01-02">１月２</TIMEX3>、<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2005-01-03" valueFromSurface="XXXX-XX-03">３日</TIMEX3>に<EVENT class="I_ACTION" eid="e13">開かれた</EVENT>第８１回箱根駅伝は、選手の層の厚さを<EVENT class="OCCURRENCE" eid="e14">見せつけた</EVENT>駒沢大が<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P4Y" valueFromSurface="P4Y">４年</TIMEX3>連続の総合優勝を<EVENT class="I_ACTION" eid="e15">果たしました</EVENT>。</sentence>
+<sentence>　往路、復路<EVENT class="NULL" eid="e16">あわせ</EVENT>て計２１７．９キロ・メートルで駒沢大が<EVENT class="OCCURRENCE" eid="e17">出した</EVENT>タイムは<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="PT11H3M48S" valueFromSurface="PT11H3M48S">１１時間３分４８秒</TIMEX3>でした。</sentence>
+<sentence>１０人の走者は<EVENT class="OCCURRENCE" eid="e18">平均する</EVENT>と、１キロ・メートルを<TIMEX3 definite="TRUE" tid="t5" type="DURATION" value="PTXM" valueFromSurface="PTXM">何分</TIMEX3>で<EVENT class="OCCURRENCE" eid="e19">走ったことになるでしょう</EVENT>。</sentence>
+<sentence><EVENT class="NULL" eid="e20">四捨五入し</EVENT>て、距離は２２０キロ・メートル、タイムは<TIMEX3 definite="FALSE" tid="t6" type="DURATION" value="PT11H" valueFromSurface="PT11H">１１時間</TIMEX3>で<EVENT class="OCCURRENCE" eid="e21">計算してみましょう</EVENT>。</sentence>
+<sentence type="quasi">＊<quote>「数字」</quote>の答え</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t7" type="DURATION" value="PT11H" valueFromSurface="PT11H">１１時間</TIMEX3>で２２０キロ・メートルということは、<TIMEX3 definite="FALSE" tid="t8" type="DURATION" value="PT1H" valueFromSurface="PT1H">１時間</TIMEX3>で<EVENT class="OCCURRENCE" eid="e22">走った</EVENT>距離は２０キロ・メートル。</sentence>
+<sentence>つまり、２０キロ・メートルを<EVENT class="OCCURRENCE" eid="e23">走る</EVENT>のに<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="PT60M" valueFromSurface="PT60M">６０分</TIMEX3><EVENT class="OCCURRENCE" eid="e24">かかった</EVENT>ということです。</sentence>
+<sentence>１キロ・メートル<EVENT class="OCCURRENCE" eid="e25">走る</EVENT>のに<EVENT class="OCCURRENCE" eid="e26">かかった</EVENT>タイムは６０÷２０なので、答えは<TIMEX3 definite="FALSE" tid="t10" type="DURATION" value="PT3M" valueFromSurface="PT3M">３分</TIMEX3>と<EVENT class="NULL" eid="e27">なります</EVENT>。</sentence>
+<sentence>　箱根駅伝で<TIMEX3 definite="FALSE" tid="t11" type="DURATION" value="P4Y" valueFromSurface="P4Y">４年</TIMEX3>連続<EVENT class="OCCURRENCE" eid="e28">優勝した</EVENT>のは５校目。</sentence>
+<sentence>中央大（<TIMEX3 definite="FALSE" tid="t12" type="DURATION" value="P6Y" valueFromSurface="P6Y">６年</TIMEX3>連続）と日体大しか<EVENT class="I_ACTION" eid="e29">果たしていない</EVENT><TIMEX3 definite="FALSE" tid="t13" type="DURATION" value="P5Y" valueFromSurface="P5Y">５年</TIMEX3>連続優勝を駒沢大が<TIMEX3 definite="FALSE" tid="t14" type="DATE" value="2006" valueFromSurface="XXXX">来年</TIMEX3>、<EVENT class="I_ACTION" eid="e30">達成できる</EVENT>か楽しみですね。</sentence>
+<sentence>漢字発見！</sentence>
+<sentence type="quasi">初</sentence>
+<sentence type="quasi">どきどきわくわく</sentence>
+<sentence>　<quote>「<ruby rubyText="はつ">初</ruby><ruby rubyText="ひ">日</ruby>の<ruby rubyText="で">出</ruby>」</quote><quote>「<ruby rubyText="はつ">初</ruby><ruby rubyText="ゆめ">夢</ruby>」</quote><quote>「初もうで」</quote>―<TIMEX3 definite="TRUE" tid="t15" type="DATE" value="XXXX-01" valueFromSurface="XXXX-01">お正月</TIMEX3>は<quote>「初」</quote>が<EVENT class="OCCURRENCE" eid="e31">あふれています</EVENT>ね。</sentence>
+<sentence><quote>「初」</quote>は<quote>「衤（衣、着物）」</quote>と<quote>「刀」</quote>の組み合わせです。</sentence>
+<sentence>着物を<EVENT class="NULL" eid="e32">作る</EVENT>には、まず布を<EVENT class="NULL" eid="e33">切る</EVENT>ことから<EVENT class="NULL" eid="e34">はじめるので</EVENT>、時間や物事の第一段階、<ruby rubyText="さい">最</ruby><ruby rubyText="しょ">初</ruby>の意味を<EVENT class="OCCURRENCE" eid="e35">指す</EVENT>漢字に<EVENT class="OCCURRENCE" eid="e36">なりました</EVENT>。</sentence>
+<sentence>　ただし、動作などを<EVENT class="NULL" eid="e37">あらわす</EVENT><quote>「<EVENT class="NULL" eid="e38">はじめる</EVENT>・<EVENT class="NULL" eid="e39">はじまる</EVENT>」</quote>は<quote>「初」</quote>でなく、<quote>「<EVENT class="NULL" eid="e40">始める</EVENT>・<EVENT class="NULL" eid="e41">始まる</EVENT>」</quote>と<EVENT class="NULL" eid="e42">書きます</EVENT>。</sentence>
+<sentence>　何かを<EVENT class="NULL" eid="e43">始めよう</EVENT>と<EVENT class="NULL" eid="e44">思い立った</EVENT>気持ちを<quote>「<ruby rubyText="しょ">初</ruby><ruby rubyText="しん">心</ruby>」</quote>と<EVENT class="NULL" eid="e45">いいます</EVENT>。</sentence>
+<sentence><ruby rubyText="はじ">初</ruby>めの<ruby rubyText="い">意</ruby><ruby rubyText="き">気</ruby><ruby rubyText="ご">込</ruby>みを<EVENT class="NULL" eid="e46"><ruby rubyText="わす">忘</ruby>れず</EVENT>に<EVENT class="NULL" eid="e47">がんばろう</EVENT>、という教えが<quote>「初心<EVENT class="NULL" eid="e48">忘るべからず</EVENT>」</quote>。</sentence>
+<sentence>　もうすぐ新学期が<EVENT class="ASPECTUAL" eid="e49">始まります</EVENT>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t16" type="DURATION" value="P1Y" valueFromSurface="P1Y">一年生</TIMEX3>の教室で初めて教科書を<EVENT class="OCCURRENCE" eid="e50">開いた</EVENT>ときのどきどき<EVENT class="OCCURRENCE" eid="e51">わくわくした</EVENT>心を<EVENT class="I_STATE" eid="e52">思いだし</EVENT>、初心に<EVENT class="OCCURRENCE" eid="e53">帰っ</EVENT>て<EVENT class="I_ACTION" eid="e54">取り組みましょう</EVENT>。</sentence>
+<sentence type="quasi">（<ruby rubyText="かん">監</ruby><ruby rubyText="しゅう">修</ruby>・国立国語研究所長・<ruby rubyText="か">甲</ruby><ruby rubyText="い">斐</ruby><ruby rubyText="むつ">睦</ruby><ruby rubyText="ろう">朗</ruby>）</sentence>
+<sentence>次回の漢字は？</sentence>
+<sentence>　□の中に次に<EVENT class="OCCURRENCE" eid="e55">取り上げる</EVENT>漢字が<EVENT class="OCCURRENCE" eid="e56">入ります</EVENT>。</sentence>
+<sentence>上下左右の字と<EVENT class="OCCURRENCE" eid="e57">組み合わせ</EVENT>、二文字ずつの<ruby rubyText="じゅく">熟</ruby><ruby rubyText="ご">語</ruby>を四つ<EVENT class="OCCURRENCE" eid="e58">作ってください</EVENT>。</sentence>
+<sentence type="quasi">偽装株対策</sentence>
+<sentence type="quasi">西武鉄道常務も関与</sentence>
+<sentence type="quasi">「改革委」事務局長職を辞任</sentence>
+<sentence>　西武鉄道による有価証券報告書の虚偽記載問題で、グループ中核のコクドが、<EVENT class="OCCURRENCE" eid="e59">実質保有し</EVENT>ながら個人名義に<EVENT class="OCCURRENCE" eid="e60">していた</EVENT>西武鉄道株について、<TIMEX3 definite="FALSE" mod="APPROX" tid="t17" type="DATE" value="2003" valueFromSurface="2003">二〇〇三年ごろ</TIMEX3>から西武鉄道と対応を<EVENT class="I_ACTION" eid="e61">協議していた</EVENT>ことが<EVENT class="I_ACTION" eid="e62">分かった</EVENT>。</sentence>
+<sentence>西武鉄道はこれまで、個人名<sampling type="end" />義株の実態について<quote>「一部担当者しか<EVENT class="OCCURRENCE" eid="e63">知らず</EVENT>、現経営陣は<EVENT class="OCCURRENCE" eid="e64">認識していない</EVENT>」</quote>と<EVENT class="I_ACTION" eid="e65">説明してきた</EVENT>が、協議には、問題発覚後に<EVENT class="OCCURRENCE" eid="e66">発足した</EVENT><quote>「西武グループ経営改革委員会」</quote>事務局長の池田敦・西武鉄道常務（<TIMEX3 definite="FALSE" tid="t18" type="DURATION" value="P57Y" valueFromSurface="P57Y">５７</TIMEX3>）が<EVENT class="I_ACTION" eid="e67">参加していた</EVENT>。</sentence>

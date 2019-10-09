@@ -1,0 +1,10 @@
+<sentence>普通免許<event class="" eid="e1">取得し</event>て<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P1M" valueFromSurface="P1M">１ヶ月</TIMEX3>で、２点減点の違反を<event class="" eid="e2">してしまいました</event>。</sentence>
+<sentence>あと１点で免停に<event class="" eid="e3">なる</event>そうです。</sentence>
+<sentence>しかも、その場合、講習後に<webBr />大変<event class="STATE" eid="e4">難しい</event>筆記試験が<event class="" eid="e5">あり</event>、<event class="" eid="e6">合格しなけれ</event>ば、免許取り消しに<event class="" eid="e7">なる</event>と<webBr />交通課の方に<event class="" eid="e8">脅かされました</event>。</sentence>
+<sentence><event class="STATE" eid="e9">こわく</event>て向こう<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P1Y" valueFromSurface="P1Y">一年間</TIMEX3>ペーパードライバーに<event class="" eid="e10">なろう</event>かと<event class="" eid="e11">思います</event>が、運転を<event class="" eid="e12">忘れてしまい</event>そうで、それも<event class="STATE" eid="e13">怖いです</event>。</sentence>
+<sentence><event class="STATE" eid="e14">そんなに</event><event class="STATE" eid="e15">難しい</event>試験が<event class="" eid="e16">あるのでしょう</event>か？</sentence>
+<sentence type="quasi">誰にそんなデマ<event class="" eid="e17">吹き込まれた</event>の・・・・・</sentence>
+<sentence>免許所得後<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P1Y" valueFromSurface="P1Y">１年間</TIMEX3>は<event class="STATE" eid="e18">確かに</event>累積３点以上の違反で初心者講習の対象と<event class="" eid="e19">なります</event>。</sentence>
+<sentence>それは講習を<event class="" eid="e20">受ける</event>だけなので試験は<event class="" eid="e21">ありません</event>。</sentence>
+<sentence>講習後また３点以上の違反を<event class="" eid="e22">する</event>と再試験対象と<event class="" eid="e23">なります</event>。</sentence>
+<sentence type="quasi">こちらは合格率２０％以下の<event class="STATE" eid="e24">難しい</event>試験ですが・・・</sentence>

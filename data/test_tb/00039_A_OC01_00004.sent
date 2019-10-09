@@ -1,0 +1,11 @@
+<sentence>スーパーファミコンで１番最初に<event class="" eid="e1">でた</event>ソフトって何ですか？？</sentence>
+<sentence>やっぱ、マリオワールドですかね？？</sentence>
+<sentence><event class="STATE" eid="e2">じみに</event>アクトレイザーも<event class="STATE" eid="e3">早かったです</event>よね。</sentence>
+<sentence type="quasi">１：Ｆ−ＺＥＲＯ</sentence>
+<sentence type="quasi">発売日：<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="1990-11-21" valueFromSurface="XX90-11-21">９０／１１／２１</TIMEX3></sentence>
+<sentence type="quasi">ジャンル：レース　価格：７０００円</sentence>
+<sentence type="quasi">内容説明：近未来レーシングゲーム</sentence>
+<sentence type="quasi">２：スーパーマリオワールド</sentence>
+<sentence type="quasi">発売日：<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="1990-11-21" valueFromSurface="XX90-11-21">９０／１１／２１</TIMEX3></sentence>
+<sentence type="quasi">ジャンル：アクション　価格：８０００円</sentence>
+<sentence type="quasi">内容説明：恐竜ランドを舞台に<event class="" eid="e4">した</event>スーパーマリオ</sentence>

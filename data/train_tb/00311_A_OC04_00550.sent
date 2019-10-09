@@ -1,0 +1,11 @@
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>面接に<event class="" eid="e1">行っ</event>ても全て不採用です。</sentence>
+<sentence>仕事も<event class="" eid="e2">選んでいません</event>。</sentence>
+<sentence><TIMEX3 type="DATE" value="XXXX-XX-XX" valueFromSurface="XXXX-XX-XX">きょう</TIMEX3>は３Ｋと<event class="" eid="e3">言われる</event>仕事も<event class="STATE" eid="e4">ダメでした</event>。</sentence>
+<sentence>家から<event class="STATE" eid="e5">近いので</event>交通費も<event class="" eid="e6">要らない</event>のに<webBr />不採用とは<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3><event class="STATE" eid="e7">凄く</event><event class="" eid="e8">落ち込んでいます</event>。</sentence>
+<sentence>このまま永久に仕事に<event class="" eid="e9">就けないのではない</event>かと<event class="STATE" eid="e10">不安で</event>しょうが<event class="STATE" eid="e11">ないです</event>。</sentence>
+<sentence>何度も不採用だった方<event class="" eid="e12">います</event>か？</sentence>
+<sentence type="quasi">私も<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>まで５０社ほど<event class="" eid="e13">受けました</event>が、すべて<webBr />不採用で<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P0.5Y" valueFromSurface="P0.5Y">半年</TIMEX3>を<event class="" eid="e14">過ぎ</event>、<event class="" eid="e15">諦めていました</event>が<webBr />ある会社に内定を<event class="" eid="e16">頂き</event><TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2005-08-01" valueFromSurface="XXXX-08-01">８／１</TIMEX3>から<event class="" eid="e17">働く</event>予定です</sentence>
+<sentence>求職活動中はかなり<event class="" eid="e18">落ち込みました</event>が、<webBr /><event class="STATE" eid="e19">前向きに</event>面接など<event class="" eid="e20">こなしてきました</event>。</sentence>
+<sentence>どうか<event class="STATE" eid="e21">前向きな</event>考え方で<event class="" eid="e22">頑張って下さい</event>。</sentence>
+<sentence>必ず、あなたを必要と<event class="" eid="e23">している</event>会社が<event class="" eid="e24">ある</event>筈です。</sentence>
+<sentence>御健闘を<event class="" eid="e25">お祈りしております</event>。</sentence>

@@ -1,0 +1,8 @@
+<sentence>ＰＣをＬＡＮに<event class="" eid="e1">接続し</event>てから電源を<event class="" eid="e2">切っ</event>ても、すぐ電源が<event class="" eid="e3">入ってしまいます</event>。</sentence>
+<sentence>ＬＡＮケーブルをルータから<event class="" eid="e4">抜く</event>と電源が<event class="" eid="e5">切れ</event>て<event class="" eid="e6">再起動しません</event>。</sentence>
+<sentence>なぜでしょうか、<event class="" eid="e7">教えてください</event>。</sentence>
+<sentence>この機能はＷａｋｅ　ｕｐ　ＬＡＮと<event class="" eid="e8">言っ</event>てモデムからの呼び出し受信やＬＡＮ経由の受信によってシステムが<event class="" eid="e9">起動する</event>（電源が<event class="" eid="e10">入る</event>）機能が<event class="" eid="e11">搭載されてい</event>て、設定がＯＮに<event class="" eid="e12">なっている</event>場合に<event class="" eid="e13">起こります</event>。</sentence>
+<sentence>これをＯＦＦに<event class="" eid="e14">する</event>には通常は「ＢＩＯＳ」より<event class="" eid="e15">設定しなけれ</event>ば<event class="" eid="e16">なりません</event>。</sentence>
+<sentence>電源投入時にＢＩＯＳを<event class="" eid="e17">起動させ</event><event class="" eid="e18">設定します</event>。</sentence>
+<sentence>ＰＯＷＥＲ　ＭＡＮＡＧＥＭＥＮＴの項目で設定が<event class="" eid="e19">できます</event>。</sentence>
+<sentence>もしＢＩＯＳが<event class="" eid="e20">おわかりにならない</event>場合には、<event class="STATE" eid="e21">残念</event>ながら知識の<event class="" eid="e22">ある</event>方に<event class="" eid="e23">聞く</event>か、メーカーのサポートに<event class="" eid="e24">お聞きいただくことになります</event>。</sentence>

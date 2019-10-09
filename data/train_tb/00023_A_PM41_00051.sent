@@ -1,0 +1,47 @@
+<sentence type="quasi">Ｇｏｕｒｍｅｔ</sentence>
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="2004-WXX" valueFromSurface="XXXX-WXX">今週</TIMEX3>のナビゲーター</sentence>
+<sentence type="quasi">藤田千恵子さんの<event class="STATE" eid="e1">お気に入り</event></sentence>
+<sentence type="quasi">［長門］の柚子まんじゅう</sentence>
+<sentence>　東京駅。</sentence>
+<sentence>新幹線や急行に<event class="" eid="e2">乗り換える</event>ことこそ<event class="STATE" eid="e3">多い</event>ものの、この駅から外に<event class="" eid="e4">出る</event>ことはあまり<event class="STATE" eid="e5">なかったのです</event>が、『長門』の存在を<event class="" eid="e6">知っ</event>てからは、東京駅北口からしばしば外に<event class="" eid="e7">出る</event>ように<sampling type="start" /><event class="" eid="e8">なりました</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" quant="EACH" tid="t2" type="SET" value="P1Y" valueFromSurface="P1Y">毎年</TIMEX3>、この季節を<event class="" eid="e9">待ちかね</event>て<event class="" eid="e10">買い</event>に<event class="" eid="e11">行く</event>のが柚子まんじゅう。</sentence>
+<sentence>柚子に<event class="" eid="e12">似せた</event><event class="" eid="e13">ぽっちりした</event>形がなんとも<event class="STATE" eid="e14">可愛い</event><TIMEX3 general="TRUE" tid="t201" type="DATE" value="XXXX-WI" valueFromSurface="XXXX-WI">冬</TIMEX3>のお菓子です。</sentence>
+<sentence>　しっとりと<event class="" eid="e15">した</event><event class="STATE" eid="e16">黄色い</event>皮からは、柚子の香りがふくふくと<event class="" eid="e17">香ります</event>。</sentence>
+<sentence>中のあんこは、さすが、長門！</sentence>
+<sentence>　と、<event class="" eid="e18">言いたく</event><event class="" eid="e19">なる</event>ような<event class="STATE" eid="e20">美しい</event>紫色のこしあん。</sentence>
+<sentence><event class="STATE" eid="e21">丁寧に</event><event class="" eid="e22">さらした</event>（に違いない）あんこは、<event class="STATE" eid="e23">なめらかで</event>、口の中で<event class="STATE" eid="e24">上品な</event>甘みがふわっと<event class="" eid="e25">広がった</event>あとは、後口に<event class="" eid="e26">残らず</event>すーっと<event class="STATE" eid="e27">きれいに</event><event class="" eid="e28">消えていきます</event>。</sentence>
+<sentence>八重洲ブックセンターで<event class="STATE" eid="e29">好きな</event>本を<event class="" eid="e30">買っ</event>て、季節のお菓子を<event class="" eid="e31">買い</event>に長門に<event class="" eid="e32">立ち寄る</event>。</sentence>
+<sentence>この楽しみを<event class="" eid="e33">知っ</event>てから、東京駅がとても<event class="STATE" eid="e34">好きに</event><event class="" eid="e35">なりました</event>。</sentence>
+<sentence type="quasi">藤田千恵子</sentence>
+<sentence>フリーライター。</sentence>
+<sentence>酒と食を主なテーマに各地を取材。</sentence>
+<sentence>特に興味が<event class="" eid="e36">ある</event>のは発酵食品とオーガニック。</sentence>
+<sentence>著書に『日本の大吟醸１００』（新潮社）。</sentence>
+<sentence type="quasi">長門</sentence>
+<sentence type="quasi"><quote>「柚子まんじゅう」</quote>１個￥３００</sentence>
+<sentence>東京都中央区日本橋３‐１‐３　☎０３・３２７１・８６６２　<enclosedCharacter>営</enclosedCharacter>　<TIMEX3 definite="TRUE" general="TRUE" tid="t3" type="TIME" value="XXXX-XX-XXT10" valueFromSurface="XXXX-XX-XXT10">１０時</TIMEX3>〜<TIMEX3 definite="TRUE" general="TRUE" tid="t4" type="TIME" value="XXXX-XX-XXT18" valueFromSurface="XXXX-XX-XXT18">１８時</TIMEX3>　<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="XXXX-WXX-7" valueFromSurface="XXXX-WXX-7">日</TIMEX3>・<TIMEX3 definite="TRUE" tid="t6" type="DATE" value="XXXX-WXX-HD" valueFromSurface="XXXX-WXX-HD">祝日</TIMEX3>休　<TIMEX3 definite="FALSE" mod="END" tid="t7" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">江戸時代後期</TIMEX3>に創業、徳川家にお菓子を<event class="" eid="e37">献上していた</event>という老舗の和菓子処。</sentence>
+<sentence>柚子まんじゅうは、<TIMEX3 definite="FALSE" quant="EACH" tid="t8" type="SET" value="P1Y" valueFromSurface="P1Y">毎年</TIMEX3><TIMEX3 definite="TRUE" tid="t9" type="DATE" value="XXXX-11-1J" valueFromSurface="XXXX-11-1J">１１月上旬</TIMEX3>から<TIMEX3 definite="TRUE" tid="t10" type="DATE" value="XXXX-02-2J" valueFromSurface="XXXX-02-2J">２月中旬</TIMEX3>までの季節限定品。</sentence>
+<sentence>売り切れに<event class="" eid="e38">なることもあるので</event>、事前に電話確認を。</sentence>
+<sentence>ほかに<quote>「切り蒸しようかん」</quote><quote>「わらび粉久寿もち」</quote>も<event class="STATE" eid="e39">おいしい</event>。</sentence>
+<sentence>ミュージシャンの松任谷由実さん、フリーライターの藤田千恵子さん、漫画家の桜沢エリカさん、モデル・タレントのはなさんのリレーで、<event class="" eid="e40">おすすめ</event>の<quote>「<event class="STATE" eid="e41">美味しい</event>もの」</quote>を<TIMEX3 quant="EACH" type="SET" value="P1W">毎週</TIMEX3><event class="" eid="e42">紹介します</event>。</sentence>
+<sentence type="quasi">写真・小林恵介　スタイリスト・小山佳子　文・藤田千恵子<info arg="page" value="delimiter" /></sentence>
+<sentence type="quasi">Ａｎｔｅｎｎａ</sentence>
+<sentence type="quasi">写真・勝岡ももこ　スタイリスト・窪田佳代子　佐藤朝子</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t11" type="DURATION" value="P2N" valueFromSurface="P2N">２泊</TIMEX3><TIMEX3 definite="FALSE" tid="t12" type="DURATION" value="P3D" valueFromSurface="P3D">３日</TIMEX3>の小旅行ならこれで<event class="STATE" eid="e43">スマートに</event>ＧＯ！</sentence>
+<sentence>イタリア製高密度ナイロンを<event class="" eid="e44">使用し</event><event class="STATE" eid="e45">軽く</event>て<event class="STATE" eid="e46">丈夫な</event>トラベルバッグ。</sentence>
+<sentence>内側の充実ポケットで仕分けもラクラク。</sentence>
+<sentence>メッシュポーチとタオルもセットとは気が<event class="" eid="e47">利いてる</event>！</sentence>
+<sentence type="quasi">　￥２７，０００　別売りのルームシューズ　￥１２，０００　（Ｌ’ＥＱＵＩＰＥ　ＹＯＳＨＩＥ　ＩＮＡＢＡ☎０３・５４４９・１７１７）</sentence>
+<sentence>クレヨン？</sentence>
+<sentence>　色鉛筆？</sentence>
+<sentence type="quasi">　答えはなんとキャンドル</sentence>
+<sentence>キャンドル職人ＳＷＡＴＩの展示会が<TIMEX3 definite="FALSE" tid="t13" type="DATE" value="2004-01-15" valueFromSurface="XXXX-01-15">１／１５</TIMEX3>〜<TIMEX3 definite="FALSE" tid="t14" type="DATE" value="2004-01-20" valueFromSurface="XXXX-XX-20">２０</TIMEX3>、『バーデンバーデン』（☎０３・５７２２・３７７９）で開催。</sentence>
+<sentence>手作りならではの遊び心<event class="" eid="e48">溢れる</event>作品が<event class="" eid="e49">堪能できる</event>この機会を<event class="" eid="e50">逃さない</event>で！</sentence>
+<sentence>　鉛筆モチーフのキャンドルはデスク回りに<event class="" eid="e51">飾っ</event>ても◎。</sentence>
+<sentence type="quasi">大各￥１，２００　小￥８００</sentence>
+<sentence type="quasi"><event class="STATE" eid="e52">スモーキーな</event>色合わせとＶの開きが重ね着に<event class="STATE" eid="e53">最適</event></sentence>
+<sentence>パタンナー経験の<event class="STATE" eid="e54">豊富な</event>永田理子が<event class="" eid="e55">デザインする</event>『ｎｙｍｐｈｅａ』。</sentence>
+<sentence>手編み柄のパッチワークベストは、いまどきな色セレクトで、中に<event class="" eid="e56">着る</event>ものを<event class="" eid="e57">選びません</event>。</sentence>
+<sentence>トルコの兵隊風パンツと！</sentence>
+<sentence type="quasi">　モヘアベスト￥２０，０００　パンツ￥１７，０００（エル・エイ・ビー☎０３・３４８１・２６６８）</sentence>
+<sentence><quote>「ＳＯＮＩＡ」</quote>の<TIMEX3 definite="FALSE" tid="t15" type="SET" value="P1M" valueFromSurface="P1M">月替わり</TIMEX3>の<sampling type="end" />モチーフ、<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="2004-02" valueFromSurface="XXXX-02">２月</TIMEX3>はいちごが豊作です！</sentence>

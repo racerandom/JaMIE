@@ -1,0 +1,72 @@
+<sentence type="quasi"><event class="STATE" eid="e1">安く</event>・<event class="STATE" eid="e2">軽く</event><event class="" eid="e3">なっ</event>て電動自転車</sentence>
+<sentence type="quasi">快走中</sentence>
+<sentence>　<event class="STATE" eid="e4">重く</event>て<event class="STATE" eid="e5">高い</event>と<event class="" eid="e6">敬遠されていた</event>電動自転車が、低迷期を<event class="" eid="e7">脱し</event>、<event class="" eid="e8">売れ始めている</event>。</sentence>
+<sentence>重さが<TIMEX3 tid="t201" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当初</TIMEX3>の３分の２、値段が半額に<event class="" eid="e9">なった</event>ことで、各メーカーは<quote>「<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今度</TIMEX3>こそ」</quote>とそろばんを<event class="" eid="e10">はじく</event>。</sentence>
+<sentence>スポーツ車など、<quote>「ママチャリ」</quote>と<event class="" eid="e11">呼ばれる</event>軽快車以外の車種も<event class="" eid="e12">増え</event>そうだ。</sentence>
+<sentence>登場から<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P10Y" valueFromSurface="P10Y">１０年</TIMEX3>、電動自転車は、街に<event class="" eid="e13">定着するのだろう</event>か。</sentence>
+<sentence type="quasi">若者向けに車種多様化　メーカー</sentence>
+<sentence>　オフロードバイクに<event class="" eid="e14">似た</event><event class="STATE" eid="e15">カラフルな</event>小型電動自転車がスポットライトを<event class="" eid="e16">浴びる</event>。</sentence>
+<sentence>東京・有明で<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2003-11-02" valueFromSurface="XXXX-XX-02">２日</TIMEX3>まで<event class="" eid="e17">開かれた</event>東京国際自転車展。</sentence>
+<sentence>　電動自転車の生みの親、ヤマハ発動機（静岡）が<event class="" eid="e18">製造し</event>、玩具メーカーのタカラ（東京）が<event class="" eid="e19">限定販売する</event><quote>「ビープラスＤＴ」</quote>（１６万円）だ。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2004-SP" valueFromSurface="XXXX-SP">来春</TIMEX3>には１０万円弱の普及版も<event class="" eid="e20">出る</event>。</sentence>
+<sentence><quote>「電動自転車と<event class="" eid="e21">いえ</event>ばママチャリ（軽快車）というイメージを<event class="" eid="e22">変えたかった</event>」</quote>とヤマハの担当者。</sentence>
+<sentence>シェア５割を<event class="" eid="e23">誇る</event>ナショナル自転車工業（大阪）のブースにも、スポーツ車や折り畳み車が<event class="" eid="e24">並ぶ</event>。</sentence>
+<sentence>車種を<event class="" eid="e25">増やす</event>ことで、<event class="STATE" eid="e26">様々な</event>年代にアピール。</sentence>
+<sentence>山の坂道も<event class="STATE" eid="e27">楽に</event><event class="" eid="e28">上れ</event>、ツーリングの幅が<event class="" eid="e29">広がる</event>と<event class="" eid="e30">いう</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t5" type="DATE" value="1993-11" valueFromSurface="XX93-11">９３年１１月</TIMEX3>に<event class="" eid="e31">登場した</event>電動自転車は、ここ<TIMEX3 definite="TRUE" tid="t6" type="DURATION" value="PXY" valueFromSurface="PXY">数年</TIMEX3>で使い勝手が<event class="STATE" eid="e32">良く</event><event class="" eid="e33">なり</event>、<event class="" eid="e34">売れ始めている</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t7" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当初</TIMEX3>、軽快車型の重さは３１キロ、値段は１４万９千円。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t8" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>では重さが２０キロ前後、値段は６万９８００円が中心だ。</sentence>
+<sentence>　バッテリーは<event class="STATE" eid="e35">重い</event>鉛からニッケル水素やリチウムイオンに。</sentence>
+<sentence>モーターの一部も<event class="" eid="e36">樹脂化された</event>。</sentence>
+<sentence>ヤマハの子会社モリック（静岡）の明田久稔技師は<quote>「重さも値段も、開発時に<event class="" eid="e37">想定していた</event>目標におおむね<event class="" eid="e38">達した</event>」</quote>と<event class="" eid="e39">話す</event>。</sentence>
+<sentence>　ペダルを<event class="" eid="e40">こぐ</event>力を<event class="" eid="e41">検知する</event>部分は、ロスが<event class="STATE" eid="e42">大きい</event>バネ式から非接触式に<event class="" eid="e43">なり</event>、バッテリーが<event class="" eid="e44">切れ</event>ても<event class="STATE" eid="e45">こぎやすく</event><event class="" eid="e46">なった</event>。</sentence>
+<sentence>充電時間も<TIMEX3 definite="TRUE" tid="t9" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">当初</TIMEX3>の<TIMEX3 definite="FALSE" tid="t10" type="DURATION" value="PT10H" valueFromSurface="PT10H">１０時間</TIMEX3>から<TIMEX3 definite="FALSE" mod="APPROX" tid="t11" type="DURATION" value="PT2H" valueFromSurface="PT2H">２時間前後</TIMEX3>に<event class="" eid="e47">なり</event>、３０キロ<event class="STATE" eid="e48">近い</event>距離を<event class="" eid="e49">走れる</event>ように<event class="" eid="e50">なった</event>。</sentence>
+<sentence type="fragment">　ナショナル自転車工業の土井<ruby rubyText="あつ">陸</ruby><ruby rubyText="のぶ">照</ruby>企画開発室長は</sentence>
+<sentence>「リチウムイオンなら、携帯電話のように継ぎ足し充電が<event class="" eid="e51">できる</event>。</sentence>
+<sentence type="quasi">車種が<event class="" eid="e52">増えれ</event>ば遊びなどにも用途も<event class="" eid="e53">広がる</event>はず」</sentence>
+<sentence type="fragment">と<event class="" eid="e54">期待する</event>。</sentence>
+<sentence>　社団法人自転車協会（東京）によると、出荷台数は<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="1997" valueFromSurface="XX97">９７年</TIMEX3>の２２万台をピークに<TIMEX3 definite="FALSE" tid="t13" type="DATE" value="2000" valueFromSurface="XX00">００年</TIMEX3>に１５万台まで<event class="" eid="e55">減った</event>が、<TIMEX3 definite="FALSE" mod="ON_OR_AFTER" tid="t14" type="DATE" value="2001" valueFromSurface="XX01">０１年以降</TIMEX3>再び増加に<event class="" eid="e56">転じ</event>、２０万台を<event class="" eid="e57">超えた</event>。</sentence>
+<sentence>　自転車専門誌を<event class="" eid="e58">発行している</event>インタープレス（東京）の斎田茂副社長は、<quote>「<TIMEX3 definite="FALSE" tid="t15" type="DATE" value="2008" valueFromSurface="Q+5Y">５</TIMEX3>、<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="2009" valueFromSurface="Q+6Y">６年後</TIMEX3>には自転車全体の１割、<TIMEX3 definite="FALSE" tid="t17" type="DURATION" value="P1Y" valueFromSurface="P1Y">年間</TIMEX3>１００万台は<event class="" eid="e59">売れる</event>」</quote>と<event class="" eid="e60">予測した</event>うえで、<quote>「量産効果で値段も<event class="" eid="e61">下がり</event>、<TIMEX3 type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今後</TIMEX3><event class="STATE" eid="e62">急速に</event><event class="" eid="e63">普及するだろう</event>」</quote>と<event class="" eid="e64">みている</event>。</sentence>
+<sentence type="quasi">購入補助やレンタルも　自治体</sentence>
+<sentence>　排ガスが<event class="STATE" eid="e65">なく</event>環境への負荷が<event class="STATE" eid="e66">少ない</event>と、地方自治体では電動自転車の<event class="STATE" eid="e67">試験的な</event>導入が<event class="" eid="e68">進む</event>。</sentence>
+<sentence>　ヤマハの本社が<event class="" eid="e69">ある</event>静岡県磐田市では、<TIMEX3 definite="FALSE" tid="t18" type="DATE" value="2003-12-01" valueFromSurface="XXXX-12-01">１２月１日</TIMEX3>から電動自転車を<event class="" eid="e70">購入した</event>市民への補助を<event class="" eid="e71">始める</event>。</sentence>
+<sentence>上限は２万円で、地元商店街の買い物券を<event class="" eid="e72">交付する</event>。</sentence>
+<sentence>同市では７０台を<TIMEX3 definite="FALSE" tid="t19" type="DURATION" value="P0.5D" valueFromSurface="P0.5D">半日</TIMEX3>１００円で<event class="" eid="e73">レンタルし</event>、太陽電池を<event class="" eid="e74">使った</event>無料の充電スタンドを３カ所<event class="" eid="e75">設けている</event>。</sentence>
+<sentence>竹森公彦商工観光課長は<quote>「車が<event class="STATE" eid="e76">駐車しにくい</event>地元の商店街の振興に<event class="" eid="e77">つながれ</event>ば一石二鳥だ」</quote>と<event class="" eid="e78">いう</event>。</sentence>
+<sentence>新潟県新津市でも地元商店街が、１００台を<TIMEX3 definite="FALSE" tid="t20" type="DURATION" value="P1M" valueFromSurface="P1M">月</TIMEX3>決めや<TIMEX3 definite="FALSE" tid="t21" type="DURATION" value="P1D" valueFromSurface="P1D">１日</TIMEX3>２００円で<event class="" eid="e79">貸している</event>。</sentence>
+<sentence>山形県酒田市では高齢者に、新潟県上越市も期間限定で購入を<event class="" eid="e80">補助した</event>。</sentence>
+<sentence>　坂道に<event class="STATE" eid="e81">強い</event>特性を<event class="" eid="e82">生かし</event>て観光に<event class="" eid="e83">生かす</event>ケースも<event class="" eid="e84">増えている</event>。</sentence>
+<sentence>ＪＲ九州が<quote>「楽<sampling type="start" />チャリ」</quote>という名前で熊本・阿蘇や大分・由布院など観光地の１１駅で<event class="" eid="e85">貸し出している</event>ほか、京都の嵐山、神戸市など各地で貸し出しが<event class="" eid="e86">始まっている</event>。</sentence>
+<sentence type="fragment">　都市交通に<event class="STATE" eid="e87">詳しい</event>東洋大学の太田勝敏教授は</sentence>
+<sentence>「自転車と同じように歩道を<event class="" eid="e88">走る</event>現状では、歩行者の安全を<event class="" eid="e89">確保する</event>必要が<event class="" eid="e90">ある</event>。</sentence>
+<sentence type="quasi">違法駐車など<event class="" eid="e91">解決すべき</event>問題は<event class="STATE" eid="e92">多い</event>が、電動自転車など低速のものが<event class="STATE" eid="e93">安全に</event><event class="" eid="e94">走れる</event>空間を道路に<event class="" eid="e95">設けるべきだろう</event>」</sentence>
+<sentence type="fragment">と<event class="" eid="e96">話す</event>。</sentence>
+<sentence type="quasi">電動自転車</sentence>
+<sentence>　人がペダルを<event class="" eid="e97">踏み込む</event>力や速度をセンサーが<event class="" eid="e98">検知し</event>、モーターがその５０％を<event class="" eid="e99">補助する</event>。</sentence>
+<sentence>最初のひとこぎ目が、背中を<event class="" eid="e100">押された</event>ように<event class="STATE" eid="e101">軽い</event>のも特徴。</sentence>
+<sentence>道路交通法の施行規則で、１５キロから補助割合が<event class="" eid="e102">減り</event>、２４キロでゼロに<event class="" eid="e103">なる</event>よう<event class="" eid="e104">決められている</event>。</sentence>
+<sentence>購入者は高齢者や子どもを<event class="" eid="e105">乗せる</event>主婦が<event class="STATE" eid="e106">多い</event>。</sentence>
+<sentence><enclosedCharacter description="○">右</enclosedCharacter>静岡県磐田市では、市の無料充電スタンドが３カ所<event class="" eid="e107">ある</event>＝同市役所前で<enclosedCharacter description="○">上</enclosedCharacter>東京国際自転車展で<event class="" eid="e108">公開された</event>電動自転車「ビープラスＤＴ」。</sentence>
+<sentence type="quasi">実用より遊び感覚を<event class="" eid="e109">重視し</event>、利用者拡大を<event class="" eid="e110">目指す</event>＝東京都江東区有明で</sentence>
+<sentence type="quasi">自殺防止へ世界集会</sentence>
+<sentence type="quasi">英国・韓国などから報告</sentence>
+<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t22" type="DATE" value="2003-11-10" valueFromSurface="XXXX-XX-10">１０日</TIMEX3>から東京で</sentence>
+<sentence>　自殺を<event class="" eid="e111">防止する</event>ため、国を<event class="" eid="e112">超え</event>て一緒に<event class="STATE" eid="e113">具体的な</event>対策を<event class="" eid="e114">考えよう</event>という催し<quote>「<event class="" eid="e115">進めよう</event>自殺防止活動〜世界の仲間とともに」</quote>世界集会が<TIMEX3 definite="FALSE" tid="t23" type="DATE" value="2003-11-10" valueFromSurface="XXXX-XX-10">１０日</TIMEX3>から<TIMEX3 definite="FALSE" tid="t24" type="DATE" value="2003-11-13" valueFromSurface="XXXX-XX-13">１３日</TIMEX3>まで、東京都渋谷区の国立オリンピック記念青少年総合センターで<event class="" eid="e116">開かれる</event>。</sentence>
+<sentence>　主催は、電話相談を<event class="" eid="e117">受けている</event>ＮＰＯ「国際ビフレンダーズ東京自殺防止センター」。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t25" type="DATE" value="2003-11-10" valueFromSurface="XXXX-XX-10">１０日</TIMEX3>は歓迎会など。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t26" type="DATE" value="2003-11-11" valueFromSurface="XXXX-XX-11">１１日</TIMEX3>はイギリスやスリランカ、シンガポール、韓国などから報告が<event class="" eid="e118">ある</event>ほか、<TIMEX3 definite="FALSE" tid="t27" type="TIME" value="2003-11-11T18:30" valueFromSurface="XXXX-XX-XXT18:30">午後６時半</TIMEX3>から作家の加賀乙彦さんの公開講演<quote>「死刑囚の生と死」</quote>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t28" type="DATE" value="2003-11-12" valueFromSurface="XXXX-XX-12">１２日</TIMEX3>は予防や事後支援など国内の関係者４人によるパネルディスカッション。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t29" type="DATE" value="2003-11-13" valueFromSurface="XXXX-XX-13">１３日</TIMEX3>の全体会で<event class="" eid="e119">締めくくる</event>。</sentence>
+<sentence>　通しの参加費は１万８千円（宿泊・食事なし）。</sentence>
+<sentence>公開講演のみは２千円。</sentence>
+<sentence>問い合わせは東京自殺防止センター（０３・３２０７・５０４０）へ。</sentence>
+<sentence type="quasi">ＣＭ天気図</sentence>
+<sentence type="quasi">声が<event class="" eid="e120">聞こえない</event>ぞ</sentence>
+<sentence type="quasi">天野　祐吉</sentence>
+<sentence>　約束は<event class="STATE" eid="e121">具体的でなくちゃいけない</event>。</sentence>
+<sentence><quote>「君をきっと<event class="STATE" eid="e122">しあわせに</event><event class="" eid="e123">する</event>よ」</quote>なんて<event class="" eid="e124">言う</event>男より、<quote>「<event class="" eid="e125">結婚したら</event><TIMEX3 definite="FALSE" freq="1X" tid="t30" type="SET" value="P1Y" valueFromSurface="P1Y">年に一度</TIMEX3>は海外旅行を<event class="" eid="e126">しよう</event>ね、ハイ、ゆびきりげんまん」</quote>と<event class="" eid="e127">言う</event>男のほうが<event class="" eid="e128">信用できる</event>。</sentence>
+<sentence>　だから、選挙をマニフェストで<event class="" eid="e129">争う</event>のは<event class="STATE" eid="e130">いい</event>ことだ。</sentence>
+<sentence>お題目ばかり<event class="" eid="e131">並べていた</event>いままでの選挙よりも、公共事業や年金問題など、各党の考えの違いがそれなりに<event class="" eid="e132">わかっ</event>て、けっこう役に<event class="" eid="e133">立つ</event>。</sentence>
+<sentence>　が、その一方で、<quote>「<event class="STATE" eid="e134">わかりにくい</event>」</quote>という声も<event class="STATE" eid="e135">多い</event>。</sentence>
+<sentence><event class="STATE" eid="e136">たしかに</event>、何を<event class="" eid="e137">言っている</event>のか、さっぱり<event class="" eid="e138">わからない</event>個所もずいぶん<event class="" eid="e139">ある</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t31" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先日</TIMEX3>の朝日新聞で、立教大学の高原明生さんが<event class="" eid="e140">取り上げていた</event>自民党の外交についての部分などは、その代表選手みたいなもん<sampling type="end" />だろう。</sentence>

@@ -1,0 +1,3 @@
+<d certainty="positive">右肺癌</d>に対して陽子線治療後が知られています。<a>右肺上葉１ｂ／３ｂ</a>に<f>３．５×３．２Ｃｍ</f>の<d certainty="positive">腫瘤</d>を認めます。<d certainty="positive">局所再発腫瘤</d>です。<d certainty="positive">ｙｃＴ２ａ</d>
+<a>肺内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>縦隔・肺門</a>に<d certainty="positive">小リンパ節</d>が<f>散在</f>しますが、<f>病的有意な</f><d certainty="negative">腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
+<d certainty="negative">胸水貯留</d>なし。<a>前縦隔</a>に<d certainty="positive">嚢疱構造</d>あり、<d certainty="suspicious">胸腺嚢疱</d>疑い。

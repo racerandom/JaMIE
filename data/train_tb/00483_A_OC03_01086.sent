@@ -1,0 +1,8 @@
+<sentence>離婚を前提に<event class="" eid="e1">別居する</event>予定です。</sentence>
+<sentence><event class="" eid="e2">離婚すれ</event>ば、慰謝料として主人名義の家を<event class="" eid="e3">頂くことになっております</event>。</sentence>
+<sentence>ただ、別居の段階で、主人の心変わりが<event class="STATE" eid="e4">心配なので</event>、先に売却代金を<event class="" eid="e5">頂く</event>ことは<event class="STATE" eid="e6">可能でしょう</event>か。</sentence>
+<sentence>その場合、贈与税を<event class="" eid="e7">払わず</event>に全額<event class="" eid="e8">頂ける</event>方法は<event class="STATE" eid="e9">ないのでしょう</event>か。</sentence>
+<sentence><TIMEX3 tid="t201" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>は諸事情が<event class="" eid="e10">あっ</event>て、離婚が<event class="" eid="e11">できないのです</event>。</sentence>
+<sentence>結婚期間が<TIMEX3 definite="FALSE" mod="EQUAL_OR_MORE" tid="t1" type="DURATION" value="P20Y" valueFromSurface="P20Y">２０年以上</TIMEX3>の夫婦間の贈与であれば、２，０００万円まで居住用財産の贈与税が非課税に<event class="" eid="e12">なる</event>特例が<event class="" eid="e13">あります</event>。</sentence>
+<sentence>でも、「居住用」ですので、<event class="" eid="e14">売る</event>前提だと<event class="STATE" eid="e15">難しいかもしれません</event>。</sentence>
+<sentence type="quasi">≡回復地雷≡</sentence>

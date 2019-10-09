@@ -1,0 +1,72 @@
+<sentence type="quasi">預託金制度改革の<quote>「虎の巻」</quote>            </sentence>
+<sentence type="quasi">中間法人化で真の再生を</sentence>
+<sentence>ゴルフ場の破綻に<event class="" eid="e1">伴い</event>、倒産専門の弁護士の活躍が<event class="" eid="e2">増えている</event>。</sentence>
+<sentence>特にゴルフ場の破綻は<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>に<event class="" eid="e3">なっ</event>て<event class="" eid="e4">増加してきた</event>ことから、専門の弁護士の数が<event class="" eid="e5">足りず</event>、少数の弁護士に依頼が<event class="" eid="e6">殺到している</event>。</sentence>
+<sentence>服部弘志弁護士はその１人で、数々の破綻を目の当たりに<event class="" eid="e7">してきた</event>。</sentence>
+<sentence>服部氏から<event class="" eid="e8">見た</event>破綻の真相、また、処理スキームとして<quote>「中間法人化」</quote>を<event class="" eid="e9">提唱している</event>狙いを<event class="" eid="e10">聞いた</event>。</sentence>
+<sentence type="quasi">―</sentence>
+<sentence>　ゴルフ場の倒産が<event class="" eid="e11">増えています</event>が、その原因は。</sentence>
+<sentence type="quasi">服部</sentence>
+<sentence>　ゴルフ会員権の預託金償還が原因のひとつとして<event class="" eid="e12">考えられます</event>。</sentence>
+<sentence>バブルの時期、<event class="STATE" eid="e13">高額な</event>預託金で会員権を<event class="" eid="e14">取得した</event>人たちが、市場で預託金を<event class="" eid="e15">回収できない</event>ことがこの問題を<event class="STATE" eid="e16">大きく</event>                <event class="" eid="e17">しています</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P10Y" valueFromSurface="P10Y">１０年</TIMEX3>の償還期限が<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="XXXX" valueFromSurface="Q-XY">数年前</TIMEX3>から<event class="" eid="e18">到来している</event>中で、会員権の価格が<event class="STATE" eid="e19">大きく</event>額面を<event class="" eid="e20">割っています</event>。</sentence>
+<sentence>会則には<quote>「不可抗力や<event class="" eid="e21">予期せぬ</event>経済変動が<event class="" eid="e22">生じた</event>場合には、償還期限を<event class="" eid="e23">延長できる</event>」</quote>という規定が<event class="" eid="e24">あるので</event>、ゴルフ場側は償還期限の延長を<event class="" eid="e25">認めてもらおう</event>と<event class="" eid="e26">するんです</event>が、ほとんどの裁判所は<event class="" eid="e27">認めてくれません</event>。</sentence>
+<sentence>裁判に<event class="" eid="e28">なれ</event>ば預託金の支払いを<event class="" eid="e29">命ずる</event>判決が<event class="" eid="e30">出ます</event>。</sentence>
+<sentence>                <event class="" eid="e31">支払わなけれ</event>ば差し押さえが<event class="" eid="e32">来る</event>。</sentence>
+<sentence>その差し押さえが、キャッシュフローにまで<event class="" eid="e33">及ぶ</event>と、ゴルフ場は<event class="" eid="e34">倒産する</event>しか<event class="" eid="e35">ありません</event>。</sentence>
+<sentence>そのキャッシュフローでさえ、不況で客足が<event class="" eid="e36">遠のいている</event>中、<event class="" eid="e37">不足しているんです</event>。</sentence>
+<sentence type="quasi">―</sentence>
+<sentence>　民事再生法、会社更生法のメリット、デメリットを<event class="" eid="e38">教えてください</event>。</sentence>
+<sentence type="quasi">服部</sentence>
+<sentence>　民事再生法は、原則としてＤＩＰ（デター・イン・ポゼション）型であり、<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>までの事業主が経営権を<event class="" eid="e39">維持し</event>ながら、再建に<event class="" eid="e40">向かえます</event>。</sentence>
+<sentence>また事業が<event class="" eid="e41">破綻する</event>前に申し立てが<event class="" eid="e42">でき</event>、手続きが<event class="STATE" eid="e43">速く</event>、<TIMEX3 definite="FALSE" mod="APPROX" tid="t5" type="DURATION" value="P6M" valueFromSurface="P6M">６カ月程度</TIMEX3>で再建計画が<event class="" eid="e44">認可されます</event>。</sentence>
+<sentence>　会社更生法を<event class="" eid="e45">適用する</event>会社は債務超過会社ですから、１００％<event class="" eid="e46">減資され</event>、<event class="STATE" eid="e47">必然的に</event>                <TIMEX3 definite="TRUE" tid="t6" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>までの経営者は株を<event class="" eid="e48">失い</event>、経営権を<event class="" eid="e49">奪われることになります</event>。</sentence>
+<sentence>だから自ら<event class="" eid="e50">進ん</event>で会社更生を<event class="" eid="e51">申し立てる</event>ゴルフ場は、ほとんど<event class="" eid="e52">ありません</event>。</sentence>
+<sentence>一部のゴルフ場では、ＲＣＣなどの債権者が経営者の責任追及を目的のひとつとして更生法の申し立てを<event class="" eid="e53">した</event>ケースも<event class="" eid="e54">ありました</event>が。</sentence>
+<sentence type="quasi">―</sentence>
+<sentence>　民事再生法を<event class="" eid="e55">申請した</event>ゴルフ場ですが、実際のところ<event class="STATE" eid="e56">うまく</event>再建は<event class="" eid="e57">進んでいます</event>か。</sentence>
+<sentence type="quasi">服部</sentence>
+<sentence>　私が<event class="" eid="e58">知る</event>限りでは、ほとんどのゴルフ場で<TIMEX3 definite="TRUE" tid="t7" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>のところ<event class="STATE" eid="e59">うまく</event>                <event class="" eid="e60">いっています</event>。</sentence>
+<sentence>会員の預託金問題は、一部会員からは経営者の責任が<event class="STATE" eid="e61">あやふやな</event>ままカットは<event class="" eid="e62">許せない</event>という声も<event class="" eid="e63">出ています</event>が、大多数の会員はバブル崩壊という<event class="" eid="e64">やむ</event>を<event class="" eid="e65">得ない</event>事態がゴルフ場の破綻を<event class="" eid="e66">引き起こしてしまった</event>と、再生計画に<event class="" eid="e67">賛成する</event>のが<event class="STATE" eid="e68">一般的です</event>。</sentence>
+<sentence type="quasi">―</sentence>
+<sentence>　これから預託金問題を引き金に倒産が<event class="" eid="e69">相次ぐ</event>と<event class="" eid="e70">思います</event>。</sentence>
+<sentence>預託金制度は事実上<event class="" eid="e71">崩壊した</event>と<event class="" eid="e72">考え</event>て<event class="STATE" eid="e73">いいのでしょう</event>か。</sentence>
+<sentence type="quasi">服部</sentence>
+<sentence>　日本には２４００近くのゴルフ場が<event class="" eid="e74">あり</event>、民事再生の申し立てを<event class="" eid="e75">した</event>ゴルフ場は１００カ所ぐらいでしょう。</sentence>
+<sentence>                <event class="STATE" eid="e76">巨額</event>の投資を必要と<event class="" eid="e77">する</event>ゴルフ場を<event class="" eid="e78">建設し</event>て、資金を会員に<event class="" eid="e79">返還する</event>預託金で<event class="" eid="e80">調達し</event>、会員にはプレー権を<event class="" eid="e81">与える</event>預託金制度は問題が<event class="STATE" eid="e82">大きい</event>仕組みだったことは間違い<event class="" eid="e83">ありません</event>。</sentence>
+<sentence>　本来は預託金ではなく、株式や永久債のように、<event class="" eid="e84">返す</event>必要の<event class="STATE" eid="e85">ない</event>仕組みを<event class="" eid="e86">つくっておくべきだった</event>と<event class="" eid="e87">思います</event>。</sentence>
+<sentence type="quasi">―</sentence>
+<sentence>　なぜ問題の<event class="STATE" eid="e88">多い</event>預託金でゴルフ場を<event class="" eid="e89">造ってしまったのでしょう</event>。</sentence>
+<sentence type="quasi">服部</sentence>
+<sentence>　預託金制度が<event class="" eid="e90">出来上がった</event>のは<TIMEX3 definite="FALSE" mod="MID" tid="t8" type="DATE" value="196X" valueFromSurface="S3X">昭和３０年代半ばごろ</TIMEX3>で、高度経済成長期に<event class="" eid="e91">重なります</event>。</sentence>
+<sentence>ゴルフ場には<event class="STATE" eid="e92">広大な</event>土地が<event class="" eid="e93">存在するので</event>、土地神話と<event class="" eid="e94">連動し</event>て、会員権を<event class="" eid="e95">持っていれ</event>ばいずれ<event class="" eid="e96">値上がりする</event>と<event class="" eid="e97">考えられていました</event>。</sentence>
+<sentence>会員権が投資の対象と<sampling type="start" />                <event class="" eid="e98">捉えられてしまった</event>感じが<event class="" eid="e99">します</event>。</sentence>
+<sentence>　しかし、よく<event class="" eid="e100">考えてほしい</event>のは、初期投資が<event class="STATE" eid="e101">巨額な</event>割に、事業の収益性は<event class="STATE" eid="e102">低く</event>、減価償却の負担が<event class="STATE" eid="e103">大きい</event>ことです。</sentence>
+<sentence>施設の集客能力にも限界が<event class="" eid="e104">あり</event>、<event class="STATE" eid="e105">どんなに</event>                <event class="" eid="e106">儲かっ</event>ても税引き前利益で１億〜２億円がやっと。</sentence>
+<sentence>仮に<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="P1Y" valueFromSurface="P1Y">年</TIMEX3>に１億円内部留保に<event class="" eid="e107">回し</event>ても、<TIMEX3 definite="FALSE" tid="t10" type="DURATION" value="P10Y" valueFromSurface="P10Y">１０年間</TIMEX3>で１０億円。</sentence>
+<sentence>一方、バブルの時に<event class="" eid="e108">建設された</event>ゴルフ場は会員から２００億円近く<event class="" eid="e109">集めています</event>。</sentence>
+<sentence>どう<event class="" eid="e110">考え</event>ても<event class="" eid="e111">返せる</event>はずは<event class="STATE" eid="e112">なかったんです</event>。</sentence>
+<sentence type="quasi">―</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t11" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>                <event class="STATE" eid="e113">新たな</event>会員権のシステム、例えば永久債などの考えも<event class="" eid="e114">出て来ました</event>が。</sentence>
+<sentence type="quasi">服部</sentence>
+<sentence>　会社が<TIMEX3 definite="TRUE" tid="t12" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">将来</TIMEX3>、<event class="" eid="e115">解散し</event>                <event class="" eid="e116">清算する</event>ときに債務を<event class="" eid="e117">返却する</event>という仕組みです。</sentence>
+<sentence>事実上は<event class="" eid="e118">返す</event>必要が<event class="STATE" eid="e119">ない</event>ため、<event class="STATE" eid="e120">法的に</event>は債務ですが、<event class="STATE" eid="e121">資本的な</event>機能を<event class="" eid="e122">持ち</event>、国際決済銀行（ＢＩＳ）から、企業の自己資本比率の計算に<event class="" eid="e123">含めてもいいことになっている</event>ようです。</sentence>
+<sentence>永久債は<TIMEX3 definite="TRUE" tid="t13" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>まで<event class="" eid="e124">発行できませんでした</event>が、法務省と大蔵省（現財務省）が発行を<event class="" eid="e125">認めました</event>。</sentence>
+<sentence type="quasi">―</sentence>
+<sentence>　再生スキームのひとつとして中間法人化を<event class="" eid="e126">提唱されています</event>ね。</sentence>
+<sentence type="quasi">服部</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t14" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">従来</TIMEX3>の方法は、<event class="" eid="e127">退会する</event>会員と<event class="" eid="e128">しない</event>会員に<event class="" eid="e129">分け</event>、退会会員の預託金は額面の８０〜９５％をカット、<event class="" eid="e130">残る</event>会員の預託金は<event class="" eid="e131">カットしない</event>かカット率を<event class="STATE" eid="e132">少なく</event>                <event class="" eid="e133">し</event>、計画認可後<TIMEX3 definite="FALSE" mod="EQUAL_OR_MORE" tid="t15" type="DURATION" value="P10Y" valueFromSurface="P10Y">１０年以上</TIMEX3>                <event class="" eid="e134">たて</event>ば退会を<event class="" eid="e135">認める</event>、<TIMEX3 definite="FALSE" tid="t16" type="DURATION" value="P1Y" valueFromSurface="P1Y">年間</TIMEX3>一定額の限度内で預託金を抽選で<event class="" eid="e136">弁済する</event>ケースが<event class="STATE" eid="e137">多いんです</event>。</sentence>
+<sentence>　こう<event class="" eid="e138">した</event>方法はプレー権の保護という観点からは<event class="" eid="e139">評価できます</event>が、一歩<event class="" eid="e140">進め</event>て、<TIMEX3 definite="FALSE" tid="t17" type="DATE" value="2002-04" valueFromSurface="XXXX-04">今年４月</TIMEX3>に<event class="" eid="e141">施行された</event>中間法人法を<event class="" eid="e142">活用した</event>再生計画を<event class="" eid="e143">提唱しています</event>。</sentence>
+<sentence>　中間法人法は同窓会、親睦会、町内会など、営利でも、公益でも<event class="STATE" eid="e144">ない</event>団体を<event class="" eid="e145">法人化する</event>目的で<event class="" eid="e146">作られた</event>ものです。</sentence>
+<sentence>　日本では<quote>「ゴルフクラブ」</quote>という名称は<event class="" eid="e147">付いてい</event>ても、会員の意思決定の場である会員総会がほとんど<event class="" eid="e148">存在せず</event>、会員が運営に口を<event class="" eid="e149">出す</event>ことは<event class="" eid="e150">ありません</event>。</sentence>
+<sentence>英米流の本来の<quote>「クラブ」</quote>とは実態が<event class="" eid="e151">懸け離れています</event>。</sentence>
+<sentence>中間法人を<event class="" eid="e152">活用し</event>てクラブの運営に会員の総意が<event class="" eid="e153">反映できれ</event>ば、英米のように自分のクラブに愛着が<event class="" eid="e154">沸いてくるでしょう</event>。</sentence>
+<sentence>　中間法人の創設は<event class="" eid="e155">破綻した</event>ゴルフ場でなければ<event class="" eid="e156">いけない</event>ということではありません。</sentence>
+<sentence>事業が<event class="STATE" eid="e157">順調な</event>ゴルフ場でも<event class="" eid="e158">実行できます</event>。<info arg="page" value="delimiter" />              </sentence>
+<sentence type="quasi">紙切れと<event class="" eid="e159">なった</event>数々のゴルフ会員権</sentence>
+<sentence type="quasi">服部弘志氏</sentence>
+<sentence type="quasi">（第二東京弁護士会倒産部会所属）</sentence>
+<sentence>            <TIMEX3 definite="FALSE" tid="t18" type="DATE" value="1967" valueFromSurface="1967">１９６７年</TIMEX3>一橋大学法学部卒業、<TIMEX3 definite="FALSE" tid="t19" type="DATE" value="1969" valueFromSurface="XX69">６９年</TIMEX3>一橋大学大学院法学研究科修士課程修了、<TIMEX3 definite="FALSE" tid="t20" type="DATE" value="1971" valueFromSurface="XX71">７１年</TIMEX3>弁護士登録。</sentence>
+<sentence>            <TIMEX3 definite="FALSE" tid="t21" type="DATE" value="1992" valueFromSurface="XX92">９２年</TIMEX3>通産省（現経済産業省）会員制事業適性化研究会委員、<TIMEX3 definite="FALSE" tid="t22" type="DATE" value="1997" valueFromSurface="XX97">９７年</TIMEX3>通産省（現経済産業省）ゴルフ会員権取引業適正化研究会座長、<TIMEX3 type="DATE" value="1997" valueFromSurface="XXXX">同年</TIMEX3>社団法人日本ゴルフ場事業協会会員権問題専門委員会委員・同作業部会座長。</sentence>
+<sentence>破綻ゴルフ場を<event class="" eid="e160">買い漁る</event>外資の本音！！</sentence>
+<sentence type="quasi">買収は<TIMEX3 definite="TRUE" tid="t23" type="DURATION" value="PXY" valueFromSurface="PXY">数年</TIMEX3>で完了<sampling type="end" />        </sentence>

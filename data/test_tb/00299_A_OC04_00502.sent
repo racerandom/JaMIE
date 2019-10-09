@@ -1,0 +1,10 @@
+<sentence type="quasi">デパートに<event class="" eid="e1">勤めたいのです</event></sentence>
+<sentence type="quasi">派遣でもなんでも<event class="STATE" eid="e2">良いのです</event>が<webBr /></sentence>
+<sentence>年齢が<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P50Y" valueFromSurface="P50Y">５０歳</TIMEX3>なんですよ</sentence>
+<sentence>　女性です</sentence>
+<sentence type="quasi"><event class="STATE" eid="e3">無理</event>かな・・・・・・・・・＋</sentence>
+<sentence type="quasi">　札幌</sentence>
+<sentence><event class="STATE" eid="e4">大丈夫じゃないです</event>か？</sentence>
+<sentence>マネキン紹介所とかにでも<event class="" eid="e5">当たってみてください</event>。</sentence>
+<sentence>下は一例です。</sentence>
+<sentence><TIMEX3 definite="FALSE" mod="APPROX" tid="t2" type="DURATION" value="P55Y" valueFromSurface="P55Y">５５歳くらい</TIMEX3>までの募集も<event class="" eid="e6">ある</event>みたいですよ。</sentence>

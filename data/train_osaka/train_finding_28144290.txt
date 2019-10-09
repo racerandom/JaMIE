@@ -1,0 +1,5 @@
+<a>両側肺下葉優位</a>に<d certainty="positive">網状影や牽引性気管支拡張、すりガラス影</d>が認められます。<d certainty="suspicious">UIPやfibrotic NSIPのような間質性肺炎</d>が疑われます。前回2013/7/16と著変ありません。
+<a>両側肺</a>に<d certainty="positive">emphysema</d>. 前回と比較して<d certainty="positive">肺気腫</d>は著変ありませんが、<a>左肺上葉</a>の<d certainty="positive">炎症性変化</d>と思われる<d certainty="positive">すりガラス影や線状影</d>は<c>改善</c>しています。
+<a>coronary a.</a>に<d certainty="positive">石灰化</d>。
+<a>縦隔内</a>に<f>短径1cm未満</f>の<d certainty="positive">LNs</d>が認められますが、<f>positive size</f>の<d certainty="negative">LN</d>は認められません。
+<a>両側胸膜</a>に<d certainty="positive">石灰化</d>。

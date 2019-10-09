@@ -1,0 +1,101 @@
+<sentence type="quasi">家庭訪問　様変わり</sentence>
+<sentence type="quasi">廃止や方法工夫、復活も</sentence>
+<sentence type="quasi">親の変化や<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P5D" valueFromSurface="P5D">５日</TIMEX3>制で多様化</sentence>
+<sentence>　新学期に<EVENT class="OCCURRENCE" eid="e1">なっ</EVENT>て<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P1M" valueFromSurface="P1M">１カ月</TIMEX3>。</sentence>
+<sentence>この時期、恒例なのが<quote>「家庭訪問」</quote>だ。</sentence>
+<sentence><TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>は一律に<EVENT class="OCCURRENCE" eid="e2">行われてきた</EVENT>が、<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>は、学校<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P5D" valueFromSurface="P5D">５日</TIMEX3>制や共働きが<EVENT class="OCCURRENCE" eid="e3">増えた</EVENT>ことで、<EVENT class="OCCURRENCE" eid="e4">廃止し</EVENT>たり面談や懇談会に<EVENT class="I_ACTION" eid="e5">切り替え</EVENT>たり<EVENT class="I_ACTION" eid="e6">する</EVENT>ケースも<EVENT class="STATE" eid="e7">ある</EVENT>。</sentence>
+<sentence>              <EVENT class="NULL" eid="e8">逆に</EVENT>              <EVENT class="OCCURRENCE" eid="e9">復活させる</EVENT>学校も。</sentence>
+<sentence>地域や状況によってあり方も<EVENT class="OCCURRENCE" eid="e10">多様化している</EVENT>ようだ。</sentence>
+<sentence type="quasi">●学区巡り</sentence>
+<sentence>　埼玉県の草加市立八幡小学校は<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2000" valueFromSurface="XXXX">昨年</TIMEX3>、家庭訪問を<EVENT class="I_ACTION" eid="e11">やめ</EVENT>、代わりに<quote>「地域訪問」</quote>に<EVENT class="I_ACTION" eid="e12">切り替えた</EVENT>。</sentence>
+<sentence>　教師が学区内を<EVENT class="OCCURRENCE" eid="e13">まわり</EVENT>、児童の通学路や、生活科の教材に<EVENT class="OCCURRENCE" eid="e14">なり</EVENT>そうな場所を<EVENT class="OCCURRENCE" eid="e15">調べ</EVENT>たり<EVENT class="I_ACTION" eid="e16">するのだ</EVENT>と<EVENT class="REPORTING" eid="e17">いう</EVENT>。</sentence>
+<sentence>　廃止の理由は、授業時間を<EVENT class="OCCURRENCE" eid="e18">確保する</EVENT>ため。</sentence>
+<sentence>それ以前は<TIMEX3 definite="FALSE" tid="t5" type="DURATION" value="P5D" valueFromSurface="P5D">５日</TIMEX3>              <EVENT class="OCCURRENCE" eid="e19">かけ</EVENT>              <EVENT class="OCCURRENCE" eid="e20">家庭訪問していた</EVENT>が、地域訪問は<TIMEX3 definite="FALSE" tid="t6" type="DURATION" value="P2D" valueFromSurface="P2D">２日</TIMEX3>。</sentence>
+<sentence>              <TIMEX3 definite="FALSE" tid="t7" type="DURATION" value="P6Y" valueFromSurface="P6Y">６年生</TIMEX3>なら<TIMEX3 definite="FALSE" tid="t8" type="DURATION" value="PT6H" valueFromSurface="PT6H">６時間</TIMEX3>分の授業が<EVENT class="OCCURRENCE" eid="e21">確保できる</EVENT>。</sentence>
+<sentence>「<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="2002" valueFromSurface="XXXX">来年</TIMEX3>からは<TIMEX3 definite="FALSE" tid="t10" type="DURATION" value="P5D" valueFromSurface="P5D">５日</TIMEX3>制が完全実施に<EVENT class="I_ACTION" eid="e22">なる</EVENT>。</sentence>
+<sentence type="quasi">少しでも時間を<EVENT class="NULL" eid="e23">大切に</EVENT>                  <EVENT class="I_ACTION" eid="e24">したい</EVENT>」</sentence>
+<sentence type="fragment">と同校の川野清教頭は<EVENT class="REPORTING" eid="e25">説明する</EVENT>。</sentence>
+<sentence type="quasi">●親が選択</sentence>
+<sentence>　東京都世田谷区の小学校は<TIMEX3 definite="FALSE" tid="t11" type="DATE" value="1995" valueFromSurface="Q-6Y">６年前</TIMEX3>から<quote>「選択制」</quote>に。</sentence>
+<sentence>保護者は、<quote>「家庭訪問」</quote>              <quote>「個人面談」</quote>              <quote>「グループ面談」</quote>から<EVENT class="I_ACTION" eid="e26">選ぶ</EVENT>。</sentence>
+<sentence>教頭は<quote>「これまで<EVENT class="OCCURRENCE" eid="e27">赴任した</EVENT>学校でも、仕事が<EVENT class="OCCURRENCE" eid="e28">休めない</EVENT>と<EVENT class="I_ACTION" eid="e29">断っ</EVENT>て<EVENT class="NONE" eid="e30">き</EVENT>たり、ＰＴＡとの懇談で<EVENT class="OCCURRENCE" eid="e31">やめてほしい</EVENT>と要望が<EVENT class="I_ACTION" eid="e32">出され</EVENT>たり<EVENT class="I_ACTION" eid="e33">することもあった</EVENT>」</quote>と<EVENT class="REPORTING" eid="e34">話す</EVENT>。</sentence>
+<sentence>家庭訪問の希望は<quote>「１人というクラスも<EVENT class="STATE" eid="e35">あった</EVENT>」</quote>と<EVENT class="REPORTING" eid="e36">いう</EVENT>。</sentence>
+<sentence>　同区の<EVENT class="NULL" eid="e37">別</EVENT>の小学校では、<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="2001" valueFromSurface="XXXX">今年</TIMEX3>から家の場所や危険個所の確認に重点を<EVENT class="OCCURRENCE" eid="e38">置く</EVENT>。</sentence>
+<sentence>担任は家まで<EVENT class="OCCURRENCE" eid="e39">行く</EVENT>が、親は<EVENT class="STATE" eid="e40">い</EVENT>ても<EVENT class="STATE" eid="e41">いなくてもいい</EVENT>。</sentence>
+<sentence>              <quote>「両親とも<EVENT class="NULL" eid="e42">働く</EVENT>人が<EVENT class="OCCURRENCE" eid="e43">増えた</EVENT>のに、家の掃除などで負担に<EVENT class="I_ACTION" eid="e44">なるのではない</EVENT>か」</quote>というのが理由だ。</sentence>
+<sentence>　区域が<EVENT class="STATE" eid="e45">広すぎ</EVENT>て<EVENT class="NULL" eid="e46">難しい</EVENT>場合も。</sentence>
+<sentence>学区制の弾力化で広域化が<EVENT class="I_ACTION" eid="e47">進む</EVENT>品川区では、<quote>「<EVENT class="OCCURRENCE" eid="e48">実施している</EVENT>学校が<EVENT class="NULL" eid="e49">多い</EVENT>が、『見直しの検討も<EVENT class="NULL" eid="e50">必要</EVENT>かも』という声も<EVENT class="I_STATE" eid="e51">聞く</EVENT>」</quote>（区教委）。</sentence>
+<sentence type="quasi">●元通りに</sentence>
+<sentence>　通常の家庭訪問に<EVENT class="I_ACTION" eid="e52">戻した</EVENT>学校も<EVENT class="STATE" eid="e53">ある</EVENT>。</sentence>
+<sentence>静岡県下田市の下田小学校は<TIMEX3 definite="FALSE" tid="t13" type="DATE" value="2000" valueFromSurface="XXXX">昨年</TIMEX3>、地域訪問を<EVENT class="I_ACTION" eid="e54">やめ</EVENT>、家庭訪問を<EVENT class="I_ACTION" eid="e55">復活させた</EVENT>。</sentence>
+<sentence>              <quote>「<EVENT class="OCCURRENCE" eid="e56">受け持っ</EVENT>て間も<EVENT class="NULL" eid="e57">ない</EVENT>のに、短時間で内容<EVENT class="NULL" eid="e58">ある</EVENT>話は<EVENT class="I_STATE" eid="e59">できない</EVENT>」</quote>という教師の声も<EVENT class="STATE" eid="e60">あった</EVENT>と<EVENT class="REPORTING" eid="e61">いう</EVENT>。</sentence>
+<sentence type="fragment">　だが、藤井秀喜校長は、</sentence>
+<sentence>「家庭との連携が<EVENT class="I_STATE" eid="e62">求められている</EVENT>。</sentence>
+<sentence type="quasi">その場での成果は<EVENT class="OCCURRENCE" eid="e63">求めず</EVENT>、むしろ<TIMEX3 definite="TRUE" tid="t14" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今後</TIMEX3>の関係を<EVENT class="NULL" eid="e64">スムーズに</EVENT>                  <EVENT class="OCCURRENCE" eid="e65">する</EVENT>ための『顔あわせ』と<EVENT class="I_ACTION" eid="e66">位置づけた</EVENT>」</sentence>
+<sentence type="fragment">と<EVENT class="REPORTING" eid="e67">いう</EVENT>。</sentence>
+<sentence>　徳島県鳴門市の大津西小学校は、<TIMEX3 general="TRUE" type="DATE" value="XXXX-SU" valueFromSurface="XXXX-SU">夏</TIMEX3>休みに家庭訪問を<EVENT class="I_ACTION" eid="e68">実施していた</EVENT>。</sentence>
+<sentence>だが、<TIMEX3 definite="FALSE" tid="t15" type="DATE" value="2000" valueFromSurface="XXXX">昨年</TIMEX3>からこの時期に<EVENT class="OCCURRENCE" eid="e69">もどした</EVENT>。</sentence>
+<sentence>              <quote>「いくら時間が<EVENT class="OCCURRENCE" eid="e70">かかっ</EVENT>ても、<EVENT class="NULL" eid="e71">早い</EVENT>時期にコミュニケーションを、という教師、親の要望が<EVENT class="NULL" eid="e72">強かった</EVENT>」</quote>と木下覺校長は<EVENT class="REPORTING" eid="e73">説明する</EVENT>。</sentence>
+<sentence type="quasi">●学校裁量</sentence>
+<sentence>　小学校教員歴が<TIMEX3 definite="FALSE" tid="t16" type="DURATION" value="P32Y" valueFromSurface="P32Y">３２年</TIMEX3>              <EVENT class="STATE" eid="e74">あり</EVENT>、千葉大学教育学部で非常勤講師を<EVENT class="OCCURRENCE" eid="e75">務める</EVENT>向山洋一さんによると、<TIMEX3 definite="FALSE" mod="APPROX" tid="t17" type="DATE" value="1986" valueFromSurface="Q-15Y">１５年ぐらい前</TIMEX3>から<quote>「玄関先だけに<EVENT class="OCCURRENCE" eid="e76">し</EVENT>て」</quote>という家庭が<EVENT class="OCCURRENCE" eid="e77">でてきた</EVENT>。</sentence>
+<sentence>              <quote>「共働きの増加や親がプライバシーを<EVENT class="NULL" eid="e78">守りたい</EVENT>意識が<EVENT class="NULL" eid="e79">強く</EVENT>                <EVENT class="OCCURRENCE" eid="e80">なってきた</EVENT>のに<EVENT class="NULL" eid="e81">加え</EVENT>、学校<TIMEX3 definite="FALSE" tid="t18" type="DURATION" value="P5D" valueFromSurface="P5D">５日</TIMEX3>制導入で授業時間が<EVENT class="NULL" eid="e82">少なく</EVENT>                <EVENT class="OCCURRENCE" eid="e83">なった</EVENT>ことが、家庭訪問見直しに拍車を<EVENT class="I_ACTION" eid="e84">かけた</EVENT>」</quote>と<EVENT class="I_ACTION" eid="e85">分析する</EVENT>。</sentence>
+<sentence>　家庭訪問は学習指導要領に<EVENT class="NULL" eid="e86">定められた</EVENT>義務ではなく、各学校の判断で<EVENT class="OCCURRENCE" eid="e87">行われる</EVENT>。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t19" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>は、<EVENT class="OCCURRENCE" eid="e88">やっ</EVENT>たり<EVENT class="OCCURRENCE" eid="e89">やらなかっ</EVENT>たり、地域訪問や地域懇談に<EVENT class="OCCURRENCE" eid="e90">し</EVENT>て<EVENT class="NONE" eid="e91">時間短縮する</EVENT>              <quote>「中間系」</quote>も<EVENT class="STATE" eid="e92">あっ</EVENT>たりと、実施状況も<EVENT class="NULL" eid="e93">バラバラ</EVENT>。</sentence>
+<sentence>小学校より、受験を<EVENT class="NULL" eid="e94">控える</EVENT>中学校の方が<EVENT class="OCCURRENCE" eid="e95">廃止する</EVENT>ケースが<EVENT class="NULL" eid="e96">多い</EVENT>ようだ、と<EVENT class="REPORTING" eid="e97">いう</EVENT>。</sentence>
+<sentence type="quasi">イラスト・松村　宏</sentence>
+<sentence type="quasi">○起源は○</sentence>
+<sentence type="quasi">不就学児の親を説得</sentence>
+<sentence>　日本大学文理学部の佐藤秀夫教授によると、家庭訪問は<TIMEX3 definite="TRUE" mod="START" tid="t20" type="DATE" value="MXX" valueFromSurface="MXX">明治初期</TIMEX3>に、不就学児を学校に<EVENT class="OCCURRENCE" eid="e98">通わせる</EVENT>ように親を<EVENT class="I_ACTION" eid="e99">説得する</EVENT>目的で<EVENT class="ASPECTUAL" eid="e100">始まった</EVENT>と<EVENT class="REPORTING" eid="e101">いう</EVENT>。</sentence>
+<sentence>明治の学校の様子を<EVENT class="NULL" eid="e102">まとめた</EVENT>              <quote>「小学校<ruby rubyText="じ">事</ruby>                <ruby rubyText="い">彙</ruby>」</quote>（<TIMEX3 definite="FALSE" tid="t21" type="DATE" value="1904" valueFromSurface="M37">明治３７年</TIMEX3>刊行）の中には、広島や三重県の小学校の事例で、家庭訪問の<quote>「規定」</quote>が<EVENT class="OCCURRENCE" eid="e103">紹介されている</EVENT>。</sentence>
+<sentence>このころには、<TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>と同じように、子どもの家庭環境を<EVENT class="OCCURRENCE" eid="e104">把握する</EVENT>のが目的と<EVENT class="OCCURRENCE" eid="e105">なっている</EVENT>。</sentence>
+<sentence>              <quote>「師範学校付属校のような中核校からじわじわと周辺に<EVENT class="OCCURRENCE" eid="e106">広がっていったので</EVENT>は」</quote>と佐藤教授は<EVENT class="I_STATE" eid="e107">みている</EVENT>。</sentence>
+<sentence>また、家庭と学校の不干渉が<EVENT class="I_ACTION" eid="e108">徹底している</EVENT>欧米では、家庭訪問は<EVENT class="NULL" eid="e109">基本的に</EVENT>              <quote>「<EVENT class="STATE" eid="e110">ない</EVENT>」</quote>と<EVENT class="REPORTING" eid="e111">いう</EVENT>。</sentence>
+<sentence type="quasi">母親の気持ち</sentence>
+<sentence type="quasi">                <TIMEX3 definite="FALSE" tid="t22" type="DURATION" value="PT10M" valueFromSurface="PT10M">１０分</TIMEX3>のために<TIMEX3 definite="FALSE" tid="t23" type="DURATION" value="P0.5D" valueFromSurface="P0.5D">半日</TIMEX3>休み／<EVENT class="OCCURRENCE" eid="e112">気兼ねせず</EVENT>                <sampling type="start" />に本音<EVENT class="OCCURRENCE" eid="e113">話せる</EVENT>              </sentence>
+<sentence type="quasi">■埼玉県草加市　会社員（<TIMEX3 definite="FALSE" tid="t24" type="DURATION" value="P35Y" valueFromSurface="P35Y">３５</TIMEX3>）</sentence>
+<sentence>　中学校で<quote>「家庭訪問が<EVENT class="STATE" eid="e114">ない</EVENT>」</quote>という説明を<EVENT class="I_STATE" eid="e115">聞い</EVENT>て、<EVENT class="NULL" eid="e116">思わず</EVENT>                <quote>「ヤッター」</quote>と<EVENT class="PERCEPTION" eid="e117">叫んでしまった</EVENT>。</sentence>
+<sentence>３人の子どもが小学生の時は<EVENT class="NULL" eid="e118">大変だった</EVENT>。</sentence>
+<sentence>兄弟の家庭訪問が同じ日に<EVENT class="I_ACTION" eid="e119">なる</EVENT>ように<EVENT class="I_ACTION" eid="e120">調整してもらい</EVENT>、その日の<TIMEX3 definite="TRUE" tid="t25" type="TIME" value="XXXX-XX-XXTAF" valueFromSurface="XXXX-XX-XXTAF">午後</TIMEX3>は休みを<EVENT class="OCCURRENCE" eid="e121">もらった</EVENT>。</sentence>
+<sentence>                <TIMEX3 definite="FALSE" mod="APPROX" tid="t26" type="DURATION" value="PT10M" valueFromSurface="PT10M">１０分程度</TIMEX3>のために、<EVENT class="OCCURRENCE" eid="e122">苦労し</EVENT>て時間を<EVENT class="OCCURRENCE" eid="e123">やりくりし</EVENT>ても、雑談に<EVENT class="OCCURRENCE" eid="e124">なる</EVENT>ことも<EVENT class="NULL" eid="e125">多い</EVENT>。</sentence>
+<sentence>                <EVENT class="OCCURRENCE" eid="e126">掃除し</EVENT>て、<EVENT class="OCCURRENCE" eid="e127">繕っ</EVENT>て、こちらも自然体を<EVENT class="OCCURRENCE" eid="e128">見せてない</EVENT>。</sentence>
+<sentence>意味が<EVENT class="STATE" eid="e129">ないので</EVENT>は。</sentence>
+<sentence type="quasi">■東京都世田谷区　主婦（<TIMEX3 definite="FALSE" tid="t27" type="DURATION" value="P36Y" valueFromSurface="P36Y">３６</TIMEX3>）</sentence>
+<sentence>　<quote>「<TIMEX3 definite="FALSE" tid="t28" type="DATE" value="2001" valueFromSurface="XXXX">今年</TIMEX3>から家庭訪問の時は<EVENT class="OCCURRENCE" eid="e130">会えなくてもいいです</EVENT>」</quote>と、新学期の保護者会で担任から説明を<EVENT class="I_ACTION" eid="e131">受けた</EVENT>。</sentence>
+<sentence>                <EVENT class="OCCURRENCE" eid="e132">掃除しなくてもいい</EVENT>や、と<EVENT class="I_STATE" eid="e133">ホッとした</EVENT>。</sentence>
+<sentence>家庭訪問は母親には<EVENT class="NULL" eid="e134">ちょっとした</EVENT>大仕事。</sentence>
+<sentence>先生は玄関先で<EVENT class="OCCURRENCE" eid="e135">帰る</EVENT>のか、リビングまで<EVENT class="OCCURRENCE" eid="e136">上がる</EVENT>のか。</sentence>
+<sentence>それで掃除の範囲を<EVENT class="OCCURRENCE" eid="e137">決めていたこともある</EVENT>。</sentence>
+<sentence>　結局、家庭訪問は<EVENT class="I_ACTION" eid="e138">受けた</EVENT>。</sentence>
+<sentence type="fragment">内容は</sentence>
+<sentence>「<EVENT class="NULL" eid="e139">元気です</EVENT>。</sentence>
+<sentence type="quasi">                    <EVENT class="NULL" eid="e140">おもしろい</EVENT>子ですね」</sentence>
+<sentence type="fragment">程度。</sentence>
+<sentence>だが、学校での子どもの様子は<EVENT class="OCCURRENCE" eid="e141">わからない</EVENT>から、それだけで<EVENT class="NULL" eid="e142">うれしい</EVENT>。</sentence>
+<sentence>学校での個人面談は、相手のテリトリー。</sentence>
+<sentence>                <EVENT class="OCCURRENCE" eid="e143">構えてしまい</EVENT>、他人に<EVENT class="NULL" eid="e144">聞かれたく</EVENT>                <EVENT class="NULL" eid="e145">ない</EVENT>話は<EVENT class="I_STATE" eid="e146">しにくい</EVENT>。</sentence>
+<sentence type="quasi">先生の気持ち</sentence>
+<sentence type="quasi">時間変更に困惑／虐待発見も／しつけ方を<EVENT class="OCCURRENCE" eid="e147">見破る</EVENT>              </sentence>
+<sentence type="quasi">■東京都豊島区の小学校長（<TIMEX3 definite="FALSE" tid="t29" type="DURATION" value="P59Y" valueFromSurface="P59Y">５９</TIMEX3>）</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t30" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>は、<quote>「どうぞ、勉強部屋も<EVENT class="OCCURRENCE" eid="e148">見てください</EVENT>」</quote>と<EVENT class="I_ACTION" eid="e149">通されたこともあった</EVENT>。</sentence>
+<sentence>                <TIMEX3 definite="TRUE" tid="t31" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>は玄関先で、短時間で<EVENT class="OCCURRENCE" eid="e150">切り上げる</EVENT>ように気を<EVENT class="I_ACTION" eid="e151">つかっている</EVENT>。</sentence>
+<sentence>日程も保護者に希望を<EVENT class="OCCURRENCE" eid="e152">募る</EVENT>学校が<EVENT class="NULL" eid="e153">多い</EVENT>。</sentence>
+<sentence type="quasi">■神奈川県の小学校教師（<TIMEX3 definite="FALSE" tid="t32" type="DURATION" value="P40Y" valueFromSurface="P40Y">４０</TIMEX3>）</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t33" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>は母親も<EVENT class="NULL" eid="e154">わがままだ</EVENT>。</sentence>
+<sentence>訪問日当日に<quote>「<TIMEX3 definite="TRUE" tid="t34" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>はムリ」</quote>                <quote>「時間を<EVENT class="OCCURRENCE" eid="e155">変えろ</EVENT>」</quote>と<EVENT class="REPORTING" eid="e156">言っ</EVENT>て<EVENT class="I_ACTION" eid="e157">き</EVENT>たり、子どもの習い事の送迎で日程を<EVENT class="OCCURRENCE" eid="e158">変えさせ</EVENT>たり…。</sentence>
+<sentence>苦労は<EVENT class="OCCURRENCE" eid="e159">絶えない</EVENT>。</sentence>
+<sentence type="quasi">■横浜市の小学校教師（<TIMEX3 definite="FALSE" tid="t35" type="DURATION" value="P41Y" valueFromSurface="P41Y">４１</TIMEX3>）</sentence>
+<sentence>　短時間の訪問で、勉強部屋を<EVENT class="OCCURRENCE" eid="e160">見るで</EVENT>も<EVENT class="NULL" eid="e161">なく</EVENT>、心を<EVENT class="OCCURRENCE" eid="e162">うち解けず</EVENT>                <EVENT class="OCCURRENCE" eid="e163">終わる</EVENT>ことも<EVENT class="NULL" eid="e164">多い</EVENT>。</sentence>
+<sentence>収穫が<EVENT class="I_ACTION" eid="e165">あった</EVENT>、と<EVENT class="I_STATE" eid="e166">思える</EVENT>のは半数弱。</sentence>
+<sentence>半面、<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>は調査票もプライバシー保護で<EVENT class="NULL" eid="e167">詳しい</EVENT>記入が<EVENT class="STATE" eid="e168">なく</EVENT>、親の顔が<EVENT class="OCCURRENCE" eid="e169">見えてこない</EVENT>。</sentence>
+<sentence>親を<EVENT class="OCCURRENCE" eid="e170">知る</EVENT>                <EVENT class="NULL" eid="e171">いい</EVENT>機会だし、虐待発見のきっかけに<EVENT class="OCCURRENCE" eid="e172">なることもある</EVENT>と<EVENT class="I_STATE" eid="e173">思う</EVENT>。</sentence>
+<sentence type="quasi">■千葉県市原市の小学校教師（<TIMEX3 definite="FALSE" tid="t36" type="DURATION" value="P33Y" valueFromSurface="P33Y">３３</TIMEX3>）</sentence>
+<sentence>　たとえ玄関先でも、家の雰囲気が<EVENT class="OCCURRENCE" eid="e174">わかる</EVENT>。</sentence>
+<sentence>                <EVENT class="NULL" eid="e175">どんなに</EVENT>                <EVENT class="OCCURRENCE" eid="e176">繕ってい</EVENT>ても、話を<EVENT class="I_ACTION" eid="e177">している</EVENT>そばで子どもが<EVENT class="OCCURRENCE" eid="e178">暴れ</EVENT>ても<EVENT class="I_ACTION" eid="e179">注意しなかっ</EVENT>たり、テレビが<EVENT class="OCCURRENCE" eid="e180">つけっぱなしだっ</EVENT>たりとか…。</sentence>
+<sentence>親のしつけ方など、子どもの<EVENT class="OCCURRENCE" eid="e181">育つ</EVENT>環境を<EVENT class="OCCURRENCE" eid="e182">知る</EVENT>                <EVENT class="NULL" eid="e183">重要な</EVENT>手がかりだ。</sentence>
+<sentence type="quasi">野菜にマヨネーズだけじゃない</sentence>
+<sentence type="quasi">サラダの種類<EVENT class="NULL" eid="e184">豊かに</EVENT>          <EVENT class="NULL" eid="e185">個性的に</EVENT>        </sentence>
+<sentence type="quasi">ミツカンが主婦を調査</sentence>
+<sentence>　サラダは、マヨネーズ味から、海藻、根菜、シーフードなど<EVENT class="NULL" eid="e186">バリエーション豊かに</EVENT>変化―。</sentence>
+<sentence>ミツカンが首都圏の<TIMEX3 definite="TRUE" tid="t37" type="DURATION" value="P3XY" valueFromSurface="P3XY">３０</TIMEX3>〜<TIMEX3 definite="TRUE" tid="t38" type="DURATION" value="P5XY" valueFromSurface="P5XY">５０代</TIMEX3>の主婦を対象に<EVENT class="OCCURRENCE" eid="e187">行った</EVENT>アンケートで、こんな結果が<EVENT class="OCCURRENCE" eid="e188">出た</EVENT>。</sentence>
+<sentence>家庭で<EVENT class="NULL" eid="e189">食べる</EVENT>サラダの種類や味付けが、マヨネーズ一辺倒ではなく<EVENT class="OCCURRENCE" eid="e190">多様化してきた</EVENT>ことが<EVENT class="I_STATE" eid="e191">うかがわれた</EVENT>。</sentence>
+<sentence>　サラダと<EVENT class="PERCEPTION" eid="e192">聞い</EVENT>て<EVENT class="I_STATE" eid="e193">思い浮かべた</EVENT>ものは、野菜サラダ８４・６％、ポテトサラダ７８・１％、マカロニ<sampling type="end" />サラダ４９・１％の順。</sentence>

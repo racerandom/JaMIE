@@ -1,0 +1,10 @@
+<sentence>　おばちゃん<event class="" eid="e1">改め</event>お姉さん。</sentence>
+<sentence>　私にとっては<webBr /><webBr />この間の<webBr /><webBr />現場での<webBr /><webBr /><TIMEX3 definite="TRUE" tid="t1" type="DURATION" value="PTXM" valueFromSurface="PTXM">数分</TIMEX3>の立ち話で<webBr /><webBr />ココロを<webBr /><webBr /><event class="" eid="e2">打ち明けられた</event><webBr /><webBr />お姉さん。</sentence>
+<sentence type="fragment">　<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>も<webBr /><webBr />チャリで<webBr /><webBr />現場に<event class="" eid="e3">向う</event>私を<webBr /><webBr /><event class="" eid="e4">みっけ</event>て<webBr /><webBr />トラック<event class="" eid="e5">止めて<webBr /><webBr />くれ</event>て<webBr /><webBr />「</sentence>
+<sentence><TIMEX3 type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今度</TIMEX3><event class="" eid="e6">のみ</event>に<event class="" eid="e7">いこう</event>よ。</sentence>
+<sentence type="quasi">いつでも<event class="STATE" eid="e8">いい</event>よ</sentence>
+<sentence type="fragment">」って<webBr /><webBr /><webBr /><event class="" eid="e9">言ってくれ</event>て・・・</sentence>
+<sentence>　なんだか<webBr /><webBr />涙が<event class="" eid="e10">出</event>そうに<event class="" eid="e11">なった</event>。</sentence>
+<sentence type="quasi">　外部に人にも<event class="" eid="e12">助けられている</event>から・・・</sentence>
+<sentence type="quasi">　感謝感謝</sentence>
+<sentence type="quasi">　</sentence>

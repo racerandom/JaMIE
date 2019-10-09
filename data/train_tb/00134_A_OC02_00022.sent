@@ -1,0 +1,8 @@
+<sentence>特定のサイトに<event class="" eid="e1">アクセスできません</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2005-07-30" valueFromSurface="XXXX-07-30">７月３０日</TIMEX3>にａｍａｚｏｎに<event class="" eid="e2">アクセスし</event>て以来、<webBr /><TIMEX3 definite="TRUE" tid="t2" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>からエラーで<event class="" eid="e3">アクセスできなく</event><event class="" eid="e4">なりました</event>。</sentence>
+<sentence>ウィルスバスターも<event class="" eid="e5">インストールされているので</event><webBr />ウィルスではないと<event class="" eid="e6">確信しているのです</event>が<webBr /><TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2005-07-31" valueFromSurface="XXXX-07-31">７月３１日</TIMEX3>にｗｉｎｄｏｗｓ　ｘｐのアップデートを<event class="" eid="e7">しています</event>。</sentence>
+<sentence>アップデートが原因で<event class="" eid="e8">アクセスできない</event>とか<event class="" eid="e9">いう</event>ことが<event class="" eid="e10">あります</event>か？</sentence>
+<sentence>ご回答、よろしく<event class="" eid="e11">お願いします</event>。</sentence>
+<sentence>一度セーフモード<event class="" eid="e12">起動し</event>、再起動（<event class="STATE" eid="e13">ふつうに</event>）<event class="" eid="e14">してみ</event>ても<event class="STATE" eid="e15">だめです</event>か。</sentence>
+<sentence>履歴、一時ファイル、クッキーを<event class="" eid="e16">クリアする</event>と、<event class="STATE" eid="e17">うまく</event><event class="" eid="e18">いくこともあります</event>。</sentence>
+<sentence>インターネットオプションのセキュリティが高に<event class="" eid="e19">なってい</event>たり、プライバシーでクッキーを<event class="" eid="e20">許可する</event>に<event class="" eid="e21">なっていない</event>と<event class="STATE" eid="e22">ダメな</event>場合も<event class="" eid="e23">あります</event>。</sentence>

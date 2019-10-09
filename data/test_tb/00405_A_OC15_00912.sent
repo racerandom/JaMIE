@@ -1,0 +1,7 @@
+<sentence>質問です。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>、中古台で花火を<event class="" eid="e1">買ったのです</event>が、ＣＪエラーが<event class="" eid="e2">出てしまいます</event>。</sentence>
+<sentence>ネットで<event class="" eid="e3">検索し</event>たところ、このエラーはセレクターが<event class="" eid="e4">汚れている</event>と<event class="" eid="e5">なる</event>とのことなんですが、どのあたりを<event class="" eid="e6">掃除すれ</event>ばＣＪエラーが<event class="" eid="e7">発生しなく</event><event class="" eid="e8">なります</event>か？</sentence>
+<sentence><event class="" eid="e9">お答え</event><event class="" eid="e10">お願いします</event>。</sentence>
+<sentence><event class="" eid="e11">買っ</event>てまだ間も<event class="STATE" eid="e12">ないなら</event>、<webBr /><event class="" eid="e13">買った</event>お店に<event class="" eid="e14">聞いてみたら</event>どうですか？</sentence>
+<sentence>保障期間内だったら、無料で<event class="" eid="e15">修理清掃してくれるかもしれません</event>よ。</sentence>
+<sentence type="quasi">もし、たちが<event class="STATE" eid="e16">悪い</event>ものでしたら、<webBr />交換対象にも<event class="" eid="e17">なる</event>かも・・・</sentence>

@@ -1,0 +1,1 @@
+<a>左肺上葉</a>の<d certainty="positive">腫瘤</d>は前回と比し<c>やや縮小</c>。<a>左肺上葉，下葉</a>の<d certainty="positive">浸潤影</d>が<c>やや改善</c>。<a>肝、胆、膵、脾、腎、副腎</a>に<d certainty="negative">転移を疑わせる腫瘤</d>は明らかでありません．<d certainty="negative">腹水</d>なし<f>軽度</f>の<d certainty="positive">胆管拡張</d>がみられ、著変なし他、<f>明らかな</f><d certainty="negative">新病変</d>なし。

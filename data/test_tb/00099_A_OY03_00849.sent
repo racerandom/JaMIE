@@ -1,0 +1,6 @@
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>のランチは<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">以前</TIMEX3>一度<event class="" eid="e1">行った</event>鉄板焼きのお店へ<event class="" eid="e2">行きました</event>。</sentence>
+<sentence>前回は焼きそばのオムそばを<event class="" eid="e3">食べました</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">本日</TIMEX3>はちょっと<event class="" eid="e4">変化し</event>て焼きうどんのオムそばバージョンです。</sentence>
+<sentence>味はソース味です。</sentence>
+<sentence>ご飯とスープが<event class="" eid="e5">つい</event>て８５０円はまぁ〜<event class="STATE" eid="e6">妥当な</event>値段かな。</sentence>
+<sentence>鉄板の上で<event class="" eid="e7">食べる</event>から雰囲気も味も<event class="STATE" eid="e8">上々でした</event>。</sentence>

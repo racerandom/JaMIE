@@ -1,0 +1,5 @@
+<sentence>ＸＰを<event class="" eid="e1">上書きインストールしました</event>。</sentence>
+<sentence>その際にプロダクトキーの入力を<event class="" eid="e2">求められたのです</event>が<webBr /><event class="" eid="e3">間違っ</event>て<event class="STATE" eid="e4">別</event>のＯＳ（ＸＰで中身は<event class="STATE" eid="e5">同じ</event>）ＣＤ−ＲＯＭのプロダクトキーを<event class="" eid="e6">入力してしまいました</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>のところ問題<event class="STATE" eid="e7">なく</event><event class="" eid="e8">起動でき</event>て、ライセンス認証も<event class="" eid="e9">されています</event>。</sentence>
+<sentence>キーを<event class="" eid="e10">間違った</event>ことにより、あとあとトラブルに<event class="" eid="e11">なる</event>可能性は<event class="" eid="e12">あるのでしょう</event>か？</sentence>
+<sentence><event class="STATE" eid="e13">別</event>のＯＳ（ＸＰで中身は<event class="STATE" eid="e14">同じ</event>）を<event class="" eid="e15">リカバリした</event>時ライセンス入力を<event class="" eid="e16">し</event>ても<event class="STATE" eid="e17">最低で</event><TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P90D" valueFromSurface="P90D">９０日間</TIMEX3>そのライセンスを<event class="" eid="e18">使用できません</event>。</sentence>

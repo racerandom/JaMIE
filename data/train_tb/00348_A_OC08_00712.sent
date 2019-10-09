@@ -1,0 +1,3 @@
+<sentence>私は心の病で、国民障害年金２級を<event class="" eid="e1">受給しています</event>が、<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今後</TIMEX3>国会で「障害者自立支援法」が<event class="" eid="e2">可決された</event>場合、私のような２級は、<event class="" eid="e3">カットされてしまうんでしょう</event>か？</sentence>
+<sentence>年金は<event class="" eid="e4">カットされないです</event>。</sentence>
+<sentence>でも，障害者自立支援法が<event class="" eid="e5">可決されたら</event>，あなたの<event class="" eid="e6">利用する</event><webBr />福祉サービス（作業所やデイケア等）の利用料が<event class="STATE" eid="e7">必要に</event><event class="" eid="e8">なってきます</event>。</sentence>

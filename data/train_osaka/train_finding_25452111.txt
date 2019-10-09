@@ -1,0 +1,5 @@
+<a>両側肺底部優位</a>に<d certainty="positive">すりガラス影、網状影、索状影</d>を認めます。<f>軽度</f>ですが、<d certainty="positive">牽引性気管支拡張</d>も認めます。<a>両側上葉胸膜下</a>にも<f>軽度</f>ですが、類似の所見あり。<d certainty="suspicious">NSIPのような間質性肺炎</d>が疑われます。
+<a>縦隔内</a>に<f>複数個</f>の<d certainty="positive">リンパ節</d>を認めます。<a>大動脈傍</a>の<d certainty="positive">軟部影</d>は<f>短径13mm大</f>と<f>大きい</f>ですが、<d certainty="suspicious">反応性腫大</d>か。鑑別としては<d certainty="suspicious">胸腺腫</d>など。
+<d certainty="positive">軽度心拡大</d>あり。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。
+<a>甲状腺右葉</a>に<d certainty="positive">small LDA</d>あり。

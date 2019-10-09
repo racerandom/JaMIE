@@ -1,0 +1,43 @@
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>は幸手ボランティアの検便提出の日。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t2" type="TIME" value="XXXX-XX-XXT09:00" valueFromSurface="XXXX-XX-XXT09:00">９：００</TIMEX3>〜<TIMEX3 definite="TRUE" tid="t3" type="TIME" value="XXXX-XX-XXT09:30" valueFromSurface="XXXX-XX-XXT09:30">９：３０</TIMEX3>に保健所に<event class="" eid="e1">持っ</event>て<event class="" eid="e2">行かなくてはいけない</event>。</sentence>
+<sentence>そう<event class="" eid="e3">いう</event>ときに<event class="" eid="e4">限っ</event>て、<event class="" eid="e5">思う</event>ように<event class="" eid="e6">行かず</event>手とても間取った。。。</sentence>
+<sentence>いきなり<event class="STATE" eid="e7">変な</event>話でごめんなさい。</sentence>
+<sentence>でも本当に<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>ばかりは<event class="" eid="e8">苦労しました</event>。</sentence>
+<sentence>しかし、ぎりぎり何とか<event class="" eid="e9">間にあわせられ</event>、<event class="STATE" eid="e10">無事に</event>提出。</sentence>
+<sentence>その足で<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">今度</TIMEX3>は久喜市ふれあいセンターへ。</sentence>
+<sentence>平田牧場の豚肉解体の託児を<event class="" eid="e11">頼まれていた</event>。</sentence>
+<sentence>本来なら自転車圏内だたが、<event class="STATE" eid="e12">あいにく</event>の雨と紙芝居を持参大荷物、<webBr />そしてその後また<TIMEX3 definite="TRUE" mod="BEFORE" tid="t5" type="TIME" value="XXXX-XX-XXT13" valueFromSurface="Q-XXXX-XX-XXT13">１時前</TIMEX3>には電車で<event class="" eid="e13">お出かけ</event>。</sentence>
+<sentence>これらの事情で車で<event class="" eid="e14">行った</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t6" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>の託児は未収園児ばかり６〜７人、<event class="STATE" eid="e15">かわいい</event>子ばかりだった。</sentence>
+<sentence>本当はもっと<event class="" eid="e16">いた</event>ようだが、お母さんから<event class="" eid="e17">離れられなかった</event>のか？</sentence>
+<sentence><event class="STATE" eid="e18">急に</event>都合が<event class="STATE" eid="e19">悪かった</event>のか予定よりも<event class="STATE" eid="e20">少なかった</event>。</sentence>
+<sentence>比較的<event class="STATE" eid="e21">おとなしい</event>子達ばかりだったが、でも<TIMEX3 definite="FALSE" tid="t7" type="DURATION" value="PT2H" valueFromSurface="PT2H">２時間</TIMEX3>も<event class="STATE" eid="e22">おとなしく</event>は<event class="" eid="e23">していられず</event>、<webBr />途中でみんなで大暴れ。</sentence>
+<sentence>私はサメに<event class="" eid="e24">させられ</event>、みんなから大攻撃を<event class="" eid="e25">受け</event><event class="" eid="e26">逃げ回っていた</event>。</sentence>
+<sentence><event class="" eid="e27">逃げ疲れた</event>ところで紙芝居を<event class="" eid="e28">持ち出し</event>、サメ役は御免。</sentence>
+<sentence>紙芝居を<event class="" eid="e29">持っ</event>て<event class="" eid="e30">行っ</event>て<event class="" eid="e31">救われた</event>。</sentence>
+<sentence>そうで<event class="STATE" eid="e32">ない</event>とまだまた<event class="" eid="e33">続いていた</event>ことだろう。</sentence>
+<sentence>紙芝居は「ごきげんの<event class="STATE" eid="e34">わるい</event>いコックさん」とめぐさんにも<event class="" eid="e35">さしあげた</event>はがきサイズの手作り紙芝居。</sentence>
+<sentence>始めは紙芝居なんて<event class="STATE" eid="e36">イヤ</event>なんて<event class="" eid="e37">言っていた</event>ご機嫌の<event class="STATE" eid="e38">悪かった</event>子も、お話に<event class="" eid="e39">のめり込んできた</event>。</sentence>
+<sentence type="fragment">紙芝居の終わりのように、「</sentence>
+<sentence>コックさんもご機嫌。</sentence>
+<sentence>みんなもご機嫌。</sentence>
+<sentence type="fragment">」に<event class="" eid="e40">なっ</event>て<event class="" eid="e41">終わった</event>。</sentence>
+<sentence>手作りも<event class="" eid="e42">思っていた</event>以上に好評。</sentence>
+<sentence><event class="STATE" eid="e43">小さいので</event>子どもたちの<event class="STATE" eid="e44">近い</event>距離で、子どもたちと<event class="STATE" eid="e45">楽しい</event>会話を<event class="" eid="e46">楽しめた</event>。</sentence>
+<sentence><TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">今度</TIMEX3>は生活クラブバージョンも<event class="" eid="e47">作ろう</event>かな？！</sentence>
+<sentence>託児が<event class="" eid="e48">終えた</event>のは<TIMEX3 definite="TRUE" mod="APPROX" tid="t8" type="TIME" value="XXXX-XX-XXT12" valueFromSurface="XXXX-XX-XXT12">１２時頃</TIMEX3>、<event class="" eid="e49">片付け</event>て<event class="" eid="e50">急い</event>でお弁当を<event class="" eid="e51">食べよう</event>と<event class="" eid="e52">広げたら</event>。。。</sentence>
+<sentence>箸が１本しか<event class="" eid="e53">入っていなかった</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t9" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>検便で<event class="" eid="e54">バタバタしていた</event>もので、普段<event class="" eid="e55">使っていない</event>箸入れを中身を<event class="" eid="e56">確認せず</event>に<event class="" eid="e57">持っ</event>て<event class="" eid="e58">きてしまった</event>。</sentence>
+<sentence><event class="STATE" eid="e59">仕方ないので</event>１本箸で<event class="" eid="e60">食べた</event>。</sentence>
+<sentence><event class="STATE" eid="e61">辛かった</event>のは切り干し大根、とても<event class="STATE" eid="e62">食べずらかった</event>。</sentence>
+<sentence><event class="" eid="e63">食べ終え</event>て<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">今度</TIMEX3>はそのまま幸手駅に<event class="" eid="e64">直行しよう</event>と<event class="" eid="e65">思っていたら</event>、お土産に豚肉を<event class="" eid="e66">いただいた</event>。</sentence>
+<sentence><event class="STATE" eid="e67">うれしい</event>けれどなんと間が<event class="STATE" eid="e68">悪い</event>。。。</sentence>
+<sentence><event class="STATE" eid="e69">仕方ないので</event>いったん帰宅、冷蔵庫にお肉を<event class="" eid="e70">放り込み</event>、雨が<event class="" eid="e71">上がっていたので</event>自転車で幸手駅へ。</sentence>
+<sentence><event class="STATE" eid="e72">無事に</event><event class="" eid="e73">予定していた</event>電車に<event class="" eid="e74">乗り込み</event>、いざ銀座へ。</sentence>
+<sentence>銀座へは大部前にチケットを<event class="" eid="e75">取っておいた</event>三輪明宏の［黒蜥蜴」。</sentence>
+<sentence>もう<TIMEX3 definite="FALSE" mod="APPROX" tid="t10" type="DATE" value="2005" valueFromSurface="Q-3Y">３年くらい前</TIMEX3>から、<event class="" eid="e76">観たく</event>て<event class="" eid="e77">観たく</event>て<event class="STATE" eid="e78">仕方なかった</event>ものだった。。。</sentence>
+<sentence>三島由紀夫の探偵明智小五郎と泥棒黒と影の<event class="" eid="e79">屈折した</event>愛のお話。</sentence>
+<sentence>最後に黒蜥蜴が<event class="STATE" eid="e80">純白</event>の衣装のまま毒薬を<event class="" eid="e81">飲み</event>命を<event class="" eid="e82">絶つ</event>シーンが<event class="STATE" eid="e83">印象的だった</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t11" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>も愛と勇気をしっかり<event class="" eid="e84">貰っ</event>て<event class="" eid="e85">これました</event>。</sentence>
+<sentence>さあ、<TIMEX3 definite="TRUE" tid="t12" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">明日</TIMEX3>から私も<event class="" eid="e86">頑張る</event>ぞぉ〜〜っとパワー全開に<event class="" eid="e87">なりました</event>。</sentence>
+<sentence>でもちょっと<TIMEX3 definite="TRUE" tid="t13" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>はさすがにお疲れ気味かな？！</sentence>

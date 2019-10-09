@@ -1,0 +1,115 @@
+<sentence type="quasi">高校総合体育大会　<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2001-08-03" valueFromSurface="XXXX-XX-03">３日</TIMEX3></sentence>
+<sentence type="quasi">陸上男子　高平（旭大高）が百で３位</sentence>
+<sentence type="quasi">ソフトテニス　道尚志　若松　小田桐　組３位</sentence>
+<sentence>　熊本県内で１７競技を<EVENT class="OCCURRENCE" eid="e1">行った</EVENT>。</sentence>
+<sentence>陸上の男子百メートルで高平慎士（旭大高）が<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="PT10.66S" valueFromSurface="PT10.66S">１０秒６６</TIMEX3>で３位に<EVENT class="OCCURRENCE" eid="e2">入った</EVENT>ほか、男子ハンマー投げの野口裕史（函工）が５位、女子百メートルの北風沙織（恵庭北）が７位に<EVENT class="OCCURRENCE" eid="e3">食い込んだ</EVENT>。</sentence>
+<sentence>新種目の女子千五百メートルは池田恵美（京都・立命館宇治）が<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="PT4M16.74S" valueFromSurface="PT4M16.74S">４分１６秒７４</TIMEX3>の高校新記録で<EVENT class="OCCURRENCE" eid="e4">制した</EVENT>。</sentence>
+<sentence>ソフトテニスの男子個人は若松茂雄・小田桐和也組（道尚志）が３位と健闘。</sentence>
+<sentence>バスケットボールは男子の東海大四、女子の札山の手がともに３回戦に<EVENT class="OCCURRENCE" eid="e5">進んだ</EVENT>。</sentence>
+<sentence>バドミントン男子団体の札第一は準々決勝で敗退。</sentence>
+<sentence>弓道は男子団体の斜里が決勝トーナメント２回戦に<EVENT class="OCCURRENCE" eid="e6">進出した</EVENT>が、女子個人の今橋美那子（岩西）は準決勝で<EVENT class="OCCURRENCE" eid="e7">落選した</EVENT>。</sentence>
+<sentence>相撲の個人は<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P2Y" valueFromSurface="P2Y">２年生</TIMEX3>の市原孝行（埼玉・埼玉栄）が高校横綱と<EVENT class="OCCURRENCE" eid="e8">なった</EVENT>。</sentence>
+<sentence type="quasi">体操</sentence>
+<sentence type="quasi">陸上</sentence>
+<sentence type="quasi">【男子】</sentence>
+<sentence type="quasi">【女子】</sentence>
+<sentence type="quasi"><quote>「<EVENT class="NULL" eid="e9">普通に</EVENT><EVENT class="OCCURRENCE" eid="e10">走っ</EVENT>て」</quote>本人びっくり　高平</sentence>
+<sentence>　ゴール直前で、<EVENT class="NULL" eid="e11">か細い</EVENT>選手がぐいぐい前に<EVENT class="OCCURRENCE" eid="e12">上がっ</EVENT>て<EVENT class="I_ACTION" eid="e13">きた</EVENT>。</sentence>
+<sentence>出場者ランキングの２０位にも<EVENT class="OCCURRENCE" eid="e14">入っていなかった</EVENT><TIMEX3 definite="FALSE" tid="t5" type="DURATION" value="P2Y" valueFromSurface="P2Y">２年生</TIMEX3>・高平慎士が、晴れの舞台で堂々と高校３傑入り。</sentence>
+<sentence type="fragment">本人も<EVENT class="OCCURRENCE" eid="e15">驚いた</EVENT>ようで、電光掲示板に順位が<EVENT class="OCCURRENCE" eid="e16">ともる</EVENT>と</sentence>
+<sentence>「うそ？」</sentence>
+<sentence type="fragment">と目を<EVENT class="NULL" eid="e17">丸く</EVENT><EVENT class="OCCURRENCE" eid="e18">した</EVENT>。</sentence>
+<sentence>　それもそのはず。</sentence>
+<sentence><TIMEX3 type="DATE" value="2000" valueFromSurface="XXXX">昨年</TIMEX3>は予選落ち。</sentence>
+<sentence>今季の全道覇者とはいえ、大会前の自己ベストは<TIMEX3 definite="FALSE" tid="t6" type="DURATION" value="PT10.72S" valueFromSurface="PT10.72S">１０秒７２</TIMEX3>とトップ選手との開きは<TIMEX3 definite="FALSE" mod="APPROX" tid="t7" type="DURATION" value="PT0.3S" valueFromSurface="PT0.3S">約０・３秒</TIMEX3>も<EVENT class="STATE" eid="e19">あった</EVENT>。</sentence>
+<sentence>１７９センチ、５８キロの体も短距離選手としては線が<EVENT class="NULL" eid="e20">細い</EVENT>。</sentence>
+<sentence>　周囲の予想を<EVENT class="I_ACTION" eid="e21">覆した</EVENT>のは、ここぞという場面の集中力か。</sentence>
+<sentence>ハードルも得意と<EVENT class="NULL" eid="e22">する</EVENT>が、<quote>「上を<EVENT class="OCCURRENCE" eid="e23">狙える</EVENT>方に」</quote>と全道大会後、百メートル１本に<EVENT class="OCCURRENCE" eid="e24">絞っ</EVENT>て練習。</sentence>
+<sentence>予選で追い風参考ながら<TIMEX3 definite="FALSE" tid="t8" type="DURATION" value="PT10.53S" valueFromSurface="PT10.53S">１０秒５３</TIMEX3>で<EVENT class="OCCURRENCE" eid="e25">トップ通過し</EVENT>て<quote>「気分が<EVENT class="NULL" eid="e26">楽に</EVENT>」</quote><EVENT class="OCCURRENCE" eid="e27">なり</EVENT>、決勝は<quote>「<EVENT class="NULL" eid="e28">普通に</EVENT><EVENT class="OCCURRENCE" eid="e29">走っ</EVENT>て<EVENT class="NULL" eid="e30">普通に</EVENT><EVENT class="OCCURRENCE" eid="e31">終わった</EVENT>」</quote>。</sentence>
+<sentence>　旭大高の斉藤登世彦監督は<quote>「<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="P3Y" valueFromSurface="P3Y">３年</TIMEX3>計画で四百メートル障害の選手に<EVENT class="OCCURRENCE" eid="e32">育てたい</EVENT>」</quote>と<EVENT class="I_STATE" eid="e33">考えている</EVENT>。</sentence>
+<sentence>中学<TIMEX3 definite="FALSE" tid="t10" type="DURATION" value="P3Y" valueFromSurface="P3Y">３年</TIMEX3>の全国中学百十メートル障害で４位に<EVENT class="OCCURRENCE" eid="e34">入った</EVENT>力を<EVENT class="OCCURRENCE" eid="e35">持ち</EVENT>、百メートルはスピードを<EVENT class="OCCURRENCE" eid="e36">つける</EVENT>ための通過点と<EVENT class="REPORTING" eid="e37">いう</EVENT>。</sentence>
+<sentence>　しかし、その通過点で<EVENT class="OCCURRENCE" eid="e38">出した</EVENT><EVENT class="NULL" eid="e39">見事な</EVENT>結果。</sentence>
+<sentence>高平は<quote>「次は一番上を<EVENT class="OCCURRENCE" eid="e40">狙いたい</EVENT>」</quote>と意欲満々。</sentence>
+<sentence><EVENT class="NULL" eid="e41">非凡な</EVENT>才能は、まだ花を<EVENT class="OCCURRENCE" eid="e42">開き始めた</EVENT>ばかりだ。</sentence>
+<sentence type="quasi">（河相　宏史）</sentence>
+<sentence type="quasi">男子百メートルで３位と<EVENT class="OCCURRENCE" eid="e43">健闘した</EVENT>高平慎士</sentence>
+<sentence type="quasi">▼<quote>「本番に<EVENT class="NULL" eid="e44">弱い</EVENT>…」</quote></sentence>
+<sentence type="fragment">　男子ハンマー投げで自己ベストを１６センチ<EVENT class="OCCURRENCE" eid="e45">上回る</EVENT>５８メートル４８を<EVENT class="OCCURRENCE" eid="e46">記録し</EVENT>、５位に<EVENT class="OCCURRENCE" eid="e47">入った</EVENT>野口＝写真＝だが</sentence>
+<sentence>「全然ダメ。</sentence>
+<sentence type="quasi">前半に５８メートル台が<EVENT class="OCCURRENCE" eid="e48">出</EVENT>て<EVENT class="STATE" eid="e49">力みすぎた</EVENT>」</sentence>
+<sentence type="fragment">と<EVENT class="NULL" eid="e50">浮かない</EVENT>表情。</sentence>
+<sentence>納得の<EVENT class="I_ACTION" eid="e51">いく</EVENT>投てきが<EVENT class="I_STATE" eid="e52">できなかった</EVENT>ようだ。</sentence>
+<sentence>　出場者ランキングで４位に<EVENT class="OCCURRENCE" eid="e53">位置し</EVENT>、６１―６２メートル台を<EVENT class="OCCURRENCE" eid="e54">狙っ</EVENT>て<EVENT class="I_ACTION" eid="e55">臨んだ</EVENT>。</sentence>
+<sentence>熊本入り後の練習では５９メートル台を<EVENT class="OCCURRENCE" eid="e56">マークしていた</EVENT>が、それを<EVENT class="OCCURRENCE" eid="e57">上回れず</EVENT>、<quote>「いつも本番に<EVENT class="NULL" eid="e58">弱いんです</EVENT>…」</quote>とポツリ。</sentence>
+<sentence><quote>「国体では目標の記録を<EVENT class="OCCURRENCE" eid="e59">残したい</EVENT>」</quote>と雪辱を<EVENT class="I_ACTION" eid="e60">誓っていた</EVENT>。</sentence>
+<sentence>▼涼しさのせい？</sentence>
+<sentence>　女子百メートルでは、期待の<TIMEX3 definite="FALSE" tid="t11" type="DURATION" value="P1Y" valueFromSurface="P1Y">１年生</TIMEX3>・北風が７位と健闘。</sentence>
+<sentence><quote>「目標は決勝に<EVENT class="I_ACTION" eid="e61">出る</EVENT>ことだったので<EVENT class="NULL" eid="e62">良かった</EVENT>」</quote>と、小さな顔が<EVENT class="OCCURRENCE" eid="e63">ほころんだ</EVENT>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="2000" valueFromSurface="XXXX">昨年</TIMEX3>、長崎県で<EVENT class="I_ACTION" eid="e64">行われた</EVENT>全国中学大会の覇者。</sentence>
+<sentence><quote>「<EVENT class="NULL" eid="e65">暑い</EVENT>ところの方が得意」</quote>という通り予選で自己ベストの<TIMEX3 definite="FALSE" tid="t13" type="DURATION" value="PT12.07S" valueFromSurface="PT12.07S">１２秒０７</TIMEX3>をマーク。</sentence>
+<sentence><TIMEX3 definite="FALSE" mod="AFTER" tid="t14" type="TIME" value="2001-08-03T16" valueFromSurface="XXXX-XX-XXT16">午後４時すぎ</TIMEX3>から<EVENT class="I_ACTION" eid="e66">行われた</EVENT>決勝では<quote>「<EVENT class="NULL" eid="e67">涼しく</EVENT>て筋肉が<EVENT class="OCCURRENCE" eid="e68">固まっ</EVENT>て」</quote>、記録を<EVENT class="OCCURRENCE" eid="e69">伸ばせなかった</EVENT>が、<TIMEX3 definite="TRUE" tid="t15" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今後</TIMEX3>に期待を<EVENT class="I_STATE" eid="e70">抱かせる</EVENT>走りだった。</sentence>
+<sentence type="quasi">バレーボール</sentence>
+<sentence type="quasi">弓道</sentence>
+<sentence type="quasi">▼みんなに感謝</sentence>
+<sentence>　弓道個人の道内勢でただ１人準決勝に<EVENT class="I_ACTION" eid="e71">進んだ</EVENT>女子の今橋＝写真＝は、４射のうち２射を<EVENT class="OCCURRENCE" eid="e72">外し</EVENT>、決勝進出の８人には<EVENT class="OCCURRENCE" eid="e73">残れなかった</EVENT>。</sentence>
+<sentence>　試合後は目を<EVENT class="NULL" eid="e74">真っ赤に</EVENT><EVENT class="OCCURRENCE" eid="e75">し</EVENT>ながら<quote>「<EVENT class="OCCURRENCE" eid="e76">できれ</EVENT>ば決勝まで<EVENT class="I_ACTION" eid="e77">行きたかった</EVENT>が、力以上のものは<EVENT class="OCCURRENCE" eid="e78">出せた</EVENT>し、<EVENT class="I_STATE" eid="e79">満足しています</EVENT>」</quote>と<EVENT class="REPORTING" eid="e80">話した</EVENT>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="2001-08-02" valueFromSurface="XXXX-XX-XX">前日</TIMEX3>の予選は４射とも<EVENT class="OCCURRENCE" eid="e81">的中させた</EVENT>が、<TIMEX3 definite="FALSE" tid="t17" type="DATE" value="2001-08-03" valueFromSurface="XXXX-XX-XX">この日</TIMEX3>は<quote>「<EVENT class="OCCURRENCE" eid="e82">緊張してしまった</EVENT>」</quote>と<EVENT class="REPORTING" eid="e83">いう</EVENT>ように１、２射目を立て続けに<EVENT class="OCCURRENCE" eid="e84">外してしまった</EVENT>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t18" type="DURATION" value="P3Y" valueFromSurface="P3Y">３年生</TIMEX3>で初めて<EVENT class="I_ACTION" eid="e85">出場した</EVENT>インターハイ。</sentence>
+<sentence>「ここまで<EVENT class="OCCURRENCE" eid="e86">来た</EVENT>のも<EVENT class="OCCURRENCE" eid="e87">応援してくれた</EVENT>友達や部活の人たちのおかげ。</sentence>
+<sentence type="quasi"><EVENT class="OCCURRENCE" eid="e88">感謝しています</EVENT>」</sentence>
+<sentence type="quasi">バスケット</sentence>
+<sentence type="quasi">▼劇的勝利</sentence>
+<sentence>　東海大四が、<TIMEX3 definite="FALSE" tid="t19" type="DATE" value="2000-WI" valueFromSurface="XXXX-WI">昨冬</TIMEX3>の全国選抜大会２回戦で<EVENT class="OCCURRENCE" eid="e89">敗れた</EVENT>土浦日大に<EVENT class="OCCURRENCE" eid="e90">雪辱した</EVENT>。</sentence>
+<sentence>試合終了のブザーとほぼ同時にフォワード木田がゴール下で決勝点を<EVENT class="OCCURRENCE" eid="e91">決める</EVENT><EVENT class="NULL" eid="e92">劇的な</EVENT>勝利だった。</sentence>
+<sentence><quote>「めちゃめちゃ<EVENT class="NULL" eid="e93">うれしいです</EVENT>」</quote>と木田。</sentence>
+<sentence>　試合は１点を<EVENT class="OCCURRENCE" eid="e94">争う</EVENT>展開。</sentence>
+<sentence>８２―８２と同点の終了<TIMEX3 definite="FALSE" tid="t20" type="DURATION" value="PT5S" valueFromSurface="PT5S">５秒前</TIMEX3>に、相手にフリースローを<EVENT class="OCCURRENCE" eid="e95">与え</EVENT><quote>「万事<EVENT class="NULL" eid="e96">休す</EVENT>かと<EVENT class="I_STATE" eid="e97">思った</EVENT>」</quote>（永野監督）が、相手が２本ともミス。</sentence>
+<sentence><EVENT class="NULL" eid="e98">素早く</EVENT>木田にパスを<EVENT class="I_ACTION" eid="e99">回し</EVENT>試合を<EVENT class="I_ACTION" eid="e100">決めた</EVENT>。</sentence>
+<sentence>３回戦に<EVENT class="OCCURRENCE" eid="e101">向け</EVENT>、菅原主将は<quote>「<EVENT class="I_ACTION" eid="e102">走り負けない</EVENT>試合を<EVENT class="I_ACTION" eid="e103">する</EVENT>」</quote>と<EVENT class="I_ACTION" eid="e104">意気込んでいた</EVENT>。</sentence>
+<sentence type="quasi">バドミントン</sentence>
+<sentence type="quasi">相撲</sentence>
+<sentence type="quasi">テニス</sentence>
+<sentence type="quasi"><sampling type="start" />ソフトテニス</sentence>
+<sentence type="quasi"><EVENT class="I_ACTION" eid="e105">粘っ</EVENT>て<EVENT class="OCCURRENCE" eid="e106">つなぎ</EVENT>主導権　道尚志ペア</sentence>
+<sentence>　持ち味の<EVENT class="NULL" eid="e107">粘り強く</EVENT><EVENT class="OCCURRENCE" eid="e108">つなぐ</EVENT>プレースタイルで道尚志の若松・小田桐組が快進撃を<EVENT class="OCCURRENCE" eid="e109">見せた</EVENT>。</sentence>
+<sentence>準決勝で、<EVENT class="OCCURRENCE" eid="e110">優勝した</EVENT>八戸工大一の舘越・斎藤組にストレート負けを<EVENT class="I_ACTION" eid="e111">喫し</EVENT>、若松は悔しさを<EVENT class="OCCURRENCE" eid="e112">のぞかせ</EVENT>ながらも<quote>「ベスト４まで<EVENT class="OCCURRENCE" eid="e113">行けた</EVENT>のは満足」</quote>と胸を<EVENT class="OCCURRENCE" eid="e114">張った</EVENT>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t21" type="DATE" value="2001-08-03" valueFromSurface="XXXX-XX-XX">この日</TIMEX3>は４回戦から準決勝まで計５試合を<EVENT class="OCCURRENCE" eid="e115">戦い抜いた</EVENT>。</sentence>
+<sentence>相手を<EVENT class="OCCURRENCE" eid="e116">圧倒する</EVENT>力強さは<EVENT class="NULL" eid="e117">ない</EVENT>が、<quote>「<EVENT class="OCCURRENCE" eid="e118">向かっ</EVENT>て<EVENT class="OCCURRENCE" eid="e119">いけた</EVENT>」</quote>と小田桐が<EVENT class="I_ACTION" eid="e120">振り返る</EVENT>ように、自分たちから先に<EVENT class="OCCURRENCE" eid="e121">仕掛ける</EVENT><EVENT class="NULL" eid="e122">積極的な</EVENT>試合展開で、ラリーでは主導権を<EVENT class="OCCURRENCE" eid="e123">握った</EVENT>。</sentence>
+<sentence>　団体戦で道尚志が３位に<EVENT class="OCCURRENCE" eid="e124">入った</EVENT><TIMEX3 type="DATE" value="2001-SP" valueFromSurfaace="XXXX-SP">春</TIMEX3>の全国選抜大会では、１勝しか<EVENT class="I_STATE" eid="e125">できなかった</EVENT>。</sentence>
+<sentence>その悔しさをバネに、２人は<TIMEX3 definite="FALSE" quant="EACH" tid="t22" type="SET" value="P1D" valueFromSurface="P1D">毎日</TIMEX3>約５キロの走り込みで脚力とスタミナを強化、<TIMEX3 definite="FALSE" tid="t23" type="DATE" value="2000" valueFromSurface="XXXX">昨年</TIMEX3>は初戦で<EVENT class="OCCURRENCE" eid="e126">敗退した</EVENT>インターハイで４強入りを<EVENT class="I_ACTION" eid="e127">果たした</EVENT>。</sentence>
+<sentence type="fragment">　準決勝後、あえて２人を<EVENT class="NULL" eid="e128">厳しい</EVENT>口調で<EVENT class="OCCURRENCE" eid="e129">しかった</EVENT>渡部監督は</sentence>
+<sentence>「ベスト４で<EVENT class="OCCURRENCE" eid="e130">満足し</EVENT>て準決勝は<EVENT class="NULL" eid="e131">精神的に</EVENT>受け身に<EVENT class="OCCURRENCE" eid="e132">なっていた</EVENT>。</sentence>
+<sentence type="quasi">よく<EVENT class="OCCURRENCE" eid="e133">やった</EVENT>と<EVENT class="REPORTING" eid="e134">言いたい</EVENT>が、まだ団体戦が<EVENT class="OCCURRENCE" eid="e135">残っています</EVENT>から」</sentence>
+<sentence type="fragment">。</sentence>
+<sentence>団体戦で上位進出のカギを<EVENT class="STATE" eid="e136">握る</EVENT>ポイントゲッター２人にさらなる奮起を<EVENT class="I_ACTION" eid="e137">促した</EVENT>。</sentence>
+<sentence type="quasi">（小塚由記夫）</sentence>
+<sentence type="quasi">ソフトテニス男子個人で<EVENT class="OCCURRENCE" eid="e138">４強入りした</EVENT>道尚志の若松（左）・小田桐組</sentence>
+<sentence type="quasi">剣道</sentence>
+<sentence type="quasi">日本、初戦で完敗　ヤングメンバスケ</sentence>
+<sentence>　男子バスケットボールのヤングメン（<TIMEX3 definite="FALSE" mod="EQUAL_OR_LESS" tid="t24" type="DURATION" value="P21Y" valueFromSurface="P21Y">２１歳以下</TIMEX3>）世界選手権が<TIMEX3 definite="FALSE" tid="t25" type="DATE" value="2001-08-03" valueFromSurface="XXXX-XX-03">３日</TIMEX3>、埼玉県のさいたまスーパーアリーナで<EVENT class="I_ACTION" eid="e139">開幕した</EVENT>。</sentence>
+<sentence>第１日は予選リーグ６試合を<EVENT class="I_ACTION" eid="e140">行い</EVENT>、Ｂ組の日本は米大陸予選１位のアルゼンチンに５６―９３で<EVENT class="OCCURRENCE" eid="e141">敗れた</EVENT>。</sentence>
+<sentence>　開催国枠で初出場の日本は佐藤濯（日体大）がチーム最多の１８得点を<EVENT class="OCCURRENCE" eid="e142">挙げた</EVENT>が、アルゼンチンの高さに<EVENT class="OCCURRENCE" eid="e143">完敗した</EVENT>。</sentence>
+<sentence>日本は<TIMEX3 definite="FALSE" tid="t26" type="DATE" value="2001-08-04" valueFromSurface="XXXX-XX-04">４日</TIMEX3>の第２戦でイスラエルと<EVENT class="OCCURRENCE" eid="e144">対戦する</EVENT>。</sentence>
+<sentence type="quasi">タカ打線爆発　ハム圧倒</sentence>
+<sentence type="quasi">ダイエー　１３―８　日本ハム</sentence>
+<sentence>　ダイエーが序盤に猛攻で１０点を<EVENT class="OCCURRENCE" eid="e145">奪い</EVENT>、日本ハム戦の<TIMEX3 definite="FALSE" tid="t27" type="DURATION" value="P4Y" valueFromSurface="P4Y">４年</TIMEX3>連続勝ち越しを<EVENT class="I_ACTION" eid="e146">決めた</EVENT>。</sentence>
+<sentence>　一回一死一、三塁から小久保の中前打で１点。</sentence>
+<sentence>さらに松中、城島、秋山が３者連続本塁打を<EVENT class="I_ACTION" eid="e147">浴びせ</EVENT>、この回に６点を<EVENT class="OCCURRENCE" eid="e148">奪った</EVENT>。</sentence>
+<sentence>　二回にも小久保が<EVENT class="OCCURRENCE" eid="e149">３３号本塁打し</EVENT>て３点を<EVENT class="OCCURRENCE" eid="e150">加えた</EVENT>。</sentence>
+<sentence>　星野は大量点に<EVENT class="OCCURRENCE" eid="e151">守られ</EVENT><TIMEX3 definite="FALSE" tid="t28" type="DURATION" value="P2Y" valueFromSurface="P2Y">２年ぶり</TIMEX3>の２けた勝利。</sentence>
+<sentence>　日本ハムは岩本の乱調が<EVENT class="OCCURRENCE" eid="e152">響いた</EVENT>。</sentence>
+<sentence type="quasi">５本塁打<EVENT class="I_ACTION" eid="e153">放つ</EVENT>も…　投手力不足が露呈</sentence>
+<sentence>　<EVENT class="OCCURRENCE" eid="e154">勝つ</EVENT>には<EVENT class="OCCURRENCE" eid="e155">勝った</EVENT>。</sentence>
+<sentence>３連敗を<EVENT class="I_ACTION" eid="e156">阻止し</EVENT>、首位近鉄とのゲーム差を１・５に<EVENT class="OCCURRENCE" eid="e157">縮めた</EVENT>。</sentence>
+<sentence>だが勝利の余韻どころか後味の悪さばかりが<EVENT class="OCCURRENCE" eid="e158">残った</EVENT>。</sentence>
+<sentence>王監督の表情も<EVENT class="OCCURRENCE" eid="e159">さえない</EVENT>。</sentence>
+<sentence type="fragment">ため息交じりに<EVENT class="NULL" eid="e160">重い</EVENT>口を<EVENT class="OCCURRENCE" eid="e161">開い</EVENT>て</sentence>
+<sentence>「はー、１３点<EVENT class="OCCURRENCE" eid="e162">取っ</EVENT>てなあ…。</sentence>
+<sentence type="quasi">冷や冷やもんや」</sentence>
+<sentence type="fragment">。</sentence>
+<sentence>　重量打線が５本塁打を<EVENT class="I_ACTION" eid="e163">打ち込んだ</EVENT>一方で、星野が３本塁打を<EVENT class="I_ACTION" eid="e164">浴び</EVENT>て８失点。</sentence>
+<sentence type="fragment">新エースに、との期待も<EVENT class="NULL" eid="e165">大きかった</EVENT>だけに、打線の話もそこそこに監督は</sentence>
+<sentence>「<EVENT class="OCCURRENCE" eid="e166">１０勝したんだ</EVENT>けどな…。</sentence>
+<sentence type="quasi">どうもエースとは<EVENT class="I_ACTION" eid="e167">言えません</EVENT>」</sentence>
+<sentence type="fragment">と<EVENT class="I_ACTION" eid="e168">嘆いた</EVENT>。</sentence>
+<sentence>　打高投低を<EVENT class="STATE" eid="e169">象徴した</EVENT><sampling type="end" />。</sentence>

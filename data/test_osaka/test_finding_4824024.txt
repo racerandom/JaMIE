@@ -1,0 +1,10 @@
+・<a>両肺</a>に、<a>胸膜直下、肺底部優位</a>の<d certainty="positive">すりガラス影、網状影</d>を認めます。<d certainty="positive">気管支拡張</d>を伴います。<d certainty="suspicious">UIPパターンの間質性肺炎</d>を疑います。前回（2018/3/13）と比べて<c>増悪</c>しています。
+・<a>右肺尖</a>に<d certainty="positive">収縮性変化</d>を伴った<d certainty="positive">濃度上昇域</d>を認めます。<d certainty="suspicious">炎症後変化</d>を疑います。
+・<a>縦隔</a>に<d certainty="positive">ボーダーラインのリンパ節</d>あり。
+・<d certainty="negative">胸水</d>はありません。
+<a>左腎実質</a>は<d certainty="positive">萎縮</d>、<d certainty="positive">嚢胞性陰影</d>あり。
+・<a>両肺</a>に、<a>胸膜直下、肺底部優位</a>の<d certainty="positive">すりガラス影、網状影</d>を認めます。<d certainty="positive">気管支拡張</d>を伴います。<d certainty="suspicious">UIPパターンの間質性肺炎</d>を疑います。前回（2018/3/13）と比べて<c>増悪</c>しています。
+・<a>右肺尖</a>に<d certainty="positive">収縮性変化</d>を伴った<d certainty="positive">濃度上昇域</d>を認めます。<d certainty="suspicious">炎症後変化</d>を疑います。
+・<a>縦隔</a>に<d certainty="positive">ボーダーラインのリンパ節</d>あり。
+・<d certainty="negative">胸水</d>はありません。
+<a>左腎実質</a>は<d certainty="positive">萎縮、嚢胞性陰影</d>あり。

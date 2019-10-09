@@ -1,0 +1,5 @@
+<sentence>みなさん　ご主人に保険金　どれぐらい<event class="" eid="e1">かけています</event>か？</sentence>
+<sentence type="quasi">　年齢や持病によって　<event class="STATE" eid="e2">まちまちだ</event>と　<event class="" eid="e3">思います</event>が<webBr /><event class="" eid="e4">教えてください</event></sentence>
+<sentence>うちは１５００万です。</sentence>
+<sentence>子供が<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P20Y" valueFromSurface="P20Y">２０歳</TIMEX3>に<event class="" eid="e5">なる</event>までは１５００万程度<event class="STATE" eid="e6">ほしい</event>かな？と<event class="" eid="e7">思いまし</event>て、<webBr />子供が<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P20Y" valueFromSurface="P20Y">２０</TIMEX3><event class="" eid="e8">過ぎたら</event>５００万程度（お葬式代）で<event class="STATE" eid="e9">いい</event>かなと<event class="" eid="e10">思ってます</event>。</sentence>
+<sentence>保険貧乏には<event class="" eid="e11">なりたく</event><event class="STATE" eid="e12">ないです</event>し、<webBr />必要最低限で<event class="STATE" eid="e13">いい</event>と<event class="" eid="e14">思っ</event>てこう<event class="" eid="e15">しています</event>。</sentence>

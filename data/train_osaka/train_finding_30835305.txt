@@ -1,0 +1,12 @@
+<a>両側肺下葉胸膜下優位</a>に<d certainty="positive">網状影、線状影、牽引性気管支拡張､すりガラス影</d>が認められます。<f>一部</f>の<d certainty="positive">陰影</d>は<a>気管支血管束</a>に沿って分布しています。<d certainty="suspicious">間質性肺炎</d>（<d certainty="suspicious">NSIPパターン</d>）の経過を疑います。前回と著変ありません。
+<a>両側腋窩や縦隔</a>に<f>軽度</f>の<d certainty="positive">腫大リンパ節</d>を認めます。前回と著変ありません。<d certainty="suspicious">反応性腫大</d>を疑います。
+<a>冠動脈</a>に<f>軽度</f>の<d certainty="positive">石灰化</d>あり。
+<d certainty="negative">胸水</d>なし。
+<d certainty="suspicious">肝嚢胞</d>を疑う<d certainty="positive">LDA</d>が<f>散見</f>されます。
+<a>脾臓</a>に<d certainty="positive">LDA</d>を認めますが、前回と著変なし。
+<a>両側肺下葉胸膜下優位</a>に<d certainty="positive">網状影、線状影、牽引性気管支拡張､すりガラス影</d>が認められます。<f>一部</f>の<d certainty="positive">陰影</d>は<a>気管支血管束</a>に沿って分布しています。<d certainty="suspicious">間質性肺炎</d>（<d certainty="suspicious">NSIPパターン</d>）の経過を疑います。前回と著変ありません。
+<a>両側腋窩や縦隔</a>に<f>軽度</f>の<d certainty="positive">腫大リンパ節</d>を認めます。前回と著変ありません。<d certainty="suspicious">反応性腫大</d>を疑います。
+<a>冠動脈</a>に<f>軽度</f>の<d certainty="positive">石灰化</d>あり。
+<d certainty="negative">胸水</d>なし。
+<d certainty="suspicious">肝嚢胞</d>を疑う<d certainty="positive">LDA</d>が<f>散見</f>されます。
+<a>脾臓</a>に<d certainty="positive">LDA</d>を認めますが、前回と著変なし。

@@ -1,0 +1,5 @@
+<a>右肺S10</a>に<f>境界やや不明瞭</f>で<f>辺縁不整</f>な<f>径4mm</f>の<d certainty="positive">結節影</d>を認めます。sizeが小さく、<d certainty="suspicious">良性結節</d>の可能性が高いと思われますが、質的評価は困難です。followしてください。
+<a>両側肺上葉胸膜直下</a>に<d certainty="positive">consolidationや気管支拡張</d>が認められます。<d certainty="suspicious">炎症後変化</d>を疑います。D/D <d certainty="suspicious">pleuroparenchymal fibroelastosisのような間質性肺炎</d>など。単純Xpにてfollowしてください。
+<a>両側肺下葉背側部優位</a>に<f>軽度</f>の<d certainty="positive">すりガラス影、網状影</d>を認めます。<d certainty="suspicious">炎症後変化</d>を疑いますが、<d certainty="suspicious">間質性肺炎初期像</d>の可能性もあります。
+<f>有意サイズ</f>の<d certainty="negative">リンパ節</d>を認めません。
+<d certainty="negative">胸水</d>なし。

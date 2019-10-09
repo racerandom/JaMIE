@@ -1,0 +1,11 @@
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P2Y10M" valueFromSurface="P2Y10M">２才１０ヶ月</TIMEX3>の息子です。</sentence>
+<sentence>牛乳を<event class="" eid="e1">飲まない</event>代わりに豆乳を<event class="" eid="e2">飲んでいます</event>。</sentence>
+<sentence>（本人が、そのように<event class="" eid="e3">希望する</event>ため。</sentence>
+<sentence type="fragment">）ビタミン不足に<event class="" eid="e4">なります</event>か？</sentence>
+<sentence>牛乳にも種類が<event class="" eid="e5">ありますので</event>、成分無調整牛乳を<event class="STATE" eid="e6">軽く</event><event class="" eid="e7">暖め</event>て<event class="" eid="e8">飲ませてみて下さい</event>。</sentence>
+<sentence><event class="STATE" eid="e9">非常に</event><event class="STATE" eid="e10">おいしく</event><event class="" eid="e11">感じる</event>と<event class="" eid="e12">思います</event>。</sentence>
+<sentence>ビタミンは、牛乳よりも野菜や海草から<event class="" eid="e13">補給するべきです</event>。</sentence>
+<sentence><event class="STATE" eid="e14">食べやすく</event><event class="" eid="e15">料理する</event>事が<event class="STATE" eid="e16">大事です</event>。</sentence>
+<sentence>また品物によってかなり味に差が<event class="" eid="e17">ありますので</event>、<event class="STATE" eid="e18">慎重に</event><event class="" eid="e19">選んで下さい</event>。</sentence>
+<sentence><event class="STATE" eid="e20">良い</event>食材は、<event class="STATE" eid="e21">おいしいので</event><event class="STATE" eid="e22">自然に</event><event class="" eid="e23">食べてしまう</event>ものです。</sentence>
+<sentence><event class="" eid="e24">嫌う</event>場合は、材料や調理法を最初に<event class="" eid="e25">疑った</event>ほうが<event class="STATE" eid="e26">よろしいです</event>。</sentence>

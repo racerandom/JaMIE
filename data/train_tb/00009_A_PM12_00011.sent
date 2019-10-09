@@ -1,0 +1,208 @@
+<sentence type="quasi">１</sentence>
+<sentence>　その神戸村が、<event class="STATE" eid="e1">いやに</event><event class="STATE" eid="e2">賑々しい</event>。</sentence>
+<sentence>と<event class="" eid="e3">いう</event>より<event class="" eid="e4">浮き立っている</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="1867-10-16Q" valueFromSurface="XXXX-XX-XX">この日</TIMEX3>、<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="1867-10-16Q" valueFromSurface="XXXX-10-16">慶応三年十月十六日</TIMEX3>、生田川尻の浜は何百という老若男女で<event class="" eid="e5">埋まっていた</event>。</sentence>
+<sentence>そろいの<ruby rubyText="ひ">緋</ruby><ruby rubyText="ぢり">縮</ruby><ruby rubyText="めん">緬</ruby><ruby rubyText="じゅ">襦</ruby><ruby rubyText="ばん">袢</ruby>、といったいでたちで<event class="" eid="e6">歌い踊っている</event>。</sentence>
+<sentence>なかには丸裸に<ruby rubyText="う">鬱</ruby><ruby rubyText="こん">金</ruby>（<sampling type="start" />真っ黄色）の越中ふんどし、という男も<event class="" eid="e7">いる</event>し、絹物を<event class="" eid="e8">着飾り</event>、鹿子のたすきを<event class="" eid="e9">掛け</event>て大提灯を<event class="" eid="e10">振りまわしている</event>ものも<event class="" eid="e11">いる</event>。</sentence>
+<sentence>　いやもう、ばか騒ぎ―。</sentence>
+<sentence>　手に手に砂場から砂を<event class="" eid="e12">運び</event>、浜辺の畑地に<event class="" eid="e13">盛り土し</event>ては、<event class="" eid="e14">浮かれ踊り</event>ながら<event class="" eid="e15">踏み固めていた</event>。</sentence>
+<sentence>　砂持ち、と<event class="" eid="e16">いう</event>。</sentence>
+<sentence>　元は、寺社の修理や造営に、信者たちが勤労奉仕で砂運びを<event class="" eid="e17">する</event>のを<event class="" eid="e18">いったのだ</event>が、いつの間にかお祭り騒ぎに<event class="" eid="e19">変化し</event>て、一種の流行と<event class="" eid="e20">なっている</event>。</sentence>
+<sentence>　急ごしらえの、料理や甘酒を<event class="" eid="e21">出す</event>茶店も<event class="" eid="e22">出ている</event>から、近在から続々と見物人が<event class="" eid="e23">集まっ</event>て<event class="" eid="e24">くる</event>。</sentence>
+<sentence>砂持ちは、いわば庶民のレクリエーションでもあり、パフォーマンスの場と<event class="" eid="e25">呼んでもいいだろう</event>。</sentence>
+<sentence>　ここへ<TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">近ごろ</TIMEX3>は、さらなる要素が<event class="" eid="e26">加わっている</event>。</sentence>
+<sentence>不景気の痛手から<event class="" eid="e27">立ち上がろう</event>と<event class="" eid="e28">する</event>景気直し、といったような要素だ。</sentence>
+<sentence>　このところ庶民の生活は、開明だ、尊皇だ、攘夷だ、やれ公武合体だ、倒幕だ、と<event class="STATE" eid="e29">長く</event>内戦状態が<event class="" eid="e30">つづく</event>なか、戦時負担と米や諸色の値上がりに<event class="" eid="e31">あえいでいた</event>。</sentence>
+<sentence>　結果、この砂持ち行事が<event class="" eid="e32">暴徒化してしまうことがある</event>。</sentence>
+<sentence>　つい<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="1866" valueFromSurface="XXXX">昨年</TIMEX3>も、京で、また大坂で、そんな騒擾が<event class="" eid="e33">起こった</event>。</sentence>
+<sentence><event class="" eid="e34">暴走した</event>群衆が商店を<event class="" eid="e35">襲い</event>、品物を<event class="" eid="e36">かっさらう</event>。</sentence>
+<sentence>打ちこわし、あるいは、コボチ、とも<event class="" eid="e37">いう</event>。</sentence>
+<sentence><event class="" eid="e38">破壊する</event>という意味だ。</sentence>
+<sentence>　このあたりにも<event class="" eid="e39">飛び火している</event>。</sentence>
+<sentence>死者も<event class="STATE" eid="e40">多く</event><event class="" eid="e41">出た</event>。</sentence>
+<sentence>　<event class="" eid="e42">砂持ちし</event>ながら、民衆たちが<event class="" eid="e43">歌っている</event>のは、『当世ないないづくし』という歌で、だいたい次のような文句である。<info arg="page" value="delimiter" /></sentence>
+<sentence type="verse">さても<event class="STATE" eid="e44">ない</event><event class="STATE" eid="e45">ない</event><event class="STATE" eid="e46">ない</event>ものは、油の値上げもほうづが<event class="STATE" eid="e47">ない</event>。<verseLine /></sentence>
+<sentence type="verse">二百に<event class="" eid="e48">なっ</event>ては<event class="" eid="e49">灯されない</event>。<verseLine /></sentence>
+<sentence type="verse">それでも<event class="" eid="e50">つけず</event>にゃ<event class="" eid="e51">寝られない</event>。<verseLine /></sentence>
+<sentence type="verse">真っ暗闇では<event class="" eid="e52">おかれない</event>。<verseLine /></sentence>
+<sentence type="verse">ありあけ<event class="" eid="e53">灯しちゃたまらない</event>。<verseLine /></sentence>
+<sentence type="verse">おそばも五十じゃ<event class="" eid="e54">食われない</event>。<verseLine /></sentence>
+<sentence type="verse">引っ越し<event class="STATE" eid="e55">めったに</event>、こりゃ<event class="" eid="e56">できない</event>。<verseLine /></sentence>
+<sentence type="verse">お酒も<event class="STATE" eid="e57">高く</event>て<event class="" eid="e58">飲まれない</event>。<verseLine /></sentence>
+<sentence type="verse">一升一分じゃ仕方が<event class="STATE" eid="e59">ない</event>。<verseLine /></sentence>
+<sentence type="verse"><event class="STATE" eid="e60">安い</event>ものとてさらには<event class="STATE" eid="e61">ない</event>。<verseLine /></sentence>
+<sentence type="verse">中から下では<event class="STATE" eid="e62">情けない</event>…<verseLine /></sentence>
+<sentence type="quasi">といった具合に、ないない尽くしが<event class="" eid="e63">つづき</event>、</sentence>
+<sentence type="verse">「とどのつまりはしようが<event class="STATE" eid="e64">ない</event>。<verseLine /></sentence>
+<sentence type="verse">先を<event class="" eid="e65">案じりゃ</event>命が<event class="STATE" eid="e66">ない</event>」<verseLine /></sentence>
+<sentence>と<event class="" eid="e67">いう</event>ふうに<event class="" eid="e68">なっ</event>て、まだ<event class="" eid="e69">つづく</event>。</sentence>
+<sentence>　<TIMEX3 type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">いま</TIMEX3>、民衆が半ばやけっぱちでこんな歌を<event class="" eid="e70">がなり</event>、神戸村の浜辺で砂持ちを<event class="" eid="e71">している</event>大本は、<TIMEX3 definite="FALSE" tid="t5" type="DATE" value="1853" valueFromSurface="Q-14Y">十四年前</TIMEX3>に浦賀沖に<event class="" eid="e72">現われた</event>四隻の黒船に<event class="" eid="e73">あった</event>。</sentence>
+<sentence>　あれからこっち、政情は<event class="" eid="e74">荒れ</event>に<event class="" eid="e75">荒れている</event>。</sentence>
+<sentence>　<event class="STATE" eid="e76">乱暴に</event><event class="" eid="e77">かいつまめ</event>ば、次のようなことに<event class="" eid="e78">なる</event>。</sentence>
+<sentence>　永らく鎖国を<event class="" eid="e79">つづけてきた</event>徳川幕府は、メリケン国をはじめエゲレス国やロシア国など、<event class="" eid="e80">押し寄せる</event>列強国に、おっかなびっくり開国を<event class="" eid="e81">約束した</event>。</sentence>
+<sentence>　こう<event class="" eid="e82">し</event>てまずは、箱館、長崎、横浜を<event class="" eid="e83">開港した</event>ものの、約束の開港地は、それだけではない。</sentence>
+<sentence>　なかでも頭痛のタネが、兵庫の開港、大坂の開市だった。</sentence>
+<sentence>なにしろ畿内である。</sentence>
+<sentence>つまり京の朝廷に<event class="STATE" eid="e84">近い</event>ということだ。</sentence>
+<sentence>　ときの孝明天皇は、無邪気と<event class="" eid="e85">呼ん</event>で<event class="STATE" eid="e86">いい</event>ほどの<event class="STATE" eid="e87">異人嫌いで</event>、ほとんど<event class="STATE" eid="e88">本能的に</event><sampling type="end" />首を横に<event class="" eid="e89">振りつづける</event>。</sentence>
+<sentence>　その天皇の勅許なしには、幕府も動きが<event class="" eid="e90">とれない</event>。</sentence>
+<sentence>一方で列強は、約束を<event class="" eid="e91">守れ</event>と強談判を<event class="" eid="e92">し</event>て<event class="" eid="e93">くる</event>。</sentence>
+<sentence>　とりあえず勘定奉行兼外国奉行の竹内<ruby rubyText="やす">保</ruby><ruby rubyText="のり">徳</ruby>を正使に、遣欧使節団を<event class="" eid="e94">派遣し</event>て、ロンドンにおいて兵庫の開港を<TIMEX3 definite="FALSE" tid="t6" type="DURATION" value="P5Y" valueFromSurface="P5Y">五年間</TIMEX3><event class="" eid="e95">延期する</event>ことに<event class="" eid="e96">成功する</event>。</sentence>
+<sentence>これをロンドン覚え書きと<event class="" eid="e97">いう</event>。</sentence>
+<sentence>パリ〜ロンドン〜ベルリン〜ペテルブルグといった、<TIMEX3 definite="FALSE" tid="t7" type="DURATION" value="P1Y" valueFromSurface="P1Y">一年</TIMEX3>にも<event class="" eid="e98">およぶ</event><event class="STATE" eid="e99">長い</event>旅であった。</sentence>
+<sentence>　これで兵庫の開港日は、<TIMEX3 definite="FALSE" tid="t8" type="DATE" value="1868" valueFromSurface="1868">西暦一八六八年</TIMEX3>の<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="1868-01-01" valueFromSurface="XXXX-01-01">一月一日</TIMEX3>と<event class="" eid="e100">決まった</event>。</sentence>
+<sentence>和暦で<event class="" eid="e101">いう</event>と、<TIMEX3 definite="FALSE" tid="t10" type="DATE" value="1867-12-07Q" valueFromSurface="XXXX-12-07">慶応三年十二月七日</TIMEX3>が、その日に<event class="" eid="e102">当たる</event>。</sentence>
+<sentence>　ところが使節団が<event class="" eid="e103">帰国してみる</event>と、その間に国情は<event class="" eid="e104">一変している</event>。</sentence>
+<sentence>井伊大老は<event class="" eid="e105">暗殺され</event>、尊皇攘夷風が<event class="" eid="e106">吹き荒れていた</event>。</sentence>
+<sentence>横浜の外国商館は<event class="" eid="e107">焼き打ちされ</event>、異人斬りが<event class="" eid="e108">横行している</event>。</sentence>
+<sentence>　変、や対外戦争が<event class="" eid="e109">続発し</event>、殺し合いやら衝突やら離合集散やらが<event class="" eid="e110">繰り返され</event>、糸は<event class="" eid="e111">もつれ</event>に<event class="" eid="e112">もつれ</event>て<event class="STATE" eid="e113">複雑怪奇な</event>ことに<event class="" eid="e114">なっていた</event>。</sentence>
+<sentence>　おそらく渦中に<event class="" eid="e115">ある</event>当事者たちでさえ、いったい誰が味方で、誰が敵か、見極めも<event class="" eid="e116">つかなかったろう</event>。</sentence>
+<sentence>主義主張も<event class="" eid="e117">二転三転し</event>て、混沌、迷走が<event class="" eid="e118">つづく</event>ばかりであった。</sentence>
+<sentence>　そうこう<event class="" eid="e119">する</event><TIMEX3 definite="FALSE" tid="t11" type="DATE" value="1866" valueFromSurface="XXXX">慶応二年</TIMEX3>の<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="1866-07" valueFromSurface="XXXX-07">七月</TIMEX3>、十四代将軍の徳川家茂が第二次征長戦のさなか、大坂城で<event class="" eid="e120">病死した</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t13" type="DURATION" value="P21Y" valueFromSurface="P21Y">二十一歳</TIMEX3>。</sentence>
+<sentence>さらに<TIMEX3 mod="END" tid="t201" type="DATE" value="1866-12" valueFromSurface="XXXX-12">暮れ</TIMEX3>には孝明天皇が<event class="" eid="e121">崩じる</event>。</sentence>
+<sentence>こちらは<TIMEX3 definite="FALSE" tid="t14" type="DURATION" value="P37Y" valueFromSurface="P37Y">三十七歳</TIMEX3>。</sentence>
+<sentence>毒殺との噂が<event class="" eid="e122">流れた</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t15" type="DATE" value="1866" valueFromSurface="XXXX">昨年</TIMEX3>のことである。</sentence>
+<sentence>　その間、<event class="STATE" eid="e123">いたずらに</event>時日は<event class="" eid="e124">流れ</event>、約束の開港日は、もう目前であった。</sentence>
+<sentence>　十五代将軍と<event class="" eid="e125">なった</event>徳川慶喜が、兵庫開港の勅許をようやく<event class="" eid="e126">得た</event>のが、この<TIMEX3 definite="FALSE" tid="t16" type="DATE" value="1867-05" valueFromSurface="XXXX-05">五月</TIMEX3>、国内布告の限度であった<TIMEX3 definite="FALSE" tid="t17" type="DURATION" value="P6M" valueFromSurface="P6M">六ヶ月前</TIMEX3>に、滑り込みセーフといったきわどさだった。</sentence>
+<sentence>　開港日までに異人たちの居留地を<event class="" eid="e127">造成し</event>、<ruby rubyText="うん">運</ruby><ruby rubyText="じょう">上</ruby><ruby rubyText="しょ">所</ruby>などの設備を<event class="" eid="e128">建設しなければならない</event>。</sentence>
+<sentence>小野浜のお祭り騒ぎは、この居留地工事であった。</sentence>
+<sentence>　つい<TIMEX3 definite="FALSE" tid="t18" type="DATE" value="1867-10-15" valueFromSurface="XXXX-XX-XX">昨日</TIMEX3>から、普請に<event class="" eid="e129">取りかかった</event>。</sentence>
+<sentence>開港の期日まで、<event class="" eid="e130">余す</event>ところ<TIMEX3 definite="FALSE" tid="t19" type="DURATION" value="P2M" valueFromSurface="P2M">二ヶ月</TIMEX3>も<event class="STATE" eid="e131">ない</event>。</sentence>
+<sentence>まさにぎりぎりの着工である。</sentence>
+<sentence>　街道を<event class="" eid="e132">飛びまわっていた</event>ツバメも、いつしか姿を<event class="" eid="e133">消した</event>。</sentence>
+<sentence>　地付同心見習の山内四郎たちは、兵庫勤番所を<event class="" eid="e134">出</event>、湊口の惣門を<event class="" eid="e135">くぐり</event>神戸村へ<event class="" eid="e136">向かっていた</event>。</sentence>
+<sentence>それぞれ大荷物を<event class="" eid="e137">抱えている</event>。</sentence>
+<sentence>　荷物は、<event class="STATE" eid="e138">膨大な</event>数の手ぬぐいであった。</sentence>
+<sentence type="quasi">　（もう、あほらしゅうて…）</sentence>
+<sentence>　四郎は、胸のなかで<event class="" eid="e139">毒づいている</event>。</sentence>
+<sentence>　地付同心というのは、地元の郷士を<event class="" eid="e140">現地採用した</event>もので、<event class="STATE" eid="e141">たしかに</event>幕吏にはちがい<event class="STATE" eid="e142">ない</event>が、普通の与力や同心とは、やや趣が<event class="" eid="e143">異なっている</event>。</sentence>
+<sentence>一口では<event class="" eid="e144">説明できない</event>が、国家公務員と地方公務員のちがいのようなものが<event class="" eid="e145">ある</event>。</sentence>
+<sentence>第一、転勤が<event class="STATE" eid="e146">ない</event>。</sentence>
+<sentence>　それはそれとして、四間（約七メートル）ほどの高さが<event class="" eid="e147">ある</event>湊川の高土手を<event class="" eid="e148">上り下りし</event>て、大汗<event class="" eid="e149">かき</event>ながら、なぜ手ぬぐいなど<event class="" eid="e150">運んでいる</event>かと<event class="" eid="e151">いう</event>と、これにはわけが<event class="" eid="e152">ある</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t20" type="DATE" value="1867" valueFromSurface="XXXX">この年</TIMEX3>は<ruby rubyText="かん">旱</ruby><ruby rubyText="ばつ">魃</ruby>で、兵庫津でも飲料水や用池用水が<event class="" eid="e153">欠乏し</event>、<TIMEX3 definite="FALSE" tid="t21" type="DATE" value="1867-08" valueFromSurface="XXXX-08">八月</TIMEX3>に市中の雨乞いが<event class="" eid="e154">おこなわれた</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t22" type="TIME" value="XXXX-XX-XXTEV" valueFromSurface="XXXX-XX-XXTEV">日暮れ</TIMEX3>から<ruby rubyText="はた">旅</ruby><ruby rubyText="ご">籠</ruby>町の町はずれに鐘や太鼓や<ruby rubyText="たいまつ">松明</ruby>を手に<event class="" eid="e155">集まりはじめた</event>群衆は、どんどん<event class="" eid="e156">膨れ上がっ</event>て<event class="STATE" eid="e157">長い</event>行列に<event class="" eid="e158">なり</event>、例によって揃いの緋縮緬の襦袢で<event class="" eid="e159">踊りはじめた</event>。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t23" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">次の日</TIMEX3>も<event class="" eid="e160">つづく</event>。</sentence>
+<sentence>　連中は、日本一の雨乞い、などと<event class="" eid="e161">称し</event>て大いに<event class="" eid="e162">盛り上がっていた</event>が、勤番所では肝を<event class="" eid="e163">冷やした</event>。</sentence>
+<sentence><event class="STATE" eid="e164">いやで</event>も、<TIMEX3 definite="FALSE" tid="t24" type="DATE" value="1866" valueFromSurface="XXXX">昨年</TIMEX3>のコボチを<event class="" eid="e165">思い出す</event>。</sentence>
+<sentence>鉦太鼓が、いつ竹槍やトビ口に<event class="" eid="e166">とっ</event>て<event class="" eid="e167">かわる</event>か<event class="" eid="e168">分からない</event>。</sentence>
+<sentence>　そのときには幸いなにごとも<event class="STATE" eid="e169">なく</event><event class="" eid="e170">終わった</event>が、<TIMEX3 tid="t202" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今度</TIMEX3>は、神戸村で砂持ちが<event class="" eid="e171">ある</event>と<event class="" eid="e172">いう</event>。</sentence>
+<sentence type="quasi">　「祝儀に、手ぬぐいでも<event class="" eid="e173">配っ</event>てはどうか」</sentence>
+<sentence>　上司の目付が、ふと<event class="" eid="e174">思いついた</event>ように<event class="" eid="e175">言い</event>、この仕儀と<event class="" eid="e176">なった</event>。</sentence>
+<sentence>　暴発を<event class="" eid="e177">心配し</event>て、機嫌を<event class="" eid="e178">とっておこう</event>と<event class="" eid="e179">いうのである</event>。</sentence>
+<sentence type="quasi">　（<event class="" eid="e180">いらん</event>心配や）</sentence>
+<sentence>　四郎は、そう<event class="" eid="e181">思うのである</event>。</sentence>
+<sentence>　<event class="STATE" eid="e182">たしかに</event>民衆に憤懣は<event class="" eid="e183">つのっている</event>。</sentence>
+<sentence><ruby rubyText="あずま">幕府</ruby>や<ruby rubyText="かしこどころ">朝廷</ruby>などの思惑は<event class="" eid="e184">分からぬ</event>が、開港、という新事態を庶民は<event class="" eid="e185">喜んでいる</event>。</sentence>
+<sentence type="quasi">　（ちっとは、<event class="STATE" eid="e186">ましに</event><event class="" eid="e187">なる</event>んや<event class="STATE" eid="e188">ない</event>か）</sentence>
+<sentence>　そんな期待が<event class="STATE" eid="e189">大きいのだ</event>。</sentence>
+<sentence type="fragment">　<TIMEX3 definite="TRUE" tid="t25" type="DATE" value="XXXX" valueFromSurface="Q-XY">数年前</TIMEX3>のことだが、禁門の変で敗走中の長州兵卒が、尼崎・<ruby rubyText="だい">大</ruby><ruby rubyText="もつ">物</ruby>北ノ口番所で<event class="" eid="e190">捕らえられ</event>、</sentence>
+<sentence>「<event class="STATE" eid="e191">残念</event>！」</sentence>
+<sentence type="fragment">と<event class="" eid="e192">叫ん</event>で<event class="" eid="e193">自殺した</event>。</sentence>
+<sentence>ところがこの墓が［残念さん］と<event class="" eid="e194">呼ばれ</event>、［残念さん参り］に講を<event class="" eid="e195">組ん</event>で、怒濤のように参詣人が<event class="" eid="e196">押し寄せた</event>。</sentence>
+<sentence>ついには屋台店や茶店まで<event class="" eid="e197">出る</event>ほどの賑わいに<event class="" eid="e198">なったことがある</event>。<info arg="page" value="delimiter" /></sentence>
+<sentence>　内戦さえ、世直しに<event class="" eid="e199">なる</event>、と<event class="" eid="e200">期待する</event>のは大きな声では<event class="" eid="e201">言えない</event>が、四郎とて<event class="STATE" eid="e202">同じなのであった</event>。</sentence>
+<sentence>　湊川を<event class="" eid="e203">渡り終えた</event>あとは、坂本村、<ruby rubyText="はしうど">走水</ruby>村、二ツ茶屋村と<event class="" eid="e204">過ぎ</event>て、<ruby rubyText="こい">鯉</ruby><ruby rubyText="かわ">川</ruby>を<event class="" eid="e205">渡った</event>ところが目的地だった。</sentence>
+<sentence>　緋縮緬が<event class="" eid="e206">乱舞する</event>なか、四郎たちは、一軒きり海べりにぽつんと<event class="" eid="e207">建つ</event>建物へ<event class="" eid="e208">向かった</event>。</sentence>
+<sentence>　そこが、神戸村普請会所に<event class="" eid="e209">なっている</event>。</sentence>
+<sentence>ついでに<event class="" eid="e210">いえ</event>ば、この建物は勝海舟の置きみやげだ。</sentence>
+<sentence>海軍操練所跡が大坂町奉行所の仮事務所と<event class="" eid="e211">なっていた</event>。</sentence>
+<sentence>　山内四郎は、そこで<event class="" eid="e212">思いがけない</event>いでたちの人物に<event class="" eid="e213">出会い</event>、<event class="" eid="e214">思わず</event><event class="" eid="e215">破顔した</event>。</sentence>
+<sentence type="quasi">　「おい、シュウや<event class="STATE" eid="e216">ない</event>か」</sentence>
+<sentence type="quasi">　「ああ、こりゃ四郎さんか」</sentence>
+<sentence type="quasi">　シュウと<event class="" eid="e217">呼ばれた</event>若者は、くりくりっと愛嬌の<event class="" eid="e218">ある</event>目で笑いを<event class="" eid="e219">返し</event>、ついでに、</sentence>
+<sentence>　「おい、こら。</sentence>
+<sentence>もうちょっと<event class="STATE" eid="e220">丁寧に</event><event class="" eid="e221">運べ</event>。</sentence>
+<sentence type="quasi">人に<event class="" eid="e222">突き当たっ</event>て怪我でも<event class="" eid="e223">させたら</event>、<event class="" eid="e224">いてまう</event>ぞ」</sentence>
+<sentence>　砂持ち衆に<event class="" eid="e225">混じっ</event>て<event class="" eid="e226">働く</event>、日雇い人足を<event class="" eid="e227">叱咤した</event>。</sentence>
+<sentence>　「どう<event class="" eid="e228">いう</event>こっちゃ。</sentence>
+<sentence type="quasi"><TIMEX3 tid="t203" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今度</TIMEX3>は、松屋に鞍替えか」</sentence>
+<sentence>　シュウが<event class="" eid="e229">着込んでいる</event>半纏には、松葉菱の中に松の字が<event class="" eid="e230">入っている</event>。</sentence>
+<sentence>松屋というのは、この神戸村庄屋の生島四郎太夫の屋号であった。</sentence>
+<sentence>入札で、今回の居留地普請を一手に<event class="" eid="e231">請け負っていた</event>。</sentence>
+<sentence type="quasi">　「ま、そう<event class="" eid="e232">いう</event>こっちゃ」</sentence>
+<sentence>　胸を<event class="" eid="e233">張る</event>ように<event class="" eid="e234">し</event>てシュウは<event class="" eid="e235">答え</event>、ついでにニヤリと<event class="" eid="e236">笑っ</event>て<event class="" eid="e237">見せた</event>。</sentence>
+<sentence>　<event class="" eid="e238">秘密めいた</event>ところの<event class="" eid="e239">ある</event>若者なのである。</sentence>
+<sentence>　本名は<ruby rubyText="よ">与</ruby><ruby rubyText="ろく">六</ruby>と<event class="" eid="e240">いうらしい</event>が、それがほんとうかどうかも四郎は<event class="" eid="e241">知らない</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" mod="MORE_THAN" tid="t26" type="DURATION" value="P2Y" valueFromSurface="P2Y">二年ちょっと前</TIMEX3>に、ふらりと兵庫の町に<event class="" eid="e242">現われた</event>が、それ<TIMEX3 tid="t204" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">以前</TIMEX3>の経歴が、さっぱり<event class="" eid="e243">分からない</event>。</sentence>
+<sentence>　与六が兵庫に<event class="" eid="e244">現われた</event>ころ、四郎はまだ<TIMEX3 definite="FALSE" tid="t27" type="DURATION" value="P17Y" valueFromSurface="P17Y">十七</TIMEX3>で、地付同心見習と<event class="" eid="e245">なった</event>のは<TIMEX3 definite="FALSE" tid="t28" type="DATE" value="1866" valueFromSurface="XXXX">昨年</TIMEX3>からである。</sentence>
+<sentence>四郎の父は山内今右衛門と<event class="" eid="e246">いっ</event>て、やはり地付同心であった。</sentence>
+<sentence>　さて<TIMEX3 definite="FALSE" tid="t29" type="DATE" value="1865" valueFromSurface="Q-2Y">二年前</TIMEX3>―。</sentence>
+<sentence type="quasi">　「どうも、おかしな小僧が<event class="" eid="e247">おる</event>」</sentence>
+<sentence>　首を<event class="" eid="e248">ひねり</event>ながら、父が<event class="" eid="e249">言った</event>。</sentence>
+<sentence type="quasi">　「目つきと<event class="" eid="e250">いい</event>、身のこなしと<event class="" eid="e251">いい</event>、ただ者ではない」</sentence>
+<sentence type="quasi">　<event class="STATE" eid="e252"><ruby rubyText="う">胡</ruby><ruby rubyText="ろん">乱</ruby></event>の者取締の市中見廻りで、蔵番を<event class="" eid="e253">していた</event>与六に目を<event class="" eid="e254">つけ</event>て、</sentence>
+<sentence type="quasi">　「盗賊のつなぎではないか」</sentence>
+<sentence>と<event class="" eid="e255">疑ったらしい</event>。</sentence>
+<sentence>　その小僧のことなら、四郎も<event class="" eid="e256">聞いていた</event>。</sentence>
+<sentence>　なんでも、<event class="STATE" eid="e257">えらく</event>喧嘩が<event class="STATE" eid="e258">強いらしい</event>。</sentence>
+<sentence>柔術を<event class="" eid="e259">つかう</event>、とも<event class="" eid="e260">聞いた</event>。</sentence>
+<sentence>チンピラに<event class="STATE" eid="e261">近い</event>若者同士の噂であって、まだ四郎は<event class="" eid="e262">見た</event>ことが<event class="STATE" eid="e263">なかった</event>。</sentence>
+<sentence>　父は与六の身辺を<event class="" eid="e264">探索していた</event>ようだが、突然、そのことを口に<event class="" eid="e265">しなく</event><event class="" eid="e266">なった</event>。</sentence>
+<sentence type="quasi">　ただ一言、</sentence>
+<sentence>　「あいつの請人だが、網屋新九郎だった。</sentence>
+<sentence type="quasi">問題は<event class="STATE" eid="e267">ない</event>」</sentence>
+<sentence>　<event class="" eid="e268">言っ</event>て、目を<event class="" eid="e269">細め</event>ながら鯛の刺身を<event class="" eid="e270">食った</event>。</sentence>
+<sentence type="quasi">　（たっぷり、袖に<event class="" eid="e271">放り込まれた</event>な）</sentence>
+<sentence>　そのとき、四郎は、そう<event class="" eid="e272">思った</event>ものだ。</sentence>
+<sentence>　請人、つまり与六の保証人である網屋新九郎というのは、南浜に九軒<event class="" eid="e273">ある</event>浜本陣のひとつだった。</sentence>
+<sentence>九軒のうち、五軒までが網屋を<event class="" eid="e274">称している</event>が、新九郎の姓は南条と<event class="" eid="e275">いう</event>。</sentence>
+<sentence>　浜本陣というのは、各藩の産物を<event class="" eid="e276">売買する</event>特権を<event class="" eid="e277">与えられる</event>かわりに、諸般の用達を<event class="" eid="e278">おこない</event>、参勤交代などの際にはその邸宅を宿泊や休息に<event class="" eid="e279">提供する</event>という商家で、兵庫だけに<event class="" eid="e280">ある</event>。</sentence>
+<sentence>南条新九郎は、岡山藩と高松藩の御用を<event class="" eid="e281">勤めている</event>。</sentence>
+<sentence>　四郎は与六に興味を<event class="" eid="e282">持った</event>。</sentence>
+<sentence>　歳は<TIMEX3 definite="FALSE" tid="t30" type="DURATION" value="P16Y" valueFromSurface="P16Y">十六</TIMEX3>と<event class="" eid="e283">いう</event>から、自分よりは年下だ。</sentence>
+<sentence>それが父の目には<quote>「ただ者ではない」</quote>と<event class="" eid="e284">映り</event>、町の不良少年たちからは<quote>「あいつは<event class="STATE" eid="e285">強い</event>」</quote>と一目<event class="" eid="e286">置かれている</event>。</sentence>
+<sentence>　で、<event class="" eid="e287">会いたく</event><event class="" eid="e288">なった</event>。</sentence>
+<sentence>　東出町の梅尾稲荷近くで蔵番を<event class="" eid="e289">している</event>と父から<event class="" eid="e290">聞き</event>、<event class="" eid="e291">出かけ</event>て<event class="" eid="e292">いった</event>。</sentence>
+<sentence>それらしい若者は、すぐに<event class="" eid="e293">見つかった</event>。</sentence>
+<sentence>　<event class="STATE" eid="e294">小柄だった</event>。</sentence>
+<sentence>長身の四郎に<event class="" eid="e295">くらべる</event>と、頭ひとつほど<event class="STATE" eid="e296">小さい</event>。</sentence>
+<sentence>　まず、名を<event class="" eid="e297">確かめてみた</event>。</sentence>
+<sentence type="quasi">　「うらか」</sentence>
+<sentence type="quasi">　よく<event class="" eid="e298">光る</event>目を<event class="" eid="e299">向け</event>て<event class="" eid="e300">言い</event>、</sentence>
+<sentence type="quasi">　「わりゃー、なにもんぞ」</sentence>
+<sentence>　<event class="STATE" eid="e301">逆に</event><event class="" eid="e302">問い返し</event>て<event class="" eid="e303">きた</event>。</sentence>
+<sentence type="quasi">　（ふむ…）</sentence>
+<sentence>　自分のことを<quote>「うら」</quote>と<event class="" eid="e304">言い</event>、おまえのことを<quote>「わりゃー」</quote>と<event class="" eid="e305">言う</event>。</sentence>
+<sentence>　どうやら讃岐の出であるらしい。</sentence>
+<sentence>請人の南条は、高松藩の御用を<event class="" eid="e306">勤めている</event>。</sentence>
+<sentence>それならつじつまが<event class="" eid="e307">合う</event>…。</sentence>
+<sentence>四郎はそう<event class="" eid="e308">思った</event>。</sentence>
+<sentence>　しかしそんなことはおくびにも<event class="" eid="e309">出さず</event>、背筋を<event class="" eid="e310">伸ばし</event>て自己紹介を<event class="" eid="e311">した</event>。</sentence>
+<sentence type="quasi">　「ふうん」</sentence>
+<sentence type="quasi">　「で、おぬしは？」</sentence>
+<sentence type="quasi">　「シュウザン」</sentence>
+<sentence>　<event class="STATE" eid="e312">ぶっきらぼうに</event><event class="" eid="e313">答えた</event>。</sentence>
+<sentence>　「なんやいな。</sentence>
+<sentence type="quasi">どんな字を<event class="" eid="e314">書く</event>んや」</sentence>
+<sentence>　「鷲に山と<event class="" eid="e315">書く</event>。</sentence>
+<sentence type="quasi">鷲山だ」</sentence>
+<sentence type="quasi">　「与六ではないのか」</sentence>
+<sentence type="quasi">　「そんな名も<event class="" eid="e316">ある</event>」</sentence>
+<sentence>　<event class="" eid="e317">すました</event>顔で<event class="" eid="e318">答える</event>。</sentence>
+<sentence>　はて、こわっぱのくせに雅号を<event class="" eid="e319">持っている</event>のかと<event class="" eid="e320">思った</event>が、それ以上は<event class="" eid="e321">聞かなかった</event>。</sentence>
+<sentence>　どこか世を<event class="" eid="e322">すね</event>、<event class="STATE" eid="e323">ぶっきらぼうで</event>は<event class="" eid="e324">ある</event>が、<event class="" eid="e325">憎めない</event>ところが<event class="" eid="e326">ある</event>。</sentence>
+<sentence>四郎とは相性が<event class="STATE" eid="e327">良かった</event>のか、すぐに友人に<event class="" eid="e328">なった</event>。</sentence>
+<sentence type="quasi">　あとで<event class="" eid="e329">聞いた</event>話だが、</sentence>
+<sentence type="quasi">　「よく<event class="" eid="e330">似た</event>名だ」</sentence>
+<sentence>　つまり、四郎を<quote>「よろう」</quote>と<event class="" eid="e331">読め</event>ば、与六と<event class="" eid="e332">似ている</event>と<event class="" eid="e333">言いたかったらしい</event>。</sentence>
+<sentence>そんなことで親しみを<event class="" eid="e334">覚えた</event>ようだが、おかしなことを<event class="" eid="e335">考える</event>やつだ。</sentence>
+<sentence>　そのころには、与六の訛りも<event class="" eid="e336">目立たなく</event><event class="" eid="e337">なっていた</event>。</sentence>
+<sentence>だが、鷲山、の由来については<event class="" eid="e338">教えない</event>。</sentence>
+<sentence>来し方にいたっては、貝のように口を<event class="" eid="e339">閉ざす</event>。</sentence>
+<sentence>　それはそれとして、とにかく、<event class="STATE" eid="e340">頻繁に</event>仕事を<event class="" eid="e341">変える</event>男だった。</sentence>
+<sentence>　<event class="STATE" eid="e342">新しい</event>仕事に<event class="" eid="e343">つく</event>と、あっと<event class="" eid="e344">いう</event>間に頭分に<event class="" eid="e345">なっている</event>。</sentence>
+<sentence>年上のものまで<event class="" eid="e346">従える</event>。</sentence>
+<sentence><event class="STATE" eid="e347">奇妙な</event>才能を<event class="" eid="e348">持っている</event>。</sentence>
+<sentence>　そのまま<event class="" eid="e349">つづければいい</event>ものを、また<event class="" eid="e350">変わる</event>。</sentence>
+<sentence type="quasi">　本人に<event class="" eid="e351">いわせれ</event>ば、</sentence>
+<sentence>　<quote>「自分の仕事ではない」</quote>と<event class="" eid="e352">いう</event>。</sentence>
+<sentence type="quasi">　「じゃ、どんな仕事を<event class="" eid="e353">したい</event>んや」</sentence>
+<sentence type="quasi">　「それを<event class="" eid="e354">探している</event>」</sentence>
+<sentence>と<event class="" eid="e355">いうことになる</event>。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t31" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>では、<quote>「小天狗」</quote>とも<event class="" eid="e356">呼ばれている</event>。</sentence>
+<sentence>　四郎が<event class="" eid="e357">見た</event>わけではないが、<TIMEX3 definite="FALSE" tid="t32" type="DATE" value="1866" valueFromSurface="XXXX">昨年</TIMEX3>の<SUW end="50260" formBase="コボチ" lForm="コボチ" lemma="毀ち" lemmaID="206302" orderID="32610" pos="名詞-普通名詞-一般" pron="コボチ" start="50230" wType="和">コボ<info arg="page" value="delimiter" />チ</SUW>で、たまたま与六が<event class="" eid="e358">奉公していた</event>店が<event class="" eid="e359">襲われた</event>とき、たちまち、暴徒の二、三人を<event class="" eid="e360">投げ飛ばしたらしい</event>。</sentence>
+<sentence>　その動きが、まるで小天狗のようだった、と<event class="" eid="e361">いう</event>。</sentence>
+<sentence>　兵庫の博徒で、<ruby rubyText="ほてい">布袋</ruby>の徳三という親分が、身内に<event class="" eid="e362">迎えよう</event>と<event class="" eid="e363">した</event>が、あっさり<event class="" eid="e364">断わられた</event>という話も<event class="" eid="e365">ある</event>。</sentence>
+<sentence>　そんな若者だった。<info arg="page" value="delimiter" /></sentence>

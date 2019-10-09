@@ -1,0 +1,1 @@
+<a>左肺上葉、右肺下葉，左肺下葉</a>肺転移切除後。さらに今月４日に、<a>左肺下葉</a>部分切除後。<a>左胸腔内</a>に<d certainty="positive">液貯留</d>がみられ、空気も<f>巣状</f>にみられ、<d certainty="positive">粘稠な液体</d>がたまっているものと思われ、<d certainty="positive">膿瘍</d>が示唆されます。<a>胸壁内</a>へも<d certainty="positive">炎症や液貯留</d>が波及しているように見えます。

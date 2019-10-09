@@ -1,0 +1,14 @@
+<a>肝</a>：<d certainty="negative">SOL</d>なし。<d certainty="negative">うっ血肝</d>を示唆する所見なし。
+<a>胆嚢</a>：n.p.
+<a>膵</a>：<a>尾部</a>に<d certainty="positive">小嚢胞</d>。
+<a>脾</a>：n.p.
+<a>腎</a>：n.p.
+<a>副腎</a>：n.p.
+<d certainty="negative">リンパ節腫大</d>なし。
+<d certainty="positive">腹水</d><f>少量</f>あり。
+<胸部CT>
+<a>両側肺</a>、特に<a>上葉</a>に、<d certainty="positive">容積減少</d>を伴った<d certainty="positive", correction="無気肺硬化像">無気肺硬化像像</d>と思われる<d certainty="positive">均等影、軽度すりガラス影</d>を認め、<a>末梢気管支</a>の<d certainty="positive">拡張</d>や<d certainty="positive">拡大した嚢胞腔</d>を認めます。また、<a>両肺下葉</a>にも<d certainty="positive">すりガラス影、線状・索状影</d>を認める他、<d certainty="positive">透過性のやや亢進した領域</d>が<f>混在</f>しており、<d certainty="suspicious">air trappingによる陰影</d>か。<a>左肺舌区</a>レベルで、<f>外側</f>に<f>少量</f>の<d certainty="positive">air像</d>を認め、<f>少量</f>の<d certainty="suspicious">気胸</d>の疑いあり。
+<d certainty="suspicious">PPFE、chronic HP</d>などが疑われます。
+<a>右側</a>と比較して、<a>左肺下葉の肺動脈</a>は<d certainty="positive">狭小化</d>している印象です。
+<a>右主気管支下</a>に<d certainty="positive">軟部陰影</d>を認めます。<d certainty="suspicious">反応性リンパ節</d>か。
+<f>少量</f>の<d certainty="positive">胸水貯留</d>あり。

@@ -1,0 +1,12 @@
+<a>両側肺下葉</a>に<f>軽度</f>の<d certainty="positive">volume loss</d>を伴った<f>非区域性</f>の<d certainty="positive">すりガラス影、網状影</d>を認めます。<f>軽度</f>ですが<a>気管支血管周囲</a>に沿って拡がる部分や<a>胸膜下</a>を一層<p>spare</p>するように広がる部分を上記<d certainty="positive">陰影</d>に認めます。<d certainty="negative">蜂窩肺</d>は認めません。<d certainty="suspicious">間質性肺炎</d>（<d certainty="suspicious">NSIPパターン</d>）を疑います。前回（2012/3/14）に比して、<c>僅かですが増強</c>して見えます。
+<a>右肺S8/9底部末梢</a>に<f>径4mm大</f>の<d certainty="positive">小結節</d>を認める他、<a>両側肺</a>に<d certainty="positive">小結節</d>を認めますが、前回と比較して、概ね変化ありません。前回と著変ありません。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節腫大</d>は認めません。
+<d certainty="negative">胸水</d>なし。
+<a>胆嚢頚部</a>に<d certainty="positive">胆石</d>あり。
+<a>両側肺下葉</a>に<d certainty="positive">網状影、すりガラス影</d>を<f>軽度</f>認め<d certainty="positive">収縮性変化</d>を伴っています。 また<a>胸膜直下</a>は<p>spare</p>されています。
+前回(2014/06/16)と比較して病勢に大差なく、<d certainty="suspicious">NSIPパターンの間質性肺炎</d>の経過が疑われます。
+<a>両側肺</a>に<f>径5mm大程度</f>までの<d certainty="positive">小結節影</d>が<f>散在</f>していますが前回と比較してほぼ変化なく、<d certainty="suspicious">炎症後変化等の良性病変</d>の経過を疑います。
+<f>有意な</f><d certainty="negative">リンパ節腫大</d>を指摘できません。
+<d certainty="negative">胸水貯留</d>を認めません。
+<d certainty="positive">胆石</d>を認めます。
+

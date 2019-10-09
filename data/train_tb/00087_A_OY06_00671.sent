@@ -1,0 +1,32 @@
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2008-07-20" valueFromSurface="H20-07-20">Ｈ２０．７．２０</TIMEX3>日経記事耕作放棄地を実態調査から　<event class="" eid="e1">かきこむ</event>と。</sentence>
+<sentence>　　　　　　　　　　　　食糧問題、、石油の価額大幅値上がり、まだまだ<event class="" eid="e2">上がる</event>。</sentence>
+<sentence>自衛策、みんなベランダで、、野菜を<event class="" eid="e3">作ろう</event>、みんな軒先で茄子を<event class="" eid="e4">作ろう</event>。</sentence>
+<sentence>ピーマンを<event class="" eid="e5">作ろう</event>。</sentence>
+<sentence>キュウリを<event class="" eid="e6">作ろう</event>、イモを<event class="" eid="e7">作ろう</event>。</sentence>
+<sentence>ジャガイモを<event class="" eid="e8">作ろう</event>。</sentence>
+<sentence>かぼちゃを<event class="" eid="e9">作ろう</event>。</sentence>
+<sentence>みんなで周辺に<event class="" eid="e10">空いている</event>土地を<event class="" eid="e11">探そう</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t2" type="SET" value="NONE">年がら年中</TIMEX3><event class="" eid="e12">作れる</event><event class="" eid="e13">食べられる</event>物を<event class="" eid="e14">作る</event>ことを、、、万が一何もかも物価が<event class="" eid="e15">上がっ</event>ても飢え死になど<event class="" eid="e16">しない</event>為に、、自らの分、家族の分を軒先などで<event class="" eid="e17">作ろう</event>。</sentence>
+<sentence>また、、消費ブームを<event class="" eid="e18">あおる</event>のも<event class="STATE" eid="e19">良い</event>が、、カネが<event class="STATE" eid="e20">ない</event>時は、、とにかく、<event class="" eid="e21">出る</event>お金は<event class="STATE" eid="e22">少なく</event>、、一度見直しを。</sentence>
+<sentence>お金持ちはどんどん<event class="" eid="e23">使っ</event>て、、<event class="" eid="e24">頂く</event>ように。</sentence>
+<sentence>しかしお金持ちほど、、<event class="STATE" eid="e25">ケチで</event>無駄使いを<event class="" eid="e26">しない</event>ことも注目。</sentence>
+<sentence>さて、百姓にコメが<event class="" eid="e27">取れすぎ</event>て<event class="" eid="e28">困る</event>とか減反政策を<event class="" eid="e29">行ってきた</event>。</sentence>
+<sentence>この減反政策を<event class="STATE" eid="e30">大きく</event>修正変更と<event class="" eid="e31">いう</event>。</sentence>
+<sentence>百姓はみな採算<event class="" eid="e32">合わず</event>、お手上げ。</sentence>
+<sentence>大規模農業とか<event class="" eid="e33">言っ</event>て、借金を<event class="" eid="e34">作り</event>、耕地整理を<event class="" eid="e35">し</event>て、、農機具にまた借金を<event class="" eid="e36">作り</event>、、じり貧と<event class="" eid="e37">なり</event>、、そこへ　農機具の故障、買い替え、借金が<event class="" eid="e38">膨らみ</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>までに、農協、等々の指導<event class="" eid="e39">ある</event>も、、<event class="STATE" eid="e40">うまく</event>お金に<event class="" eid="e41">ならず</event>、借金だけを<event class="" eid="e42">作る</event>指導と<event class="" eid="e43">いう</event>、。</sentence>
+<sentence>それは日本の植林も<event class="" eid="e44">言える</event>。</sentence>
+<sentence type="quasi">このような中で政府は１）草刈りなどで耕作が<event class="STATE" eid="e45">可能な</event>土地、</sentence>
+<sentence type="quasi">２）草刈りなどで<event class="" eid="e46">耕作出来ない</event>が、基盤整備を<event class="" eid="e47">実施し</event>て農業に<event class="" eid="e48">利用するべき</event>土地、　　　３）森林。原野。に<event class="" eid="e49">なってい</event>て農地のへの復元が<event class="STATE" eid="e50">不可能な</event>土地、</sentence>
+<sentence type="quasi">――３つに色分、<event class="" eid="e51">分類する</event>、、略、、、</sentence>
+<sentence>耕作放棄地は農村の過疎化や高齢化の影響などが課題に<event class="" eid="e52">なる</event>。</sentence>
+<sentence>政府は<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2011" valueFromSurface="2011">２０１１年</TIMEX3>までには<event class="" eid="e53">解消する</event>ことを目標に<event class="" eid="e54">している</event>。、</sentence>
+<sentence>耕作放棄地に<event class="" eid="e55">した</event>のは、休耕田の制度に問題が<event class="" eid="e56">あった</event>と<event class="" eid="e57">いえる</event>。</sentence>
+<sentence>村単位の文化も<event class="" eid="e58">なくなり</event>、何か知恵が必要。</sentence>
+<sentence>ただし、、この問題は、、頭の<event class="STATE" eid="e59">いい</event>方、<event class="" eid="e60">出世される</event>方が<event class="" eid="e61">やる</event>と、、また、ダメかな、、外国の<event class="STATE" eid="e62">偉い</event>方等々第三者も<event class="" eid="e63">入れる</event>ことかな、、また、農村はイノシシ、シカに被害が続出、、すぐ対策が<event class="" eid="e64">とれる</event>知恵が<event class="" eid="e65">あります</event>か。</sentence>
+<sentence>ただちに方法を、、補助金などと、、お金を<event class="" eid="e66">出し</event>て、と<event class="" eid="e67">いう</event>前に、他の方法も<event class="" eid="e68">ある</event>と<event class="" eid="e69">思う</event>。</sentence>
+<sentence>お金が<event class="" eid="e70">出ない</event>から計画おしまい。</sentence>
+<sentence>ということ<event class="STATE" eid="e71">多い</event>ため、お金以外でも知恵を<event class="" eid="e72">出す</event>対策を、、国<event class="" eid="e73">破れ</event>、、さらに政府が減反と<event class="" eid="e74">いい</event>、<event class="" eid="e75">耕す</event>なと<event class="" eid="e76">いう</event>。</sentence>
+<sentence>百姓さん、「むしろ旗」も<event class="" eid="e77">ある</event>よ、国を<event class="STATE" eid="e78">良い</event>方向に<event class="" eid="e79">造る</event>ことを、、、知恵を<event class="" eid="e80">出す</event>こと祈念。</sentence>
+<sentence>百姓の生まれ、、、政府も<TIMEX3 type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>からお手上げ、<event class="STATE" eid="e81">そんなに</event>知恵は<event class="STATE" eid="e82">ない</event>と<event class="" eid="e83">思う</event>、<TIMEX3 definite="FALSE" tid="t5" type="DURATION" value="P20Y" valueFromSurface="P20Y">２０</TIMEX3>，<TIMEX3 definite="FALSE" tid="t6" type="DURATION" value="P30Y" valueFromSurface="P30Y">３０</TIMEX3>，<TIMEX3 definite="FALSE" tid="t7" type="DURATION" value="P50Y" valueFromSurface="P50Y">５０年</TIMEX3>先を<event class="" eid="e84">見</event>て百姓自身で<event class="" eid="e85">考えられる</event>こと祈念、、、国のの方針はすぐ<event class="" eid="e86">変わる</event>こと<event class="" eid="e87">想定し</event>て対策を、、、、表現がめちゃくちゃ、、私は百姓よ、勉強など<event class="" eid="e88">してない</event>、かき方も<event class="" eid="e89">わからない</event>、気持ちで<event class="" eid="e90">読ん</event>で。。</sentence>
+<sentence>お百姓には苦労が<event class="" eid="e91">ある</event>よ。</sentence>

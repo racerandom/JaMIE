@@ -1,0 +1,8 @@
+<sentence>息子がバレンタインデーの日に同じクラスの女の子に手作りチョコを<event class="" eid="e1">もらっ</event>て<event class="" eid="e2">きました</event>。</sentence>
+<sentence>一応<event class="" eid="e3">お返ししない</event>と<event class="" eid="e4">いけない</event>なぁと<event class="" eid="e5">思っているのです</event>が、相手が<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P2Y10M" valueFromSurface="P2Y10M">２才１０ヶ月</TIMEX3>の女の子です。</sentence>
+<sentence>一体何を<event class="" eid="e6">あげればいいのでしょう</event>？</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P2Y10M" valueFromSurface="P2Y10M">２才１０ヶ月</TIMEX3>の女の子は何が<event class="STATE" eid="e7">好きなんでしょう</event>？</sentence>
+<sentence type="quasi">さっぱり見当が<event class="" eid="e8">付かないんです</event>けど・・・</sentence>
+<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="2005-WXX-1" valueFromSurface="XXXX-WXX-1">月曜日</TIMEX3>に保育園へ<event class="" eid="e9">持っ</event>て<event class="" eid="e10">行くので</event>あんまり<event class="STATE" eid="e11">大きく</event><event class="STATE" eid="e12">ない</event>物が<event class="STATE" eid="e13">良いんです</event>が・・・</sentence>
+<sentence>私も<event class="STATE" eid="e14">小さい</event>子にはお菓子より、ハンカチなどが<event class="STATE" eid="e15">いい</event>と<event class="" eid="e16">思います</event>。</sentence>
+<sentence><event class="STATE" eid="e17">かわいい</event>ハンドタオルなんかどうでしょう。</sentence>

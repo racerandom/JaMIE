@@ -1,0 +1,91 @@
+<sentence type="quasi">５読書の世界</sentence>
+<sentence type="quasi">まなび・わくわく・アニマシオン</sentence>
+<sentence type="quasi">■協同の力で読書を<event class="" eid="e1">楽しむ</event></sentence>
+<sentence>　<quote>「<TIMEX3 definite="TRUE" tid="t1" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>の読書」</quote>の時間を<event class="" eid="e2">設ける</event>と、本と<event class="" eid="e3">ふれあう</event>機会が<event class="" eid="e4">保障される</event>ことで、読書の<event class="STATE" eid="e5">好きな</event>子が<event class="" eid="e6">増えます</event>。</sentence>
+<sentence>しかし、それでも、国語の<event class="STATE" eid="e7">苦手な</event>子には、<event class="STATE" eid="e8">静かに</event>本と<event class="" eid="e9">向きあう</event>時間が<event class="STATE" eid="e10">苦痛に</event><event class="" eid="e11">なる</event>ことも<event class="" eid="e12">考えておかなく</event>ては<event class="" eid="e13">なりません</event>。</sentence>
+<sentence>そんな子どもにも物語のおもしろさに<event class="" eid="e14">気づかせていく</event>レクリエーション的要素を<event class="" eid="e15">もった</event>読書指導法が、私たちが<event class="" eid="e16">提唱している</event>読書のアニマシオンです。</sentence>
+<sentence>　では、まず<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P3Y" valueFromSurface="P3Y">三年生</TIMEX3>のふみや君の説明から<event class="" eid="e17">聞いてください</event>。</sentence>
+<sentence type="quasi"><event class="STATE" eid="e18">楽しい</event>アニマシオン　<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P3Y" valueFromSurface="P3Y">三年</TIMEX3>　ふみや</sentence>
+<sentence><enclosedCharacter description="○">１</enclosedCharacter>『エルマーのぼうけん』『おばけちゃん』のクイズ大作戦のやり方を<event class="" eid="e19">教えよう</event>。</sentence>
+<sentence>まず、問題を<event class="" eid="e20">作っておい</event>て、みんなで本番の紙に、みんなが<event class="" eid="e21">考えてきた</event>問題を<event class="" eid="e22">まとめる</event>。</sentence>
+<sentence><enclosedCharacter description="○">２</enclosedCharacter><event class="STATE" eid="e23">かっこいい</event>タイトルや<event class="STATE" eid="e24">おもしろい</event>タイトルを<event class="" eid="e25">つけ</event>て問題を<event class="" eid="e26">書いた</event>紙に、みんなが<event class="" eid="e27">見える</event>ような大きな字で<event class="" eid="e28">書く</event>。</sentence>
+<sentence><enclosedCharacter description="○">３</enclosedCharacter>絵を<event class="" eid="e29">かい</event>たり、色を<event class="" eid="e30">ぬっ</event>たり<event class="" eid="e31">し</event>て、<event class="STATE" eid="e32">きれいに</event><event class="" eid="e33">しあげる</event>。</sentence>
+<sentence type="quasi">（みんなに<event class="STATE" eid="e34">すごい</event>とか、<event class="STATE" eid="e35">美しい</event>とか<event class="" eid="e36">言われたら</event>、<event class="STATE" eid="e37">ものすごく</event><event class="STATE" eid="e38">ハッピー</event>）</sentence>
+<sentence><enclosedCharacter description="○">４</enclosedCharacter>本番に<event class="" eid="e39">なったら</event>、<event class="" eid="e40">わかる</event>のだけ手を<event class="" eid="e41">あげるのではなく</event>、みんなで<event class="" eid="e42">考え</event>て、<event class="" eid="e43">決めたら</event>、ふだを<event class="" eid="e44">あげる</event>。</sentence>
+<sentence><enclosedCharacter description="○">５</enclosedCharacter><event class="" eid="e45">勝ったら</event>、<event class="STATE" eid="e46">うれしい</event>なー。</sentence>
+<sentence type="quasi">■チームを<event class="" eid="e47">組む</event></sentence>
+<sentence>　ふみや君の文章に<event class="" eid="e48">そっ</event>て<event class="" eid="e49">解説してみましょう</event>。</sentence>
+<sentence>　三人程度でチームを<event class="" eid="e50">組みます</event>。</sentence>
+<sentence>この物語を<event class="" eid="e51">扱う</event>ときだけの仲間です。</sentence>
+<sentence>チームに名前を<event class="" eid="e52">つけます</event>。</sentence>
+<sentence>　「<event class="" eid="e53">もえろ</event>、タイガー！」</sentence>
+<sentence type="fragment"><quote>「キリキリノッポチーム」</quote>など。</sentence>
+<sentence><event class="" eid="e54">できる</event>だけ、物語に<event class="" eid="e55">即した</event>ネーミングを<event class="" eid="e56">推奨しましょう</event>。</sentence>
+<sentence><enclosedCharacter description="○">１</enclosedCharacter>本を<event class="" eid="e57">読み</event>ながら、質問をたくさん<event class="" eid="e58">考えていきます</event>。</sentence>
+<sentence>　「ぼくのお父さんの名前はなんでしょう？」</sentence>
+<sentence type="fragment">（エルマー・エレベーター）</sentence>
+<sentence>　「ねこは<TIMEX3 definite="TRUE" tid="t4" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>、何だったのでしょう？」</sentence>
+<sentence type="fragment">（<event class="STATE" eid="e59">かなり</event>の旅行家）</sentence>
+<sentence>という具合。</sentence>
+<sentence>（　）には正解を<event class="" eid="e60">メモしておきます</event>。</sentence>
+<sentence><enclosedCharacter description="○">２</enclosedCharacter>チームで問題を<event class="" eid="e61">整理し</event>て、出題の順や発表者を<event class="" eid="e62">決めておきます</event>。</sentence>
+<sentence><enclosedCharacter description="○">３</enclosedCharacter>厚紙にチームの名前を<event class="" eid="e63">書いた</event>札（Ａ４程度）を<event class="" eid="e64">作ります</event>。</sentence>
+<sentence>これを<event class="" eid="e65">挙げ</event>て回答を<event class="" eid="e66">競う</event>わけです。</sentence>
+<sentence><enclosedCharacter description="○">４</enclosedCharacter>順に一問ずつ質問を<event class="" eid="e67">読み上げていきます</event>。</sentence>
+<sentence><event class="" eid="e68">わかった</event>チームは札を<event class="" eid="e69">挙げ</event>て指名を<event class="" eid="e70">取ります</event>。</sentence>
+<sentence>物語では正解が一つであるわけではありません。</sentence>
+<sentence>一つの回答が<event class="" eid="e71">あっ</event>ても、どんどん「<event class="" eid="e72">つけたして」いきます</event>。</sentence>
+<sentence>それが<event class="STATE" eid="e73">妥当であれ</event>ばすべて一点に<event class="" eid="e74">します</event>。</sentence>
+<sentence>私は、<event class="" eid="e75">まちがえ</event>ても減点なしに<event class="" eid="e76">しています</event>。</sentence>
+<sentence>その方が気持ちを<event class="STATE" eid="e77">楽に</event><event class="" eid="e78">し</event>て<event class="" eid="e79">発言できる</event>からです。</sentence>
+<sentence><enclosedCharacter description="○">５</enclosedCharacter>時間の<event class="" eid="e80">許す</event>範囲で何周か<event class="" eid="e81">し</event>て終了です。</sentence>
+<sentence>一番点数の<event class="STATE" eid="e82">多かった</event>チームが優勝です。</sentence>
+<sentence type="quasi">（拍手！）</sentence>
+<sentence type="quasi">■学びの空気を<event class="STATE" eid="e83">やわらかく</event></sentence>
+<sentence>　たつや君は<quote>「本が<event class="STATE" eid="e84">嫌いで</event>…」</quote>と、お母さんが<event class="" eid="e85">嘆いていました</event>。</sentence>
+<sentence>しんご君は漢字が<event class="STATE" eid="e86">苦手で</event>、音読の順が<event class="" eid="e87">回っ</event>て<event class="" eid="e88">くる</event>と涙が<event class="" eid="e89">出てくる</event>という感じでした。</sentence>
+<sentence>こんな子が<TIMEX3 definite="FALSE" tid="t5" type="DURATION" value="P3Y" valueFromSurface="P3Y">三年</TIMEX3>のスタートではたくさん<event class="" eid="e90">いま<sampling type="start" />した</event>。</sentence>
+<sentence>　私は<event class="STATE" eid="e91">根気強く</event>絵本の読み聞かせを<event class="" eid="e92">しました</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" quant="EACH" tid="t6" type="SET" value="P1D" valueFromSurface="P1D">毎日</TIMEX3>必ず<event class="" eid="e93">やりました</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t7" type="DURATION" value="P1Y" valueFromSurface="P1Y">一年</TIMEX3>で二〇〇冊ぐらい<event class="" eid="e94">読んだことになります</event>。</sentence>
+<sentence>私は椅子に<event class="" eid="e95">座り</event>、子どもたちは私の周りに半円状に<event class="" eid="e96">座ります</event>。</sentence>
+<sentence>絵がよく<event class="" eid="e97">見える</event>ように<event class="" eid="e98">しました</event>。</sentence>
+<sentence>子どもも私もこの時間が一番<event class="STATE" eid="e99">好きでした</event>。</sentence>
+<sentence>読み聞かせを通じて、私という<event class="STATE" eid="e100">身近な</event>人が、どんな時に<event class="" eid="e101">怒り</event>、どんな時に<event class="" eid="e102">悲しむ</event>か、生き方、感じ方が<event class="" eid="e103">共有されていった</event>と<event class="" eid="e104">思います</event>。</sentence>
+<sentence>　国語の時間にアニマシオンのゲームを<event class="" eid="e105">しました</event>。</sentence>
+<sentence>クイズ大作戦は問題を<event class="" eid="e106">考え</event>ながら本を<event class="" eid="e107">読みます</event>。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t8" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今度</TIMEX3>はあいつを<event class="" eid="e108">負かせてやる</event>ぞ！</sentence>
+<sentence>　みんなが気が<event class="" eid="e109">つかない</event>ような問題を<event class="" eid="e110">作る</event>ぞ！</sentence>
+<sentence>と、<event class="" eid="e111">読んでいく</event>と、物語の中に<event class="" eid="e112">仕組まれた</event><event class="STATE" eid="e113">さまざまな</event><quote>「しかけ」</quote>を<event class="" eid="e114">発見します</event>。</sentence>
+<sentence>本を<event class="" eid="e115">読む</event>ことが<event class="STATE" eid="e116">おもしろく</event><event class="" eid="e117">なります</event>。</sentence>
+<sentence>それに、回答を<event class="" eid="e118">競う</event>ときにもどんどん<event class="" eid="e119">発言できます</event>。</sentence>
+<sentence>　「ぼくは『エルマーのぼうけん』のクイズ大作戦が<event class="STATE" eid="e120">楽しかったです</event>。</sentence>
+<sentence>本を<event class="" eid="e121">読ん</event>で問題を<event class="" eid="e122">作っ</event>て<event class="" eid="e123">やりました</event>。</sentence>
+<sentence>ぼくはクイズを一回目で三〇問<event class="" eid="e124">作りました</event>。</sentence>
+<sentence>全部で四〇問<event class="" eid="e125">作った</event>けど、もっと<event class="" eid="e126">作れ</event>そうでした。</sentence>
+<sentence type="quasi">（たつや）」</sentence>
+<sentence>　たつや君はしだいに<event class="" eid="e127">のめりこん</event>で、四〇問も<event class="" eid="e128">考えたのです</event>。</sentence>
+<sentence>気が<event class="" eid="e129">つく</event>と五回以上も<event class="" eid="e130">繰り返し</event><event class="" eid="e131">読んでいたのです</event>。</sentence>
+<sentence>　しんご君は、絵が<event class="STATE" eid="e132">得意なので</event>、問題を絵に<event class="" eid="e133">し</event>て<event class="" eid="e134">出しました</event>。</sentence>
+<sentence>　「『エルマーのぼうけん』は、ぼくはまちがいさがしをいっぱい<event class="" eid="e135">かいた</event>。</sentence>
+<sentence type="quasi">その中でいちばん<event class="STATE" eid="e136">おもしろかった</event>のが、エルマーとりゅうの絵で、はくりょくが<event class="" eid="e137">あっ</event>て、よく<event class="" eid="e138">でき</event>て、<event class="STATE" eid="e139">よかった</event>から、それを<event class="" eid="e140">出した</event>」</sentence>
+<sentence>　読解とはまた<event class="" eid="e141">ちがった</event>味わい方が、国語にも<event class="STATE" eid="e142">必要です</event>。</sentence>
+<sentence>アニマシオンは子どもの側に活動の主体を<event class="" eid="e143">おく</event>学習と<event class="" eid="e144">言えます</event>。</sentence>
+<sentence type="quasi">〔岩辺泰吏〕</sentence>
+<sentence type="quasi">◆この章のポイント</sentence>
+<sentence type="quasi">心が<event class="" eid="e145">はずむ</event>授業づくりの視点</sentence>
+<sentence type="quasi">■子どもが<quote>「また、<event class="" eid="e146">やらせ</event>て」</quote>と要求</sentence>
+<sentence>　二桁×一桁のくり上がりの<event class="" eid="e147">ある</event>筆算（<TIMEX3 definite="FALSE" tid="t9" type="DURATION" value="P3Y" valueFromSurface="P3Y">三年</TIMEX3>）の学習のときです。</sentence>
+<sentence>ただ計算をドリルなどで<event class="" eid="e148">繰り返す</event>のでは、どうしても<event class="STATE" eid="e149">単調に</event><event class="STATE" eid="e150">なりがちです</event>。</sentence>
+<sentence>そこで《筆算すごろく》を<event class="" eid="e151">し</event>ながら、計算の習熟を<event class="" eid="e152">はかることにしました</event>。</sentence>
+<sentence>ゲームを<event class="" eid="e153">始める</event>と、子どもたちはもう<event class="STATE" eid="e154">夢中で</event><event class="" eid="e155">取り組みはじめました</event>。</sentence>
+<sentence>第一回目からおおいに<event class="" eid="e156">盛り上がりました</event>。</sentence>
+<sentence>チャイムが<event class="" eid="e157">鳴ったので</event>、<quote>「<TIMEX3 definite="TRUE" tid="t10" type="DATE" value="XXXX-XX-XX" valueFromSurface="XXXX-XX-XX">きょう</TIMEX3>の勉強、これで<event class="" eid="e158">終わります</event>」</quote>と<event class="" eid="e159">言っ</event>ても、<event class="" eid="e160">やめよう</event>と<event class="" eid="e161">しません</event>。</sentence>
+<sentence><quote>「先生、もっと<event class="" eid="e162">やらせ</event>て」</quote>と<event class="" eid="e163">要求し</event>て<event class="" eid="e164">きます</event>。</sentence>
+<sentence type="fragment">次の日も<TIMEX3 definite="TRUE" tid="t11" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>から、</sentence>
+<sentence>「<TIMEX3 definite="TRUE" tid="t12" type="DATE" value="XXXX-XX-XX" valueFromSurface="XXXX-XX-XX">きょう</TIMEX3>《筆算すごろく》を<event class="" eid="e165">やらせてくれる</event>？」</sentence>
+<sentence type="fragment">と、声を<event class="" eid="e166">かけ</event>て<event class="" eid="e167">きます</event>。</sentence>
+<sentence>文章題をなん題か<event class="" eid="e168">解いた</event>あと、<quote>「残りの時間、《筆算すごろく》を<event class="" eid="e169">します</event>」</quote>と<event class="" eid="e170">話す</event>と、子どもたちから歓声が<event class="" eid="e171">あがります</event>。</sentence>
+<sentence>　毎回グループのメンバーを<event class="" eid="e172">変え</event>て、ゲームを<event class="" eid="e173">行なった</event>ことが、いっそう<event class="STATE" eid="e174">新鮮に</event><event class="" eid="e175">感じられるのでしょう</event>。</sentence>
+<sentence>しばらく子どもたちから<quote>「筆算すごろく、<TIMEX3 definite="TRUE" tid="t13" type="DATE" value="XXXX-XX-XX" valueFromSurface="XXXX-XX-XX">きょう</TIMEX3>も<event class="" eid="e176">やらせ</event>て」</quote>という要求が<event class="" eid="e177">続きました</event>。</sentence>
+<sentence>そのなかで、最初はかけ算九九も<event class="" eid="e178">はっきり<sampling type="end" />しなかった</event>子が、二桁×一桁、三桁×一桁のくり上がりの<event class="" eid="e179">ある</event>計算を、みるみる間に<event class="" eid="e180">マスターしていきました</event>。</sentence>

@@ -1,0 +1,1 @@
+<a>縦隔から右胸腔</a>を<f>占拠</f>する<d certainty="positive">腫瘤</d>は<f>１０ｃｍ長</f>に<c>縮小</c>を認めます（前医生検にて<d certainty="positive">ＧＣＴ</d>の病理診断）。<a>右肺</a>の<d certainty="positive">含気</d>は前回より<c>回復</c>しています。<d certainty="positive">右胸水貯留</d>も<c>減少</c>。<a>右肺野</a>に<d certainty="positive">ｃｏｎｓｏｌｉｄａｔｉｏｎ</d>あり。

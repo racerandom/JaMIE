@@ -1,0 +1,25 @@
+<sentence type="quasi">世界の目　<event class="STATE" eid="e1">Ｇｌｏｂａｌ</event>　Ｖｉｅｗｓ</sentence>
+<sentence type="quasi">日本は農業市場開放<event class="" eid="e2">急げ</event></sentence>
+<sentence type="quasi"><sampling type="start" />マイケル・リチャードソン（シンガポール・東南アジア研究所上級客員研究員）</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2003-09" valueFromSurface="XXXX-09">９月</TIMEX3>のメキシコ・カンクンの世界貿易機関（ＷＴＯ）閣僚会議の決裂以後、２国間交渉や地域自由貿易協定など代替協定への動きが<event class="" eid="e3">強まっている</event>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2003-10" valueFromSurface="XXXX-XX">先月</TIMEX3>バンコクで<event class="" eid="e4">開かれた</event>アジア太平洋経済協力会議（ＡＰＥＣ）首脳会議参加の各国は世界貿易交渉再開の要求を<event class="" eid="e5">一致し</event>て<event class="" eid="e6">行う</event>一方で、実際の行動は気心の<event class="" eid="e7">通い合った</event>メンバー同士での自由化交渉に焦点を<event class="" eid="e8">当てた</event>。</sentence>
+<sentence>　問題は、２国間または地域自由貿易協定が、貿易の自由化をどの程度<event class="" eid="e9">カバーする</event>かに<event class="" eid="e10">ある</event>。</sentence>
+<sentence>特に、カンクンで失敗の原因と<event class="" eid="e11">なった</event>農業部門などを<event class="" eid="e12">含める</event>かどうか。</sentence>
+<sentence>そうでなければ、地域協定が多国間貿易交渉のさらなる発展の礎石と<event class="" eid="e13">なる</event>という主張が<event class="STATE" eid="e14">むなしく</event><event class="" eid="e15">響く</event>。</sentence>
+<sentence>　メキシコのフォックス大統領は首脳会議に<event class="" eid="e16">向かう</event>途中、東京に<event class="" eid="e17">立ち寄り</event>、日本との２国間協定を<event class="" eid="e18">決着させよう</event>と<event class="" eid="e19">した</event>が、結局、何の成果も<event class="STATE" eid="e20">なく</event><TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P4D" valueFromSurface="P4D">４日間</TIMEX3>を<event class="" eid="e21">費やした</event>。</sentence>
+<sentence>日本はメキシコの豚肉とオレンジジュースの日本市場への参入を<event class="" eid="e22">拒否したのだ</event>。</sentence>
+<sentence>　小泉純一郎首相と自民党は総選挙（<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2003-11-09" valueFromSurface="XXXX-XX-09">９日</TIMEX3>）を前に、政治的影響力を<event class="" eid="e23">持つ</event>農業団体の反発を<event class="" eid="e24">避けたい</event>と<event class="" eid="e25">考えている</event>。</sentence>
+<sentence>日本がこれまで自由貿易協定に<event class="" eid="e26">署名した</event>のは、農産物輸入にほとんど影響が<event class="STATE" eid="e27">ない</event>シンガポールだけだ。</sentence>
+<sentence>　総選挙後も、日本がメキシコとの結論を<event class="STATE" eid="e28">速やかに</event><event class="" eid="e29">出せないなら</event>ば、日本市場への参入を<event class="" eid="e30">望む</event>農業国との自由貿易協定は<event class="STATE" eid="e31">深刻な</event>打撃を<event class="" eid="e32">受けるだろう</event>。</sentence>
+<sentence>韓国やチリ、タイ、フィリピン、マレーシア、さらに米国、豪州、カナダ、中国などが<event class="" eid="e33">含まれる</event>。</sentence>
+<sentence>　例えば、コメの主要輸出国であるタイが、日本のコメ市場参入のより<event class="STATE" eid="e34">よい</event>機会が<event class="" eid="e35">与えられないなら</event>ば、日本との自由貿易協定に<event class="" eid="e36">署名する</event>必要が<event class="" eid="e37">あるのだろう</event>か。</sentence>
+<sentence>日本は<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">現在</TIMEX3>、コメ輸入を国内消費全体の１０％以下と<event class="" eid="e38">する</event>輸入割り当て方式を採用。</sentence>
+<sentence>残りの輸入は５００％という関税障壁により<event class="" eid="e39">締め出している</event>。</sentence>
+<sentence>　中国が東南アジア諸国との自由貿易交渉で、農産物取引においても<event class="STATE" eid="e40">柔軟な</event>姿勢を<event class="" eid="e41">見せている</event>のに、日本が２国間交渉で、農業改革に本腰を<event class="" eid="e42">示さない</event>と<event class="" eid="e43">する</event>と、日本は東南アジアもしくは東アジア経済の拡大自由貿易圏の一角として<event class="" eid="e44">期待されるだろう</event>か。</sentence>
+<sentence type="quasi">【訳・西岡省二】</sentence>
+<sentence type="quasi">パレスチナ</sentence>
+<sentence type="quasi">自治政府組閣ヤマ場</sentence>
+<sentence type="quasi">イスラエル三つのシナリオ想定</sentence>
+<sentence>　現状の緊急内閣から通常内閣の発足を<event class="" eid="e45">目指す</event>クレイ・パレスチナ自治政府首相の組閣作業は週明けにヤマ場を<event class="" eid="e46">迎える</event>。</sentence>
+<sentence>新内閣が<event class="STATE" eid="e47">強力な</event>治安権限を<event class="" eid="e48">備える</event>か否かが焦点で、イスラエルの軍情報部や治安機関は組閣の行方に三つのシナリオを<event class="" eid="e49">描いている</event>と<event class="" eid="e50">いう</event>。</sentence>
+<sentence>最善の場合は和平交渉再開、<event class="STATE" eid="e51">最悪なら</event>アラファト自治政府議長の排<sampling type="end" />除論再燃というケースも<event class="" eid="e52">考えられ</event>、パレスチナ情勢の<TIMEX3 tid="t201" type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今後</TIMEX3>を<event class="" eid="e53">占う</event>試金石と<event class="" eid="e54">なり</event>そうだ。</sentence>

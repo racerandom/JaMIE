@@ -1,0 +1,9 @@
+<a>両側肺野胸膜直下優位</a>に<d certainty="positive">網状影・すりガラス状陰影</d>を認めます。前回CT(12/02/01)より<f>全体</f>の<d certainty="positive">陰影</d>の<c>増強</c>を認めます。<d certainty="suspicious">間質性肺炎</d>(<d certainty="suspicious">UIP</d>)や<d certainty="suspicious">CHP</d>等を疑います。
+<f>明らかな</f><d certainty="negative">リンパ節腫大</d>は認めません。
+<d certainty="negative">胸水(-)</d>。
+<a>冠動脈</a>術後。
+<a>両側肺野胸膜直下優位</a>に認める<d certainty="positive">網状影、すりガラス状陰影</d>は前回(2013/12/18)と概ね変化を認めません。<a>上葉</a>にも同様の所見あり。<d certainty="suspicious">間質性肺炎</d>(<d certainty="suspicious">UIPパターン</d>)や<d certainty="suspicious">chronic HP</d>等を疑います。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節腫大</d>を認めません。
+<d certainty="negative">胸水</d>なし。
+<a>冠動脈</a>術後。
+<f>微量</f>の<d certainty="positive">心嚢液</d>あり。

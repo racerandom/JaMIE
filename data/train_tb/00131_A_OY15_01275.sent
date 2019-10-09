@@ -1,0 +1,5 @@
+<sentence>　<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今週</TIMEX3>のＰＨＳランキングは、ＨＯＮＥＹ　ＢＥＥが首位で、６位まで<TIMEX3 tid="t201" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先週</TIMEX3>と<event class="" eid="e1">変わらず</event>と<event class="" eid="e2">なりました</event>。</sentence>
+<sentence>　データ通信端末もＤ０２ＨＷ（ＥＭＯＢＩＬＥ）の首位で、５位まで<TIMEX3 tid="t202" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先週</TIMEX3>と<event class="" eid="e3">変わらずでした</event>。</sentence>
+<sentence>７位にＤ０１ＮＸＩＩ（同）が圏外から<event class="" eid="e4">ランクインしました</event>。</sentence>
+<sentence>　モバイルのデータ通信は、定額制が主流と<event class="" eid="e5">なってきました</event>。</sentence>
+<sentence type="quasi">通信料や通信速度の比較が必要と<event class="" eid="e6">なります</event>．．．</sentence>

@@ -1,0 +1,298 @@
+<sentence type="quasi">２</sentence>
+<sentence>　<event class="STATE" eid="e1">生温かい</event>息を頰に<event class="" eid="e2">感じ</event>て目が<event class="" eid="e3">覚めた</event>。</sentence>
+<sentence>            <event class="" eid="e4">太った</event>猫が二匹、<event class="STATE" eid="e5">不思議</event>そうに真木の顔を<event class="" eid="e6">覗き込んでいる</event>。</sentence>
+<sentence>　腕時計を<event class="" eid="e7">見る</event>と<TIMEX3 definite="TRUE" tid="t1" type="TIME" value="XXXX-XX-XXT08" valueFromSurface="XXXX-XX-XXT08">午前八時</TIMEX3>を少し<event class="" eid="e8">過ぎていた</event>。</sentence>
+<sentence>ダグの家に<event class="" eid="e9">着いた</event>のが<TIMEX3 definite="TRUE" tid="t2" type="TIME" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">昨夜</TIMEX3>の<TIMEX3 definite="TRUE" mod="APPROX" tid="t3" type="TIME" value="XXXX-XX-XXT23" valueFromSurface="XXXX-XX-XXT23">一一時頃</TIMEX3>だったから、たっぷり<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="PT8H" valueFromSurface="PT8H">八時間</TIMEX3>は<event class="" eid="e10">眠ったことになる</event>。</sentence>
+<sentence>自分では<event class="" eid="e11">意識していなかった</event>が、バハの走りに<event class="" eid="e12">疲れていたのだろう</event>。</sentence>
+<sentence>特に、闇の中で道に<event class="" eid="e13">迷っ</event>てからは<event class="" eid="e14">緊張した</event>。</sentence>
+<sentence>　<event class="STATE" eid="e15">明るく</event>            <event class="" eid="e16">なっ</event>てから<event class="" eid="e17">出た</event>方が<event class="STATE" eid="e18">いい</event>と<event class="" eid="e19">言われ</event>、ウィスキーをたっぷり<event class="" eid="e20">入れた</event>コーヒーを<event class="" eid="e21">飲ん</event>でから居間の隅のソファに横に<event class="" eid="e22">なったのだった</event>。</sentence>
+<sentence>ダグが<event class="" eid="e23">投げ</event>て<event class="" eid="e24">よこした</event>毛布は毛脚が<event class="STATE" eid="e25">硬く</event>て、埃とオイルの臭いが<event class="" eid="e26">した</event>。</sentence>
+<sentence>　ベッドルームと、食堂兼居間が<event class="" eid="e27">ある</event>だけの<event class="STATE" eid="e28">簡素な</event>家だった。</sentence>
+<sentence>陽に<event class="" eid="e29">灼けた</event>カーテンの隙間から、<TIMEX3 type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>の光が斜めに<event class="" eid="e30">差し込んでいる</event>。</sentence>
+<sentence>ベッドルームには人の気配が<event class="STATE" eid="e31">ない</event>。</sentence>
+<sentence>ダグはとっくに<event class="" eid="e32">起きているらしい</event>。</sentence>
+<sentence>　外に<event class="" eid="e33">出る</event>と<TIMEX3 tid="t201" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>の冷気が肌を<event class="" eid="e34">刺した</event>。</sentence>
+<sentence>            <event class="" eid="e35">見渡す</event>かぎり岩とサボテンの原野に、<event class="STATE" eid="e36">冷たい</event>朝靄が<event class="STATE" eid="e37">白く</event>            <event class="" eid="e38">澱んでいる</event>。</sentence>
+<sentence>ダグの家は原野の只中に<event class="" eid="e39">孤立していた</event>。</sentence>
+<sentence>それは、大海に<event class="" eid="e40">浮く</event>木の葉のように<event class="STATE" eid="e41">ちっぽけで</event>、<event class="STATE" eid="e42">心細い</event>            <ruby rubyText="ねぐら">塒</ruby>だった。</sentence>
+<sentence>　真木とダグのピックアップが家の前に鼻を<event class="" eid="e43">並べている</event>。</sentence>
+<sentence>            <event class="STATE" eid="e44">明るい</event>所で<event class="" eid="e45">見る</event>と、ダグのピックアップはまるでスクラップだった。</sentence>
+<sentence>            <event class="STATE" eid="e46">赤い</event>塗装は<event class="" eid="e47">剥げ</event>て<event class="" eid="e48">錆び</event>、ボディのあちこちが<event class="" eid="e49">凹ん</event>だり<event class="" eid="e50">歪ん</event>だり<event class="" eid="e51">している</event>。</sentence>
+<sentence>鉄のがらくたのような車の後輪を、ダグが<event class="" eid="e52">しゃがみ込ん</event>で<event class="" eid="e53">睨みつけていた</event>。</sentence>
+<sentence type="quasi">　「どう<event class="" eid="e54">したんです</event>か？」</sentence>
+<sentence>　真木が<event class="" eid="e55">訊く</event>と、ダグはホイールを<event class="" eid="e56">指差し</event>て<event class="" eid="e57">毒づいた</event>。</sentence>
+<sentence>　「ナットが<event class="" eid="e58">外れ</event>て、どこかに<event class="" eid="e59">いっちまったんだ</event>。</sentence>
+<sentence type="quasi">多分、<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>の<TIMEX3 definite="TRUE" tid="t6" type="TIME" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">夜</TIMEX3>だな」</sentence>
+<sentence>　タイヤを<event class="" eid="e60">止める</event>ナットの一つが<event class="" eid="e61">失くなっていた</event>。</sentence>
+<sentence>このままダートを<event class="" eid="e62">走れ</event>ばタイヤが<event class="" eid="e63">ぶれ</event>て<event class="" eid="e64">動き</event>、いずれ他のナットも<event class="" eid="e65">外れる</event>かボルトが<event class="" eid="e66">折れてしまうだろう</event>。</sentence>
+<sentence type="quasi">　「<event class="STATE" eid="e67">別</event>のナットは<event class="STATE" eid="e68">ないんです</event>か？」</sentence>
+<sentence type="quasi">　「どいつも径が<event class="STATE" eid="e69">大きく</event>て<event class="" eid="e70">合わないんだ</event>」</sentence>
+<sentence>　<event class="" eid="e71">開いた</event>ダグの掌に二つのナットが<event class="" eid="e72">あった</event>。</sentence>
+<sentence type="quasi">　「ビールかジュースの缶、<event class="" eid="e73">あります</event>か？」</sentence>
+<sentence type="quasi">　「何？」</sentence>
+<sentence>　ダグは<event class="STATE" eid="e74">怪訝な</event>顔で真木を<event class="" eid="e75">見上げた</event>。</sentence>
+<sentence type="quasi">　「アルミの缶が<event class="" eid="e76">あれ</event>ば<event class="" eid="e77">治します</event>よ」</sentence>
+<sentence>　真木は<event class="STATE" eid="e78">当たり前</event>のように<event class="" eid="e79">言った</event>。</sentence>
+<sentence>ダグは、半信半疑といった顔を<event class="" eid="e80">した</event>ままビールの空き缶を<event class="" eid="e81">持っ</event>て<event class="" eid="e82">きた</event>。</sentence>
+<sentence>　真木は缶を金切り鋏で<event class="" eid="e83">切っ</event>て短冊状のアルミ片を二枚<event class="" eid="e84">つくり</event>、ナットの<event class="" eid="e85">外れた</event>ボルトにそれを<event class="" eid="e86">巻きつけた</event>。</sentence>
+<sentence>ボルトを<event class="STATE" eid="e87">太く</event>            <event class="" eid="e88">すれ</event>ば、径の大きなナットも<event class="" eid="e89">使える</event>理屈だ。</sentence>
+<sentence>アルミ片を<event class="" eid="e90">巻きつけ</event>て<event class="STATE" eid="e91">太く</event>            <event class="" eid="e92">した</event>ボルトに、ホイールレンチでナットを<event class="" eid="e93">締め込んでゆく</event>。</sentence>
+<sentence>ナットが<event class="" eid="e94">締められる</event>とアルミが<event class="" eid="e95">潰れ</event>てネジ山の隙間を<event class="" eid="e96">埋め</event>、タイヤはしっかり<event class="" eid="e97">固定された</event>。</sentence>
+<sentence type="quasi">　「こう<event class="" eid="e98">いう</event>手が<event class="" eid="e99">ある</event>とはな…」</sentence>
+<sentence>　ダグは<event class="STATE" eid="e100">素直に</event>            <event class="" eid="e101">感心していた</event>。</sentence>
+<sentence>真木を<event class="" eid="e102">見る</event>目が<TIMEX3 definite="TRUE" tid="t7" type="TIME" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">昨夜</TIMEX3>とは<event class="" eid="e103">変わっている</event>。</sentence>
+<sentence type="quasi">　「あんた、こんなことをどこで<event class="" eid="e104">覚えたんだ</event>？」</sentence>
+<sentence type="quasi">　「見よう見真似でね」</sentence>
+<sentence>　真木は<event class="STATE" eid="e105">曖昧に</event>            <event class="" eid="e106">答えた</event>。</sentence>
+<sentence>            <TIMEX3 definite="TRUE" tid="t8" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>の<sampling type="start" />ことを<event class="" eid="e107">喋る</event>のにはエネルギーが<event class="" eid="e108">いる</event>。</sentence>
+<sentence>　家に<event class="" eid="e109">戻り</event>、クラッカーにピーナッツバターを<event class="" eid="e110">塗った</event>だけの朝食を<event class="" eid="e111">すませ</event>てからコーヒーを<event class="" eid="e112">飲んだ</event>。</sentence>
+<sentence>ダグの<event class="" eid="e113">淹れた</event>コーヒーは、<event class="STATE" eid="e114">粗野な</event>味だが<event class="STATE" eid="e115">旨かった</event>。</sentence>
+<sentence type="quasi">　「とんだお荷物を<event class="" eid="e116">背負い込む</event>羽目に<event class="" eid="e117">なった</event>もんだな」</sentence>
+<sentence>　ゲレロ・ネグロへ<event class="" eid="e118">行くことになった</event>いきさつを<event class="" eid="e119">話す</event>と、ダグは同情の目に<event class="" eid="e120">なった</event>。</sentence>
+<sentence type="quasi">　「荷台で<event class="" eid="e121">眠っている</event>あんたの友だちも、アメリカに<event class="" eid="e122">憧れ</event>て国境を<event class="" eid="e123">越えた</event>くちか？」<info arg="page" value="delimiter" />              </sentence>
+<sentence type="quasi">　「<TIMEX3 definite="FALSE" mod="APPROX" tid="t9" type="DURATION" value="P20Y" valueFromSurface="P20Y">二〇年くらい前</TIMEX3>に<event class="" eid="e124">密入国し</event>て、カリフォルニアの果樹園で<event class="" eid="e125">働いていたらしいです</event>」</sentence>
+<sentence type="quasi">　「どうして、猫も杓子もアメリカに<event class="" eid="e126">憧れる</event>のかね」</sentence>
+<sentence>　「アメリカが<event class="STATE" eid="e127">豊かだ</event>からですよ。</sentence>
+<sentence>仕事が<event class="" eid="e128">ある</event>し、<event class="STATE" eid="e129">うまく</event>                  <event class="" eid="e130">やれ</event>ば金も<event class="" eid="e131">つくれる</event>。</sentence>
+<sentence type="quasi">目の前にアメリカみたいな国が<event class="" eid="e132">あれ</event>ば、誰だって国境くらいは<event class="" eid="e133">越えたく</event>                  <event class="" eid="e134">なるでしょ</event>」</sentence>
+<sentence>　<event class="STATE" eid="e135">当たり前だろ</event>と、真木は少し腹が<event class="" eid="e136">立った</event>。</sentence>
+<sentence type="quasi">　「あんた、アメリカが<event class="STATE" eid="e137">豊かな</event>国だと<event class="" eid="e138">思う</event>か？」</sentence>
+<sentence>　「そりゃそうでしょ。</sentence>
+<sentence type="quasi">誰が<event class="" eid="e139">見</event>たってアメリカは<event class="STATE" eid="e140">豊かだ</event>」</sentence>
+<sentence>　<event class="" eid="e141">答えた</event>後で、<event class="" eid="e142">違う</event>レベルの豊かさについて<event class="" eid="e143">訊かれた</event>のかもしれないと一瞬<event class="" eid="e144">思った</event>。</sentence>
+<sentence>だとすれば、<event class="STATE" eid="e145">脳天気な</event>答は<event class="STATE" eid="e146">ひどく</event>            <event class="STATE" eid="e147">幼稚に</event>            <event class="" eid="e148">聞こえただろう</event>。</sentence>
+<sentence type="quasi">　「あんたも、<event class="STATE" eid="e149">豊かな</event>アメリカに<event class="" eid="e150">憧れ</event>て国境を<event class="" eid="e151">越えた</event>くちか？」</sentence>
+<sentence type="quasi">　「ま、そうだったのかもしれませんね」</sentence>
+<sentence type="quasi">　「で、どうだ？」</sentence>
+<sentence type="quasi">　「何がですか？」</sentence>
+<sentence type="quasi">　「<event class="" eid="e152">成功し</event>て、金は<event class="" eid="e153">つくれた</event>か？」</sentence>
+<sentence type="quasi">　「<event class="" eid="e154">見れ</event>ば<event class="" eid="e155">分かるでしょ</event>」</sentence>
+<sentence>　肩を<event class="" eid="e156">竦めた</event>真木に、ダグは薄笑いで<event class="" eid="e157">応えた</event>。</sentence>
+<sentence type="quasi">　「あなたは、どうしてこんな所に一人で<event class="" eid="e158">いるんです</event>か？」</sentence>
+<sentence>　<TIMEX3 type="DATE" value="FUTURE_REF" valueFromSurface="FUTURE_REF">今度</TIMEX3>は真木の方が<event class="" eid="e159">訊いた</event>。</sentence>
+<sentence>　「<TIMEX3 definite="FALSE" mod="APPROX" tid="t10" type="DURATION" value="P4Y" valueFromSurface="P4Y">四年ほど前</TIMEX3>に癌を<event class="" eid="e160">宣告され</event>てな。</sentence>
+<sentence type="quasi">余命<TIMEX3 definite="FALSE" tid="t11" type="DURATION" value="P1Y" valueFromSurface="P1Y">一年</TIMEX3>と<event class="" eid="e161">言われ</event>てこっちに<event class="" eid="e162">来た</event>」</sentence>
+<sentence>　ダグは<event class="" eid="e163">立ちあがり</event>、ガスコンロの上で湯気を<event class="" eid="e164">立てている</event>ポットを<event class="" eid="e165">摑んだ</event>。</sentence>
+<sentence type="quasi">　「死に場所を<event class="" eid="e166">捜し</event>てここに<event class="" eid="e167">来たんです</event>か？」</sentence>
+<sentence type="quasi">　「そんなところだが、<event class="" eid="e168">見た</event>とおり、まだ<event class="" eid="e169">ピンピンしている</event>」</sentence>
+<sentence>　<event class="STATE" eid="e170">新しい</event>コーヒーをマグカップに<event class="" eid="e171">注ぐ</event>と、家の中が<event class="STATE" eid="e172">香ばしい</event>匂いで<event class="" eid="e173">満たされた</event>。</sentence>
+<sentence type="quasi">　「家族は？」</sentence>
+<sentence>　「女房は<TIMEX3 definite="FALSE" tid="t12" type="DATE" value="XXXX" valueFromSurface="Q-6Y">六年前</TIMEX3>に<event class="" eid="e174">死んだ</event>。</sentence>
+<sentence type="quasi">息子が二人<event class="" eid="e175">いる</event>が、各々とっくに<event class="" eid="e176">独立し</event>て<event class="STATE" eid="e177">ばらばらに</event>                  <event class="" eid="e178">暮らしている</event>」</sentence>
+<sentence type="quasi">　「息子さんたちと<event class="" eid="e179">暮らさないんです</event>か？」</sentence>
+<sentence>　「御免だね。</sentence>
+<sentence type="quasi">この齢に<event class="" eid="e180">なっ</event>て、<ruby rubyText="ひと">他人</ruby>に気を<event class="" eid="e181">遣い</event>ながら<event class="" eid="e182">生きる</event>なんて真っ平だ」</sentence>
+<sentence>　<event class="" eid="e183">吐き捨てる</event>ような言い方だった。</sentence>
+<sentence>コーヒーを<event class="" eid="e184">啜る</event>ダグの膝に、一匹の猫が<event class="" eid="e185">飛び乗っ</event>て体を<event class="STATE" eid="e186">丸く</event>            <event class="" eid="e187">した</event>。</sentence>
+<sentence>　「アメリカは、<event class="STATE" eid="e188">基本的に</event>若者の国だ。</sentence>
+<sentence>                  <event class="STATE" eid="e189">若く</event>て元気が<event class="" eid="e190">あれ</event>ば夢を<event class="" eid="e191">見る</event>ことも、それを<event class="" eid="e192">実現する</event>ことも<event class="STATE" eid="e193">確かに</event>                  <event class="" eid="e194">できる</event>。</sentence>
+<sentence type="quasi">アメリカという国は、そう<event class="" eid="e195">いう</event>若者たちのパワーとエネルギーを<event class="" eid="e196">吸い取っ</event>て<event class="" eid="e197">太ってきた</event>」</sentence>
+<sentence>　ダグは、膝の上の猫の背中を<event class="" eid="e198">撫で</event>ながら<event class="" eid="e199">続けた</event>。</sentence>
+<sentence>　「しかし、人は齢を<event class="" eid="e200">取る</event>。</sentence>
+<sentence>必ず<event class="" eid="e201">老いる</event>。</sentence>
+<sentence>年寄りに対して、アメリカほど<event class="STATE" eid="e202">冷たい</event>国は<event class="STATE" eid="e203">ない</event>。</sentence>
+<sentence>                  <event class="STATE" eid="e204">若い</event>もんは自分の夢を<event class="" eid="e205">追う</event>のに<event class="STATE" eid="e206">精一杯で</event>年寄りの面倒なんか<event class="" eid="e207">見よう</event>とは<event class="" eid="e208">しない</event>し、国は使いものに<event class="" eid="e209">ならなく</event>                  <event class="" eid="e210">なった</event>老いぼれを見殺しに<event class="" eid="e211">する</event>。</sentence>
+<sentence>役立たずは、とっとと<event class="" eid="e212">消えちま<sampling type="end" />え</event>というわけだ。</sentence>
+<sentence type="quasi">あんたもこれから<event class="" eid="e213">分かってくる</event>と<event class="" eid="e214">思う</event>が、アメリカで齢を<event class="" eid="e215">取る</event>というのは<event class="STATE" eid="e216">みじめな</event>ことだぞ」</sentence>
+<sentence>　<event class="" eid="e217">撫でられている</event>内に、膝の上の猫が船を<event class="" eid="e218">漕ぎ始めた</event>。</sentence>
+<sentence>毛並みから<event class="" eid="e219">見</event>て、<event class="STATE" eid="e220">かなり</event>の齢らしい。</sentence>
+<sentence>ダグは、朝陽の<event class="" eid="e221">当たる</event>猫の背中に視線を<event class="" eid="e222">落としている</event>。</sentence>
+<sentence type="quasi">　「<event class="STATE" eid="e223">若い</event>頃は何を<event class="" eid="e224">やっていたんです</event>か？」</sentence>
+<sentence>　「色々<event class="" eid="e225">やった</event>さ。</sentence>
+<sentence>一応、<event class="" eid="e226">成功した</event>くちの方だろう。</sentence>
+<sentence>しかし、そんなものは何の役にも<event class="" eid="e227">立たん</event>。</sentence>
+<sentence type="quasi">                  <event class="" eid="e228">老いれ</event>ば、無だ」</sentence>
+<sentence>　ダグは<event class="STATE" eid="e229">具体的な</event>ことを口に<event class="" eid="e230">しなかった</event>。</sentence>
+<sentence>真木も、それ以上は<event class="" eid="e231">訊かなかった</event>。</sentence>
+<sentence>　「ここは<event class="STATE" eid="e232">豊かな</event>土地だよ。</sentence>
+<sentence>                  <event class="STATE" eid="e233">荒々しい</event>が、<event class="STATE" eid="e234">美しい</event>。</sentence>
+<sentence type="quasi">ルールを<event class="" eid="e235">守れ</event>ば、<event class="STATE" eid="e236">優しく</event>                  <event class="" eid="e237">包ん</event>でも<event class="" eid="e238">くれる</event>」</sentence>
+<sentence>　ドラム缶のガソリンをポンプで<event class="" eid="e239">給油し</event>ながらダグは<event class="" eid="e240">言った</event>。</sentence>
+<sentence>そう<event class="" eid="e241">言われ</event>て改めて<event class="" eid="e242">見る</event>と、朝陽に<event class="" eid="e243">輝く</event>原野は<event class="STATE" eid="e244">確かに</event>            <event class="STATE" eid="e245">美しい</event>。</sentence>
+<sentence>競争に<event class="" eid="e246">疲れ</event>、人との摩擦に嫌気が<event class="" eid="e247">差した</event>人間の死に場所としては<event class="STATE" eid="e248">うってつけかもしれない</event>。</sentence>
+<sentence>　「アメリカに<event class="" eid="e249">憧れ</event>てここを<event class="" eid="e250">捨てた</event>メキシコ人と、アメリカ人に<event class="" eid="e251">うんざりし</event>てここに<event class="" eid="e252">来た</event>アメリカ人か…。</sentence>
+<sentence type="quasi">人生ってやつは、<event class="STATE" eid="e253">うまく</event>                  <event class="" eid="e254">いかない</event>もんだな」</sentence>
+<sentence>　それが、ダグの最後の言葉だった。</sentence>
+<sentence>ガソリン代を<event class="" eid="e255">払い</event>、真木は、原野に<event class="" eid="e256">孤立した</event>家を後に<event class="" eid="e257">した</event>。</sentence>
+<sentence>　ダートの道から１号線に再び<event class="" eid="e258">乗った</event>のが<TIMEX3 definite="TRUE" tid="t13" type="TIME" value="XXXX-XX-XXT11" valueFromSurface="XXXX-XX-XXT11">午前一一時</TIMEX3>少し前だった。</sentence>
+<sentence>二〇〇ｋｍを一気に<event class="" eid="e259">南下した</event>が、ゲレロ・ネグロ手前の分岐点に<event class="" eid="e260">ある</event>イミグレの検問所で<event class="" eid="e261">止められた</event>。</sentence>
+<sentence>ここから先は南バハ・カリフォルニア州と<event class="" eid="e262">なり</event>、先に<event class="" eid="e263">進む</event>ためにはビザ代わりのツーリストカードが<event class="STATE" eid="e264">必要だ</event>と係官が<event class="" eid="e265">言う</event>。</sentence>
+<sentence>ティワナやエンセナーダで金を<event class="" eid="e266">払え</event>ば<event class="" eid="e267">発行してくれるらしい</event>が、そんな規則を真木は<event class="" eid="e268">知らなかった</event>。</sentence>
+<sentence>　口髭を<event class="" eid="e269">生やした</event>小意地の<event class="STATE" eid="e270">悪</event>そうな係官が人差し指を<event class="" eid="e271">曲げ</event>、車から<event class="" eid="e272">降りろ</event>と<event class="" eid="e273">言った</event>。</sentence>
+<sentence>係官に<event class="" eid="e274">つい</event>てオフィスに<event class="" eid="e275">入る</event>と、小さな紙切れを<event class="" eid="e276">渡された</event>。</sentence>
+<sentence>銀行で二〇ドル<event class="" eid="e277">払っ</event>てスタンプを<event class="" eid="e278">押してもらわない</event>と、帰りにここを<event class="" eid="e279">通る</event>ことは<event class="" eid="e280">できない</event>と<event class="" eid="e281">言う</event>。</sentence>
+<sentence>オフィスの中は<ruby rubyText="ノイズ">雑音</ruby>混じりのラジオが<event class="STATE" eid="e282">うるさく</event>、机の上には<event class="" eid="e283">開いた</event>ままのアメリカのポルノ雑誌が<event class="" eid="e284">散乱していた</event>。</sentence>
+<sentence>黒人や金髪女が<event class="" eid="e285">絡み合った</event>            <event class="STATE" eid="e286">薄汚い</event>写真を、しかし係官は<event class="" eid="e287">隠そう</event>とも<event class="" eid="e288">しなかった</event>。</sentence>
+<sentence type="quasi">　「<event class="STATE" eid="e289">新しい</event>Ｔシャツかステッカーを<event class="" eid="e290">持ってる</event>か？」</sentence>
+<sentence>　係官は<event class="STATE" eid="e291">もの欲し</event>そうな顔を<event class="" eid="e292">していた</event>。</sentence>
+<sentence>            <event class="" eid="e293">持っていない</event>と真木が<event class="" eid="e294">答える</event>と、係官は舌打ちを<event class="" eid="e295">し</event>てから<event class="STATE" eid="e296">早く</event>            <event class="" eid="e297">行け</event>というジェスチャーを<event class="" eid="e298">した</event>。</sentence>
+<sentence>　「ここはメキシコだ。</sentence>
+<sentence>メキシコにはメキシコのルールが<event class="" eid="e299">ある</event>。</sentence>
+<sentence>必ず金を<event class="" eid="e300">払え</event>よ。</sentence>
+<sentence type="quasi">あんたの顔は<event class="" eid="e301">覚えている</event>からな」</sentence>
+<sentence>　脅し文句を背中に<event class="" eid="e302">受け</event>て検問所を<event class="" eid="e303">抜け</event>、分岐点で右に<event class="" eid="e304">折れ</event>てゲレロ・ネグロに<event class="" eid="e305">入った</event>。</sentence>
+<sentence>            <event class="" eid="e306">思っていた</event>より大きな町で、両側に商店やモーテルが軒を<event class="" eid="e307">連ねる</event>メインストリートを車が<event class="STATE" eid="e308">忙し</event>そうに<event class="" eid="e309">行き交っている</event>。</sentence>
+<sentence>町の入口の標識には<quote>「人口一一〇〇〇人」</quote>と<event class="" eid="e310">記されていた</event>。</sentence>
+<sentence>　真木は途方に<event class="" eid="e311">暮れた</event>。</sentence>
+<sentence>            <event class="STATE" eid="e312">ちっぽけな</event>町を<event class="" eid="e313">想像し</event>て何とか<event class="" eid="e314">なる</event>と<event class="" eid="e315">思っていた</event>が、これではどこから手を<event class="" eid="e316">つけ</event>て<event class="STATE" eid="e317">いい</event>か<event class="" eid="e318">分からない</event>。</sentence>
+<sentence>何しろ、ロペスの女房の名前も<event class="" eid="e319">知らないのだ</event>。</sentence>
+<sentence>　真木はメインストリートに<event class="" eid="e320">面した</event>オープンカフェに席を<event class="" eid="e321">とり</event>、海老のタコスとコーヒーで腹ごしらえを<event class="" eid="e322">した</event>。</sentence>
+<sentence>ダグの家でピーナッツバターを<event class="" eid="e323">塗った</event>クラッカーを<event class="" eid="e324">つまんだ</event>だけで、他に何も腹に<event class="" eid="e325">入れていない</event>。</sentence>
+<sentence>　<TIMEX3 definite="TRUE" tid="t14" type="TIME" value="XXXX-XX-XXT15" valueFromSurface="XXXX-XX-XXT15">午後三時</TIMEX3>で、まだ陽射しが<event class="STATE" eid="e326">強かった</event>。</sentence>
+<sentence>ハイデザートから海岸線へ<event class="" eid="e327">下り</event>て<event class="" eid="e328">きた</event>せいか、温度も<TIMEX3 definite="TRUE" tid="t202" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>よりずっと<event class="STATE" eid="e329">高い</event>。</sentence>
+<sentence>ドライアイスのことが気に<event class="" eid="e330">なっ</event>て<event class="" eid="e331">落ち着かなかった</event>が、<event class="" eid="e332">さしあたっ</event>てどう<event class="" eid="e333">動い</event>て<event class="STATE" eid="e334">いい</event>か見当が<event class="" eid="e335">つかない</event>。</sentence>
+<sentence>ロペスなんて名前は、それこそ<event class="" eid="e336">吐い</event>て<event class="" eid="e337">捨てる</event>ほど<event class="" eid="e338">いるだろう</event>。</sentence>
+<sentence>　その時、真木のピックアップの隣に<event class="STATE" eid="e339">小型</event>のセダンが<event class="" eid="e340">止まった</event>。</sentence>
+<sentence>このあたりには<event class="STATE" eid="e341">珍しい</event>、<event class="STATE" eid="e342">地味な</event>色の日本車だった。<info arg="page" value="delimiter" />          </sentence>
+<sentence type="quasi">　「日本人の方ですか？」</sentence>
+<sentence>　<event class="" eid="e343">降り</event>て<event class="" eid="e344">きた</event>男に、いきなり日本語で<event class="" eid="e345">訊かれ</event>て<event class="" eid="e346">驚いた</event>。</sentence>
+<sentence type="quasi">　「<event class="" eid="e347">走ってい</event>て目に<event class="" eid="e348">止まった</event>ものですから…」</sentence>
+<sentence>　<event class="STATE" eid="e349">人なつこ</event>そうな日本人の男だった。</sentence>
+<sentence>齢は<TIMEX3 definite="FALSE" mod="START" tid="t15" type="DURATION" value="P30Y" valueFromSurface="P30Y">三〇歳そこそこ</TIMEX3>か。</sentence>
+<sentence>            <event class="STATE" eid="e350">白い</event>半袖のポロシャツと折り目の<event class="" eid="e351">入った</event>コットンパンツが、いかにも<event class="STATE" eid="e352">日本人らしい</event>。</sentence>
+<sentence type="quasi">　「河合と<event class="" eid="e353">いいます</event>」</sentence>
+<sentence>　<event class="" eid="e354">出した</event>名刺には、<quote>「大東商事貿易部」</quote>と<event class="" eid="e355">あった</event>。</sentence>
+<sentence>真木も名前を<event class="" eid="e356">名乗り</event>、<event class="" eid="e357">喋りたく</event>て<event class="" eid="e358">うずうずしている</event>河合に席を<event class="" eid="e359">勧めた</event>。</sentence>
+<sentence>ロペスの家族を<event class="" eid="e360">捜す</event>手がかりに<event class="" eid="e361">なるかもしれない</event>という計算も<event class="" eid="e362">働い</event>てのことだった。</sentence>
+<sentence type="quasi">　「ホエール・ウォッチングですか？」</sentence>
+<sentence>　真木を<event class="" eid="e363">見る</event>河合の目が好奇心に<event class="" eid="e364">輝いている</event>。</sentence>
+<sentence>日本人と<event class="" eid="e365">会えた</event>ことがよほど<event class="STATE" eid="e366">嬉しいらしい</event>。</sentence>
+<sentence type="quasi">　「ここいらには鯨が<event class="" eid="e367">いる</event>の？」</sentence>
+<sentence>　「<TIMEX3 definite="TRUE" general="TRUE" tid="t16" type="DATE" value="XXXX-FA" valueFromSurface="XXXX-FA">秋</TIMEX3>から<TIMEX3 definite="TRUE" general="TRUE" tid="t17" type="DATE" value="XXXX-WI" valueFromSurface="XXXX-WI">冬</TIMEX3>に<event class="" eid="e368">かけ</event>て、この近くのラグーンで鯨たちが子育てを<event class="" eid="e369">するんです</event>。</sentence>
+<sentence type="quasi">だから、世界中から観光客やダイバーが<event class="" eid="e370">来ます</event>よ」</sentence>
+<sentence>　河合は<event class="STATE" eid="e371">得意気に</event>            <event class="" eid="e372">言っ</event>て、しかし他には何も<event class="STATE" eid="e373">ない</event>所だと<event class="" eid="e374">つけ加えた</event>。</sentence>
+<sentence>この町に<event class="" eid="e375">来ることになった</event>いきさつを真木が<event class="" eid="e376">話す</event>と、河合は興味を<event class="" eid="e377">持ったらしく</event>、増々身を<event class="" eid="e378">乗り出し</event>て<event class="" eid="e379">きた</event>。</sentence>
+<sentence type="quasi">　「<TIMEX3 definite="FALSE" tid="t18" type="DATE" value="XXXX" valueFromSurface="Q-20Y">二〇年前</TIMEX3>か…」</sentence>
+<sentence>　河合が、何か心当たりが<event class="" eid="e380">ある</event>ような顔を<event class="" eid="e381">した</event>。</sentence>
+<sentence type="quasi">　「まさか、その頃のことは<event class="" eid="e382">知らない</event>よね？」</sentence>
+<sentence>　「もちろん、私は<event class="" eid="e383">知りません</event>。</sentence>
+<sentence>ここに<event class="" eid="e384">来</event>て、まだ<TIMEX3 definite="FALSE" tid="t19" type="DURATION" value="P3Y" valueFromSurface="P3Y">三年</TIMEX3>ですから。</sentence>
+<sentence type="quasi">…いや、もう<TIMEX3 definite="FALSE" tid="t20" type="DURATION" value="P3Y" valueFromSurface="P3Y">三年</TIMEX3>も<event class="" eid="e385">経ってしまった</event>と<event class="" eid="e386">言った</event>方が<event class="" eid="e387">当たってる</event>か」</sentence>
+<sentence>　河合は<event class="STATE" eid="e388">遠慮がちに</event>            <event class="" eid="e389">笑った</event>。</sentence>
+<sentence>少し<event class="STATE" eid="e390">自虐的な</event>笑みに真木には<event class="" eid="e391">見えた</event>。</sentence>
+<sentence type="quasi">　「仕事で？」</sentence>
+<sentence type="quasi">　「そうです」</sentence>
+<sentence type="quasi">　「<event class="STATE" eid="e392">失礼だ</event>けど、こんな所でどんな仕事を<event class="" eid="e393">している</event>の？」</sentence>
+<sentence>　「ここには北米最大の塩田が<event class="" eid="e394">あるんです</event>。</sentence>
+<sentence>                  <event class="STATE" eid="e395">良質</event>の塩が<event class="" eid="e396">とれ</event>て、アメリカや日本が<event class="" eid="e397">買うんです</event>。</sentence>
+<sentence>日本で<event class="" eid="e398">消費される</event>塩の、実に七割近くがここの塩なんですよ。</sentence>
+<sentence>私の仕事は、塩の買いつけや送り出しの手配全般です。</sentence>
+<sentence type="quasi">…なんて<event class="" eid="e399">言っ</event>ても、<event class="STATE" eid="e400">退屈な</event>                  <TIMEX3 definite="FALSE" quant="EACH" tid="t21" type="SET" value="P1D" valueFromSurface="P1D">毎日</TIMEX3>ですけどね」</sentence>
+<sentence>　また、<event class="STATE" eid="e401">自虐的な</event>笑みが<event class="" eid="e402">浮いた</event>。</sentence>
+<sentence>　「もしか<event class="" eid="e403">する</event>と、そのメキシコ人は塩田か、製造施設で<event class="" eid="e404">働いていた</event>のかもしれませんね。</sentence>
+<sentence type="quasi">                  <TIMEX3 definite="TRUE" tid="t22" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>では観光で<event class="" eid="e405">食う</event>人間たちも<event class="" eid="e406">います</event>が、<TIMEX3 definite="TRUE" tid="t23" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>は、ここの産業と<event class="" eid="e407">いえ</event>ば塩を<event class="" eid="e408">つくる</event>ことくらいしか<event class="STATE" eid="e409">なかった</event>はずですから」</sentence>
+<sentence>　少し<event class="" eid="e410">考え</event>、そして河合は<event class="" eid="e411">続けた</event>。</sentence>
+<sentence>　「塩づくりの主みたいなメキシコ人が<event class="" eid="e412">いるんです</event>。</sentence>
+<sentence>                  <TIMEX3 definite="FALSE" mod="APPROX" tid="t24" type="DURATION" value="P40Y" valueFromSurface="P40Y">四〇年くらい</TIMEX3>塩田で<event class="" eid="e413">働いてい</event>て、この町のことは何でも<event class="" eid="e414">知っている</event>男です。</sentence>
+<sentence type="quasi">この時間ならまだオフィスに<event class="" eid="e415">いる</event>はずだから、<TIMEX3 tid="t203" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>から<event class="" eid="e416">行ってみましょう</event>」</sentence>
+<sentence>　河合が席から<event class="" eid="e417">立った</event>。</sentence>
+<sentence>            <event class="" eid="e418">思い立つ</event>と<event class="" eid="e419">ジッとしていられない</event>性分らしい。</sentence>
+<sentence type="quasi">　「<event class="" eid="e420">つい</event>て<event class="" eid="e421">来て下さい</event>」</sentence>
+<sentence>　河合はさっさと<event class="" eid="e422">歩き</event>、自分の車に<event class="" eid="e423">乗った</event>。</sentence>
+<sentence type="quasi">　「仕事の方は<event class="STATE" eid="e424">大丈夫な</event>の？」</sentence>
+<sentence>　<event class="" eid="e425">恐縮し</event>て真木が<event class="" eid="e426">訊く</event>と、どうせ<event class="STATE" eid="e427">暇だ</event>からと言って河合は車を<event class="" eid="e428">スタートさせた</event>。</sentence>
+<sentence>　メインストリートを<event class="" eid="e429">直進し</event>て海に<event class="" eid="e430">向かった</event>。</sentence>
+<sentence>商店街を<event class="" eid="e431">抜け</event>て住宅街に<event class="" eid="e432">入った</event>すぐの所に、軍の基地のように<event class="STATE" eid="e433">だだっ広い</event>施設が<event class="" eid="e434">あった</event>。</sentence>
+<sentence>　入口は鉄柵で<event class="" eid="e435">ガードされてい</event>て、脇の詰め所ではマシンガンを肩に<event class="" eid="e436">下げた</event>警備員が目を<event class="" eid="e437">光らせている</event>。</sentence>
+<sentence>河合の顔を<event class="" eid="e438">確認した</event>警備員が鉄柵を<event class="" eid="e439">開け</event>、真木も<event class="" eid="e440">続い</event>て中に<event class="" eid="e441">入った</event>。</sentence>
+<sentence>　<event class="" eid="e442">アメリカナイズされた</event>オフィスの中は<event class="STATE" eid="e443">静かで</event>、人気は<event class="STATE" eid="e444">なかった</event>。</sentence>
+<sentence>河合が電話で誰かと<event class="" eid="e445">話し</event>、しばらく<event class="" eid="e446">する</event>と<event class="STATE" eid="e447">立派な</event>口髭を<event class="" eid="e448">たくわえた</event>大男が<event class="" eid="e449">現れた</event>。</sentence>
+<sentence>            <TIMEX3 definite="FALSE" mod="APPROX" tid="t25" type="DURATION" value="P60Y" valueFromSurface="P60Y">六〇歳くらい</TIMEX3>だろうが胸は<event class="STATE" eid="e450">厚く</event>、<event class="STATE" eid="e451">太い</event>腕には入れ墨が<event class="" eid="e452">散っている</event>。</sentence>
+<sentence>　「この人がマニー・エルナンデスさん。</sentence>
+<sentence>ゲレロ・ネグロの主です。」</sentence>
+<sentence>　河合がエルナンデスを真木に<event class="" eid="e453">紹介し</event>、真木は<event class="" eid="e454">自己紹介し</event>てからロペスのことを<event class="" eid="e455">訊いた</event>。</sentence>
+<sentence>　「アルベルト・ロペスね。</sentence>
+<sentence type="quasi">                  <event class="" eid="e456">似た</event>ような名前はいくらも<event class="" eid="e457">いた</event>からな」</sentence>
+<sentence>　<event class="" eid="e458">予想していた</event>とおりの反応だった。</sentence>
+<sentence>名前だけでは<event class="STATE" eid="e459">無理だ</event>と<event class="" eid="e460">思い</event>、真木はロペスの腕っぷしについて<event class="" eid="e461">話した</event>。</sentence>
+<sentence>すると、エルナンデスの顔色が<event class="" eid="e462">変わった</event>。</sentence>
+<sentence type="quasi">　「<event class="" eid="e463">痩せてい</event>て、左の拳が<event class="" eid="e464">潰れている</event>奴か？」</sentence>
+<sentence type="quasi">　「そうです！」</sentence>
+<sentence>　<event class="" eid="e465">思わず</event>大きな声が<event class="" eid="e466">出た</event>。</sentence>
+<sentence>            <event class="STATE" eid="e467">確かに</event>、ロペスの左手は<event class="" eid="e468">変形してい</event>て拳を<event class="" eid="e469">握る</event>と<event class="STATE" eid="e470">              <ruby rubyText="いびつ">歪</ruby>な</event>形に<event class="" eid="e471">なった</event>。</sentence>
+<sentence>だから、相手の顔は<event class="" eid="e472">殴らず</event>、なるべく腹を<event class="" eid="e473">殴る</event>ように<event class="" eid="e474">していた</event>。</sentence>
+<sentence>顔を<event class="" eid="e475">殴る</event>と自分の拳も<event class="STATE" eid="e476">痛かったのだろう</event>。</sentence>
+<sentence>いつどこで拳を<event class="" eid="e477">傷めた</event>のかは真木も<event class="" eid="e478">知らない</event>。</sentence>
+<sentence type="quasi">　「そいつは、ラトンだ」</sentence>
+<sentence type="quasi">　「ラトン？」</sentence>
+<sentence>　「鼠のことだよ。</sentence>
+<sentence>鼠みたいに<event class="STATE" eid="e479">すばしっこかった</event>から、みんな奴のことをそう<event class="" eid="e480">呼んでいたんだ</event>。</sentence>
+<sentence type="quasi">名前で<event class="" eid="e481">呼ぶ</event>奴なんか<event class="" eid="e482">いなかった</event>よ」</sentence>
+<sentence>　エルナンデスは<event class="STATE" eid="e483">懐かし</event>そうな目を<event class="" eid="e484">した</event>が、ロペスの死を<event class="" eid="e485">知る</event>と肩を<event class="" eid="e486">落とした</event>。</sentence>
+<sentence>　「そう<event class="" eid="e487">いう</event>死に方を<event class="" eid="e488">する</event>奴だと<event class="" eid="e489">思っていた</event>よ。</sentence>
+<sentence>いつか、誰かに<event class="" eid="e490">殺される</event>ってな。</sentence>
+<sentence>何しろ<event class="STATE" eid="e491">理不尽な</event>ことが<event class="STATE" eid="e492">嫌いで</event>、相手が誰だろうが<event class="" eid="e493">突っかかっ</event>て<event class="" eid="e494">いく</event>奴だったからな。</sentence>
+<sentence>                  <TIMEX3 definite="TRUE" tid="t26" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>、本土の方から<event class="" eid="e495">来た</event>                  <event class="STATE" eid="e496">嫌な</event>役人が<event class="" eid="e497">いたんだ</event>。</sentence>
+<sentence>同じメキシコ人なのに<event class="STATE" eid="e498">弱い</event>者を<event class="" eid="e499">痛ぶる</event>ような奴で、そいつをラトンが<event class="" eid="e500">叩きのめしたんだ</event>。</sentence>
+<sentence>みんな胸の<event class="" eid="e501">すく</event>思いだったが、ラトンはここに<event class="" eid="e502">いられなく</event>                  <event class="" eid="e503">なった</event>。</sentence>
+<sentence type="quasi">そのクソ役人が警察を<event class="" eid="e504">動かし</event>てラトンを<event class="" eid="e505">追ったんだ</event>よ」</sentence>
+<sentence>　ここでも、ロペスは正義感のために貧乏クジを<event class="" eid="e506">引いていた</event>。</sentence>
+<sentence>            <event class="STATE" eid="e507">若かった</event>分だけ血の気が<event class="STATE" eid="e508">濃く</event>、<event class="" eid="e509">起こした</event>騒動は<event class="STATE" eid="e510">大きかっただろう</event>。</sentence>
+<sentence>真木は、検問所の、小意地の<event class="STATE" eid="e511">悪</event>そうな係官の顔を<event class="" eid="e512">思い出していた</event>。</sentence>
+<sentence type="quasi">　「彼には連れ合いが<event class="" eid="e513">いた</event>はずなんですが、彼女が<TIMEX3 tid="t204" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>どこに<event class="" eid="e514">いる</event>か<event class="" eid="e515">知ってます</event>か？」</sentence>
+<sentence>　「<event class="STATE" eid="e516">確かに</event>女は<event class="" eid="e517">いた</event>。</sentence>
+<sentence>                  <event class="" eid="e518">生まれた</event>村から一緒に<event class="" eid="e519">来た</event>と<event class="" eid="e520">言っていた</event>が、あいつは<event class="STATE" eid="e521">正式な</event>女房だったのかな。</sentence>
+<sentence>ラトンは<event class="STATE" eid="e522">一途だった</event>が、女の方は結構腰が<event class="STATE" eid="e523">軽く</event>てな。</sentence>
+<sentence type="quasi">俺たちには、ラトンが<event class="STATE" eid="e524">いい</event>ように<event class="" eid="e525">弄ばれている</event>ようにしか<event class="" eid="e526">見えなかった</event>よ」</sentence>
+<sentence type="quasi">　「彼は、ここで<event class="" eid="e527">生まれたんじゃないんです</event>か？」</sentence>
+<sentence>　「<event class="" eid="e528">違う</event>よ。</sentence>
+<sentence>どこで<event class="" eid="e529">生まれ育った</event>のかは<event class="" eid="e530">知らない</event>が、ここが故郷でないことだけは<event class="STATE" eid="e531">確かだ</event>。</sentence>
+<sentence type="quasi">この町には、バハのあちこちから男たちが<event class="" eid="e532">やっ</event>て<event class="" eid="e533">来る</event>からな」</sentence>
+<sentence type="quasi">　「で、その女は？」</sentence>
+<sentence>　「うろ覚えだが、ラトンがここを<event class="" eid="e534">追われ</event>てしばらく<event class="" eid="e535">し</event>てから、確か、カサ・デ・ロッサに<event class="" eid="e536">行ったんじゃない</event>かな。</sentence>
+<sentence type="quasi">そこで<event class="" eid="e537">働いている</event>と<event class="" eid="e538">聞いたことがある</event>」</sentence>
+<sentence type="quasi">　「カサ・デ・ロッサ？」</sentence>
+<sentence type="quasi">　「バーと売春宿が一緒に<event class="" eid="e539">なった</event>ような店です」</sentence>
+<sentence>　河合が<event class="" eid="e540">説明してくれた</event>。</sentence>
+<sentence type="quasi">　「もう<TIMEX3 definite="FALSE" mod="EQUAL_OR_MORE" tid="t27" type="DURATION" value="P10Y" valueFromSurface="P10Y">一〇年以上</TIMEX3>も前のことだから、<TIMEX3 definite="TRUE" tid="t28" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>もそこに<event class="" eid="e541">いる</event>とは<event class="" eid="e542">思えない</event>けどな」<info arg="page" value="delimiter" />              </sentence>
+<sentence>　エルナンデスから<event class="" eid="e543">得られる</event>情報は、それ以上<event class="STATE" eid="e544">なかった</event>。</sentence>
+<sentence>　エルナンデスと<event class="" eid="e545">別れた</event>その足でカサ・デ・ロッサに<event class="" eid="e546">向かった</event>。</sentence>
+<sentence>河合もその店に何度か足を<event class="" eid="e547">運んだことがあるらしく</event>、<event class="" eid="e548">待ってました</event>とばかりに道案内を<event class="" eid="e549">かっ</event>て<event class="" eid="e550">出た</event>。</sentence>
+<sentence>            <event class="STATE" eid="e551">謙遜ではなく</event>、本当に暇らしい。</sentence>
+<sentence>　１号線からダートの道に<event class="" eid="e552">入り</event>、河合の車のテールランプを頼りにゲレロ・ネグロから一〇ｋｍほど東へ<event class="" eid="e553">走った</event>。</sentence>
+<sentence>陽はとうに<event class="" eid="e554">落ち</event>、人家の灯も<event class="STATE" eid="e555">遠く</event>            <event class="" eid="e556">なった</event>闇の中を<event class="" eid="e557">走っている</event>と<TIMEX3 definite="TRUE" tid="t29" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>の<TIMEX3 definite="TRUE" tid="t30" type="TIME" value="XXXX-XX-XXTNI" valueFromSurface="XXXX-XX-XXTNI">夜</TIMEX3>の失態を<event class="" eid="e558">思い出した</event>。</sentence>
+<sentence>荷台では、かつてラトンと<event class="" eid="e559">呼ばれた</event>ロペスが<event class="" eid="e560">眠っている</event>。</sentence>
+<sentence>            <event class="" eid="e561">然るべき</event>人間に金を<event class="" eid="e562">渡し</event>、<event class="" eid="e563">落ち着くべき</event>土地に<event class="STATE" eid="e564">早く</event>ロペスを<event class="" eid="e565">届けね</event>ばと気ばかり<event class="" eid="e566">焦る</event>。</sentence>
+<sentence>　こんな所に店が<event class="" eid="e567">ある</event>のかと<event class="STATE" eid="e568">不安に</event>            <event class="" eid="e569">なり始めた</event>時、闇の中に<event class="STATE" eid="e570">安っぽい</event>クリスマスツリーの電飾のような光が<event class="" eid="e571">見えた</event>。</sentence>
+<sentence>            <event class="" eid="e572">先行する</event>河合の車のブレーキランプが土埃の中に<event class="STATE" eid="e573">赤く</event>            <event class="" eid="e574">輝く</event>。</sentence>
+<sentence>　西部劇に<event class="" eid="e575">出てくる</event>バーのような店だった。</sentence>
+<sentence>まだ時間が<event class="STATE" eid="e576">早い</event>のか、<event class="STATE" eid="e577">甘ったるい</event>メキシカンポップスのバラードが<event class="" eid="e578">流れる</event>店内に客は一人も<event class="" eid="e579">いない</event>。</sentence>
+<sentence>閑散と<event class="" eid="e580">した</event>店の奥のカウンターでグラスを<event class="" eid="e581">磨く</event>バーテンと、隅の暗がりでお茶を<event class="" eid="e582">引く</event>二人の女の視線が、<event class="" eid="e583">入っ</event>て<event class="" eid="e584">きた</event>河合と真木に<event class="" eid="e585">貼りついた</event>。</sentence>
+<sentence>　「セニョール。</sentence>
+<sentence>カワイ！」</sentence>
+<sentence>　頭の<event class="" eid="e586">禿げあがった</event>バーテンが<event class="STATE" eid="e587">大袈裟に</event>河合を<event class="" eid="e588">歓迎した</event>。</sentence>
+<sentence>河合はビールを二本<event class="" eid="e589">注文し</event>、ロペスと一緒に<event class="" eid="e590">いた</event>女のことを早速<event class="" eid="e591">訊いた</event>。</sentence>
+<sentence>　「アニタは、とうに<event class="" eid="e592">いない</event>ぜ。</sentence>
+<sentence type="quasi">もう、<TIMEX3 definite="FALSE" mod="EQUAL_OR_MORE" tid="t31" type="DURATION" value="P10Y" valueFromSurface="P10Y">一〇年以上</TIMEX3>前のことだ」</sentence>
+<sentence>　<event class="" eid="e593">冷え</event>て汗を<event class="" eid="e594">搔いた</event>缶ビールを二本<event class="" eid="e595">置き</event>、バーテンは<event class="STATE" eid="e596">丸い</event>肩を<event class="" eid="e597">竦めた</event>。</sentence>
+<sentence>　「<TIMEX3 definite="FALSE" tid="t32" type="DURATION" value="P4Y" valueFromSurface="P4Y">四</TIMEX3>、<TIMEX3 definite="FALSE" tid="t33" type="DURATION" value="P5Y" valueFromSurface="P5Y">五年</TIMEX3>はここで<event class="" eid="e598">働いていた</event>かな。</sentence>
+<sentence>そう、ラトンがゲレロ・ネグロを<event class="" eid="e599">追われ</event>てアメリカの方へ<event class="" eid="e600">逃げた</event>後、<event class="" eid="e601">食う</event>に<event class="" eid="e602">困っ</event>てここに<event class="" eid="e603">転がり込んだんだ</event>。</sentence>
+<sentence>しばらくはラトンからも金が<event class="" eid="e604">送られ</event>て<event class="" eid="e605">きていた</event>みたいだったが、それが<event class="" eid="e606">途切れる</event>と<event class="STATE" eid="e607">新しい</event>男を<event class="" eid="e608">見つけ</event>てさっさと<event class="" eid="e609">出</event>て<event class="" eid="e610">いっちまった</event>。</sentence>
+<sentence type="quasi">性悪女で、男から男へ<event class="" eid="e611">渡り歩く</event>タイプだったよ」</sentence>
+<sentence type="quasi">　「子供は？」</sentence>
+<sentence>　「子供なんか<event class="" eid="e612">いなかった</event>ぜ。</sentence>
+<sentence>そいつはラトンの勘違いか、アニタに<event class="" eid="e613">騙されていたんだろう</event>よ。</sentence>
+<sentence>子供が<event class="" eid="e614">産まれた</event>と<event class="" eid="e615">聞かされりゃあ</event>、男は<event class="STATE" eid="e616">必死に</event>                  <event class="" eid="e617">なっ</event>て<event class="" eid="e618">働く</event>からな。</sentence>
+<sentence type="quasi">ラトンは<event class="STATE" eid="e619">純情な</event>奴だったから、<event class="STATE" eid="e620">いい</event>ように<event class="" eid="e621">あしらわれていたんじゃない</event>か」</sentence>
+<sentence type="quasi">　「ここを<event class="" eid="e622">出た</event>後、アニタという女がどこに<event class="" eid="e623">行った</event>かは<event class="" eid="e624">分からない</event>？」</sentence>
+<sentence>　「風の噂で、生まれ故郷のサン・ファニコに<event class="" eid="e625">戻った</event>と<event class="" eid="e626">聞いた</event>けどな。</sentence>
+<sentence>きっと、どんな男とも<event class="STATE" eid="e627">うまく</event>                  <event class="" eid="e628">やれなかったんだろう</event>よ。</sentence>
+<sentence type="quasi">サン・ファニコじゃあ、結構羽振りの<event class="STATE" eid="e629">いい</event>家の娘だったと<event class="" eid="e630">いう</event>から、いよいよ<event class="" eid="e631">行く</event>所が<event class="" eid="e632">なくなっ</event>て<event class="" eid="e633">戻ったんじゃない</event>か」</sentence>
+<sentence>　ロペスとアニタは、<event class="" eid="e634">生まれた</event>村、サン・ファニコを<event class="STATE" eid="e635">駆け落ち同然で</event>            <event class="" eid="e636">捨てたのだ</event>と<event class="" eid="e637">いう</event>。</sentence>
+<sentence>村を<event class="" eid="e638">出たがっていた</event>アニタに、ロペスは<event class="" eid="e639">利用されたのだ</event>とバーテンは<event class="" eid="e640">言った</event>。</sentence>
+<sentence type="quasi">　「サン・ファニコって村は<event class="STATE" eid="e641">遠い</event>の？」</sentence>
+<sentence>　「ここから三〇〇ｋｍほど南の、太平洋岸の漁村です。</sentence>
+<sentence type="quasi">１号線を一五〇ｋｍ<event class="" eid="e642">南下する</event>とサン・イグナシオという村が<event class="" eid="e643">あるんです</event>が、そこから海側に<event class="" eid="e644">出</event>てダートを一五〇ｋｍほど<event class="" eid="e645">走った</event>所に<event class="" eid="e646">あります</event>」</sentence>
+<sentence>　河合の説明を<event class="" eid="e647">聞い</event>て、真木はさすがに<event class="" eid="e648">うんざりした</event>。</sentence>
+<sentence type="quasi">　「煙草、<event class="" eid="e649">くれる</event>？」</sentence>
+<sentence>　気が<event class="" eid="e650">つく</event>と、隅の暗がりに<event class="" eid="e651">いた</event>女の一人が脇に<event class="" eid="e652">立っていた</event>。</sentence>
+<sentence>            <event class="STATE" eid="e653">薄暗く</event>てよく<event class="" eid="e654">見えない</event>が、<event class="STATE" eid="e655">濃い</event>化粧を<event class="" eid="e656">落としたら</event>            <event class="STATE" eid="e657">結構な</event>齢だろう。</sentence>
+<sentence>ミニスカートで<event class="" eid="e658">若づくりしている</event>が、腕は<event class="" eid="e659">浮腫んでいる</event>し下腹も<event class="" eid="e660">出ている</event>。</sentence>
+<sentence type="quasi">　「日本から<event class="" eid="e661">来た</event>の？」</sentence>
+<sentence>　真木が<event class="" eid="e662">渡した</event>煙草を<event class="" eid="e663">くわえ</event>、女が身を<event class="" eid="e664">寄せ</event>て<event class="" eid="e665">きた</event>。</sentence>
+<sentence>            <event class="STATE" eid="e666">甘ったるい</event>パフュームに<event class="" eid="e667">              <ruby rubyText="む">噎</ruby>せ</event>そうに<event class="" eid="e668">なる</event>。</sentence>
+<sentence type="quasi">　「日本人だけど、<event class="" eid="e669">住んでいる</event>のはロスだ」</sentence>
+<sentence>　<event class="STATE" eid="e670">面倒</event>そうに<event class="" eid="e671">答えた</event>が、女は意に<event class="" eid="e672">介さず</event>目を<event class="" eid="e673">輝かせた</event>。</sentence>
+<sentence>　「<event class="STATE" eid="e674">いい</event>わね。</sentence>
+<sentence type="quasi">私もアメリカに<event class="" eid="e675">行きたい</event>」</sentence>
+<sentence>　品を<event class="" eid="e676">つくる</event>商売女に、未だ<event class="" eid="e677">見ぬ</event>アニタという女が<event class="" eid="e678">重なった</event>。<info arg="page" value="delimiter" />          </sentence>

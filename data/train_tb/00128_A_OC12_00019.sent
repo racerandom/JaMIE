@@ -1,0 +1,9 @@
+<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>、とろろ芋を<event class="" eid="e1">食べました</event>。</sentence>
+<sentence>とろろ芋を<event class="" eid="e2">食べる</event>と口の周りが<event class="STATE" eid="e3">かゆく</event><event class="" eid="e4">なっ</event>たり<event class="" eid="e5">します</event>よね。</sentence>
+<sentence>あれって何故なんでしょう。</sentence>
+<sentence>子供に<event class="" eid="e6">聞かれ</event>てなんて<event class="" eid="e7">答え</event>て<event class="STATE" eid="e8">いい</event>か<event class="" eid="e9">わかりません</event>。</sentence>
+<sentence><event class="" eid="e10">知っている</event>方、<event class="" eid="e11">教えてください</event>。</sentence>
+<sentence>シュウ酸カルシウムの針状結晶が原因です。</sentence>
+<sentence><event class="" eid="e12">すりおろし</event>たり<event class="" eid="e13">する</event>とその組織が<event class="" eid="e14">破れ</event>針状の結晶が<webBr /><event class="" eid="e15">飛び出し</event>、それが皮膚に<event class="" eid="e16">刺さる</event>と<event class="STATE" eid="e17">かゆく</event><event class="" eid="e18">なります</event>。</sentence>
+<sentence>熱に<event class="STATE" eid="e19">弱いので</event>いったん<event class="" eid="e20">加熱する</event>と<event class="STATE" eid="e21">かゆく</event><event class="" eid="e22">ならない</event>そうです。</sentence>
+<sentence>ちなみにシュウ酸カルシウムの針状結晶はキュウイ、さといも<webBr />等にも<event class="" eid="e23">ふくまれています</event>。</sentence>

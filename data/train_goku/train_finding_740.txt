@@ -1,0 +1,2 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。経過観察されている<a>右Ｓ３ａ</a>の<f>やや不整形</f>の<f>淡い</f><d certainty="positive">ＧＧＮ</d>は<f>２．７×２．６Ｃｍ</f>で、前回と比較しサイズ形態に著変なし、ＸＸＸＸ年と比べると<c>明らかな増大</c>。<f>濃い</f><d certainty="positive">すりガラス状陰影</d>は存在しますが、<d certainty="negative">充実部分</d>は認めません。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｂ</d><d certainty="positive">Ｎ０</d>
+<d certainty="negative">腫大リンパ節</d>なし　<d certainty="negative">胸水貯留</d>なし。<f>新たな</f><d certainty="negative">病巣</d>の出現は認めません．

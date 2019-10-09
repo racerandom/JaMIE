@@ -1,0 +1,10 @@
+<sentence>一人っ子の方に質問です。</sentence>
+<sentence>歳が<TIMEX3 definite="FALSE" mod="EQUAL_OR_MORE" tid="t1" type="DURATION" value="P10Y" valueFromSurface="P10Y">１０歳以上</TIMEX3><event class="" eid="e1">離れてい</event>ても<webBr />弟か妹が<event class="STATE" eid="e2">欲しいです</event>か？</sentence>
+<sentence>私には<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P9Y" valueFromSurface="P9Y">９歳</TIMEX3>に<event class="" eid="e3">なる</event>子が<event class="" eid="e4">います</event>が<webBr />二人目がなかなか<event class="" eid="e5">出来ません</event>。</sentence>
+<sentence>歳が<event class="" eid="e6">離れた</event>兄弟は上の子に<webBr />負担に<event class="" eid="e7">なる</event>だけですか？</sentence>
+<sentence>一人っ子のままが<event class="STATE" eid="e8">いいです</event>か？</sentence>
+<sentence>周りにそう<event class="" eid="e9">言う</event>お友達が<event class="" eid="e10">居ます</event>。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P15Y" valueFromSurface="P15Y">１５才</TIMEX3>違い、<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="P11Y" valueFromSurface="P11Y">１１才</TIMEX3>違い、<TIMEX3 definite="FALSE" tid="t5" type="DURATION" value="P7Y" valueFromSurface="P7Y">７</TIMEX3>，<TIMEX3 definite="FALSE" tid="t6" type="DURATION" value="P8Y" valueFromSurface="P8Y">８才</TIMEX3>違いは結構<event class="" eid="e11">居ます</event>。</sentence>
+<sentence>みんな<event class="STATE" eid="e12">凄く</event>育児が<event class="STATE" eid="e13">楽だ</event>し、上の子が、<event class="" eid="e14">可愛がってくれる</event>と<event class="" eid="e15">言ってました</event>よ！！</sentence>
+<sentence>でも中には、上の子が<event class="STATE" eid="e16">優しい</event>から下が好き放題で<event class="STATE" eid="e17">わがままで</event><event class="" eid="e18">困る</event>と<event class="" eid="e19">言ってる</event>人も<event class="" eid="e20">居ます</event>が、私達が<event class="" eid="e21">見る</event>限りでは、そんな事<event class="STATE" eid="e22">無いんです</event>けどね・・・。</sentence>
+<sentence>一人っ子よりは<event class="" eid="e23">作っ</event>て<event class="" eid="e24">あげた</event>方が子供達にとっても<event class="STATE" eid="e25">良い</event>と<event class="" eid="e26">思います</event>よ！！</sentence>

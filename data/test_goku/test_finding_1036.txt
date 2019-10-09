@@ -1,0 +1,3 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>胸部</a>：<a>左肺下葉Ｓ９ａ</a>に<f>１．０×１．９Ｃｍ</f>の<d certainty="positive">充実結節</d>を認めます。ｒｅｔｒｏｓｐｅｃｔｉｖｅにはＸＸＸＸ年より<f>点状</f>に存在します。<f>ｓｌｏｗ　ｇｒｏｗｉｎｇな</f><d certainty="suspicious">原発性肺癌</d>を疑います。<d certainty="suspicious">ｃＴ１ｂ</d>
+<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
+<a>右肺動脈内</a>の<d certainty="positive">ｄｅｆｅｃｔ像</d>（<d certainty="positive">腫瘍栓</d>の放射線治療後）は不変．<a>右肺尖部</a>の<d certainty="positive">気管支拡張を伴った浸潤影</d>や<f>肺野末梢優位に広がる区域性</f>の<d certainty="positive">濃度上昇</d>も不変です。<d certainty="positive">右胸水</d>は<c>減少</c>

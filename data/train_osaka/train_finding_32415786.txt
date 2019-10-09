@@ -1,0 +1,21 @@
+<a>対側</a>に比し、<a>右肺の血流</a>が<f>全体</f>に<f>著明</f>に<d certainty="positive">低下</d>しています。。
+<a>両肺の血流分布</a>は<f>全体</f>に<f>不均等</f>です。
+CT(2014/02/25)参照にて、<d certainty="positive">蜂窩肺</d>の所見が強い<a>右肺や左肺底部</a>で<d certainty="positive">血流低下</d>が<f>顕著</f>であり、<a>左肺尖部</a>の<d certainty="positive">間質性肺炎または炎症</d>を反映すると思われる<d certainty="positive">すりガラス濃度</d>に相当する部の<a>血流</a>も<d certainty="positive">低下</d>しています。
+<a>両肺尖部</a>のRI描出は<f>比較的明瞭</f>に認められ、<d certainty="positive">肺高血圧症</d>が示唆されます。
+<a>肺</a>血流比　左：右＝77：23
+<a>肝</a>：<a>両葉</a>に<f>径1.6cm大</f>の<d certainty="positive">嚢胞</d>を認めます。
+<a>胆</a>：n.p.
+<a>膵</a>：<a>膵尾部</a>に<f>径1.5cm大</f>の<d certainty="positive">嚢胞性病変</d>を認めます。<d certainty="positive">薄い壁の隔壁</d>を伴い<f>分葉状</f>の形態に見えます。<d certainty="suspicious", correction="膵漿液性嚢胞腺腫">膵？液性嚢胞腺腫</d>(<d certainty="suspicious">oligocystic</d>)や<d certainty="suspicious">retention cyst</d>などが考えられますが、<d certainty="suspicious">粘液性嚢胞腺腫</d>も鑑別となります。可能ならMRIなど精査を。
+<a>脾</a>：n.p.
+<a>副腎</a>：n.p.
+<a>腎</a>：<d certainty="positive">左腎嚢胞</d>。
+<a>小腸</a><f>一部</f><d certainty="positive">拡張</d>しています。<d certainty="positive">便秘</d>あり。
+<a>ダグラス窩</a>に<f>少量</f><d certainty="positive">腹水</d>あり。
+<d certainty="negative">リンパ節腫大</d>を認めません。
+<d certainty="positive">膵嚢胞性病変</d>：<d certainty="suspicious", correction="膵漿液性嚢胞腺腫やretention cyst">膵？液性嚢胞腺腫やretention cyst</d>の疑い、r/o<d certainty="negative">粘液性嚢胞腺腫</d>
+<a>両側肺</a>の換気分布は概ね良好です。
+洗い出しは<a>左肺底区や右上肺野</a>で<d certainty="positive">相対的に遅延</d>しています。
+<a>両側肺</a>に<f>びまん性</f>に<d certainty="positive">すりガラス影や小葉内網状影、牽引性気管支拡張</d>が認められます。<a>右上肺野</a>に<a>気道</a>の<d certainty="positive">拡張</d>が多く認められます。<d certainty="suspicious">NSIPのような間質性肺炎やchironic HP、サルコイドーシス</d>などが疑われます。
+<d certainty="positive">軽度心拡大</d>あり。<f>少量</f>の<d certainty="positive">心嚢液</d>が認められます。
+<a>縦隔内や両側肺門部</a>に<f>短径1.2cm程度</f>までの<d certainty="positive">LNs</d>が認められます。<d certainty="suspicious">reactive nodes</d>を疑いますが、followしてください。
+<a>右第5-7、9肋骨</a>に<d certainty="positive">骨折後変化</d>と思われる<d certainty="positive">骨硬化像や変形</d>が認められます。

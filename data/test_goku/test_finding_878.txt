@@ -1,0 +1,2 @@
+ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺上葉Ｓ３ａ</a>に<f>２．３×１．７Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>あり、サイズ形態に著変なし。<a>内部</a>の<d certainty="positive">充実部分</d>（<f>０．９×０．２Ｃｍ</f>）は前回より著変なし。<d certainty="suspicious">肺癌</d>が疑われます。<d certainty="suspicious">ｃＴ１ｂ</d><d certainty="positive">Ｎ０</d>
+<a>左肺尖から上葉</a>の<d certainty="positive">陳旧性変化</d>にも著変はない。<a>縦隔、肺門</a>に<f>有意な</f><d certainty="negative">腫大リンパ節</d>は見られない。<a>右側大動脈弓</a>。<d certainty="positive">胆嚢結石</d>あり。

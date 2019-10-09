@@ -1,0 +1,17 @@
+<a>肝</a>：<a>拡大前区域</a>切除後。<a>肝内</a>に<d certainty="negative">HCC</d>を疑う像は<f>明らかでない</f>。
+<a>後区域</a>の<d certainty="positive">胆管拡張</d>は著変なし。
+<a>門脈内</a>に<d certainty="negative">腫瘍栓</d>は認めない。
+<a>胆</a>：n.p.
+<a>膵</a>：n.p.
+<a>脾</a>：<d certainty="negative">腫大</d>なし。
+<a>副腎</a>：<d certainty="negative">腫大</d>なし。
+<a>腎</a>：<d certainty="positive">右腎嚢胞</d>あり。
+<a>リンパ節</a>：<d certainty="negative">腫大</d>なし。
+<d certainty="negative">腹水</d>：なし。
+<a>両側肺下葉優位</a>に<d certainty="positive">すりガラス影や網状影、牽引性気管支拡張、蜂巣肺</d>を認めます。前回（2015/3/25）と比較して、ほぼ著変ありません。<d certainty="suspicious">間質性肺炎</d>（<d certainty="suspicious">UIPパターン</d>）の経過が疑われます。
+<d certainty="positive">肺気腫</d>を認めます。
+<d certainty="negative">肺転移</d>なし。
+<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>なし。
+<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。
+<d certainty="negative">胸水</d>なし。
+<a>左胸膜</a>に<d certainty="positive">石灰化</d>あり。

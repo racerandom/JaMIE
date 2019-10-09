@@ -1,0 +1,14 @@
+<sentence>だうも、ヨレ蔵です。</sentence>
+<sentence>九州地方、大雨で<event class="STATE" eid="e1">大変</event>みたいですね。</sentence>
+<sentence>床上浸水も<event class="" eid="e2">あった</event>とか。</sentence>
+<sentence><event class="" eid="e3">お見舞い申し上げます</event>。</sentence>
+<sentence>東京地方は、予報では雨でしたが、宵のうちに<event class="" eid="e4">ぱらついた</event>ぐらいです。</sentence>
+<sentence>ところで、ＪＳＢＡ（日本スノーボード協会）から、雪坊主と一緒に更新手続きのお知らせが<event class="" eid="e5">ありました</event>よね。</sentence>
+<sentence><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="FY2008" valueFromSurface="FYXX08">０８</TIMEX3>／<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="FY2009" valueFromSurface="FYXX09">０９年度</TIMEX3>から自動引き落としも<event class="" eid="e6">はじまる</event>そうで、振り込み手数料も<event class="STATE" eid="e7">ないので</event>、そっちで<event class="" eid="e8">手続きしよう</event>かと<event class="" eid="e9">思っています</event>。</sentence>
+<sentence>が、生活費以外はネット銀行に<event class="" eid="e10">しているんです</event>よね。</sentence>
+<sentence>通常ネット銀行って、銀行引き落としが<event class="" eid="e11">できない</event>ことが<event class="STATE" eid="e12">多いんです</event>けどどうなんだろう。</sentence>
+<sentence>でも、どこにもネット銀行不可って<event class="" eid="e13">書いてない</event>し。</sentence>
+<sentence><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="XXXX-XX-XX" valueFromSurface="FUTURE_REF">明日</TIMEX3><event class="" eid="e14">聞いてみます</event>かね。</sentence>
+<sentence>せっかく書類を<event class="" eid="e15">書い</event>ても不備で<event class="" eid="e16">戻っ</event>て<event class="" eid="e17">くる</event>と<event class="" eid="e18">困ります</event>からね。</sentence>
+<sentence>ってことで、会員手続き<event class="STATE" eid="e19">早めに</event><event class="" eid="e20">しておきましょう</event>。</sentence>
+<sentence>では、<event class="STATE" eid="e21">良い</event>お年を。</sentence>

@@ -1,0 +1,27 @@
+<sentence type="quasi">鷹栖</sentence>
+<sentence type="quasi">廃タイヤ共<sampling type="start" />同回収へ</sentence>
+<sentence type="quasi">放置の野焼き用　町と農家で<quote>「一掃」</quote></sentence>
+<sentence>　【鷹栖】上川管内鷹栖町と農家約四百戸で<EVENT class="NULL" eid="e1">つくる</EVENT>同町中山間事業推進協議会（原直会長）は共同で<TIMEX3 definite="false" type="DATE" value="2002-05" valueFromSurface="XXXX-05">五月</TIMEX3>から廃タイヤ回収事業を<EVENT class="ASPECTUAL" eid="e2">始める</EVENT>。</sentence>
+<sentence>水田のあぜ道などに<EVENT class="STATE" eid="e3">放置された</EVENT>廃タイヤの一掃が目的。</sentence>
+<sentence>廃タイヤ処理は所有者が民間業者に<EVENT class="NULL" eid="e4">持ち込む</EVENT>のが<EVENT class="NULL" eid="e5">一般的で</EVENT>、<quote>「自治体や団体が<EVENT class="I_ACTION" eid="e6">取り組む</EVENT>のは道内初」</quote>（道環境室）と<EVENT class="NULL" eid="e7">いう</EVENT>。</sentence>
+<sentence>　廃タイヤ回収は、町内会ごとに集積場所を<EVENT class="I_ACTION" eid="e8">決め</EVENT>、町民が<EVENT class="I_ACTION" eid="e9">持ち込んだ</EVENT>タイヤを旭川市内の処理業者に<EVENT class="I_ACTION" eid="e10">引き渡す</EVENT>。</sentence>
+<sentence>協議会の会員は無料、一般町民は一本百円を<EVENT class="I_ACTION" eid="e11">負担する</EVENT>。</sentence>
+<sentence>　<TIMEX3 definite="FALSE" mod="START" tid="t1" type="DATE" value="2002-04" valueFromSurface="XXXX-XX">今月初め</TIMEX3>から町内全戸を対象に希望調査を<EVENT class="I_ACTION" eid="e12">行っており</EVENT>、<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2002-05-2J" valueFromSurface="XXXX-05-2J">五月中旬</TIMEX3>から回収を<EVENT class="ASPECTUAL" eid="e13">始める</EVENT>。</sentence>
+<sentence>今回の回収費用は千六百万―千八百万円<EVENT class="STATE" eid="e14">かかる</EVENT>見込みで、同町が六百万円を<EVENT class="I_ACTION" eid="e15">補助する</EVENT>。</sentence>
+<sentence>　米どころの同町では、降霜対策で農家による廃タイヤの野焼きが<EVENT class="I_ACTION" eid="e16">行われてきた</EVENT>が、ダイオキシン問題や交通妨害が<EVENT class="I_ACTION" eid="e17">指摘され</EVENT>、行き場を<EVENT class="STATE" eid="e18">失った</EVENT>廃タイヤがあぜ道や納屋の横に<EVENT class="I_ACTION" eid="e19">放置されてきた</EVENT>。</sentence>
+<sentence>　同町が<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2001-FA" valueFromSurface="XXXX-FA">昨秋</TIMEX3><EVENT class="I_ACTION" eid="e20">行った</EVENT>調査では、廃タイヤは農家が<EVENT class="NULL" eid="e21">抱える</EVENT>ものや不法投棄を<EVENT class="NULL" eid="e22">含め</EVENT>約三万本に<EVENT class="NULL" eid="e23">上る</EVENT>と<EVENT class="REPORTING" eid="e24">いう</EVENT>。</sentence>
+<sentence type="quasi">公営地下鉄黒字決算</sentence>
+<sentence type="quasi">札幌・南北線など全国４路線だけ</sentence>
+<sentence>　地方自治体が<EVENT class="NULL" eid="e25">運営する</EVENT>公営地下鉄二十六路線のうち<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="FY2000" valueFromSurface="FY2000">二〇〇〇年度</TIMEX3>決算で経常損益が黒字なのは、札幌市南北線など四路線に<EVENT class="I_ACTION" eid="e26">とどまった</EVENT>ことが、公営交通事業協会が<TIMEX3 definite="FALSE" tid="t5" type="DATE" value="2002-04-10" valueFromSurface="XXXX-XX-10">十日</TIMEX3><EVENT class="I_ACTION" eid="e27">まとめた</EVENT>報告書で<EVENT class="I_STATE" eid="e28">分かった</EVENT>。</sentence>
+<sentence>赤字額が最も<EVENT class="NULL" eid="e29">多い</EVENT>のは東京都大江戸線の三百十一億円だった。</sentence>
+<sentence>　全体の経常損益は千六百七十二億円の赤字で、累積欠損金は二兆三千四百五十四億円に<EVENT class="STATE" eid="e30">上っている</EVENT>。</sentence>
+<sentence>営業損益だけで<EVENT class="PERCEPTION" eid="e31">見る</EVENT>と半数近くが黒字路線だが、<EVENT class="NULL" eid="e32">巨額</EVENT>の建設費に対する支払利息などの営業外費用が<EVENT class="NULL" eid="e33">重く</EVENT><EVENT class="STATE" eid="e34">のしかかっている</EVENT>。</sentence>
+<sentence>　このため報告書は、地下鉄建設債の償還に対する助成や累積欠損の償還期間（現行で<TIMEX3 definite="FALSE" tid="t6" type="DURATION" value="P30Y" valueFromSurface="P30Y">三十年</TIMEX3>）の延長などの必要性を指摘。</sentence>
+<sentence>地下鉄事業者には経営実態の情報公開を<EVENT class="I_ACTION" eid="e35">求めた</EVENT>。</sentence>
+<sentence>　経常損益が黒字だったのは札幌市南北線のほか、大阪市御堂筋、東京都浅草線、名古屋市東山線。</sentence>
+<sentence>いずれも<TIMEX3 definite="FALSE" tid="t7" type="DURATION" value="P1D" valueFromSurface="P1D">一日</TIMEX3>に一キロ当たり一万七千人以上の輸送が<EVENT class="STATE" eid="e36">あり</EVENT>、旅客運輸収益が人件費などの営業費用より１９％以上<EVENT class="STATE" eid="e37">多い</EVENT>。</sentence>
+<sentence>　これら黒字路線は<TIMEX3 definite="FALSE" tid="t8" type="DATE" value="1933" valueFromSurface="1933">一九三三年</TIMEX3>（<TIMEX3 definite="FALSE" tid="t9" type="DATE" value="1933" valueFromSurface="S08">昭和八年</TIMEX3>）に<EVENT class="I_ACTION" eid="e38">開通した</EVENT>御堂筋線などいずれも古くから<EVENT class="I_ACTION" eid="e39">営業しており</EVENT>、支払利息や減価償却費の計上額が<EVENT class="NULL" eid="e40">少ない</EVENT>傾向が<EVENT class="STATE" eid="e41">ある</EVENT>。</sentence>
+<sentence>札幌市南北線（<TIMEX3 definite="FALSE" tid="t10" type="DATE" value="1971" valueFromSurface="XX71">七一年</TIMEX3>開業）は、市内で初めて<EVENT class="I_ACTION" eid="e42">開通した</EVENT>路線で、乗客が<EVENT class="NULL" eid="e43">多い</EVENT>のも黒字確保の一因と<EVENT class="STATE" eid="e44">なった</EVENT>と<EVENT class="I_STATE" eid="e45">みられる</EVENT>。</sentence>
+<sentence>　黒字額の最高は大阪市御堂筋線の二百五十九億円。</sentence>
+<sentence>札幌市内では、南北線が十七億円の黒字だった一方で、東豊線は百六十八億円、東西線は八十六億円のいずれも赤字だった。</sentence>
+<sentence>公営地下鉄事<sampling type="end" />業は、<TIMEX3 definite="FALSE" mod="END" tid="t11" type="DATE" value="FY2000" valueFromSurface="FY2000">二〇〇〇年度末</TIMEX3>で、東京都と八政令市で延べ四百七十三キロが<EVENT class="I_ACTION" eid="e46">営業している</EVENT>。</sentence>
