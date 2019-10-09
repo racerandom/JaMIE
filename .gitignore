@@ -1,0 +1,11 @@
+__pycache__/
+papers/
+timebank/
+scripts/
+outputs/
+data/
+.idea/
+bert_seq*
+bert_tag*
+temp.*
+*.ipynb
