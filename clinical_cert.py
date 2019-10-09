@@ -49,19 +49,20 @@ args = parser.parse_args()
 # batch_convert_clinical_data_to_conll('data/test_%s/' % CORPUS, 'data/test_%s.txt' % CORPUS, sent_tag=True,  is_raw=False)
 # batch_convert_clinical_data_to_conll('data/records/', 'data/records.txt', sent_tag=False, is_raw=True)
 
-
 train_deunks, train_toks, train_labs, train_cert_labs = read_conll('data/train_%s.txt' % args.CORPUS)
 # test_deunks, test_toks, test_labs, test_cert_labs = read_conll('data/test_%s.txt' % CORPUS)
 test_deunks, test_toks, test_labs, test_cert_labs = read_conll(args.NER_OUT)
 # test_deunks, test_toks, test_labs, test_cert_labs = read_conll('data/records.txt')
 
 
+# In[3]:
+
 
 whole_toks = train_toks + test_toks
 max_len = max([len(x) for x in whole_toks])
 print('max sequence length:', max_len)
 unk_count = sum([x.count('[UNK]') for x in whole_toks])
-total_count = sum([len(x) for x in whole_toks])       
+total_count = sum([len(x) for x in whole_toks])
 print('[UNK] token: %s, total: %s, oov rate: %.2f%%' % (unk_count, total_count, unk_count * 100 / total_count))
 print('[Example:]', whole_toks[0])
 cert_lab2ix = {'positive':1, 'negative':2, 'suspicious':3, '[PAD]':0}
@@ -71,11 +72,9 @@ print(cert_lab2ix)
 
 
 train_tensors, train_deunk = extract_cert_from_conll('data/train_%s.txt' % args.CORPUS,
-                                                     tokenizer, 
-                                                     cert_lab2ix, 
+                                                     tokenizer,
+                                                     cert_lab2ix,
                                                      device)
-
-
 
 # test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
 train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
@@ -100,7 +99,7 @@ def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, cer
                 active_gold_lab = b_clabs.view(-1)[active_index]
                 pred_labs.append(active_pred_lab.tolist())
                 gold_labs.append(active_gold_lab.tolist())
-                
+
                 active_pred_lab_list = active_pred_lab.tolist()
                 for t_deunk, t_lab in zip(b_deunk, b_labs):
                     fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, ix2clab[active_pred_lab_list.pop(0)] if t_lab == 'B-D' else '_'))
