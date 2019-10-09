@@ -100,14 +100,7 @@ def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, cer
                 active_gold_lab = b_clabs.view(-1)[active_index]
                 pred_labs.append(active_pred_lab.tolist())
                 gold_labs.append(active_gold_lab.tolist())
-    #             b_deunk = ['[CLS]'] + b_deunk
-    #             print(b_deunk)
-    #             print(b_labs)
-    #             for k in b_ner_masks.view(5, -1)[active_index]:
-    #                 print([b_deunk[i] for i, j in enumerate(k) if j == 1])
-
-    #             print(len(b_labs), b_ner_masks.shape)
-    #             print()
+                
                 active_pred_lab_list = active_pred_lab.tolist()
                 for t_deunk, t_lab in zip(b_deunk, b_labs):
                     fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, ix2clab[active_pred_lab_list.pop(0)] if t_lab == 'B-D' else '_'))
