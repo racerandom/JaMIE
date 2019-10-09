@@ -404,3 +404,29 @@ def eval_seq(model, tokenizer, test_data, deunk_toks, label2ix, file_out):
                 for dt, t, g, p in zip(deunk_tok, bpe_tok, gold_masked_ix.tolist(), pred_masked_ix.tolist()):
                     fo.write('%s\t%s\t%s\t%s\n' % (dt, t, ix2label[p], '_'))
                 fo.write('\n')
+
+
+def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, cert_lab2ix, file_out):
+    pred_labs, gold_labs = [], []
+    ix2clab = {v:k for k,v in cert_lab2ix.items()}
+    model.eval()
+    with torch.no_grad():
+        with open(file_out, 'w') as fo:
+            for b_deunk, b_labs, (b_toks, b_masks, b_ner_masks, b_clab_masks, b_clabs) in zip(test_deunks, test_labs, test_dataloader):
+                pred_prob = model(b_toks, b_ner_masks, b_clab_masks, attention_mask=b_masks)
+                active_index = b_clab_masks.view(-1) == 1
+                if not (active_index != 0).sum().item():
+                    for t_deunk, t_lab in zip(b_deunk, b_labs):
+                        fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, '_'))
+                    fo.write('\n')
+                    continue
+                active_pred_prob = pred_prob.view(-1, len(cert_lab2ix))[active_index]
+                active_pred_lab = torch.argmax(active_pred_prob, dim=-1)
+                active_gold_lab = b_clabs.view(-1)[active_index]
+                pred_labs.append(active_pred_lab.tolist())
+                gold_labs.append(active_gold_lab.tolist())
+
+                active_pred_lab_list = active_pred_lab.tolist()
+                for t_deunk, t_lab in zip(b_deunk, b_labs):
+                    fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, ix2clab[active_pred_lab_list.pop(0)] if t_lab == 'B-D' else '_'))
+                fo.write('\n')
