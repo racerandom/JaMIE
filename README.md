@@ -1,4 +1,4 @@
-## PRISM Medical Tag recognition and Disease certainty classification
+## [PRISM] Medical Tag recognition and Disease certainty classification
 
 ## pipeline processes: 
 
@@ -29,7 +29,7 @@ Predicted texts will be located in the 'outputs' folder.
 
 ### Evaluation:
 > cd conlleval  
-> python conlleval.py < ../outputs/ner_goku_ep5_eval.txt
+> python conlleval.py < ../outputs/ner\_goku\_ep5\_eval.txt
 
 ## step2: disease certainty classification
 
@@ -37,18 +37,29 @@ Predicted texts will be located in the 'outputs' folder.
 > python clinical\_cert.py \\  
 > --corpus 'goku' \\  
 > --model 'checkpoints/cert/' \\ # save model  
-> --ner_out 'outputs/ner\_goku\_ep3\_out.txt' \\ # predicted ner results  
+> --ner\_out 'outputs/ner\_goku\_ep3\_out.txt' \\  # predicted ner results with BIO format  
 > --epoch 3 \\  
 > --batch 16 \\  
 > --do_train 
 
 ### Test:
-> python clinical\_ner.py \\  
+> python clinical\_cert.py \\  
 > --corpus 'goku' \\  
 > --model 'checkpoints/cert/' # load model  
-> --ner_out 'outputs/ner\_goku\_ep3\_out.txt' \\ # predicted ner results 
+> --ner\_out 'outputs/ner\_goku\_ep3\_out.txt'   # predicted ner results with BIO format
 
 Predicted texts will be located in the 'outputs' folder.
+
+
+## Required Package
+pytorch=1.0.0  
+pytorch-pretrained-bert=0.6.2  
+mojimoji  
+tqdm  
+pyknp  
+jumanpp 
+
+
 
 
 
