@@ -1,9 +1,0 @@
-<sentence>住宅ローン減税で中古住宅の築年数制限の延長及び撤廃を<event class="" eid="e1">する</event>ってニュースで<TIMEX3 type="TIME" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3><event class="" eid="e2">見ました</event>！</sentence>
-<sentence>・・・これって<TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2004" valueFromSurface="XXXX">去年</TIMEX3>、築<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P27Y" valueFromSurface="P27Y">２７年目</TIMEX3>の耐震基準を<event class="" eid="e3">満たしてる</event>マンションを既に<event class="" eid="e4">購入してしまった</event>私には<event class="" eid="e5">差し伸べられないんでしょう</event>か？</sentence>
-<sentence>これから<event class="STATE" eid="e6">新たに</event><event class="" eid="e7">購入する</event>方だけ対象ですか？</sentence>
-<sentence>どなかたご存知の方、<event class="" eid="e8">教えて下さ〜い</event>。</sentence>
-<sentence><event class="" eid="e9">お願いします</event>！</sentence>
-<sentence>法律の<event class="STATE" eid="e10">超重要な</event>原則の一つに「法の不遡及」が<event class="" eid="e11">あります</event>。</sentence>
-<sentence>法律が<event class="" eid="e12">施行される</event>以前の行為は、その法律によって<event class="" eid="e13">裁かれる</event>ことは<event class="" eid="e14">ありません</event>。</sentence>
-<sentence>ただし、特別規定が<event class="STATE" eid="e15">ない</event>場合です。</sentence>
-<sentence>念のため。</sentence>

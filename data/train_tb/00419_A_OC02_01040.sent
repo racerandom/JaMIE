@@ -1,8 +1,0 @@
-<sentence>メモリの増設を<event class="" eid="e1">検討しています</event>。</sentence>
-<sentence><event class="STATE" eid="e2">物理的に</event>メモリを<event class="" eid="e3">増設する</event>ほかに<webBr />仮想メモリ？をｃドライブ<webBr />以外に<event class="" eid="e4">作る</event>ことは<event class="" eid="e5">できるのです</event>か？</sentence>
-<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先ほど</TIMEX3>の回答に仮想メモリを<webBr />１ＧＢ程<event class="" eid="e6">作れ</event>ば問題<event class="STATE" eid="e7">ない</event>との<webBr />回答を<event class="" eid="e8">もらいました</event>。</sentence>
-<sentence>ＨＤＤの容量が８０ＧＢ<event class="" eid="e9">あるので</event><webBr />そのほうが<event class="STATE" eid="e10">いい</event>かな？<webBr />と<event class="" eid="e11">思いまし</event>て。</sentence>
-<sentence>あまり<event class="STATE" eid="e12">詳しく</event><event class="STATE" eid="e13">ないので</event>、<webBr /><event class="" eid="e14">勘違いしていたら</event>すみません。</sentence>
-<sentence><TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先ほど</TIMEX3>のご質問が<event class="" eid="e15">見当たらなかったのです</event>が。。。</sentence>
-<sentence>物理メモリ（ＲＡＭ）とＨＤ上に<event class="" eid="e16">作成する</event>仮想メモリでは<webBr />アクセススピードが仮想メモリのほうが<event class="STATE" eid="e17">段違いに</event><event class="STATE" eid="e18">遅いので</event>、<webBr />ＲＡＭが<event class="" eid="e19">増設できるのであれ</event>ば、ＲＡＭを<event class="" eid="e20">増設した</event>ほうが<event class="STATE" eid="e21">よろしい</event>かと<event class="" eid="e22">思います</event>が。。。</sentence>
-<sentence>あ、ちなみに仮想メモリはＣドライブ以外でも、作成は<event class="" eid="e23">できます</event>。</sentence>

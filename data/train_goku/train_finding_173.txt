@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺上葉Ｓ３ｂ</a>に<f>４．９×３．７Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>を認めます。<a>内部</a>の<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>は<f>３．２×２．１Ｃｍ</f>で、<a>内部</a>に<d certainty="positive">ａｉｒ　ｂｒｏｎｃｈｏｇｒａｍ</d>を伴います。<a>辺縁</a>の<d certainty="positive">すりガラス状陰影</d>と<a>正常肺野の境界</a>は<f>明瞭</f>です。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ２ａ</d>
-　ＸＸＸＸ年ＸＸ月とサイズ形態に著変なし。<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。

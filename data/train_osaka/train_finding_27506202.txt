@@ -1,8 +1,0 @@
-<a>右肺下葉</a>切除後。<d certainty="negative">local recurrence</d>は認められません。
-<a>右肺上葉</a>に<d certainty="positive">すりガラス影や小葉内網状影</d>が認められます。<a>右肺S4</a>にも同様の<d certainty="positive">陰影</d>が<f>軽度</f>認められます。現病歴から<d certainty="suspicious">肺胞出血</d>を疑います。D/D <d certainty="suspicious">間質性肺炎の急性増悪、ウィルスやニューモシスチス、細菌などの感染症</d> etc.
-<a>両側肺</a>に<d certainty="positive">間質性肺炎</d>と思われる<d certainty="positive">すりガラス影や網状影、牽引性気管支拡張、蜂巣肺</d>が認められます。前回2015/1/29と比較して大半は著変ありませんが、<a>右肺中葉</a>に<d certainty="positive">蜂巣肺や気腫性変化</d>が出現しています。
-<a>左肺S3胸膜直下</a>の<d certainty="positive">蜂巣肺</d><f>近傍</f>に<d certainty="positive">consolidation</d>が出現しています。<d certainty="suspicious">肺炎のような炎症性変化</d>の経過を疑います。(D/D<d certainty="suspicious">非典型な肺癌</d> etc.) followしてください。
-<d certainty="negative">pulmonary metastasis</d>は認められません。
-<a>cardiomegaly. coronary a.</a>に<d certainty="positive">石灰化</d>。<f>少量</f>の<d certainty="positive">心嚢液</d>が認められます。
-<a>縦隔内</a>に<f>短径1cm程度</f>までの<d certainty="positive">LNs</d>が認められます。前回2015/1/29と著変ありません。<d certainty="positive">reactive nodes</d>と思われます。
-<d certainty="positive">右胸水</d>が認められます。前回と比較して<c>増加</c>しています。

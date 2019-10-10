@@ -1,1 +1,0 @@
-<a>肺内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="negative">胸水貯留</d>なし。<a>肝内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>胆，膵，脾，腎，副腎</a>には異常はみられません．<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>骨盤内</a>に<f>明らかな</f><d certainty="negative">腫瘤</d>なし．<d certainty="negative">腹水</d>なし．

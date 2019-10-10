@@ -1,6 +1,0 @@
-<a>両側肺下葉左優位</a>に<a>小葉間隔壁</a>で境界される<d certainty="positive">すりガラス状陰影</d>を認めます。前回CT(2014.08.27)と比較して<c>一部改善</c>する部分もありますが、<f>一部</f><d certainty="positive">すりガラス影</d>が<c>やや増強</c>しています。<d certainty="suspicious">薬剤を含めたCOPまたはNSIPパターンの間質性肺炎</d>か。<d certainty="suspicious">D/D ウィルスなどの感染症、肺水腫、肺胞出血</d> etc.
-<a>右肺中葉や左肺舌区</a>に見られる<d certainty="positive">索状影やすりガラス状陰影</d>は前回と著変ありません。<d certainty="suspicious">炎症後変化や板状無気肺</d>を疑います。
-<a>右肺S1</a>に<d certainty="positive">石灰化結節</d>が見られます。<d certainty="positive">炎症後結節</d>と思われます。
-<a>縦隔内</a>に<f>短径1cm未満</f>の<d certainty="positive">リンパ節</d>を<f>複数</f>認めます。<f>有意サイズ</f>の<d certainty="negative">リンパ節腫大</d>は指摘できません。前回8/27と著変ありません。
-<d certainty="positive">心拡大</d>が見られます。<a>肺動脈幹</a>は<f>約4cm程度</f>と<d certainty="positive">拡大</d>、前回と著変ありません。<d certainty="suspicious">肺高血圧症</d>の可能性があります。
-<d certainty="negative">胸水</d>は見られません。

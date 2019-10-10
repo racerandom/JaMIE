@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺上葉Ｓ１ａ</a>の<d certainty="positive">原発巣</d>は<f>３．８×２．４Ｃｍ</f>です。<c>縮小維持</c>を認めます。<a>＃１１ｓ肺門</a>に<f>病的有意な</f><d certainty="positive">リンパ節転移</d>も<c>縮小維持</c>。<a>縦隔</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>肺内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<d certainty="negative">胸水貯留</d>なし。

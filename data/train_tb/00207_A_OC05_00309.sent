@@ -1,4 +1,0 @@
-<sentence>中国や韓国では<event class="" eid="e1">謝罪し</event>ても<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="PT5S" valueFromSurface="PT5S">５秒</TIMEX3>も<event class="" eid="e2">経つ</event>と<event class="" eid="e3">忘れてしまうのです</event>か、犬と<event class="STATE" eid="e4">同じです</event>ね。</sentence>
-<sentence type="quasi">いや<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="PT5S" valueFromSurface="PT5S">５秒</TIMEX3>とは<event class="STATE" eid="e5">大げさです</event></sentence>
-<sentence type="quasi">せめて<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P3D" valueFromSurface="P3D">３日</TIMEX3>と<event class="" eid="e6">しておきたい</event></sentence>
-<sentence type="quasi"><event class="" eid="e7">謝罪している</event>間に<event class="" eid="e8">忘れられてしまう</event></sentence>

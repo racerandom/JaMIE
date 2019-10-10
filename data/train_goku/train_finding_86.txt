@@ -1,3 +1,0 @@
-<a>右肺上葉Ｓ２ｂ</a>に<f>２．６×２．５Ｃｍ</f>の<d certainty="positive">ｐａｒｔ　ｓｏｌｉｄ　ＧＧＮ</d>。<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>は<f>０．２×０．４Ｃｍ</f>です。<a>辺縁</a>の<d certainty="positive">すりガラス状陰影</d>と<a>正常肺野の境界</a>は<f>明瞭</f>です。ＸＸＸＸ年ＸＸ月ＣＴ、ＸＸＸＸ年ＸＸ月ＣＴ、と比較してサイズ形態に著変なし。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｂ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>肺尖</a>に<d certainty="positive">胸膜肥厚</d>あり、<d certainty="positive">陳旧性胸膜炎</d>です。

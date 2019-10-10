@@ -1,3 +1,0 @@
-<a>左Ｓ９</a>に<f>３．８ｃｍ　ｘ　２．１ｃｍ</f>の<f>辺縁明瞭</f>な<f>充実性</f>の<d certainty="positive">腫瘤影</d>を認めます。<a>胸膜、横隔膜</a>に接していますが、<f>明らかな</f><d certainty="negative">浸潤</d>はないと思われます。<d certainty="positive">ｃＴ２ａ</d>
-<a>近傍の胸膜上</a>に<f>微細な</f><d certainty="positive">石灰化</d>を認めます。<d certainty="negative">胸水</d>はありません。<a>縦隔</a>に<d certainty="positive">小リンパ節</d>を<f>散見</f>しますが、<f>有意な</f><d certainty="negative">腫大</d>はありません。<d certainty="negative">Ｎ０</d>
-<a>肺門、鎖骨上</a>に<d certainty="negative">腫大リンパ節</d>はありません。<d certainty="positive">胆嚢結石</d>を認めます。<d certainty="positive">腎結石</d>を認めます。<a>肝、膵、脾、副腎</a>に<f>明らかな</f>異常はありません。<a>骨盤内</a>特記すべき所見はありません。<d certainty="negative">腹水</d>はありません。<a>頭蓋内</a>に単純ＣＴ上明らかな異常はありません。

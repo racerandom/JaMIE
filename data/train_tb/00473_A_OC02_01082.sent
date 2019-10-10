@@ -1,4 +1,0 @@
-<sentence type="quasi">ＴＱｕｅｒｙ　を<event class="" eid="e1">使っ</event>て　ＳＱＬ　文の　ＩＮＳＥＲＴ　でレコードを<event class="" eid="e2">登録しよう</event>と<event class="" eid="e3">する</event>と　”テーブルは書込み禁止です．”　のエラーが<event class="" eid="e4">発生し</event><event class="" eid="e5">登録できない</event>のはどうしてでしょう</sentence>
-<sentence>ユーザに権限が<event class="" eid="e6">あります</event>か？？</sentence>
-<sentence><event class="STATE" eid="e7">なけれ</event>ばアドミで<event class="" eid="e8">つけ</event>て<event class="" eid="e9">あげて下さい</event>。</sentence>
-<sentence>もしくはテーブルの制約？？</sentence>

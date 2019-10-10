@@ -1,4 +1,0 @@
-<a>両側肺胸膜下優位</a>に<d certainty="positive">すりガラス状陰影や網状影</d>を認めます。<d certainty="suspicious">NSIPpパターンの間質性肺炎</d>を疑います。前回CT(2013.10.30)と比較し、概ね変化ありません。
-<a>縦隔内</a>に<f>短径数㎜大</f>の<d certainty="positive">小リンパ節</d>を<f>複数</f>認めますが、<f>有意サイズ</f>の<d certainty="negative">リンパ節腫大</d>は指摘できません。
-<d certainty="negative">胸水</d>は見られません。
-<a>冠動脈</a>に<d certainty="positive">壁石灰化</d>を認めます。

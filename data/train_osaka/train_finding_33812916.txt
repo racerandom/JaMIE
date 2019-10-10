@@ -1,5 +1,0 @@
-<a>両肺</a>に<f>びまん性</f>に<d certainty="positive">すりガラス影、網状影、線状影</d>あり、<d certainty="positive">牽引性の気管支拡張</d>を伴っている。分布は<a>胸膜下優位、気管支血管周囲優位</a>。<d certainty="suspicious">NSIPpatternの間質性肺炎</d>を疑う。
-<a>気管前</a>の<f>短径10mm</f>を<f>最大</f>に<a>縦隔</a>に<d certainty="positive">軽度腫大</d>した<d certainty="positive">リンパ節</d>を<f>複数</f>認める。<d certainty="suspicious">反応性のリンパ節</d>を疑う。
-<d certainty="negative">胸水貯留</d>なし。
-<a>大動脈弓部</a>に<a>尾側</a>向けて<f>瘤状</f>の<d certainty="positive">軽度突出</d>あり。
-<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。

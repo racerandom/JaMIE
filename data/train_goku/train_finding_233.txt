@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<d certainty="positive">悪性胸膜中皮腫</d>が知られています。<a>胸膜</a>に<f>病的有意な</f><d certainty="negative">肥厚</d>はみられません。<d certainty="positive">左胸水</d>は前回より著変なし。<a>肺内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>右肺</a>の<d certainty="positive">陳旧性炎症</d>に著変なし。

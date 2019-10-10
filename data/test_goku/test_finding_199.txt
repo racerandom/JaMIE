@@ -1,3 +1,0 @@
-<a>右肺Ｓ７ａ</a>に<f>１．９×１．０Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>を認めます。<a>内部</a>の<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>は<f>１．６×０．０Ｃｍ</f>です。ＸＸＸＸ年と比べて<a>内部</a>の<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>が<c>顕在化</c>しています。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｂ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>右肺中葉、左肺舌区</a>に<d certainty="positive">炎症後瘢痕</d>を認めます。<a>胆</a>摘後です。<a>甲状腺</a>全摘後です。

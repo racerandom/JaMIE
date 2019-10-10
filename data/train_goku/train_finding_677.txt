@@ -1,1 +1,0 @@
-<a>胸部</a>：<a>左胸腔内</a>の<d certainty="positive">腫瘤</d>は前回より<c>縮小</c>しています。<d certainty="negative">肺転移</d>を疑う所見なし<d certainty="negative">腫大リンパ節</d>なし<a>腹部</a>：<d certainty="negative">肝転移</d>を疑う所見なし<d certainty="negative">副腎腫大</d>なし<a>膵体部</a>の<d certainty="positive">嚢胞性変化</d>は不変です<a>胆、腎</a>に異常なしＣＴ上は<a>膀胱子宮</a>に異常なし<d certainty="negative">腹水</d>なし

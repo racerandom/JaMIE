@@ -1,3 +1,0 @@
-<a>左肺Ｓ６</a>に<f>１．９×１．１Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>あり。<a>内部</a>に<f>０．７×０．６Ｃｍ</f>の<f>濃い部分</f>、<d certainty="positive">ａｉｒ　ｂｒｏｎｃｈｏｇｒａｍ</d>を伴います。<d certainty="suspicious">原発性肺癌</d>とすれば、<d certainty="suspicious">ｃＴ１ａ</d>
-　<d certainty="suspicious">器質化炎症</d>も鑑別にあがります。<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>肝内</a>に<d certainty="negative">異常所見</d>はみられません．<a>胆，膵，脾，腎，副腎</a>には異常はみられません．<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>骨盤内</a>に<f>明らかな</f><d certainty="negative">腫瘤</d>なし．<d certainty="negative">腹水</d>なし．

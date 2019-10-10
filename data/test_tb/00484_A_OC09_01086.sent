@@ -1,6 +1,0 @@
-<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>、<TIMEX3 definite="FALSE" freq="2X" tid="t2" type="SET" value="P1W" valueFromSurface="P1W">週２</TIMEX3>でプールに<event class="" eid="e1">通っ</event>て<event class="" eid="e2">水中ウォーキングしています</event>。</sentence>
-<sentence><event class="" eid="e3">太っていないので</event><event class="" eid="e4">スタイル維持しよう</event>と<event class="" eid="e5">思っています</event>。</sentence>
-<sentence><TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="PT30M" valueFromSurface="PT30M">３０分</TIMEX3><event class="" eid="e6">歩き続けてる</event>だけなんですけど、これでも体<event class="" eid="e7">ひきしまります</event>か？</sentence>
-<sentence><event class="STATE" eid="e8">効果的な</event>歩き方が<event class="" eid="e9">あれ</event>ば<event class="" eid="e10">教えてください</event>。</sentence>
-<sentence>太ももをしっかり<event class="" eid="e11">あげ</event>て、大股で<event class="" eid="e12">歩きます</event>。</sentence>
-<sentence>ついでに腰も<event class="" eid="e13">ひねり</event>ながら<event class="" eid="e14">歩く</event>とウエストに<event class="" eid="e15">効きます</event>よ。</sentence>

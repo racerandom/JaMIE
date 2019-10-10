@@ -1,4 +1,0 @@
-<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">現在</TIMEX3>無職（求職中）の方に<event class="" eid="e1">お聞きします</event>。</sentence>
-<sentence>何時に<event class="" eid="e2">寝</event>て何時に<event class="" eid="e3">起きています</event>か？</sentence>
-<sentence>また、<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P1D" valueFromSurface="P1D">１日</TIMEX3>をどんな感じで<event class="" eid="e4">過ごされています</event>か？</sentence>
-<sentence><TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P1.5D" valueFromSurface="P1.5D">１．５日</TIMEX3><event class="" eid="e5">稼動し</event>ては<TIMEX3 definite="FALSE" tid="t4" type="DURATION" value="PT7H" valueFromSurface="PT7H">７時間</TIMEX3>睡眠を<event class="" eid="e6">繰り返しております</event>。</sentence>

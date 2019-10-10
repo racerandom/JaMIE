@@ -1,4 +1,0 @@
-<a>両肺</a><f>びまん性</f>に<d certainty="positive">すりガラス影・索状影・斑状影</d>あり。<a>右肺</a>では、前回より<c>軽減</c>しています。<a>左肺</a>では、<a>S3</a>で<d certainty="positive">容積が低下</d>し<d certainty="positive">肺野濃度が上昇</d>し、<d certainty="positive">収縮性変化</d>と伴っています。<d certainty="negative">新規病変</d>は認めません。
-前回より<d certainty="positive">心拡大</d>が<c>やや増悪</c>しています。
-<f>有意な</f><d certainty="negative">リンパ節腫大</d>を認めません。
-<d certainty="negative">胸水貯留</d>なし。

@@ -1,8 +1,0 @@
-<a>両側肺下葉優位</a>に<d certainty="positive">すりガラス影や線状影、小葉内網状影、気管支拡張</d>を認めます。前回（2009/7/31）に比して、<d certainty="positive">陰影</d>は<c>増強傾向</c>です。<d certainty="suspicious">間質性肺炎</d>の経過像を疑います。
-<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>を<f>複数個</f>認めますが、前回と比較して、<c>軽度増大</c>するものがあります。<d certainty="suspicious">肺野病変に対する反応性腫大</d>か。
-
-<a>両側肺下葉優位</a>に<d certainty="positive">すりガラス影や線状影、小葉内網状影、気管支拡張</d>を認めます。前回(2013/1/30)に比して、著変ありません。<d certainty="suspicious">間質性肺炎</d>の経過像を疑います。
-<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>を<f>複数個</f>認めますが、前回と比較して、著変ありません。
-<d certainty="negative">胸水</d>なし。
-<a>両側肺末梢や肺底部優位</a>の<d certainty="positive">すりガラス影、網状影、牽引性気管支拡張像</d>を認めます。前回CT(2015/05/29)と比較して、<a>右葉間胸膜近傍</a>の<d certainty="positive">均等影</d>が<c>僅かに増強</c>していますが、全体としてほぼ変化を認めません。<d certainty="suspicious">間質性肺炎</d>の経過を疑います。
-<a>縦隔内</a>に<f>最大で短径11mm大まで</f>の<d certainty="positive">リンパ節</d>を<f>多数</f>認めます。<d certainty="suspicious">反応性腫大</d>を疑います。

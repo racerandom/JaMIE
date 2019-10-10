@@ -1,3 +1,0 @@
-<a>右肺上葉Ｓ１ｂ</a>に<f>２．５×２．６Ｃｍ</f>の<d certainty="positive">充実結節</d>を認めます。<a>内部</a>は<f>不均一</f>に造影されます。<a>辺縁</a>は<f>一部分葉状</f>で、<d certainty="positive">小棘形成</d>もみられます。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｃ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>前立腺</a>摘除後。<d certainty="negative">局所再発</d>を疑う所見はありません。<a>肝内</a>に<d certainty="negative">転移</d>を疑う所見はありません。<a>胆嚢、膵、脾、腎、副腎</a>に<d certainty="negative">異常所見</d>はありません。<d certainty="negative">腹水貯留</d>なし。<d certainty="negative">脳転移</d>を疑う所見なし。

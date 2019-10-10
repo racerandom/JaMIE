@@ -1,2 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右上葉Ｓ２ｂ／Ｓ１ａ</a>の<d certainty="positive">すりガラス状陰影</d>（<d certainty="positive">ｐｕｒｅ　ＧＧＮ</d>）は<f>１．５×１．７Ｃｍ</f>です．ＸＸＸＸ年より<c>増大</c>。<d certainty="suspicious">原発性肺癌</d>が疑われます。<d certainty="suspicious">ｃＴｉｓ</d><d certainty="positive">Ｎ０</d>
-<a>左舌区</a>の<d certainty="positive">すりガラス状濃度上昇域</d>に著変なし。<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="negative">胸水貯留</d>なし。

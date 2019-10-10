@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺下葉Ｓ１０</a>の<d certainty="positive">原発巣</d>は<c>縮小</c>。放射線治療後変化あり。<a>末梢</a>の<d certainty="positive">二次変化</d>も<c>軽減</c>。<d certainty="positive">＃７縦隔リンパ節転移</d>は<c>縮小</c>、形態的には残存。<d certainty="positive">右肺門リンパ節転移</d>は<c>縮小</c>、形態的には残存。<d certainty="positive">気腫肺</d>です。

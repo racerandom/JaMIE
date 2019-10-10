@@ -1,3 +1,0 @@
-１．<a>左肺Ｓ１０ａ胸膜直下</a>に<f>１７×１３ｍｍ大</f>の<d certainty="positive">充実結節</d>あり。<a>内部</a>は淡く造影される。２０１６／３他院ＣＴからは<c>増大</c>しているようにみえる。<d certainty="suspicious">原発性肺癌</d>疑い。<d certainty="suspicious">ｃＴ１ａ</d>
-２．<a>肺門、縦隔リンパ節</a>に<d certainty="negative">有意腫大</d>なし。<d certainty="negative">Ｎ０</d>
-３．<d certainty="negative">肺内転移</d>は明らかでない。<a>両肺末梢側</a>に<d certainty="positive">軽度濃度上昇や索状影、気腫性変化</d>あり。<a>胸膜</a>に<d certainty="negative">播種結節</d>は明らかでない。<d certainty="negative">胸水貯留</d>なし。４．撮像範囲に<d certainty="negative">肝転移</d>は明らかでない。<d certainty="negative">副腎転移</d>は認めない。その他、撮像範囲の<a>腹部</a>に<f>明らかな</f>異常なし。５．撮像範囲に<d certainty="negative">骨転移</d>は明らかでない。６．<d certainty="negative">脳転移</d>は明らかでない。

@@ -1,5 +1,0 @@
-<a>両側下葉胸膜下優位</a>に<d certainty="positive">蜂巣肺、網状影、すりガラス状陰影</d>を認めます。<d certainty="suspicious">間質性肺炎</d>(<d certainty="suspicious">UIP pattern</d>)疑い。前回(13/08/06)と著変ありません。
-<a>右S6</a>に<f>径14㎜大</f>の<d certainty="positive">結節影</d>を認めます。前回と著変ありません。<d certainty="suspicious">炎症後結節あるいは間質性肺炎の一部</d>を疑います。
-その他<a>右下葉</a>や<a>左fissure上</a>に<d certainty="positive">結節状陰影</d>を認めますが、前回と著変ありません。
-<a>縦隔・肺門</a>や<a>鎖骨上</a>に<d certainty="positive">小リンパ節</d>を認めますが、前回と著変ありません。
-<d certainty="negative">胸水(-)</d>。

@@ -1,6 +1,0 @@
-<a>両側乳腺</a>術後
-<f>明らかな</f><d certainty="negative">肺転移</d>を認めません。
-<a>両肺下葉背側優位</a>に<d certainty="positive">すりガラス陰影、嚢胞性変化</d>を認めます。前回2013.12.16と大差ありません。
-前回認めた<a>右肺中葉辺縁</a>の<d certainty="positive">均等影</d>は<c>縮小</c>しています。
-<f>有意な</f><d certainty="negative">リンパ節腫大</d>を認めません。
-<a>肝S8</a>に<d certainty="positive">LDA</d>あり。<d certainty="suspicious">血管腫</d>疑い。

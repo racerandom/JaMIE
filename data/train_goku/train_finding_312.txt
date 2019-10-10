@@ -1,1 +1,0 @@
-胸部造影ＣＴ前回ＣＴ（２０１６／２／２３）と比較した。１．<a>右肺上葉Ｓ２ａ</a>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ｎｏｄｕｌｅ</d>はほぼ前回同様である。<a>末梢側</a>の<d certainty="positive",correction="小結節">娘結節</d>が<c>軽度増大</c>している。その他<a>肺</a>に<f>明らかな</f>異常なし。<a>肺門・縦隔リンパ節</a>に<d certainty="negative">有意腫大</d>なし。<d certainty="negative">胸水貯留</d>なし。２．<a>撮像範囲の腹部・骨</a>に<f>明らかな</f>異常なし。

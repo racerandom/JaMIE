@@ -1,7 +1,0 @@
-<sentence>日清どん兵衛の、京風あんかけうどんは、<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>でも<event class="" eid="e1">作ってます</event>か？</sentence>
-<sentence><event class="" eid="e2">作っているなら</event>、どこで<event class="" eid="e3">買えます</event>か？</sentence>
-<sentence><event class="STATE" eid="e4">残念</event>ながら、<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">現在</TIMEX3>は<event class="" eid="e5">作ってない</event>みたいです。</sentence>
-<sentence>しかし、日清のＨＰに<event class="" eid="e6">アクセスし</event>ても製造中止とか販売終了といった記事はどこにも<event class="" eid="e7">ありません</event>。</sentence>
-<sentence><event class="" eid="e8">発表された</event>のが<TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2004" valueFromSurface="XXXX">今年</TIMEX3>の年頭（<TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2004-01-13" valueFromSurface="2004-01-13">２００４．０１．１３</TIMEX3>）だったこともあり、そう<event class="STATE" eid="e9">簡単に</event>廃番に<event class="" eid="e10">する</event>とは<event class="" eid="e11">思えません</event>（ソコソコ人気も<event class="" eid="e12">あった</event>みたいですから）。</sentence>
-<sentence><TIMEX3 definite="TRUE" general="TRUE" tid="t5" type="DATE" value="XXXX-WI" valueFromSurface="XXXX-WI">冬場</TIMEX3>限定で<event class="STATE" eid="e13">暑い</event>時期には<event class="" eid="e14">売れない</event>と<event class="" eid="e15">判断した</event>のかも知れません。</sentence>
-<sentence>もう少し<event class="STATE" eid="e16">寒く</event><event class="" eid="e17">なる</event>のを<event class="" eid="e18">待ってみましょう</event>。</sentence>

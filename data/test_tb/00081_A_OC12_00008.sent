@@ -1,6 +1,0 @@
-<sentence>センター試験ってなんですか？</sentence>
-<sentence>センター併用ってなんですか？</sentence>
-<sentence>「大学入試センター」というところが<event class="" eid="e1">作っている</event>大学入試試験問題が、いわゆる「センター試験」です。</sentence>
-<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">昔</TIMEX3>で<event class="" eid="e2">言う</event>ところの共通一次試験のようなものです。</sentence>
-<sentence>ほとんどの国公立大学と一部の私立大学が、自分の大学での試験の点数と、この試験の点数を<event class="" eid="e3">使っ</event>て<webBr />合否を<event class="" eid="e4">決定する</event>と<event class="" eid="e5">しています</event>。</sentence>
-<sentence>それが「センター併用」試験です。</sentence>

@@ -1,4 +1,0 @@
-<a>両側肺下葉優位</a>に<d certainty="positive">すりガラス影や網状影、牽引性気管支拡張</d>が認められます。<d certainty="suspicious">NSIPパターンの間質性肺炎</d>を疑います。前回2012/9/19と著変ありません。
-<a>両側肺上葉</a>に<d certainty="positive">炎症後結節</d>と思われる<d certainty="positive">石灰化</d>が認められます。
-<f>positive size</f>の<d certainty="negative">LN</d>は認められません。
-<a>coronary a.</a>に<d certainty="positive">石灰化</d>。

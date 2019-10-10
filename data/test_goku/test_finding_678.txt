@@ -1,3 +1,0 @@
-胸部単純ＣＴ前回ＣＴ（２０１６／３／１０）と比較した。１．<d certainty="positive">右肺Ｓ６結節</d>（<f>１４×１３ｍｍ</f>）の性状・サイズに著変なし。引き続き、<d certainty="positive">原発性肺癌</d>と考える。<d certainty="positive">Ｔ１ａ</d>
-２．<a>右肺Ｓ４・左肺Ｓ３ｂ</a>の<d certainty="positive">ｃｏｎｓｏｌｉｄａｔｉｏｎ</d>は改善している。<d certainty="positive">右肺中葉小結節</d>に著変なし。３．<a>肺門・縦隔</a>に<f>有意な</f><d certainty="negative">リンパ節腫大</d>なし。<d certainty="positive">Ｎ０</d>
-４．<d certainty="positive">肝嚢胞</d>あり。その他、<a>撮像範囲の腹部</a>に<f>明らかな</f>異常なし。５．<d certainty="suspicious">Ｌ２椎体血管腫</d>疑い。その他、<a>骨</a>に<d certainty="negative">腫瘍性病変</d>は明らかでない。

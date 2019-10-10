@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺上葉</a>術後　<d certainty="negative">局所再発</d>なし<a>左肺上葉Ｓ１＋２ｂ</a>に<f>１．１×１．８Ｃｍ</f>の<d certainty="positive">すりガラス状陰影</d>を認めます。<a>内部</a>に<f>濃い</f><d certainty="positive">浸潤影</d>あり、<f>０．７×０．６Ｃｍ程度</f>、前回より著変なし。<d certainty="suspicious">原発性肺癌</d>が疑われます。<d certainty="suspicious">ｃＴ１ａ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-他にも<a>左肺上葉</a>に<f>淡い</f><d certainty="positive">すりガラス状陰影</d>が散在、前回と著変なし。<d certainty="negative">胸水貯留</d>なし。<d certainty="negative">胸水貯留</d>なし。<a>両側甲状腺</a>の<d certainty="positive">腫大</d>あり。<a>内部</a>は<d certainty="positive">低吸収</d>、<d certainty="suspicious">甲状腺腺腫</d>をまずは疑います。ＵＳとご対比ください。<a>左乳房</a>術後。

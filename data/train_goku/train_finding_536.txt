@@ -1,3 +1,0 @@
-<a>右肺下葉Ｓ１０ｃ</a>に<f>１．７×０．１Ｃｍ</f>の<d certainty="positive">すりガラス状陰影</d>を認めます。ＸＸＸＸ年より<c>漸増</c>がみられていることからは、<d certainty="suspicious">原発性肺癌</d>の疑いがあります。<d certainty="suspicious">ｃＴｉｓ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>肝内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>胆，膵，脾，副腎</a>には異常はみられません．<d certainty="positive">腎嚢疱</d>あり。<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">腸管憩室</d>あり。<d certainty="negative">腹水</d>なし．

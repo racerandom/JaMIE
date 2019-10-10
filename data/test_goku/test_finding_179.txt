@@ -1,3 +1,0 @@
-<a>右肺上葉Ｓ３ａ</a>に<f>２．３×２．６Ｃｍ</f>の<d certainty="positive">結節</d>を認めます。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｂ</d>
-<a>右＃１１ｓ肺門</a>の<d certainty="positive">リンパ節転移</d>あり。<d certainty="positive">Ｎ１</d>
-<a>縦隔</a>に<d certainty="positive">小リンパ節</d>が<f>散在</f>しています。<d certainty="negative">胸水</d>なし。<a>右肺上中葉</a>に<f>散在</f>する<d certainty="positive">すりガラス状陰影</d>あり。<a>正常肺野との境界</a>が<f>不明瞭で、まとまりのない</f><d certainty="positive">陰影</d>です。<f>非特異的な</f>所見です。<d certainty="positive">石灰化</d>を伴う<d certainty="positive">胸膜肥厚</d>あり。<d certainty="suspicious">胸膜プラーク</d>疑い。

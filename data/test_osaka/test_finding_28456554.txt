@@ -1,5 +1,0 @@
-<d certainty="positive">吸気不足</d>の撮影。
-<a>両肺上葉優位</a>に<d certainty="positive">気腫性変化</d>を認め、<a>両肺下葉胸膜直下優位</a>の<d certainty="positive">牽引性気管支拡張像</d>を伴った<d certainty="positive">すりガラス影、網状影</d>を認めます。<d certainty="positive">CPFE</d>と思われます。前回6/12と比較して<a>両側肺下葉優位</a>に<d certainty="positive">すりガラス影</d>が<c>増強</c>しています。<d certainty="positive">吸気不足</d>の影響かもしれませんが、<d certainty="suspicious">間質性肺炎</d>の<c>増悪</c>の可能性があります。
-前回と比較して<a>左肺S10</a>に<d certainty="positive">consolidation</d>が出現しています。<d certainty="suspicious">肺炎の合併</d>を疑います。
-<a>左肺S9</a>に<f>最大径4.8cm大</f>の<d certainty="positive">腫瘤</d>が認められます。前回6/12と比較して<c>増大</c>しています。
-<a>両側鎖骨上窩、対側</a>を含めた<a>縦隔、左肺門、上腹部</a>に<f>短径4cm大</f>までの<d certainty="positive">腫大リンパ節</d>を認めます。<d certainty="suspicious">リンパ節転移</d>を疑います。前回と比較して、<c>増加、増大</c>しています。

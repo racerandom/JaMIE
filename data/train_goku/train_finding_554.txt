@@ -1,1 +1,0 @@
-<a>前縦隔</a>に併せて<f>６．５ｃｍ長、分葉状</f>の<d certainty="positive">不整形腫瘤の集簇</d>あり。病理診断にて<d certainty="positive">胸腺腫</d>が知られています。<a>右肺門リンパ節の辺縁</a>が単純ＣＴ上<f>不明瞭</f>です。<a>縦隔</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="negative">胸水貯留</d>なし。

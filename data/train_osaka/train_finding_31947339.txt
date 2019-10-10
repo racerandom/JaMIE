@@ -1,7 +1,0 @@
-前回(2013/12/6)と比較して<a>両側肺</a>に<d certainty="positive">小葉中心性粒状影やすりガラス影、consolidation</d>が出現しており、<f>軽度</f>の<d certainty="positive">小葉間隔壁肥厚</d>を伴っています。<a>両側下肺野</a>に<d certainty="positive">陰影</d>が<f>強く</f>認められます。<d certainty="suspicious">細菌やウィルスなどによる経気道感染症</d>を疑います。(<d certainty="suspicious">D/D 過敏性肺臓炎、リンパ増殖性疾患、COPやEP</d> etc.)
-<a>右肺S3、左肺S3、左肺S8</a>に<d certainty="positive">小結節</d>を認めます。前回CTと著変ありません。<d certainty="suspicious">炎症後変化や肺内リンパ節</d>の疑い。
-<a>両側下肺野や横隔膜上</a>に<a>胸膜</a>の<f>限局性</f>の<d certainty="positive">肥厚</d>を<f>散見</f>します。<d certainty="positive">アスベストーシス</d>に伴う<d certainty="suspicious">胸膜プラーク</d>の疑い。前回と著変ありません。
-<d certainty="negative">胸水貯留</d>を認めません。
-<a>縦隔や肺門</a>に<d certainty="positive">小リンパ節</d>を認めますが、<f>有意サイズ</f>ではありません。前回と著変ありません。
-<d certainty="positive">多発肝嚢胞</d>あり。
-<d certainty="suspicious">右腎嚢胞</d>疑い。

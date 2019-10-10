@@ -1,3 +1,0 @@
-<a>両側胸膜下、やや下葉背側優位</a>に、<d certainty="positive">網状影・すりガラス影・小葉間隔壁の肥厚</d>を認めます。<f>軽度</f>ですが<f>蜂巣肺様</f>の<d certainty="positive">陰影</d>も認められます。<d certainty="positive">間質性肺炎</d>（<d certainty="positive">UIP～possible UIP pattern</d>）と考えます。
-<f>有意な</f><d certainty="negative">リンパ節腫大</d>を認めません。
-<d certainty="negative">胸水貯留</d>なし。

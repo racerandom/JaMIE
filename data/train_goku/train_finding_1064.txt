@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。胸骨正中胸腺腫摘出術＋<a>心膜</a>合併切除・再建＋<a>横隔神経</a>合併切除＋<a>左上葉</a>合併切除　術後<a>ｓｔａｐｌｅ周囲</a>に<d certainty="positive">軟部構造</d>を認めます。<d certainty="suspicious">胸腺腫の再発もしくは播種</d>疑い。<a>縦隔</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="negative">胸水貯留</d>なし。

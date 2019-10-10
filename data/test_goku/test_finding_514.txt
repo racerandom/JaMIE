@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<d certainty="positive">左転移性肺腫瘍</d>に対して<a>左Ｓ６区域</a>切除後です。<a>左肺上葉Ｓ３ｃ</a>の<d certainty="positive">不整結節</d>は<f>１．７×０．４Ｃｍ</f>です。前回とは著変ありませんが、経過で<c>漸増</c>がみられ、<d certainty="positive">胸膜陥入像</d>が<c>顕在化</c>しています。<d certainty="suspicious">原発性肺癌</d>が疑われます。<d certainty="suspicious">ｃＴ１ａ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<f>軽度</f>の<d certainty="positive">気腫性変化</d>あり。<d certainty="positive">両側腋窩リンパ節</d>が以前より不変ですが、<c>目立ちます</c>。

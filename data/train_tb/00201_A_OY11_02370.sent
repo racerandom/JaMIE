@@ -1,9 +1,0 @@
-<sentence type="quasi">広島原爆の日</sentence>
-<sentence><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="1945-08-06" valueFromSurface="S20-08-06">昭和２０年８月６日</TIMEX3>、広島に原爆が<event class="" eid="e1">投下された</event>。</sentence>
-<sentence>あれから<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P63Y" valueFromSurface="P63Y">６３年</TIMEX3>が経過、いまだに原爆症の認定を<event class="" eid="e2">得られない</event>人が多数<event class="" eid="e3">いる</event>。</sentence>
-<sentence><TIMEX3 definite="FALSE" tid="t3" type="DATE" value="2008-08-09" valueFromSurface="XXXX-XX-09">９日</TIMEX3>には、長崎原爆の日を<event class="" eid="e4">迎える</event>。</sentence>
-<sentence>核兵器廃絶。</sentence>
-<sentence>地球上から核兵器が<event class="" eid="e5">なくなる</event>。</sentence>
-<sentence>ー夢ではない。</sentence>
-<sentence>人間が<event class="" eid="e6">作る</event>「核」だもの。</sentence>
-<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t4" type="DATE" value="2008-08-06" valueFromSurface="2008-08-06">２００８／０８／０６</TIMEX3>（<TIMEX3 definite="TRUE" tid="t5" type="DATE" value="2008-WXX-3" valueFromSurface="XXXX-WXX-3">水</TIMEX3>）晴れ</sentence>

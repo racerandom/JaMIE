@@ -1,3 +1,0 @@
-前回2013/6/28と比較して<a>右肺中葉</a>に<d certainty="positive">focal なconsolidation</d>が出現しています。<d certainty="suspicious">炎症性変化</d>を疑います。<d certainty="suspicious">器質化肺炎の再燃</d>の否定はできません。followしてください。
-<a>両側肺</a>の<d certainty="positive">器質化肺炎</d>の経過と思われる<f>軽度</f>の<d certainty="positive">すりガラス影</d>は不変～<c>やや改善</c>。
-<a>縦隔内</a>に<f>短径1cm未満</f>の<d certainty="positive">LNs</d>が認められますが、<f>positive size</f>の<d certainty="negative">LN</d>は認められません。

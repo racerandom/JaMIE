@@ -1,9 +1,0 @@
-<胸部単純CT>
-<a>両側肺の胸膜下優位</a>に<d certainty="positive">網状影、すりガラス影</d>が認められます。また、<a>上肺野優位</a>に<a>胸膜下</a>に<d certainty="positive">収縮</d>を伴った<d certainty="positive">均等影</d>が認められます。<d certainty="positive">牽引性気管支拡張</d>を伴っています。<a>右肺下葉</a>には<f>軽度</f>の<d certainty="positive">air trapping様の部分</d>あり。
-前回他院CT(2016/12/1)から<d certainty="positive">陰影</d>は著変ありません。
-→<d certainty="suspicious">chronic HP、間質性肺炎</d>（<d certainty="suspicious">PPFE</d>など）、<d certainty="suspicious">膠原病肺</d>などが鑑別に挙がります。
-<a>縦隔内</a>に<f>短径8mm大</f>までの<d certainty="positive">リンパ節</d>を認めますが<f>有意な</f><d certainty="negative">腫大</d>は指摘できません。
-<d certainty="negative">胸水貯留</d>なし。
-<d certainty="positive">冠動脈石灰化</d>あり。
-<a>甲状腺両葉</a>に<d certainty="positive">small LDA</d>あり。
-<d certainty="positive">肝嚢胞、右腎嚢胞</d>を認めます。

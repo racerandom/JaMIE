@@ -1,6 +1,0 @@
-<sentence><TIMEX3 definite="TRUE" tid="t1" type="TIME" value="2008-XX-XXT17:15" valueFromSurface="XXXX-XX-XXT17:15">午後５時１５分</TIMEX3>から、べるが通り、１５ｋｍ、<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="PT1H33M32S" valueFromSurface="PT1H33M32S">１時間３３分３２秒</TIMEX3>。</sentence>
-<sentence><TIMEX3 definite="TRUE" tid="t3" type="TIME" value="XXXX-XX-XXTMO" valueFromSurface="XXXX-XX-XXTMO">朝</TIMEX3>から<event class="STATE" eid="e1">冷たい</event>雨がずっと<event class="" eid="e2">降っていた</event>けれども、<TIMEX3 definite="TRUE" mod="APPROX" tid="t4" type="TIME" value="XXXX-XX-XXTMI" valueFromSurface="XXXX-XX-XXTMI">お昼近く</TIMEX3>に<event class="" eid="e3">弱まり</event>、<TIMEX3 definite="TRUE" tid="t5" type="TIME" value="XXXX-XX-XXTEV" valueFromSurface="XXXX-XX-XXTEV">夕方</TIMEX3>、雲は<event class="STATE" eid="e4">すごい</event>けれども雨は<event class="" eid="e5">止んだ</event>。</sentence>
-<sentence><TIMEX3 definite="TRUE" tid="t6" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>のうちだ、と<event class="" eid="e6">思っ</event>て走りに<event class="" eid="e7">出た</event>。</sentence>
-<sentence>気温は<event class="STATE" eid="e8">低く</event>、長袖のウエアにランニング用ベストを着用。</sentence>
-<sentence>雲は<event class="STATE" eid="e9">低く</event>、近くの山まで全く<event class="" eid="e10">見えない</event>。</sentence>
-<sentence>まだ右股関節に違和感が時々<event class="" eid="e11">出るので</event>、ゆっくり走。</sentence>

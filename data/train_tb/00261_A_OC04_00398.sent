@@ -1,4 +1,0 @@
-<sentence>調理師の資格を<event class="" eid="e1">取る</event>のにいくらくらい<webBr /><event class="" eid="e2">かかります</event>か？</sentence>
-<sentence type="quasi">あとどれくらいの時間が<event class="STATE" eid="e3">必要です</event>か</sentence>
-<sentence>約１５０万円（卒業と同時に調理師免許が<event class="" eid="e4">得られる</event>専門学校に<TIMEX3 definite="FALSE" tid="t1" type="DURATION" value="P1Y" valueFromSurface="P1Y">１年間</TIMEX3><event class="" eid="e5">通った</event>場合の目安）。</sentence>
-<sentence>実務経験が<TIMEX3 definite="FALSE" mod="EQUAL_OR_MORE" tid="t2" type="DURATION" value="P2Y" valueFromSurface="P2Y">２年以上</TIMEX3><event class="" eid="e6">あれ</event>ば、受験手数料は、６，１００円。</sentence>

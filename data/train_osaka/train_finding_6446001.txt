@@ -1,6 +1,0 @@
-<a>左肺S9/10</a>に<f>21mm</f>の<d certainty="positive">結節</d>が出現しています。<d certainty="positive">炎症</d>（真菌など）としても矛盾しませんが、<d certainty="positive">悪性腫瘍</d>が考えやすいです。単発ですので<p>転移</p>か原発か判断困難です。
-<a>右minor fissre上</a>に<d certainty="positive">小結節</d>を認めますが、こちらは前回と著変無く、<d certainty="suspicious">良性変化</d>を疑います。
-<a>両肺やや左下葉優位</a>に<d certainty="positive">すりガラス影・網状影・気管支拡張像</d>を認めます。<d certainty="positive">間質性肺炎</d>の経過。前回よりやや範囲が<c>拡大</c>しています。
-<f>有意な</f><d certainty="negative">リンパ節腫大</d>を認めません。
-<d certainty="negative">胸水貯留</d>なし。
-<d certainty="positive">女性化乳房</d>。

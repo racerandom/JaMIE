@@ -1,9 +1,0 @@
-<sentence type="quasi"><TIMEX3 definite="FALSE" tid="t1" type="DATE" value="2008-08-13" valueFromSurface="2008-08-13">２００８／８／１３</TIMEX3>　<TIMEX3 definite="FALSE" tid="t2" type="DURATION" value="P282D" valueFromSurface="P282D">２８２日目</TIMEX3></sentence>
-<sentence type="quasi">体重　　　　６６．４５Ｋｇ</sentence>
-<sentence type="quasi">体脂肪率　　２１．１</sentence>
-<sentence type="quasi">内臓脂肪ＬＶ　１０．０</sentence>
-<sentence type="quasi">筋肉量　　　４９．７５Ｋｇ</sentence>
-<sentence type="quasi">基礎代謝　　１４５５Ｋｃａｌ</sentence>
-<sentence type="quasi">体内年齢　<TIMEX3 definite="FALSE" tid="t3" type="DURATION" value="P34Y" valueFromSurface="P34Y">３４歳</TIMEX3></sentence>
-<sentence type="quasi">運動を<event class="" eid="e1">しない</event>とすぐに６７キロに<event class="" eid="e2">なっちゃう</event>けど<webBr />たまには<event class="" eid="e3">休まない</event>と体が<event class="" eid="e4">もちません</event>ｗ</sentence>
-<sentence type="quasi">要は<event class="STATE" eid="e5">食べすぎなんでしょう</event>けど、もうちょっと<webBr /><event class="STATE" eid="e6">簡単に</event>体重が<event class="" eid="e7">減ってくれれ</event>ばなあｗ</sentence>

@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左上葉、舌区、下葉</a>の<d certainty="positive">結節</d>はそれぞれ<c>増大</c>しており<d certainty="positive">転移</d>と考えます。<a>右中葉中枢側</a>の<d certainty="positive">無気肺</d>は<d certainty="positive">炎症後変化</d>と考えます。著変なし。<d certainty="positive">縦隔リンパ節</d>が<f>散見</f>されますが、いずれも<c>経時的増大</c>はありません。<d certainty="negative">胸水</d>はありません。<d certainty="positive">両腎嚢胞、結石</d>あり。

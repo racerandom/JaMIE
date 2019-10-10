@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺下葉Ｓ６ｃ</a>に<f>２．６×２．０Ｃｍ</f>の<d certainty="positive">充実結節</d>を認めます。経過で<c>増大傾向</c>。<d certainty="positive">胸膜陥入像</d>を伴います。<d certainty="suspicious">原発性肺癌</d>を疑います。<d certainty="positive">ｃＴ１ｃ</d>
-<a>縦隔・肺門</a>に<d certainty="positive">リンパ節</d>が<f>散在</f>しますが、<f>病的有意な</f><d certainty="negative">腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>両側肺野</a>に<d certainty="positive">気管支拡張、ｃｏｎｓｏｌｉｄａｔｉｏｎ、気管支壁肥厚、小結節</d>、がみられます。<d certainty="suspicious">非結核性抗酸菌症</d>を疑います。前回より<a>左肺舌区</a>の<d certainty="positive">ｃｏｎｓｏｌｉｄａｔｉｏｎ</d>が<c>目立ちます</c>。

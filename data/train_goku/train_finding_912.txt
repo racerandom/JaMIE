@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。胸部ＣＴ<a>左肺舌区</a>の<d certainty="positive">ＧＧＮ</d>は<f>１．３×１．１Ｃｍ</f>です。初回ＸＸＸＸ年と比べると<d certainty="positive">内部濃度</d>が<f>濃く</f>なっており、<f>０．０×０．１Ｃｍ</f>です。経時的には<c>緩徐増大傾向</c>を示し、<d certainty="suspicious">高分化型腺癌</d>を疑います。<d certainty="suspicious">ｃＴ１ａ</d>
-<a>近傍の舌区</a>の<d certainty="positive">小結節</d>は著変無し。<a>右中葉末梢</a>の<d certainty="positive">すりガラス状濃度上昇</d>にも著変なし。<a>肺野</a>に<f>新たな</f><d certainty="negative">結節</d>の出現は認めません。<d certainty="negative">胸水貯留</d>なし。<a>縦隔・肺門</a>に<f>有意な</f><d certainty="negative">リンパ節腫大</d>なし。<d certainty="positive">Ｎ０</d>
-<d certainty="positive">肝嚢胞</d>を認めます。

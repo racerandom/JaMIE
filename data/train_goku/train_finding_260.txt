@@ -1,3 +1,0 @@
-<a>右肺上葉Ｓ２ｂ</a>に<f>頭尾側に長い</f>形態を示す<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ｎｏｄｕｌｅ</d>あり。長径は<a>頭尾側方向</a>で<f>５．０Ｃｍ程度</f>（<d certainty="positive">充実部</d>の長径は<f>３．０Ｃｍ程度</f>）である。<f>軽度</f>の<d certainty="positive">内部気管支拡張や胸膜の引き込み</d>あり。<a>正常肺との境界</a>は一部は<f>やや不明瞭</f>も、<f>比較的明瞭</f>である。既知の<d certainty="positive">原発性肺癌</d>です。前回と大きな変化なし。<d certainty="positive">ｃＴ２ａ</d>
-<a>肺門、縦隔リンパ節</a>に<d certainty="negative">有意腫大</d>なし。<d certainty="positive">Ｎ０</d>
-その他<a>両肺</a>には<f>１．２Ｃｍ大程度まで</f>の<d certainty="positive">ｐｕｒｅ　ＧＧＮ</d>が<f>散在</f>している。いずれも<d certainty="suspicious">ＡＡＨ〜ＡＩＳ程度の高分化腺癌</d>の可能性はある。いずれも前回同様。<d certainty="negative">胸水貯留</d>なし。

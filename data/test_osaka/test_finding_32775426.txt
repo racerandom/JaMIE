@@ -1,7 +1,0 @@
-<a>両側肺下葉背側優位</a>に<d certainty="positive">すりガラス陰影、容積減少</d>を伴う<d certainty="positive">subpleural curvilinear shadow、気管支拡張</d>、<f>一部</f><d certainty="positive">胸膜下微小嚢胞の集簇</d>を認めます。<d certainty="suspicious">NSIP＞UIP patternの間質性肺炎</d>を疑います。
-<a>両側上肺野優位</a>の<d certainty="positive">肺気腫</d>あり。
-<a>左第５肋骨</a>骨折後
-<f>有意な</f><d certainty="negative">リンパ節腫大</d>を認めません。
-<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。
-
-

@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺上葉Ｓ１＋２ｂａ</a>に<f>３．０×２．８Ｃｍ</f>の<d certainty="positive">充実腫瘤</d>を認めます。前回より全体径が<c>増大</c>し、<d certainty="positive">嚢疱部分</d>が<c>目立ちます</c>。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ２ａ</d>
-　　<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<d certainty="positive">気腫肺</d>です。

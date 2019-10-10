@@ -1,2 +1,0 @@
-<d certainty="positive">Ｔ１</d>
-<a>１−１２背側右側及び椎体腹側</a>に<d certainty="positive">残存腫瘤</d>あり。<a>胸壁，肺</a>に<f>多数</f>の<d certainty="positive">結節</d>あり。前回より<c>一部増大</c>。他、<f>明らかな</f><d certainty="negative">新病変</d>なし。

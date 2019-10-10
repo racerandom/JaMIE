@@ -1,8 +1,0 @@
-<a>両側肺</a>に<d certainty="positive">網状影やすりガラス状陰影、索状影</d>を認め<d certainty="positive">牽引性気管支拡張像</d>を伴っています。 前回(2014/05/27)と比較してほぼ変化なく、<d certainty="positive">間質性肺炎</d>の経過を見ていると考えます。
-<a>右major fissure背側</a>に認められる<d certainty="positive">不整形陰影</d>のサイズや性状は前回と比較してほぼ変化ありません。 <d certainty="suspicious">炎症性変化</d>の経過をより疑う像ですが、引き続きfollowはして下さい。
-<a>右肺S3</a>や<a>左肺S9</a>に認められる<d certainty="positive">高吸収域</d>は前回同様です。
-<a>右横隔膜部</a>に<a>胸膜</a>の<d certainty="positive">石灰化</d>を認めます。
-<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>が<f>散在</f>していますが前回と比較して大差なく、<f>有意な</f><d certainty="negative">リンパ節腫大</d>は指摘できません。
-<d certainty="negative">胸水貯留</d>を認めません。
-<a>冠動脈</a>の<d certainty="positive">石灰化</d>を認めます。
-<a>右第8、9肋骨</a>に<d certainty="positive">骨折後変化</d>を認めます。

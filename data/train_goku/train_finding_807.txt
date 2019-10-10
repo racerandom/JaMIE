@@ -1,2 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺舌区Ｓ４ｂ</a>に<f>１．５×１．５Ｃｍ</f>の<d certainty="positive">ｐｕｒｅ　ＧＧＮ</d>を認めます。<a>正常肺野との境界</a>が<f>一部不明瞭</f>な部分がありますが、６月より<c>わずかに増大</c>してみえます。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ａ</d>
-<a>右肺下葉</a>切除術後　<d certainty="negative">局所再発</d>なし<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="negative">胸水貯留</d>なし。

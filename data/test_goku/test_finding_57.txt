@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。１．<a>右肺下葉Ｓ６ｂｃ／Ｓ１０ａ胸膜直下</a>に<f>４．８×３．２Ｃｍ</f>（縦隔条件：<f>４．６×３．１Ｃｍ</f>）の<d certainty="positive">腫瘤</d>あり。<d certainty="positive">造影効果</d>は乏しい。<a>胸膜</a>の<d certainty="positive">引き込みやｓｐｉｃｕｌａｔｉｏｎ</d>を伴なっている。<d certainty="suspicious">原発性肺癌</d>を疑う。<d certainty="suspicious">ｃＴ２ｂ</d>
-２．<a>肺門、縦隔リンパ節</a>に<d certainty="negative">有意腫大</d>なし。<d certainty="positive">Ｎ０</d>
-３．その他<a>肺</a>に<f>明らかな</f><d certainty="negative">腫瘤</d>なし。<d certainty="positive">肺気腫</d>あり。<d certainty="positive">胸水貯留</d>あり。４．<d certainty="negative">肝転移、副腎転移</d>は明らかでない。<a>腹部</a>に<f>有意な</f><d certainty="negative">リンパ節腫大</d>なし。<d certainty="negative">腹水貯留</d>なし。５．<d certainty="negative">骨転移</d>は明らかでない。６．<d certainty="negative">脳転移</d>は明らかでない。

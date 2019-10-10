@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月、ＸＸ月、ＸＸ月のＣＴ検査の結果と比較しました。<a>右胸膜</a>には<f>複数個所に限局</f>した<d certainty="positive">肥厚</d>が見られ、<d certainty="positive">腫瘤</d>を形成している。経過で<c>縮小</c>。<d certainty="positive">胸膜中皮腫</d>の治療経過に矛盾しない。<a>左胸膜</a>に<d certainty="negative">肥厚や腫瘤</d>は明らかでありません．<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="negative">胸水貯留</d>なし。

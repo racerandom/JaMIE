@@ -1,5 +1,0 @@
-<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">最近</TIMEX3>は、パチンコ台のＣＭを<event class="" eid="e1">見かけます</event>が、<TIMEX3 definite="TRUE" tid="t2" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">以前</TIMEX3>は<event class="" eid="e2">ありませんでした</event>。</sentence>
-<sentence>何か規制が<event class="" eid="e3">緩和されたのです</event>か？</sentence>
-<sentence type="quasi">＊・＊・＊・＊・＊　猪木　７　＊・＊・＊・＊・＊</sentence>
-<sentence>客が<event class="" eid="e4">減ってる</event>から新規顧客を<event class="" eid="e5">獲得しよう</event>と<webBr /><event class="" eid="e6">してるんでしょう</event>。</sentence>
-<sentence><TIMEX3 definite="TRUE" tid="t3" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今</TIMEX3>のパチ屋はほんとに<webBr />客<event class="STATE" eid="e7">少ない</event>し。</sentence>

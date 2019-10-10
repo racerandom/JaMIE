@@ -1,17 +1,0 @@
-<a>両肺胸膜直下優位</a>に<d certainty="positive">網状影・すりガラス影・牽引性気管支拡張像と、蜂窩肺</d>を認めます。<d certainty="positive">間質性肺炎</d>（<d certainty="positive">UIP pattern</d>）と考えます。前回（2014/1/15）と著変ありません。初回（2012/12/11）と比較すると、<c>わずかに増悪</c>しています。
-<a>縦隔</a>の<d certainty="positive">小リンパ節</d>が<c>目立ちます</c>が、初回から著変ありません。
-<d certainty="negative">胸水貯留</d>なし。
-<a>肝</a>：<d certainty="negative">SOL</d>を認めません。
-<a>脾</a>：n.p.
-<a>胆嚢</a>：n.p.
-<a>膵</a>：<d certainty="positive">萎縮</d>。
-<a>腎</a>：n.p.
-<a>副腎</a>：n.p.
-<d certainty="negative">リンパ節腫大</d>を認めません。
-<d certainty="negative">腹水</d>を認めません。
-<a>腰椎</a>に<d certainty="positive">変形性変化</d>。
-<a>腸管</a>には<f>明らかな</f>異常を指摘できません。
-Imp) <d certainty="positive">腰椎変形性変化</d>
-<a>両側肺胸膜下優位</a>に<d certainty="positive">網状影やすりガラス状陰影、蜂巣肺</d>を認めます。<d certainty="suspicious">間質性肺炎</d>(<d certainty="suspicious">UIP pattern</d>)を疑います。前回CT(2014.08.22)と比較し、<a>右肺中葉</a>の<d certainty="positive">陰影</d>が<c>わずかに増強</c>しているように見えます。
-<a>縦隔内</a>に<f>短径1cm未満</f>の<d certainty="positive">小リンパ節や石灰化リンパ節</d>が見られますが、<f>有意サイズ</f>の<d certainty="negative">リンパ節腫大</d>は指摘できません。
-<a>冠動脈</a>に<d certainty="positive">石灰化</d>が見られます。

@@ -1,22 +1,0 @@
-<a>肝</a>：<d certainty="negative">SOL</d>なし。
-<a>胆嚢</a>：n.p.
-<a>膵</a>：n.p.
-<a>脾</a>：n.p.
-<a>腎</a>：<a>右腎</a>に<d certainty="positive">嚢胞</d>。
-<a>副腎</a>：n.p.
-<d certainty="negative">リンパ節腫大</d>なし。
-<d certainty="negative">腹水</d>なし。
-Imp) <a>腹部領域</a>に著変を認めない。
-<d certainty="positive">吸気状態</d>は<c>不良</c>
-*<a>両側肺</a>に<f>びまん性</f>に<d certainty="positive">すりガラス影、網状影を認め、収縮性変化</d>を伴っています。これらの<d certainty="positive">陰影</d>は比較的<a>気管支血管周囲</a>に<f>親和性の高い分布</f>を示しています。また、<d certainty="positive">両側気管支拡張</d>を認め、<a>中葉、舌区、下葉</a>で目立ちます。<d certainty="positive">牽引性気管支拡張像</d>も認められます。<d certainty="suspicious">間質性肺炎</d>（<d certainty="suspicious">NSIP patｔern</d>）を疑います。ベースの<d certainty="suspicious">IP、およびconnective tissue disease</d>が疑われるのであれば、<d certainty="positive">Lung-dominant CTD</d>としても矛盾しません。
-<a>縦隔・肺門</a>に<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>を認めません。
-<a>甲状腺両葉</a>に<f>小さな</f><d certainty="positive">LDA</d>あり。
-<a>右腎</a>に<d certainty="positive">small LDA</d>あり。<d certainty="suspicious">嚢胞</d>を疑う。
-<a>右心系</a>
-Planar   EF: 42%
-<a>左心系</a>
-Planar   EF: 64%, EDV: 62ml, ESV: 23ml
-PER(Peak Ejection Rate): 3.37 EDV/sec, 
-PFR(Peak Filling Rate): 3.51 EDV/sec
-<d certainty="positive">右心系の駆出率</d>は<c>ごく軽度低下</c>しています。
-<d certainty="negative">左心系の駆出率、ESV値、EDV値</d>とも正常範囲内です。

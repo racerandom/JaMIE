@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺上区Ｓ１＋２、Ｂｕｌｌａ壁</a>に沿った、<d certainty="positive">局所再発を疑う結節構造</d>は大きさ、性状に著変ありません。<d certainty="positive">気腫肺</d>あり。<d certainty="positive">縦隔リンパ節</d>（<d certainty="positive">＃５，　大動脈下リンパ節</d>）は<c>縮小維持</c>しています。<d certainty="negative">胸水貯留</d>なし。

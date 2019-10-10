@@ -1,5 +1,0 @@
-<a>両側上葉優位</a>に<d certainty="positive">気腫性変化</d>を認めます。
-<a>両側下葉胸膜直下優位</a>に<d certainty="positive">蜂巣肺・すりガラス状陰影・網状影</d>を認めます。<d certainty="suspicious">間質性肺炎</d>(<d certainty="suspicious">UIP pattern</d>)を疑います。前回(12/12/17)と著変ありません。
-<a>右S9胸膜直下</a>に<f>径9㎜大</f>の<d certainty="positive">結節影</d>を認めます。前回と著変ありません。<d certainty="suspicious">炎症性結節</d>を疑いますが、引き続きCT followを。
-<a>右肺minor fissure上</a>に<f>長径45mm</f>の<f>扁平な</f><d certainty="positive">不整形陰影</d>を認めます。<a>内部</a>に<d certainty="positive">石灰化(+)</d>。前回と著変ありません。<d certainty="suspicious">炎症後結節</d>を疑います。
-<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>を認めますが、前回と著変ありません。

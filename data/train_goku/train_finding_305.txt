@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺上葉Ｓ２</a>の<d certainty="positive">充実腫瘤</d>は<f>６．５×６．６Ｃｍ</f>に<c>増大</c>を認めます（３／１６気管支鏡後：短期間での<c>増大</c>であり、<d certainty="suspicious">感染</d>が被った可能性あり）。<a>上下葉間胸膜</a>を超えて、<a>下葉</a>まで<f>進展</f>します。<a>末梢</a>に<d certainty="positive">二次変化による粘液栓</d>あり。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ３</d>
-　前回と比べて<d certainty="positive">腫瘍</d><c>増大</c>のため、<a>右上葉気管支</a>の<d certainty="positive">狭窄</d>がみられます。<d certainty="positive">＃４Ｒ縦隔リンパ節</d>に<c>増大</c>（<f>反応性</f>の可能性もあり）を認め、<d certainty="suspicious">転移</d>疑い。<d certainty="suspicious">Ｎ２</d>
-<d certainty="positive">＃２Ｒ縦隔リンパ節</d>に<c>増大</c>（<f>反応性</f>の可能性もあり）を認め、<d certainty="suspicious">転移</d>疑い。<d certainty="negative">胸水貯留</d>なし。

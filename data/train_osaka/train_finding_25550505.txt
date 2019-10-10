@@ -1,5 +1,0 @@
-<a>両側肺、下葉優位</a>に<d certainty="positive">volume loss</d>を伴った<d certainty="positive">網状影、すりガラス陰影、軽度均等影</d>を認めます。<d certainty="positive">牽引性気管支拡張</d>も認めます。前回CT（2014/1/9)と比較すると<c>増強</c>しています。<d certainty="suspicious">間質性肺炎</d>の<c certainty="suspicious">増悪</c>が疑われます。
-<a>両側上肺葉優位</a>に<d certainty="positive">気腫性変化</d>を認めます。
-<f>有意サイズ</f>の<d certainty="negative">リンパ節腫大</d>は認められません。
-<a>冠動脈、大動脈</a>に<d certainty="positive">石灰化</d>認めます。
-<d certainty="positive">胸膜肥厚および石灰化</d>を認めます。

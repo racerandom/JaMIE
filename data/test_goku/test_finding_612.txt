@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺下葉</a>に<f>９．７×４．０Ｃｍ</f>の<d certainty="positive">充実腫瘤</d>を認めます。前回より<c>増大</c>。既知の<d certainty="positive">原発性肺癌</d>です。<a>左肺下葉背側</a>に<f>新たな</f><d certainty="positive">結節</d>が<c>顕在化</c>、<d certainty="suspicious">肺内転移</d>疑い。<d certainty="positive">ｃＴ４</d>
-<a>縦隔・肺門</a>に<d certainty="positive">小リンパ節</d>が<f>散在</f>しますが、<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<d certainty="positive">気腫合併肺線維症</d>の状態です。

@@ -1,8 +1,0 @@
-<sentence>　　<TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PRESENT_REF" valueFromSurface="PRESENT_REF">今日</TIMEX3>は、簡単マイレシピ、手順は次のとおりです。</sentence>
-<sentence><enclosedCharacter description="○">１</enclosedCharacter>　<event class="STATE" eid="e1">新鮮な</event>キャベツを葉っぱを<event class="" eid="e2">剥き</event>ながらよく<event class="" eid="e3">洗います</event>。</sentence>
-<sentence><enclosedCharacter description="○">２</enclosedCharacter>　一枚一枚を、手のひらサイズに<event class="" eid="e4">ちぎっ</event>て、皿に<event class="" eid="e5">乗せます</event>。</sentence>
-<sentence><enclosedCharacter description="○">３</enclosedCharacter>　岩のり（海のりでも<event class="STATE" eid="e6">よい</event>）を<event class="" eid="e7">準備します</event>。</sentence>
-<sentence><enclosedCharacter description="○">４</enclosedCharacter>　キャベツに、スプーンで<event class="" eid="e8">掬った</event>岩のりを<event class="" eid="e9">乗せ</event>て、そのまま<event class="" eid="e10">食べます</event>。</sentence>
-<sentence>　　エッと<event class="" eid="e11">思われるかも知れません</event>が、これがけっこう<event class="STATE" eid="e12">美味しいんです</event>よ！</sentence>
-<sentence>ちょっと<event class="STATE" eid="e13">脂っこい</event>ものを<event class="" eid="e14">食べた</event>後の酒の肴には<event class="STATE" eid="e15">最高です</event>。</sentence>
-<sentence>　　<TIMEX3 definite="FALSE" tid="t2" type="DATE" value="2008-02" valueFromSurface="XXXX-02">今年２月</TIMEX3>に山口に<event class="" eid="e16">行った</event>とき、居酒屋で<event class="" eid="e17">千切った</event>キャベツの上に乾燥塩昆布を<event class="" eid="e18">乗せ</event>て<event class="" eid="e19">出してくれた</event>のをヒントに<event class="" eid="e20">考えました</event>。</sentence>

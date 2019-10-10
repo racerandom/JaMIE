@@ -1,4 +1,0 @@
-<a>両側肺の下葉・胸膜下優位</a>に<d certainty="positive">網状影、すりガラス影、牽引性気管支拡張、蜂巣肺</d>を認めます。前回他院CT（2018/06/19）と同程度です。<d certainty="suspicious">UIPパターンの間質性肺炎</d>を疑います。
-<a>縦隔内</a>に<d certainty="positive">軽度腫大リンパ節</d>を認めますが、<d certainty="suspicious">反応性変化</d>を疑います。
-<f>微量</f>の<d certainty="positive">左胸水</d>あり。
-<a>肺動脈</a>の<d certainty="positive">拡大</d>あり、<d certainty="suspicious">肺高血圧症</d>の可能性があります。

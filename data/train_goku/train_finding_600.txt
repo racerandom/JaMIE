@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<d certainty="positive">気管支鏡後変化</d>（ＸＸＸＸ年ＸＸ月ＸＸ日ＢＦ）の、<a>原発巣周囲</a>の<d certainty="positive">ｃｏｎｓｏｌｉｄａｔｉｏｎ</d>は<c>消退傾向</c>にあります。<a>右肺下葉Ｓ９ｂ</a>の<d certainty="positive">腫瘍</d>、正確な<a>辺縁</a>は<f>不明瞭</f>で、<f>５．９×３．９Ｃｍ程度</f>と思われますが<f>修飾</f>されている可能性があります。<d certainty="suspicious">ｃＴ３</d>
-<a>右＃１１ｉ、右＃１３</a>、の<d certainty="suspicious">肺門リンパ節転移</d>を疑います。<d certainty="suspicious">Ｎ１</d>
-<d certainty="negative">胸水貯留</d>なし。<d certainty="positive">気腫肺</d>です。

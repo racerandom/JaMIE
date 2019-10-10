@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺上葉Ｓ１＋２ａ</a>に<f>長径１．７Ｃｍ</f>の<d certainty="positive">すりガラス状結節</d>あり。ＸＸＸＸ年ＸＸ月の他院ＣＴと不変です。<d certainty="suspicious">ＡＩＳなどの肺腺癌</d>の疑いです。<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="negative">胸水貯留</d>なし。

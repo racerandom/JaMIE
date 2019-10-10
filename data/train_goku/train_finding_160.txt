@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺上葉Ｓ１／Ｓ２／Ｓ３</a>に<f>６．２×４．７Ｃｍ</f>の<d certainty="positive">充実腫瘤</d>を認めます。<a>内部</a>は<f>不均一</f>に造影されます。<d certainty="positive">胸膜陥入像</d>あり。<d certainty="positive">右気胸</d>は<c>改善</c>。前回より<c>やや増大</c>、ＸＸＸＸ年より<c>増大</c>しています。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ３</d>
-<a>両側</a>の<a>縦隔・肺門</a>に<d certainty="positive">小リンパ節</d>あり、<f>病的有意な</f><d certainty="negative">腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。,<a>両側肺</a>に<f>小さな</f><d certainty="positive">すりガラス状陰影</d>が<f>複数</f>みられます。<f>非特異的な</f>所見ですが、前回と著変なし。ＣＴにて経過をみてください。

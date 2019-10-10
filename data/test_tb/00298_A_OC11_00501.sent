@@ -1,7 +1,0 @@
-<sentence type="quasi">主人と喧嘩を<event class="" eid="e1">してしまいました</event></sentence>
-<sentence><event class="STATE" eid="e2">素直に</event>口で<event class="" eid="e3">謝れないので</event>手紙を<event class="" eid="e4">書こう</event>かと<event class="" eid="e5">なやんでおります</event>。</sentence>
-<sentence>どんな風に<event class="" eid="e6">書いたらいいでしょう</event>か？</sentence>
-<sentence>携帯のメールは？</sentence>
-<sentence type="quasi"><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="XXXX-XX-XX" valueFromSurface="PAST_REF">昨日</TIMEX3>はごめんなさい　で<event class="STATE" eid="e7">いいでしょう</event>◎</sentence>
-<sentence>うちは一切<event class="" eid="e8">謝りません</event>よ。</sentence>
-<sentence type="quasi">しかし<event class="STATE" eid="e9">普通です</event></sentence>

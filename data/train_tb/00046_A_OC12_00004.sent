@@ -1,9 +1,0 @@
-<sentence><event class="STATE" eid="e1">素朴な</event>疑問なのですが、おじさんって<event class="STATE" eid="e2">独特</event>の匂いが<event class="" eid="e3">する</event>方<event class="" eid="e4">居ます</event>よね？</sentence>
-<sentence type="quasi">（おじさん全部という訳ではないですけど）</sentence>
-<sentence type="quasi">ポマードでも<event class="STATE" eid="e5">なく</event>何か体臭と<event class="" eid="e6">いう</event>か・・・・・</sentence>
-<sentence>歳<event class="" eid="e7">とる</event>と本人も<event class="" eid="e8">分からない</event>匂いって<event class="" eid="e9">でてくる</event>もんなのでしょうか？</sentence>
-<sentence type="quasi">加齢臭ですね</sentence>
-<sentence>「加齢臭」というのは別名エイジングノートとも<event class="STATE" eid="e10">いい</event>、要は「オヤジ臭」のこと。</sentence>
-<sentence>「<TIMEX3 definite="TRUE" tid="t1" type="DURATION" value="P4XY" valueFromSurface="P4XY">４０代</TIMEX3>を<event class="" eid="e11">過ぎる</event>と、皮脂中の過酸化脂質が<event class="" eid="e12">増加し</event>、脂肪酸組成が<event class="" eid="e13">変化します</event>。</sentence>
-<sentence>この脂肪酸が酸化や皮膚常在菌によって<event class="" eid="e14">分解される</event>と、<event class="STATE" eid="e15">特有</event>の体臭成分であるノネナールが、特に体の中心線に<event class="" eid="e16">沿っ</event>て<event class="" eid="e17">発生します</event>。</sentence>
-<sentence><TIMEX3 definite="TRUE" tid="t2" type="DURATION" value="P2XY" valueFromSurface="P2XY">２０</TIMEX3>〜<TIMEX3 definite="TRUE" tid="t3" type="DURATION" value="P3XY" valueFromSurface="P3XY">３０代</TIMEX3>の人の体臭からは、ほとんど<event class="" eid="e18">検出されない</event>ノネナールこそが加齢臭の正体なのです。」</sentence>

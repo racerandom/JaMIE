@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺上葉Ｓ１＋２ａ／Ｓ３ａ</a>、<d certainty="positive">肺気腫</d>の<a>間隙</a>に<f>進展</f>する<f>２．３×２．４Ｃｍ大</f>の<d certainty="positive">不整形結節</d>あり。２０１７／１０に新出し、前回より<c>増大傾向</c>。既知の<d certainty="positive">原発性肺癌（扁平上皮癌）</d>です。<d certainty="positive">ｃＴ１ｃ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>右腋窩</a>に<d certainty="positive">リンパ節腫大</d>を認めるが、<c certainty="negative">経時的変化</c>に乏しい。<d certainty="positive">Ｎ０</d>
-<a>右肺上葉末梢</a>の<d certainty="positive">不整形結節</d>は以前より存在し、<d certainty="suspicious">炎症後変化</d>をより疑う。<d certainty="positive">気腫肺</d>です。<d certainty="negative">胸水貯留</d>なし。<d certainty="positive">腎嚢疱</d>あり。

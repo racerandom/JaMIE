@@ -1,4 +1,0 @@
-<a>左肺上葉</a>に<f>８．０×６．３Ｃｍ</f>の<d certainty="positive">充実腫瘤</d>を認めます。<f>辺縁優位</f>に<d certainty="positive">造影効果</d>あり。<d certainty="positive">原発性肺癌</d>です。<d certainty="positive">ｃＴ４</d>
-<a>＃５，　＃６、＃７の縦隔</a>に<d certainty="positive">リンパ節腫大</d>を認め、<d certainty="suspicious">転移</d>疑い。<d certainty="suspicious">Ｎ２</d>
-<a>対側リンパ節</a>は<f>病的有意な</f><d certainty="negative">腫大</d>ではありません。<d certainty="negative">胸水貯留</d>なし。<a>左副腎</a>に<d certainty="positive">造影効果</d>を伴う<d certainty="positive">腫大</d>あり、<d certainty="suspicious">転移</d>を疑います．<d certainty="suspicious">Ｍ１ｂ</d>
-<a>肝内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>胆，膵，脾，腎</a>，には異常はみられません．<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>骨盤内</a>に<f>明らかな</f><d certainty="negative">腫瘤</d>なし．<d certainty="negative">腹水</d>なし．<d certainty="negative">脳転移</d>を疑う所見なし。<d certainty="negative">骨転移</d>を疑う所見なし。

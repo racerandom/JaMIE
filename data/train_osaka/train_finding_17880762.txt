@@ -1,6 +1,0 @@
-・<a>両側肺野</a>に<f>多発</f>する<d certainty="positive">薄壁嚢胞</d>
-・<a>両肺中葉舌区</a>の<f>強い</f><d certainty="positive">容積減少</d>を伴う<d certainty="positive">均等影、無気肺</d>
-・<a>両側肺底部胸膜下</a>に<d certainty="positive">容積減少、牽引性気管支拡張</d>を伴う<f>honeycomb状</f>の<d certainty="positive">嚢胞性変化</d>
-<d certainty="suspicious">間質性肺炎</d>や<d certainty="suspicious">経気道性炎症</d>による<d certainty="suspicious">線維化</d>と、<d certainty="suspicious">LIPなどリンパ増殖性肺疾患</d>の<f>混在</f>が疑われますが、活動性は乏しいと考えます。
-<f>有意な</f><d certainty="negative">リンパ節腫大</d>を認めません。
-<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。

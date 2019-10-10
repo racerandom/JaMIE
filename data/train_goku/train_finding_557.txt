@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。【胸部】<a>左肺下葉Ｓ８ｂ</a>に<f>２．０×１．１Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>を認めます。<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>は<f>１．５×０．６Ｃｍ</f>です。ＸＸＸＸ年と比べると継時的に<c>顕在化</c>しています。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｂ</d>
-<a>右肺底部や胸膜</a>に沿った<d certainty="positive">結節</d>に著変なし。<a>縦隔・肺門</a>に<d certainty="positive">リンパ節</d>が<f>散在</f>してみられますが、<f>病的有意な</f><d certainty="negative">腫大</d>を認めない。<d certainty="positive">気腫肺</d>が背景にあり、<d certainty="suspicious">反応性変化</d>を疑います。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>もみられません．

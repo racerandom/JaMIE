@@ -1,6 +1,0 @@
-<sentence><TIMEX3 definite="TRUE" tid="t1" type="DATE" value="PAST_REF" valueFromSurface="PAST_REF">先ほど</TIMEX3>、（<TIMEX3 definite="TRUE" mod="APPROX" tid="t2" type="TIME" value="2005-XX-XXT12:30" valueFromSurface="XXXX-XX-XXT12:30">１２：３０頃</TIMEX3>）イーバンクの口座からメルマネで<event class="" eid="e1">送金しました</event>。</sentence>
-<sentence>相手のアドレスにメールが<event class="" eid="e2">届く</event>のはほぼスグ<event class="" eid="e3">届くのでしょう</event>か？</sentence>
-<sentence>わたしのイーバンク口座のマイアカウントでは、相手のアドレスと金額が<event class="" eid="e4">表示されています</event>。</sentence>
-<sentence>こちらはもう何も<event class="" eid="e5">する</event>必要は<event class="" eid="e6">ありません</event>か？？</sentence>
-<sentence><event class="STATE" eid="e7">早い</event>ときには直ぐに<event class="" eid="e8">届きます</event>が、<webBr />時間が<event class="" eid="e9">かかる</event>ときには<TIMEX3 definite="FALSE" mod="APPROX" tid="t3" type="DURATION" value="PT2H" valueFromSurface="PT2H">２時間くらい</TIMEX3><event class="" eid="e10">掛かった</event>経験が<event class="" eid="e11">あります</event>。</sentence>
-<sentence>相手がメールを<event class="" eid="e12">受け取っ</event>て手続きを<event class="" eid="e13">開始する</event>と、<webBr />そのお知らせがあなたに<event class="" eid="e14">届きます</event>し、<webBr />普通の他行への振込よりは<event class="STATE" eid="e15">確実に</event><event class="STATE" eid="e16">早い</event>はずですから、<webBr /><event class="" eid="e17">焦らず</event>に、もうちょっと<event class="" eid="e18">待っててください</event>な。</sentence>

@@ -1,1 +1,0 @@
-<a>左肺　Ｓ６</a>に，<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>を認め、<d certainty="suspicious">肺癌</d>の疑い。他に<f>明らかな</f><d certainty="negative">肺内腫瘤</d>なし。<f>病的な</f><d certainty="negative">腫大リンパ節</d>なし。<a>腹部撮像範囲内</a>に特記すべき所見なし<f>明らかな</f><d certainty="negative">骨転移</d>なし<a>頭部</a>に<f>明らかな</f><d certainty="negative">転移</d>なし。

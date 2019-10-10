@@ -1,3 +1,0 @@
-<a>右肺上葉Ｓ３ａ</a>に<f>１．０×０．２Ｃｍ</f>の<d certainty="positive">結節</d>を認めます。ＸＸＸＸ年６月と比較すると<c>増大</c>、<a>内部</a>の<d certainty="positive">ｄｅｎｓｉｔｙが濃く</d>なっています。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ａ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>甲状腺両葉</a>に<d certainty="positive">低吸収腫瘤</d>あり。<d certainty="suspicious">腺腫</d>を疑います。ＵＳとご対比ください。<a>肝内</a>に<d certainty="negative">転移を疑う異常所見</d>はみられません．<a>胆，膵，脾，副腎</a>には異常はみられません．<d certainty="positive">腎嚢胞</d>あり。<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<a>骨盤内</a>に<f>明らかな</f><d certainty="negative">腫瘤</d>なし．<d certainty="negative">腹水</d>なし．

@@ -1,5 +1,0 @@
-<a>両下葉優位</a>に<d certainty="positive">網状影やすりガラス状陰影、線状影</d>が広がっています。<d certainty="positive">牽引性気管支拡張</d>を伴っています。<d certainty="suspicious">間質性肺炎</d>を疑います。
-<a>縦隔内</a>に<f>短径10mm前後</f>の<d certainty="positive">リンパ節</d>を<f>複数</f>認め、<d certainty="suspicious">反応性腫大</d>の疑い。
-<a>冠動脈</a>の<d certainty="positive">石灰化</d>あり。
-<a>気管右背側</a>に<d certainty="suspicious">paratracheal air cyst</d>の疑い。
-<a>胸部下部～腹部食道壁</a>の<d certainty="positive">左右差</d>あり。撮影スライスや<d certainty="suspicious">食道の蛇行による変化</d>を疑いますが、要すれば上部消化管内視鏡検査を。

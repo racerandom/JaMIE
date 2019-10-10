@@ -1,9 +1,0 @@
-<a>右肺S9辺縁</a>に<f>8mm大</f>の<d certainty="positive">結節影</d>あり。前回2013/12/3や前々回2013/7/26と著変ありません。引き続き経過観察を。
-<a>両側肺底部胸膜下優位</a>に<d certainty="positive">容積減少</d>を伴う<d certainty="positive">索状影、蜂巣肺、小葉内網状影、すりガラス状陰影</d>を認めます。前回とは吸気状態が異なるようですが、前々回と著変ありません。<d certainty="suspicious">膠原病関連などの間質性肺炎</d>（<d certainty="suspicious">UIPやNSIPパターン</d>）の疑い。
-<f>有意な</f><d certainty="negative">リンパ節腫大</d>を認めません。
-<d certainty="positive">肝嚢胞</d>、<d certainty="positive">肝内石灰化（＋）</d>。前回と著変なし。
-<d certainty="positive">膵石灰化（＋）</d>。<d certainty="suspicious">慢性膵炎</d>疑い。前回と著変なし。
-<a>右肺下葉</a>に<f>径11mm大</f>の<d certainty="positive">結節</d>を認めます。前回 2017/07/13から<f>軽度</f>の<c>増大</c>が認められ、2013/07/26(8mm大) から<c>緩徐に増大傾向</c>です。増大速度からは<d certainty="suspicious">良性結節もしくは低悪性度結節</d>がより疑われます。
-<a>両側下葉優位、末梢優位</a>に<d certainty="positive">すりガラス影や網状影、蜂巣肺、牽引性気管支拡張</d>が認められます。<d certainty="suspicious">UIPパターンの間質性肺炎</d>を疑います。前回と著変ありません。
-<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。
-<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>が認められますが、<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>は認められません。

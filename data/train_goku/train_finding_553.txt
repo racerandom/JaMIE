@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。１．<a>左肺上葉Ｓ１＋２ａ</a>の<d certainty="positive">不整形結節</d>は<f>１７×１１ｍｍ大</f>です。ＸＸＸＸ年と比べ<a>短径</a>が<c>増大傾向</c>にあり、<d certainty="suspicious">原発性肺癌</d>を疑う。<d certainty="suspicious">ｃＴ１ａ</d>
-２．<a>肺門、縦隔リンパ節</a>に<d certainty="negative">有意腫大</d>なし。<d certainty="positive">Ｎ０</d>
-３．<a>両肺</a>の<d certainty="positive">すりガラス状結節</d>に著変なし。<a>中葉</a>に<d certainty="positive">炎症後変化</d>あり。<d certainty="negative">胸膜播種</d>は明らかでない。<d certainty="negative">胸水貯留</d>なし。４．<a>撮像範囲の骨</a>に<f>明らかな</f>異常なし。

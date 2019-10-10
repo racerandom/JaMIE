@@ -1,3 +1,0 @@
-<a>両側肺下葉優位、胸膜側優位</a>に<d certainty="positive">すりガラス影や網状影、牽引性気管支拡張、蜂巣肺</d>が認められます。<d certainty="suspicious">UIPパターンの間質性肺炎</d>を疑います。前回2013/6/19と著変ありません。
-<a>両側肺</a>に<d certainty="positive">emphysema</d>が認められ、<d certainty="positive">combined pulmoanry fibroosis and emphysema</d>と思われます。
-<a>縦隔内</a>に<f>短径1cm未満</f>の<d certainty="positive">LNs</d>が認められますが、<f>positive size</f>の<d certainty="negative">LN</d>は認められません。

@@ -1,4 +1,0 @@
-<a>両側肺野胸膜直下優位</a>に<d certainty="positive">すりガラス陰影、微細線状影、気管支拡張像、均等影</d>あり。<f>粒状</f>の<d certainty="positive">石灰化</d>も伴う。<a>両側肺底区背側</a>では<d certainty="positive">possibleUIPパターン</d>を呈する部分が<f>多い</f>が、<a>S6や上葉末梢</a>では<a>胸膜直下</a>が<p>spare</p>され、<d certainty="positive">subpleural linear opaciｔｙ</d>が認められ<d certainty="suspicious">NSIPパターン</d>を疑う。<f>粒状</f>の<d certainty="positive">石灰化</d>に関しては<d certainty="suspicious">diffuse pulmonary ossification</d> を疑う。
-<a>両側上葉優位</a>に<d certainty="positive">気腫性変化ブラ</d>あり。
-<d certainty="negative">胸水</d>なし
-<a>大動脈壁、冠動脈</a>に<d certainty="positive">石灰化</d>を認める。

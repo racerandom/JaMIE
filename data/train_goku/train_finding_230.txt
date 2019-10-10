@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<d certainty="positive">右肺上葉Ｓ３〜肺門部腫瘤</d>が認められ、<d certainty="suspicious">局所再発</d>がうたがわれます。<a>右肺上葉・下葉</a>の<d certainty="positive">放射線治療後変化</d>は<d certainty="positive">収縮性変化</d>は著変なし。<d certainty="positive">胸水貯留</d>はほぼ同量。<f>軽度</f><d certainty="positive">肺気腫</d>あり。<d certainty="positive">甲状腺右葉腫瘤</d>に著変なし。

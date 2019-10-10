@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>左肺舌区Ｓ４ａ</a>に<f>１．０×１．４Ｃｍ</f>の<d certainty="positive">充実結節</d>を認めます。<a>辺縁</a>に<f>わずかに</f><d certainty="positive">すりガラス状陰影</d>あり。<d certainty="positive">胸膜陥入像</d>あり。<d certainty="positive">原発性肺癌</d>と考えます。前回とサイズ形態に著変なし。<d certainty="positive">ｃＴ１ｂ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>両側肺野</a>に<a>正常肺野との境界</a>が<f>不明瞭な</f>、<f>まとまりのない</f><d certainty="positive">すりガラス状陰影</d>が<f>多発</f>してみられます。<d certainty="suspicious">限局性炎症や限局性線維化</d>を疑いますが、経過ＣＴにて増大有無の確認を要します。<a>甲状腺右葉</a>に<d certainty="suspicious">石灰化</d>あり。

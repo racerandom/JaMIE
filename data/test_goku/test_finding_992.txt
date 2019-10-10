@@ -1,4 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺上葉Ｓ１ｂ</a>に<f>３．６×２．１Ｃｍ</f>の<d certainty="positive">充実腫瘤</d>を認めます。<a>辺縁</a>は<f>一部分葉状</f>、<d certainty="positive">小棘形成</d>あり。→前回ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査とは<a>短径</a>が<c>若干縮小</c>。ＸＸＸＸ年ＸＸ月ＸＸ日と比べては、<a>足側</a>の<d certainty="positive">充実部分</d>が<c>消退</c>し、前々回のＸＸＸＸ年１月ＣＴの形状と類似してきました（２／５の気管支鏡による<d certainty="positive">修飾性変化</d>が<c>軽減</c>したのでしょうか）。ＣＴで<c>明らかな縮小</c>があれば、気管支鏡でｎｅｇａｔｉｖｅと合致しますが、形態から<d certainty="suspicious">原発性肺癌</d>は鑑別として残ります。<d certainty="suspicious">原発性肺癌</d>と考えれば、<a>胸壁脂肪</a>に<f>連続</f>しているようにみえる部分があり、<d certainty="suspicious">胸痛</d>があれば<d certainty="suspicious">ｃＴ３</d>
-、<d certainty="suspicious">胸痛</d>がなければ<d certainty="suspicious">ｃＴ２ａ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>甲状腺右葉</a>に<d certainty="positive">嚢疱</d>あり。

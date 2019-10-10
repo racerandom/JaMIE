@@ -1,3 +1,0 @@
-<a>右肺下葉Ｓ６ｂ</a>に<f>１３×１１ｍｍ大</f>の<f>辺縁不整な</f><d certainty="positive">結節</d>を認めます。<d certainty="positive">胸膜陥入</d>を伴います。<d certainty="suspicious">原発性肺癌</d>を疑う所見です。　<d certainty="suspicious">ｃＴ１ｂ</d>
-<a>頸部・鎖骨上窩・縦隔・肺門リンパ節</a>に<f>有意な</f><d certainty="negative">腫大</d>を認めません。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>を認めません。<a>肝Ｓ７</a>に<d certainty="positive">小低吸収域</d>を認めます。第一に<d certainty="suspicious">肝嚢胞</d>を疑いますが、超音波検査を推奨します。<a>胆・膵・脾・腎</a>に特記すべき所見を認めません。<d certainty="positive">腸間膜リンパ節</d>が<f>散見</f>されますが、<f>有意な</f><d certainty="negative">腫大</d>は認めません。<a>骨盤内リンパ節</a>に<f>有意な</f><d certainty="negative">腫大</d>を認めません。<d certainty="negative">腹水貯留</d>を認めません。<f>明らかな</f><d certainty="negative">骨転移</d>を認めません。

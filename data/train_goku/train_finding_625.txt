@@ -1,1 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>胸部右肺上葉Ｓ１ｂ</a>の<d certainty="positive">結節</d>は<f>１．１×１．４ｃｍ</f>で前回よりも<c>増大</c>、<d certainty="suspicious">肺転移</d>を疑います。一か所です。ＣＴ上は<a>食道</a>の異常は指摘できません。<d certainty="negative">腫大リンパ節</d>なし<a>左下葉Ｓ１０</a>の<d certainty="positive">索状瘢痕</d>に著変はない。

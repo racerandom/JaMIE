@@ -1,3 +1,0 @@
-<a>左肺上葉Ｓ３ａ</a>に<f>１．７×１．９Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>を認めます。<f>０．１×０．５Ｃｍ</f>の<f>濃い</f><d certainty="positive">すりガラス状陰影</d>を認め、これを<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>とみなします。ＸＸＸＸ年ＸＸ月、ＸＸＸＸ年ＸＸ月、と比較して著変なし。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ａ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<d certainty="positive">気胆管</d>あり。<a>胆</a>摘出後。

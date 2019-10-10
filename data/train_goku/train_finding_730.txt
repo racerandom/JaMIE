@@ -1,1 +1,0 @@
-<a>左肺上葉舌区Ｓ５ａ</a>に<f>０．２×０．０ｃｍ</f>の<d certainty="positive">不整結節</d>を認めます。サイズに比して<d certainty="positive">胸膜陥入など集束性変化</d>が<f>強い</f>印象です。ＸＸＸＸ年ＸＸ月と著変を認めません。まずは<d certainty="suspicious">器質化炎症</d>を疑います。経過ＣＴにて増大有無をご確認ください。<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="negative">胸水貯留</d>なし。

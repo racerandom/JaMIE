@@ -1,5 +1,0 @@
-<a>両側肺</a>に<a>下葉優位</a>で<d certainty="positive">網状影やすりガラス状陰影、索状影</d>を認め<d certainty="positive">牽引性気管支拡張像</d>を伴っています。
-<d certainty="positive">陰影</d>が<a>気管支血管束</a>に沿って<f>強く分布</f>する像も認められます。
-前回(2012/10/12)と比較して大差認められず既知の<d certainty="positive">慢性過敏性肺臓炎</d>の経過として矛盾しないと考えます。
-<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>が<f>散見</f>されますが前回と比較してほぼ変化なく、<f>有意な</f><d certainty="negative">リンパ節腫大</d>を指摘できません。
-<d certainty="negative">胸水貯留</d>を認めません。

@@ -1,3 +1,0 @@
-<a>右肺下葉Ｓ９ａ</a>に<f>２．３×１．９Ｃｍ</f>の<d certainty="positive">充実結節</d>を認めます。ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較して<c>増大</c>、ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査と比較して<c>わずかに増大</c>、しています。<a>辺縁</a>は<f>一部分葉状</f>です。<d certainty="positive">原発性肺癌</d>と考えます。<d certainty="positive">ｃＴ１ｂ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水貯留</d>なし。<a>両側肺下葉・左肺舌区</a>の<d certainty="positive">気道炎症</d>は<c>消退傾向</c>を認めます。

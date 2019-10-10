@@ -1,8 +1,0 @@
-<a>両側肺</a>に<d certainty="positive">網状影、すりガラス影、少量の浸潤影</d>を認めます。<a>下葉や気管支血管束周囲</a>に<f>優位な</f>印象。<f>一部</f>では<d certainty="positive">牽引性気管支拡張</d>を伴っています。<a>右肺底部</a>では<d certainty="positive">蜂巣状の部分</d>も見られます。
-前回（2016/09/20）と比較して、<a>両側肺下葉</a>で<d certainty="positive">すりガラス影</d>が<c>増強</c>しています。
-<d certainty="suspicious">NSIPパターンの間質性肺炎の増悪経過像</d>を疑います。
-<a>両側肺上葉</a>では<f>新たな</f><d certainty="positive">すりガラス影、浸潤影</d>が出現しています。<d certainty="suspicious">経気道感染などによる肺炎</d>経過像か。（D/D一連の<d certainty="suspicious">間質性肺炎の陰影</d>）
-<a>縦隔内</a>に<d certainty="positive">石灰化リンパ節</d>を<f>散見</f>。前回と著変なし。<d certainty="suspicious">結核後や炎症後変化</d>疑い。
-<f>有意サイズ</f>の<d certainty="negative">リンパ節腫大</d>は認められません。
-<d certainty="negative">胸水貯留</d>を認めません。
-<d certainty="positive">食道裂孔ヘルニア</d>あり。<d certainty="positive">脱出</d>内容は<d certainty="positive">脂肪織</d>。

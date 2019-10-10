@@ -1,5 +1,0 @@
-<a>両側肺</a>に<a>下葉優位</a>で<d certainty="positive">網状影やすりガラス状陰影、線状影、索状影</d>を認め<d certainty="positive">牽引性気管支拡張像</d>を伴っています。　<d certainty="positive">陰影</d>が<a>気管支血管束</a>に沿って<f>強く分布</f>する像も認められます。　<d certainty="positive">NSIPパターンの間質性肺炎</d>の経過を見ていると考えます。　前回(2015/01/30)と比較して病勢に大差指摘できません。
-<a>両側肺</a>に認められる<d certainty="positive">気腫性変化</d>や<a>両側肺尖部</a>などに<f>散在</f>する<d certainty="positive">均等影や索状影</d>も前回よりほぼ変化ありません。
-<a>縦隔内</a>に<c>軽度増大</c>した<d certainty="positive">リンパ節</d>が<f>複数</f>認められますが前回と比較して大差指摘できません。　<d certainty="suspicious">反応性腫大</d>の経過をまず疑います。
-<f>少量</f>の<d certainty="positive">右胸水貯留</d>を認めます。
-<a>冠動脈</a>に<d certainty="positive">石灰化</d>を認めます。

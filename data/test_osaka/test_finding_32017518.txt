@@ -1,8 +1,0 @@
-<a>両側肺末梢側優位</a>に<d certainty="positive">収縮</d>を伴った<d certainty="positive">濃度上昇や線状影、網状影</d>が認められます。他院6/10と著変ありません。<d certainty="suspicious">炎症後変化</d>や<f>軽度</f>の<d certainty="suspicious">間質性肺炎</d>などが疑われます。
-<a>coronary a.</a>に<d certainty="positive">石灰化</d>。
-<f>positive size</f>の<d certainty="negative">LN</d>は認められません。
-<a>両側肺胸膜直下</a>の<d certainty="positive">軽度収縮性変化</d>を伴った<d certainty="positive">濃度上昇域、線状影、網状影</d>を認めます。また、今回、<a>両側肺下葉の気管支血管周囲</a>に沿って<d certainty="positive">収縮性変化</d>を伴った<d certainty="positive">すりガラス影、軽度均等影</d>が出現しています。<d certainty="suspicious">間質性肺炎</d>の<c certainty="suspicious>増悪</c>、<d certainty="suspicious">炎症性変化</d>の<f>混在</f>などが疑われます。
-<a>両側肺尖部</a>に<f>不整な</f><d certainty="positive">胸膜肥厚</d>、<d certainty="suspicious">炎症後変化</d>を疑う<d certainty="positive">濃度上昇域</d>を認めます。前回CTと比較して著変ありません。
-<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>を認めますが、<f>有意なサイズ</f>の<d certainty="negative">リンパ節</d>を認めません。
-<f>少量</f>の<d certainty="positive">胸水</d>を認めます。<f>少量</f>の<d certainty="positive">右葉間胸水</d>もあり。
-<a>冠動脈</a>に<d certainty="positive">石灰化</d>あり。

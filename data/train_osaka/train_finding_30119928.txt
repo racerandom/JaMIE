@@ -1,3 +1,0 @@
-<a>両側肺胸膜側優位</a>に<d certainty="positive">均等影、すりガラス影、網状影</d>を認めます。<d certainty="positive">牽引性気管支拡張像</d>を含め、<a>両肺</a>に<d certainty="positive">気管支拡張像</d>を認める他、<d certainty="positive">嚢胞腔</d>が<f>散見</f>されます。前回CT(2012/6/22)と比較して概ね変化ありませんが、上記の<d certainty="positive">陰影</d>は、<a>下葉優位</a>ではなく、<a>上葉や中葉</a>などにも認められ、<d certainty="positive">IIPとしては非典型像</d>と思われます。<d certainty="suspicious">慢性過敏性肺臓炎、膠原病肺、特発性間質性肺炎</d>（<d certainty="suspicious">UIP pattern</d>）が疑われます。
-<a>右肺上葉</a>に<d certainty="positive">石灰化結節</d>を認めます。前回と同様。<d certainty="suspicious">炎症後変化</d>を疑います。
-<a>縦隔内</a>に<d certainty="positive">小リンパ節</d>を認めますが、前回と著変ありません。その他、<d certainty="positive">石灰化リンパ節</d>を認めます。

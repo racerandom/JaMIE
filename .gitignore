@@ -3,6 +3,8 @@ papers/
 timebank/
 scripts/
 outputs/
+data/
+resources/
 .idea/
 bert_seq*
 bert_tag*

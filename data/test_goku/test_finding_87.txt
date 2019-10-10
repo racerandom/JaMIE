@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺下葉Ｓ９ｂ</a>の<d certainty="positive">腫瘤</d>は<f>２．６×２．６Ｃｍ</f>に<c>増大</c>。ｒｅｔｒｏｓｐｅｃｔｉｖｅにみると、ＸＸＸＸ年には<f>点状</f>です。<d certainty="positive">原発性肺癌</d>です。<d certainty="positive">ｃＴ１ｂ</d>
-<d certainty="positive">＃１１ｓ・＃１１ｉ肺門リンパ節、＃７・＃４Ｒ縦隔リンパ節</d>、あり。前回よりも<c>増大</c>しています。<d certainty="positive">Ｎ２</d>
-<d certainty="positive">肺気腫</d>あり．<a>両肺尖部</a>に<d certainty="positive">ブラ</d>あり．<a>右肺上中葉間</a>の<d certainty="positive">涙的状結節</d>に著変なし。<d certainty="negative">脳転移</d>を疑う所見なし。

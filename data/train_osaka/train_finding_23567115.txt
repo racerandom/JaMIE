@@ -1,4 +1,0 @@
-<a>両側肺底部優位</a>に<d certainty="positive">網状影や索状影、すりガラス影</d>を認めます。<d certainty="positive">間質性肺炎</d>と考えます。前回(2016/11/17)と著変ありませんが、１年前と比較すると、<a>左上葉末梢</a>で<c>やや悪化</c>している印象です。
-<f>明らかな</f><d certainty="negative">肺転移</d>は指摘できません。
-<f>有意な</f><d certainty="negative">リンパ節腫大</d>なし。
-<a>左</a>に<f>ごく少量</f>の<d certainty="positive">胸水</d>を認めます。

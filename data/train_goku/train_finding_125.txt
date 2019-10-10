@@ -1,3 +1,0 @@
-ＸＸＸＸ年ＸＸ月ＸＸ日のＣＴ検査の結果と比較しました。<a>右肺中葉Ｓ４ａ</a>に<f>１．４×０．４Ｃｍ</f>の<d certainty="positive">ｐａｒｔ−ｓｏｌｉｄ　ＧＧＮ</d>を認めます。<a>辺縁</a>に<d certainty="positive">すりガラス状陰影</d>を認めます。<d certainty="positive">ｓｏｌｉｄ　ｃｏｍｐｏｎｅｎｔ</d>は<f>１．４×０．１Ｃｍ</f>です。ｒｅｔｒｏｓｐｅｃｔｉｖｅにみると、<c>漸増</c>しています。<d certainty="suspicious">原発性肺癌</d>がうたがわれます。<d certainty="suspicious">Ｔ１ａ</d>
-<a>縦隔・肺門</a>に<f>病的有意な</f><d certainty="negative">リンパ節腫大</d>を認めない。<d certainty="positive">Ｎ０</d>
-<d certainty="negative">胸水</d>なし。<a>肝右葉</a>切除後。<p>ＴＡＣＥ</p>　および<a>肝表</a>の<d certainty="positive">再発病変</d>に対しＲＦＡ　後。<a>Ｓ４切除断端のＲＦＡ　部位</a>の<d certainty="negative">局所再発</d>は認めません。<d certainty="positive">脾腫大</d>の程度は不変です。
