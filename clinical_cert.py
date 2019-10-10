@@ -35,7 +35,7 @@ parser.add_argument("-m", "--model", dest="MODEL_DIR", default='checkpoints/cert
                     help="save/load model dir")
 parser.add_argument("-b", "--batch", dest="BATCH_SIZE", default=16, type=int,
                     help="BATCH SIZE")
-parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=3, type=int,
+parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=5, type=int,
                     help="fine-tuning epoch number")
 parser.add_argument("-n", "--ner_out", dest="NER_OUT", type=str,
                     help="tag recognition results")
@@ -120,16 +120,6 @@ if args.do_train:
                         warmup=0.1,
                         t_total=args.NUM_EPOCHS * len(train_dataloader))
 
-    test_tensors, test_deunk = extract_cert_from_conll(args.NER_OUT,
-                                                       tokenizer,
-                                                       cert_lab2ix,
-                                                       device,
-                                                       test_mode=True)
-    test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
-    print('test size: %i' % len(test_tensors))
-    output_file = 'outputs/cert_%s_ep%i_out.txt' % (args.CORPUS, args.NUM_EPOCHS)
-    eval_seq_cert(model, tokenizer, test_dataloader, test_deunk, test_labs, cert_lab2ix, output_file)
-
     model.train()
     for epoch in range(1, args.NUM_EPOCHS + 1):
         for (b_toks, b_masks, b_ner_masks, b_clab_masks, b_clabs) in tqdm(train_dataloader, desc='Training'):
@@ -144,11 +134,17 @@ if args.do_train:
 
 """ load the new tokenizer """
 tokenizer = BertTokenizer.from_pretrained(args.MODEL_DIR, do_lower_case=False, do_basic_tokenize=False)
-
+test_tensors, test_deunk = extract_cert_from_conll(args.NER_OUT,
+                                                   tokenizer,
+                                                   cert_lab2ix,
+                                                   device,
+                                                   test_mode=True)
+test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
+print('test size: %i' % len(test_tensors))
 
 """ load the new model"""
 config = BertConfig.from_json_file(os.path.join(args.MODEL_DIR, 'config.json'))
-model = BertForTokenClassification(config, num_labels=len(cert_lab2ix))
+model = SeqCertClassifier(config, num_labels=len(cert_lab2ix))
 state_dict = torch.load(os.path.join(args.MODEL_DIR, 'pytorch_model.bin'))
 model.load_state_dict(state_dict)
 model.to(device)
