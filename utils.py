@@ -7,15 +7,19 @@ import xml.etree.ElementTree as ET
 import numpy as np
 import torch
 from torch.utils.data import TensorDataset
-from pytorch_pretrained_bert import BertTokenizer, BertForTokenClassification, BertForMaskedLM
+# from pytorch_pretrained_bert import BertTokenizer, BertForTokenClassification, BertForMaskedLM
+from transformers import *
 
 juman = Juman()
-device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
-if str(device) == 'cpu':
-    BERT_URL='/Users/fei-c/Resources/embed/L-12_H-768_A-12_E-30_BPE'
-elif str(device) == 'cuda':
-    BERT_URL='/larch/share/bert/Japanese_models/Wikipedia/L-12_H-768_A-12_E-30_BPE'
-tokenizer = BertTokenizer.from_pretrained(BERT_URL, do_lower_case=False, do_basic_tokenize=False)
+# device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
+# if str(device) == 'cpu':
+#     BERT_URL = '/Users/fei-c/Resources/embed/L-12_H-768_A-12_E-30_BPE'
+# elif str(device) == 'cuda':
+#     BERT_URL = '/larch/share/bert/Japanese_models/Wikipedia/L-12_H-768_A-12_E-30_BPE'
+# else:
+#     raise Exception("Unknown Device name: %s..." % device)
+# tokenizer = BertTokenizer.from_pretrained(BERT_URL, do_lower_case=False, do_basic_tokenize=False)
+
 
 def get_label2ix(y_data):
     label2ix = {}
@@ -25,13 +29,15 @@ def get_label2ix(y_data):
                 label2ix[label] = len(label2ix)
     return label2ix
 
-def padding_1d(seq_1d, max_len, pad_tok=0, direct='right'):
+
+def padding_1d(seq_1d, max_len, pad_tok=None, direct='right'):
     for i in range(0, max_len - len(seq_1d)):
         if direct in ['right']:
             seq_1d.append(pad_tok)
         else:
             seq_1d.insert(0, pad_tok)
     return seq_1d
+
 
 def padding_2d(seq_2d, max_len, pad_tok=0, direct='right'):
 
@@ -42,6 +48,7 @@ def padding_2d(seq_2d, max_len, pad_tok=0, direct='right'):
             else:
                 seq_1d.insert(0, pad_tok)
     return seq_2d
+
 
 def match_sbp_label(bpe_x, y):
     bpe_y = y.copy()
@@ -76,14 +83,16 @@ def explore_unk(bpe_x, ori_x):
             ix_count += 1
         else:
             deunk_bpe_x.append(tok)
-    assert len(bpe_x)==len(deunk_bpe_x)
+    assert len(bpe_x) == len(deunk_bpe_x)
     return deunk_bpe_x
+
 
 def write_data_to_txt(np_findings, file_name):
     with open(file_name, "w") as txt_file:
         for d in np_findings:
             if isinstance(d, str):
                 txt_file.write(d + '\n')
+
 
 def out_xml(orig_tok, pred_ix, ix2label):
     lines = []
@@ -119,14 +128,14 @@ def out_xml(orig_tok, pred_ix, ix2label):
     return lines
 
 
-def convert_clinical_data_to_conll(clinical_file, fo,  sent_tag=True, skip_empty=False, defaut_cert='_', is_raw=False):
+def convert_clinical_data_to_conll(clinical_file, fo, tokenizer, sent_tag=True, skip_empty=False, defaut_cert='_', is_raw=False):
     x_data, y_data = [], []
     with open(clinical_file, 'r') as fi:
         for index, line in enumerate(fi):
             line = line.strip().replace('\n', '').replace('\u3000', mojimoji.han_to_zen('-'))
         
             if skip_empty:
-                if '<' not in line: ## skip the lines without any tag inside.
+                if '<' not in line:  # skip the lines without any tag inside.
                     continue
                     
                 if line[0] == '・':
@@ -348,7 +357,7 @@ def extract_cert_from_conll(conll_file, tokenizer, cert_lab2ix, device, test_mod
                          pad_ner_masks_t, 
                          clab_masks_t, 
                          pad_clab_ids_t
-                        ), deunks
+                         ), deunks
 
             
 def eval_pid_seq(model, tokenizer, test_data, orig_token, label2ix, epoch):
@@ -390,7 +399,7 @@ def eval_seq(model, tokenizer, test_data, deunk_toks, label2ix, file_out):
     with torch.no_grad():
         with open('%s_eval.txt' % file_out, 'w') as fe, open('%s_out.txt' % file_out, 'w') as fo:
             for deunk_tok, (token, mask, gold) in zip(deunk_toks, test_data):
-                pred_prob = model(token, attention_mask=mask)
+                pred_prob = model(token, attention_mask=mask)[0]
                 pred = torch.argmax(pred_prob, dim=-1)
 
                 t_masked_ix = torch.masked_select(token[:,1:], mask[:,1:].byte())

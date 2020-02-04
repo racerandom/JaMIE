@@ -1,8 +1,9 @@
 import torch
 from torch import nn
 from torch.nn import CrossEntropyLoss
-from pytorch_pretrained_bert.modeling import BertPreTrainedModel
-from pytorch_pretrained_bert import BertModel, BertTokenizer, WEIGHTS_NAME, CONFIG_NAME
+# from pytorch_pretrained_bert.modeling import BertPreTrainedModel
+# from pytorch_pretrained_bert import BertModel, BertTokenizer, WEIGHTS_NAME, CONFIG_NAME
+from transformers import *
 
 
 class CertaintyClassifier(BertPreTrainedModel):

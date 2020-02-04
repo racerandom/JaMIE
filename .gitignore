@@ -13,3 +13,4 @@ temp.*
 *.ipynb
 temp_cert.py
 nohup.*
+checkpoints/

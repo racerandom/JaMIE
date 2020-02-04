@@ -2,14 +2,17 @@
 # coding: utf-8
 import os
 import warnings
-warnings.filterwarnings("ignore")
 from tqdm import tqdm
 import torch
 from utils import *
 from torch.utils.data import Dataset, DataLoader, TensorDataset
-from pytorch_pretrained_bert import BertTokenizer, BertForTokenClassification, BertConfig
-from pytorch_pretrained_bert.optimization import BertAdam, WarmupLinearSchedule
+# from pytorch_pretrained_bert import BertTokenizer, BertForTokenClassification, BertConfig
+# from pytorch_pretrained_bert.optimization import BertAdam, WarmupLinearSchedule
 from model import save_bert_model
+from transformers import *
+import argparse
+
+warnings.filterwarnings("ignore")
 
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
@@ -28,23 +31,33 @@ juman = Juman()
 
 # CORPUS='goku'
 
-import argparse
+
 parser = argparse.ArgumentParser(description='PRISM tag recognizer')
 
 parser.add_argument("-c", "--corpus", dest="CORPUS", default='goku', type=str,
                     help="goku (国がん), osaka (阪大), tb (BCCWJ-Timebank)")
+
 parser.add_argument("-m", "--model", dest="MODEL_DIR", default='checkpoints/ner_full/', type=str,
                     help="save/load model dir")
-parser.add_argument("-p", "--pre", dest="PRE_MODEL", default='/larch/share/bert/Japanese_models/Wikipedia/L-12_H-768_A-12_E-30_BPE', type=str, help="pre-trained model dir")
+
+parser.add_argument("-p", "--pre", dest="PRE_MODEL",
+                    default='/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE',
+                    type=str,
+                    help="pre-trained model dir")
+
 parser.add_argument("-b", "--batch", dest="BATCH_SIZE", default=16, type=int,
                     help="BATCH SIZE")
+
 parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=3, type=int,
                     help="fine-tuning epoch number")
+
 parser.add_argument("--do_train",
                     action='store_true',
                     help="Whether to run training.")
+
 parser.add_argument("-o", "--output", dest="OUTPUT_FILE", default='outputs/temp.ner', type=str,
                     help="output filename")
+
 args = parser.parse_args()
 
 
@@ -99,27 +112,49 @@ if args.do_train:
         {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
         {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
     ]
-    optimizer= BertAdam(optimizer_grouped_parameters,
-                        lr=5e-5,
-                        warmup=0.1,
-                        t_total=args.NUM_EPOCHS * len(train_dataloader))
+    # optimizer= BertAdam(optimizer_grouped_parameters,
+    #                     lr=5e-5,
+    #                     warmup=0.1,
+    #                     t_total=args.NUM_EPOCHS * len(train_dataloader))
+
+    num_training_steps = args.NUM_EPOCHS * len(train_dataloader)
+    warmup_ratio = 0.1
+    max_grad_norm = 1.0
+
+    # To reproduce BertAdam specific behavior set correct_bias=False
+    optimizer = AdamW(
+        # model.parameters(),
+        optimizer_grouped_parameters,
+        lr=5e-5,
+        correct_bias=False
+    )
+
+    # PyTorch scheduler
+    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=num_training_steps * warmup_ratio,
+                                                num_training_steps=num_training_steps)
 
     model.train()
     for epoch in range(1, args.NUM_EPOCHS + 1):
         for batch_feat, batch_mask, batch_lab in tqdm(train_dataloader, desc='Training'):
-            loss = model(batch_feat, attention_mask=batch_mask, labels=batch_lab)
+            loss = model(batch_feat, attention_mask=batch_mask, labels=batch_lab)[0]  # transformers return tuple
 
             loss.backward()
+            torch.nn.utils.clip_grad_norm(model.parameters(), max_grad_norm)
             optimizer.step()
+            scheduler.step()
             model.zero_grad()
 
     #        if step !=0 and step % 100 == 0:
     #            eval(model, test_data, label2ix)
 
     """ save the trained model """
-#    save_bert_model(model, tokenizer, args.MODEL_DIR)
+    if not os.path.exists(args.MODEL_DIR):
+        os.makedirs(args.MODEL_DIR)
+    model.save_pretrained(args.MODEL_DIR)
+    tokenizer.save_pretrained(args.MODEL_DIR)
 
 """ load the new tokenizer"""
+tokenizer = BertTokenizer.from_pretrained(args.MODEL_DIR)
 # tokenizer = BertTokenizer.from_pretrained(args.MODEL_DIR, do_lower_case=False, do_basic_tokenize=False)
 test_tensors, test_deunk = extract_ner_from_conll('data/test_%s.txt' % args.CORPUS, tokenizer, lab2ix, device)
 test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
@@ -131,6 +166,8 @@ print('ttest size: %i' % len(test_tensors))
 # state_dict = torch.load(os.path.join(args.MODEL_DIR, 'pytorch_model.bin'))
 # model.load_state_dict(state_dict)
 # model.to(device)
+model = BertForTokenClassification.from_pretrained(args.MODEL_DIR)
+model.to(device)
 
 """ predict test out """
 #output_file = 'outputs/ner_%s_ep%i' % (args.CORPUS, args.NUM_EPOCHS)
