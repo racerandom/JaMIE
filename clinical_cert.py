@@ -15,13 +15,13 @@ device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cp
 
 print('device', device)
 
-if str(device) == 'cuda':
-    BERT_URL='/larch/share/bert/Japanese_models/Wikipedia/L-12_H-768_A-12_E-30_BPE'
-else:
-    BERT_URL = '/Users/fei-c/Resources/embed/L-12_H-768_A-12_E-30_BPE'
+#if str(device) == 'cuda':
+#    BERT_URL='/larch/share/bert/Japanese_models/Wikipedia/L-12_H-768_A-12_E-30_BPE'
+#else:
+#    BERT_URL = '/Users/fei-c/Resources/embed/L-12_H-768_A-12_E-30_BPE'
 
 juman = Juman()
-tokenizer = BertTokenizer.from_pretrained(BERT_URL, do_lower_case=False, do_basic_tokenize=False)
+# tokenizer = BertTokenizer.from_pretrained(args.PRE_MODEL, do_lower_case=False, do_basic_tokenize=False)
 
 # CORPUS='goku'
 # MODEL_DIR = 'outputs/'
@@ -33,17 +33,24 @@ parser.add_argument("-c", "--corpus", dest="CORPUS", default='goku', type=str,
                     help="goku (国がん), osaka (阪大), tb (BCCWJ-Timebank)")
 parser.add_argument("-m", "--model", dest="MODEL_DIR", default='checkpoints/cert/', type=str,
                     help="save/load model dir")
+parser.add_argument("-p", "--pre", dest="PRE_MODEL", default='/larch/share/bert/Japanese_models/Wikipedia/L-12_H-768_A-12_E-30_BPE', type=str, help="pre-trained model dir")
 parser.add_argument("-b", "--batch", dest="BATCH_SIZE", default=16, type=int,
                     help="BATCH SIZE")
 parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=5, type=int,
                     help="fine-tuning epoch number")
 parser.add_argument("-n", "--ner_out", dest="NER_OUT", type=str,
                     help="tag recognition results")
-parser.add_argument("--do_train",
-                    action='store_true',
+parser.add_argument("--do_train", action='store_true',
                     help="Whether to run training.")
+parser.add_argument("-o", "--output", 
+                    dest="OUTPUT_FILE", 
+                    # default='outputs/temp_cert.txt', 
+                    type=str,
+                    help="output filename")
 
 args = parser.parse_args()
+
+tokenizer = BertTokenizer.from_pretrained(args.PRE_MODEL, do_lower_case=False, do_basic_tokenize=False)
 
 # batch_convert_clinical_data_to_conll('data/train_%s/' % CORPUS, 'data/train_%s.txt' % CORPUS, sent_tag=True,  is_raw=False)
 # batch_convert_clinical_data_to_conll('data/test_%s/' % CORPUS, 'data/test_%s.txt' % CORPUS, sent_tag=True,  is_raw=False)
@@ -65,7 +72,8 @@ unk_count = sum([x.count('[UNK]') for x in whole_toks])
 total_count = sum([len(x) for x in whole_toks])
 print('[UNK] token: %s, total: %s, oov rate: %.2f%%' % (unk_count, total_count, unk_count * 100 / total_count))
 print('[Example:]', whole_toks[0])
-cert_lab2ix = {'positive':1, 'negative':2, 'suspicious':3, '[PAD]':0}
+# cert_lab2ix = {'positive':1, 'negative':2, 'suspicious':3, '[PAD]':0}
+cert_lab2ix = {'executed':1, 'other':2, 'scheduled':3, '[PAD]':0}
 lab2ix = get_label2ix(train_labs)
 print(lab2ix)
 print(cert_lab2ix)
@@ -102,12 +110,12 @@ def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, cer
 
                 active_pred_lab_list = active_pred_lab.tolist()
                 for t_deunk, t_lab in zip(b_deunk, b_labs):
-                    fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, ix2clab[active_pred_lab_list.pop(0)] if t_lab == 'B-D' else '_'))
+                    fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, ix2clab[active_pred_lab_list.pop(0)] if t_lab == 'B-T-test' else '_'))
                 fo.write('\n')
 
 
 if args.do_train:
-    model = SeqCertClassifier.from_pretrained(BERT_URL, num_labels=len(cert_lab2ix))
+    model = SeqCertClassifier.from_pretrained(args.PRE_MODEL, num_labels=len(cert_lab2ix))
     model.to(device)
     param_optimizer = list(model.named_parameters())
     no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
@@ -149,7 +157,7 @@ state_dict = torch.load(os.path.join(args.MODEL_DIR, 'pytorch_model.bin'))
 model.load_state_dict(state_dict)
 model.to(device)
 
-output_file = 'outputs/cert_%s_ep%i_out.txt' % (args.CORPUS, args.NUM_EPOCHS)
+output_file = 'outputs/%s_cert_ep%i_out.txt' % (args.CORPUS, args.NUM_EPOCHS)
 
 eval_seq_cert(model, tokenizer, test_dataloader, test_deunk, test_labs, cert_lab2ix, output_file)
 

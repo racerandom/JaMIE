@@ -250,7 +250,7 @@ def extract_ner_from_conll(conll_file, tokenizer, lab2ix, device):
                          pad_lab_ids_t), deunks
 
 
-def ner_labels_to_masks(ner_labels, max_ner_num, cert_labels=None):
+def ner_labels_to_masks(ner_labels, max_ner_num, central_lab='T-test', cert_labels=None):
     
     ner_masks = np.zeros((max_ner_num, len(ner_labels)), dtype=int)
     ner_cert_labels = ['[PAD]'] * max_ner_num
@@ -258,39 +258,43 @@ def ner_labels_to_masks(ner_labels, max_ner_num, cert_labels=None):
     if not cert_labels:
         ner_offset = 0; prev_label = 'O'
         for i, curr_label in enumerate(ner_labels):
+            # print(curr_label, ner_labels)
+            # print(ner_masks, ner_offset, i)
             if i > 0:
                 prev_label = ner_labels[i - 1]
-            if curr_label in ['B-D']:
-                if prev_label in ['B-D', 'I-D']:
+            if curr_label in ['B-%s' % central_lab]:
+                if prev_label in ['B-%s' % central_lab, 'I-%s' % central_lab]:
                     ner_offset += 1
                 ner_masks[ner_offset][i] = 1
-            elif curr_label in ['I-D']:
-                if prev_label in ['B-D', 'I-D']:
+            elif curr_label in ['I-%s' % central_lab]:
+                if prev_label in ['B-%s' % central_lab, 'I-%s' % central_lab]:
                     ner_masks[ner_offset][i] = 1
                 else:
                     ner_masks[ner_offset][i] = 1
             else:
-                if prev_label in ['B-D', 'I-D']:
+                if prev_label in ['B-%s' % central_lab, 'I-%s' % central_lab]:
                     ner_offset += 1
     else:
+        # import pdb
+        # pdb.set_trace()
         ner_offset = 0; prev_label = 'O'; prev_cert_label = '[PAD]'
         for i, (curr_label, curr_cert_label) in enumerate(zip(ner_labels, cert_labels)):
             if i > 0:
                 prev_label = ner_labels[i - 1]
                 prev_cert_label = cert_labels[i - 1]
-            if curr_label in ['B-D']:
-                if prev_label in ['B-D', 'I-D']:
+            if curr_label in ['B-%s' % central_lab]:
+                if prev_label in ['B-%s' % central_lab, 'I-%s' % central_lab]:
                     ner_offset += 1
                 ner_masks[ner_offset][i] = 1
                 ner_cert_labels[ner_offset] = curr_cert_label if curr_cert_label != '_' else '[PAD]'
-            elif curr_label in ['I-D']:
-                if prev_label in ['B-D', 'I-D']:
+            elif curr_label in ['I-%s' % central_lab]:
+                if prev_label in ['B-%s' % central_lab, 'I-%s' % central_lab]:
                     ner_masks[ner_offset][i] = 1
                 else:
                     ner_masks[ner_offset][i] = 1
                     ner_cert_labels[ner_offset] = curr_cert_label
             else:
-                if prev_label in ['B-D', 'I-D']:
+                if prev_label in ['B-%s' % central_lab, 'I-%s' % central_lab]:
                     ner_offset += 1
             
     cert_label_masks = padding_1d([1] * len(set(ner_masks.nonzero()[0])), max_ner_num, pad_tok=0)
@@ -302,16 +306,17 @@ def extract_cert_from_conll(conll_file, tokenizer, cert_lab2ix, device, test_mod
     deunks, toks, labs, clabs = read_conll(conll_file)
     
     max_len = max([len(x) for x in toks])
-    max_ner_num = max([s_l.count('B-D') for s_l in labs])
+    max_ner_num = max([s_l.count('B-T-test') for s_l in labs])
+    # max_ner_num = 6
     
     pad_tok_ids, pad_masks, pad_ner_masks, clab_masks, pad_cert_lab_ids = [], [], [], [], []
     for s_toks, s_labs, s_clabs in zip(toks, labs, clabs):
         pad_s_toks = padding_1d(['[CLS]'] + s_toks, max_len + 1, pad_tok='[PAD]')
         pad_s_tok_ids = tokenizer.convert_tokens_to_ids(pad_s_toks)
         pad_s_masks = padding_1d([1] * (len(s_toks) + 1), max_len + 1, pad_tok=0)
-        
+       
         if test_mode:
-            s_ner_masks, s_clab_masks, s_ner_clabs = ner_labels_to_masks(s_labs, max_ner_num, None)
+            s_ner_masks, s_clab_masks, s_ner_clabs = ner_labels_to_masks(s_labs, max_ner_num + 3, None)
         else:
             s_ner_masks, s_clab_masks, s_ner_clabs = ner_labels_to_masks(s_labs, max_ner_num, s_clabs)
         

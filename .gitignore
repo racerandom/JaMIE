@@ -1,6 +1,7 @@
 __pycache__/
 papers/
 timebank/
+lm_finetuning/
 scripts/
 outputs/
 data/
@@ -11,3 +12,4 @@ bert_tag*
 temp.*
 *.ipynb
 temp_cert.py
+nohup.*
