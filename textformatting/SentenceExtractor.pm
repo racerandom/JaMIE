@@ -5,6 +5,8 @@ package SentenceExtractor;
 
 # $Id$
 
+use strict;
+use warnings;
 use vars qw($comma $open_kakko $close_kakko $period $dot $alphabet_or_number $itemize_header @honorifics);
 # use strict;
 use utf8;
