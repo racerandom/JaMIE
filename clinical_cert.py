@@ -72,38 +72,20 @@ test_deunks, test_toks, test_labs, test_cert_labs, test_ttype_labs, test_state_l
 
 whole_toks = train_toks + test_toks
 max_len = max([len(x) for x in whole_toks])
-print('max sequence length:', max_len)
 unk_count = sum([x.count('[UNK]') for x in whole_toks])
 total_count = sum([len(x) for x in whole_toks])
-print('[UNK] token: %s, total: %s, oov rate: %.2f%%' % (unk_count, total_count, unk_count * 100 / total_count))
-print('[Example:]', whole_toks[0])
 lab2ix = get_label2ix(train_labs)
-cert_lab2ix = get_label2ix(train_cert_labs + test_cert_labs, default=True)
-ttype_lab2ix = get_label2ix(train_ttype_labs + test_ttype_labs, default=True)
-state_lab2ix = get_label2ix(train_state_labs + test_state_labs, default=True)
-print(cert_lab2ix)
-print(ttype_lab2ix)
-print(state_lab2ix)
 
 if args.ATTRIB == 'cert':
-    attrib_lab2ix = cert_lab2ix
+    attrib_lab2ix = get_label2ix(train_cert_labs + test_cert_labs)
 elif args.ATTRIB == 'ttype':
-    attrib_lab2ix = ttype_lab2ix
+    attrib_lab2ix = get_label2ix(train_ttype_labs + test_ttype_labs)
 elif args.ATTRIB == 'state':
-    attrib_lab2ix = state_lab2ix
+    attrib_lab2ix = get_label2ix(train_state_labs + test_state_labs)
 else:
     raise Exception("Error: wrong task...")
 
-train_tensors, train_deunk = extract_cert_from_conll(TRAIN_FILE,
-                                                     tokenizer,
-                                                     attrib_lab2ix,
-                                                     device,
-                                                     attrib=args.ATTRIB)
-
-# test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
-train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
-print('train size: %i' % len(train_tensors))
-
+print(attrib_lab2ix)
 
 def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, attrib_lab2ix, file_out, attrib='cert'):
     pred_labs, gold_labs = [], []
@@ -142,6 +124,24 @@ def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, att
 
 
 if args.do_train:
+
+    print('max sequence length:', max_len)
+    print('[UNK] token: %s, total: %s, oov rate: %.2f%%' % (unk_count, total_count, unk_count * 100 / total_count))
+    print('[Example:]', whole_toks[0])
+
+    train_tensors, train_deunk = extract_cert_from_conll(
+        TRAIN_FILE,
+        tokenizer,
+        attrib_lab2ix,
+        device,
+        max_ner_num=16,
+        attrib=args.ATTRIB
+    )
+
+    # test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
+    train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
+    print('train size: %i' % len(train_tensors))
+
     model = SeqCertClassifier.from_pretrained(
         args.PRE_MODEL,
         num_labels=len(attrib_lab2ix)
@@ -196,12 +196,15 @@ if args.do_train:
 """ load the new tokenizer """
 model_dir = "checkpoints/attrib/%s_ep%i" % (args.ATTRIB, 1)
 tokenizer = BertTokenizer.from_pretrained(model_dir, do_lower_case=False, do_basic_tokenize=False)
-test_tensors, test_deunk = extract_cert_from_conll(args.NER_OUT,
-                                                   tokenizer,
-                                                   attrib_lab2ix,
-                                                   device,
-                                                   attrib=args.ATTRIB,
-                                                   test_mode=True)
+test_tensors, test_deunk = extract_cert_from_conll(
+    args.NER_OUT,
+    tokenizer,
+    attrib_lab2ix,
+    device,
+    max_ner_num=12,
+    attrib=args.ATTRIB,
+    test_mode=True
+)
 test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
 print('test size: %i' % len(test_tensors))
 

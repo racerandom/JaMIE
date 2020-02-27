@@ -1,0 +1,298 @@
+device cuda
+ner data size: torch.Size([2708, 53]) torch.Size([2708, 53]) torch.Size([2708, 53])
+test size: 2708
+max sequence length: 99
+[UNK] token: 0, total: 158959, oov rate: 0.00%
+[Example:] ['左肺', '上葉', 'Ｓ', '１', '＋', '２', 'ｂ', '、', '左肺', '下葉', 'Ｓ', '６', 'ａ', '、', 'に', '３', '．', '９', '×', '２', '．', '２', 'Ｃｍ', 'の', '充実', '腫瘤', 'を', '認め', 'ます', '。']
+{'B-A': 0, 'I-A': 1, 'O': 2, 'B-F': 3, 'I-F': 4, 'B-D': 5, 'I-D': 6, 'B-T-test': 7, 'I-T-test': 8, 'B-Timex3': 9, 'I-Timex3': 10, 'B-C': 11, 'I-C': 12, 'B-R': 13, 'I-R': 14, 'B-Cc': 15, 'B-T-key': 16, 'I-T-key': 17, 'I-Cc': 18, 'B-T-val': 19, 'I-T-val': 20}
+{'_': 0, 'positive': 1, 'negative': 2, 'suspicious': 3, 'nagative': 4}
+{'_': 0, 'DATE': 1, 'CC': 2, 'MISC': 3, 'DURATION': 4}
+{'_': 0, 'other': 1, 'executed': 2, 'scheduled': 3, 'negated': 4}
+ner data size: torch.Size([10621, 99]) torch.Size([10621, 99]) torch.Size([10621, 99])
+train size: 10621
+Epoch loss: 12.068306
+processed 34721 tokens with 6050 phrases; found: 6066 phrases; correct: 5561.
+accuracy:  95.32%; (non-O)
+accuracy:  97.03%; precision:  91.67%; recall:  91.92%; FB1:  91.80
+                A: precision:  93.17%; recall:  91.30%; FB1:  92.23  1420
+                C: precision:  87.56%; recall:  80.26%; FB1:  83.75  209
+               Cc: precision:   0.00%; recall:   0.00%; FB1:   0.00  0
+                D: precision:  91.97%; recall:  94.72%; FB1:  93.33  2889
+                F: precision:  90.71%; recall:  90.10%; FB1:  90.41  1044
+                R: precision:  31.82%; recall:  25.93%; FB1:  28.57  22
+            T-key: precision:   0.00%; recall:   0.00%; FB1:   0.00  0
+           T-test: precision:  97.56%; recall:  93.02%; FB1:  95.24  164
+           Timex3: precision:  89.31%; recall:  92.51%; FB1:  90.88  318
+
+Epoch loss: 5.796264
+processed 34721 tokens with 6050 phrases; found: 6022 phrases; correct: 5634.
+accuracy:  95.90%; (non-O)
+accuracy:  97.48%; precision:  93.56%; recall:  93.12%; FB1:  93.34
+                A: precision:  93.68%; recall:  94.06%; FB1:  93.87  1455
+                C: precision:  92.15%; recall:  77.19%; FB1:  84.01  191
+               Cc: precision:   0.00%; recall:   0.00%; FB1:   0.00  0
+                D: precision:  94.09%; recall:  95.33%; FB1:  94.71  2842
+                F: precision:  92.43%; recall:  91.82%; FB1:  92.12  1044
+                R: precision:  52.94%; recall:  33.33%; FB1:  40.91  17
+            T-key: precision: 100.00%; recall:  25.00%; FB1:  40.00  1
+           T-test: precision:  96.36%; recall:  92.44%; FB1:  94.36  165
+           Timex3: precision:  93.49%; recall:  93.49%; FB1:  93.49  307
+
+Epoch loss: 3.959367
+processed 34721 tokens with 6050 phrases; found: 6002 phrases; correct: 5633.
+accuracy:  96.19%; (non-O)
+accuracy:  97.60%; precision:  93.85%; recall:  93.11%; FB1:  93.48
+                A: precision:  93.02%; recall:  92.82%; FB1:  92.92  1446
+                C: precision:  91.09%; recall:  80.70%; FB1:  85.58  202
+               Cc: precision: 100.00%; recall:  14.29%; FB1:  25.00  1
+                D: precision:  94.70%; recall:  95.54%; FB1:  95.12  2830
+                F: precision:  92.91%; recall:  90.96%; FB1:  91.92  1029
+                R: precision:  73.91%; recall:  62.96%; FB1:  68.00  23
+            T-key: precision: 100.00%; recall:  75.00%; FB1:  85.71  3
+           T-test: precision:  94.64%; recall:  92.44%; FB1:  93.53  168
+           Timex3: precision:  96.00%; recall:  93.81%; FB1:  94.89  300
+
+Epoch loss: 3.093058
+processed 34721 tokens with 6050 phrases; found: 6007 phrases; correct: 5668.
+accuracy:  96.38%; (non-O)
+accuracy:  97.71%; precision:  94.36%; recall:  93.69%; FB1:  94.02
+                A: precision:  94.81%; recall:  94.62%; FB1:  94.72  1446
+                C: precision:  89.67%; recall:  83.77%; FB1:  86.62  213
+               Cc: precision: 100.00%; recall:  14.29%; FB1:  25.00  1
+                D: precision:  94.93%; recall:  95.54%; FB1:  95.24  2823
+                F: precision:  93.29%; recall:  91.34%; FB1:  92.31  1029
+                R: precision:  76.19%; recall:  59.26%; FB1:  66.67  21
+            T-key: precision: 100.00%; recall:  50.00%; FB1:  66.67  2
+           T-test: precision:  94.58%; recall:  91.28%; FB1:  92.90  166
+           Timex3: precision:  94.77%; recall:  94.46%; FB1:  94.62  306
+
+Epoch loss: 2.623333
+processed 34721 tokens with 6050 phrases; found: 5998 phrases; correct: 5678.
+accuracy:  96.56%; (non-O)
+accuracy:  97.77%; precision:  94.66%; recall:  93.85%; FB1:  94.26
+                A: precision:  94.64%; recall:  93.79%; FB1:  94.21  1436
+                C: precision:  91.36%; recall:  88.16%; FB1:  89.73  220
+               Cc: precision: 100.00%; recall:  28.57%; FB1:  44.44  2
+                D: precision:  95.08%; recall:  95.79%; FB1:  95.44  2826
+                F: precision:  94.60%; recall:  91.63%; FB1:  93.09  1018
+                R: precision:  82.35%; recall:  51.85%; FB1:  63.64  17
+            T-key: precision: 100.00%; recall:  50.00%; FB1:  66.67  2
+           T-test: precision:  92.40%; recall:  91.86%; FB1:  92.13  171
+           Timex3: precision:  95.42%; recall:  95.11%; FB1:  95.27  306
+
+Epoch loss: 2.339690
+processed 34721 tokens with 6050 phrases; found: 5978 phrases; correct: 5677.
+accuracy:  96.68%; (non-O)
+accuracy:  97.77%; precision:  94.96%; recall:  93.83%; FB1:  94.40
+                A: precision:  95.67%; recall:  93.10%; FB1:  94.37  1410
+                C: precision:  91.71%; recall:  87.28%; FB1:  89.44  217
+               Cc: precision:  50.00%; recall:  28.57%; FB1:  36.36  4
+                D: precision:  95.46%; recall:  95.90%; FB1:  95.68  2818
+                F: precision:  93.76%; recall:  91.44%; FB1:  92.58  1025
+                R: precision:  69.23%; recall:  66.67%; FB1:  67.92  26
+            T-key: precision:  75.00%; recall:  75.00%; FB1:  75.00  4
+           T-test: precision:  94.67%; recall:  93.02%; FB1:  93.84  169
+           Timex3: precision:  96.72%; recall:  96.09%; FB1:  96.41  305
+
+Epoch loss: 2.121213
+processed 34721 tokens with 6050 phrases; found: 5996 phrases; correct: 5686.
+accuracy:  96.44%; (non-O)
+accuracy:  97.72%; precision:  94.83%; recall:  93.98%; FB1:  94.40
+                A: precision:  94.79%; recall:  94.13%; FB1:  94.46  1439
+                C: precision:  90.41%; recall:  86.84%; FB1:  88.59  219
+               Cc: precision: 100.00%; recall:  28.57%; FB1:  44.44  2
+                D: precision:  95.98%; recall:  95.40%; FB1:  95.69  2788
+                F: precision:  92.67%; recall:  92.67%; FB1:  92.67  1051
+                R: precision:  76.19%; recall:  59.26%; FB1:  66.67  21
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  95.21%; recall:  92.44%; FB1:  93.81  167
+           Timex3: precision:  96.07%; recall:  95.44%; FB1:  95.75  305
+
+Epoch loss: 2.014692
+processed 34721 tokens with 6050 phrases; found: 6004 phrases; correct: 5696.
+accuracy:  96.61%; (non-O)
+accuracy:  97.82%; precision:  94.87%; recall:  94.15%; FB1:  94.51
+                A: precision:  94.73%; recall:  94.34%; FB1:  94.54  1443
+                C: precision:  92.13%; recall:  87.28%; FB1:  89.64  216
+               Cc: precision: 100.00%; recall:  28.57%; FB1:  44.44  2
+                D: precision:  95.42%; recall:  95.79%; FB1:  95.61  2816
+                F: precision:  93.81%; recall:  92.29%; FB1:  93.05  1034
+                R: precision:  94.74%; recall:  66.67%; FB1:  78.26  19
+            T-key: precision: 100.00%; recall:  75.00%; FB1:  85.71  3
+           T-test: precision:  93.98%; recall:  90.70%; FB1:  92.31  166
+           Timex3: precision:  96.39%; recall:  95.77%; FB1:  96.08  305
+
+Epoch loss: 1.912383
+processed 34721 tokens with 6050 phrases; found: 6030 phrases; correct: 5699.
+accuracy:  96.54%; (non-O)
+accuracy:  97.79%; precision:  94.51%; recall:  94.20%; FB1:  94.35
+                A: precision:  94.44%; recall:  93.86%; FB1:  94.15  1440
+                C: precision:  89.52%; recall:  89.91%; FB1:  89.72  229
+               Cc: precision:  50.00%; recall:  28.57%; FB1:  36.36  4
+                D: precision:  95.25%; recall:  95.83%; FB1:  95.54  2822
+                F: precision:  93.64%; recall:  92.48%; FB1:  93.06  1038
+                R: precision:  80.95%; recall:  62.96%; FB1:  70.83  21
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  94.01%; recall:  91.28%; FB1:  92.63  167
+           Timex3: precision:  96.39%; recall:  95.77%; FB1:  96.08  305
+
+Epoch loss: 1.848460
+processed 34721 tokens with 6050 phrases; found: 6023 phrases; correct: 5699.
+accuracy:  96.50%; (non-O)
+accuracy:  97.81%; precision:  94.62%; recall:  94.20%; FB1:  94.41
+                A: precision:  94.63%; recall:  93.72%; FB1:  94.17  1435
+                C: precision:  91.74%; recall:  87.72%; FB1:  89.69  218
+               Cc: precision: 100.00%; recall:  28.57%; FB1:  44.44  2
+                D: precision:  95.16%; recall:  96.08%; FB1:  95.62  2832
+                F: precision:  93.65%; recall:  92.58%; FB1:  93.11  1039
+                R: precision:  76.19%; recall:  59.26%; FB1:  66.67  21
+            T-key: precision: 100.00%; recall:  75.00%; FB1:  85.71  3
+           T-test: precision:  95.21%; recall:  92.44%; FB1:  93.81  167
+           Timex3: precision:  95.75%; recall:  95.44%; FB1:  95.60  306
+
+Epoch loss: 1.781511
+processed 34721 tokens with 6050 phrases; found: 6005 phrases; correct: 5677.
+accuracy:  96.32%; (non-O)
+accuracy:  97.60%; precision:  94.54%; recall:  93.83%; FB1:  94.18
+                A: precision:  95.14%; recall:  93.17%; FB1:  94.14  1419
+                C: precision:  90.54%; recall:  88.16%; FB1:  89.33  222
+               Cc: precision: 100.00%; recall:  28.57%; FB1:  44.44  2
+                D: precision:  94.73%; recall:  95.58%; FB1:  95.16  2830
+                F: precision:  94.08%; recall:  92.29%; FB1:  93.18  1031
+                R: precision:  79.17%; recall:  70.37%; FB1:  74.51  24
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  93.98%; recall:  90.70%; FB1:  92.31  166
+            T-val: precision:   0.00%; recall:   0.00%; FB1:   0.00  1
+           Timex3: precision:  96.08%; recall:  95.77%; FB1:  95.92  306
+
+Epoch loss: 1.748051
+processed 34721 tokens with 6050 phrases; found: 6009 phrases; correct: 5687.
+accuracy:  96.71%; (non-O)
+accuracy:  97.81%; precision:  94.64%; recall:  94.00%; FB1:  94.32
+                A: precision:  94.09%; recall:  93.44%; FB1:  93.77  1439
+                C: precision:  89.33%; recall:  88.16%; FB1:  88.74  225
+               Cc: precision:  60.00%; recall:  42.86%; FB1:  50.00  5
+                D: precision:  96.00%; recall:  95.76%; FB1:  95.88  2798
+                F: precision:  93.12%; recall:  92.67%; FB1:  92.89  1046
+                R: precision:  90.00%; recall:  66.67%; FB1:  76.60  20
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  93.33%; recall:  89.53%; FB1:  91.39  165
+           Timex3: precision:  95.44%; recall:  95.44%; FB1:  95.44  307
+
+Epoch loss: 1.710449
+processed 34721 tokens with 6050 phrases; found: 6041 phrases; correct: 5707.
+accuracy:  96.79%; (non-O)
+accuracy:  97.86%; precision:  94.47%; recall:  94.33%; FB1:  94.40
+                A: precision:  94.25%; recall:  93.86%; FB1:  94.05  1443
+                C: precision:  88.99%; recall:  88.60%; FB1:  88.79  227
+               Cc: precision:  75.00%; recall:  42.86%; FB1:  54.55  4
+                D: precision:  95.56%; recall:  95.83%; FB1:  95.69  2813
+                F: precision:  92.96%; recall:  92.96%; FB1:  92.96  1051
+                R: precision:  82.61%; recall:  70.37%; FB1:  76.00  23
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  94.61%; recall:  91.86%; FB1:  93.22  167
+            T-val: precision:   0.00%; recall:   0.00%; FB1:   0.00  1
+           Timex3: precision:  96.10%; recall:  96.42%; FB1:  96.26  308
+
+Epoch loss: 1.655510
+processed 34721 tokens with 6050 phrases; found: 6041 phrases; correct: 5718.
+accuracy:  96.87%; (non-O)
+accuracy:  97.88%; precision:  94.65%; recall:  94.51%; FB1:  94.58
+                A: precision:  94.24%; recall:  93.79%; FB1:  94.02  1442
+                C: precision:  90.83%; recall:  86.84%; FB1:  88.79  218
+               Cc: precision:  66.67%; recall:  57.14%; FB1:  61.54  6
+                D: precision:  95.34%; recall:  96.36%; FB1:  95.85  2835
+                F: precision:  93.85%; recall:  92.86%; FB1:  93.35  1040
+                R: precision:  90.00%; recall:  66.67%; FB1:  76.60  20
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  95.24%; recall:  93.02%; FB1:  94.12  168
+            T-val: precision:   0.00%; recall:   0.00%; FB1:   0.00  1
+           Timex3: precision:  96.42%; recall:  96.42%; FB1:  96.42  307
+
+Epoch loss: 1.650270
+processed 34721 tokens with 6050 phrases; found: 6048 phrases; correct: 5715.
+accuracy:  96.70%; (non-O)
+accuracy:  97.83%; precision:  94.49%; recall:  94.46%; FB1:  94.48
+                A: precision:  93.49%; recall:  94.13%; FB1:  93.81  1459
+                C: precision:  90.43%; recall:  91.23%; FB1:  90.83  230
+               Cc: precision:  75.00%; recall:  42.86%; FB1:  54.55  4
+                D: precision:  95.87%; recall:  95.94%; FB1:  95.90  2807
+                F: precision:  93.49%; recall:  92.86%; FB1:  93.17  1044
+                R: precision:  73.91%; recall:  62.96%; FB1:  68.00  23
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  93.98%; recall:  90.70%; FB1:  92.31  166
+           Timex3: precision:  95.18%; recall:  96.42%; FB1:  95.79  311
+
+Epoch loss: 1.621198
+processed 34721 tokens with 6050 phrases; found: 6053 phrases; correct: 5709.
+accuracy:  96.51%; (non-O)
+accuracy:  97.77%; precision:  94.32%; recall:  94.36%; FB1:  94.34
+                A: precision:  94.38%; recall:  93.79%; FB1:  94.08  1440
+                C: precision:  89.73%; recall:  88.16%; FB1:  88.94  224
+               Cc: precision:  60.00%; recall:  42.86%; FB1:  50.00  5
+                D: precision:  95.17%; recall:  96.22%; FB1:  95.69  2836
+                F: precision:  93.07%; recall:  93.34%; FB1:  93.21  1054
+                R: precision:  85.00%; recall:  62.96%; FB1:  72.34  20
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  94.51%; recall:  90.12%; FB1:  92.26  164
+           Timex3: precision:  94.77%; recall:  94.46%; FB1:  94.62  306
+
+Epoch loss: 1.596376
+processed 34721 tokens with 6050 phrases; found: 6034 phrases; correct: 5705.
+accuracy:  96.65%; (non-O)
+accuracy:  97.76%; precision:  94.55%; recall:  94.30%; FB1:  94.42
+                A: precision:  94.64%; recall:  93.86%; FB1:  94.25  1437
+                C: precision:  89.47%; recall:  89.47%; FB1:  89.47  228
+               Cc: precision:  60.00%; recall:  42.86%; FB1:  50.00  5
+                D: precision:  95.49%; recall:  95.86%; FB1:  95.68  2816
+                F: precision:  93.13%; recall:  92.86%; FB1:  93.00  1048
+                R: precision:  81.82%; recall:  66.67%; FB1:  73.47  22
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  93.98%; recall:  90.70%; FB1:  92.31  166
+           Timex3: precision:  95.78%; recall:  96.09%; FB1:  95.93  308
+
+Epoch loss: 1.596334
+processed 34721 tokens with 6050 phrases; found: 6049 phrases; correct: 5710.
+accuracy:  96.57%; (non-O)
+accuracy:  97.78%; precision:  94.40%; recall:  94.38%; FB1:  94.39
+                A: precision:  94.04%; recall:  93.72%; FB1:  93.88  1444
+                C: precision:  87.34%; recall:  87.72%; FB1:  87.53  229
+               Cc: precision:  75.00%; recall:  42.86%; FB1:  54.55  4
+                D: precision:  95.20%; recall:  96.15%; FB1:  95.67  2833
+                F: precision:  94.60%; recall:  93.34%; FB1:  93.97  1037
+                R: precision:  85.71%; recall:  66.67%; FB1:  75.00  21
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  93.98%; recall:  90.70%; FB1:  92.31  166
+            T-val: precision:   0.00%; recall:   0.00%; FB1:   0.00  1
+           Timex3: precision:  94.52%; recall:  95.44%; FB1:  94.98  310
+
+Epoch loss: 1.585498
+processed 34721 tokens with 6050 phrases; found: 6046 phrases; correct: 5717.
+accuracy:  96.81%; (non-O)
+accuracy:  97.88%; precision:  94.56%; recall:  94.50%; FB1:  94.53
+                A: precision:  94.38%; recall:  93.79%; FB1:  94.08  1440
+                C: precision:  90.00%; recall:  90.79%; FB1:  90.39  230
+               Cc: precision:  75.00%; recall:  42.86%; FB1:  54.55  4
+                D: precision:  95.36%; recall:  95.94%; FB1:  95.65  2822
+                F: precision:  93.49%; recall:  92.96%; FB1:  93.23  1045
+                R: precision:  79.17%; recall:  70.37%; FB1:  74.51  24
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  95.83%; recall:  93.60%; FB1:  94.71  168
+            T-val: precision:   0.00%; recall:   0.00%; FB1:   0.00  1
+           Timex3: precision:  96.10%; recall:  96.42%; FB1:  96.26  308
+
+Epoch loss: 1.581440
+processed 34721 tokens with 6050 phrases; found: 6040 phrases; correct: 5718.
+accuracy:  96.70%; (non-O)
+accuracy:  97.84%; precision:  94.67%; recall:  94.51%; FB1:  94.59
+                A: precision:  94.16%; recall:  93.44%; FB1:  93.80  1438
+                C: precision:  89.79%; recall:  92.54%; FB1:  91.14  235
+               Cc: precision:  66.67%; recall:  57.14%; FB1:  61.54  6
+                D: precision:  95.50%; recall:  96.15%; FB1:  95.83  2824
+                F: precision:  94.31%; recall:  92.96%; FB1:  93.63  1036
+                R: precision:  85.71%; recall:  66.67%; FB1:  75.00  21
+            T-key: precision: 100.00%; recall: 100.00%; FB1: 100.00  4
+           T-test: precision:  94.61%; recall:  91.86%; FB1:  93.22  167
+            T-val: precision:   0.00%; recall:   0.00%; FB1:   0.00  1
+           Timex3: precision:  95.78%; recall:  96.09%; FB1:  95.93  308
+

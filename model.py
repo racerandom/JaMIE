@@ -65,7 +65,7 @@ class BertCRF(BertPreTrainedModel):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         self.linear = nn.Linear(config.hidden_size, config.num_labels)
         self.crf_layer = CRF(self.num_labels, batch_first=True)
-        self.crf_layer.reset_parameters()
+        # self.crf_layer.reset_parameters()
         self.init_weights()
 
     def crf_forward(self, input_embeds, attention_mask, labels=None):
@@ -80,19 +80,32 @@ class BertCRF(BertPreTrainedModel):
         return self.crf_layer.decode(encoder_out, mask=attention_mask)
 
 
-def save_bert_model(model, tokenizer, model_dir):
-    import os
-    if os.path.exists(model_dir):
-        raise ValueError("Output directory ({}) already exists and is not empty.".format(model_dir))
-    if not os.path.exists(model_dir):
-        os.makedirs(model_dir)
+class LSTMCRF(nn.Module):
+    def __init__(self, embed_dim, hidden_dim, vocab_size, tag_size, pretrain_embed=None):
+        super(LSTMCRF, self).__init__()
+        self.embed_dim = embed_dim
+        self.hidden_dim = hidden_dim
+        if pretrain_embed is not None:
+            self.word_embed = nn.Embedding.from_pretrained(
+                torch.from_numpy(pretrain_embed),
+                freeze=False
+            )
+        else:
+            self.word_embed = nn.Embedding(vocab_size, embed_dim)
 
-    output_model_file = os.path.join(model_dir, WEIGHTS_NAME)
-    output_config_file = os.path.join(model_dir, CONFIG_NAME)
+        self.encoder = nn.LSTM(embed_dim, hidden_dim, batch_first=True, bidirectional=True)
+        self.dropout = nn.Dropout(0.5)
+        self.hidden2tag = nn.Linear(2 * hidden_dim, tag_size)
+        self.crf_layer = CRF(tag_size, batch_first=True)
 
-    model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
+    def forward(self, input_ix, attention_mask, labels=None):
+        embedded_input = self.word_embed(input_ix)
+        encoder_logits, _ = self.encoder(embedded_input)
+        encoder_out = self.dropout(self.hidden2tag(encoder_logits))
+        if labels is not None:
+            crf_loss = -self.crf_layer(encoder_out, mask=attention_mask, tags=labels)
+            return crf_loss
+        else:
+            return self.crf_layer.decode(encoder_out, mask=attention_mask)
 
-    # If we save using the predefined names, we can load using `from_pretrained`
-    torch.save(model_to_save.state_dict(), output_model_file)
-    model_to_save.config.to_json_file(output_config_file)
-    tokenizer.save_vocabulary(model_dir)
+

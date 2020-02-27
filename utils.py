@@ -9,12 +9,13 @@ import torch
 from torch.utils.data import TensorDataset
 from xml.sax.saxutils import escape
 from textformatting import ssplit
+from gensim.models import KeyedVectors
 
 juman = Juman()
 
 
-def get_label2ix(y_data, default=False):
-    label2ix = {}
+def get_label2ix(y_data, default=None):
+    label2ix = default if default is not None else {}
     for line in y_data:
         for label in line:
             if label not in label2ix:
@@ -23,23 +24,24 @@ def get_label2ix(y_data, default=False):
 
 
 def padding_1d(seq_1d, max_len, pad_tok=None, direct='right'):
-    for i in range(0, max_len - len(seq_1d)):
+    tmp_seq_1d = seq_1d.copy()
+    for i in range(0, max_len - len(tmp_seq_1d)):
         if direct in ['right']:
-            seq_1d.append(pad_tok)
+            tmp_seq_1d.append(pad_tok)
         else:
-            seq_1d.insert(0, pad_tok)
-    return seq_1d
+            tmp_seq_1d.insert(0, pad_tok)
+    return tmp_seq_1d
 
 
 def padding_2d(seq_2d, max_len, pad_tok=0, direct='right'):
-
-    for seq_1d in seq_2d:
+    tmp_seq_2d = seq_2d.copy()
+    for seq_1d in tmp_seq_2d:
         for i in range(0, max_len - len(seq_1d)):
             if direct in ['right']:
                 seq_1d.append(pad_tok)
             else:
                 seq_1d.insert(0, pad_tok)
-    return seq_2d
+    return tmp_seq_2d
 
 
 def match_sbp_label(bpe_x, y):
@@ -120,6 +122,21 @@ def out_xml(orig_tok, pred_ix, ix2label):
     return lines
 
 
+def retrieve_w2v(embed_file, binary=True, add_unk=True):
+    # return: word2ix, weights
+    w2v = KeyedVectors.load_word2vec_format(
+        embed_file,
+        binary=binary
+    )
+    weights = w2v.vectors
+    word_list = w2v.index2word
+    if add_unk:
+        word_list.insert(0, '[UNK]')
+        weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
+    word2ix = {tok: tok_ix for tok_ix, tok in enumerate(word_list)}
+    return word2ix, weights
+
+
 def convert_clinical_data_to_conll(clinical_file, fo, tokenizer, sent_tag=True, defaut_cert='_', is_raw=False):
     x_data, y_data, sent_stat = [], [], []
     with open(clinical_file, 'r') as fi:
@@ -138,10 +155,14 @@ def convert_clinical_data_to_conll(clinical_file, fo, tokenizer, sent_tag=True, 
 
                     line = line.strip().replace('\n', '').replace('\r', '')
 
-                    line = line.replace('>>', '>').replace('<<', '<')
+                    line = line.replace('>>', '>＞').replace('<<', '＜<')
 
                     if is_raw:
-                        line = escape(line)  
+                        line = line.replace('#', '＃')  # a solution to fix juman casting #
+                        line = line.replace('<', '＜')
+                        line = line.replace('>', '＞')
+#                         print()
+#                         print(line)
                     else:
                         if line in ['<CHEST: CT>',
                                     '<CHEST>',
@@ -207,27 +228,30 @@ def convert_clinical_data_to_conll(clinical_file, fo, tokenizer, sent_tag=True, 
                         sent_stat.append(len(toks))
                         # replace '\u3000' to '[JASP]' 
                         toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
-                        sbp_toks = tokenizer.tokenize(' '.join(toks))
+                        sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
                         deunk_toks = explore_unk(sbp_toks, toks)
                         sbp_labs = match_sbp_label(deunk_toks, labs)
                         sbp_cert_labs = match_sbp_cert_labs(deunk_toks, cert_labs)
                         sbp_ttype_labs = match_sbp_cert_labs(deunk_toks, ttype_labs)
                         sbp_state_labs = match_sbp_cert_labs(deunk_toks, state_labs)
                     else:
+                        print(line)
                         seg = juman.analysis(line)
                         toks = [w.midasi for w in seg.mrph_list()]
+                        print(toks)
+                        print()
                         sent_stat.append(len(toks))
                         # replace '\u3000' to '[JASP]' 
                         toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
-                        sbp_toks = tokenizer.tokenize(' '.join(toks))
+                        sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
                         deunk_toks = explore_unk(sbp_toks, toks)
                         sbp_labs = ['O'] * len(sbp_toks)
                         sbp_cert_labs = ['_'] * len(sbp_toks)
                         sbp_ttype_labs = ['_'] * len(sbp_toks)
                         sbp_state_labs = ['_'] * len(sbp_toks)
-
+                    
                     assert len(sbp_toks) == len(deunk_toks) == len(sbp_labs) == len(sbp_cert_labs) == len(sbp_ttype_labs) == len(sbp_state_labs)
-
+                    
                     for d, t, l, cl, tl, sl in zip(deunk_toks, sbp_toks, sbp_labs, sbp_cert_labs, sbp_ttype_labs, sbp_state_labs):
                         fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (d, t, l, cl, tl, sl))
                     fo.write('\n')
@@ -239,22 +263,43 @@ def convert_clinical_data_to_conll(clinical_file, fo, tokenizer, sent_tag=True, 
     return sent_stat
                 
             
-def batch_convert_clinical_data_to_conll(data_dir, file_out, tokenizer, sent_tag=True, defaut_cert='_', is_raw=False):
+def batch_convert_clinical_data_to_conll(
+    data_dir, file_out, tokenizer, 
+    is_separated=True, sent_tag=True, defaut_cert='_', is_raw=False
+):
+    print(tokenizer)
     doc_stat = []
-    with open(file_out, 'w') as fo:
+    if is_separated:
         for file in os.listdir(data_dir):
-            ext = ".sent" if sent_tag else ".txt"
-            if file.endswith(ext):
-                try:
-                    dir_file = os.path.join(data_dir, file)
-                    doc_stat.append(convert_clinical_data_to_conll(
-                        dir_file, fo, tokenizer, sent_tag=sent_tag,
-                        defaut_cert=defaut_cert, 
-                        is_raw=is_raw
-                    ))
-                except Exception as ex:
-                    print('[error]:' + file)
-                    print(ex)
+            file_ext = ".sent" if sent_tag else ".txt"
+            if file.endswith(file_ext):
+                dir_file = os.path.join(data_dir, file)
+                file_out = os.path.join(data_dir, os.path.splitext(file)[0] + '.conll', )
+                with open(file_out, 'w') as fo:
+                    try:
+                        doc_stat.append(convert_clinical_data_to_conll(
+                            dir_file, fo, tokenizer, sent_tag=sent_tag,
+                            defaut_cert=defaut_cert, 
+                            is_raw=is_raw
+                        ))
+                    except Exception as ex:
+                        print('[error]:' + file)
+                        print(ex)
+    else:
+        with open(file_out, 'w') as fo:
+            for file in os.listdir(data_dir):
+                file_ext = ".sent" if sent_tag else ".txt"
+                if file.endswith(file_ext):
+                    try:
+                        dir_file = os.path.join(data_dir, file)
+                        doc_stat.append(convert_clinical_data_to_conll(
+                            dir_file, fo, tokenizer, sent_tag=sent_tag,
+                            defaut_cert=defaut_cert, 
+                            is_raw=is_raw
+                        ))
+                    except Exception as ex:
+                        print('[error]:' + file)
+                        print(ex)
     return doc_stat
                 
                 
@@ -294,6 +339,32 @@ def extract_ner_from_conll(conll_file, tokenizer, lab2ix, device):
         pad_tok_id = tokenizer.convert_tokens_to_ids(pad_tok)
         pad_mask = padding_1d([1] * (len(tok) + 1), max_len + 1, pad_tok=0)
         pad_lab = padding_1d(['O'] + lab, max_len + 1, pad_tok='O')
+        pad_lab_id = [lab2ix[lab] for lab in pad_lab]
+        assert len(pad_tok_id) == len(pad_mask) == len(pad_lab_id)
+        pad_tok_ids.append(pad_tok_id)
+        pad_masks.append(pad_mask)
+        pad_lab_ids.append(pad_lab_id)
+    pad_tok_ids_t = torch.tensor(pad_tok_ids).to(device)
+    pad_masks_t = torch.tensor(pad_masks).to(device)
+    pad_lab_ids_t = torch.tensor(pad_lab_ids).to(device)
+    print('ner data size:',
+          pad_tok_ids_t.shape,
+          pad_masks_t.shape,
+          pad_lab_ids_t.shape)
+    return TensorDataset(pad_tok_ids_t,
+                         pad_masks_t.bool(),
+                         pad_lab_ids_t), deunks
+
+
+def extract_ner_from_conll_w2v(conll_file, word2ix, lab2ix, device):
+    deunks, toks, labs, cert_labs, ttype_labs, state_labs = read_conll(conll_file)
+    max_len = max([len(x) for x in toks])
+    pad_tok_ids, pad_masks, pad_lab_ids = [], [], []
+    for tok, lab in zip(toks, labs):
+        pad_tok = padding_1d(tok, max_len, pad_tok='[UNK]')
+        pad_tok_id = [word2ix[t] if t in word2ix else word2ix['[UNK]'] for t in pad_tok]
+        pad_mask = padding_1d([1] * (len(tok)), max_len, pad_tok=0)
+        pad_lab = padding_1d(lab, max_len, pad_tok='O')
         pad_lab_id = [lab2ix[lab] for lab in pad_lab]
         assert len(pad_tok_id) == len(pad_mask) == len(pad_lab_id)
         pad_tok_ids.append(pad_tok_id)
@@ -404,14 +475,6 @@ def extract_cert_from_conll(conll_file, tokenizer, attrib_lab2ix, device, max_ne
         else:
             s_ner_masks, s_clab_masks, s_ner_clabs = ner_labels_to_masks(s_labs, max_ner_num, attrib, s_clabs)
 
-        # if 'B-T-test' in s_labs and 'B-R' in s_labs:
-        #     print(s_toks)
-        #     print(s_labs)
-        #     print(s_ner_masks)
-        #     print(s_clab_masks)
-        #     print(s_ner_clabs)
-        #     print()
-
         pad_s_ner_masks = padding_2d(np.insert(s_ner_masks, 0, 0, axis=1).tolist(), max_len + 1, pad_tok=0)
 
         pad_tok_ids.append(pad_s_tok_ids)
@@ -452,9 +515,9 @@ def eval_pid_seq(model, tokenizer, test_data, orig_token, label2ix, epoch):
                 pred_prob = model(token, attention_mask=mask)[0]
                 pred = torch.argmax(pred_prob, dim=-1)
 
-                t_masked_ix = torch.masked_select(token[:,1:], mask[:,1:].byte())
-                pred_masked_ix = torch.masked_select(pred[:,1:], mask[:,1:].byte())
-                gold_masked_ix = torch.masked_select(gold[:,1:], mask[:,1:].byte())
+                t_masked_ix = torch.masked_select(token[:, 1:], mask[:, 1:].bool())
+                pred_masked_ix = torch.masked_select(pred[:, 1:], mask[:, 1:].bool())
+                gold_masked_ix = torch.masked_select(gold[:, 1:], mask[:, 1:].bool())
                 
                 ix2label = {v:k for k, v in label2ix.items()}
                 
@@ -467,65 +530,47 @@ def eval_pid_seq(model, tokenizer, test_data, orig_token, label2ix, epoch):
                 for t, g, p in zip(deunk_bpe_tok, gold_masked_ix.tolist(), pred_masked_ix.tolist()):
                     fo.write('%s\t%s\t%s\n' % (t, ix2label[g], ix2label[p]))
                 fo.write('EOR\tO\tO\n')
-                
-#                print(sum([len(st) for st in deunk_bpe_tok]), len(flat_ori_tok), len(pred_masked_ix))
-
-#                lines += out_xml(deunk_bpe_tok, pred_masked_ix.tolist(), ix2label)
-#                
-#    with open('data/seq_pred_ep%i.txt' % epoch, 'w') as fo:
-#        for line in lines:
-#            fo.write(line + '\n')
 
 
+def batch_demask(batch_tokens, batch_masks):
+    # batch_tokens: batch_size x token_length
+    demasked_seq_t = torch.masked_select(batch_tokens, batch_masks)
+    batch_lens = batch_masks.sum(-1)
+    sent_begin = 0
+    demask_l = []
+    for sent_len in batch_lens:
+        demask_l.append(demasked_seq_t[sent_begin: sent_begin + sent_len].tolist())
+        sent_begin += sent_len
+    return demask_l
+
+
+# Evaluate the non-crf ner model
 def eval_seq(model, tokenizer, test_data, deunk_toks, label2ix, file_out):
     model.eval()
     with torch.no_grad():
-        with open('%s_eval.txt' % file_out, 'w') as fe, open('%s_out.txt' % file_out, 'w') as fo:
-            for deunk_tok, (token, mask, gold) in zip(deunk_toks, test_data):
-                pred_prob = model(token, attention_mask=mask)[0]
-                # pred_prob = model.decode(token, mask)
-                pred = torch.argmax(pred_prob, dim=-1)
-
-                t_masked_ix = torch.masked_select(token[:, 1:], mask[:, 1:].byte())
-                pred_masked_ix = torch.masked_select(pred[:, 1:], mask[:, 1:].byte())
-                gold_masked_ix = torch.masked_select(gold[:, 1:], mask[:, 1:].byte())
-                
+        with open('%s.eval.conll' % file_out, 'w') as fe, open('%s.pred.conll' % file_out, 'w') as fo:
+            for batch_deunk, (batch_token_ix, batch_mask, batch_gold) in zip(deunk_toks, test_data):
                 ix2label = {v: k for k, v in label2ix.items()}
-                
-                bpe_tok = [tokenizer.convert_ids_to_tokens([ix])[0] for ix in t_masked_ix.tolist()]
-                
-                assert len(bpe_tok) == len(deunk_tok)
-                
-                for t, g, p in zip(deunk_tok, gold_masked_ix.tolist(), pred_masked_ix.tolist()):
-                    fe.write('%s\t%s\t%s\n' % (t, ix2label[g], ix2label[p]))
-                fe.write('\n')
-                for dt, t, g, p in zip(deunk_tok, bpe_tok, gold_masked_ix.tolist(), pred_masked_ix.tolist()):
-                    fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (dt, t, ix2label[p], '_', '_', '_'))
-                fo.write('\n')
 
+                pred_prob = model(batch_token_ix, attention_mask=batch_mask)[0]
+                pred_ix = torch.argmax(pred_prob, dim=-1)
 
-# def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, cert_lab2ix, file_out):
-#     pred_labs, gold_labs = [], []
-#     ix2clab = {v:k for k,v in cert_lab2ix.items()}
-#     model.eval()
-#     with torch.no_grad():
-#         with open(file_out, 'w') as fo:
-#             for b_deunk, b_labs, (b_toks, b_masks, b_ner_masks, b_clab_masks, b_clabs) in zip(test_deunks, test_labs, test_dataloader):
-#                 pred_prob = model(b_toks, b_ner_masks, b_clab_masks, attention_mask=b_masks)
-#                 active_index = b_clab_masks.view(-1) == 1
-#                 if not (active_index != 0).sum().item():
-#                     for t_deunk, t_lab in zip(b_deunk, b_labs):
-#                         fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, '_'))
-#                     fo.write('\n')
-#                     continue
-#                 active_pred_prob = pred_prob.view(-1, len(cert_lab2ix))[active_index]
-#                 active_pred_lab = torch.argmax(active_pred_prob, dim=-1)
-#                 active_gold_lab = b_clabs.view(-1)[active_index]
-#                 pred_labs.append(active_pred_lab.tolist())
-#                 gold_labs.append(active_gold_lab.tolist())
-#
-#                 active_pred_lab_list = active_pred_lab.tolist()
-#                 for t_deunk, t_lab in zip(b_deunk, b_labs):
-#                     fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, ix2clab[active_pred_lab_list.pop(0)] if t_lab == 'B-D' else '_'))
-#                 fo.write('\n')
+                t_masked_ix = batch_demask(batch_token_ix[:, 1:], batch_mask[:, 1:].bool())
+                pred_masked_ix = batch_demask(pred_ix[:, 1:], batch_mask[:, 1:].bool())
+                gold_masked_ix = batch_demask(batch_gold[:, 1:], batch_mask[:, 1:].bool())
+
+                # batch_token = [tokenizer.convert_ids_to_tokens([ix])[0] for ix in t_masked_ix]
+                batch_token = [[tokenizer.convert_ids_to_tokens([ix])[0] for ix in sent_ix] for sent_ix in t_masked_ix]
+
+                for sent_deunk, sent_token in zip(batch_deunk, batch_token):
+                    assert len(sent_deunk) == len(sent_token)
+
+                for sent_deunk, sent_token, sent_gold_ix, sent_pred_ix in zip(batch_deunk, batch_token, gold_masked_ix, pred_masked_ix):
+                    for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_token, sent_gold_ix, sent_pred_ix):
+                        fe.write('%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2label[tok_gold], ix2label[tok_pred]))
+                    fe.write('\n')
+                for sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix in zip(batch_deunk, batch_token, gold_masked_ix, pred_masked_ix):
+                    for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix):
+                        fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2label[tok_pred], '_', '_', '_'))
+                    fo.write('\n')
 

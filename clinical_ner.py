@@ -20,6 +20,9 @@ juman = Juman()
 
 torch.cuda.manual_seed_all(1234)
 
+""" 
+python input arguments 
+"""
 
 parser = argparse.ArgumentParser(description='PRISM tag recognizer')
 
@@ -63,7 +66,6 @@ parser.add_argument("-o", "--output", dest="OUTPUT_FILE", default='outputs/temp.
 args = parser.parse_args()
 
 
-# In[2]:
 tokenizer = BertTokenizer.from_pretrained(args.PRE_MODEL, do_lower_case=False, do_basic_tokenize=False)
 
 # batch_convert_clinical_data_to_conll('data/train_%s/' % CORPUS, 'data/train_%s.txt' % CORPUS, sent_tag=True,  is_raw=False)
@@ -83,35 +85,50 @@ test_deunks, test_toks, test_labs, test_cert_labs, test_ttype_labs, test_state_l
 
 whole_toks = train_toks + test_toks
 max_len = max([len(x) for x in whole_toks])
-print('max sequence length:', max_len)
 unk_count = sum([x.count('[UNK]') for x in whole_toks])
-total_count = sum([len(x) for x in whole_toks])       
-print('[UNK] token: %s, total: %s, oov rate: %.2f%%' % (unk_count, total_count, unk_count * 100 / total_count))
-print('[Example:]', whole_toks[0])
-# cert_lab2ix = {'positive': 1, 'negative': 2, 'suspicious': 3, '[PAD]': 0}
+total_count = sum([len(x) for x in whole_toks])
+
 lab2ix = get_label2ix(train_labs + test_labs)
-print(lab2ix)
-cert_lab2ix = get_label2ix(train_cert_labs + test_cert_labs, default=True)
-ttype_lab2ix = get_label2ix(train_ttype_labs + test_ttype_labs, default=True)
-state_lab2ix = get_label2ix(train_state_labs + test_state_labs, default=True)
-print(cert_lab2ix)
-print(ttype_lab2ix)
-print(state_lab2ix)
+cert_lab2ix = get_label2ix(train_cert_labs + test_cert_labs)
+ttype_lab2ix = get_label2ix(train_ttype_labs + test_ttype_labs)
+state_lab2ix = get_label2ix(train_state_labs + test_state_labs)
 
-""" 
-- Generate train/test tensors including (token_ids, mask_ids, label_ids) 
-- wrap them into dataloader for mini-batch cutting
-"""
-# train_tensors, train_deunk = extract_cert_from_conll('data/train_%s.txt' % CORPUS, tokenizer, cert_lab2ix, device)
-# test_tensors, test_deunk = extract_cert_from_conll('data/test_%s.txt' % CORPUS, tokenizer, cert_lab2ix, device)
-train_tensors, train_deunk = extract_ner_from_conll(TRAIN_FILE, tokenizer, lab2ix, device)
-
-# test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
-train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
-print('train size: %i' % len(train_tensors))
-model_dir = ""
 
 if args.do_train:
+
+
+    print('max sequence length:', max_len)
+
+    print('[UNK] token: %s, total: %s, oov rate: %.2f%%' % (unk_count, total_count, unk_count * 100 / total_count))
+    print('[Example:]', whole_toks[0])
+
+    print(lab2ix)
+    print(cert_lab2ix)
+    print(ttype_lab2ix)
+    print(state_lab2ix)
+
+    """ 
+    - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
+    - wrap them into dataloader for mini-batch cutting
+    """
+    # train_tensors, train_deunk = extract_cert_from_conll('data/train_%s.txt' % CORPUS, tokenizer, cert_lab2ix, device)
+    # test_tensors, test_deunk = extract_cert_from_conll('data/test_%s.txt' % CORPUS, tokenizer, cert_lab2ix, device)
+    train_tensors, train_deunk = extract_ner_from_conll(TRAIN_FILE, tokenizer, lab2ix, device)
+
+    # test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
+    train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
+    print('train size: %i' % len(train_tensors))
+
+    """ load the new tokenizer"""
+    # tokenizer = BertTokenizer.from_pretrained(model_dir, do_lower_case=False, do_basic_tokenize=False)
+    test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device)
+    test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
+    test_deunk_loader = [test_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(test_deunk), args.BATCH_SIZE)]
+    print('test size: %i' % len(test_tensors))
+
+    model_dir = ""
+
+
     """ Disease Tags recognition """
 
     if args.do_crf:
@@ -147,17 +164,18 @@ if args.do_train:
         num_training_steps=num_training_steps
     )
 
-    model.train()
+    pulse_count = 3
+
+
     for epoch in range(1, args.NUM_EPOCHS + 1):
 
+        model.train()
         print("BERT lr:%.8f, Non-BERT lr:%.8f" % (
             optimizer.state_dict()['param_groups'][0]['lr'],
             optimizer.state_dict()['param_groups'][1]['lr']
         ))
 
-        # if epoch > 5:
-        #     for param in model.bert.parameters():
-        #         param.requires_grad = False
+        epoch_loss = .0
 
         for batch_feat, batch_mask, batch_lab in tqdm(train_dataloader, desc='Training'):
 
@@ -168,11 +186,22 @@ if args.do_train:
             else:
                 loss = model(batch_feat, attention_mask=batch_mask, labels=batch_lab)[0]
             # print(loss)
+            epoch_loss += loss.item()
+
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
             optimizer.step()
             scheduler.step()
             model.zero_grad()
+
+        print("epoch loss: %.6f" % (epoch_loss/len(train_dataloader)))
+
+        if not args.do_crf:
+            eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
+            import subprocess
+            print(subprocess.check_output(
+                ['./eval_ner.sh', '%s.eval.conll' % args.OUTPUT_FILE]
+            ).decode("utf-8"))
 
         """ save the trained model per epoch """
         if args.do_crf:
@@ -186,11 +215,7 @@ if args.do_train:
 else:
     model_dir = args.MODEL_DIR
     
-""" load the new tokenizer"""
-tokenizer = BertTokenizer.from_pretrained(model_dir, do_lower_case=False, do_basic_tokenize=False)
-test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device)
-test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
-print('test size: %i' % len(test_tensors))
+
 
 """ load the new model"""
 if args.do_crf:
@@ -203,22 +228,31 @@ model.to(device)
 # output_file = 'outputs/ner_%s_ep%i' % (args.CORPUS, args.NUM_EPOCHS)
 
 if not args.do_crf:
-    eval_seq(model, tokenizer, test_dataloader, test_deunks, lab2ix, args.OUTPUT_FILE)
+    eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
 else:
     ix2lab = {v: k for k, v in lab2ix.items()}
 
     model.eval()
     with torch.no_grad():
-        with open(args.OUTPUT_FILE + '_eval.txt', 'w', encoding='utf8') as fo:
-            for sent_deunk, (sent_tok_ids, sent_mask, sent_gold) in zip(test_deunks, test_dataloader):
-                pred_ix = model.decode(sent_tok_ids, sent_mask)[0][1:]
-                gold_masked_ix = torch.masked_select(sent_gold[:, 1:], sent_mask[:, 1:].byte()).tolist()
-                if not sent_deunk:
+        EVAL_FILE = args.OUTPUT_FILE + '.eval.conll'
+        OUT_FILE = args.OUTPUT_FILE + '.pred.conll'
+        with open(OUT_FILE, 'w') as fo:
+            for batch_deunk, (batch_tok_ix, batch_mask, batch_gold) in zip(test_deunk_loader, test_dataloader):
+                pred_ix = [l[1:] for l in model.decode(batch_tok_ix, batch_mask)]
+                gold_masked_ix = batch_demask(batch_gold[:, 1:], batch_mask[:, 1:].bool())
+                if not batch_deunk:
                     continue
-                assert len(sent_deunk) == len(gold_masked_ix) == len(pred_ix)
-                for tok_deunk, tok_gold, tok_pred in zip(sent_deunk, gold_masked_ix, pred_ix):
-                    fo.write("%s\t%s\t%s\n" % (tok_deunk, ix2lab[tok_gold], ix2lab[tok_pred]))
-                fo.write("\n")
+                for sent_deunk, sent_gold_ix, sent_pred_ix in zip(batch_deunk, gold_masked_ix, pred_ix):
+                    assert len(sent_deunk) == len(sent_gold_ix) == len(sent_pred_ix)
+                tok_masked_ix = batch_demask(batch_tok_ix[:, 1:], batch_mask[:, 1:].bool())
+                batch_bpe = [[ tokenizer.convert_ids_to_tokens([ix])[0] for ix in sent_ix ] for sent_ix in tok_masked_ix]
 
+                # for tok_deunk, tok_gold, tok_pred in zip(sent_deunk, gold_masked_ix, pred_ix):
+                #     fe.write("%s\t%s\t%s\n" % (tok_deunk, ix2lab[tok_gold], ix2lab[tok_pred]))
+                # fe.write("\n")
+                for sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix in zip(batch_deunk, batch_bpe, gold_masked_ix, pred_ix):
+                    for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix):
+                        fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2lab[tok_pred], '_', '_', '_'))
+                    fo.write('\n')
 
 
