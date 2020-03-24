@@ -18,7 +18,15 @@ print('device', device)
 
 juman = Juman()
 
-# torch.cuda.manual_seed_all(1234)
+torch.cuda.manual_seed_all(1234)
+
+def freeze_bert_layers(model, bert_name='bert', layer_list=None):
+    layer_prefixes = ["%s.encoder.layer.%i." % (bert_name, i) for i in layer_list]
+    for n, p in list(model.named_parameters()):
+        if n.startswith("%s.embeddings" % bert_name):
+            p.requires_grad = False
+        elif any(n.startswith(prefix) for prefix in layer_prefixes):
+            p.requires_grad = False
 
 """ 
 python input arguments 
@@ -135,7 +143,8 @@ if args.do_train:
         # To reproduce BertAdam specific behavior set correct_bias=False
         optimizer = AdamW(
             optimizer_grouped_parameters,
-            correct_bias=False
+            correct_bias=False,
+            weight_decay=1e-2,
         )
     else:
         model = BertForTokenClassification.from_pretrained(args.PRE_MODEL, num_labels=len(lab2ix))
@@ -160,18 +169,22 @@ if args.do_train:
         num_training_steps=num_training_steps
     )
 
+
+    # for n, p in list(model.named_parameters()):
+    #     print(n, p.requires_grad)
+
     for epoch in range(1, args.NUM_EPOCHS + 1):
 
         model.train()
 
         if epoch > args.EPOCH_FREEZE:
-            for param in model.bert.parameters():
-                param.requires_grad = False
+            freeze_bert_layers(model, layer_list=list(range(0, 11)))
 
         epoch_loss = .0
 
         for batch_feat, batch_mask, batch_lab in tqdm(train_dataloader, desc='Training'):
 
+            model.zero_grad()
             # BERT loss, logits: (batch_size, seq_len, tag_num)
             if args.do_crf:
                 # transformers return tuple
@@ -185,9 +198,6 @@ if args.do_train:
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
             optimizer.step()
             scheduler.step()
-            model.zero_grad()
-
-        print("epoch loss: %.6f" % (epoch_loss/len(train_dataloader)))
 
         if args.epoch_eval:
             if not args.do_crf:
@@ -195,9 +205,10 @@ if args.do_train:
             else:
                 eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
             import subprocess
-            print(subprocess.check_output(
+            eval_out = subprocess.check_output(
                 ['./ner_eval.sh', args.OUTPUT_FILE]
-            ).decode("utf-8"))
+            ).decode("utf-8")
+            print("epoch loss: %.6f; " % (epoch_loss/len(train_dataloader)), eval_out.split('\n')[2])
 
         """ save the trained model per epoch """
         if args.do_crf:
