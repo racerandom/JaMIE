@@ -18,16 +18,13 @@ print('device', device)
 
 juman = Juman()
 
-torch.cuda.manual_seed_all(1234)
+# torch.cuda.manual_seed_all(1234)
 
 """ 
 python input arguments 
 """
 
 parser = argparse.ArgumentParser(description='PRISM tag recognizer')
-
-parser.add_argument("-c", "--corpus", dest="CORPUS", default='goku', type=str,
-                    help="goku (国がん), osaka (阪大), tb (BCCWJ-Timebank)")
 
 parser.add_argument("-m", "--model", dest="MODEL_DIR", default='checkpoints/ner', type=str,
                     help="save/load model dir")
@@ -49,7 +46,10 @@ parser.add_argument("-b", "--batch", dest="BATCH_SIZE", default=16, type=int,
 parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=3, type=int,
                     help="epoch number")
 
-parser.add_argument("--fine_epoch", dest="NUM_FINE_EPOCHS", default=3, type=int,
+parser.add_argument("--freeze", dest="EPOCH_FREEZE", default=10, type=int,
+                    help="freeze the BERT encoder after N epoches")
+
+parser.add_argument("--fine_epoch", dest="NUM_FINE_EPOCHS", default=5, type=int,
                     help="fine-tuning epoch number")
 
 parser.add_argument("--do_train",
@@ -63,17 +63,14 @@ parser.add_argument("--do_crf",
 parser.add_argument("-o", "--output", dest="OUTPUT_FILE", default='outputs/temp.ner', type=str,
                     help="output filename")
 
+parser.add_argument("--epoch_eval",
+                    action='store_true',
+                    help="Whether eval model every epoch.")
 args = parser.parse_args()
 
 
 tokenizer = BertTokenizer.from_pretrained(args.PRE_MODEL, do_lower_case=False, do_basic_tokenize=False)
 
-# batch_convert_clinical_data_to_conll('data/train_%s/' % CORPUS, 'data/train_%s.txt' % CORPUS, sent_tag=True,  is_raw=False)
-# batch_convert_clinical_data_to_conll('data/test_%s/' % CORPUS, 'data/test_%s.txt' % CORPUS, sent_tag=True,  is_raw=False)
-# batch_convert_clinical_data_to_conll('data/records/', 'data/records.txt', sent_tag=False, is_raw=True)
-
-# TRAIN_FILE = 'data/train_%s.txt' % args.CORPUS
-# TEST_FILE = 'data/test_%s.txt' % args.CORPUS
 
 TRAIN_FILE = args.TRAIN_FILE
 TEST_FILE = args.TEST_FILE
@@ -111,16 +108,10 @@ if args.do_train:
     - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
     - wrap them into dataloader for mini-batch cutting
     """
-    # train_tensors, train_deunk = extract_cert_from_conll('data/train_%s.txt' % CORPUS, tokenizer, cert_lab2ix, device)
-    # test_tensors, test_deunk = extract_cert_from_conll('data/test_%s.txt' % CORPUS, tokenizer, cert_lab2ix, device)
     train_tensors, train_deunk = extract_ner_from_conll(TRAIN_FILE, tokenizer, lab2ix, device)
-
-    # test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
     train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
     print('train size: %i' % len(train_tensors))
 
-    """ load the new tokenizer"""
-    # tokenizer = BertTokenizer.from_pretrained(model_dir, do_lower_case=False, do_basic_tokenize=False)
     test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device)
     test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
     test_deunk_loader = [test_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(test_deunk), args.BATCH_SIZE)]
@@ -133,47 +124,49 @@ if args.do_train:
 
     if args.do_crf:
         model = BertCRF.from_pretrained(args.PRE_MODEL, num_labels=len(lab2ix))
+
+        # specify different lr
+        param_optimizer = list(model.named_parameters())
+        crf_name_list = ['crf_layer']
+        optimizer_grouped_parameters = [
+            {'params': [p for n, p in param_optimizer if any(nd in n for nd in crf_name_list)], 'lr': 1e-3},
+            {'params': [p for n, p in param_optimizer if not any(nd in n for nd in crf_name_list)], 'lr': 5e-5}
+        ]
+        # To reproduce BertAdam specific behavior set correct_bias=False
+        optimizer = AdamW(
+            optimizer_grouped_parameters,
+            correct_bias=False
+        )
     else:
         model = BertForTokenClassification.from_pretrained(args.PRE_MODEL, num_labels=len(lab2ix))
+
+        # To reproduce BertAdam specific behavior set correct_bias=False
+        optimizer = AdamW(
+            model.parameters(),
+            correct_bias=False
+        )
     model.to(device)
 
-    param_optimizer = list(model.named_parameters())
-    bert_name_list = ['bert']
-    optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in bert_name_list)], 'lr': 5e-5},
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in bert_name_list)], 'lr': 1e-2}
-    ]
-
+    # PyTorch scheduler
     num_epoch_steps = len(train_dataloader)
     num_finetuning_steps = args.NUM_FINE_EPOCHS * num_epoch_steps
     num_training_steps = args.NUM_EPOCHS * num_epoch_steps
     warmup_ratio = 0.1
     max_grad_norm = 1.0
 
-    # To reproduce BertAdam specific behavior set correct_bias=False
-    optimizer = AdamW(
-        optimizer_grouped_parameters,
-        correct_bias=False
-    )
-
-    # PyTorch scheduler
-
     scheduler = get_linear_schedule_with_warmup(
         optimizer,
-        num_warmup_steps=num_finetuning_steps * warmup_ratio,
+        num_warmup_steps=num_finetuning_steps,
         num_training_steps=num_training_steps
     )
-
-    pulse_count = 3
-
 
     for epoch in range(1, args.NUM_EPOCHS + 1):
 
         model.train()
-        print("BERT lr:%.8f, Non-BERT lr:%.8f" % (
-            optimizer.state_dict()['param_groups'][0]['lr'],
-            optimizer.state_dict()['param_groups'][1]['lr']
-        ))
+
+        if epoch > args.EPOCH_FREEZE:
+            for param in model.bert.parameters():
+                param.requires_grad = False
 
         epoch_loss = .0
 
@@ -182,7 +175,7 @@ if args.do_train:
             # BERT loss, logits: (batch_size, seq_len, tag_num)
             if args.do_crf:
                 # transformers return tuple
-                loss = -model.crf_forward(batch_feat, attention_mask=batch_mask, labels=batch_lab)
+                loss = model(batch_feat, attention_mask=batch_mask, labels=batch_lab)
             else:
                 loss = model(batch_feat, attention_mask=batch_mask, labels=batch_lab)[0]
             # print(loss)
@@ -196,11 +189,14 @@ if args.do_train:
 
         print("epoch loss: %.6f" % (epoch_loss/len(train_dataloader)))
 
-        if not args.do_crf:
-            eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
+        if args.epoch_eval:
+            if not args.do_crf:
+                eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
+            else:
+                eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
             import subprocess
             print(subprocess.check_output(
-                ['./eval_ner.sh', '%s.eval.conll' % args.OUTPUT_FILE]
+                ['./ner_eval.sh', args.OUTPUT_FILE]
             ).decode("utf-8"))
 
         """ save the trained model per epoch """
@@ -214,7 +210,12 @@ if args.do_train:
         tokenizer.save_pretrained(model_dir)
 else:
     model_dir = args.MODEL_DIR
-    
+    """ load the new tokenizer"""
+    tokenizer = BertTokenizer.from_pretrained(model_dir, do_lower_case=False, do_basic_tokenize=False)
+    test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device)
+    test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
+    test_deunk_loader = [test_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(test_deunk), args.BATCH_SIZE)]
+    print('test size: %i' % len(test_tensors))
 
 
 """ load the new model"""
@@ -225,34 +226,10 @@ else:
 model.to(device)
 
 """ predict test out """
-# output_file = 'outputs/ner_%s_ep%i' % (args.CORPUS, args.NUM_EPOCHS)
 
 if not args.do_crf:
     eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
 else:
-    ix2lab = {v: k for k, v in lab2ix.items()}
-
-    model.eval()
-    with torch.no_grad():
-        EVAL_FILE = args.OUTPUT_FILE + '.eval.conll'
-        OUT_FILE = args.OUTPUT_FILE + '.pred.conll'
-        with open(OUT_FILE, 'w') as fo:
-            for batch_deunk, (batch_tok_ix, batch_mask, batch_gold) in zip(test_deunk_loader, test_dataloader):
-                pred_ix = [l[1:] for l in model.decode(batch_tok_ix, batch_mask)]
-                gold_masked_ix = batch_demask(batch_gold[:, 1:], batch_mask[:, 1:].bool())
-                if not batch_deunk:
-                    continue
-                for sent_deunk, sent_gold_ix, sent_pred_ix in zip(batch_deunk, gold_masked_ix, pred_ix):
-                    assert len(sent_deunk) == len(sent_gold_ix) == len(sent_pred_ix)
-                tok_masked_ix = batch_demask(batch_tok_ix[:, 1:], batch_mask[:, 1:].bool())
-                batch_bpe = [[ tokenizer.convert_ids_to_tokens([ix])[0] for ix in sent_ix ] for sent_ix in tok_masked_ix]
-
-                # for tok_deunk, tok_gold, tok_pred in zip(sent_deunk, gold_masked_ix, pred_ix):
-                #     fe.write("%s\t%s\t%s\n" % (tok_deunk, ix2lab[tok_gold], ix2lab[tok_pred]))
-                # fe.write("\n")
-                for sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix in zip(batch_deunk, batch_bpe, gold_masked_ix, pred_ix):
-                    for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix):
-                        fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2lab[tok_pred], '_', '_', '_'))
-                    fo.write('\n')
+    eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
 
 

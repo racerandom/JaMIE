@@ -10,6 +10,7 @@ from torch.utils.data import TensorDataset
 from xml.sax.saxutils import escape
 from textformatting import ssplit
 from gensim.models import KeyedVectors
+import logging
 
 juman = Juman()
 
@@ -264,42 +265,46 @@ def convert_clinical_data_to_conll(clinical_file, fo, tokenizer, sent_tag=True, 
                 
             
 def batch_convert_clinical_data_to_conll(
-    data_dir, file_out, tokenizer, 
-    is_separated=True, sent_tag=True, defaut_cert='_', is_raw=False
+    file_list, file_out, tokenizer,
+    is_separated=True,
+    sent_tag=True,
+    defaut_cert='_',
+    is_raw=False
 ):
-    print(tokenizer)
+    # print(tokenizer)
+
+    # file_list = os.listdir(data_dir)
+
     doc_stat = []
-    if is_separated:
-        for file in os.listdir(data_dir):
-            file_ext = ".sent" if sent_tag else ".txt"
+    # if is_separated:
+    #     for file in file_list:
+    #         file_ext = ".xml" if sent_tag else ".txt"
+    #         if file.endswith(file_ext):
+    #             file_out = os.path.join(data_dir, os.path.splitext(file)[0] + '.conll', )
+    #             with open(file_out, 'w') as fo:
+    #                 try:
+    #                     doc_stat.append(convert_clinical_data_to_conll(
+    #                         dir_file, fo, tokenizer, sent_tag=sent_tag,
+    #                         defaut_cert=defaut_cert,
+    #                         is_raw=is_raw
+    #                     ))
+    #                 except Exception as ex:
+    #                     print('[error]:' + file)
+    #                     print(ex)
+    # else:
+    with open(file_out, 'w') as fo:
+        for file in file_list:
+            file_ext = ".xml" if sent_tag else ".txt"
             if file.endswith(file_ext):
-                dir_file = os.path.join(data_dir, file)
-                file_out = os.path.join(data_dir, os.path.splitext(file)[0] + '.conll', )
-                with open(file_out, 'w') as fo:
-                    try:
-                        doc_stat.append(convert_clinical_data_to_conll(
-                            dir_file, fo, tokenizer, sent_tag=sent_tag,
-                            defaut_cert=defaut_cert, 
-                            is_raw=is_raw
-                        ))
-                    except Exception as ex:
-                        print('[error]:' + file)
-                        print(ex)
-    else:
-        with open(file_out, 'w') as fo:
-            for file in os.listdir(data_dir):
-                file_ext = ".sent" if sent_tag else ".txt"
-                if file.endswith(file_ext):
-                    try:
-                        dir_file = os.path.join(data_dir, file)
-                        doc_stat.append(convert_clinical_data_to_conll(
-                            dir_file, fo, tokenizer, sent_tag=sent_tag,
-                            defaut_cert=defaut_cert, 
-                            is_raw=is_raw
-                        ))
-                    except Exception as ex:
-                        print('[error]:' + file)
-                        print(ex)
+                try:
+                    doc_stat.append(convert_clinical_data_to_conll(
+                        file, fo, tokenizer, sent_tag=sent_tag,
+                        defaut_cert=defaut_cert,
+                        is_raw=is_raw
+                    ))
+                except Exception as ex:
+                    print('[error]:' + file)
+                    print(ex)
     return doc_stat
                 
                 
@@ -328,6 +333,24 @@ def read_conll(conll_file):
             sent_ttype_labs.append(ttype_lab)
             sent_state_labs.append(state_lab)
     return deunks, toks, labs, cert_labs, ttype_labs, state_labs
+
+
+# unfinished
+def read_conll_v2(conll_file):
+    doc_cols = []
+    with open(conll_file) as fi:
+        sent_cols = []
+        for line in fi:
+            line = line.rstrip()
+            if not line:
+                if sent_cols[0]:
+                    for i in range(len(sent_cols)):
+                        doc_cols[str(i)].append(sent_cols[str(i)])
+                continue
+            toks = line.split('\t')
+            for j in range(len(toks)):
+                sent_cols[str(j)].append(toks[j])
+    return tuple()
 
 
 def extract_ner_from_conll(conll_file, tokenizer, lab2ix, device):
@@ -505,7 +528,24 @@ def extract_cert_from_conll(conll_file, tokenizer, attrib_lab2ix, device, max_ne
                          pad_clab_ids_t
                          ), deunks
 
-            
+
+def doc_kfold(data_dir, cv=5, random_seed=1029):
+    from sklearn.model_selection import KFold
+    file_list, file_splits = [], []
+    for file in sorted(os.listdir(data_dir)):
+        if file.endswith(".xml"):
+            dir_file = os.path.join(data_dir, file)
+            file_list.append(dir_file)
+    print("[Number] %i files in '%s'" % (len(file_list), data_dir))
+    gss = KFold(n_splits=cv, shuffle=True, random_state=random_seed)
+    for train_split, test_split in gss.split(file_list):
+        file_splits.append((
+            [file_list[fid] for fid in train_split],
+            [file_list[fid] for fid in test_split]
+        ))
+    return file_splits
+
+
 def eval_pid_seq(model, tokenizer, test_data, orig_token, label2ix, epoch):
     lines = []
     model.eval()
@@ -545,11 +585,11 @@ def batch_demask(batch_tokens, batch_masks):
 
 
 # Evaluate the non-crf ner model
-def eval_seq(model, tokenizer, test_data, deunk_toks, label2ix, file_out):
+def eval_seq(model, tokenizer, test_dataloader, deunk_toks, label2ix, file_out):
     model.eval()
     with torch.no_grad():
-        with open('%s.eval.conll' % file_out, 'w') as fe, open('%s.pred.conll' % file_out, 'w') as fo:
-            for batch_deunk, (batch_token_ix, batch_mask, batch_gold) in zip(deunk_toks, test_data):
+        with open(file_out, 'w') as fe:
+            for batch_deunk, (batch_token_ix, batch_mask, batch_gold) in zip(deunk_toks, test_dataloader):
                 ix2label = {v: k for k, v in label2ix.items()}
 
                 pred_prob = model(batch_token_ix, attention_mask=batch_mask)[0]
@@ -569,8 +609,41 @@ def eval_seq(model, tokenizer, test_data, deunk_toks, label2ix, file_out):
                     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_token, sent_gold_ix, sent_pred_ix):
                         fe.write('%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2label[tok_gold], ix2label[tok_pred]))
                     fe.write('\n')
-                for sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix in zip(batch_deunk, batch_token, gold_masked_ix, pred_masked_ix):
+                # for sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix in zip(batch_deunk, batch_token, gold_masked_ix, pred_masked_ix):
+                #     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix):
+                #         fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2label[tok_pred], '_', '_', '_'))
+                #     fo.write('\n')
+
+
+# Evaluate crf ner model
+def eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, label2ix, file_out):
+
+    ix2lab = {v: k for k, v in label2ix.items()}
+
+    model.eval()
+    with torch.no_grad():
+        with open(file_out, 'w') as fo:
+            for batch_deunk, (batch_tok_ix, batch_mask, batch_gold) in zip(test_deunk_loader, test_dataloader):
+                pred_ix = [l[1:] for l in model.decode(batch_tok_ix, batch_mask)]
+                gold_masked_ix = batch_demask(batch_gold[:, 1:], batch_mask[:, 1:].bool())
+                if not batch_deunk:
+                    continue
+                for sent_deunk, sent_gold_ix, sent_pred_ix in zip(batch_deunk, gold_masked_ix, pred_ix):
+                    assert len(sent_deunk) == len(sent_gold_ix) == len(sent_pred_ix)
+                tok_masked_ix = batch_demask(batch_tok_ix[:, 1:], batch_mask[:, 1:].bool())
+                batch_bpe = [[tokenizer.convert_ids_to_tokens([ix])[0] for ix in sent_ix] for sent_ix in tok_masked_ix]
+
+                # for tok_deunk, tok_gold, tok_pred in zip(sent_deunk, gold_masked_ix, pred_ix):
+                #     fe.write("%s\t%s\t%s\n" % (tok_deunk, ix2lab[tok_gold], ix2lab[tok_pred]))
+                # fe.write("\n")
+                for sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix in zip(
+                        batch_deunk,
+                        batch_bpe,
+                        gold_masked_ix,
+                        pred_ix
+                ):
                     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix):
-                        fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2label[tok_pred], '_', '_', '_'))
+                        # fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2lab[tok_pred], '_', '_', '_'))
+                        fo.write('%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2lab[tok_gold], ix2lab[tok_pred]))
                     fo.write('\n')
 

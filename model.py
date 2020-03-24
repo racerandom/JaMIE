@@ -65,13 +65,13 @@ class BertCRF(BertPreTrainedModel):
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
         self.linear = nn.Linear(config.hidden_size, config.num_labels)
         self.crf_layer = CRF(self.num_labels, batch_first=True)
-        # self.crf_layer.reset_parameters()
+        self.crf_layer.reset_parameters()
         self.init_weights()
 
-    def crf_forward(self, input_embeds, attention_mask, labels=None):
+    def forward(self, input_embeds, attention_mask, labels=None):
         encoder_logits = self.bert(input_embeds, attention_mask=attention_mask)[0]
         encoder_out = self.linear(encoder_logits)
-        crf_loss = self.crf_layer(self.dropout(encoder_out), mask=attention_mask, tags=labels)
+        crf_loss = -self.crf_layer(self.dropout(encoder_out), mask=attention_mask, tags=labels, reduction='mean')
         return crf_loss
 
     def decode(self, input_embeds, attention_mask):
