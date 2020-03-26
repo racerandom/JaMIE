@@ -60,6 +60,9 @@ parser.add_argument("--freeze", dest="EPOCH_FREEZE", default=10, type=int,
 parser.add_argument("--fine_epoch", dest="NUM_FINE_EPOCHS", default=5, type=int,
                     help="fine-tuning epoch number")
 
+parser.add_argument("--max_grad_norm", default=1.0, type=float,
+                        help="Max gradient norm.")
+
 parser.add_argument("--do_train",
                     action='store_true',
                     help="Whether to run training.")
@@ -74,6 +77,15 @@ parser.add_argument("-o", "--output", dest="OUTPUT_FILE", default='outputs/temp.
 parser.add_argument("--epoch_eval",
                     action='store_true',
                     help="Whether eval model every epoch.")
+
+parser.add_argument("--fp16",
+                    action='store_true',
+                    help="fp16")
+
+parser.add_argument("--fp16_opt_level", type=str, default="O1",
+                    help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
+                    "See details at https://nvidia.github.io/apex/amp.html")
+
 args = parser.parse_args()
 
 
@@ -161,7 +173,6 @@ if args.do_train:
     num_finetuning_steps = args.NUM_FINE_EPOCHS * num_epoch_steps
     num_training_steps = args.NUM_EPOCHS * num_epoch_steps
     warmup_ratio = 0.1
-    max_grad_norm = 1.0
 
     scheduler = get_linear_schedule_with_warmup(
         optimizer,
@@ -170,8 +181,13 @@ if args.do_train:
     )
 
 
-    # for n, p in list(model.named_parameters()):
-    #     print(n, p.requires_grad)
+    # support fp16
+    if args.fp16:
+        try:
+            from apex import amp
+        except ImportError:
+            raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
+        model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
     for epoch in range(1, args.NUM_EPOCHS + 1):
 
@@ -180,11 +196,10 @@ if args.do_train:
         if epoch > args.EPOCH_FREEZE:
             freeze_bert_layers(model, layer_list=list(range(0, 11)))
 
-        epoch_loss = .0
+        epoch_loss = 0.0
 
         for batch_feat, batch_mask, batch_lab in tqdm(train_dataloader, desc='Training'):
 
-            model.zero_grad()
             # BERT loss, logits: (batch_size, seq_len, tag_num)
             if args.do_crf:
                 # transformers return tuple
@@ -194,10 +209,19 @@ if args.do_train:
             # print(loss)
             epoch_loss += loss.item()
 
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
+            if args.fp16:
+                with amp.scale_loss(loss, optimizer) as scaled_loss:
+                    scaled_loss.backward()
+            else:
+                loss.backward()
+
+            if args.fp16:
+                torch.nn.utils.clip_grad_norm_(amp.master_params(optimizer), args.max_grad_norm)
+            else:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
             optimizer.step()
             scheduler.step()
+            model.zero_grad()
 
         if args.epoch_eval:
             if not args.do_crf:

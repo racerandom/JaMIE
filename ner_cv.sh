@@ -15,6 +15,7 @@ do
     --model "checkpoints/ner/${2}_cv${cv_i}/seq" \
     --fine_epoch 15 \
     --do_crf \
-    --freeze 5
+    --freeze 5 \
+    --fp16
 done
 
