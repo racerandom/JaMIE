@@ -164,6 +164,7 @@ if args.do_train:
         # To reproduce BertAdam specific behavior set correct_bias=False
         optimizer = AdamW(
             model.parameters(),
+            lr=5e-5,
             correct_bias=False
         )
     model.to(device)
