@@ -20,7 +20,7 @@ juman = Juman()
 
 torch.cuda.manual_seed_all(1234)
 
-def freeze_bert_layers(model, bert_name='bert', freeze_embed=True, layer_list=None):
+def freeze_bert_layers(model, bert_name='bert', freeze_embed=False, layer_list=None):
     layer_prefixes = ["%s.encoder.layer.%i." % (bert_name, i) for i in layer_list]
     for n, p in list(model.named_parameters()):
         if freeze_embed:
