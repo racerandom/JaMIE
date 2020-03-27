@@ -67,6 +67,10 @@ parser.add_argument("--gradual_freeze",
                     action='store_true',
                     help="gradually freeze the BERT encoder from bottom to top")
 
+parser.add_argument("--freeze_embed",
+                    action='store_true',
+                    help="whether freeze the embedding layer")
+
 parser.add_argument("--fine_epoch", dest="NUM_FINE_EPOCHS", default=5, type=int,
                     help="fine-tuning epoch number")
 
@@ -210,10 +214,10 @@ if args.do_train:
         model.train()
 
         if args.gradual_freeze:
-            freeze_bert_layers(model, freeze_embed=False, layer_list=list(range(0, epoch - 1)))
+            freeze_bert_layers(model, freeze_embed=args.freeze_embed, layer_list=list(range(0, epoch - 1)))
         else:
             if epoch > args.EPOCH_FREEZE:
-                freeze_bert_layers(model, layer_list=list(range(0, 11)))
+                freeze_bert_layers(model, freeze_embed=args.freeze_embed, layer_list=list(range(0, 11)))
 
 
         epoch_loss = 0.0
