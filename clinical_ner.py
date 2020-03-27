@@ -244,7 +244,7 @@ if args.do_train:
             else:
                 torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
             optimizer.step()
-            if scheduled_lr:
+            if args.scheduled_lr:
                 scheduler.step()
             model.zero_grad()
 
