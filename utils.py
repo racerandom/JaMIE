@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-import os, sys
+import os
 import mojimoji
 from pyknp import Juman
 import xml.etree.ElementTree as ET
@@ -78,7 +78,7 @@ def explore_unk(bpe_x, ori_x):
             ix_count += 1
         else:
             deunk_bpe_x.append(tok)
-    assert len(bpe_x)==len(deunk_bpe_x)
+    assert len(bpe_x) == len(deunk_bpe_x)
     return deunk_bpe_x
 
 
@@ -559,7 +559,7 @@ def eval_pid_seq(model, tokenizer, test_data, orig_token, label2ix, epoch):
                 pred_masked_ix = torch.masked_select(pred[:, 1:], mask[:, 1:].bool())
                 gold_masked_ix = torch.masked_select(gold[:, 1:], mask[:, 1:].bool())
                 
-                ix2label = {v:k for k, v in label2ix.items()}
+                ix2label = {v: k for k, v in label2ix.items()}
                 
                 bpe_tok = [tokenizer.convert_ids_to_tokens([ix])[0] for ix in t_masked_ix.tolist()]
                 
@@ -587,6 +587,9 @@ def batch_demask(batch_tokens, batch_masks):
 # Evaluate the non-crf ner model
 def eval_seq(model, tokenizer, test_dataloader, deunk_toks, label2ix, file_out):
     model.eval()
+    dir_name, file_name = os.path.split(file_out)
+    if not os.path.exists(dir_name):
+        os.makedirs(dir_name)
     with torch.no_grad():
         with open(file_out, 'w') as fe:
             for batch_deunk, (batch_token_ix, batch_mask, batch_gold) in zip(deunk_toks, test_dataloader):
@@ -609,17 +612,15 @@ def eval_seq(model, tokenizer, test_dataloader, deunk_toks, label2ix, file_out):
                     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_token, sent_gold_ix, sent_pred_ix):
                         fe.write('%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2label[tok_gold], ix2label[tok_pred]))
                     fe.write('\n')
-                # for sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix in zip(batch_deunk, batch_token, gold_masked_ix, pred_masked_ix):
-                #     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix):
-                #         fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2label[tok_pred], '_', '_', '_'))
-                #     fo.write('\n')
 
 
 # Evaluate crf ner model
 def eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, label2ix, file_out):
 
     ix2lab = {v: k for k, v in label2ix.items()}
-
+    dir_name, file_name = os.path.split(file_out)
+    if not os.path.exists(dir_name):
+        os.makedirs(dir_name)
     model.eval()
     with torch.no_grad():
         with open(file_out, 'w') as fo:
@@ -633,9 +634,6 @@ def eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, label2ix, fil
                 tok_masked_ix = batch_demask(batch_tok_ix[:, 1:], batch_mask[:, 1:].bool())
                 batch_bpe = [[tokenizer.convert_ids_to_tokens([ix])[0] for ix in sent_ix] for sent_ix in tok_masked_ix]
 
-                # for tok_deunk, tok_gold, tok_pred in zip(sent_deunk, gold_masked_ix, pred_ix):
-                #     fe.write("%s\t%s\t%s\n" % (tok_deunk, ix2lab[tok_gold], ix2lab[tok_pred]))
-                # fe.write("\n")
                 for sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix in zip(
                         batch_deunk,
                         batch_bpe,
@@ -643,7 +641,6 @@ def eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, label2ix, fil
                         pred_ix
                 ):
                     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix):
-                        # fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2lab[tok_pred], '_', '_', '_'))
                         fo.write('%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2lab[tok_gold], ix2lab[tok_pred]))
                     fo.write('\n')
 

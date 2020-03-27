@@ -57,6 +57,10 @@ parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=3, type=int,
 parser.add_argument("--freeze", dest="EPOCH_FREEZE", default=10, type=int,
                     help="freeze the BERT encoder after N epoches")
 
+parser.add_argument("--gradual_freeze",
+                    action='store_true',
+                    help="gradually freeze the BERT encoder from bottom to top")
+
 parser.add_argument("--fine_epoch", dest="NUM_FINE_EPOCHS", default=5, type=int,
                     help="fine-tuning epoch number")
 
@@ -194,8 +198,13 @@ if args.do_train:
 
         model.train()
 
-        if epoch > args.EPOCH_FREEZE:
-            freeze_bert_layers(model, layer_list=list(range(0, 11)))
+        if args.do_crf:
+            if args.gradual_freeze:
+                freeze_bert_layers(model, layer_list=list(range(0, epoch)))
+            else:
+                if epoch > args.EPOCH_FREEZE:
+                    freeze_bert_layers(model, layer_list=list(range(0, 11)))
+
 
         epoch_loss = 0.0
 
@@ -237,9 +246,9 @@ if args.do_train:
 
         """ save the trained model per epoch """
         if args.do_crf:
-            model_dir = "%s/crf_ep%i" % (args.MODEL_DIR, epoch)
+            model_dir = "%s/crf" % args.MODEL_DIR
         else:
-            model_dir = "%s/seq_ep%i" % (args.MODEL_DIR, epoch)
+            model_dir = "%s/seq" % args.MODEL_DIR
         if not os.path.exists(model_dir):
             os.makedirs(model_dir)
         model.save_pretrained(model_dir)
