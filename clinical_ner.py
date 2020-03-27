@@ -96,6 +96,10 @@ parser.add_argument("--fp16_opt_level", type=str, default="O1",
                     help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
                     "See details at https://nvidia.github.io/apex/amp.html")
 
+parser.add_argument("--scheduled_lr",
+                    action='store_true',
+                    help="learning rate schedule")
+
 args = parser.parse_args()
 
 
@@ -185,11 +189,12 @@ if args.do_train:
     num_training_steps = args.NUM_EPOCHS * num_epoch_steps
     warmup_ratio = 0.1
 
-    scheduler = get_linear_schedule_with_warmup(
-        optimizer,
-        num_warmup_steps=num_finetuning_steps,
-        num_training_steps=num_training_steps
-    )
+    if args.scheduled_lr:
+        scheduler = get_linear_schedule_with_warmup(
+            optimizer,
+            num_warmup_steps=num_finetuning_steps,
+            num_training_steps=num_training_steps
+        )
 
 
     # support fp16
@@ -235,7 +240,8 @@ if args.do_train:
             else:
                 torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
             optimizer.step()
-            scheduler.step()
+            if scheduled_lr:
+                scheduler.step()
             model.zero_grad()
 
         if args.epoch_eval:
