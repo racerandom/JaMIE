@@ -26,7 +26,8 @@ def freeze_bert_layers(model, bert_name='bert', freeze_embed=True, layer_list=No
         if freeze_embed:
             if n.startswith("%s.embeddings" % bert_name):
                 p.requires_grad = False
-            else:
+        else:
+            if n.startswith("%s.embeddings" % bert_name):
                 p.requires_grad = True
         if any(n.startswith(prefix) for prefix in layer_prefixes):
             p.requires_grad = False
