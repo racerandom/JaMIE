@@ -204,12 +204,11 @@ if args.do_train:
 
         model.train()
 
-        if args.do_crf:
-            if args.gradual_freeze:
-                freeze_bert_layers(model, layer_list=list(range(0, epoch)))
-            else:
-                if epoch > args.EPOCH_FREEZE:
-                    freeze_bert_layers(model, layer_list=list(range(0, 11)))
+        if args.gradual_freeze:
+            freeze_bert_layers(model, freeze_embed=False, layer_list=list(range(0, epoch - 1)))
+        else:
+            if epoch > args.EPOCH_FREEZE:
+                freeze_bert_layers(model, layer_list=list(range(0, 11)))
 
 
         epoch_loss = 0.0
