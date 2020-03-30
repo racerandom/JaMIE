@@ -291,9 +291,9 @@ if args.do_train:
 
         if args.epoch_eval:
             if not args.do_crf:
-                eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
+                eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE, args.joint)
             else:
-                eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
+                eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE, args.joint)
             import subprocess
             eval_out = subprocess.check_output(
                 ['./ner_eval.sh', args.OUTPUT_FILE]
@@ -329,8 +329,8 @@ model.to(device)
 """ predict test out """
 
 if not args.do_crf:
-    eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
+    eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE, args.joint)
 else:
-    eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE)
+    eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE, args.joint)
 
 

@@ -321,7 +321,7 @@ def read_conll(conll_file, is_merged=False):
         out_lab = ner_lab
         for lab in [cert_lab, ttype_lab, stat_lab]:
             if lab != '_':
-                out_lab = "%s-%s" % (out_lab, lab)
+                out_lab = "%s_%s" % (out_lab, lab)
         return out_lab
 
     deunks, toks, labs, cert_labs, ttype_labs, state_labs = [], [], [], [], [], []
@@ -607,15 +607,16 @@ def batch_demask(batch_tokens, batch_masks):
 
 
 # Evaluate the non-crf ner model
-def eval_seq(model, tokenizer, test_dataloader, deunk_toks, label2ix, file_out):
-    model.eval()
+def eval_seq(model, tokenizer, test_dataloader, deunk_toks, label2ix, file_out, is_merged):
+
+    ix2lab = {v: k for k, v in label2ix.items()}
     dir_name, file_name = os.path.split(file_out)
     if not os.path.exists(dir_name):
         os.makedirs(dir_name)
+    model.eval()
     with torch.no_grad():
         with open(file_out, 'w') as fe:
             for batch_deunk, (batch_token_ix, batch_mask, batch_gold) in zip(deunk_toks, test_dataloader):
-                ix2label = {v: k for k, v in label2ix.items()}
 
                 pred_prob = model(batch_token_ix, attention_mask=batch_mask)[0]
                 pred_ix = torch.argmax(pred_prob, dim=-1)
@@ -630,14 +631,24 @@ def eval_seq(model, tokenizer, test_dataloader, deunk_toks, label2ix, file_out):
                 for sent_deunk, sent_token in zip(batch_deunk, batch_token):
                     assert len(sent_deunk) == len(sent_token)
 
-                for sent_deunk, sent_token, sent_gold_ix, sent_pred_ix in zip(batch_deunk, batch_token, gold_masked_ix, pred_masked_ix):
+                for sent_deunk, sent_token, sent_gold_ix, sent_pred_ix in zip(
+                        batch_deunk,
+                        batch_token,
+                        gold_masked_ix,
+                        pred_masked_ix
+                ):
                     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_token, sent_gold_ix, sent_pred_ix):
-                        fe.write('%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2label[tok_gold], ix2label[tok_pred]))
+                        fe.write('%s\t%s\t%s\t%s\n' % (
+                            tok_deunk,
+                            tok,
+                            ix2lab[tok_gold] if not is_merged else ''.join(ix2lab[tok_gold].split('_')[:-1]),
+                            ix2lab[tok_pred] if not is_merged else ''.join(ix2lab[tok_pred].split('_')[:-1])
+                        ))
                     fe.write('\n')
 
 
 # Evaluate crf ner model
-def eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, label2ix, file_out):
+def eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, label2ix, file_out, is_merged):
 
     ix2lab = {v: k for k, v in label2ix.items()}
     dir_name, file_name = os.path.split(file_out)
@@ -663,6 +674,11 @@ def eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, label2ix, fil
                         pred_ix
                 ):
                     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix):
-                        fo.write('%s\t%s\t%s\t%s\n' % (tok_deunk, tok, ix2lab[tok_gold], ix2lab[tok_pred]))
+                        fo.write('%s\t%s\t%s\t%s\n' % (
+                            tok_deunk,
+                            tok,
+                            ix2lab[tok_gold] if not is_merged else ''.join(ix2lab[tok_gold].split('_')[:-1]),
+                            ix2lab[tok_pred] if not is_merged else ''.join(ix2lab[tok_pred].split('_')[:-1])
+                        ))
                     fo.write('\n')
 
