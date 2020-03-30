@@ -10,12 +10,11 @@ do
     --test_file ${TEST_FILE} \
     --batch 16 \
     --epoch 12 \
-    --output "outputs/ner/seq_${2}_cv${cv_i}.conll" \
+    --output "outputs/ner/${2}_cv${cv_i}.conll" \
     --do_train \
     --model "checkpoints/ner/${2}_cv${cv_i}/seq" \
     --fine_epoch 12 \
     --do_crf \
-    --freeze 12 \
     --fp16 \
     --bottomup_freeze \
     --joint
