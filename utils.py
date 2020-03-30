@@ -606,6 +606,14 @@ def batch_demask(batch_tokens, batch_masks):
     return demask_l
 
 
+def split_merged(merged_tag, delimiter='_'):
+    items = merged_tag.split(delimiter)
+    if len(items) > 1:
+        return ''.join(items[0:-1]), items[-1]
+    else:
+        return merged_tag, '_'
+
+
 # Evaluate the non-crf ner model
 def eval_seq(model, tokenizer, test_dataloader, deunk_toks, label2ix, file_out, is_merged):
 
@@ -641,8 +649,8 @@ def eval_seq(model, tokenizer, test_dataloader, deunk_toks, label2ix, file_out, 
                         fe.write('%s\t%s\t%s\t%s\n' % (
                             tok_deunk,
                             tok,
-                            ix2lab[tok_gold] if not is_merged else ''.join(ix2lab[tok_gold].split('_')[:-1]),
-                            ix2lab[tok_pred] if not is_merged else ''.join(ix2lab[tok_pred].split('_')[:-1])
+                            split_merged(ix2lab[tok_gold])[0],
+                            split_merged(ix2lab[tok_pred])[0]
                         ))
                     fe.write('\n')
 
@@ -677,8 +685,8 @@ def eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, label2ix, fil
                         fo.write('%s\t%s\t%s\t%s\n' % (
                             tok_deunk,
                             tok,
-                            ix2lab[tok_gold] if not is_merged else ''.join(ix2lab[tok_gold].split('_')[:-1]),
-                            ix2lab[tok_pred] if not is_merged else ''.join(ix2lab[tok_pred].split('_')[:-1])
+                            split_merged(ix2lab[tok_gold])[0],
+                            split_merged(ix2lab[tok_pred])[0]
                         ))
                     fo.write('\n')
 
