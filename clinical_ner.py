@@ -6,6 +6,7 @@ from utils import *
 from torch.utils.data import Dataset, DataLoader, TensorDataset
 from transformers import *
 import argparse
+import random
 
 from model import *
 
@@ -21,18 +22,42 @@ juman = Juman()
 torch.cuda.manual_seed_all(1234)
 
 def freeze_bert_layers(model, bert_name='bert', freeze_embed=False, layer_list=None):
+
     layer_prefixes = ["%s.encoder.layer.%i." % (bert_name, i) for i in layer_list]
+
     for n, p in list(model.named_parameters()):
+
         if freeze_embed:
             if n.startswith("%s.embeddings" % bert_name):
                 p.requires_grad = False
         else:
             if n.startswith("%s.embeddings" % bert_name):
                 p.requires_grad = True
+
         if any(n.startswith(prefix) for prefix in layer_prefixes):
             p.requires_grad = False
         else:
             p.requires_grad = True
+
+
+def pulse_freeze_bert(model, pulse_delta, bert_name='bert', freeze_embed=False):
+
+    for n, p in list(model.named_parameters()):
+        for i in list(range(0, 12)):
+
+            if freeze_embed:
+                if n.startswith("%s.embeddings" % bert_name):
+                    p.requires_grad = False
+            else:
+                if n.startswith("%s.embeddings" % bert_name):
+                    p.requires_grad = True
+
+            if n.startswith("%s.encoder.layer.%i." % (bert_name, i)):
+
+                if random.random() < pulse_delta:
+                    p.requires_grad = False
+                else:
+                    p.requires_grad = True
 
 """ 
 python input arguments 
@@ -60,12 +85,19 @@ parser.add_argument("-b", "--batch", dest="BATCH_SIZE", default=16, type=int,
 parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=3, type=int,
                     help="epoch number")
 
-parser.add_argument("--freeze", dest="EPOCH_FREEZE", default=10, type=int,
+parser.add_argument("--freeze", dest="EPOCH_FREEZE", default=12, type=int,
                     help="freeze the BERT encoder after N epoches")
 
-parser.add_argument("--gradual_freeze",
+parser.add_argument("--bottomup_freeze",
                     action='store_true',
-                    help="gradually freeze the BERT encoder from bottom to top")
+                    help="freeze the BERT layers from bottom to top")
+
+parser.add_argument("--pulse_freeze",
+                    action='store_true',
+                    help="pulsely freeze all BERT layers")
+parser.add_argument("--pulse_bottomup_freeze",
+                    action='store_true',
+                    help="pulse freeze the BERT layers from bottom to top")
 
 parser.add_argument("--freeze_embed",
                     action='store_true',
@@ -96,13 +128,17 @@ parser.add_argument("--fp16",
                     action='store_true',
                     help="fp16")
 
-parser.add_argument("--fp16_opt_level", type=str, default="O1",
+parser.add_argument("--fp16_opt_level", type=str, default="O2",
                     help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
                     "See details at https://nvidia.github.io/apex/amp.html")
 
 parser.add_argument("--scheduled_lr",
                     action='store_true',
                     help="learning rate schedule")
+
+parser.add_argument("--joint",
+                    action='store_true',
+                    help="merge ner and modality jointly")
 
 args = parser.parse_args()
 
@@ -114,8 +150,8 @@ TRAIN_FILE = args.TRAIN_FILE
 TEST_FILE = args.TEST_FILE
 
 """ Read conll file for counting statistics, such as: [UNK] token ratio, label2ix, etc. """
-train_deunks, train_toks, train_labs, train_cert_labs, train_ttype_labs, train_state_labs = read_conll(TRAIN_FILE)
-test_deunks, test_toks, test_labs, test_cert_labs, test_ttype_labs, test_state_labs = read_conll(TEST_FILE)
+train_deunks, train_toks, train_labs, train_cert_labs, train_ttype_labs, train_state_labs = read_conll(TRAIN_FILE, is_merged=args.joint)
+test_deunks, test_toks, test_labs, test_cert_labs, test_ttype_labs, test_state_labs = read_conll(TEST_FILE, is_merged=args.joint)
 # test_deunks, test_toks, test_labs, test_cert_labs = read_conll('data/records.txt')
 
 whole_toks = train_toks + test_toks
@@ -146,11 +182,11 @@ if args.do_train:
     - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
     - wrap them into dataloader for mini-batch cutting
     """
-    train_tensors, train_deunk = extract_ner_from_conll(TRAIN_FILE, tokenizer, lab2ix, device)
+    train_tensors, train_deunk = extract_ner_from_conll(TRAIN_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
     train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
     print('train size: %i' % len(train_tensors))
 
-    test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device)
+    test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
     test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
     test_deunk_loader = [test_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(test_deunk), args.BATCH_SIZE)]
     print('test size: %i' % len(test_tensors))
@@ -209,11 +245,13 @@ if args.do_train:
             raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
         model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
+    pulse_delta = 1.0 / args.NUM_EPOCHS
+
     for epoch in range(1, args.NUM_EPOCHS + 1):
 
         model.train()
 
-        if args.gradual_freeze:
+        if args.bottomup_freeze:
             freeze_bert_layers(model, freeze_embed=args.freeze_embed, layer_list=list(range(0, epoch - 1)))
         else:
             if epoch > args.EPOCH_FREEZE:
@@ -225,6 +263,9 @@ if args.do_train:
         for batch_feat, batch_mask, batch_lab in tqdm(train_dataloader, desc='Training'):
 
             # BERT loss, logits: (batch_size, seq_len, tag_num)
+            if args.pulse_freeze:
+                pulse_freeze_bert(model, pulse_delta, freeze_embed=args.freeze_embed)
+
             if args.do_crf:
                 # transformers return tuple
                 loss = model(batch_feat, attention_mask=batch_mask, labels=batch_lab)

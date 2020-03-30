@@ -14,6 +14,13 @@ import logging
 
 juman = Juman()
 
+DEUNK_COL=0
+TOK_COL=1
+NER_COL=2
+CERT_COL=3
+TYPE_COL=4
+STAT_COL=5
+
 
 def get_label2ix(y_data, default=None):
     label2ix = default if default is not None else {}
@@ -308,7 +315,15 @@ def batch_convert_clinical_data_to_conll(
     return doc_stat
                 
                 
-def read_conll(conll_file):
+def read_conll(conll_file, is_merged=False):
+
+    def merge_modality(ner_lab, cert_lab, ttype_lab, stat_lab):
+        out_lab = ner_lab
+        for lab in [cert_lab, ttype_lab, stat_lab]:
+            if lab != '_':
+                out_lab = "%s-%s" % (out_lab, lab)
+        return out_lab
+
     deunks, toks, labs, cert_labs, ttype_labs, state_labs = [], [], [], [], [], []
     with open(conll_file) as fi:
         sent_deunks, sent_toks, sent_labs, sent_cert_labs, sent_ttype_labs, sent_state_labs = [], [], [], [], [], []
@@ -325,13 +340,20 @@ def read_conll(conll_file):
                     sent_deunks, sent_toks, sent_labs, sent_cert_labs, sent_ttype_labs, sent_state_labs = [], [], [], [], [], []
                 continue
             # print('line:', line)
-            deunk, tok, lab, cert_lab, ttype_lab, state_lab = line.split('\t')
-            sent_deunks.append(deunk)
-            sent_toks.append(tok)
-            sent_labs.append(lab)
-            sent_cert_labs.append(cert_lab)
-            sent_ttype_labs.append(ttype_lab)
-            sent_state_labs.append(state_lab)
+            items = line.split('\t')
+            sent_deunks.append(items[DEUNK_COL])
+            sent_toks.append(items[TOK_COL])
+            sent_labs.append(
+                items[NER_COL] if not is_merged else merge_modality(
+                    items[NER_COL],
+                    items[CERT_COL],
+                    items[TYPE_COL],
+                    items[STAT_COL]
+                )
+            )
+            sent_cert_labs.append(items[CERT_COL])
+            sent_ttype_labs.append(items[TYPE_COL])
+            sent_state_labs.append(items[STAT_COL])
     return deunks, toks, labs, cert_labs, ttype_labs, state_labs
 
 
@@ -353,8 +375,8 @@ def read_conll_v2(conll_file):
     return tuple()
 
 
-def extract_ner_from_conll(conll_file, tokenizer, lab2ix, device):
-    deunks, toks, labs, cert_labs, ttype_labs, state_labs = read_conll(conll_file)
+def extract_ner_from_conll(conll_file, tokenizer, lab2ix, device, is_merged=False):
+    deunks, toks, labs, cert_labs, ttype_labs, state_labs = read_conll(conll_file, is_merged=is_merged)
     max_len = max([len(x) for x in toks])
     pad_tok_ids, pad_masks, pad_lab_ids = [], [], []
     for tok, lab in zip(toks, labs):
