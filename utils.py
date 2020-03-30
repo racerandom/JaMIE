@@ -646,11 +646,15 @@ def eval_seq(model, tokenizer, test_dataloader, deunk_toks, label2ix, file_out, 
                         pred_masked_ix
                 ):
                     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_token, sent_gold_ix, sent_pred_ix):
-                        fe.write('%s\t%s\t%s\t%s\n' % (
+                        gold_ner, gold_modality = split_merged(ix2lab[tok_gold])
+                        pred_ner, pred_modality = split_merged(ix2lab[tok_pred])
+                        fe.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (
                             tok_deunk,
                             tok,
-                            split_merged(ix2lab[tok_gold])[0],
-                            split_merged(ix2lab[tok_pred])[0]
+                            gold_modality,
+                            pred_modality,
+                            gold_ner,
+                            pred_ner
                         ))
                     fe.write('\n')
 
@@ -682,11 +686,44 @@ def eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, label2ix, fil
                         pred_ix
                 ):
                     for tok_deunk, tok, tok_gold, tok_pred in zip(sent_deunk, sent_tok, sent_gold_ix, sent_pred_ix):
-                        fo.write('%s\t%s\t%s\t%s\n' % (
+                        gold_ner, gold_modality = split_merged(ix2lab[tok_gold])
+                        pred_ner, pred_modality = split_merged(ix2lab[tok_pred])
+                        fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (
                             tok_deunk,
                             tok,
-                            split_merged(ix2lab[tok_gold])[0],
-                            split_merged(ix2lab[tok_pred])[0]
+                            gold_modality,
+                            pred_modality,
+                            gold_ner,
+                            pred_ner
                         ))
                     fo.write('\n')
 
+
+def measure_modality_fscore(gold_tags, pred_tags):
+    from collections import defaultdict
+    counts = defaultdict(lambda: {'g': 0.0, 'p': 0.0, 'c': 0.0})
+    for g, p in zip(gold_tags, pred_tags):
+        counts[g]['g'] += 1
+        counts[p]['p'] += 1
+        if g == p:
+            counts[g]['c'] += 1
+    for k, v in counts.items():
+        if k == '_':
+            continue
+        precision = (v['c'] / v['p']) if v['p'] != 0.0 else 0.0
+        recall = v['c'] / v['g'] if v['g'] != 0.0 else 0.0
+        f1 = (2 * precision * recall / (precision + recall)) if (precision + recall) != 0.0 else 0.0
+        print('Modality Tag: %s, precision: %.4f, recall: %.4f, f1: %.4f' % (k, precision, recall, f1))
+
+
+def eval_modality(file_out):
+    gold_tags, pred_tags = [], []
+    with open(file_out, 'r', encoding='utf8') as fi:
+        for line in fi:
+            line = line.strip()
+            if not line:
+                continue
+            items = line.split()
+            gold_tags.append(items[2])
+            pred_tags.append(items[3])
+    measure_modality_fscore(gold_tags, pred_tags)

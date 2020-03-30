@@ -299,6 +299,7 @@ if args.do_train:
                 ['./ner_eval.sh', args.OUTPUT_FILE]
             ).decode("utf-8")
             print("epoch loss: %.6f; " % (epoch_loss/len(train_dataloader)), eval_out.split('\n')[2])
+            eval_modality(args.OUTPUT_FILE)
 
         """ save the trained model per epoch """
         if args.do_crf:
