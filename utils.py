@@ -551,8 +551,8 @@ def extract_cert_from_conll(conll_file, tokenizer, attrib_lab2ix, device, max_ne
                          ), deunks
 
 
-def doc_kfold(data_dir, cv=5, random_seed=1029):
-    from sklearn.model_selection import KFold
+def doc_kfold(data_dir, cv=5, dev_ratio=0.1, random_seed=1029):
+    from sklearn.model_selection import KFold, train_test_split
     file_list, file_splits = [], []
     for file in sorted(os.listdir(data_dir)):
         if file.endswith(".xml"):
@@ -560,9 +560,20 @@ def doc_kfold(data_dir, cv=5, random_seed=1029):
             file_list.append(dir_file)
     print("[Number] %i files in '%s'" % (len(file_list), data_dir))
     gss = KFold(n_splits=cv, shuffle=True, random_state=random_seed)
-    for train_split, test_split in gss.split(file_list):
+    for raw_train_split, test_split in gss.split(file_list):
+        if dev_ratio:
+            train_split, dev_split = train_test_split(
+                raw_train_split,
+                test_size=dev_ratio,
+                shuffle=False,
+                random_state=random_seed
+            )
+        else:
+            train_split = raw_train_split
+            dev_split = []
         file_splits.append((
             [file_list[fid] for fid in train_split],
+            [file_list[fid] for fid in dev_split],
             [file_list[fid] for fid in test_split]
         ))
     return file_splits
@@ -713,7 +724,16 @@ def measure_modality_fscore(gold_tags, pred_tags):
         precision = (v['c'] / v['p']) if v['p'] != 0.0 else 0.0
         recall = v['c'] / v['g'] if v['g'] != 0.0 else 0.0
         f1 = (2 * precision * recall / (precision + recall)) if (precision + recall) != 0.0 else 0.0
-        print('Modality Tag: %s, precision: %.4f, recall: %.4f, f1: %.4f' % (k, precision, recall, f1))
+        print('Modality Tag: %s, precision: %.2f%%, recall: %.2f%%, f1: %.2f' % (k, 100*precision, 100*recall, 100*f1))
+    certainty_labs = ['positive', 'negative', 'suspicious', 'general']
+    type_labs = ['DATE', 'DURATION', 'AGE', 'CC', 'SET', 'TIME']
+    state_labs = ['executed', 'scheduled', 'negated', 'other']
+    print(sum([v['c'] for k, v in counts.items() if k in certainty_labs]) / sum(
+        [v['g'] for k, v in counts.items() if k in certainty_labs]))
+    print(sum([v['c'] for k, v in counts.items() if k in type_labs]) / sum(
+        [v['g'] for k, v in counts.items() if k in type_labs]))
+    print(sum([v['c'] for k, v in counts.items() if k in state_labs]) / sum(
+        [v['g'] for k, v in counts.items() if k in state_labs]))
 
 
 def eval_modality(file_out):
