@@ -12,7 +12,8 @@ do
     --dev_file ${DEV_FILE} \
     --batch 16 \
     --epoch 12 \
-    --output "outputs/ner/${2}_cv${cv_i}.conll" \
+    --test_output "outputs/ner/${2}_cv${cv_i}_test.conll" \
+    --dev_output "outputs/ner/${2}_cv${cv_i}_dev.conll" \
     --do_train \
     --model "checkpoints/ner/${2}_cv${cv_i}" \
     --fine_epoch 12 \
@@ -22,8 +23,8 @@ do
     --later_eval \
     --joint \
     --save_step_interval 50 \
-    --save_best
+    --save_best f1
 done
 
-cat "outputs/ner/${2}_cv$*.conll" > "outputs/ner/${2}.conll"
+cat "outputs/ner/${2}_cv$*_test.conll" > "outputs/ner/${2}_test.conll"
 
