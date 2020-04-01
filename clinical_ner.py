@@ -120,16 +120,18 @@ parser.add_argument("--do_crf",
                     action='store_true',
                     help="Whether to use CRF.")
 
-parser.add_argument("-o", "--output", dest="OUTPUT_FILE", default='outputs/temp.ner', type=str,
-                    help="output filename")
+parser.add_argument("--test_output", default='outputs/temp_test.ner', type=str,
+                    help="test output filename")
+
+parser.add_argument("--dev_output", default='outputs/temp_dev.ner', type=str,
+                    help="dev output filename")
 
 parser.add_argument("--later_eval",
                     action='store_true',
                     help="Whether eval model every epoch.")
 
-parser.add_argument("--save_best",
-                    action='store_true',
-                    help="save the best model, given dev scores")
+parser.add_argument("--save_best", default='f1', type=str,
+                    help="save the best model, given dev scores (f1 or loss)")
 
 parser.add_argument("--save_step_interval", default=100, type=int,
                     help="save best model given a step interval")
@@ -275,7 +277,7 @@ if args.do_train:
 
     pulse_delta = 1.0 / args.NUM_EPOCHS
 
-    best_dev_loss = float('inf')
+    best_dev_score = float('-inf') if args.save_best == 'f1' else float('inf')
 
     for epoch in range(1, args.NUM_EPOCHS + 1):
 
@@ -320,8 +322,9 @@ if args.do_train:
                 scheduler.step()
             model.zero_grad()
 
-            if args.save_best:
-                if (step % args.save_step_interval == 0) or (step == num_epoch_steps):
+
+            if (step % args.save_step_interval == 0) or (step == num_epoch_steps):
+                if args.save_best == 'loss':
                     dev_loss = 0.0
 
                     model.eval()
@@ -332,37 +335,59 @@ if args.do_train:
                             else:
                                 dev_loss += model(dev_feat, attention_mask=dev_mask, labels=dev_lab)[0]
 
-                    if best_dev_loss > (dev_loss / len(dev_dataloader)):
+                    if best_dev_score > (dev_loss / len(dev_dataloader)):
 
                         print("best dev loss %.4f; current loss %.4f; best model saved '%s'" % (
-                            best_dev_loss,
+                            best_dev_score,
                             dev_loss / len(dev_dataloader),
                             model_dir
                         ))
-                        best_dev_loss = dev_loss / len(dev_dataloader)
+                        best_dev_score = dev_loss / len(dev_dataloader)
 
                         """ save the best model """
                         if not os.path.exists(model_dir):
                             os.makedirs(model_dir)
                         model.save_pretrained(model_dir)
                         tokenizer.save_pretrained(model_dir)
+                elif args.save_best == 'f1':
+                    eval_crf(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
+                    import subprocess
+                    eval_out = subprocess.check_output(
+                        ['./ner_eval.sh', args.dev_output]
+                    ).decode("utf-8").split('\n')[2]
+                    dev_f1 = float(eval_out.split()[-1])
 
+                    if best_dev_score < dev_f1:
+                        print("best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
+                            best_dev_score,
+                            dev_f1,
+                            model_dir
+                        ))
+                        best_dev_score = dev_f1
+
+                        """ save the best model """
+                        if not os.path.exists(model_dir):
+                            os.makedirs(model_dir)
+                        model.save_pretrained(model_dir)
+                        tokenizer.save_pretrained(model_dir)
+                else:
+                    raise Exception("[ERROR] Unknow best score setting...")
 
     if args.later_eval:
         if args.do_crf:
             model = BertCRF.from_pretrained(model_dir)
             model.to(device)
-            eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE, args.joint)
+            eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
         else:
             model = BertForTokenClassification.from_pretrained(model_dir)
             model.to(device)
-            eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE, args.joint)
+            eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
         import subprocess
         eval_out = subprocess.check_output(
-            ['./ner_eval.sh', args.OUTPUT_FILE]
+            ['./ner_eval.sh', args.test_output]
         ).decode("utf-8")
         print("epoch loss: %.6f; " % (epoch_loss/len(train_dataloader)), eval_out.split('\n')[2])
-        eval_modality(args.OUTPUT_FILE)
+        eval_modality(args.test_output)
 
 
 else:
@@ -385,8 +410,8 @@ model.to(device)
 """ predict test out """
 
 if not args.do_crf:
-    eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE, args.joint)
+    eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
 else:
-    eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.OUTPUT_FILE, args.joint)
+    eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
 
 
