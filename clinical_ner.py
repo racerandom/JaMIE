@@ -350,7 +350,10 @@ if args.do_train:
                         model.save_pretrained(model_dir)
                         tokenizer.save_pretrained(model_dir)
                 elif args.save_best == 'f1':
-                    eval_crf(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
+                    if args.do_crf:
+                        eval_crf(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
+                    else:
+                        eval_seq(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
                     import subprocess
                     eval_out = subprocess.check_output(
                         ['./ner_eval.sh', args.dev_output]
@@ -372,7 +375,7 @@ if args.do_train:
                         tokenizer.save_pretrained(model_dir)
                 else:
                     raise Exception("[ERROR] Unknow best score setting...")
-
+    
     if args.later_eval:
         if args.do_crf:
             model = BertCRF.from_pretrained(model_dir)

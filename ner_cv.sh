@@ -26,5 +26,5 @@ do
     --save_best f1
 done
 
-cat "outputs/ner/${2}_cv$*_test.conll" > "outputs/ner/${2}_test.conll"
+cat "outputs/ner/${2}_cv*_test.conll" > "outputs/ner/${2}_test.conll"
 
