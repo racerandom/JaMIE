@@ -130,7 +130,7 @@ parser.add_argument("--later_eval",
                     action='store_true',
                     help="Whether eval model every epoch.")
 
-parser.add_argument("--save_best", default='f1', type=str,
+parser.add_argument("--save_best", action='store', type=str,
                     help="save the best model, given dev scores (f1 or loss)")
 
 parser.add_argument("--save_step_interval", default=100, type=int,
@@ -233,7 +233,7 @@ if args.do_train:
         param_optimizer = list(model.named_parameters())
         crf_name_list = ['crf_layer']
         optimizer_grouped_parameters = [
-            {'params': [p for n, p in param_optimizer if any(nd in n for nd in crf_name_list)], 'lr': 1e-3},
+            {'params': [p for n, p in param_optimizer if any(nd in n for nd in crf_name_list)], 'lr': 1e-2},
             {'params': [p for n, p in param_optimizer if not any(nd in n for nd in crf_name_list)], 'lr': 5e-5}
         ]
         # To reproduce BertAdam specific behavior set correct_bias=False
@@ -322,7 +322,6 @@ if args.do_train:
                 scheduler.step()
             model.zero_grad()
 
-
             if (step % args.save_step_interval == 0) or (step == num_epoch_steps):
                 if args.save_best == 'loss':
                     dev_loss = 0.0
@@ -369,13 +368,11 @@ if args.do_train:
                         best_dev_score = dev_f1
 
                         """ save the best model """
-                        if not os.path.exists(model_dir):
-                            os.makedirs(model_dir)
-                        model.save_pretrained(model_dir)
-                        tokenizer.save_pretrained(model_dir)
-                else:
-                    raise Exception("[ERROR] Unknow best score setting...")
-    
+                        save_bert(model, tokenizer, model_dir)
+
+    if not args.save_best:
+        save_bert(model, tokenizer, model_dir)
+
     if args.later_eval:
         if args.do_crf:
             model = BertCRF.from_pretrained(model_dir)
@@ -416,5 +413,3 @@ if not args.do_crf:
     eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
 else:
     eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
-
-

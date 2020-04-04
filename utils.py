@@ -10,7 +10,7 @@ from torch.utils.data import TensorDataset
 from xml.sax.saxutils import escape
 from textformatting import ssplit
 from gensim.models import KeyedVectors
-import logging
+from transformers import *
 
 juman = Juman()
 
@@ -623,6 +623,14 @@ def split_merged(merged_tag, delimiter='_'):
         return ''.join(items[0:-1]), items[-1]
     else:
         return merged_tag, '_'
+
+
+# save bert model
+def save_bert(model, tokenizer, model_dir):
+    if not os.path.exists(model_dir):
+        os.makedirs(model_dir)
+    model.save_pretrained(model_dir)
+    tokenizer.save_pretrained(model_dir)
 
 
 # Evaluate the non-crf ner model
