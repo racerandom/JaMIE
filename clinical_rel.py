@@ -6,12 +6,13 @@ import pandas as pd
 import csv
 import random
 import os
+import argparse
 
 from tqdm import tqdm
 import torch
 from sklearn.metrics import classification_report
 from imblearn.metrics import classification_report_imbalanced
-from torch.utils.data import TensorDataset, DataLoader
+from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
 from torch.nn import CrossEntropyLoss
 from transformers import *
 from model import *
@@ -259,37 +260,78 @@ def eval_rel(model, dataloader, rel2ix, device, file_out=None):
     model.eval()
     pred_all, gold_all = [], []
     with torch.no_grad():
-        for (b_toks, b_attn_mask, b_ner, b_tail_mask, b_tail_ne, b_head_mask, b_head_ne, b_rel) in dataloader:
-            b_toks = b_toks.to(device)
-            b_attn_mask = b_attn_mask.to(device)
-            b_tail_mask = b_tail_mask.to(device)
-            b_tail_ne = b_tail_ne.to(device)
-            b_head_mask = b_head_mask.to(device)
-            b_head_ne = b_head_ne.to(device)
-            b_rel = b_rel
+        for batch in dataloader:
+            b_toks, b_attn_mask, b_ner, b_tail_mask, b_tail_ne, b_head_mask, b_head_ne, b_rel = tuple(
+                t.to(device) for t in batch
+            )
             logits = model(b_toks, b_attn_mask, b_tail_mask, b_tail_ne, b_head_mask, b_head_ne)[0]
             b_pred = torch.argmax(logits, -1)
             pred_all += b_pred.tolist()
             gold_all += b_rel.tolist()
-    report = classification_report_imbalanced(
+    report = classification_report(
         gold_all, pred_all,
-        list(ix2rel.keys()), target_names=list(ix2rel.values())
+        list(ix2rel.keys()), target_names=list(ix2rel.values()),
+        digits=4
     )
     print(report)
-    f1 = report.split('\n')[8].split()[6]
-    print(f1)
-    return f1
+    micro_f1 = report.split('\n')[-4].split()[4]
+    print(micro_f1)
+    return float(micro_f1)
 
 
 def main():
+    parser = argparse.ArgumentParser(description='PRISM tag recognizer')
 
-    BERT_URL = 'bert-base-uncased'
-    tokenizer = BertTokenizer.from_pretrained(BERT_URL, do_basic_tokenize=False)
+    parser.add_argument("--train_file", default="data/CoNLL04/train.txt", type=str,
+                        help="train file, multihead conll format.")
+
+    parser.add_argument("--dev_file", default="data/CoNLL04/dev.txt", type=str,
+                        help="dev file, multihead conll format.")
+
+    parser.add_argument("--test_file", default="data/CoNLL04/test.txt", type=str,
+                        help="test file, multihead conll format.")
+
+    parser.add_argument("--pretrained_model",
+                        default='bert-base-uncased',
+                        type=str,
+                        help="pre-trained model dir")
+
+    parser.add_argument("--save_model", default='checkpoints/rel', type=str,
+                        help="save/load model dir")
+
+    parser.add_argument("--batch_size", default=16, type=int,
+                        help="BATCH SIZE")
+
+    parser.add_argument("--num_epoch", default=10, type=int,
+                        help="fine-tuning epoch number")
+
+    parser.add_argument("--max_grad_norm", default=1.0, type=float,
+                        help="Max gradient norm.")
+
+    parser.add_argument("--do_train",
+                        action='store_true',
+                        help="Whether to run training.")
+
+    parser.add_argument("--lr", default=5e-5, type=float,
+                        help="learning rate")
+
+    parser.add_argument("--save_best", default='f1', type=str,
+                        help="save the best model, given dev scores (f1 or loss)")
+
+    parser.add_argument("--save_step_interval", default=200, type=int,
+                        help="save best model given a step interval")
+
+    parser.add_argument("--neg_ratio", default=1.0, type=float,
+                        help="negative sample ratio")
+
+    args = parser.parse_args()
+
+    n_gpu = torch.cuda.device_count()
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
 
-    train_file = "data/CoNLL04/train.txt"
-    down_neg = 0.5
-    train_toks, train_labs, train_rels, bio2ix, ne2ix, rel2ix = extract_rel_data_from_mh_conll(train_file, down_neg)
+    tokenizer = BertTokenizer.from_pretrained(args.pretrained_model, do_basic_tokenize=False)
+
+    train_toks, train_labs, train_rels, bio2ix, ne2ix, rel2ix = extract_rel_data_from_mh_conll(args.train_file, args.neg_ratio)
     print(bio2ix)
     print(ne2ix)
     print(rel2ix)
@@ -297,14 +339,12 @@ def main():
     print(min([len(sent_rels) for sent_rels in train_rels]), max([len(sent_rels) for sent_rels in train_rels]))
     print()
 
-    dev_file = "data/CoNLL04/dev.txt"
-    dev_toks, dev_labs, dev_rels, _, _, _ = extract_rel_data_from_mh_conll(dev_file, 1.0)
+    dev_toks, dev_labs, dev_rels, _, _, _ = extract_rel_data_from_mh_conll(args.dev_file, 1.0)
     print('max sent len:', max_sents_len(dev_toks, tokenizer))
     print(min([len(sent_rels) for sent_rels in dev_rels]), max([len(sent_rels) for sent_rels in dev_rels]))
     print()
 
-    test_file = "data/CoNLL04/test.txt"
-    test_toks, test_labs, test_rels, _, _, _ = extract_rel_data_from_mh_conll(test_file, 1.0)
+    test_toks, test_labs, test_rels, _, _, _ = extract_rel_data_from_mh_conll(args.test_file, 1.0)
     print('max sent len:', max_sents_len(test_toks, tokenizer))
     print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
     print()
@@ -315,26 +355,26 @@ def main():
         max_sents_len(test_toks, tokenizer)
     )
 
-    train_tensors = convert_rels_to_tensors(train_toks, train_labs, train_rels, tokenizer, bio2ix, ne2ix, rel2ix, max_len)
-    dev_tensors = convert_rels_to_tensors(dev_toks, dev_labs, dev_rels, tokenizer, bio2ix, ne2ix, rel2ix, max_len)
-    test_tensors = convert_rels_to_tensors(test_toks, test_labs, test_rels, tokenizer, bio2ix, ne2ix, rel2ix, max_len)
+    train_dataset = convert_rels_to_tensors(train_toks, train_labs, train_rels, tokenizer, bio2ix, ne2ix, rel2ix, max_len)
+    dev_dataset = convert_rels_to_tensors(dev_toks, dev_labs, dev_rels, tokenizer, bio2ix, ne2ix, rel2ix, max_len)
+    test_dataset = convert_rels_to_tensors(test_toks, test_labs, test_rels, tokenizer, bio2ix, ne2ix, rel2ix, max_len)
 
-    BATCH_SIZE = 16
+    train_sampler = RandomSampler(train_dataset)
+    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.batch_size)
+    dev_sampler = SequentialSampler(dev_dataset)
+    dev_dataloader = DataLoader(dev_dataset, sampler=dev_sampler, batch_size=args.batch_size)
+    test_sampler = SequentialSampler(test_dataset)
+    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=args.batch_size)
 
-    train_dataloader = DataLoader(train_tensors, batch_size=BATCH_SIZE, shuffle=True)
-    dev_dataloader = DataLoader(dev_tensors, batch_size=BATCH_SIZE, shuffle=False)
-    test_dataloader = DataLoader(test_tensors, batch_size=BATCH_SIZE, shuffle=False)
-
-    NUM_EPOCHS = 5
-    num_training_steps = NUM_EPOCHS * len(train_dataloader)
+    num_epoch_steps = len(train_dataloader)
+    num_training_steps = args.num_epoch * num_epoch_steps
     warmup_ratio = 0.1
-    max_grad_norm = 1.0
 
-    model = BertRel.from_pretrained(BERT_URL, num_ne=len(ne2ix), num_rel=len(rel2ix))
+    model = BertRel.from_pretrained(args.pretrained_model, num_ne=len(ne2ix), num_rel=len(rel2ix))
 
     optimizer = AdamW(
         model.parameters(),
-        lr=5e-5,
+        lr=args.lr,
         correct_bias=False
     )
 
@@ -342,35 +382,42 @@ def main():
                                                 num_training_steps=num_training_steps)
     model.to(device)
 
-    for epoch in range(1, NUM_EPOCHS + 1):
-        model.train()
-        for (b_toks, b_attn_mask, b_ner, b_tail_mask, b_tail_ne, b_head_mask, b_head_ne, b_rel) in tqdm(
-                train_dataloader,
-                desc='Training'
-        ):
-            b_toks = b_toks.to(device)
-            b_attn_mask = b_attn_mask.to(device)
-            b_tail_mask = b_tail_mask.to(device)
-            b_tail_ne = b_tail_ne.to(device)
-            b_head_mask = b_head_mask.to(device)
-            b_head_ne = b_head_ne.to(device)
-            b_rel = b_rel.to(device)
+    best_dev_f1 = float('-inf')
+
+    model.zero_grad()
+    for epoch in range(1, args.num_epoch + 1):
+        epoch_iterator = tqdm(train_dataloader, desc='Iteration')
+        for step, batch in enumerate(epoch_iterator, start=1):
+            model.train()
+            b_toks, b_attn_mask, b_ner, b_tail_mask, b_tail_ne, b_head_mask, b_head_ne, b_rel = tuple(
+               t.to(device) for t in batch
+            )
             loss = model(b_toks, b_attn_mask, b_tail_mask, b_tail_ne, b_head_mask, b_head_ne, b_rel)[0]
 
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
             optimizer.step()
             scheduler.step()
             model.zero_grad()
 
-        dev_f1 = eval_rel(model, dev_dataloader, rel2ix, device)
+            if (step % args.save_step_interval == 0) or (step == num_epoch_steps):
+                dev_f1 = eval_rel(model, dev_dataloader, rel2ix, device)
 
-    """ save the trained model per epoch """
-    model_dir = "checkpoints/rel"
-    if not os.path.exists(model_dir):
-        os.makedirs(model_dir)
-    model.save_pretrained(model_dir)
-    tokenizer.save_pretrained(model_dir)
+                if best_dev_f1 < dev_f1:
+                    print("Previous best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
+                        best_dev_f1,
+                        dev_f1,
+                        args.save_model
+                    ))
+                    best_dev_f1 = dev_f1
+
+                    """ save the trained model per epoch """
+                    if not os.path.exists(args.save_model):
+                        os.makedirs(args.save_model)
+                    model.save_pretrained(args.save_model)
+                    tokenizer.save_pretrained(args.save_model)
+
+    model = BertRel.from_pretrained(args.save_model, num_ne=len(ne2ix), num_rel=len(rel2ix))
 
     eval_rel(model, test_dataloader, rel2ix, device)
 
