@@ -14,12 +14,12 @@ from transformers import *
 
 juman = Juman()
 
-DEUNK_COL=0
-TOK_COL=1
-NER_COL=2
-CERT_COL=3
-TYPE_COL=4
-STAT_COL=5
+DEUNK_COL = 0
+TOK_COL = 1
+NER_COL = 2
+CERT_COL = 3
+TYPE_COL = 4
+STAT_COL = 5
 
 
 def get_label2ix(y_data, default=None):

@@ -9,7 +9,7 @@ from transformers import *
 
 # local libraries
 from utils import *
-from model import SeqCertClassifier, save_bert_model
+from model import SeqCertClassifier
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
 
