@@ -304,7 +304,7 @@ def main():
     parser.add_argument("--batch_size", default=16, type=int,
                         help="BATCH SIZE")
 
-    parser.add_argument("--num_epoch", default=10, type=int,
+    parser.add_argument("--num_epoch", default=1, type=int,
                         help="fine-tuning epoch number")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -317,6 +317,9 @@ def main():
     parser.add_argument("--lr", default=5e-5, type=float,
                         help="learning rate")
 
+    parser.add_argument("--ne_size", default=128, type=int,
+                        help="size of name entity embedding")
+
     parser.add_argument("--save_best", default='f1', type=str,
                         help="save the best model, given dev scores (f1 or loss)")
 
@@ -327,6 +330,8 @@ def main():
                         help="negative sample ratio")
 
     args = parser.parse_args()
+
+    print(args)
 
     n_gpu = torch.cuda.device_count()
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
@@ -372,7 +377,7 @@ def main():
     num_training_steps = args.num_epoch * num_epoch_steps
     warmup_ratio = 0.1
 
-    model = BertRel.from_pretrained(args.pretrained_model, num_ne=len(ne2ix), num_rel=len(rel2ix))
+    model = BertRel.from_pretrained(args.pretrained_model, ne_size=args.ne_size, num_ne=len(ne2ix), num_rel=len(rel2ix))
 
     optimizer = AdamW(
         model.parameters(),
@@ -419,8 +424,8 @@ def main():
                     model.save_pretrained(args.save_model)
                     tokenizer.save_pretrained(args.save_model)
 
-    model = BertRel.from_pretrained(args.save_model, num_ne=len(ne2ix), num_rel=len(rel2ix))
-
+    model = BertRel.from_pretrained(args.save_model, ne_size=args.ne_size, num_ne=len(ne2ix), num_rel=len(rel2ix))
+    model.to(device)
     eval_rel(model, test_dataloader, rel2ix, device, is_reported=True)
 
 

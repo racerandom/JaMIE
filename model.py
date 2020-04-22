@@ -117,14 +117,14 @@ class LSTMCRF(nn.Module):
 
 class BertRel(BertPreTrainedModel):
 
-    def __init__(self, config, num_ne, num_rel):
+    def __init__(self, config, ne_size, num_ne, num_rel):
         super(BertRel, self).__init__(config)
         self.num_rel = num_rel
         self.num_ne = num_ne
         self.bert = BertModel(config)
-        self.ne_embed = nn.Embedding(num_ne, 100)
+        self.ne_embed = nn.Embedding(num_ne, ne_size)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
-        self.h2o = nn.Linear(2 * config.hidden_size + 200, num_rel)
+        self.h2o = nn.Linear(2 * config.hidden_size + 2 * ne_size, num_rel)
         self.init_weights()
 
     def forward(self, tok_ix, attn_mask, tail_mask, tail_labs, head_mask, head_labs, rel_labs=None):
