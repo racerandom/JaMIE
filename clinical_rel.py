@@ -304,7 +304,7 @@ def main():
     parser.add_argument("--batch_size", default=16, type=int,
                         help="BATCH SIZE")
 
-    parser.add_argument("--num_epoch", default=1, type=int,
+    parser.add_argument("--num_epoch", default=10, type=int,
                         help="fine-tuning epoch number")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
