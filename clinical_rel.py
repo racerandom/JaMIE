@@ -249,7 +249,7 @@ def convert_rels_to_tensors(ner_toks, ner_labs, rels,
     )
 
 
-def eval_rel(model, dataloader, rel2ix, device, file_out=None):
+def eval_rel(model, dataloader, rel2ix, device, is_reported=False, file_out=None):
 
     ix2rel = {v: k for k, v in rel2ix.items() if k != 'N'}
 
@@ -273,9 +273,11 @@ def eval_rel(model, dataloader, rel2ix, device, file_out=None):
         list(ix2rel.keys()), target_names=list(ix2rel.values()),
         digits=4
     )
-    print(report)
+
     micro_f1 = report.split('\n')[-4].split()[4]
-    print(micro_f1)
+    if is_reported:
+        print(report)
+        print(micro_f1)
     return float(micro_f1)
 
 
@@ -419,7 +421,7 @@ def main():
 
     model = BertRel.from_pretrained(args.save_model, num_ne=len(ne2ix), num_rel=len(rel2ix))
 
-    eval_rel(model, test_dataloader, rel2ix, device)
+    eval_rel(model, test_dataloader, rel2ix, device, is_reported=True)
 
 
 if __name__ == '__main__':
