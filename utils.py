@@ -71,6 +71,30 @@ def match_sbp_cert_labs(bpe_x, y):
     return bpe_y
 
 
+def mask_one_entity(entity_tok_ids):
+    mask_seq = [0] * (int(entity_tok_ids[-1]) + 1)
+    for index in entity_tok_ids:
+        mask_seq[int(index)] = 1
+    return mask_seq
+
+
+def match_bpe_mask(bpe_x, mask):
+    bpe_mask = mask.copy()
+    for i in range(len(bpe_x)):
+        if i > 0 and bpe_x[i].startswith('##'):
+            bpe_mask.insert(i, bpe_mask[i - 1])
+    assert len(bpe_x) == len(bpe_mask)
+    return bpe_mask
+
+
+def return_index_of_last_one(mask):
+    last_id = None
+    for i in range(len(mask)):
+        if mask[i] == 1:
+            last_id = i
+    return last_id
+
+
 def explore_unk(bpe_x, ori_x):
     
     ix_count = 0
@@ -143,6 +167,196 @@ def retrieve_w2v(embed_file, binary=True, add_unk=True):
         weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
     word2ix = {tok: tok_ix for tok_ix, tok in enumerate(word_list)}
     return word2ix, weights
+
+
+def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, sent_tag=True, defaut_cert='_', is_raw=False):
+    from collections import defaultdict
+    x_data, y_data, sent_stat = [], [], []
+    filename, extension = os.path.splitext(clinical_file)
+    rel_file = filename + '.rel'
+    rel_dic = defaultdict(lambda: [[], []])
+    with open(rel_file, 'r') as rfi:
+        for line in rfi:
+            if not line.strip():
+                continue
+            tail_tid, head_tid, rel = eval(line)
+            rel_dic[tail_tid][0].append(head_tid)
+            rel_dic[tail_tid][1].append(rel)
+
+    with open(clinical_file, 'r') as fi:
+        for index, pre_line in enumerate(fi):
+            # convert number&alphabet to han-kaku for spliting sentences
+            pre_line = mojimoji.zen_to_han(pre_line, kana=False)
+            #             sent_list = ssplit(pre_line)
+            if sent_tag:
+                sent_list = [pre_line]
+            else:
+                sent_list = ssplit(pre_line)
+
+            for line in sent_list:
+
+                try:
+
+                    line = line.strip().replace('\n', '').replace('\r', '')
+
+                    line = line.replace('>>', '>＞').replace('<<', '＜<')
+
+                    if is_raw:
+                        line = line.replace('#', '＃')  # a solution to fix juman casting #
+                        line = line.replace('<', '＜')
+                        line = line.replace('>', '＞')
+                    #                         print()
+                    #                         print(line)
+                    else:
+                        if line in ['<CHEST: CT>',
+                                    '<CHEST>',
+                                    '<胸部CT>',
+                                    '<CHEST；CT>',
+                                    '<CHEST;CT>',
+                                    '<胸部単純CT>',
+                                    '<胸部CT>',
+                                    '<ABD US>', '<Liver>', '<胸部CT>']:
+                            continue
+
+                    if sent_tag:
+                        line = '<sentence>' + line + '</sentence>'
+
+                    if not is_raw:
+                        tag2mask = {}
+                        st = ET.fromstring(line)
+                        toks, labs, cert_labs, ttype_labs, state_labs = [], [], [], [], []
+                        for item in st.iter():
+                            if item.text is not None:
+                                seg = juman.analysis(item.text)
+                                toks += [w.midasi for w in seg.mrph_list()]
+                                if item.tag in ['event', 'TIMEX3',
+                                                'd', 'a', 'f', 'c', 'C', 't', 'r',
+                                                'm-key', 'm-val', 't-test', 't-key', 't-val', 'cc']:
+                                    tag2mask[item.attrib['tid']] = [0] * len(labs) + [1] * len(seg)
+                                    tok_labs = ['I-%s' % (item.tag.capitalize())] * len(seg)
+                                    tok_labs[0] = 'B-%s' % (item.tag.capitalize())
+                                    labs += tok_labs
+                                    if item.tag == 'd' and 'certainty' in item.attrib:
+                                        tok_cert_labs = ['_'] * len(seg)
+                                        tok_cert_labs[0] = item.attrib['certainty']
+                                        cert_labs += tok_cert_labs
+                                    else:
+                                        cert_labs += ['_'] * len(seg)
+
+                                    if item.tag == 'TIMEX3' and 'type' in item.attrib:
+                                        tok_ttype_labs = ['_'] * len(seg)
+                                        tok_ttype_labs[0] = item.attrib['type']
+                                        ttype_labs += tok_ttype_labs
+                                    else:
+                                        ttype_labs += ['_'] * len(seg)
+                                    if item.tag in ['t-test', 'r', 'cc'] and 'state' in item.attrib:
+                                        tok_state_labs = ['_'] * len(seg)
+                                        tok_state_labs[0] = item.attrib['state']
+                                        state_labs += tok_state_labs
+                                    else:
+                                        state_labs += ['_'] * len(seg)
+                                else:
+                                    if item.tag not in ['sentence', 'p']:
+                                        print(item.tag)
+                                    labs += ['O'] * len(seg)
+                                    cert_labs += ['_'] * len(seg)
+                                    ttype_labs += ['_'] * len(seg)
+                                    state_labs += ['_'] * len(seg)
+                            if item.tail is not None:
+                                seg_tail = juman.analysis(item.tail)
+                                toks += [w.midasi for w in seg_tail.mrph_list()]
+                                labs += ['O'] * len(seg_tail)
+                                cert_labs += ['_'] * len(seg_tail)
+                                ttype_labs += ['_'] * len(seg_tail)
+                                state_labs += ['_'] * len(seg_tail)
+                        assert len(toks) == len(labs) == len(cert_labs) == len(ttype_labs) == len(state_labs)
+
+                        sent_stat.append(len(toks))
+
+                        # replace '\u3000' to '[JASP]'
+                        toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
+                        sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
+                        deunk_toks = explore_unk(sbp_toks, toks)
+                        sbp_labs = match_sbp_label(deunk_toks, labs)
+                        sbp_cert_labs = match_sbp_cert_labs(deunk_toks, cert_labs)
+                        sbp_ttype_labs = match_sbp_cert_labs(deunk_toks, ttype_labs)
+                        sbp_state_labs = match_sbp_cert_labs(deunk_toks, state_labs)
+
+                        # calculate tag mask only in the current sentence
+                        for tid, tag_mask in tag2mask.items():
+                            tag2mask[tid] += [0] * (len(toks) - len(tag2mask[tid]))
+                            # tag2mask[tid] = match_bpe_mask(deunk_toks, tag2mask[tid])
+                        tok_tail_list = [str(i) for i in range(len(toks))]
+                        tok_head_list = ["[%i]" % i for i in range(len(toks))]
+                        tok_rel_list = ["['N']" for _ in toks]
+                        for tail_tid, (head_tids, rels) in rel_dic.items():
+                            if tail_tid in tag2mask:
+                                tail_id = return_index_of_last_one(tag2mask[tail_tid])
+                                head_list, rel_list = [], []
+                                for head_tid, rel in zip(head_tids, rels):
+                                    if head_tid in tag2mask:
+                                        head_list.append(return_index_of_last_one(tag2mask[head_tid]))
+                                        rel_list.append(rel)
+                                if head_list and rel_list:
+                                    tok_head_list[tail_id] = str(head_list)
+                                    tok_rel_list[tail_id] = str(rel_list)
+                    else:
+                        print(line)
+                        seg = juman.analysis(line)
+                        toks = [w.midasi for w in seg.mrph_list()]
+                        print(toks)
+                        print()
+                        sent_stat.append(len(toks))
+                        # replace '\u3000' to '[JASP]'
+                        toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
+                        sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
+                        deunk_toks = explore_unk(sbp_toks, toks)
+                        sbp_labs = ['O'] * len(sbp_toks)
+                        sbp_cert_labs = ['_'] * len(sbp_toks)
+                        sbp_ttype_labs = ['_'] * len(sbp_toks)
+                        sbp_state_labs = ['_'] * len(sbp_toks)
+
+                    assert len(sbp_toks) == len(deunk_toks) == len(sbp_labs) == len(sbp_cert_labs) == len(
+                        sbp_ttype_labs) == len(sbp_state_labs)
+
+                    # for d, t, l, cl, tl, sl in zip(deunk_toks, sbp_toks, sbp_labs, sbp_cert_labs, sbp_ttype_labs,
+                    #                                sbp_state_labs):
+                    #     fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (d, t, l, cl, tl, sl))
+                    # fo.write('\n')
+                    fo.write('#doc\n')
+                    for i, t, l, r, h in zip(tok_tail_list, toks, labs, tok_rel_list, tok_head_list):
+                        fo.write('%s\t%s\t%s\t%s\t%s\n' % (i, t, l, r, h))
+                    # fo.write('\n')
+                except Exception as ex:
+
+                    print('[error]' + clinical_file + ': ' + line)
+                    print(ex)
+    #     return index + 1
+    return sent_stat
+
+
+def batch_convert_clinical_data_to_relconll(
+    file_list, file_out, tokenizer,
+    is_separated=True,
+    sent_tag=True,
+    defaut_cert='_',
+    is_raw=False
+):
+    doc_stat = []
+    with open(file_out, 'w') as fo:
+        for file in file_list:
+            file_ext = ".xml" if sent_tag else ".txt"
+            if file.endswith(file_ext):
+                try:
+                    doc_stat.append(convert_clinical_data_to_relconll(
+                        file, fo, tokenizer, sent_tag=sent_tag,
+                        defaut_cert=defaut_cert,
+                        is_raw=is_raw
+                    ))
+                except Exception as ex:
+                    print('[error]:' + file)
+                    print(ex)
+    return doc_stat
 
 
 def convert_clinical_data_to_conll(clinical_file, fo, tokenizer, sent_tag=True, defaut_cert='_', is_raw=False):

@@ -57,7 +57,7 @@ def extract_entity_ids_from_conll_sent(conll_sent):
     entity_cache = [[], 'O']
     prev_bio, prev_tag = 'O', 'N'
     for sent_id, toks in enumerate(conll_sent):
-        bio, tag = toks[BIO_COL].split('-') if len(toks[BIO_COL].split('-')) > 1 else ('O', 'N')
+        bio, tag = toks[BIO_COL].split('-', 1) if len(toks[BIO_COL].split('-', 1)) > 1 else ('O', 'N')
         for head, rel in zip(eval(toks[HEAD_IDS_COL]), eval(toks[RELS_COL])):
             pos_rels[(toks[TOK_ID_COL], str(head))] = rel
         if bio == 'B':
@@ -136,26 +136,10 @@ def extract_rel_data_from_mh_conll(conll_file, down_neg):
         'neg rels:', len([rel for sent_rel in rel_tuples for rel in sent_rel if rel[-1] == 'N'])
     )
     bio2ix = utils.get_label2ix(ner_labs)
-    ne2ix = utils.get_label2ix([[lab.split('-')[-1] for lab in labs if '-' in lab] for labs in ner_labs])
+    ne2ix = utils.get_label2ix([[lab.split('-', 1)[-1] for lab in labs if '-' in lab] for labs in ner_labs])
     rel2ix = utils.get_label2ix([eval(tok[3]) for sent in conll_sents for tok in sent])
 
     return ner_toks, ner_labs, rel_tuples, bio2ix, ne2ix, rel2ix
-
-
-def mask_one_entity(entity_tok_ids):
-    mask_seq = [0] * (int(entity_tok_ids[-1]) + 1)
-    for index in entity_tok_ids:
-        mask_seq[int(index)] = 1
-    return mask_seq
-
-
-def match_bpe_mask(bpe_x, mask):
-    bpe_mask = mask.copy()
-    for i in range(len(bpe_x)):
-        if i > 0 and bpe_x[i].startswith('##'):
-            bpe_mask.insert(i, bpe_mask[i - 1])
-    assert len(bpe_x) == len(bpe_mask)
-    return bpe_mask
 
 
 def convert_rels_to_tensors(ner_toks, ner_labs, rels,
@@ -195,18 +179,18 @@ def convert_rels_to_tensors(ner_toks, ner_labs, rels,
 
         #         sent_tail_masks, sent_tail_labs, sent_head_masks, sent_head_labs, sent_rel_labs = [], [], [], [], []
         for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rels:
-            tail_mask = mask_one_entity(tail_ids)
+            tail_mask = utils.mask_one_entity(tail_ids)
             tail_mask += [pad_id] * (len(sent_toks) - len(tail_mask))
-            sbw_tail_mask = match_bpe_mask(sbw_sent_toks, tail_mask)
+            sbw_tail_mask = utils.match_bpe_mask(sbw_sent_toks, tail_mask)
             sbw_tail_mask_padded = utils.padding_1d(
                 [pad_mask_id] + sbw_tail_mask + [pad_mask_id],
                 max_len + 2,
                 pad_tok=pad_mask_id
             )
 
-            head_mask = mask_one_entity(head_ids)
+            head_mask = utils.mask_one_entity(head_ids)
             head_mask += [pad_id] * (len(sent_toks) - len(head_mask))
-            sbw_head_mask = match_bpe_mask(sbw_sent_toks, head_mask)
+            sbw_head_mask = utils.match_bpe_mask(sbw_sent_toks, head_mask)
             sbw_head_mask_padded = utils.padding_1d(
                 [pad_mask_id] + sbw_head_mask + [pad_mask_id],
                 max_len + 2,
@@ -233,9 +217,9 @@ def convert_rels_to_tensors(ner_toks, ner_labs, rels,
     doc_head_labs_t = torch.tensor(doc_head_labs)
     doc_rel_labs_t = torch.tensor(doc_rel_labs)
 
-    # print(doc_toks_t.shape, doc_attn_masks_t.shape, doc_labs_t.shape)
-    # print(doc_tail_masks_t.shape, doc_tail_labs_t.shape, doc_head_masks_t.shape, doc_head_labs_t.shape,
-    #       doc_rel_labs_t.shape)
+    print(doc_toks_t.shape, doc_attn_masks_t.shape, doc_labs_t.shape)
+    print(doc_tail_masks_t.shape, doc_tail_labs_t.shape, doc_head_masks_t.shape, doc_head_labs_t.shape,
+          doc_rel_labs_t.shape)
 
     return TensorDataset(
         doc_toks_t,
@@ -284,17 +268,30 @@ def eval_rel(model, dataloader, rel2ix, device, is_reported=False, file_out=None
 def main():
     parser = argparse.ArgumentParser(description='PRISM tag recognizer')
 
-    parser.add_argument("--train_file", default="data/CoNLL04/train.txt", type=str,
+    # parser.add_argument("--train_file", default="data/CoNLL04/train.txt", type=str,
+    #                     help="train file, multihead conll format.")
+    #
+    # parser.add_argument("--dev_file", default="data/CoNLL04/dev.txt", type=str,
+    #                     help="dev file, multihead conll format.")
+    #
+    # parser.add_argument("--test_file", default="data/CoNLL04/test.txt", type=str,
+    #                     help="test file, multihead conll format.")
+    #
+    # parser.add_argument("--pretrained_model",
+    #                     default='bert-base-uncased',
+    #                     type=str,
+    #                     help="pre-trained model dir")
+    parser.add_argument("--train_file", default="data/clinical2020Q1/cv1_train.conll", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/CoNLL04/dev.txt", type=str,
+    parser.add_argument("--dev_file", default="data/clinical2020Q1/cv1_dev.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file", default="data/CoNLL04/test.txt", type=str,
+    parser.add_argument("--test_file", default="data/clinical2020Q1/cv1_test.conll", type=str,
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
-                        default='bert-base-uncased',
+                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
                         type=str,
                         help="pre-trained model dir")
 
@@ -336,7 +333,12 @@ def main():
     n_gpu = torch.cuda.device_count()
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
 
-    tokenizer = BertTokenizer.from_pretrained(args.pretrained_model, do_basic_tokenize=False)
+    tokenizer = BertTokenizer.from_pretrained(
+        args.pretrained_model,
+        do_lower_case=False,
+        do_basic_tokenize=False
+    )
+    tokenizer.add_tokens(['[JASP]'])
 
     train_toks, train_labs, train_rels, bio2ix, ne2ix, rel2ix = extract_rel_data_from_mh_conll(args.train_file, args.neg_ratio)
     print(bio2ix)
