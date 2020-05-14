@@ -1,6 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
 import os
+from collections import defaultdict, Counter
+import copy
+import json
 import mojimoji
 from pyknp import Juman
 import xml.etree.ElementTree as ET
@@ -22,17 +23,17 @@ TYPE_COL = 4
 STAT_COL = 5
 
 
-def get_label2ix(y_data, default=None):
+def get_label2ix(y_data, default=None, ignore_lab=None):
     label2ix = default if default is not None else {}
     for line in y_data:
         for label in line:
-            if label not in label2ix:
+            if label not in label2ix and label != ignore_lab:
                 label2ix[label] = len(label2ix)
     return label2ix
 
 
 def padding_1d(seq_1d, max_len, pad_tok=None, direct='right'):
-    tmp_seq_1d = seq_1d.copy()
+    tmp_seq_1d = copy.deepcopy(seq_1d)
     for i in range(0, max_len - len(tmp_seq_1d)):
         if direct in ['right']:
             tmp_seq_1d.append(pad_tok)
@@ -42,7 +43,7 @@ def padding_1d(seq_1d, max_len, pad_tok=None, direct='right'):
 
 
 def padding_2d(seq_2d, max_len, pad_tok=0, direct='right'):
-    tmp_seq_2d = seq_2d.copy()
+    tmp_seq_2d = copy.deepcopy(seq_2d)
     for seq_1d in tmp_seq_2d:
         for i in range(0, max_len - len(seq_1d)):
             if direct in ['right']:
@@ -969,3 +970,634 @@ def eval_modality(file_out):
             gold_tags.append(items[2])
             pred_tags.append(items[3])
     measure_modality_fscore(gold_tags, pred_tags)
+
+
+# clinical_rel.py related
+import pandas as pd
+import csv
+import random
+
+TOK_ID_COL = 0
+TOK_COL = 1
+BIO_COL = 2
+RELS_COL = 3
+HEAD_IDS_COL = 4
+
+
+def read_multihead_conll(file_name):
+    col_name_list = ['token_id', 'token', "BIO", "relation", 'head']
+    conll_data = pd.read_csv(
+        file_name, names=col_name_list, encoding="utf-8",
+        engine='python', sep="\t", quoting=csv.QUOTE_NONE
+    ).values.tolist()
+    return conll_data
+
+
+def convert_multihead_conll_2d_to_3d(list_2d, sep='#doc'):
+    list_3d = []
+    sent_cache = []
+    for entry in list_2d:
+        if entry[0].startswith(sep):
+            if sent_cache:
+                list_3d.append(sent_cache)
+                sent_cache = []
+            continue
+        sent_cache.append(entry)
+    if sent_cache:
+        list_3d.append(sent_cache)
+    return list_3d
+
+
+def extract_entity_ids_from_conll_sent(conll_sent):
+    entity2ids = {}
+    pos_rels = {}
+    entity_cache = [[], 'O']
+    prev_bio, prev_tag = 'O', 'N'
+    for sent_id, toks in enumerate(conll_sent):
+        bio, tag = toks[BIO_COL].split('-', 1) if len(toks[BIO_COL].split('-', 1)) > 1 else ('O', 'N')
+        for head, rel in zip(eval(toks[HEAD_IDS_COL]), eval(toks[RELS_COL])):
+            pos_rels[(toks[TOK_ID_COL], str(head))] = rel
+        if bio == 'B':
+            #             import pdb; pdb.set_trace()
+            if entity_cache[0]:
+                entity2ids[entity_cache[0][-1]] = entity_cache.copy()
+                entity_cache = [[], 'O']
+            entity_cache[0].append(toks[TOK_ID_COL])
+            entity_cache[1] = tag
+        elif bio == 'I':
+            if tag != prev_tag and entity_cache[0]:
+                entity2ids[entity_cache[0][-1]] = entity_cache.copy()
+                entity_cache = [[], 'O']
+            entity_cache[0].append(toks[TOK_ID_COL])
+            entity_cache[1] = tag
+        elif bio == 'O':
+            if prev_bio != 'O' and entity_cache[0]:
+                entity2ids[entity_cache[0][-1]] = entity_cache.copy()
+                entity_cache = [[], 'O']
+        else:
+            raise Exception("[ERROR] Unknown bio tag '%s'.." % bio)
+
+        # if is the last line
+        if sent_id == (len(conll_sent) - 1):
+            if entity_cache[0]:
+                entity2ids[entity_cache[0][-1]] = entity_cache.copy()
+                entity_cache = [[], 'O']
+        else:
+            prev_bio, prev_tag = bio, tag
+    return entity2ids, pos_rels
+
+
+def extract_rels_from_conll_sent(conll_sent, down_neg=1.0):
+    entity2ids, pos_rels = extract_entity_ids_from_conll_sent(conll_sent)
+    keys = list(entity2ids.keys())
+    sent_rels = []
+    for tail_id in range(len(keys)):
+        for head_id in range(len(keys)):
+            if tail_id != head_id:
+                rel = [
+                    entity2ids[keys[tail_id]][0],
+                    entity2ids[keys[tail_id]][1],
+                    entity2ids[keys[head_id]][0],
+                    entity2ids[keys[head_id]][1]
+                ]
+                if (keys[tail_id], keys[head_id]) in pos_rels:
+                    rel.append(pos_rels[(keys[tail_id], keys[head_id])])
+                    sent_rels.append(rel)
+                else:
+                    rel.append('N')
+                    if random.random() < down_neg:
+                        sent_rels.append(rel)
+
+    return sent_rels
+
+
+def max_sents_len(toks, tokenizer):
+    return max([len(tokenizer.tokenize(' '.join(sent_toks))) for sent_toks in toks])
+
+
+def extract_rel_data_from_mh_conll(conll_file, down_neg, del_neg=False):
+    conll_data = read_multihead_conll(conll_file)
+    conll_sents = convert_multihead_conll_2d_to_3d(conll_data)
+    ner_toks = [[tok[1] for tok in sent] for sent in conll_sents]
+    ner_labs = [[tok[2] for tok in sent] for sent in conll_sents]
+
+    rel_tuples = []
+    for sent_id, sent in enumerate(conll_sents):
+        sent_rels = extract_rels_from_conll_sent(sent, down_neg=down_neg)
+        rel_tuples.append(sent_rels)
+    assert len(ner_toks) == len(ner_labs) == len(rel_tuples)
+    print('number of sents:', len(ner_toks))
+    print('number of ne:', len([ner for sent_ner in ner_labs for ner in sent_ner if ner.startswith('B-')]))
+    print(
+        'pos rels:', len([rel for sent_rel in rel_tuples for rel in sent_rel if rel[-1] != 'N']),
+        'neg rels:', len([rel for sent_rel in rel_tuples for rel in sent_rel if rel[-1] == 'N'])
+    )
+    bio2ix = get_label2ix(ner_labs)
+    ne2ix = get_label2ix([[lab.split('-', 1)[-1] for lab in labs if '-' in lab] for labs in ner_labs])
+    if del_neg:
+        rel2ix = get_label2ix([eval(tok[3]) for sent in conll_sents for tok in sent], ignore_lab='N')
+    else:
+        rel2ix = get_label2ix([eval(tok[3]) for sent in conll_sents for tok in sent])
+
+    return ner_toks, ner_labs, rel_tuples, bio2ix, ne2ix, rel2ix
+
+
+def convert_rels_to_tensors(ner_toks, ner_labs, rels,
+                            tokenizer, bio2ix, ne2ix, rel2ix,
+                            max_len,
+                            cls_tok='[CLS]',
+                            sep_tok='[SEP]',
+                            pad_tok='[PAD]',
+                            pad_id=0,
+                            pad_mask_id=0,
+                            pad_lab_id=-1):
+    doc_toks, doc_attn_masks, doc_labs = [], [], []
+    doc_tail_masks, doc_tail_labs, doc_head_masks, doc_head_labs, doc_rel_labs = [], [], [], [], []
+
+    for sent_toks, sent_labs, sent_rels in zip(ner_toks, ner_labs, rels):
+
+        sbw_sent_toks = tokenizer.tokenize(' '.join(sent_toks))
+        sbw_sent_labs = match_sbp_label(sbw_sent_toks, sent_labs)
+        sbw_sent_tok_padded = padding_1d(
+            [cls_tok] + sbw_sent_toks + [sep_tok],
+            max_len + 2,
+            pad_tok=pad_tok)
+
+        sbw_sent_labs_padded = padding_1d(
+            [pad_lab_id] + [bio2ix[lab] for lab in sbw_sent_labs] + [pad_lab_id],
+            max_len + 2,
+            pad_tok=pad_lab_id
+        )
+
+        sbw_sent_attn_mask_padded = padding_1d(
+            [1] * len([cls_tok] + sbw_sent_toks + [sep_tok]),
+            max_len + 2,
+            pad_tok=pad_mask_id
+        )
+
+        sbw_sent_tok_ids_padded = tokenizer.convert_tokens_to_ids(sbw_sent_tok_padded)
+
+        #         sent_tail_masks, sent_tail_labs, sent_head_masks, sent_head_labs, sent_rel_labs = [], [], [], [], []
+        for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rels:
+            tail_mask = mask_one_entity(tail_ids)
+            tail_mask += [pad_id] * (len(sent_toks) - len(tail_mask))
+            sbw_tail_mask = match_bpe_mask(sbw_sent_toks, tail_mask)
+            sbw_tail_mask_padded = padding_1d(
+                [pad_mask_id] + sbw_tail_mask + [pad_mask_id],
+                max_len + 2,
+                pad_tok=pad_mask_id
+            )
+
+            head_mask = mask_one_entity(head_ids)
+            head_mask += [pad_id] * (len(sent_toks) - len(head_mask))
+            sbw_head_mask = match_bpe_mask(sbw_sent_toks, head_mask)
+            sbw_head_mask_padded = padding_1d(
+                [pad_mask_id] + sbw_head_mask + [pad_mask_id],
+                max_len + 2,
+                pad_tok=pad_mask_id
+            )
+
+            # print(tail_lab, head_lab, rel_lab)
+            doc_toks.append(sbw_sent_tok_ids_padded)
+            doc_attn_masks.append(sbw_sent_attn_mask_padded)
+            doc_labs.append(sbw_sent_labs_padded)
+            doc_tail_masks.append(sbw_tail_mask_padded)
+            doc_tail_labs.append(ne2ix[tail_lab])
+            doc_head_masks.append(sbw_head_mask_padded)
+            doc_head_labs.append(ne2ix[head_lab])
+            doc_rel_labs.append(rel2ix[rel_lab])
+
+    doc_toks_t = torch.tensor(doc_toks)
+    doc_attn_masks_t = torch.tensor(doc_attn_masks)
+    doc_labs_t = torch.tensor(doc_labs)
+
+    doc_tail_masks_t = torch.tensor(doc_tail_masks)
+    doc_tail_labs_t = torch.tensor(doc_tail_labs)
+    doc_head_masks_t = torch.tensor(doc_head_masks)
+    doc_head_labs_t = torch.tensor(doc_head_labs)
+    doc_rel_labs_t = torch.tensor(doc_rel_labs)
+
+    print(doc_toks_t.shape, doc_attn_masks_t.shape, doc_labs_t.shape)
+    print(doc_tail_masks_t.shape, doc_tail_labs_t.shape, doc_head_masks_t.shape, doc_head_labs_t.shape,
+          doc_rel_labs_t.shape)
+
+    return TensorDataset(
+        doc_toks_t,
+        doc_attn_masks_t,
+        doc_labs_t,
+        doc_tail_masks_t,
+        doc_tail_labs_t,
+        doc_head_masks_t,
+        doc_head_labs_t,
+        doc_rel_labs_t
+    )
+
+
+# tok_id -> sbw_tok_id
+def align_sbw_ids(sbw_sent_toks):
+    aligned_ids = []
+    for index, token in enumerate(sbw_sent_toks):
+        if token.startswith("##"):
+            aligned_ids[-1].append(index)
+        else:
+            aligned_ids.append([index])
+    return aligned_ids
+
+
+# clinical_mhs.py related
+def convert_rels_to_mhs(ner_toks, ner_labs, rels,
+                        tokenizer, bio2ix, ne2ix, rel2ix,
+                        max_len,
+                        cls_tok='[CLS]',
+                        sep_tok='[SEP]',
+                        pad_tok='[PAD]',
+                        pad_id=0,
+                        pad_mask_id=0,
+                        pad_lab_id=0,
+                        verbose=0):
+    doc_toks, doc_attn_masks, doc_labs = [], [], []
+    rel_count = 0
+    print((len(ner_toks), max_len + 2, max_len + 2, len(rel2ix)))
+    doc_matrix_rels = np.zeros((len(ner_toks), max_len + 2, max_len + 2, len(rel2ix)))
+    doc_matrix_rels[:, :, :, rel2ix['N']] = 1
+    doc_num = len(ner_toks)
+    print("ready to preprocess...")
+    for sent_id, (sent_toks, sent_labs, sent_rels) in enumerate(zip(ner_toks, ner_labs, rels)):
+        sbw_sent_toks = tokenizer.tokenize(' '.join(sent_toks))
+        sbw_sent_labs = match_sbp_label(sbw_sent_toks, sent_labs)
+        sbw_sent_tok_padded = padding_1d(
+            [cls_tok] + sbw_sent_toks + [sep_tok],
+            max_len + 2,
+            pad_tok=pad_tok)
+        aligned_ids = align_sbw_ids([cls_tok] + sbw_sent_toks + [sep_tok])
+
+        assert len(aligned_ids) == (len(sent_toks) + 2)
+        # print(aligned_ids)
+        sbw_sent_labs_padded = padding_1d(
+            [bio2ix[lab] for lab in (['O'] + sbw_sent_labs + ['O'])],
+            max_len + 2,
+            pad_tok=pad_lab_id
+        )
+
+        sbw_sent_attn_mask_padded = padding_1d(
+            [1] * (len(sbw_sent_toks) + 2),
+            max_len + 2,
+            pad_tok=pad_mask_id
+        )
+
+        sbw_sent_tok_ids_padded = tokenizer.convert_tokens_to_ids(sbw_sent_tok_padded)
+
+        if verbose:
+            print("sent_id: {}/{}".format(sent_id, doc_num))
+            print(["{}: {}".format(index, tok) for index, tok in enumerate([cls_tok] + sbw_sent_toks + [sep_tok])])
+            print(["{}: {}".format(index, lab) for index, lab in enumerate(['O'] + sbw_sent_labs + ['O'])])
+
+        # align entity_ids in sent_rels
+        for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rels:
+            tail_last_id = aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+            head_last_id = aligned_ids[int(head_ids[-1]) + 1][-1]   # with the begining [CLS] + 1
+            doc_matrix_rels[sent_id][tail_last_id][head_last_id][rel2ix[rel_lab]] = 1
+            doc_matrix_rels[sent_id][tail_last_id][head_last_id][rel2ix['N']] = 0
+            if verbose:
+                print((tail_last_id, rel_lab, head_last_id))
+            rel_count += 1
+        if verbose:
+            print()
+        assert len(sbw_sent_tok_ids_padded) == len(sbw_sent_attn_mask_padded) == len(sbw_sent_labs_padded)
+        doc_toks.append(sbw_sent_tok_ids_padded)
+        doc_attn_masks.append(sbw_sent_attn_mask_padded)
+        doc_labs.append(sbw_sent_labs_padded)
+    print("ready to tensor list/numpy")
+    doc_id_t = torch.tensor(list(range(len(ner_toks))))  # add sent_id into batch data
+    doc_toks_t = torch.tensor(doc_toks)
+    doc_labs_t = torch.tensor(doc_labs)
+    doc_attn_masks_t = torch.tensor(doc_attn_masks)
+    doc_matrix_rels_t = torch.from_numpy(doc_matrix_rels)
+
+    print(doc_toks_t.shape, doc_attn_masks_t.shape, doc_labs_t.shape, doc_matrix_rels_t.shape)
+    print("positive rel count:", rel_count)
+    print()
+    return TensorDataset(
+        doc_id_t,
+        doc_toks_t,
+        doc_attn_masks_t,
+        doc_labs_t,
+        doc_matrix_rels_t
+    )
+
+
+# clinical_mhs.py related
+def convert_rels_to_mhs_v2(
+        ner_toks, ner_labs, rels,
+        tokenizer, bio2ix, rel2ix,
+        max_len,
+        cls_tok='[CLS]',
+        sep_tok='[SEP]',
+        pad_tok='[PAD]',
+        pad_id=0,
+        pad_mask_id=0,
+        pad_lab_id=0,
+        verbose=0
+):
+    doc_tok, doc_attn_mask, doc_lab, doc_rel, doc_spo = [], [], [], [], []
+    rel_count = 0
+    cls_max_len = max_len + 2  # wrap data with two additional token [CLS] and [SEP]
+    print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
+    doc_num = len(ner_toks)
+    print("ready to preprocess...")
+    for sent_id, (sent_toks, sent_labs, sent_rels) in enumerate(zip(ner_toks, ner_labs, rels)):
+
+        # wrapping data with [CLS] and [SEP]
+        sbw_sent_tok = tokenizer.tokenize(' '.join(sent_toks))
+        sbw_sent_lab = match_sbp_label(sbw_sent_tok, sent_labs)
+
+        cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
+        cls_sbw_sent_lab = ['O'] + sbw_sent_lab + ['O']
+        cls_sbw_sent_mask = [1] * len(cls_sbw_sent_tok)
+
+        assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_lab) == len([1] * len(cls_sbw_sent_mask))
+
+        if verbose:
+            print("sent_id: {}/{}".format(sent_id, doc_num))
+            print(["{}: {}".format(index, tok) for index, tok in enumerate(cls_sbw_sent_tok)])
+            print(["{}: {}".format(index, lab) for index, lab in enumerate(cls_sbw_sent_lab)])
+
+        # preparing rel data
+        sent_rel, sent_spo = [], []
+        # align entity_ids in sent_rels
+        cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
+        assert len(cls_aligned_ids) == (len(sent_toks) + 2)
+        for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rels:
+            tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+            head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]   # with the begining [CLS] + 1
+            rel_item = (tail_last_id, head_last_id, rel_lab)
+            sent_rel.append(rel_item)
+            sbw_tail_tok = [cls_sbw_sent_tok[a_i] for o_i in tail_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
+            sbw_head_tok = [cls_sbw_sent_tok[a_i] for o_i in head_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
+            spo_item = {'subject': sbw_tail_tok, 'predicate': rel_lab, 'object': sbw_head_tok}
+            sent_spo.append(spo_item)
+            if verbose:
+                print(rel_item)
+                print(["{}: {}".format(ix, a_i) for ix, a_i in enumerate(cls_aligned_ids)])
+                print((tail_ids, rel_lab, head_ids))
+                print(spo_item)
+            rel_count += 1
+        if verbose:
+            print()
+        doc_tok.append(cls_sbw_sent_tok)
+        doc_attn_mask.append(cls_sbw_sent_mask)
+        doc_lab.append(cls_sbw_sent_lab)
+        doc_rel.append(sent_rel)
+        doc_spo.append(sent_spo)
+
+    assert len(doc_tok) == len(doc_attn_mask) == len(doc_lab) == len(doc_rel)
+    print("ready to tensor list/numpy")
+    doc_ix_t = torch.tensor(list(range(len(ner_toks))))  # add sent_id into batch data
+
+    # padding data to cls_max_len
+    padded_doc_tok_ix_t = torch.tensor(
+        [tokenizer.convert_tokens_to_ids(padding_1d(
+                sent_tok,
+                cls_max_len,
+                pad_tok=pad_tok
+        )) for sent_tok in doc_tok]
+    )
+    padded_doc_lab_ix_t = torch.tensor(
+        [padding_1d(
+            [bio2ix[lab] for lab in sent_lab],
+            cls_max_len,
+            pad_tok=pad_lab_id
+        ) for sent_lab in doc_lab]
+    )
+    padded_doc_attn_mask_t = torch.tensor(
+        [padding_1d(
+            sent_mask,
+            cls_max_len,
+            pad_tok=pad_mask_id
+        ) for sent_mask in doc_attn_mask]
+    )
+
+    print(padded_doc_tok_ix_t.shape, padded_doc_attn_mask_t.shape, padded_doc_lab_ix_t.shape, len(doc_rel))
+    print("positive rel count:", rel_count)
+    print()
+    return TensorDataset(
+        doc_ix_t,
+        padded_doc_tok_ix_t,
+        padded_doc_attn_mask_t,
+        padded_doc_lab_ix_t,
+    ), doc_tok, doc_lab, doc_rel, doc_spo
+
+
+def gen_relmat(doc_rel, sent_ids, max_len, rel2ix, del_neg=False):
+    if del_neg:
+        relmat = torch.zeros(len(sent_ids), max_len, len(rel2ix), max_len)
+        for b_id, sent_id in enumerate(sent_ids):
+            for (tail_last_id, head_last_id, rel) in doc_rel[sent_id]:
+                if rel != 'N':
+                    relmat[b_id][tail_last_id][rel2ix[rel] - 1][head_last_id] = 1
+        return relmat
+    else:
+        relmat = torch.zeros(len(sent_ids), max_len, len(rel2ix), max_len)
+        relmat[:, :, rel2ix['N'], :] = 1
+        for b_id, sent_id in enumerate(sent_ids):
+            for (tail_last_id, head_last_id, rel) in doc_rel[sent_id]:
+                if rel != 'N':
+                    relmat[b_id][tail_last_id][rel2ix[rel]][head_last_id] = 1
+                    relmat[b_id][tail_last_id][rel2ix['N']][head_last_id] = 0
+        return relmat
+
+
+def convert_rels_to_pmhs(ner_toks, ner_labs, rels,
+                         tokenizer, rel2ix, out_file, word_vocab):
+    print("writing pmhs out_file: {}".format(out_file))
+    with open(out_file, 'w') as fo:
+        for sent_id, (sent_toks, sent_labs, sent_rels) in enumerate(zip(ner_toks, ner_labs, rels)):
+            sent_out = {}
+            sbw_sent_toks = tokenizer.tokenize(' '.join(sent_toks))
+            sbw_sent_labs = match_sbp_label(sbw_sent_toks, sent_labs)
+
+            assert len(sbw_sent_toks) == len(sbw_sent_labs)
+            aligned_ids = align_sbw_ids(sbw_sent_toks)
+            word_vocab.update(sbw_sent_toks)
+            sent_out["text"] = sbw_sent_toks
+            sent_out["spo_list"] = []
+            sent_out["bio"] = [lab.split('-')[0] for lab in sbw_sent_labs]
+            sent_out["selection"] = []
+
+            assert len(aligned_ids) == len(sent_toks)
+            # print(aligned_ids)
+
+            # align entity_ids in sent_rels
+            for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rels:
+                tail_last_sbw_id = aligned_ids[int(tail_ids[-1])][-1]  # with the begining [CLS] + 1
+                head_last_sbw_id = aligned_ids[int(head_ids[-1])][-1]  # with the begining [CLS] + 1
+                tail_sbw = [sbw_sent_toks[sbw_id] for tok_id in tail_ids for sbw_id in aligned_ids[int(tok_id)]]
+                head_sbw = [sbw_sent_toks[sbw_id] for tok_id in head_ids for sbw_id in aligned_ids[int(tok_id)]]
+                spo = {"subject": tail_sbw, "predicate": rel_lab, "object": head_sbw}
+                sent_out["spo_list"].append(spo)
+                selection = {"subject": tail_last_sbw_id, "predicate": rel2ix[rel_lab], "object": head_last_sbw_id}
+                sent_out["selection"].append(selection)
+            fo.write("{}\n".format(json.dumps(sent_out, ensure_ascii=False)))
+
+
+def gen_vocab(word_vocab, vocab_file, min_freq=1):
+    result = {'<pad>': 0}
+    i = 1
+    for k, v in word_vocab.items():
+        if v > min_freq:
+            result[k] = i
+            i += 1
+    result['oov'] = i
+    json.dump(result, open(vocab_file, 'w'), ensure_ascii=False)
+
+
+def calculate_f1(tps, fps, fns):
+    p = 0. if not (tps + fps) else (tps / (tps + fps))
+    r = 0. if not (tps + fns) else (tps / (tps + fns))
+    f1 = 0. if not (p + r) else (2 * p * r / (p + r))
+    return p, r, f1
+
+
+def evaluate_tuples(pred_tuples, gold_tuples, ix2rel, rel_col=-1):
+    # eval_dic[rel] = [tps, fps, fns]
+    tps_id = 0
+    fps_id = 1
+    fns_id = 2
+    eval_dic = defaultdict(lambda: [0, 0, 0])
+    for g_t in gold_tuples:
+        g_rel = ix2rel[g_t[rel_col]] if isinstance(g_t[rel_col], int) else g_t[rel_col]
+        if g_rel in ['N', 'O']:
+            continue
+        if g_t in pred_tuples:
+            eval_dic[g_rel][tps_id] += 1
+            pred_tuples.remove(g_t)
+        else:
+            eval_dic[g_rel][fns_id] += 1
+    for p_t in pred_tuples:
+        p_rel = ix2rel[p_t[rel_col]] if isinstance(p_t[rel_col], int) else p_t[rel_col]
+        if p_rel in ['N', 'O']:
+            continue
+        eval_dic[p_rel][fps_id] += 1
+
+    print()
+    for rel, (rel_tps, rel_fps, rel_fns) in eval_dic.items():
+        p, r, f1 = calculate_f1(rel_tps, rel_fps, rel_fns)
+        print("\t{:>12}, p {:.6f}, r {:.6f}, f1 {:.6f}, (tps {:d}, fps {:d}, fns {:d})".format(
+            rel,
+            p, r, f1,
+            rel_tps, rel_fps, rel_fns
+        ))
+
+    all_tps = sum([v[tps_id] for v in eval_dic.values()])
+    all_fps = sum([v[fps_id] for v in eval_dic.values()])
+    all_fns = sum([v[fns_id] for v in eval_dic.values()])
+    all_p, all_r, all_f1 = calculate_f1(all_tps, all_fps, all_fns)
+    print("overall, p %.6f, r %.6f, f1 %.6f, (tps %i, fps %i, fns %i)\n" % (
+        all_p, all_r, all_f1,
+        all_tps, all_fps, all_fns
+    ))
+
+
+def sent_ner2tuple(sent_id, sent_ner):
+    ent_output = []  # [[sent_id, ent_ids, ent_lab], ...]
+    ent_cache = [[], 'O']  # [ent_ids, ent_lab]
+
+    for tok_id, tok_ner in enumerate(sent_ner):
+        if tok_ner.split('-')[0] in ['B']:
+            if ent_cache[0]:
+                ent_output.append(ent_cache)
+            ent_cache = [[tok_id], tok_ner.split('-')[-1]]
+        elif tok_ner.split('-')[0] in ['I']:
+            if tok_ner.split('-')[-1] == ent_cache[-1]:
+                ent_cache[0].append(tok_id)
+            else:
+                if ent_cache[0]:
+                    ent_output.append(ent_cache)
+                ent_cache = [[tok_id], tok_ner.split('-')[-1]]
+        elif tok_ner == 'O':
+            if ent_cache[0]:
+                ent_output.append(ent_cache)
+            ent_cache = [[tok_id], 'O']
+        else:
+            raise Exception("[ERROR] Unknown ner label '%i' '%s'..." % (tok_id, tok_ner))
+    if ent_cache[0]:
+        ent_output.append(ent_cache)
+    return [[sent_id] + tuple for tuple in ent_output]
+
+
+def ner2tuple(sent_ids, ners):
+    ner_tuples = []
+    assert len(sent_ids) == len(ners)
+    for sent_id, sent_ner in zip(sent_ids, ners):
+        ner_tuples += sent_ner2tuple(sent_id, sent_ner)
+    return ner_tuples
+
+
+def freeze_bert_layers(model, bert_name='encoder', freeze_embed=False, layer_list=None):
+
+    layer_prefixes = ["%s.encoder.layer.%i." % (bert_name, i) for i in layer_list]
+
+    for n, p in list(model.named_parameters()):
+
+        if freeze_embed:
+            if n.startswith("%s.embeddings" % bert_name):
+                p.requires_grad = False
+        else:
+            if n.startswith("%s.embeddings" % bert_name):
+                p.requires_grad = True
+
+        if any(n.startswith(prefix) for prefix in layer_prefixes):
+            p.requires_grad = False
+        else:
+            p.requires_grad = True
+
+
+class TupleEvaluator(object):
+    # eval_dic[rel] = [tps, fps, fns]
+    def __init__(self):
+        self.tps_id = 0
+        self.fps_id = 1
+        self.fns_id = 2
+        self.eval_dic = defaultdict(lambda: [1e-10, 1e-10, 1e-10])
+
+    def reset(self):
+        self.eval_dic = defaultdict(lambda: [1e-10, 1e-10, 1e-10])
+
+    def update(self, gold_tuples, pred_tuples, rel_col=-1):
+        for g_t in gold_tuples:
+            g_rel = g_t[rel_col]
+            if g_rel in ['N', 'O']:
+                continue
+            if g_t in pred_tuples:
+                self.eval_dic[g_rel][self.tps_id] += 1
+                pred_tuples.remove(g_t)
+            else:
+                self.eval_dic[g_rel][self.fns_id] += 1
+        for p_t in pred_tuples:
+            p_rel = p_t[rel_col]
+            if p_rel in ['N', 'O']:
+                continue
+            self.eval_dic[p_rel][self.fps_id] += 1
+
+    def print_results(self, message, print_details, print_general):
+
+        all_tps = sum([v[self.tps_id] for v in self.eval_dic.values()])
+        all_fps = sum([v[self.fps_id] for v in self.eval_dic.values()])
+        all_fns = sum([v[self.fns_id] for v in self.eval_dic.values()])
+        all_p, all_r, all_f1 = calculate_f1(all_tps, all_fps, all_fns)
+        if print_general:
+            print("{}, overall, p {:.6f}, r {:.6f}, f1 {:.6f}, (tps {:.0f}, fps {:.0f}, fns {:.0f})\n".format(
+                message,
+                all_p, all_r, all_f1,
+                all_tps, all_fps, all_fns
+            ))
+
+        if print_details:
+            for rel, (rel_tps, rel_fps, rel_fns) in self.eval_dic.items():
+                p, r, f1 = calculate_f1(rel_tps, rel_fps, rel_fns)
+                print("\t{:>12}, p {:.6f}, r {:.6f}, f1 {:.6f}, (tps {:.0f}, fps {:.0f}, fns {:.0f})".format(
+                    rel,
+                    p, r, f1,
+                    rel_tps, rel_fps, rel_fns
+                ))
+        return all_f1

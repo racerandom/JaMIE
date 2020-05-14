@@ -21,24 +21,6 @@ juman = Juman()
 
 torch.cuda.manual_seed_all(1234)
 
-def freeze_bert_layers(model, bert_name='bert', freeze_embed=False, layer_list=None):
-
-    layer_prefixes = ["%s.encoder.layer.%i." % (bert_name, i) for i in layer_list]
-
-    for n, p in list(model.named_parameters()):
-
-        if freeze_embed:
-            if n.startswith("%s.embeddings" % bert_name):
-                p.requires_grad = False
-        else:
-            if n.startswith("%s.embeddings" % bert_name):
-                p.requires_grad = True
-
-        if any(n.startswith(prefix) for prefix in layer_prefixes):
-            p.requires_grad = False
-        else:
-            p.requires_grad = True
-
 
 def pulse_freeze_bert(model, pulse_delta, bert_name='bert', freeze_embed=False):
 
