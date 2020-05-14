@@ -340,7 +340,7 @@ def main():
                 loss.item(), ner_loss.item(), rel_loss.item(), epoch, args.num_epoch
             ))
 
-            if epoch > 3:
+            if epoch > 5:
                 if ((step + 1) % args.save_step_interval == 0) or (step == num_epoch_steps - 1):
                     dev_ner_f1, dev_rel_f1 = eval(model, dev_dataloader, dev_tok, dev_lab, dev_rel, dev_spo, bio2ix,
                                                   rel2ix, cls_max_len, device, "dev dataset",

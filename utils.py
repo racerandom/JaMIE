@@ -1579,25 +1579,35 @@ class TupleEvaluator(object):
                 continue
             self.eval_dic[p_rel][self.fps_id] += 1
 
-    def print_results(self, message, print_details, print_general):
+    def print_results(self, message, print_details, print_general, f1_mode='macro'):
 
-        all_tps = sum([v[self.tps_id] for v in self.eval_dic.values()])
-        all_fps = sum([v[self.fps_id] for v in self.eval_dic.values()])
-        all_fns = sum([v[self.fns_id] for v in self.eval_dic.values()])
-        all_p, all_r, all_f1 = calculate_f1(all_tps, all_fps, all_fns)
-        if print_general:
-            print("{}, overall, p {:.6f}, r {:.6f}, f1 {:.6f}, (tps {:.0f}, fps {:.0f}, fns {:.0f})\n".format(
-                message,
-                all_p, all_r, all_f1,
-                all_tps, all_fps, all_fns
-            ))
-
-        if print_details:
-            for rel, (rel_tps, rel_fps, rel_fns) in self.eval_dic.items():
-                p, r, f1 = calculate_f1(rel_tps, rel_fps, rel_fns)
+        class_scores = {}
+        for rel, (rel_tps, rel_fps, rel_fns) in self.eval_dic.items():
+            p, r, f1 = calculate_f1(rel_tps, rel_fps, rel_fns)
+            class_scores[rel] = (p, r, f1)
+            if print_details:
                 print("\t{:>12}, p {:.6f}, r {:.6f}, f1 {:.6f}, (tps {:.0f}, fps {:.0f}, fns {:.0f})".format(
                     rel,
                     p, r, f1,
                     rel_tps, rel_fps, rel_fns
                 ))
+
+        if f1_mode == 'micro':
+            all_tps = sum([v[self.tps_id] for v in self.eval_dic.values()])
+            all_fps = sum([v[self.fps_id] for v in self.eval_dic.values()])
+            all_fns = sum([v[self.fns_id] for v in self.eval_dic.values()])
+            all_p, all_r, all_f1 = calculate_f1(all_tps, all_fps, all_fns)
+        elif f1_mode == 'macro':
+            all_p = sum([v[0] for k, v in class_scores.items()]) / len(class_scores)
+            all_r = sum([v[1] for k, v in class_scores.items()]) / len(class_scores)
+            all_f1 = sum([v[2] for k, v in class_scores.items()]) / len(class_scores)
+        else:
+            raise Exception("Unknown f1_model: {} ...".format(f1_mode))
+
+        if print_general:
+            print("{}, {}, overall, p {:.6f}, r {:.6f}, f1 {:.6f}\n".format(
+                message, f1_mode,
+                all_p, all_r, all_f1
+            ))
+
         return all_f1
