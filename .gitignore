@@ -5,6 +5,7 @@ lm_finetuning/
 scripts/
 outputs/
 data/
+tmp/
 resources/
 .idea/
 bert_seq*
