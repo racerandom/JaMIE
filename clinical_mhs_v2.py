@@ -68,45 +68,45 @@ def eval(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio2ix,
 def main():
     parser = argparse.ArgumentParser(description='PRISM mhs recognizer')
 
-    parser.add_argument("--train_file", default="data/CoNLL04/train.txt", type=str,
-                        help="train file, multihead conll format.")
-
-    parser.add_argument("--dev_file", default="data/CoNLL04/dev.txt", type=str,
-                        help="dev file, multihead conll format.")
-
-    parser.add_argument("--test_file", default="data/CoNLL04/test.txt", type=str,
-                        help="test file, multihead conll format.")
-
-    parser.add_argument("--pretrained_model",
-                        default='bert-base-uncased',
-                        type=str,
-                        help="pre-trained model dir")
-
-    parser.add_argument("--do_lower_case",
-                        # action='store_True',
-                        default=True,
-                        type=bool,
-                        help="tokenizer: do_lower_case")
-
-    # parser.add_argument("--train_file", default="data/clinical2020Q1/cv4_train.conll", type=str,
+    # parser.add_argument("--train_file", default="data/CoNLL04/train.txt", type=str,
     #                     help="train file, multihead conll format.")
     #
-    # parser.add_argument("--dev_file", default="data/clinical2020Q1/cv4_dev.conll", type=str,
+    # parser.add_argument("--dev_file", default="data/CoNLL04/dev.txt", type=str,
     #                     help="dev file, multihead conll format.")
     #
-    # parser.add_argument("--test_file", default="data/clinical2020Q1/cv4_test.conll", type=str,
+    # parser.add_argument("--test_file", default="data/CoNLL04/test.txt", type=str,
     #                     help="test file, multihead conll format.")
     #
     # parser.add_argument("--pretrained_model",
-    #                     default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
+    #                     default='bert-base-uncased',
     #                     type=str,
     #                     help="pre-trained model dir")
     #
     # parser.add_argument("--do_lower_case",
     #                     # action='store_True',
-    #                     default=False,
+    #                     default=True,
     #                     type=bool,
     #                     help="tokenizer: do_lower_case")
+
+    parser.add_argument("--train_file", default="data/clinical2020Q1/cv0_train.conll", type=str,
+                        help="train file, multihead conll format.")
+
+    parser.add_argument("--dev_file", default="data/clinical2020Q1/cv0_dev.conll", type=str,
+                        help="dev file, multihead conll format.")
+
+    parser.add_argument("--test_file", default="data/clinical2020Q1/cv0_test.conll", type=str,
+                        help="test file, multihead conll format.")
+
+    parser.add_argument("--pretrained_model",
+                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
+                        type=str,
+                        help="pre-trained model dir")
+
+    parser.add_argument("--do_lower_case",
+                        # action='store_True',
+                        default=False,
+                        type=bool,
+                        help="tokenizer: do_lower_case")
 
     parser.add_argument("--save_model", default='checkpoints/mhs/', type=str,
                         help="save/load model dir")
