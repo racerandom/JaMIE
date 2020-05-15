@@ -1506,14 +1506,14 @@ def sent_ner2tuple(sent_id, sent_ner):
         if tok_ner.split('-')[0] in ['B']:
             if ent_cache[0]:
                 ent_output.append(ent_cache)
-            ent_cache = [[tok_id], tok_ner.split('-')[-1]]
+            ent_cache = [[tok_id], '-'.join(tok_ner.split('-')[1:])]
         elif tok_ner.split('-')[0] in ['I']:
-            if tok_ner.split('-')[-1] == ent_cache[-1]:
+            if '-'.join(tok_ner.split('-')[1:]) == ent_cache[-1]:
                 ent_cache[0].append(tok_id)
             else:
                 if ent_cache[0]:
                     ent_output.append(ent_cache)
-                ent_cache = [[tok_id], tok_ner.split('-')[-1]]
+                ent_cache = [[tok_id], '-'.join(tok_ner.split('-')[1:])]
         elif tok_ner == 'O':
             if ent_cache[0]:
                 ent_output.append(ent_cache)
