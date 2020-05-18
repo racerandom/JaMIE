@@ -151,6 +151,14 @@ def main():
                         type=bool,
                         help="eval each epoch")
 
+    parser.add_argument("--fp16",
+                        action='store_true',
+                        help="fp16")
+
+    parser.add_argument("--fp16_opt_level", type=str, default="O2",
+                        help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
+                             "See details at https://nvidia.github.io/apex/amp.html")
+
     args = parser.parse_args()
 
     print(args)
@@ -249,6 +257,7 @@ def main():
         rel_emb_size=300,
         relation_vocab=rel2ix,
     )
+    model.encoder.resize_token_embeddings(len(tokenizer))
 
     param_optimizer = list(model.named_parameters())
     encoder_name_list = ['encoder']
@@ -256,7 +265,7 @@ def main():
     optimizer_grouped_parameters = [
         {
             'params': [p for n, p in param_optimizer if any(nd in n for nd in encoder_name_list)],
-            'lr': 5e-5
+            'lr': args.lr
         },
         {
             'params': [p for n, p in param_optimizer if any(nd in n for nd in crf_name_list)],
@@ -281,8 +290,14 @@ def main():
             num_training_steps=num_training_steps
         )
 
-    model.encoder.resize_token_embeddings(len(tokenizer))
     model.to(device)
+
+    if args.fp16:
+        try:
+            from apex import amp
+        except ImportError:
+            raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
+        model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
     best_dev_f1 = float('-inf')
 
@@ -338,8 +353,18 @@ def main():
             ner_loss = output['crf_loss']
             rel_loss = output['selection_loss']
             loss = output['loss']
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+
+            if args.fp16:
+                with amp.scale_loss(loss, optimizer) as scaled_loss:
+                    scaled_loss.backward()
+            else:
+                loss.backward()
+
+            if args.fp16:
+                torch.nn.utils.clip_grad_norm_(amp.master_params(optimizer), args.max_grad_norm)
+            else:
+                torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+
             optimizer.step()
             if args.scheduled_lr:
                 scheduler.step()
