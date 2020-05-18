@@ -62,7 +62,8 @@ def eval(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio2ix,
 
         ner_f1 = ner_evaluator.print_results(message, print_details=ner_details, print_general=print_general, f1_mode=f1_mode)
         rel_f1 = rel_evaluator.print_results(message, print_details=rel_details, print_general=print_general, f1_mode=f1_mode)
-        return ner_f1, rel_f1
+        f1 = (ner_f1 + rel_f1) / 2
+        return f1, ner_f1, rel_f1
 
 
 def main():
@@ -303,7 +304,8 @@ def main():
             raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
         model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
-    best_dev_f1 = float('-inf')
+    # (f1, NER_F1, REL_F1)
+    best_dev_f1 = (float('-inf'), float('-inf'), float('-inf'))
 
     for param_group in optimizer.param_groups:
         print(param_group['lr'])
@@ -383,17 +385,23 @@ def main():
 
             if epoch > 5:
                 if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
-                    dev_ner_f1, dev_rel_f1 = eval(model, dev_dataloader, dev_tok, dev_lab, dev_rel, dev_spo, bio2ix,
-                                                  rel2ix, cls_max_len, device, "dev dataset",
-                                                  ner_details=False, rel_details=False, print_general=False, verbose=0)
-                    dev_f1 = (dev_ner_f1 + dev_rel_f1) / 2
+                    dev_f1 = eval(model, dev_dataloader, dev_tok, dev_lab, dev_rel, dev_spo, bio2ix,
+                                  rel2ix, cls_max_len, device, "dev dataset",
+                                  ner_details=False, rel_details=False, print_general=False, verbose=0)
 
-                    if best_dev_f1 < dev_f1:
-                        print("best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
-                            best_dev_f1,
-                            dev_f1,
-                            args.save_model
-                        ))
+                    if best_dev_f1[0] < dev_f1[0]:
+                        print(
+                            " -> Previous best dev f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; \n"
+                            "Current f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; best model saved '{}'".format(
+                                best_dev_f1[0],
+                                best_dev_f1[1],
+                                best_dev_f1[2],
+                                dev_f1[0],
+                                dev_f1[1],
+                                dev_f1[2],
+                                args.save_model
+                            )
+                        )
                         best_dev_f1 = dev_f1
 
                         """ save the best model """
