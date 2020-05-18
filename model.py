@@ -286,17 +286,17 @@ class MultiHeadSelection(nn.Module):
         self.crf_emission = nn.Linear(hidden_size, bio_num)
 
         self.mhs_u = nn.Linear(hidden_size + bio_emb_size,
-                                     rel_emb_size, bias=False)
+                               rel_emb_size, bias=False)
         self.mhs_v = nn.Linear(hidden_size + bio_emb_size,
-                                     rel_emb_size, bias=False)
+                               rel_emb_size, bias=False)
         self.mhs_uv = nn.Linear(2 * rel_emb_size,
-                                      rel_emb_size)
+                                rel_emb_size)
 
         self.sel_u_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + bio_emb_size))
         nn.init.kaiming_uniform_(self.sel_u_mat, a=math.sqrt(5))
 
-        self.sel_w_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + bio_emb_size))
-        nn.init.kaiming_uniform_(self.sel_w_mat, a=math.sqrt(5))
+        self.sel_v_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + bio_emb_size))
+        nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
 
         self.relation_vocab = relation_vocab
         self.bio_vocab = bio_vocab
@@ -365,18 +365,19 @@ class MultiHeadSelection(nn.Module):
         o = torch.cat((o, tag_emb), dim=2)
 
         # forward multi head selection
-        u = self.mhs_u(o).unsqueeze(1).expand(B, L, L, -1)
-        v = self.mhs_v(o).unsqueeze(2).expand(B, L, L, -1)
-        # uv = self.activation(torch.cat((u, v), dim=-1))
-        # uv = self.activation(self.selection_uv())
-        uv = self.activation(u + v)
+        # u = self.mhs_u(o).unsqueeze(1).expand(B, L, L, -1)
+        # v = self.mhs_v(o).unsqueeze(2).expand(B, L, L, -1)
+        # # uv = self.activation(torch.cat((u, v), dim=-1))
+        # # uv = self.activation(self.selection_uv())
+        # uv = self.activation(u + v)
+        # uv = self.activation(torch.cat((u, v, (u - v).abs()), dim=-1))
         # # correct one
 
         # word representations: [b, l, r_s]
         # broadcast sum: [b, l, 1, h] + [b, 1, l, h] = [b, l, l, h]
-        # sel_u_out = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
-        # sel_w_out = o.matmul(self.sel_w_mat.t())  # [b, l, h_s] -> [b, l, r_s]
-        # uv = self.activation(sel_u_out.unsqueeze(2) + sel_w_out.unsqueeze(1))
+        u = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
+        v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
+        uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
 
         selection_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
 
