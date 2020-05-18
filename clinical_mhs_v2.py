@@ -392,7 +392,7 @@ def main():
                     if best_dev_f1[0] < dev_f1[0]:
                         print(
                             " -> Previous best dev f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; \n"
-                            "Current f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; best model saved '{}'".format(
+                            " >> Current f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; best model saved '{}'".format(
                                 best_dev_f1[0],
                                 best_dev_f1[1],
                                 best_dev_f1[2],
