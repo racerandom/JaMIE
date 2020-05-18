@@ -2,11 +2,13 @@
 # coding: utf-8
 import warnings
 from tqdm import tqdm
+from prefetch_generator import BackgroundGenerator
 from utils import *
-from torch.utils.data import Dataset, DataLoader, TensorDataset
+from torch.utils.data import Dataset, DataLoader, RandomSampler, TensorDataset
 from transformers import *
 import argparse
 import random
+import math
 
 from model import *
 
@@ -47,7 +49,7 @@ python input arguments
 
 parser = argparse.ArgumentParser(description='PRISM tag recognizer')
 
-parser.add_argument("-m", "--model", dest="MODEL_DIR", default='checkpoints/ner', type=str,
+parser.add_argument("-m", "--model", dest="MODEL_DIR", default='checkpoints/Dokuei2019', type=str,
                     help="save/load model dir")
 
 parser.add_argument("--train_file", dest="TRAIN_FILE", type=str,
@@ -70,7 +72,7 @@ parser.add_argument("-b", "--batch", dest="BATCH_SIZE", default=16, type=int,
 parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=3, type=int,
                     help="epoch number")
 
-parser.add_argument("--freeze", dest="EPOCH_FREEZE", default=12, type=int,
+parser.add_argument("--freeze", dest="EPOCH_FREEZE", default=6, type=int,
                     help="freeze the BERT encoder after N epoches")
 
 parser.add_argument("--bottomup_freeze",
@@ -80,6 +82,7 @@ parser.add_argument("--bottomup_freeze",
 parser.add_argument("--pulse_freeze",
                     action='store_true',
                     help="pulsely freeze all BERT layers")
+
 parser.add_argument("--pulse_bottomup_freeze",
                     action='store_true',
                     help="pulse freeze the BERT layers from bottom to top")
@@ -88,7 +91,7 @@ parser.add_argument("--freeze_embed",
                     action='store_true',
                     help="whether freeze the embedding layer")
 
-parser.add_argument("--fine_epoch", dest="NUM_FINE_EPOCHS", default=5, type=int,
+parser.add_argument("--fine_epoch", dest="NUM_FINE_EPOCHS", default=2, type=int,
                     help="fine-tuning epoch number")
 
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -112,10 +115,10 @@ parser.add_argument("--later_eval",
                     action='store_true',
                     help="Whether eval model every epoch.")
 
-parser.add_argument("--save_best", action='store', type=str,
+parser.add_argument("--save_best", action='store', type=str, default='f1',
                     help="save the best model, given dev scores (f1 or loss)")
 
-parser.add_argument("--save_step_interval", default=100, type=int,
+parser.add_argument("--save_step_interval", default=80, type=int,
                     help="save best model given a step interval")
 
 parser.add_argument("--fp16",
@@ -168,43 +171,45 @@ cert_lab2ix = get_label2ix(train_cert_labs + dev_cert_labs + test_cert_labs)
 ttype_lab2ix = get_label2ix(train_ttype_labs + dev_ttype_labs + test_ttype_labs)
 state_lab2ix = get_label2ix(train_state_labs + dev_state_labs + test_state_labs)
 
+print('max sequence length:', max_len)
+
+print('[UNK] token: %s, total: %s, oov rate: %.2f%%' % (unk_count, total_count, unk_count * 100 / total_count))
+print('[Example:]', whole_toks[0])
+
+print(lab2ix)
+print(cert_lab2ix)
+print(ttype_lab2ix)
+print(state_lab2ix)
+
+
+""" 
+- Generate train/test tensors including (token_ids, mask_ids, label_ids) 
+- wrap them into dataloader for mini-batch cutting
+"""
+train_tensors, train_deunk = extract_ner_from_conll(TRAIN_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
+train_sampler = RandomSampler(train_tensors)
+train_dataloader = DataLoader(train_tensors, sampler=train_sampler, batch_size=args.BATCH_SIZE)
+print('train size: %i' % len(train_tensors))
+
+dev_tensors, dev_deunk = extract_ner_from_conll(DEV_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
+dev_dataloader = DataLoader(dev_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
+dev_deunk_loader = [dev_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(dev_deunk), args.BATCH_SIZE)]
+print('dev size: %i' % len(dev_tensors))
+
+test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
+test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
+test_deunk_loader = [test_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(test_deunk), args.BATCH_SIZE)]
+print('test size: %i' % len(test_tensors))
+
+if args.do_crf:
+    model_dir = "%s/crf" % args.MODEL_DIR
+else:
+    model_dir = "%s/seq" % args.MODEL_DIR
+
+
+
 
 if args.do_train:
-
-
-    print('max sequence length:', max_len)
-
-    print('[UNK] token: %s, total: %s, oov rate: %.2f%%' % (unk_count, total_count, unk_count * 100 / total_count))
-    print('[Example:]', whole_toks[0])
-
-    print(lab2ix)
-    print(cert_lab2ix)
-    print(ttype_lab2ix)
-    print(state_lab2ix)
-
-    """ 
-    - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
-    - wrap them into dataloader for mini-batch cutting
-    """
-    train_tensors, train_deunk = extract_ner_from_conll(TRAIN_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
-    train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
-    print('train size: %i' % len(train_tensors))
-
-    dev_tensors, dev_deunk = extract_ner_from_conll(DEV_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
-    dev_dataloader = DataLoader(dev_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
-    dev_deunk_loader = [dev_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(dev_deunk), args.BATCH_SIZE)]
-    print('dev size: %i' % len(dev_tensors))
-
-    test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
-    test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
-    test_deunk_loader = [test_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(test_deunk), args.BATCH_SIZE)]
-    print('test size: %i' % len(test_tensors))
-
-    if args.do_crf:
-        model_dir = "%s/crf" % args.MODEL_DIR
-    else:
-        model_dir = "%s/seq" % args.MODEL_DIR
-
 
     """ Disease Tags recognition """
 
@@ -221,8 +226,9 @@ if args.do_train:
         # To reproduce BertAdam specific behavior set correct_bias=False
         optimizer = AdamW(
             optimizer_grouped_parameters,
+            eps=1e-8,
             correct_bias=False,
-            weight_decay=1e-2,
+            # weight_decay=1e-2,
         )
     else:
         model = BertForTokenClassification.from_pretrained(args.PRE_MODEL, num_labels=len(lab2ix))
@@ -231,6 +237,7 @@ if args.do_train:
         optimizer = AdamW(
             model.parameters(),
             lr=5e-5,
+            eps=1e-8,
             correct_bias=False
         )
     model.to(device)
@@ -261,18 +268,28 @@ if args.do_train:
 
     best_dev_score = float('-inf') if args.save_best == 'f1' else float('inf')
 
+    save_step_interval = math.ceil(num_epoch_steps / 4)
+
+    for param_group in optimizer.param_groups:
+        print(param_group['lr'])
+        print(len(param_group['params']))
+        print()
+    print("freeze embedding:", args.freeze_embed)
     for epoch in range(1, args.NUM_EPOCHS + 1):
 
         if args.bottomup_freeze:
-            freeze_bert_layers(model, freeze_embed=args.freeze_embed, layer_list=list(range(0, epoch - 1)))
-        else:
-            if epoch > args.EPOCH_FREEZE:
-                freeze_bert_layers(model, freeze_embed=args.freeze_embed, layer_list=list(range(0, 11)))
+            freeze_bert_layers(model, bert_name='bert', freeze_embed=args.freeze_embed, layer_list=list(range(0, epoch - 1)))
+
+        if args.EPOCH_FREEZE != 0 and epoch > args.EPOCH_FREEZE:
+            freeze_bert_layers(model, bert_name='bert', freeze_embed=args.freeze_embed, layer_list=list(range(0, 11)))
 
 
         epoch_loss = 0.0
+        pbar = tqdm(enumerate(BackgroundGenerator(train_dataloader)), total=len(train_dataloader))
 
-        for step, (batch_feat, batch_mask, batch_lab) in enumerate(tqdm(train_dataloader, desc='Training'), start=1):
+        for step, (batch_feat, batch_mask, batch_lab) in pbar:
+
+        # for step, (batch_feat, batch_mask, batch_lab) in enumerate(tqdm(train_dataloader, desc='Training'), start=1):
 
             model.train()
 
@@ -304,7 +321,11 @@ if args.do_train:
                 scheduler.step()
             model.zero_grad()
 
-            if (step % args.save_step_interval == 0) or (step == num_epoch_steps):
+            pbar.set_description("Epoch: {}/{} | Training Loss: {:.6f}".format(
+                epoch, args.NUM_EPOCHS, loss.item()
+            ))
+
+            if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                 if args.save_best == 'loss':
                     dev_loss = 0.0
 
@@ -318,7 +339,7 @@ if args.do_train:
 
                     if best_dev_score > (dev_loss / len(dev_dataloader)):
 
-                        print("best dev loss %.4f; current loss %.4f; best model saved '%s'" % (
+                        print("-> best dev loss %.4f; current loss %.4f; best model saved '%s'" % (
                             best_dev_score,
                             dev_loss / len(dev_dataloader),
                             model_dir
@@ -333,6 +354,8 @@ if args.do_train:
                 elif args.save_best == 'f1':
                     if args.do_crf:
                         eval_crf(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
+                        eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output,
+                                 args.joint)
                     else:
                         eval_seq(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
                     import subprocess
@@ -340,9 +363,16 @@ if args.do_train:
                         ['./ner_eval.sh', args.dev_output]
                     ).decode("utf-8").split('\n')[2]
                     dev_f1 = float(eval_out.split()[-1])
+                    print("current dev f1: {:2f}".format(dev_f1))
+
+                    test_out = subprocess.check_output(
+                        ['./ner_eval.sh', args.test_output]
+                    ).decode("utf-8").split('\n')[2]
+                    test_f1 = float(test_out.split()[-1])
+                    print("current test f1: {:2f}".format(test_f1))
 
                     if best_dev_score < dev_f1:
-                        print("best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
+                        print("-> best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
                             best_dev_score,
                             dev_f1,
                             model_dir
@@ -368,30 +398,58 @@ if args.do_train:
         eval_out = subprocess.check_output(
             ['./ner_eval.sh', args.test_output]
         ).decode("utf-8")
-        print("epoch loss: %.6f; " % (epoch_loss/len(train_dataloader)), eval_out.split('\n')[2])
+        print("epoch loss: %.6f; " % (epoch_loss/len(train_dataloader)))
+        # print(eval_out.split('\n')[2])
+        print(eval_out)
         eval_modality(args.test_output)
 
 
 else:
-    model_dir = args.MODEL_DIR
     """ load the new tokenizer"""
+    print("test_mode:", model_dir)
     tokenizer = BertTokenizer.from_pretrained(model_dir, do_lower_case=False, do_basic_tokenize=False)
-    test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device)
-    test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
-    test_deunk_loader = [test_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(test_deunk), args.BATCH_SIZE)]
-    print('test size: %i' % len(test_tensors))
+    # test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device)
+    # test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
+    # test_deunk_loader = [test_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(test_deunk), args.BATCH_SIZE)]
+    # print('test size: %i' % len(test_tensors))
+    #
+    # dev_tensors, dev_deunk = extract_ner_from_conll(DEV_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
+    # dev_dataloader = DataLoader(dev_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
+    # dev_deunk_loader = [dev_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(dev_deunk), args.BATCH_SIZE)]
+    # print('dev size: %i' % len(dev_tensors))
 
+    """ load the new model"""
+    if args.do_crf:
+        model = BertCRF.from_pretrained(model_dir)
+    else:
+        model = BertForTokenClassification.from_pretrained(model_dir)
+    model.to(device)
 
-""" load the new model"""
-if args.do_crf:
-    model = BertCRF.from_pretrained(model_dir)
-else:
-    model = BertForTokenClassification.from_pretrained(model_dir)
-model.to(device)
+    """ predict test out """
+    # if not args.do_crf:
+    #     eval_seq(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
+    # else:
+    #     eval_crf(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
 
-""" predict test out """
+    if not args.do_crf:
+        eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
+    else:
+        eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
 
-if not args.do_crf:
-    eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
-else:
-    eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
+    # import subprocess
+    #
+    # dev_score = subprocess.check_output(
+    #     ['./ner_eval.sh', args.dev_output]
+    # ).decode("utf-8")
+    # # print(eval_out.split('\n')[2])
+    # print(dev_score)
+    # eval_modality(args.dev_output)
+    #
+    # import subprocess
+    #
+    # test_score = subprocess.check_output(
+    #     ['./ner_eval.sh', args.test_output]
+    # ).decode("utf-8")
+    # # print(eval_out.split('\n')[2])
+    # print(test_score)
+    # eval_modality(args.test_output)

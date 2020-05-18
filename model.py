@@ -71,20 +71,20 @@ class BertCRF(BertPreTrainedModel):
         self.num_labels = config.num_labels
         self.bert = BertModel(config)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
-        self.linear = nn.Linear(config.hidden_size, config.num_labels)
+        self.crf_emission = nn.Linear(config.hidden_size, config.num_labels)
         self.crf_layer = CRF(self.num_labels, batch_first=True)
         self.crf_layer.reset_parameters()
         self.init_weights()
 
     def forward(self, input_embeds, attention_mask, labels=None):
         encoder_logits = self.bert(input_embeds, attention_mask=attention_mask)[0]
-        emissions = self.linear(encoder_logits)
+        emissions = self.crf_emission(encoder_logits)
         crf_loss = -self.crf_layer(self.dropout(emissions), mask=attention_mask, tags=labels, reduction='mean')
         return crf_loss
 
     def decode(self, input_embeds, attention_mask):
         encoder_logits = self.bert(input_embeds, attention_mask=attention_mask)[0]
-        emissions = self.linear(encoder_logits)
+        emissions = self.crf_emission(encoder_logits)
         return self.crf_layer.decode(emissions, mask=attention_mask)
 
 
@@ -281,15 +281,15 @@ class MultiHeadSelection(nn.Module):
 
         self.activation = nn.Tanh()
 
-        self.tagger = CRF(bio_num, batch_first=True)
+        self.crf_tagger = CRF(bio_num, batch_first=True)
 
-        self.emission = nn.Linear(hidden_size, bio_num)
+        self.crf_emission = nn.Linear(hidden_size, bio_num)
 
-        self.selection_u = nn.Linear(hidden_size + bio_emb_size,
+        self.mhs_u = nn.Linear(hidden_size + bio_emb_size,
                                      rel_emb_size, bias=False)
-        self.selection_v = nn.Linear(hidden_size + bio_emb_size,
+        self.mhs_v = nn.Linear(hidden_size + bio_emb_size,
                                      rel_emb_size, bias=False)
-        self.selection_uv = nn.Linear(2 * rel_emb_size,
+        self.mhs_uv = nn.Linear(2 * rel_emb_size,
                                       rel_emb_size)
 
         self.sel_u_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + bio_emb_size))
@@ -365,8 +365,8 @@ class MultiHeadSelection(nn.Module):
         o = torch.cat((o, tag_emb), dim=2)
 
         # forward multi head selection
-        u = self.selection_u(o).unsqueeze(1).expand(B, L, L, -1)
-        v = self.selection_v(o).unsqueeze(2).expand(B, L, L, -1)
+        u = self.mhs_u(o).unsqueeze(1).expand(B, L, L, -1)
+        v = self.mhs_v(o).unsqueeze(2).expand(B, L, L, -1)
         # uv = self.activation(torch.cat((u, v), dim=-1))
         # uv = self.activation(self.selection_uv())
         uv = self.activation(u + v)

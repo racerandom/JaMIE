@@ -407,7 +407,7 @@ def convert_clinical_data_to_conll(clinical_file, fo, tokenizer, sent_tag=True, 
                             if item.text is not None:
                                 seg = juman.analysis(item.text)
                                 toks += [w.midasi for w in seg.mrph_list()]
-                                if item.tag in ['event', 'TIMEX3', 
+                                if item.tag in ['event', 'TIMEX3', 'timex3'
                                                 'd', 'a', 'f', 'c', 'C', 't', 'r',
                                                 'm-key', 'm-val', 't-test', 't-key', 't-val', 'cc']:
                                     tok_labs = ['I-%s' % (item.tag.capitalize())] * len(seg)
@@ -493,40 +493,38 @@ def batch_convert_clinical_data_to_conll(
     defaut_cert='_',
     is_raw=False
 ):
-    # print(tokenizer)
-
-    # file_list = os.listdir(data_dir)
 
     doc_stat = []
-    # if is_separated:
-    #     for file in file_list:
-    #         file_ext = ".xml" if sent_tag else ".txt"
-    #         if file.endswith(file_ext):
-    #             file_out = os.path.join(data_dir, os.path.splitext(file)[0] + '.conll', )
-    #             with open(file_out, 'w') as fo:
-    #                 try:
-    #                     doc_stat.append(convert_clinical_data_to_conll(
-    #                         dir_file, fo, tokenizer, sent_tag=sent_tag,
-    #                         defaut_cert=defaut_cert,
-    #                         is_raw=is_raw
-    #                     ))
-    #                 except Exception as ex:
-    #                     print('[error]:' + file)
-    #                     print(ex)
-    # else:
-    with open(file_out, 'w') as fo:
-        for file in file_list:
+    if is_separated:
+        for dir_file_in in file_list:
             file_ext = ".xml" if sent_tag else ".txt"
-            if file.endswith(file_ext):
-                try:
-                    doc_stat.append(convert_clinical_data_to_conll(
-                        file, fo, tokenizer, sent_tag=sent_tag,
-                        defaut_cert=defaut_cert,
-                        is_raw=is_raw
-                    ))
-                except Exception as ex:
-                    print('[error]:' + file)
-                    print(ex)
+            dir_in, file_in = os.path.split(dir_file_in)
+            if dir_file_in.endswith(file_ext):
+                dir_file_out = os.path.join(dir_in, os.path.splitext(file_in)[0] + '.conll')
+                with open(dir_file_out, 'w') as fo:
+                    try:
+                        doc_stat.append(convert_clinical_data_to_conll(
+                            dir_file_in, fo, tokenizer, sent_tag=sent_tag,
+                            defaut_cert=defaut_cert,
+                            is_raw=is_raw
+                        ))
+                    except Exception as ex:
+                        print('[error]:' + dir_file_in)
+                        print(ex)
+    else:
+        with open(file_out, 'w') as fo:
+            for dir_file in file_list:
+                file_ext = ".xml" if sent_tag else ".txt"
+                if dir_file.endswith(file_ext):
+                    try:
+                        doc_stat.append(convert_clinical_data_to_conll(
+                            dir_file, fo, tokenizer, sent_tag=sent_tag,
+                            defaut_cert=defaut_cert,
+                            is_raw=is_raw
+                        ))
+                    except Exception as ex:
+                        print('[error]:' + dir_file)
+                        print(ex)
     return doc_stat
                 
                 
@@ -1579,7 +1577,7 @@ class TupleEvaluator(object):
                 continue
             self.eval_dic[p_rel][self.fps_id] += 1
 
-    def print_results(self, message, print_details, print_general, f1_mode='macro'):
+    def print_results(self, message, print_details, print_general, f1_mode):
 
         class_scores = {}
         for rel, (rel_tps, rel_fps, rel_fns) in self.eval_dic.items():

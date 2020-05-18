@@ -9,13 +9,15 @@ fbname=${fname%.*}
 
 echo "Processing $f..."
 python clinical_ner.py \
---train_file data/train_full.conll \
+--train_file data/ou_1225/ou_kuroda2018_full2.conll \
+--dev_file data/kuroda2018_10/kuroda2018_10.conll \
+--dev_output outputs/tmp_dev.conll \
 --test_file $f \
+--test_output $2/$fbname.pred.conll \
 --batch 16 \
---fine_epoch 5 \
---epoch 10 \
 --model $3 \
 --do_crf \
---output $2/$fbname
+--joint \
+--fp16 \
 
 done

@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore")
 
 
 def eval(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio2ix, rel2ix, cls_max_len, device,
-         message, ner_details, rel_details, print_general, verbose=0):
+         message, ner_details, rel_details, print_general, f1_mode='micro', verbose=0):
     ix2bio = {v: k for k, v in bio2ix.items()}
     ix2rel = {v: k for k, v in rel2ix.items()}
     ner_evaluator = utils.TupleEvaluator()
@@ -60,8 +60,8 @@ def eval(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio2ix,
                                  for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
             rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 
-        ner_f1 = ner_evaluator.print_results(message, print_details=ner_details, print_general=print_general)
-        rel_f1 = rel_evaluator.print_results(message, print_details=rel_details, print_general=print_general)
+        ner_f1 = ner_evaluator.print_results(message, print_details=ner_details, print_general=print_general, f1_mode=f1_mode)
+        rel_f1 = rel_evaluator.print_results(message, print_details=rel_details, print_general=print_general, f1_mode=f1_mode)
         return ner_f1, rel_f1
 
 
@@ -111,7 +111,7 @@ def main():
     parser.add_argument("--save_model", default='checkpoints/mhs/', type=str,
                         help="save/load model dir")
 
-    parser.add_argument("--batch_size", default=16, type=int,
+    parser.add_argument("--batch_size", default=8, type=int,
                         help="BATCH SIZE")
 
     parser.add_argument("--num_epoch", default=50, type=int,
@@ -251,9 +251,20 @@ def main():
 
     param_optimizer = list(model.named_parameters())
     encoder_name_list = ['encoder']
+    crf_name_list = ['crf_tagger']
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in encoder_name_list)], 'lr': 5e-5},
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in encoder_name_list)], 'lr': 1e-3}
+        {
+            'params': [p for n, p in param_optimizer if any(nd in n for nd in encoder_name_list)],
+            'lr': 5e-5
+        },
+        {
+            'params': [p for n, p in param_optimizer if any(nd in n for nd in crf_name_list)],
+            'lr': 1e-2
+        },
+        {
+            'params': [p for n, p in param_optimizer if not any(nd in n for nd in encoder_name_list + crf_name_list)],
+            'lr': 1e-3
+        }
     ]
 
     optimizer = AdamW(
@@ -287,7 +298,7 @@ def main():
             model.train()
 
             if epoch > 15:
-                utils.freeze_bert_layers(model, freeze_embed=True, layer_list=list(range(0, 11)))
+                utils.freeze_bert_layers(model, bert_name='encoder', freeze_embed=True, layer_list=list(range(0, 11)))
 
             b_toks, b_attn_mask, b_ner = tuple(
                 t.to(device) for t in batch[1:]
@@ -368,13 +379,13 @@ def main():
             train_rel_loss / num_epoch_steps
         ))
 
-        if args.epoch_eval and epoch > 5:
+        if args.epoch_eval and epoch > 0:
             eval(model, test_dataloader, test_tok, test_lab, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, device,
-                 "test dataset", ner_details=False, rel_details=True, print_general=True, verbose=0)
+                 "test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
 
     model.load_state_dict(torch.load(os.path.join(args.save_model, 'best.pt')))
     eval(model, test_dataloader, test_tok, test_lab, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, device,
-         "Final test dataset", ner_details=False, rel_details=True, print_general=True, verbose=0)
+         "Final test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
 
 
 if __name__ == '__main__':
