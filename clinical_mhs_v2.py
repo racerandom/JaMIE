@@ -239,16 +239,16 @@ def main():
         test_toks, test_labs, test_rels,
         tokenizer, bio2ix, rel2ix, max_len, verbose=0)
 
-    # train_sampler = RandomSampler(train_dataset)
-    # train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.batch_size)
-    # dev_sampler = SequentialSampler(dev_dataset)
-    # dev_dataloader = DataLoader(dev_dataset, sampler=dev_sampler, batch_size=args.batch_size)
-    # test_sampler = SequentialSampler(test_dataset)
-    # test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=args.batch_size)
+    train_sampler = RandomSampler(train_dataset)
+    train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.batch_size)
+    dev_sampler = SequentialSampler(dev_dataset)
+    dev_dataloader = DataLoader(dev_dataset, sampler=dev_sampler, batch_size=args.batch_size)
+    test_sampler = SequentialSampler(test_dataset)
+    test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=args.batch_size)
 
-    train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
-    dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
-    test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+    # train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
+    # dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
+    # test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
     num_epoch_steps = len(train_dataloader)
     num_training_steps = args.num_epoch * num_epoch_steps
