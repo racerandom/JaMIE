@@ -338,7 +338,7 @@ class MultiHeadSelection(nn.Module):
         B, L = tokens.shape
         o = self.encoder(tokens, attention_mask=mask)[0]  # last hidden of BERT
 
-        emi = self.emission(o)
+        emi = self.crf_emission(o)
 
         output = {}
 

@@ -68,45 +68,45 @@ def eval(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio2ix,
 def main():
     parser = argparse.ArgumentParser(description='PRISM mhs recognizer')
 
-    # parser.add_argument("--train_file", default="data/CoNLL04/train.txt", type=str,
-    #                     help="train file, multihead conll format.")
-    #
-    # parser.add_argument("--dev_file", default="data/CoNLL04/dev.txt", type=str,
-    #                     help="dev file, multihead conll format.")
-    #
-    # parser.add_argument("--test_file", default="data/CoNLL04/test.txt", type=str,
-    #                     help="test file, multihead conll format.")
-    #
-    # parser.add_argument("--pretrained_model",
-    #                     default='bert-base-uncased',
-    #                     type=str,
-    #                     help="pre-trained model dir")
-    #
-    # parser.add_argument("--do_lower_case",
-    #                     # action='store_True',
-    #                     default=True,
-    #                     type=bool,
-    #                     help="tokenizer: do_lower_case")
-
-    parser.add_argument("--train_file", default="data/clinical2020Q1/cv0_train.conll", type=str,
+    parser.add_argument("--train_file", default="data/CoNLL04/train.txt", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/clinical2020Q1/cv0_dev.conll", type=str,
+    parser.add_argument("--dev_file", default="data/CoNLL04/dev.txt", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file", default="data/clinical2020Q1/cv0_test.conll", type=str,
+    parser.add_argument("--test_file", default="data/CoNLL04/test.txt", type=str,
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
+                        default='bert-base-uncased',
                         type=str,
                         help="pre-trained model dir")
 
     parser.add_argument("--do_lower_case",
                         # action='store_True',
-                        default=False,
+                        default=True,
                         type=bool,
                         help="tokenizer: do_lower_case")
+
+    # parser.add_argument("--train_file", default="data/clinical2020Q1/cv0_train.conll", type=str,
+    #                     help="train file, multihead conll format.")
+    #
+    # parser.add_argument("--dev_file", default="data/clinical2020Q1/cv0_dev.conll", type=str,
+    #                     help="dev file, multihead conll format.")
+    #
+    # parser.add_argument("--test_file", default="data/clinical2020Q1/cv0_test.conll", type=str,
+    #                     help="test file, multihead conll format.")
+    #
+    # parser.add_argument("--pretrained_model",
+    #                     default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
+    #                     type=str,
+    #                     help="pre-trained model dir")
+    #
+    # parser.add_argument("--do_lower_case",
+    #                     # action='store_True',
+    #                     default=False,
+    #                     type=bool,
+    #                     help="tokenizer: do_lower_case")
 
     parser.add_argument("--save_model", default='checkpoints/mhs/', type=str,
                         help="save/load model dir")
@@ -240,6 +240,7 @@ def main():
     num_epoch_steps = len(train_dataloader)
     num_training_steps = args.num_epoch * num_epoch_steps
     warmup_ratio = 0.1
+    save_step_interval = math.ceil(num_epoch_steps / 4)
 
     model = MultiHeadSelection(
         bert_url=args.pretrained_model,
@@ -352,7 +353,7 @@ def main():
             ))
 
             if epoch > 5:
-                if ((step + 1) % args.save_step_interval == 0) or (step == num_epoch_steps - 1):
+                if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                     dev_ner_f1, dev_rel_f1 = eval(model, dev_dataloader, dev_tok, dev_lab, dev_rel, dev_spo, bio2ix,
                                                   rel2ix, cls_max_len, device, "dev dataset",
                                                   ner_details=False, rel_details=False, print_general=False, verbose=0)
