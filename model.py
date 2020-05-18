@@ -345,11 +345,11 @@ class MultiHeadSelection(nn.Module):
         crf_loss = 0.
 
         if is_train:
-            crf_loss = -self.tagger(emi, bio_gold,
+            crf_loss = -self.crf_tagger(emi, bio_gold,
                                     mask=mask,
                                     reduction='token_mean')
         else:
-            decoded_tag = self.tagger.decode(emissions=emi, mask=mask)
+            decoded_tag = self.crf_tagger.decode(emissions=emi, mask=mask)
             decoded_bio_text = [list(map(lambda x: self.id2bio[x], tags)) for tags in decoded_tag]
             output['decoded_tag'] = decoded_bio_text
             output['gold_tags'] = bio_text
