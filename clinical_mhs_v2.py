@@ -128,8 +128,8 @@ def main():
     parser.add_argument("--lr", default=5e-5, type=float,
                         help="learning rate")
 
-    parser.add_argument("--ne_size", default=128, type=int,
-                        help="size of name entity embedding")
+    parser.add_argument("--reduction", default='token_mean', type=str,
+                        help="loss reduction: `token_mean` or `sum`")
 
     parser.add_argument("--save_best", default='f1', type=str,
                         help="save the best model, given dev scores (f1 or loss)")
@@ -159,6 +159,9 @@ def main():
     parser.add_argument("--fp16_opt_level", type=str, default="O2",
                         help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
                              "See details at https://nvidia.github.io/apex/amp.html")
+
+    parser.add_argument("--gpu_id", default=0, type=int,
+                        help="gpu id: default 0")
 
     args = parser.parse_args()
 
@@ -261,6 +264,8 @@ def main():
         bio_vocab=bio2ix,
         rel_emb_size=300,
         relation_vocab=rel2ix,
+        reduction=args.reduction,
+        gpu_id=args.gpu_id
     )
     model.encoder.resize_token_embeddings(len(tokenizer))
 

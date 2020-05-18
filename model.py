@@ -263,13 +263,16 @@ class HeadSelectModel(BertPreTrainedModel):
 
 
 class MultiHeadSelection(nn.Module):
-    def __init__(self, bert_url, bio_emb_size, bio_vocab, rel_emb_size, relation_vocab, hidden_size=768):
+    def __init__(self, bert_url, bio_emb_size, bio_vocab, rel_emb_size, relation_vocab,
+                 hidden_size=768, reduction='token_mean', gpu_id=0):
         super(MultiHeadSelection, self).__init__()
 
         bio_num = len(bio_vocab)
         rel_num = len(relation_vocab)
 
-        self.gpu = 0
+        self.gpu = gpu_id
+
+        self.reduction = reduction
 
         self.bio_emb = nn.Embedding(num_embeddings=bio_num,
                                     embedding_dim=bio_emb_size)
@@ -324,7 +327,8 @@ class MultiHeadSelection(nn.Module):
         # print(selection_loss[0])
         # print(selection_loss.masked_select(selection_mask).sum().item(), mask.sum().item())
         selection_loss = selection_loss.masked_select(selection_mask).sum()
-        selection_loss /= mask.sum()
+        if self.reduction in ['token_mean']:
+            selection_loss /= mask.sum()
         return selection_loss
 
     @staticmethod
@@ -347,7 +351,7 @@ class MultiHeadSelection(nn.Module):
         if is_train:
             crf_loss = -self.crf_tagger(emi, bio_gold,
                                     mask=mask,
-                                    reduction='token_mean')
+                                    reduction=self.reduction)
         else:
             decoded_tag = self.crf_tagger.decode(emissions=emi, mask=mask)
             decoded_bio_text = [list(map(lambda x: self.id2bio[x], tags)) for tags in decoded_tag]
