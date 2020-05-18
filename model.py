@@ -298,6 +298,8 @@ class MultiHeadSelection(nn.Module):
         self.sel_v_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + bio_emb_size))
         nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
 
+        self.drop_uv = nn.Dropout(p=0.2)
+
         self.relation_vocab = relation_vocab
         self.bio_vocab = bio_vocab
         self.id2bio = {v: k for k, v in self.bio_vocab.items()}
@@ -378,7 +380,7 @@ class MultiHeadSelection(nn.Module):
         u = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
         v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
         uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
-
+        uv = self.drop_uv(uv)
         selection_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
 
         if not is_train:
