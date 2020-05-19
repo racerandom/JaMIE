@@ -300,7 +300,7 @@ class MultiHeadSelection(nn.Module):
         nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
 
         self.drop_uv = nn.Dropout(p=0.2)
-        self.rel_linear = nn.Linear(rel_emb_size, rel_num)
+        self.rel_linear = nn.Linear(rel_emb_size, rel_num, bias=False)
 
         self.relation_vocab = relation_vocab
         self.bio_vocab = bio_vocab
