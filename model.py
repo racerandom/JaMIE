@@ -383,7 +383,7 @@ class MultiHeadSelection(nn.Module):
         # uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
         uv = self.drop_uv(uv)
         # selection_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
-        selection_logits = self.rel_linear(uv)
+        selection_logits = self.rel_linear(uv).transpose(2, 3)
 
         if not is_train:
             output['selection_triplets'] = self.inference(
