@@ -300,6 +300,7 @@ class MultiHeadSelection(nn.Module):
         nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
 
         self.drop_uv = nn.Dropout(p=0.2)
+        self.rel_linear = nn.Linear(rel_emb_size, rel_num)
 
         self.relation_vocab = relation_vocab
         self.bio_vocab = bio_vocab
@@ -380,8 +381,9 @@ class MultiHeadSelection(nn.Module):
         # u = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
         # v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
         # uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
-        # uv = self.drop_uv(uv)
-        selection_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
+        uv = self.drop_uv(uv)
+        # selection_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
+        selection_logits = self.rel_linear(uv)
 
         if not is_train:
             output['selection_triplets'] = self.inference(
