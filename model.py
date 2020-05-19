@@ -264,15 +264,13 @@ class HeadSelectModel(BertPreTrainedModel):
 
 class MultiHeadSelection(nn.Module):
     def __init__(self, bert_url, bio_emb_size, bio_vocab, rel_emb_size, relation_vocab,
-                 hidden_size=768, reduction='token_mean', gpu_id=0):
+                 hidden_size=768, gpu_id=0):
         super(MultiHeadSelection, self).__init__()
 
         bio_num = len(bio_vocab)
         rel_num = len(relation_vocab)
 
         self.gpu = gpu_id
-
-        self.reduction = reduction
 
         self.bio_emb = nn.Embedding(num_embeddings=bio_num,
                                     embedding_dim=bio_emb_size)
@@ -299,7 +297,7 @@ class MultiHeadSelection(nn.Module):
         self.sel_v_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + bio_emb_size))
         nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
 
-        self.drop_uv = nn.Dropout(p=0.2)
+        self.drop_uv = nn.Dropout(p=0.1)
         self.rel_linear = nn.Linear(rel_emb_size, rel_num, bias=False)
 
         self.relation_vocab = relation_vocab
@@ -317,7 +315,7 @@ class MultiHeadSelection(nn.Module):
                                                    selection_tags)
         return selection_triplets
 
-    def masked_BCEloss(self, mask, selection_logits, selection_gold):
+    def masked_BCEloss(self, selection_logits, selection_gold, mask, reduction):
         selection_mask = (mask.unsqueeze(2) *
                           mask.unsqueeze(1)).unsqueeze(2).expand(
                               -1, -1, len(self.relation_vocab),
@@ -328,7 +326,7 @@ class MultiHeadSelection(nn.Module):
         # print(selection_loss[0])
         # print(selection_loss.masked_select(selection_mask).sum().item(), mask.sum().item())
         selection_loss = selection_loss.masked_select(selection_mask).sum()
-        if self.reduction in ['token_mean']:
+        if reduction in ['token_mean']:
             selection_loss /= mask.sum()
         return selection_loss
 
@@ -338,7 +336,8 @@ class MultiHeadSelection(nn.Module):
             output['loss'].item(), output['crf_loss'].item(),
             output['selection_loss'].item(), epoch, epoch_num)
 
-    def forward(self, tokens, mask, bio_gold, selection_gold, text_list, bio_text, spo_gold, is_train: bool):
+    def forward(self, tokens, mask, bio_gold, selection_gold, text_list, bio_text, spo_gold,
+                is_train: bool, reduction='token_mean'):
 
         B, L = tokens.shape
         o = self.encoder(tokens, attention_mask=mask)[0]  # last hidden of BERT
@@ -351,8 +350,8 @@ class MultiHeadSelection(nn.Module):
 
         if is_train:
             crf_loss = -self.crf_tagger(emi, bio_gold,
-                                    mask=mask,
-                                    reduction=self.reduction)
+                                        mask=mask,
+                                        reduction=reduction)
         else:
             decoded_tag = self.crf_tagger.decode(emissions=emi, mask=mask)
             decoded_bio_text = [list(map(lambda x: self.id2bio[x], tags)) for tags in decoded_tag]
@@ -370,17 +369,17 @@ class MultiHeadSelection(nn.Module):
         o = torch.cat((o, tag_emb), dim=2)
 
         # forward multi head selection
-        u = self.mhs_u(o).unsqueeze(1).expand(B, L, L, -1)
-        v = self.mhs_v(o).unsqueeze(2).expand(B, L, L, -1)
-        uv = self.activation(u + v)
+        # u = self.mhs_u(o).unsqueeze(1).expand(B, L, L, -1)
+        # v = self.mhs_v(o).unsqueeze(2).expand(B, L, L, -1)
+        # uv = self.activation(u + v)
         # uv = self.activation(torch.cat((u, v, (u - v).abs()), dim=-1))
         # # correct one
 
         # word representations: [b, l, r_s]
         # broadcast sum: [b, l, 1, h] + [b, 1, l, h] = [b, l, l, h]
-        # u = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
-        # v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
-        # uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
+        u = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
+        v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
+        uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
         uv = self.drop_uv(uv)
         # selection_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
         selection_logits = self.rel_linear(uv).transpose(2, 3)
@@ -392,8 +391,8 @@ class MultiHeadSelection(nn.Module):
 
         selection_loss = torch.tensor([0.]).cuda(self.gpu)
         if is_train:
-            selection_loss = self.masked_BCEloss(mask, selection_logits,
-                                                 selection_gold)
+            selection_loss = self.masked_BCEloss(selection_logits,
+                                                 selection_gold, mask, reduction)
         output['selection_loss'] = selection_loss
 
         loss = crf_loss + selection_loss

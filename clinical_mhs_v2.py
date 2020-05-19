@@ -264,7 +264,6 @@ def main():
         bio_vocab=bio2ix,
         rel_emb_size=416,
         relation_vocab=rel2ix,
-        reduction=args.reduction,
         gpu_id=args.gpu_id
     )
     model.encoder.resize_token_embeddings(len(tokenizer))
@@ -360,7 +359,8 @@ def main():
             #     print()
 
             # ner_loss, rel_loss = model(b_toks, b_attn_mask.bool(), ner_labels=b_ner, rel_labels=b_gold_relmat)
-            output = model(b_toks, b_attn_mask.bool(), b_ner, b_gold_relmat, b_text_list, b_bio_text, b_spo_gold, is_train=True)
+            output = model(b_toks, b_attn_mask.bool(), b_ner, b_gold_relmat, b_text_list, b_bio_text, b_spo_gold,
+                           is_train=True, reduction=args.reduction)
             ner_loss = output['crf_loss']
             rel_loss = output['selection_loss']
             loss = output['loss']
