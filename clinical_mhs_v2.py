@@ -17,7 +17,7 @@ import utils
 warnings.filterwarnings("ignore")
 
 
-def eval(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio2ix, rel2ix, cls_max_len, device,
+def eval_mhs(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio2ix, rel2ix, cls_max_len, device,
          message, ner_details, rel_details, print_general, f1_mode='micro', verbose=0):
     ix2bio = {v: k for k, v in bio2ix.items()}
     ix2rel = {v: k for k, v in rel2ix.items()}
@@ -120,6 +120,9 @@ def main():
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
                         help="Max gradient norm.")
+
+    parser.add_argument("--freeze_after_epoch", default=15, type=int,
+                        help="freeze encoder after N epochs")
 
     parser.add_argument("--do_train",
                         action='store_true',
@@ -248,6 +251,7 @@ def main():
     # dev_dataloader = DataLoader(dev_dataset, sampler=dev_sampler, batch_size=args.batch_size)
     # test_sampler = SequentialSampler(test_dataset)
     # test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=args.batch_size)
+    # print(train_sampler)
 
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
     dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
@@ -308,8 +312,8 @@ def main():
             raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
         model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
-    # (f1, NER_F1, REL_F1)
-    best_dev_f1 = (float('-inf'), float('-inf'), float('-inf'))
+    # (f1, NER_F1, REL_F1, epoch, step)
+    best_dev_f1 = (float('-inf'), float('-inf'), float('-inf'), 0, 0)
 
     for param_group in optimizer.param_groups:
         print(param_group['lr'])
@@ -323,7 +327,7 @@ def main():
         for step, batch in pbar:
             model.train()
 
-            if epoch > 15:
+            if epoch > args.freeze_after_epoch:
                 utils.freeze_bert_layers(model, bert_name='encoder', freeze_embed=True, layer_list=list(range(0, 11)))
 
             b_toks, b_attn_mask, b_ner = tuple(
@@ -390,17 +394,20 @@ def main():
 
             if epoch > 5:
                 if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
-                    dev_f1 = eval(model, dev_dataloader, dev_tok, dev_lab, dev_rel, dev_spo, bio2ix,
-                                  rel2ix, cls_max_len, device, "dev dataset",
-                                  ner_details=False, rel_details=False, print_general=False, verbose=0)
-
+                    dev_f1 = eval_mhs(model, dev_dataloader, dev_tok, dev_lab, dev_rel, dev_spo, bio2ix,
+                                      rel2ix, cls_max_len, device, "dev dataset",
+                                      ner_details=False, rel_details=False, print_general=False, verbose=0)
+                    dev_f1 += (epoch,)
+                    dev_f1 += (step,)
                     if best_dev_f1[0] < dev_f1[0]:
                         print(
-                            " -> Previous best dev f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; \n"
+                            " -> Previous best dev f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d} \n"
                             " >> Current f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; best model saved '{}'".format(
                                 best_dev_f1[0],
                                 best_dev_f1[1],
                                 best_dev_f1[2],
+                                best_dev_f1[3],
+                                best_dev_f1[4],
                                 dev_f1[0],
                                 dev_f1[1],
                                 dev_f1[2],
@@ -423,12 +430,21 @@ def main():
         ))
 
         if args.epoch_eval and epoch > 0:
-            eval(model, test_dataloader, test_tok, test_lab, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, device,
-                 "test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
-
+            eval_mhs(model, test_dataloader, test_tok, test_lab, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, device,
+                     "test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
+            
+    print("""Best dev f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d}\n
+                 """.format(
+        best_dev_f1[0],
+        best_dev_f1[1],
+        best_dev_f1[2],
+        best_dev_f1[3],
+        best_dev_f1[4],
+    ))
     model.load_state_dict(torch.load(os.path.join(args.save_model, 'best.pt')))
-    eval(model, test_dataloader, test_tok, test_lab, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, device,
-         "Final test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
+    eval_mhs(model, test_dataloader, test_tok, test_lab, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, device,
+             "Final test dataset",
+             ner_details=True, rel_details=True, print_general=True, verbose=0)
 
 
 if __name__ == '__main__':
