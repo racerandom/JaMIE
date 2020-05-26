@@ -432,7 +432,7 @@ def main():
         if args.epoch_eval and epoch > 0:
             eval_mhs(model, test_dataloader, test_tok, test_lab, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, device,
                      "test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
-            
+
     print("""Best dev f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d}\n
                  """.format(
         best_dev_f1[0],

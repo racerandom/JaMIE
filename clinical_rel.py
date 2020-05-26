@@ -67,6 +67,12 @@ def main():
                         type=str,
                         help="pre-trained model dir")
 
+    parser.add_argument("--do_lower_case",
+                        # action='store_True',
+                        default=True,
+                        type=bool,
+                        help="tokenizer: do_lower_case")
+
     # parser.add_argument("--train_file", default="data/clinical2020Q1/cv1_train.conll", type=str,
     #                     help="train file, multihead conll format.")
     #
@@ -80,11 +86,17 @@ def main():
     #                     default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
     #                     type=str,
     #                     help="pre-trained model dir")
+    #
+    # parser.add_argument("--do_lower_case",
+    #                     # action='store_True',
+    #                     default=False,
+    #                     type=bool,
+    #                     help="tokenizer: do_lower_case")
 
     parser.add_argument("--save_model", default='checkpoints/rel', type=str,
                         help="save/load model dir")
 
-    parser.add_argument("--batch_size", default=16, type=int,
+    parser.add_argument("--batch_size", default=32, type=int,
                         help="BATCH SIZE")
 
     parser.add_argument("--num_epoch", default=10, type=int,
@@ -100,13 +112,13 @@ def main():
     parser.add_argument("--lr", default=5e-5, type=float,
                         help="learning rate")
 
-    parser.add_argument("--ne_size", default=128, type=int,
+    parser.add_argument("--ne_size", default=64, type=int,
                         help="size of name entity embedding")
 
     parser.add_argument("--save_best", default='f1', type=str,
                         help="save the best model, given dev scores (f1 or loss)")
 
-    parser.add_argument("--save_step_interval", default=200, type=int,
+    parser.add_argument("--save_step_interval", default=100, type=int,
                         help="save best model given a step interval")
 
     parser.add_argument("--neg_ratio", default=1.0, type=float,
@@ -119,9 +131,11 @@ def main():
     n_gpu = torch.cuda.device_count()
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
 
+    print(device)
+
     tokenizer = BertTokenizer.from_pretrained(
         args.pretrained_model,
-        do_lower_case=False,
+        do_lower_case=args.do_lower_case,
         do_basic_tokenize=False
     )
     tokenizer.add_tokens(['[JASP]'])

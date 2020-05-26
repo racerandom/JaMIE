@@ -129,6 +129,10 @@ class BertRel(BertPreTrainedModel):
         if ne_size:
             self.ne_embed = nn.Embedding(num_ne, ne_size)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
+        self.head_mat = nn.Linear(config.hidden_size + ne_size,
+                                  config.hidden_size + ne_size, bias=False)
+        self.tail_mat = nn.Linear(config.hidden_size + ne_size,
+                                  config.hidden_size + ne_size, bias=False)
         self.h2o = nn.Linear(2 * config.hidden_size + 2 * ne_size, num_rel)
         self.init_weights()
 
@@ -140,9 +144,10 @@ class BertRel(BertPreTrainedModel):
         if self.ne_size:
             tail_ne = self.ne_embed(tail_labs)
             head_ne = self.ne_embed(head_labs)
-            concat_out = self.dropout(F.relu(torch.cat((tail_rep, tail_ne, head_rep, head_ne), dim=-1)))
-        else:
-            concat_out = self.dropout(F.relu(torch.cat((tail_rep, head_rep), dim=-1)))
+            tail_rep = torch.cat((tail_rep, tail_ne), dim=-1)
+            head_rep = torch.cat((head_rep, head_ne), dim=-1)
+
+        concat_out = self.dropout(F.relu(torch.cat((self.tail_mat(tail_rep), self.head_mat(head_rep)), dim=-1)))
         logits = self.h2o(concat_out)
         outputs = (logits, )
 

@@ -1047,6 +1047,7 @@ def extract_entity_ids_from_conll_sent(conll_sent):
 
 def extract_rels_from_conll_sent(conll_sent, down_neg=1.0):
     entity2ids, pos_rels = extract_entity_ids_from_conll_sent(conll_sent)
+    # print(entity2ids)
     keys = list(entity2ids.keys())
     sent_rels = []
     for tail_id in range(len(keys)):
@@ -1134,6 +1135,7 @@ def convert_rels_to_tensors(ner_toks, ner_labs, rels,
         )
 
         sbw_sent_tok_ids_padded = tokenizer.convert_tokens_to_ids(sbw_sent_tok_padded)
+        # print(sbw_sent_tok_ids_padded)
 
         #         sent_tail_masks, sent_tail_labs, sent_head_masks, sent_head_labs, sent_rel_labs = [], [], [], [], []
         for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rels:
