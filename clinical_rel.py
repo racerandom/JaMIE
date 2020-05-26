@@ -229,7 +229,7 @@ def main():
             scheduler.step()
             model.zero_grad()
 
-            if (step % args.save_step_interval == 0) or (step == num_epoch_steps):
+            if epoch > 3 and ((step % args.save_step_interval == 0) or (step == num_epoch_steps)):
                 dev_f1 = eval_rel(model, dev_dataloader, rel2ix, device)
 
                 if best_dev_f1 < dev_f1:
