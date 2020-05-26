@@ -44,10 +44,11 @@ def eval_rel(model, dataloader, rel2ix, device, is_reported=False, file_out=None
     )
 
     micro_f1 = report.split('\n')[-4].split()[4]
+    macro_f1 = report.split('\n')[-3].split()[4]
     if is_reported:
         print(report)
-        print(micro_f1)
-    return float(micro_f1)
+        # print(micro_f1)
+    return float(macro_f1)
 
 
 def main():
