@@ -170,8 +170,12 @@ def retrieve_w2v(embed_file, binary=True, add_unk=True):
     return word2ix, weights
 
 
-def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, sent_tag=True, defaut_cert='_', is_raw=False):
+# generate MHS conll files by reading .xml and .rel files
+def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer,
+                                      sent_tag=True, defaut_cert='_',
+                                      contains_modality=False, is_raw=False):
     from collections import defaultdict
+
     x_data, y_data, sent_stat = [], [], []
     filename, extension = os.path.splitext(clinical_file)
     rel_file = filename + '.rel'
@@ -225,7 +229,7 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, sent_tag=Tru
                     if not is_raw:
                         tag2mask = {}
                         st = ET.fromstring(line)
-                        toks, labs, cert_labs, ttype_labs, state_labs = [], [], [], [], []
+                        toks, labs, modality_labs, cert_labs, ttype_labs, state_labs = [], [], [], [], [], []
                         for item in st.iter():
                             if item.text is not None:
                                 seg = juman.analysis(item.text)
@@ -237,10 +241,14 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, sent_tag=Tru
                                     tok_labs = ['I-%s' % (item.tag.capitalize())] * len(seg)
                                     tok_labs[0] = 'B-%s' % (item.tag.capitalize())
                                     labs += tok_labs
+
+                                    phrase_modality_labs = ['_'] * len(seg)
+
                                     if item.tag == 'd' and 'certainty' in item.attrib:
                                         tok_cert_labs = ['_'] * len(seg)
                                         tok_cert_labs[0] = item.attrib['certainty']
                                         cert_labs += tok_cert_labs
+                                        phrase_modality_labs[-1] = item.attrib['certainty']
                                     else:
                                         cert_labs += ['_'] * len(seg)
 
@@ -248,18 +256,23 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, sent_tag=Tru
                                         tok_ttype_labs = ['_'] * len(seg)
                                         tok_ttype_labs[0] = item.attrib['type']
                                         ttype_labs += tok_ttype_labs
+                                        phrase_modality_labs[-1] = item.attrib['type']
                                     else:
                                         ttype_labs += ['_'] * len(seg)
                                     if item.tag in ['t-test', 'r', 'cc'] and 'state' in item.attrib:
                                         tok_state_labs = ['_'] * len(seg)
                                         tok_state_labs[0] = item.attrib['state']
                                         state_labs += tok_state_labs
+                                        phrase_modality_labs[-1] = item.attrib['state']
                                     else:
                                         state_labs += ['_'] * len(seg)
+
+                                    modality_labs += phrase_modality_labs
                                 else:
                                     if item.tag not in ['sentence', 'p']:
                                         print(item.tag)
                                     labs += ['O'] * len(seg)
+                                    modality_labs += ['_'] * len(seg)
                                     cert_labs += ['_'] * len(seg)
                                     ttype_labs += ['_'] * len(seg)
                                     state_labs += ['_'] * len(seg)
@@ -267,10 +280,12 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, sent_tag=Tru
                                 seg_tail = juman.analysis(item.tail)
                                 toks += [w.midasi for w in seg_tail.mrph_list()]
                                 labs += ['O'] * len(seg_tail)
+                                modality_labs += ['_'] * len(seg_tail)
                                 cert_labs += ['_'] * len(seg_tail)
                                 ttype_labs += ['_'] * len(seg_tail)
                                 state_labs += ['_'] * len(seg_tail)
-                        assert len(toks) == len(labs) == len(cert_labs) == len(ttype_labs) == len(state_labs)
+
+                        assert len(toks) == len(labs) == len(modality_labs) == len(cert_labs) == len(ttype_labs) == len(state_labs)
 
                         sent_stat.append(len(toks))
 
@@ -325,8 +340,12 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, sent_tag=Tru
                     #     fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (d, t, l, cl, tl, sl))
                     # fo.write('\n')
                     fo.write('#doc\n')
-                    for i, t, l, r, h in zip(tok_tail_list, toks, labs, tok_rel_list, tok_head_list):
-                        fo.write('%s\t%s\t%s\t%s\t%s\n' % (i, t, l, r, h))
+                    if not contains_modality:
+                        for i, t, l, r, h in zip(tok_tail_list, toks, labs, tok_rel_list, tok_head_list):
+                            fo.write('%s\t%s\t%s\t%s\t%s\n' % (i, t, l, r, h))
+                    else:
+                        for i, t, l, ml, r, h in zip(tok_tail_list, toks, labs, modality_labs, tok_rel_list, tok_head_list):
+                            fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (i, t, l, ml, r, h))
                     # fo.write('\n')
                 except Exception as ex:
 
@@ -341,6 +360,7 @@ def batch_convert_clinical_data_to_relconll(
     is_separated=True,
     sent_tag=True,
     defaut_cert='_',
+    contains_modality=False,
     is_raw=False
 ):
     doc_stat = []
@@ -352,6 +372,7 @@ def batch_convert_clinical_data_to_relconll(
                     doc_stat.append(convert_clinical_data_to_relconll(
                         file, fo, tokenizer, sent_tag=sent_tag,
                         defaut_cert=defaut_cert,
+                        contains_modality=contains_modality,
                         is_raw=is_raw
                     ))
                 except Exception as ex:
@@ -982,12 +1003,12 @@ RELS_COL = 3
 HEAD_IDS_COL = 4
 
 
-def read_multihead_conll(file_name):
-    col_name_list = ['token_id', 'token', "BIO", "relation", 'head']
+def read_multihead_conll(file_name, col_names):
     conll_data = pd.read_csv(
-        file_name, names=col_name_list, encoding="utf-8",
+        file_name, names=col_names, encoding="utf-8", na_filter=False,
         engine='python', sep="\t", quoting=csv.QUOTE_NONE
     ).values.tolist()
+    # print(conll_data[19601])
     return conll_data
 
 
@@ -1006,27 +1027,27 @@ def convert_multihead_conll_2d_to_3d(list_2d, sep='#doc'):
     return list_3d
 
 
-def extract_entity_ids_from_conll_sent(conll_sent):
+def extract_entity_ids_from_conll_sent(conll_sent, col_names):
     entity2ids = {}
     pos_rels = {}
     entity_cache = [[], 'O']
     prev_bio, prev_tag = 'O', 'N'
     for sent_id, toks in enumerate(conll_sent):
-        bio, tag = toks[BIO_COL].split('-', 1) if len(toks[BIO_COL].split('-', 1)) > 1 else ('O', 'N')
-        for head, rel in zip(eval(toks[HEAD_IDS_COL]), eval(toks[RELS_COL])):
-            pos_rels[(toks[TOK_ID_COL], str(head))] = rel
+        bio, tag = toks[col_names.index("ner")].split('-', 1) if len(toks[col_names.index("ner")].split('-', 1)) > 1 else ('O', 'N')
+        for head, rel in zip(eval(toks[col_names.index("head")]), eval(toks[col_names.index("relation")])):
+            pos_rels[(toks[col_names.index("token_id")], str(head))] = rel
         if bio == 'B':
             #             import pdb; pdb.set_trace()
             if entity_cache[0]:
                 entity2ids[entity_cache[0][-1]] = entity_cache.copy()
                 entity_cache = [[], 'O']
-            entity_cache[0].append(toks[TOK_ID_COL])
+            entity_cache[0].append(toks[col_names.index("token_id")])
             entity_cache[1] = tag
         elif bio == 'I':
             if tag != prev_tag and entity_cache[0]:
                 entity2ids[entity_cache[0][-1]] = entity_cache.copy()
                 entity_cache = [[], 'O']
-            entity_cache[0].append(toks[TOK_ID_COL])
+            entity_cache[0].append(toks[col_names.index("token_id")])
             entity_cache[1] = tag
         elif bio == 'O':
             if prev_bio != 'O' and entity_cache[0]:
@@ -1045,8 +1066,8 @@ def extract_entity_ids_from_conll_sent(conll_sent):
     return entity2ids, pos_rels
 
 
-def extract_rels_from_conll_sent(conll_sent, down_neg=1.0):
-    entity2ids, pos_rels = extract_entity_ids_from_conll_sent(conll_sent)
+def extract_rels_from_conll_sent(conll_sent, col_names, down_neg=1.0):
+    entity2ids, pos_rels = extract_entity_ids_from_conll_sent(conll_sent, col_names)
     # print(entity2ids)
     keys = list(entity2ids.keys())
     sent_rels = []
@@ -1075,7 +1096,9 @@ def max_sents_len(toks, tokenizer):
 
 
 def extract_rel_data_from_mh_conll(conll_file, down_neg, del_neg=False):
-    conll_data = read_multihead_conll(conll_file)
+
+    col_names = ['token_id', 'token', "ner", "relation", 'head']
+    conll_data = read_multihead_conll(conll_file, col_names)
     conll_sents = convert_multihead_conll_2d_to_3d(conll_data)
     ner_toks = [[tok[1] for tok in sent] for sent in conll_sents]
     ner_labs = [[tok[2] for tok in sent] for sent in conll_sents]
@@ -1099,6 +1122,37 @@ def extract_rel_data_from_mh_conll(conll_file, down_neg, del_neg=False):
         rel2ix = get_label2ix([eval(tok[3]) for sent in conll_sents for tok in sent])
 
     return ner_toks, ner_labs, rel_tuples, bio2ix, ne2ix, rel2ix
+
+
+def extract_rel_data_from_mh_conll_v2(conll_file, down_neg=0.0, del_neg=False):
+
+    col_names = ['token_id', 'token', "ner", "modality", "relation", 'head']
+    conll_data = read_multihead_conll(conll_file, col_names)
+    conll_sents = convert_multihead_conll_2d_to_3d(conll_data)
+    toks = [[tok[col_names.index("token")] for tok in sent] for sent in conll_sents]
+    ner_labs = [[tok[col_names.index("ner")] for tok in sent] for sent in conll_sents]
+    mod_labs = [[tok[col_names.index("modality")] for tok in sent] for sent in conll_sents]
+
+    rel_tuples = []
+    for sent_id, sent in enumerate(conll_sents):
+        sent_rels = extract_rels_from_conll_sent(sent, col_names, down_neg=down_neg)
+        rel_tuples.append(sent_rels)
+    assert len(toks) == len(ner_labs) == len(mod_labs) == len(rel_tuples)
+    print('number of sents:', len(toks))
+    print('number of ne:', len([ner for sent_ner in ner_labs for ner in sent_ner if ner.startswith('B-')]))
+    print(
+        'pos rels:', len([rel for sent_rel in rel_tuples for rel in sent_rel if rel[-1] != 'N']),
+        'neg rels:', len([rel for sent_rel in rel_tuples for rel in sent_rel if rel[-1] == 'N'])
+    )
+    bio2ix = get_label2ix(ner_labs)
+    ne2ix = get_label2ix([[lab.split('-', 1)[-1] for lab in labs if '-' in lab] for labs in ner_labs])
+    mod2ix = get_label2ix(mod_labs)
+    if del_neg:
+        rel2ix = get_label2ix([eval(tok[col_names.index("relation")]) for sent in conll_sents for tok in sent], ignore_lab='N')
+    else:
+        rel2ix = get_label2ix([eval(tok[col_names.index("relation")]) for sent in conll_sents for tok in sent])
+
+    return toks, ner_labs, mod_labs, rel_tuples, bio2ix, ne2ix, mod2ix, rel2ix
 
 
 def convert_rels_to_tensors(ner_toks, ner_labs, rels,
@@ -1297,6 +1351,7 @@ def convert_rels_to_mhs_v2(
         pad_id=0,
         pad_mask_id=0,
         pad_lab_id=0,
+        merged_modality=False,
         verbose=0
 ):
     doc_tok, doc_attn_mask, doc_lab, doc_rel, doc_spo = [], [], [], [], []
