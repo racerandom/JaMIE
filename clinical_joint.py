@@ -52,9 +52,18 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
                            b_text_list, b_bio_text, b_mod_text, b_spo_gold, is_train=False)
 
             # ner tuple -> [sent_id, [ids], ner_lab]
+
+
             b_pred_ner, b_gold_ner = output['decoded_tag'], output['gold_tags']
             b_gold_ner_tuple = utils.ner2tuple(b_sent_ids, b_gold_ner)
             b_pred_ner_tuple = utils.ner2tuple(b_sent_ids, b_pred_ner)
+            for sid, g, p, gt, pt in zip(b_sent_ids, b_gold_ner, b_pred_ner, b_gold_ner_tuple, b_pred_ner_tuple):
+                print(sid)
+                print(g)
+                print(p)
+                print(gt)
+                print(pt)
+            print()
             ner_evaluator.update(b_gold_ner_tuple, b_pred_ner_tuple)
 
             # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
@@ -64,18 +73,18 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]]
                                 for p in b_pred_ner_tuple if b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]] != '_']
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
-            print('gold_ner:', [g for g in b_gold_ner_tuple if g[-1] != 'O'])
-            print('gold_mod:', b_gold_mod_tuple)
-            print('pred_ner:', [p for p in b_pred_ner_tuple if p[-1] != 'O'])
-            print('pred_mod:', b_pred_mod_tuple)
-            for sid, gn, pn, gm, pm in zip(b_sent_ids, b_gold_ner, b_pred_ner, b_gold_mod, b_pred_mod):
-                print(sid)
-                print(gn)
-                print(gm)
-                print(pn)
-                print(pm)
-                print('-' * 10)
-            print()
+            # print('gold_ner:', [g for g in b_gold_ner_tuple if g[-1] != 'O'])
+            # print('gold_mod:', b_gold_mod_tuple)
+            # print('pred_ner:', [p for p in b_pred_ner_tuple if p[-1] != 'O'])
+            # print('pred_mod:', b_pred_mod_tuple)
+            # for sid, gn, gm, pn, pm in zip(b_sent_ids, b_gold_ner, b_gold_mod, b_pred_ner, b_pred_mod):
+            #     print(sid)
+            #     print(gn)
+            #     print(gm)
+            #     print(pn)
+            #     print(pm)
+            #     print('-' * 10)
+            # print()
             # rel: {'subject': [toks], 'predicate': rel, 'object': [toks]}
             b_pred_rel, b_gold_rel = output['selection_triplets'], output['spo_gold']
             b_pred_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
@@ -164,7 +173,7 @@ def main():
     parser.add_argument("--save_best", default='f1', type=str,
                         help="save the best model, given dev scores (f1 or loss)")
 
-    parser.add_argument("--save_step_portion", default=4, type=int,
+    parser.add_argument("--save_step_portion", default=2, type=int,
                         help="save best model given a portion of steps")
 
     parser.add_argument("--neg_ratio", default=1.0, type=float,
