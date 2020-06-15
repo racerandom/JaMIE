@@ -64,7 +64,9 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]]
                                 for p in b_pred_ner_tuple if b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]] != '_']
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
+            print([g for g in b_gold_ner_tuple if g[-1] != 'O'])
             print(b_gold_mod_tuple)
+            print([p for p in b_pred_ner_tuple if p[-1] != 'O'])
             print(b_pred_mod_tuple)
             for t, gn, pn, gm, pm in zip(eval_tok, b_gold_ner, b_pred_ner, b_gold_mod, b_pred_mod):
                 print(t)
