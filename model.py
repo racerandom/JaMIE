@@ -485,7 +485,7 @@ class JointNerModReExtractor(nn.Module):
         self.crf_emission = nn.Linear(hidden_size, bio_num)
 
         self.mod_linear = nn.Linear(hidden_size + bio_emb_size, mod_num)
-        self.mod_loss_func = nn.CrossEntropyLoss(ignore_index=mod_vocab['_'])
+        self.mod_loss_func = nn.CrossEntropyLoss(reduction='none')
         # self.mhs_u = nn.Linear(hidden_size + bio_emb_size,
         #                        rel_emb_size, bias=False)
         # self.mhs_v = nn.Linear(hidden_size + bio_emb_size,
@@ -574,6 +574,8 @@ class JointNerModReExtractor(nn.Module):
         mod_logits = self.mod_linear(o)
         if is_train:
             mod_loss = self.mod_loss_func(mod_logits.view(-1, len(self.mod_vocab)), mod_gold.view(-1))
+            mod_loss = mod_loss.masked_select(mask.view(-1)).sum()/mask.sum()
+            # mod_loss = mod_loss.masked_select(mask.view(-1)).sum()
         else:
             mod_loss = 0.
             pred_mod = mod_logits.argmax(-1)
