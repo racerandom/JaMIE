@@ -59,8 +59,10 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
 
             # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
             b_pred_mod, b_gold_mod = output['decoded_mod'], output['gold_mod']
-            b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]] for g in b_gold_ner_tuple]
-            b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]] for p in b_pred_ner_tuple]
+            b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]]
+                                for g in b_gold_ner_tuple if b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]] != '_']
+            b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]]
+                                for p in b_pred_ner_tuple if b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]] != '_']
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
             print(b_gold_mod_tuple)
             print(b_pred_mod_tuple)
