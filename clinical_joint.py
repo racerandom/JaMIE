@@ -58,8 +58,8 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
 
             # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
             b_pred_mod, b_gold_mod = output['decoded_mod'], output['gold_mod']
-            b_gold_mod_tuple = [item + [b_gold_mod[item[1][-1]]] for item in b_gold_mod_tuple]
-            b_pred_mod_tuple = [item + [b_pred_mod[item[1][-1]]] for item in b_pred_mod_tuple]
+            b_gold_mod_tuple = [item + [b_gold_mod[item[1][-1]]] for item in b_gold_mod]
+            b_pred_mod_tuple = [item + [b_pred_mod[item[1][-1]]] for item in b_pred_mod]
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
 
             # rel: {'subject': [toks], 'predicate': rel, 'object': [toks]}
