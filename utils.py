@@ -1536,7 +1536,7 @@ def convert_rels_to_mhs_v3(
         [padding_1d(
             [mod2ix[mod] for mod in sent_mod],
             cls_max_len,
-            pad_tok=10
+            pad_tok=pad_lab_id
         ) for sent_mod in doc_mod]
     )
     padded_doc_attn_mask_t = torch.tensor(

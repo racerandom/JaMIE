@@ -574,6 +574,9 @@ class JointNerModReExtractor(nn.Module):
         mod_logits = self.mod_linear(o)
         if is_train:
             mod_loss = self.mod_loss_func(mod_logits.view(-1, len(self.mod_vocab)), mod_gold.view(-1))
+            # print(mod_loss.shape, mask.view(-1).shape, mask.shape)
+            # print(mod_loss)
+            # print(mask.view(-1))
             mod_loss = mod_loss.masked_select(mask.view(-1)).sum()/mask.sum()
             # mod_loss = mod_loss.masked_select(mask.view(-1)).sum()
         else:
