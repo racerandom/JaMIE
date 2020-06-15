@@ -115,7 +115,7 @@ class MultiheadConllConvertor(object):
                     tp = ' '.join(tok_2d[sent_id][tid_begin: tid_end + 1])
 
                     assert tg == tp.lower()
-                    con = quoted.findall(cl)[0]
+                    con = quoted.findall(cl)[0].strip('"')
                     ner_2d[sent_id][tid_begin] = "B-{}".format(con)
                     if tid_end > tid_begin:
                         for i in range(tid_begin + 1, tid_end + 1):
@@ -134,7 +134,7 @@ class MultiheadConllConvertor(object):
                     tg, sent_id, tid_begin, tid_end = self.read_con(tl)
                     tp = ' '.join(tok_2d[sent_id][tid_begin: tid_end + 1])
                     assert tg == tp.lower()
-                    ast = quoted.findall(al)[0]
+                    ast = quoted.findall(al)[0].strip('"')
                     ast_2d[sent_id][tid_end] = ast
                 except AssertionError as ex:
                     print('[ast]')
@@ -153,7 +153,7 @@ class MultiheadConllConvertor(object):
                     hg, h_sent_id, h_tid_begin, h_tid_end = self.read_con(hl)
                     hp = ' '.join(tok_2d[h_sent_id][h_tid_begin: h_tid_end + 1])
                     assert hg == hp.lower()
-                    rel = quoted.findall(rl)[0]
+                    rel = quoted.findall(rl)[0].strip('"')
                     if (head_2d[t_sent_id][t_tid_end] == [t_tid_end]) or (rel_2d[t_sent_id][t_tid_end] == ['N']):
                         head_2d[t_sent_id][t_tid_end] = [h_tid_end]
                         rel_2d[t_sent_id][t_tid_end] = [rel]

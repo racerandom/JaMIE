@@ -1132,7 +1132,6 @@ def extract_rel_data_from_mh_conll_v2(conll_file, down_neg=0.0, del_neg=False):
     toks = [[tok[col_names.index("token")] for tok in sent] for sent in conll_sents]
     ner_labs = [[tok[col_names.index("ner")] for tok in sent] for sent in conll_sents]
     mod_labs = [[tok[col_names.index("modality")] for tok in sent] for sent in conll_sents]
-
     rel_tuples = []
     for sent_id, sent in enumerate(conll_sents):
         sent_rels = extract_rels_from_conll_sent(sent, col_names, down_neg=down_neg)

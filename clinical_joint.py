@@ -58,8 +58,8 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
 
             # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
             b_pred_mod, b_gold_mod = output['decoded_mod'], output['gold_mod']
-            b_gold_mod_tuple = [item + [b_gold_mod[item[1][-1]]] for item in b_gold_mod]
-            b_pred_mod_tuple = [item + [b_pred_mod[item[1][-1]]] for item in b_pred_mod]
+            b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]] for g in b_gold_ner_tuple]
+            b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]] for p in b_pred_ner_tuple]
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
 
             # rel: {'subject': [toks], 'predicate': rel, 'object': [toks]}
@@ -447,6 +447,10 @@ def main():
                         torch.save(model.state_dict(), os.path.join(args.save_model, 'best.pt'))
                         tokenizer.save_pretrained(args.save_model)
 
+        eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+                   mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
+                   ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
+
         print('Epoch %i, train loss: %.6f, training ner_loss: %.6f, training mod_loss: %.6f, rel_loss: %.6f\n' % (
             epoch,
             train_loss / num_epoch_steps,
@@ -454,9 +458,7 @@ def main():
             train_mod_loss / num_epoch_steps,
             train_rel_loss / num_epoch_steps
         ))
-        eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                   mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
-                   ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
+
         if args.epoch_eval and epoch > 5:
             eval_joint(model, test_dataloader, test_tok, test_ner, test_mod, test_rel, test_spo,
                        bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "test dataset",
