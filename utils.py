@@ -1443,6 +1443,131 @@ def convert_rels_to_mhs_v2(
     ), doc_tok, doc_lab, doc_rel, doc_spo
 
 
+# clinical_mhs.py related
+def convert_rels_to_mhs_v3(
+        ner_toks, ners, mods, rels,
+        tokenizer,
+        bio2ix, mod2ix, rel2ix,
+        max_len,
+        cls_tok='[CLS]',
+        sep_tok='[SEP]',
+        pad_tok='[PAD]',
+        pad_id=0,
+        pad_mask_id=0,
+        pad_lab_id=0,
+        merged_modality=False,
+        verbose=0
+):
+    doc_tok, doc_attn_mask, doc_ner, doc_mod, doc_rel, doc_spo = [], [], [], [], [], []
+    rel_count = 0
+    cls_max_len = max_len + 2  # wrap data with two additional token [CLS] and [SEP]
+    print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
+    doc_num = len(ner_toks)
+    print("ready to preprocess...")
+    for sent_id, (sent_tok, sent_ner, sent_mod, sent_rel) in enumerate(zip(ner_toks, ners, mods, rels)):
+
+        # wrapping data with [CLS] and [SEP]
+        sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
+        sbw_sent_ner = match_sbp_label(sbw_sent_tok, sent_ner)
+        sbw_sent_mod = match_sbp_label(sbw_sent_tok, sent_mod)
+
+        cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
+        cls_sbw_sent_ner = ['O'] + sbw_sent_ner + ['O']
+        cls_sbw_sent_mod = ['_'] + sbw_sent_mod + ['_']
+        cls_sbw_sent_mask = [1] * len(cls_sbw_sent_tok)
+
+        assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mod) == len(cls_sbw_sent_mask)
+
+        if verbose:
+            print("sent_id: {}/{}".format(sent_id, doc_num))
+            print(["{}: {}".format(index, tok) for index, tok in enumerate(cls_sbw_sent_tok)])
+            print(["{}: {}".format(index, ner) for index, ner in enumerate(cls_sbw_sent_ner)])
+            print(["{}: {}".format(index, mod) for index, mod in enumerate(cls_sbw_sent_mod)])
+
+        # preparing rel data
+        sent_rel, sent_spo = [], []
+        # align entity_ids in sent_rels
+        cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
+        assert len(cls_aligned_ids) == (len(sent_tok) + 2)
+        for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rel:
+            tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+            head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]   # with the begining [CLS] + 1
+            rel_item = (tail_last_id, head_last_id, rel_lab)
+            sent_rel.append(rel_item)
+            sbw_tail_tok = [cls_sbw_sent_tok[a_i] for o_i in tail_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
+            sbw_head_tok = [cls_sbw_sent_tok[a_i] for o_i in head_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
+            spo_item = {'subject': sbw_tail_tok, 'predicate': rel_lab, 'object': sbw_head_tok}
+            sent_spo.append(spo_item)
+            if verbose:
+                print(rel_item)
+                print(["{}: {}".format(ix, a_i) for ix, a_i in enumerate(cls_aligned_ids)])
+                print((tail_ids, rel_lab, head_ids))
+                print(spo_item)
+            rel_count += 1
+        if verbose:
+            print()
+        doc_tok.append(cls_sbw_sent_tok)
+        doc_attn_mask.append(cls_sbw_sent_mask)
+        doc_ner.append(cls_sbw_sent_ner)
+        doc_mod.append(cls_sbw_sent_mod)
+        doc_rel.append(sent_rel)
+        doc_spo.append(sent_spo)
+
+    assert len(doc_tok) == len(doc_attn_mask) == len(doc_ner) == len(doc_mod) == len(doc_rel)
+    print("ready to tensor list/numpy")
+    doc_ix_t = torch.tensor(list(range(len(ner_toks))))  # add sent_id into batch data
+
+    # padding data to cls_max_len
+    padded_doc_tok_ix_t = torch.tensor(
+        [tokenizer.convert_tokens_to_ids(padding_1d(
+                sent_tok,
+                cls_max_len,
+                pad_tok=pad_tok
+        )) for sent_tok in doc_tok]
+    )
+    padded_doc_ner_ix_t = torch.tensor(
+        [padding_1d(
+            [bio2ix[ner] for ner in sent_ner],
+            cls_max_len,
+            pad_tok=pad_lab_id
+        ) for sent_ner in doc_ner]
+    )
+    padded_doc_mod_ix_t = torch.tensor(
+        [padding_1d(
+            [mod2ix[mod] for mod in sent_mod],
+            cls_max_len,
+            pad_tok=pad_lab_id
+        ) for sent_mod in doc_mod]
+    )
+    padded_doc_attn_mask_t = torch.tensor(
+        [padding_1d(
+            sent_mask,
+            cls_max_len,
+            pad_tok=pad_mask_id
+        ) for sent_mask in doc_attn_mask]
+    )
+
+    print(padded_doc_tok_ix_t.shape,
+          padded_doc_attn_mask_t.shape,
+          padded_doc_ner_ix_t.shape,
+          padded_doc_mod_ix_t.shape,
+          len(doc_rel))
+    print("positive rel count:", rel_count)
+    print()
+    return TensorDataset(
+        doc_ix_t,
+        padded_doc_tok_ix_t,
+        padded_doc_attn_mask_t,
+        padded_doc_ner_ix_t,
+        padded_doc_mod_ix_t,
+    ), doc_tok, doc_ner, doc_mod, doc_rel, doc_spo
+
+
+# decode tensor prediction: (B x L) to variable list out
+def decode_tensor_prediction(pred_lab, mask):
+    return [torch.masked_select(b_p, b_m).tolist() for b_p, b_m in zip(pred_lab, mask)]
+
+
 def gen_relmat(doc_rel, sent_ids, max_len, rel2ix, del_neg=False):
     if del_neg:
         relmat = torch.zeros(len(sent_ids), max_len, len(rel2ix), max_len)

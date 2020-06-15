@@ -456,3 +456,224 @@ class MultiHeadSelection(nn.Module):
             }
             result[b].append(rel_triplet)
         return result
+
+
+class JointNerModReExtractor(nn.Module):
+    def __init__(self, bert_url,
+                 bio_emb_size, bio_vocab,
+                 mod_emb_size, mod_vocab,
+                 rel_emb_size, relation_vocab,
+                 hidden_size=768, gpu_id=0):
+        super(JointNerModReExtractor, self).__init__()
+
+        bio_num = len(bio_vocab)
+        mod_num = len(mod_vocab)
+        rel_num = len(relation_vocab)
+
+        self.gpu = gpu_id
+
+        self.bio_emb = nn.Embedding(num_embeddings=bio_num, embedding_dim=bio_emb_size)
+        self.mod_emb = nn.Embedding(num_embeddings=mod_num, embedding_dim=mod_emb_size)
+        self.rel_emb = nn.Embedding(num_embeddings=rel_num, embedding_dim=rel_emb_size)
+
+        self.encoder = BertModel.from_pretrained(bert_url)
+
+        self.activation = nn.Tanh()
+
+        self.crf_tagger = CRF(bio_num, batch_first=True)
+
+        self.crf_emission = nn.Linear(hidden_size, bio_num)
+
+        self.mod_linear = nn.Linear(hidden_size + bio_emb_size, mod_num)
+        self.mod_loss_func = nn.CrossEntropyLoss(ignore_index=mod_vocab['_'])
+        # self.mhs_u = nn.Linear(hidden_size + bio_emb_size,
+        #                        rel_emb_size, bias=False)
+        # self.mhs_v = nn.Linear(hidden_size + bio_emb_size,
+        #                        rel_emb_size, bias=False)
+
+        self.sel_u_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + bio_emb_size + mod_emb_size))
+        nn.init.kaiming_uniform_(self.sel_u_mat, a=math.sqrt(5))
+
+        self.sel_v_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + bio_emb_size + mod_emb_size))
+        nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
+
+        self.drop_uv = nn.Dropout(p=0.1)
+        self.rel_linear = nn.Linear(rel_emb_size, rel_num, bias=False)
+
+        self.rel_vocab = relation_vocab
+        self.bio_vocab = bio_vocab
+        self.mod_vocab = mod_vocab
+        self.id2bio = {v: k for k, v in self.bio_vocab.items()}
+
+    def inference(self, mask, text_list, decoded_tag, selection_logits):
+        # mask: B x L x R x L
+        selection_mask = (mask.unsqueeze(2) *
+                          mask.unsqueeze(1)).unsqueeze(2).expand(-1, -1, len(self.rel_vocab), -1)
+        selection_tags = (torch.sigmoid(selection_logits) *
+                          selection_mask.float()) > 0.5
+
+        selection_triplets = self.selection_decode(text_list, decoded_tag,
+                                                   selection_tags)
+        return selection_triplets
+
+    def masked_BCEloss(self, selection_logits, selection_gold, mask, reduction):
+        selection_mask = (mask.unsqueeze(2) *
+                          mask.unsqueeze(1)).unsqueeze(2).expand(
+                              -1, -1, len(self.rel_vocab),
+                              -1)  # batch x seq x rel x seq
+        selection_loss = F.binary_cross_entropy_with_logits(selection_logits,
+                                                            selection_gold,
+                                                            reduction='none')
+        # print(selection_loss[0])
+        # print(selection_loss.masked_select(selection_mask).sum().item(), mask.sum().item())
+        selection_loss = selection_loss.masked_select(selection_mask).sum()
+        if reduction in ['token_mean']:
+            selection_loss /= mask.sum()
+        return selection_loss
+
+    @staticmethod
+    def description(epoch, epoch_num, output):
+        return "L: {:.6f}, L_ner: {:.6f}, L_mod: {:.6f}, L_rel: {:.6f}, epoch: {}/{}:".format(
+            output['loss'].item(), output['crf_loss'].item(),
+            output['mod_loss'].item(), output['selection_loss'].item(), epoch, epoch_num)
+
+    def forward(self, tokens, mask, bio_gold, mod_gold, selection_gold, text_list, bio_text, mod_text, spo_gold,
+                is_train: bool, reduction='token_mean'):
+
+        B, L = tokens.shape
+        o = self.encoder(tokens, attention_mask=mask)[0]  # last hidden of BERT
+
+        ner_logits = self.crf_emission(o)
+
+        output = {}
+
+        # ner section
+
+        if is_train:
+            crf_loss = -self.crf_tagger(ner_logits, bio_gold,
+                                        mask=mask,
+                                        reduction=reduction)
+        else:
+            crf_loss = 0.
+            decoded_tag = self.crf_tagger.decode(emissions=ner_logits, mask=mask)
+            decoded_bio_text = [list(map(lambda x: self.id2bio[x], tags)) for tags in decoded_tag]
+            output['decoded_tag'] = decoded_bio_text
+            output['gold_tags'] = bio_text
+            temp_tag = copy.deepcopy(decoded_tag)
+            for line in temp_tag:
+                line.extend([self.bio_vocab['O']] * (L - len(line)))
+            bio_gold = torch.tensor(temp_tag).cuda(self.gpu)
+
+        output['crf_loss'] = crf_loss
+
+        ner_out = self.bio_emb(bio_gold)
+        o = torch.cat((o, ner_out), dim=2)
+
+        # mod section
+        mod_logits = self.mod_linear(o)
+        if is_train:
+            mod_loss = self.mod_loss_func(mod_logits.view(-1, len(self.mod_vocab)), mod_gold.view(-1))
+        else:
+            mod_loss = 0.
+            pred_mod = mod_logits.argmax(-1)
+            decoded_mod = utils.decode_tensor_prediction(pred_mod, mask)
+            output['decoded_mod'] = [list(map(lambda x: self.id2mod[x], mod)) for mod in decoded_mod]
+            output['gold_mod'] = mod_text
+            temp_mod = copy.deepcopy(decoded_mod)
+            for line in temp_mod:
+                line.extend([self.mod_vocab['_']] * (L - len(line)))
+            mod_gold = torch.tensor(temp_mod).cuda(self.gpu)
+
+        mod_out = self.mod_emb(mod_gold)
+        o = torch.cat((o, mod_out), dim=-1)
+
+        output['mod_loss'] = mod_loss
+
+        # forward multi head selection
+        # u = self.mhs_u(o).unsqueeze(1).expand(B, L, L, -1)
+        # v = self.mhs_v(o).unsqueeze(2).expand(B, L, L, -1)
+        # uv = self.activation(u + v)
+        # uv = self.activation(torch.cat((u, v, (u - v).abs()), dim=-1))
+        # # correct one
+
+        '''Multi-head Selection'''
+        # word representations: [b, l, r_s]
+        # broadcast sum: [b, l, 1, h] + [b, 1, l, h] = [b, l, l, h]
+        u = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
+        v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
+        uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
+        uv = self.drop_uv(uv)
+        # selection_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
+        selection_logits = self.rel_linear(uv).transpose(2, 3)
+
+        if is_train:
+            selection_loss = self.masked_BCEloss(
+                selection_logits,
+                selection_gold,
+                mask,
+                reduction
+            )
+        else:
+            selection_loss = 0.
+            output['selection_triplets'] = self.inference(
+                mask, text_list, decoded_tag, selection_logits)
+            output['spo_gold'] = spo_gold
+
+        output['selection_loss'] = selection_loss
+
+        loss = crf_loss + mod_loss + selection_loss
+
+        output['loss'] = loss
+
+        output['description'] = partial(self.description, output=output)
+        return output
+
+    def selection_decode(self, text_list, sequence_tags, selection_tags):
+        reversed_relation_vocab = {
+            v: k for k, v in self.rel_vocab.items()
+        }
+
+        reversed_bio_vocab = {v: k for k, v in self.bio_vocab.items()}
+
+        text_list = list(map(list, text_list))
+
+        def find_entity(pos, text, sequence_tags, return_text=True):
+            entity = []
+
+            if sequence_tags[pos][0] in ['B', 'O']:
+                entity.append(pos)
+            else:
+                temp_entity = []
+                while sequence_tags[pos][0] == 'I':
+                    temp_entity.append(pos)
+                    pos -= 1
+                    if pos < 0:
+                        break
+                    if sequence_tags[pos][0] == 'B':
+                        temp_entity.append(pos)
+                        break
+                entity = list(reversed(temp_entity))
+            return [text[index] for index in entity] if return_text else entity
+
+        batch_num = len(sequence_tags)
+        result = [[] for _ in range(batch_num)]
+        idx = torch.nonzero(selection_tags.cpu())
+
+        for i in range(idx.size(0)):
+            b, s, p, o = idx[i].tolist()
+
+            predicate = reversed_relation_vocab[p]
+            if predicate == 'N':
+                continue
+            tags = list(map(lambda x: reversed_bio_vocab[x], sequence_tags[b]))
+            object = find_entity(o, text_list[b], tags)
+            subject = find_entity(s, text_list[b], tags)
+            assert object != [] and subject != []
+
+            rel_triplet = {
+                'subject': subject,
+                'predicate': predicate,
+                'object': object
+            }
+            result[b].append(rel_triplet)
+        return result

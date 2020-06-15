@@ -15,6 +15,34 @@ class MultiheadConllConvertor(object):
         self.rel_3d = []
         self.doc_info = []
 
+    def filter_by_length(self, len_thres):
+        filted_history = []
+        for doc_id in range(len(self.tok_3d)):
+            for s_id in range(len(self.tok_3d[doc_id])):
+                if len(self.tok_3d[doc_id][s_id]) >= len_thres:
+                    filted_history.append((doc_id, s_id))
+        filted_history.reverse()
+        for f_d_id, f_s_id in filted_history:
+            del self.tok_3d[f_d_id][f_s_id]
+            del self.ner_3d[f_d_id][f_s_id]
+            del self.ast_3d[f_d_id][f_s_id]
+            del self.head_3d[f_d_id][f_s_id]
+            del self.rel_3d[f_d_id][f_s_id]
+
+    def filter_by_empty(self):
+        filted_history = []
+        for doc_id in range(len(self.ner_3d)):
+            for s_id in range(len(self.ner_3d[doc_id])):
+                if set(self.ner_3d[doc_id][s_id]) == {'O'}:
+                    filted_history.append((doc_id, s_id))
+        filted_history.reverse()
+        for f_d_id, f_s_id in filted_history:
+            del self.tok_3d[f_d_id][f_s_id]
+            del self.ner_3d[f_d_id][f_s_id]
+            del self.ast_3d[f_d_id][f_s_id]
+            del self.head_3d[f_d_id][f_s_id]
+            del self.rel_3d[f_d_id][f_s_id]
+
     def output_conll(self, out_file):
         with open(out_file, 'w', encoding='utf8') as fo:
             for tok_2d, ner_2d, ast_2d, head_2d, rel_2d, docinfo in zip(
@@ -153,9 +181,19 @@ mhsc_training = MultiheadConllConvertor()
 mhsc_training.load_batch_from_i2b2("/home/feicheng/Resources/i2b2va_2010/training_data", "partners")
 mhsc_training.load_batch_from_i2b2("/home/feicheng/Resources/i2b2va_2010/training_data", "beth")
 print(len(mhsc_training.doc_info))
-mhsc_training.split_train_dev("data/i2b2_training.conll", "data/i2b2_dev.conll", dev_ratio=0.1)
 
 mhsc_test = MultiheadConllConvertor()
 mhsc_test.load_batch_from_i2b2("/home/feicheng/Resources/i2b2va_2010/test_data", "test")
-mhsc_test.output_conll("data/i2b2_test.conll")
 
+len_thres = 100
+mhsc_training.filter_by_length(len_thres)
+# mhsc_training.filter_by_empty()
+mhsc_test.filter_by_length(len_thres)
+
+mhsc_training.split_train_dev("data/i2b2/i2b2_training.conll", "data/i2b2/i2b2_dev.conll", dev_ratio=0.05)
+mhsc_test.output_conll("data/i2b2/i2b2_test.conll")
+
+for d in mhsc_training.tok_3d:
+    for s in d:
+        if len(s) > len_thres:
+            print(' '.join(s))

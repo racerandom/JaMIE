@@ -17,17 +17,17 @@ import utils
 warnings.filterwarnings("ignore")
 
 
-def eval_mhs(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio2ix, rel2ix, cls_max_len, device,
-             message, ner_details, rel_details, print_general, f1_mode='micro', verbose=0):
-    ix2bio = {v: k for k, v in bio2ix.items()}
-    ix2rel = {v: k for k, v in rel2ix.items()}
+def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, bio2ix, mod2ix, rel2ix,
+               cls_max_len, gpu_id, message, ner_details, rel_details, print_general, f1_mode='micro', verbose=0):
+
     ner_evaluator = utils.TupleEvaluator()
+    mod_evaluator = utils.TupleEvaluator()
     rel_evaluator = utils.TupleEvaluator()
     model.eval()
     with torch.no_grad():
         for dev_step, dev_batch in enumerate(eval_dataloader):
-            b_toks, b_attn_mask, b_ner = tuple(
-                t.to(device) for t in dev_batch[1:]
+            b_toks, b_attn_mask, b_ner, b_mod = tuple(
+                t.cuda(gpu_id) for t in dev_batch[1:]
             )
             b_sent_ids = dev_batch[0].tolist()
             b_text_list = [utils.padding_1d(
@@ -36,6 +36,7 @@ def eval_mhs(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio
                 pad_tok='[PAD]') for sent_id in b_sent_ids]
 
             b_bio_text = [eval_lab[sent_id] for sent_id in b_sent_ids]
+            b_mod_text = [eval_mod[sent_id] for sent_id in b_sent_ids]
 
             b_spo_gold = tuple([eval_spo[sent_id] for sent_id in b_sent_ids])
             if verbose:
@@ -45,12 +46,16 @@ def eval_mhs(model, eval_dataloader, eval_tok, eval_lab, eval_rel, eval_spo, bio
                     print(eval_rel[sent_id])
                     print()
 
-            b_gold_relmat = utils.gen_relmat(eval_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).to(device)
-            output = model(b_toks, b_attn_mask.bool(), b_ner, b_gold_relmat, b_text_list, b_bio_text, b_spo_gold, is_train=False)
+            b_gold_relmat = utils.gen_relmat(eval_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).cuda(gpu_id)
+            output = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
+                           b_text_list, b_bio_text, b_mod_text, b_spo_gold, is_train=False)
 
             # ner tuple -> [sent_id, [ids], ner_lab]
             b_pred_ner, b_gold_ner = output['decoded_tag'], output['gold_tags']
             ner_evaluator.update(utils.ner2tuple(b_sent_ids, b_gold_ner), utils.ner2tuple(b_sent_ids, b_pred_ner))
+
+            # mod tuple -> [sent_id, [ids], mod_lab]
+            b_pred_mod, b_gold_mod = output['decoded_mod'], output['gold_mod']
 
             # rel: {'subject': [toks], 'predicate': rel, 'object': [toks]}
             b_pred_rel, b_gold_rel = output['selection_triplets'], output['spo_gold']
@@ -171,9 +176,6 @@ def main():
 
     print(args)
 
-    n_gpu = torch.cuda.device_count()
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
-
     tokenizer = BertTokenizer.from_pretrained(
         args.pretrained_model,
         do_lower_case=args.do_lower_case,
@@ -182,10 +184,11 @@ def main():
 
     tokenizer.add_tokens(['[JASP]'])
 
-    train_toks, train_labs, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
+    train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
         args.train_file,
         down_neg=0.0
     )
+
     print(bio2ix)
     print(ne2ix)
     print(rel2ix)
@@ -196,12 +199,12 @@ def main():
     print(min([len(sent_rels) for sent_rels in train_rels]), max([len(sent_rels) for sent_rels in train_rels]))
     print()
 
-    dev_toks, dev_labs, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(args.dev_file, down_neg=0.0)
+    dev_toks, dev_ners, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(args.dev_file, down_neg=0.0)
     print('max sent len:', utils.max_sents_len(dev_toks, tokenizer))
     print(min([len(sent_rels) for sent_rels in dev_rels]), max([len(sent_rels) for sent_rels in dev_rels]))
     print()
 
-    test_toks, test_labs, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(args.test_file, down_neg=0.0)
+    test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(args.test_file, down_neg=0.0)
     print('max sent len:', utils.max_sents_len(test_toks, tokenizer))
     print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
     print()
@@ -230,7 +233,7 @@ def main():
     example_id = 15
     print('Random example: id %i, len: %i' % (example_id, len(train_toks[example_id])))
     for tok_id in range(len(train_toks[example_id])):
-        print("%i\t%10s\t%s" % (tok_id, train_toks[example_id][tok_id], train_labs[example_id][tok_id]))
+        print("%i\t%10s\t%s" % (tok_id, train_toks[example_id][tok_id], train_ners[example_id][tok_id]))
     print(train_rels[example_id])
     print()
 
@@ -241,15 +244,17 @@ def main():
     )
     cls_max_len = max_len + 2
 
-    train_dataset, train_tok, train_lab, train_rel, train_spo = utils.convert_rels_to_mhs_v2(
-        train_toks, train_labs, train_rels,
-        tokenizer, bio2ix, rel2ix, max_len, verbose=0)
-    dev_dataset, dev_tok, dev_lab, dev_rel, dev_spo = utils.convert_rels_to_mhs_v2(
-        dev_toks, dev_labs, dev_rels,
-        tokenizer, bio2ix, rel2ix, max_len, verbose=0)
-    test_dataset, test_tok, test_lab, test_rel, test_spo = utils.convert_rels_to_mhs_v2(
-        test_toks, test_labs, test_rels,
-        tokenizer, bio2ix, rel2ix, max_len, verbose=0)
+    train_dataset, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
+        train_toks, train_ners, train_mods, train_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+
+    dev_dataset, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
+        dev_toks, dev_ners, dev_mods, dev_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+
+    test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
+        test_toks, test_ners, test_mods, test_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
 
     # train_sampler = RandomSampler(train_dataset)
     # train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.batch_size)
@@ -268,12 +273,11 @@ def main():
     warmup_ratio = 0.1
     save_step_interval = math.ceil(num_epoch_steps / args.save_step_portion)
 
-    model = MultiHeadSelection(
+    model = JointNerModReExtractor(
         bert_url=args.pretrained_model,
-        bio_emb_size=64,
-        bio_vocab=bio2ix,
-        rel_emb_size=416,
-        relation_vocab=rel2ix,
+        bio_emb_size=128, bio_vocab=bio2ix,
+        mod_emb_size=128, mod_vocab=mod2ix,
+        rel_emb_size=416, relation_vocab=rel2ix,
         gpu_id=args.gpu_id
     )
     model.encoder.resize_token_embeddings(len(tokenizer))
@@ -309,7 +313,7 @@ def main():
             num_training_steps=num_training_steps
         )
 
-    model.to(device)
+    model.cuda(args.gpu_id)
 
     if args.fp16:
         try:
@@ -318,8 +322,8 @@ def main():
             raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
         model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
-    # (f1, NER_F1, REL_F1, epoch, step)
-    best_dev_f1 = (float('-inf'), float('-inf'), float('-inf'), 0, 0)
+    # (F1, NER_F1, MOD_F1, REL_F1, epoch, step)
+    best_dev_f1 = (float('-inf'), float('-inf'),  float('-inf'), float('-inf'), 0, 0)
 
     for param_group in optimizer.param_groups:
         print(param_group['lr'])
@@ -328,7 +332,7 @@ def main():
 
     for epoch in range(1, args.num_epoch + 1):
 
-        train_loss, train_ner_loss, train_rel_loss = .0, .0, .0
+        train_loss, train_ner_loss, train_mod_loss, train_rel_loss = .0, .0, .0, .0
         pbar = tqdm(enumerate(BackgroundGenerator(train_dataloader)), total=len(train_dataloader))
         for step, batch in pbar:
             model.train()
@@ -336,19 +340,19 @@ def main():
             if epoch > args.freeze_after_epoch:
                 utils.freeze_bert_layers(model, bert_name='encoder', freeze_embed=True, layer_list=list(range(0, 11)))
 
-            b_toks, b_attn_mask, b_ner = tuple(
-                t.to(device) for t in batch[1:]
+            b_toks, b_attn_mask, b_ner, b_mod = tuple(
+                t.cuda(args.gpu_id) for t in batch[1:]
             )
             b_sent_ids = batch[0].tolist()
-            b_gold_relmat = utils.gen_relmat(train_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).to(device)
+            b_gold_relmat = utils.gen_relmat(train_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).cuda(args.gpu_id)
 
             b_text_list = [utils.padding_1d(
                 train_tok[sent_id],
                 cls_max_len,
                 pad_tok='[PAD]') for sent_id in b_sent_ids]
 
-            b_bio_text = [train_lab[sent_id] for sent_id in b_sent_ids]
-
+            b_ner_text = [train_ner[sent_id] for sent_id in b_sent_ids]
+            b_mod_text = [train_mod[sent_id] for sent_id in b_sent_ids]
             b_spo_gold = tuple([train_spo[sent_id] for sent_id in b_sent_ids])
 
             # print(b_toks.shape)
@@ -369,9 +373,11 @@ def main():
             #     print()
 
             # ner_loss, rel_loss = model(b_toks, b_attn_mask.bool(), ner_labels=b_ner, rel_labels=b_gold_relmat)
-            output = model(b_toks, b_attn_mask.bool(), b_ner, b_gold_relmat, b_text_list, b_bio_text, b_spo_gold,
+            output = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
+                           b_text_list, b_ner_text, b_mod_text, b_spo_gold,
                            is_train=True, reduction=args.reduction)
             ner_loss = output['crf_loss']
+            mod_loss = output['mod_loss']
             rel_loss = output['selection_loss']
             loss = output['loss']
 
@@ -393,30 +399,33 @@ def main():
 
             train_loss += loss.item()
             train_ner_loss += ner_loss.item()
+            train_mod_loss += mod_loss.item()
             train_rel_loss += rel_loss.item()
-            pbar.set_description("L {:.6f}, L_NER: {:.6f}, L_REL: {:.6f} | epoch: {}/{}:".format(
-                loss.item(), ner_loss.item(), rel_loss.item(), epoch, args.num_epoch
+            pbar.set_description("L {:.6f}, L_NER: {:.6f}, L_MOD: {:.6f} L_REL: {:.6f} | epoch: {}/{}:".format(
+                loss.item(), ner_loss.item(), mod_loss.item(), rel_loss.item(), epoch, args.num_epoch
             ))
 
             if epoch > 5:
                 if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
-                    dev_f1 = eval_mhs(model, dev_dataloader, dev_tok, dev_lab, dev_rel, dev_spo, bio2ix,
-                                      rel2ix, cls_max_len, device, "dev dataset",
-                                      ner_details=False, rel_details=False, print_general=False, verbose=0)
+                    dev_f1 = eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_rel, dev_spo, bio2ix,
+                                        rel2ix, cls_max_len, args.gpu_id, "dev dataset",
+                                        ner_details=False, rel_details=False, print_general=False, verbose=0)
                     dev_f1 += (epoch,)
                     dev_f1 += (step,)
                     if best_dev_f1[0] < dev_f1[0]:
                         print(
-                            " -> Previous best dev f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d} \n"
-                            " >> Current f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; best model saved '{}'".format(
+                            " -> Previous best dev f1 {:.6f} (ner: {:.6f}, mod: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d} \n"
+                            " >> Current f1 {:.6f} (ner: {:.6f}, mod: {:.6f}, rel: {:.6f}; best model saved '{}'".format(
                                 best_dev_f1[0],
                                 best_dev_f1[1],
                                 best_dev_f1[2],
                                 best_dev_f1[3],
                                 best_dev_f1[4],
+                                best_dev_f1[5],
                                 dev_f1[0],
                                 dev_f1[1],
                                 dev_f1[2],
+                                dev_f1[3],
                                 args.save_model
                             )
                         )
@@ -428,29 +437,30 @@ def main():
                         torch.save(model.state_dict(), os.path.join(args.save_model, 'best.pt'))
                         tokenizer.save_pretrained(args.save_model)
 
-        print('Epoch %i, train loss: %.6f, training ner_loss: %.6f, rel_loss: %.6f\n' % (
+        print('Epoch %i, train loss: %.6f, training ner_loss: %.6f, training mod_loss: %.6f, rel_loss: %.6f\n' % (
             epoch,
             train_loss / num_epoch_steps,
             train_ner_loss / num_epoch_steps,
+            train_mod_loss / num_epoch_steps,
             train_rel_loss / num_epoch_steps
         ))
 
-        if args.epoch_eval and epoch > 0:
-            eval_mhs(model, test_dataloader, test_tok, test_lab, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, device,
-                     "test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
+        if args.epoch_eval and epoch > 5:
+            eval_joint(model, test_dataloader, test_tok, test_ner, test_rel, test_spo, bio2ix, rel2ix, cls_max_len,
+                       args.gpu_id, "test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
 
-    print("""Best dev f1 {:.6f} (ner: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d}\n
+    print("""Best dev f1 {:.6f} (ner: {:.6f}, mod: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d}\n
                  """.format(
         best_dev_f1[0],
         best_dev_f1[1],
         best_dev_f1[2],
         best_dev_f1[3],
         best_dev_f1[4],
+        best_dev_f1[5],
     ))
     model.load_state_dict(torch.load(os.path.join(args.save_model, 'best.pt')))
-    eval_mhs(model, test_dataloader, test_tok, test_lab, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, device,
-             "Final test dataset",
-             ner_details=True, rel_details=True, print_general=True, verbose=0)
+    eval_joint(model, test_dataloader, test_tok, test_ner, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, args.gpu_id,
+               "Final test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
 
 
 if __name__ == '__main__':
