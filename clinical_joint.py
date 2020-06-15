@@ -57,8 +57,8 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             b_pred_ner, b_gold_ner = output['decoded_tag'], output['gold_tags']
             b_gold_ner_tuple = utils.ner2tuple(b_sent_ids, b_gold_ner)
             b_pred_ner_tuple = utils.ner2tuple(b_sent_ids, b_pred_ner)
-            print(b_gold_ner_tuple)
-            print(b_pred_ner_tuple)
+            print([g for g in b_gold_ner_tuple if g[-1] != 'O'])
+            print([p for p in b_pred_ner_tuple if p[-1] != 'O'])
             for sid, g, p in zip(b_sent_ids, b_gold_ner, b_pred_ner):
                 print(sid)
                 print(g)
