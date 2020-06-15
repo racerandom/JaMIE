@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore")
 
 
 def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, bio2ix, mod2ix, rel2ix,
-               cls_max_len, gpu_id, message, ner_details, rel_details, print_general, f1_mode='micro', verbose=0):
+               cls_max_len, gpu_id, message, ner_details, mod_details, rel_details, print_general, f1_mode='micro', verbose=0):
 
     ner_evaluator = utils.TupleEvaluator()
     mod_evaluator = utils.TupleEvaluator()
@@ -52,16 +52,15 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
 
             # ner tuple -> [sent_id, [ids], ner_lab]
             b_pred_ner, b_gold_ner = output['decoded_tag'], output['gold_tags']
-            ner_evaluator.update(utils.ner2tuple(b_sent_ids, b_gold_ner), utils.ner2tuple(b_sent_ids, b_pred_ner))
-            print(b_pred_ner)
-            print(b_gold_ner)
-            print()
+            b_gold_ner_tuple = utils.ner2tuple(b_sent_ids, b_gold_ner)
+            b_pred_ner_tuple = utils.ner2tuple(b_sent_ids, b_pred_ner)
+            ner_evaluator.update(b_gold_ner_tuple, b_pred_ner_tuple)
 
-            # mod tuple -> [sent_id, [ids], mod_lab]
+            # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
             b_pred_mod, b_gold_mod = output['decoded_mod'], output['gold_mod']
-            print(b_pred_mod)
-            print(b_gold_mod)
-            print()
+            b_gold_mod_tuple = [item + [b_gold_mod[item[1][-1]]] for item in b_gold_mod_tuple]
+            b_pred_mod_tuple = [item + [b_pred_mod[item[1][-1]]] for item in b_pred_mod_tuple]
+            mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
 
             # rel: {'subject': [toks], 'predicate': rel, 'object': [toks]}
             b_pred_rel, b_gold_rel = output['selection_triplets'], output['spo_gold']
@@ -71,10 +70,14 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
                                  for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
             rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 
-        ner_f1 = ner_evaluator.print_results(message, print_details=ner_details, print_general=print_general, f1_mode=f1_mode)
-        rel_f1 = rel_evaluator.print_results(message, print_details=rel_details, print_general=print_general, f1_mode=f1_mode)
-        f1 = (ner_f1 + rel_f1) / 2
-        return f1, ner_f1, rel_f1
+        ner_f1 = ner_evaluator.print_results(message, print_details=ner_details, print_general=print_general,
+                                             f1_mode=f1_mode)
+        mod_f1 = mod_evaluator.print_results(message, print_details=mod_details, print_general=print_general,
+                                             f1_mode=f1_mode)
+        rel_f1 = rel_evaluator.print_results(message, print_details=rel_details, print_general=print_general,
+                                             f1_mode=f1_mode)
+        f1 = (ner_f1 + mod_f1 + rel_f1) / 3
+        return f1, ner_f1, mod_f1, rel_f1
 
 
 def main():
@@ -415,7 +418,8 @@ def main():
                 if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                     dev_f1 = eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                                         mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
-                                        ner_details=False, rel_details=False, print_general=False, verbose=0)
+                                        ner_details=False, mod_details=False, rel_details=False,
+                                        print_general=False, verbose=0)
                     dev_f1 += (epoch,)
                     dev_f1 += (step,)
                     if best_dev_f1[0] < dev_f1[0]:
@@ -452,11 +456,11 @@ def main():
         ))
         eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                    mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
-                   ner_details=False, rel_details=False, print_general=False, verbose=0)
+                   ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
         if args.epoch_eval and epoch > 5:
             eval_joint(model, test_dataloader, test_tok, test_ner, test_mod, test_rel, test_spo,
-                       bio2ix, mod2ix, rel2ix, cls_max_len,
-                       args.gpu_id, "test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
+                       bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "test dataset",
+                       ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
 
     print("""Best dev f1 {:.6f} (ner: {:.6f}, mod: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d}\n
                  """.format(
@@ -469,8 +473,8 @@ def main():
     ))
     model.load_state_dict(torch.load(os.path.join(args.save_model, 'best.pt')))
     eval_joint(model, test_dataloader, test_tok, test_ner, test_mod, test_rel, test_spo,
-               bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id,
-               "Final test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
+               bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "Final test dataset",
+               ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
 
 
 if __name__ == '__main__':

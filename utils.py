@@ -1746,7 +1746,7 @@ class TupleEvaluator(object):
     def update(self, gold_tuples, pred_tuples, rel_col=-1):
         for g_t in gold_tuples:
             g_rel = g_t[rel_col]
-            if g_rel in ['N', 'O']:
+            if g_rel in ['N', 'O', '_']:
                 continue
             if g_t in pred_tuples:
                 self.eval_dic[g_rel][self.tps_id] += 1
@@ -1755,7 +1755,7 @@ class TupleEvaluator(object):
                 self.eval_dic[g_rel][self.fns_id] += 1
         for p_t in pred_tuples:
             p_rel = p_t[rel_col]
-            if p_rel in ['N', 'O']:
+            if p_rel in ['N', 'O', '_']:
                 continue
             self.eval_dic[p_rel][self.fps_id] += 1
 
