@@ -155,7 +155,7 @@ def main():
                         action='store_true',
                         help="Whether to run training.")
 
-    parser.add_argument("--lr", default=5e-5, type=float,
+    parser.add_argument("--lr", default=2e-5, type=float,
                         help="learning rate")
 
     parser.add_argument("--reduction", default='token_mean', type=str,
