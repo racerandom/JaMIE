@@ -53,7 +53,7 @@ def padding_2d(seq_2d, max_len, pad_tok=0, direct='right'):
     return tmp_seq_2d
 
 
-def match_sbp_label(bpe_x, y):
+def match_ner_label(bpe_x, y):
     bpe_y = y.copy()
     for i in range(len(bpe_x)):
         if bpe_x[i].startswith('##'):
@@ -61,6 +61,16 @@ def match_sbp_label(bpe_x, y):
                 bpe_y.insert(i, 'I' + bpe_y[i-1][1:])
             else:
                 bpe_y.insert(i, bpe_y[i-1])
+    return bpe_y
+
+
+def match_mod_label(bpe_x, y, default_lab='_'):
+    bpe_y = y.copy()
+    for i in range(len(bpe_x)):
+        if bpe_x[i].startswith('##'):
+            lab_hist = bpe_y[i-1]
+            bpe_y[i-1] = default_lab
+            bpe_y.insert(i, lab_hist)
     return bpe_y
 
 
@@ -1169,7 +1179,7 @@ def convert_rels_to_tensors(ner_toks, ner_labs, rels,
     for sent_toks, sent_labs, sent_rels in zip(ner_toks, ner_labs, rels):
 
         sbw_sent_toks = tokenizer.tokenize(' '.join(sent_toks))
-        sbw_sent_labs = match_sbp_label(sbw_sent_toks, sent_labs)
+        sbw_sent_labs = match_ner_label(sbw_sent_toks, sent_labs)
         sbw_sent_tok_padded = padding_1d(
             [cls_tok] + sbw_sent_toks + [sep_tok],
             max_len + 2,
@@ -1277,7 +1287,7 @@ def convert_rels_to_mhs(ner_toks, ner_labs, rels,
     print("ready to preprocess...")
     for sent_id, (sent_toks, sent_labs, sent_rels) in enumerate(zip(ner_toks, ner_labs, rels)):
         sbw_sent_toks = tokenizer.tokenize(' '.join(sent_toks))
-        sbw_sent_labs = match_sbp_label(sbw_sent_toks, sent_labs)
+        sbw_sent_labs = match_ner_label(sbw_sent_toks, sent_labs)
         sbw_sent_tok_padded = padding_1d(
             [cls_tok] + sbw_sent_toks + [sep_tok],
             max_len + 2,
@@ -1363,7 +1373,7 @@ def convert_rels_to_mhs_v2(
 
         # wrapping data with [CLS] and [SEP]
         sbw_sent_tok = tokenizer.tokenize(' '.join(sent_toks))
-        sbw_sent_lab = match_sbp_label(sbw_sent_tok, sent_labs)
+        sbw_sent_lab = match_ner_label(sbw_sent_tok, sent_labs)
 
         cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
         cls_sbw_sent_lab = ['O'] + sbw_sent_lab + ['O']
@@ -1467,8 +1477,8 @@ def convert_rels_to_mhs_v3(
 
         # wrapping data with [CLS] and [SEP]
         sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
-        sbw_sent_ner = match_sbp_label(sbw_sent_tok, sent_ner)
-        sbw_sent_mod = match_sbp_label(sbw_sent_tok, sent_mod)
+        sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
+        sbw_sent_mod = match_mod_label(sbw_sent_tok, sent_mod)
 
         cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
         cls_sbw_sent_ner = ['O'] + sbw_sent_ner + ['O']
@@ -1593,7 +1603,7 @@ def convert_rels_to_pmhs(ner_toks, ner_labs, rels,
         for sent_id, (sent_toks, sent_labs, sent_rels) in enumerate(zip(ner_toks, ner_labs, rels)):
             sent_out = {}
             sbw_sent_toks = tokenizer.tokenize(' '.join(sent_toks))
-            sbw_sent_labs = match_sbp_label(sbw_sent_toks, sent_labs)
+            sbw_sent_labs = match_ner_label(sbw_sent_toks, sent_labs)
 
             assert len(sbw_sent_toks) == len(sbw_sent_labs)
             aligned_ids = align_sbw_ids(sbw_sent_toks)

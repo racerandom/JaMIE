@@ -282,7 +282,7 @@ def main():
     # print(train_sampler)
 
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
-    dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
+    dev_dataloader = DataLoader(dev_dataset, batch_size=2, shuffle=False)
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
     num_epoch_steps = len(train_dataloader)
