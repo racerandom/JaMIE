@@ -53,9 +53,15 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             # ner tuple -> [sent_id, [ids], ner_lab]
             b_pred_ner, b_gold_ner = output['decoded_tag'], output['gold_tags']
             ner_evaluator.update(utils.ner2tuple(b_sent_ids, b_gold_ner), utils.ner2tuple(b_sent_ids, b_pred_ner))
+            print(b_pred_ner)
+            print(b_gold_ner)
+            print()
 
             # mod tuple -> [sent_id, [ids], mod_lab]
             b_pred_mod, b_gold_mod = output['decoded_mod'], output['gold_mod']
+            print(b_pred_mod)
+            print(b_gold_mod)
+            print()
 
             # rel: {'subject': [toks], 'predicate': rel, 'object': [toks]}
             b_pred_rel, b_gold_rel = output['selection_triplets'], output['spo_gold']
@@ -407,8 +413,8 @@ def main():
 
             if epoch > 5:
                 if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
-                    dev_f1 = eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_rel, dev_spo, bio2ix,
-                                        rel2ix, cls_max_len, args.gpu_id, "dev dataset",
+                    dev_f1 = eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+                                        mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
                                         ner_details=False, rel_details=False, print_general=False, verbose=0)
                     dev_f1 += (epoch,)
                     dev_f1 += (step,)
@@ -444,9 +450,12 @@ def main():
             train_mod_loss / num_epoch_steps,
             train_rel_loss / num_epoch_steps
         ))
-
+        eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+                   mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
+                   ner_details=False, rel_details=False, print_general=False, verbose=0)
         if args.epoch_eval and epoch > 5:
-            eval_joint(model, test_dataloader, test_tok, test_ner, test_rel, test_spo, bio2ix, rel2ix, cls_max_len,
+            eval_joint(model, test_dataloader, test_tok, test_ner, test_mod, test_rel, test_spo,
+                       bio2ix, mod2ix, rel2ix, cls_max_len,
                        args.gpu_id, "test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
 
     print("""Best dev f1 {:.6f} (ner: {:.6f}, mod: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d}\n
@@ -459,7 +468,8 @@ def main():
         best_dev_f1[5],
     ))
     model.load_state_dict(torch.load(os.path.join(args.save_model, 'best.pt')))
-    eval_joint(model, test_dataloader, test_tok, test_ner, test_rel, test_spo, bio2ix, rel2ix, cls_max_len, args.gpu_id,
+    eval_joint(model, test_dataloader, test_tok, test_ner, test_mod, test_rel, test_spo,
+               bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id,
                "Final test dataset", ner_details=True, rel_details=True, print_general=True, verbose=0)
 
 

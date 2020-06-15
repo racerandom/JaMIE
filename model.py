@@ -504,6 +504,7 @@ class JointNerModReExtractor(nn.Module):
         self.bio_vocab = bio_vocab
         self.mod_vocab = mod_vocab
         self.id2bio = {v: k for k, v in self.bio_vocab.items()}
+        self.id2mod = {v: k for k, v in self.mod_vocab.items()}
 
     def inference(self, mask, text_list, decoded_tag, selection_logits):
         # mask: B x L x R x L
