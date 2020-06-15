@@ -62,6 +62,10 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]] for g in b_gold_ner_tuple]
             b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]] for p in b_pred_ner_tuple]
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
+            for g, p in zip(b_gold_mod, b_pred_mod):
+                print(g)
+                print(p)
+                print()
 
             # rel: {'subject': [toks], 'predicate': rel, 'object': [toks]}
             b_pred_rel, b_gold_rel = output['selection_triplets'], output['spo_gold']
@@ -75,7 +79,7 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
                                              f1_mode=f1_mode)
         mod_f1 = mod_evaluator.print_results(message + ' mod', print_details=mod_details, print_general=print_general,
                                              f1_mode=f1_mode)
-        rel_f1 = rel_evaluator.print_results(message + ' rel', print_details=rel_details, print_general=print_general,
+        rel_f1 = rel_evaluator.print_results(message + ' rel', print_details=True, print_general=print_general,
                                              f1_mode=f1_mode)
         f1 = (ner_f1 + mod_f1 + rel_f1) / 3
         return f1, ner_f1, mod_f1, rel_f1
