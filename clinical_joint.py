@@ -100,7 +100,7 @@ def main():
                         help="pre-trained model dir")
 
     parser.add_argument("--do_lower_case",
-                        action='store_True',
+                        action='store_true',
                         help="tokenizer: do_lower_case")
 
     # parser.add_argument("--train_file", default="data/clinical2020Q1/cv0_train.conll", type=str,
