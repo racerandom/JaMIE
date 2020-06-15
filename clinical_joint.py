@@ -18,7 +18,8 @@ warnings.filterwarnings("ignore")
 
 
 def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, bio2ix, mod2ix, rel2ix,
-               cls_max_len, gpu_id, message, ner_details, mod_details, rel_details, print_general, f1_mode='micro', verbose=0):
+               cls_max_len, gpu_id, message, ner_details, mod_details, rel_details, print_general,
+               f1_mode='micro', verbose=0):
 
     ner_evaluator = utils.TupleEvaluator()
     mod_evaluator = utils.TupleEvaluator()
@@ -70,11 +71,11 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
                                  for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
             rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 
-        ner_f1 = ner_evaluator.print_results(message, print_details=ner_details, print_general=print_general,
+        ner_f1 = ner_evaluator.print_results(message + ' ner', print_details=ner_details, print_general=print_general,
                                              f1_mode=f1_mode)
-        mod_f1 = mod_evaluator.print_results(message, print_details=mod_details, print_general=print_general,
+        mod_f1 = mod_evaluator.print_results(message + ' mod', print_details=mod_details, print_general=print_general,
                                              f1_mode=f1_mode)
-        rel_f1 = rel_evaluator.print_results(message, print_details=rel_details, print_general=print_general,
+        rel_f1 = rel_evaluator.print_results(message + ' rel', print_details=rel_details, print_general=print_general,
                                              f1_mode=f1_mode)
         f1 = (ner_f1 + mod_f1 + rel_f1) / 3
         return f1, ner_f1, mod_f1, rel_f1
@@ -99,9 +100,7 @@ def main():
                         help="pre-trained model dir")
 
     parser.add_argument("--do_lower_case",
-                        # action='store_True',
-                        default=True,
-                        type=bool,
+                        action='store_True',
                         help="tokenizer: do_lower_case")
 
     # parser.add_argument("--train_file", default="data/clinical2020Q1/cv0_train.conll", type=str,
@@ -447,9 +446,9 @@ def main():
                         torch.save(model.state_dict(), os.path.join(args.save_model, 'best.pt'))
                         tokenizer.save_pretrained(args.save_model)
 
-        eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                   mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
-                   ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
+            eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+                       mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
+                       ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
 
         print('Epoch %i, train loss: %.6f, training ner_loss: %.6f, training mod_loss: %.6f, rel_loss: %.6f\n' % (
             epoch,
