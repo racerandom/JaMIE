@@ -64,10 +64,10 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]]
                                 for p in b_pred_ner_tuple if b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]] != '_']
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
-            print([g for g in b_gold_ner_tuple if g[-1] != 'O'])
-            print(b_gold_mod_tuple)
-            print([p for p in b_pred_ner_tuple if p[-1] != 'O'])
-            print(b_pred_mod_tuple)
+            print('gold_ner:', [g for g in b_gold_ner_tuple if g[-1] != 'O'])
+            print('gold_mod:', b_gold_mod_tuple)
+            print('pred_ner:', [p for p in b_pred_ner_tuple if p[-1] != 'O'])
+            print('pred_mod:', b_pred_mod_tuple)
             for t, gn, pn, gm, pm in zip(eval_tok, b_gold_ner, b_pred_ner, b_gold_mod, b_pred_mod):
                 print(t)
                 print(gn)
@@ -431,7 +431,7 @@ def main():
                     dev_f1 = eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                                         mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
                                         ner_details=True, mod_details=True, rel_details=True,
-                                        print_general=False, verbose=0)
+                                        print_general=True, verbose=0)
                     dev_f1 += (epoch,)
                     dev_f1 += (step,)
                     if best_dev_f1[0] < dev_f1[0]:
