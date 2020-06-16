@@ -1487,14 +1487,14 @@ def convert_rels_to_mhs_v3(
 
         assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mod) == len(cls_sbw_sent_mask)
 
-        if verbose:
-            print("sent_id: {}/{}".format(sent_id, doc_num))
-            print(["{}: {}".format(index, tok) for index, tok in enumerate(cls_sbw_sent_tok)])
-            print(["{}: {}".format(index, ner) for index, ner in enumerate(cls_sbw_sent_ner)])
-            print(["{}: {}".format(index, mod) for index, mod in enumerate(cls_sbw_sent_mod)])
+        # if verbose:
+        #     print("sent_id: {}/{}".format(sent_id, doc_num))
+        #     print(["{}: {}".format(index, tok) for index, tok in enumerate(cls_sbw_sent_tok)])
+        #     print(["{}: {}".format(index, ner) for index, ner in enumerate(cls_sbw_sent_ner)])
+        #     print(["{}: {}".format(index, mod) for index, mod in enumerate(cls_sbw_sent_mod)])
 
         # preparing rel data
-        sent_rel, sent_spo = [], []
+        sent_rel_tuples, sent_spo = [], []
         # align entity_ids in sent_rels
         cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
         assert len(cls_aligned_ids) == (len(sent_tok) + 2)
@@ -1502,7 +1502,7 @@ def convert_rels_to_mhs_v3(
             tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
             head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]   # with the begining [CLS] + 1
             rel_item = (tail_last_id, head_last_id, rel_lab)
-            sent_rel.append(rel_item)
+            sent_rel_tuples.append(rel_item)
             sbw_tail_tok = [cls_sbw_sent_tok[a_i] for o_i in tail_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
             sbw_head_tok = [cls_sbw_sent_tok[a_i] for o_i in head_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
             spo_item = {'subject': sbw_tail_tok, 'predicate': rel_lab, 'object': sbw_head_tok}
@@ -1519,7 +1519,7 @@ def convert_rels_to_mhs_v3(
         doc_attn_mask.append(cls_sbw_sent_mask)
         doc_ner.append(cls_sbw_sent_ner)
         doc_mod.append(cls_sbw_sent_mod)
-        doc_rel.append(sent_rel)
+        doc_rel.append(sent_rel_tuples)
         doc_spo.append(sent_spo)
 
     assert len(doc_tok) == len(doc_attn_mask) == len(doc_ner) == len(doc_mod) == len(doc_rel)

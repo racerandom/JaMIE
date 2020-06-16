@@ -92,8 +92,8 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
                                  for sent_id, sent_rel in zip(b_sent_ids, b_pred_rel) for rel in sent_rel]
             b_gold_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
                                  for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
-            print(b_gold_rel_tuples)
-            print(b_pred_rel_tuples)
+            print(b_gold_rel)
+            print(b_pred_rel)
             rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 
         ner_f1 = ner_evaluator.print_results(message + ' ner', print_details=ner_details, print_general=print_general,
@@ -284,7 +284,6 @@ def main():
     dev_dataset, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
         dev_toks, dev_ners, dev_mods, dev_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
-
     test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
         test_toks, test_ners, test_mods, test_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
@@ -387,7 +386,7 @@ def main():
             b_ner_text = [train_ner[sent_id] for sent_id in b_sent_ids]
             b_mod_text = [train_mod[sent_id] for sent_id in b_sent_ids]
             b_spo_gold = tuple([train_spo[sent_id] for sent_id in b_sent_ids])
-
+            print(b_spo_gold)
             # print(b_toks.shape)
             # print(b_ner.shape)
             # print(b_gold_relmat.shape)
