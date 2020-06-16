@@ -440,8 +440,8 @@ def main():
                 if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                     dev_f1 = eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                                         mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
-                                        ner_details=True, mod_details=True, rel_details=True,
-                                        print_general=True, verbose=0)
+                                        ner_details=False, mod_details=False, rel_details=False,
+                                        print_general=False, verbose=0)
                     dev_f1 += (epoch,)
                     dev_f1 += (step,)
                     if best_dev_f1[0] < dev_f1[0]:
