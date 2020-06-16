@@ -61,8 +61,10 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
 
             # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
             b_pred_mod, b_gold_mod = output['decoded_mod'], output['gold_mod']
-            b_pred_mod_tuple = []
-            b_gold_mod_tuple = []
+            b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]]
+                                for p in b_pred_ner_tuple if p[-1] != 'O']
+            b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]]
+                                for g in b_gold_ner_tuple if g[-1] != 'O']
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
             for sid, g, p, gm, pm in zip(b_sent_ids, b_gold_ner, b_pred_ner, b_gold_mod, b_pred_mod):
                 print(sid)
@@ -71,17 +73,16 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
                 print(gm)
                 print(pm)
                 print('-' * 10)
-            for s_id, ner_ids, ner in b_pred_ner_tuple:
-                if ner != 'O':
-                    mod = b_pred_mod[b_sent_ids.index(s_id)][ner_ids[-1]]
-                    b_pred_mod_tuple.append([s_id, ner_ids, ner, mod])
-                    print('pred', [s_id, ner_ids, ner, mod])
-            for s_id, ner_ids, ner in b_gold_ner_tuple:
-                if ner != 'O':
-                    mod = b_gold_mod[b_sent_ids.index(s_id)][ner_ids[-1]]
-                    b_gold_mod_tuple.append([s_id, ner_ids, ner, mod])
-                    print('gold', [s_id, ner_ids, ner, mod])
-
+            # for s_id, ner_ids, ner in b_pred_ner_tuple:
+            #     if ner != 'O':
+            #         mod = b_pred_mod[b_sent_ids.index(s_id)][ner_ids[-1]]
+            #         b_pred_mod_tuple.append([s_id, ner_ids, ner, mod])
+            #         print('pred', [s_id, ner_ids, ner, mod])
+            # for s_id, ner_ids, ner in b_gold_ner_tuple:
+            #     if ner != 'O':
+            #         mod = b_gold_mod[b_sent_ids.index(s_id)][ner_ids[-1]]
+            #         b_gold_mod_tuple.append([s_id, ner_ids, ner, mod])
+            #         print('gold', [s_id, ner_ids, ner, mod])
             print('gold_mod:', [g for g in b_gold_mod_tuple if g[-1] != '_'])
             print('pred_mod:', [p for p in b_pred_mod_tuple if p[-1] != '_'])
 

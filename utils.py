@@ -1753,16 +1753,18 @@ class TupleEvaluator(object):
         self.eval_dic = defaultdict(lambda: [1e-10, 1e-10, 1e-10])
 
     def update(self, gold_tuples, pred_tuples, rel_col=-1):
-        for g_t in gold_tuples:
+        gold_tuple_cp = copy.deepcopy(gold_tuples)
+        pred_tuple_cp = copy.deepcopy(pred_tuples)
+        for g_t in gold_tuple_cp:
             g_rel = g_t[rel_col]
             if g_rel in ['N', 'O', '_']:
                 continue
-            if g_t in pred_tuples:
+            if g_t in pred_tuple_cp:
                 self.eval_dic[g_rel][self.tps_id] += 1
-                pred_tuples.remove(g_t)
+                pred_tuple_cp.remove(g_t)
             else:
                 self.eval_dic[g_rel][self.fns_id] += 1
-        for p_t in pred_tuples:
+        for p_t in pred_tuple_cp:
             p_rel = p_t[rel_col]
             if p_rel in ['N', 'O', '_']:
                 continue
