@@ -92,8 +92,8 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
                                  for sent_id, sent_rel in zip(b_sent_ids, b_pred_rel) for rel in sent_rel]
             b_gold_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
                                  for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
-            print(b_gold_rel)
-            print(b_pred_rel)
+            # print(b_gold_rel)
+            # print(b_pred_rel)
             rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 
         ner_f1 = ner_evaluator.print_results(message + ' ner', print_details=ner_details, print_general=print_general,
@@ -386,7 +386,6 @@ def main():
             b_ner_text = [train_ner[sent_id] for sent_id in b_sent_ids]
             b_mod_text = [train_mod[sent_id] for sent_id in b_sent_ids]
             b_spo_gold = tuple([train_spo[sent_id] for sent_id in b_sent_ids])
-            print(b_spo_gold)
             # print(b_toks.shape)
             # print(b_ner.shape)
             # print(b_gold_relmat.shape)
@@ -437,7 +436,7 @@ def main():
                 loss.item(), ner_loss.item(), mod_loss.item(), rel_loss.item(), epoch, args.num_epoch
             ))
 
-            if epoch > 0:
+            if epoch > 5:
                 if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                     dev_f1 = eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                                         mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
@@ -470,9 +469,9 @@ def main():
                         torch.save(model.state_dict(), os.path.join(args.save_model, 'best.pt'))
                         tokenizer.save_pretrained(args.save_model)
 
-        # eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-        #            mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
-        #            ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
+        eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+                   mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
+                   ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
 
         print('Epoch %i, train loss: %.6f, training ner_loss: %.6f, training mod_loss: %.6f, rel_loss: %.6f\n' % (
             epoch,
