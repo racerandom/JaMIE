@@ -154,7 +154,7 @@ def main():
     parser.add_argument("--batch_size", default=8, type=int,
                         help="BATCH SIZE")
 
-    parser.add_argument("--num_epoch", default=50, type=int,
+    parser.add_argument("--num_epoch", default=20, type=int,
                         help="fine-tuning epoch number")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -297,7 +297,7 @@ def main():
     # print(train_sampler)
 
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
-    dev_dataloader = DataLoader(dev_dataset, batch_size=2, shuffle=False)
+    dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
     num_epoch_steps = len(train_dataloader)
@@ -309,7 +309,7 @@ def main():
         bert_url=args.pretrained_model,
         bio_emb_size=128, bio_vocab=bio2ix,
         mod_emb_size=128, mod_vocab=mod2ix,
-        rel_emb_size=416, relation_vocab=rel2ix,
+        rel_emb_size=512, relation_vocab=rel2ix,
         gpu_id=args.gpu_id
     )
     model.encoder.resize_token_embeddings(len(tokenizer))

@@ -190,7 +190,7 @@ mhsc_training.filter_by_length(len_thres)
 # mhsc_training.filter_by_empty()
 mhsc_test.filter_by_length(len_thres)
 
-mhsc_training.split_train_dev("data/i2b2/i2b2_training.conll", "data/i2b2/i2b2_dev.conll", dev_ratio=0.05)
+mhsc_training.split_train_dev("data/i2b2/i2b2_training.conll", "data/i2b2/i2b2_dev.conll", dev_ratio=0.09)
 mhsc_test.output_conll("data/i2b2/i2b2_test.conll")
 
 for d in mhsc_training.tok_3d:
