@@ -55,8 +55,8 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             b_pred_ner, b_gold_ner = output['decoded_tag'], output['gold_tags']
             b_gold_ner_tuple = utils.ner2tuple(b_sent_ids, b_gold_ner)
             b_pred_ner_tuple = utils.ner2tuple(b_sent_ids, b_pred_ner)
-            print('gold_ner:', [g for g in b_gold_ner_tuple if g[-1] != 'O'])
-            print('pred_ner:', [p for p in b_pred_ner_tuple if p[-1] != 'O'])
+            # print('gold_ner:', [g for g in b_gold_ner_tuple if g[-1] != 'O'])
+            # print('pred_ner:', [p for p in b_pred_ner_tuple if p[-1] != 'O'])
             ner_evaluator.update(b_gold_ner_tuple, b_pred_ner_tuple)
 
             # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
@@ -66,13 +66,13 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]]
                                 for g in b_gold_ner_tuple if g[-1] != 'O']
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
-            for sid, g, p, gm, pm in zip(b_sent_ids, b_gold_ner, b_pred_ner, b_gold_mod, b_pred_mod):
-                print(sid)
-                print(g)
-                print(p)
-                print(gm)
-                print(pm)
-                print('-' * 10)
+            # for sid, g, p, gm, pm in zip(b_sent_ids, b_gold_ner, b_pred_ner, b_gold_mod, b_pred_mod):
+            #     print(sid)
+            #     print(g)
+            #     print(p)
+            #     print(gm)
+            #     print(pm)
+            #     print('-' * 10)
             # for s_id, ner_ids, ner in b_pred_ner_tuple:
             #     if ner != 'O':
             #         mod = b_pred_mod[b_sent_ids.index(s_id)][ner_ids[-1]]
@@ -83,15 +83,17 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             #         mod = b_gold_mod[b_sent_ids.index(s_id)][ner_ids[-1]]
             #         b_gold_mod_tuple.append([s_id, ner_ids, ner, mod])
             #         print('gold', [s_id, ner_ids, ner, mod])
-            print('gold_mod:', [g for g in b_gold_mod_tuple if g[-1] != '_'])
-            print('pred_mod:', [p for p in b_pred_mod_tuple if p[-1] != '_'])
-
-            print()
+            # print('gold_mod:', [g for g in b_gold_mod_tuple if g[-1] != '_'])
+            # print('pred_mod:', [p for p in b_pred_mod_tuple if p[-1] != '_'])
+            #
+            # print()
             b_pred_rel, b_gold_rel = output['selection_triplets'], output['spo_gold']
             b_pred_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
                                  for sent_id, sent_rel in zip(b_sent_ids, b_pred_rel) for rel in sent_rel]
             b_gold_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
                                  for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
+            print(b_gold_rel_tuples)
+            print(b_pred_rel_tuples)
             rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 
         ner_f1 = ner_evaluator.print_results(message + ' ner', print_details=ner_details, print_general=print_general,
