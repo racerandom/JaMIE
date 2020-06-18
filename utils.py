@@ -3,7 +3,6 @@ from collections import defaultdict, Counter
 import copy
 import json
 import mojimoji
-from pyknp import Juman
 import xml.etree.ElementTree as ET
 import numpy as np
 import torch
@@ -13,6 +12,7 @@ from textformatting import ssplit
 from gensim.models import KeyedVectors
 from transformers import *
 
+from pyknp import Juman
 juman = Juman()
 
 DEUNK_COL = 0
@@ -21,6 +21,28 @@ NER_COL = 2
 CERT_COL = 3
 TYPE_COL = 4
 STAT_COL = 5
+
+
+class MorphologicalAnalyzer(object):
+
+    def __init__(self, analyzer_name='juman'):
+        self.analyzer_name = analyzer_name
+        if self.analyzer_name == 'juman':
+            from pyknp import Juman
+            self.analyzer = Juman()
+        elif self.analyzer_name == 'mecab':
+            import MeCab
+            self.analyzer = MeCab.Tagger(
+                "-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd "
+                "-u /home/feicheng/Tools/MANBYO_201907_Dic-utf8.dic "
+                "-Owakati"
+            )
+
+    def analyze(self, text):
+        if self.analyzer_name == 'juman':
+            return [w.midasi for w in self.analyzer.analysis(text).mrph_list()]
+        elif self.analyzer_name == 'mecab':
+            return self.analyzer.parse(text).split()
 
 
 def get_label2ix(y_data, default=None, ignore_lab=None):
@@ -181,9 +203,10 @@ def retrieve_w2v(embed_file, binary=True, add_unk=True):
 
 
 # generate MHS conll files by reading .xml and .rel files
-def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer,
+def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphological_analyzer,
                                       sent_tag=True, defaut_cert='_',
-                                      contains_modality=False, is_raw=False):
+                                      contains_modality=False,
+                                      is_raw=False):
     from collections import defaultdict
 
     x_data, y_data, sent_stat = [], [], []
@@ -242,53 +265,53 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer,
                         toks, labs, modality_labs, cert_labs, ttype_labs, state_labs = [], [], [], [], [], []
                         for item in st.iter():
                             if item.text is not None:
-                                seg = juman.analysis(item.text)
-                                toks += [w.midasi for w in seg.mrph_list()]
+                                seg_toks = morphological_analyzer.analyze(item.text)
+                                toks += seg_toks
                                 if item.tag in ['event', 'TIMEX3',
                                                 'd', 'a', 'f', 'c', 'C', 't', 'r',
                                                 'm-key', 'm-val', 't-test', 't-key', 't-val', 'cc']:
-                                    tag2mask[item.attrib['tid']] = [0] * len(labs) + [1] * len(seg)
-                                    tok_labs = ['I-%s' % (item.tag.capitalize())] * len(seg)
+                                    tag2mask[item.attrib['tid']] = [0] * len(labs) + [1] * len(seg_toks)
+                                    tok_labs = ['I-%s' % (item.tag.capitalize())] * len(seg_toks)
                                     tok_labs[0] = 'B-%s' % (item.tag.capitalize())
                                     labs += tok_labs
 
-                                    phrase_modality_labs = ['_'] * len(seg)
+                                    phrase_modality_labs = ['_'] * len(seg_toks)
 
                                     if item.tag == 'd' and 'certainty' in item.attrib:
-                                        tok_cert_labs = ['_'] * len(seg)
+                                        tok_cert_labs = ['_'] * len(seg_toks)
                                         tok_cert_labs[0] = item.attrib['certainty']
                                         cert_labs += tok_cert_labs
                                         phrase_modality_labs[-1] = item.attrib['certainty']
                                     else:
-                                        cert_labs += ['_'] * len(seg)
+                                        cert_labs += ['_'] * len(seg_toks)
 
                                     if item.tag == 'TIMEX3' and 'type' in item.attrib:
-                                        tok_ttype_labs = ['_'] * len(seg)
+                                        tok_ttype_labs = ['_'] * len(seg_toks)
                                         tok_ttype_labs[0] = item.attrib['type']
                                         ttype_labs += tok_ttype_labs
                                         phrase_modality_labs[-1] = item.attrib['type']
                                     else:
-                                        ttype_labs += ['_'] * len(seg)
+                                        ttype_labs += ['_'] * len(seg_toks)
                                     if item.tag in ['t-test', 'r', 'cc'] and 'state' in item.attrib:
-                                        tok_state_labs = ['_'] * len(seg)
+                                        tok_state_labs = ['_'] * len(seg_toks)
                                         tok_state_labs[0] = item.attrib['state']
                                         state_labs += tok_state_labs
                                         phrase_modality_labs[-1] = item.attrib['state']
                                     else:
-                                        state_labs += ['_'] * len(seg)
+                                        state_labs += ['_'] * len(seg_toks)
 
                                     modality_labs += phrase_modality_labs
                                 else:
                                     if item.tag not in ['sentence', 'p']:
                                         print(item.tag)
-                                    labs += ['O'] * len(seg)
-                                    modality_labs += ['_'] * len(seg)
-                                    cert_labs += ['_'] * len(seg)
-                                    ttype_labs += ['_'] * len(seg)
-                                    state_labs += ['_'] * len(seg)
+                                    labs += ['O'] * len(seg_toks)
+                                    modality_labs += ['_'] * len(seg_toks)
+                                    cert_labs += ['_'] * len(seg_toks)
+                                    ttype_labs += ['_'] * len(seg_toks)
+                                    state_labs += ['_'] * len(seg_toks)
                             if item.tail is not None:
-                                seg_tail = juman.analysis(item.tail)
-                                toks += [w.midasi for w in seg_tail.mrph_list()]
+                                seg_tail = morphological_analyzer.analyze(item.tail)
+                                toks += seg_tail
                                 labs += ['O'] * len(seg_tail)
                                 modality_labs += ['_'] * len(seg_tail)
                                 cert_labs += ['_'] * len(seg_tail)
@@ -303,7 +326,7 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer,
                         toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
                         sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
                         deunk_toks = explore_unk(sbp_toks, toks)
-                        sbp_labs = match_sbp_label(deunk_toks, labs)
+                        sbp_labs = match_ner_label(deunk_toks, labs)
                         sbp_cert_labs = match_sbp_cert_labs(deunk_toks, cert_labs)
                         sbp_ttype_labs = match_sbp_cert_labs(deunk_toks, ttype_labs)
                         sbp_state_labs = match_sbp_cert_labs(deunk_toks, state_labs)
@@ -371,8 +394,10 @@ def batch_convert_clinical_data_to_relconll(
     sent_tag=True,
     defaut_cert='_',
     contains_modality=False,
-    is_raw=False
+    is_raw=False,
+    morph_analyzer_name='juman'
 ):
+    morphological_analyzer = MorphologicalAnalyzer(morph_analyzer_name)
     doc_stat = []
     with open(file_out, 'w') as fo:
         for file in file_list:
@@ -380,7 +405,7 @@ def batch_convert_clinical_data_to_relconll(
             if file.endswith(file_ext):
                 try:
                     doc_stat.append(convert_clinical_data_to_relconll(
-                        file, fo, tokenizer, sent_tag=sent_tag,
+                        file, fo, tokenizer, morphological_analyzer, sent_tag=sent_tag,
                         defaut_cert=defaut_cert,
                         contains_modality=contains_modality,
                         is_raw=is_raw
@@ -484,7 +509,7 @@ def convert_clinical_data_to_conll(clinical_file, fo, tokenizer, sent_tag=True, 
                         toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
                         sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
                         deunk_toks = explore_unk(sbp_toks, toks)
-                        sbp_labs = match_sbp_label(deunk_toks, labs)
+                        sbp_labs = match_ner_label(deunk_toks, labs)
                         sbp_cert_labs = match_sbp_cert_labs(deunk_toks, cert_labs)
                         sbp_ttype_labs = match_sbp_cert_labs(deunk_toks, ttype_labs)
                         sbp_state_labs = match_sbp_cert_labs(deunk_toks, state_labs)
@@ -1487,11 +1512,11 @@ def convert_rels_to_mhs_v3(
 
         assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mod) == len(cls_sbw_sent_mask)
 
-        # if verbose:
-        #     print("sent_id: {}/{}".format(sent_id, doc_num))
-        #     print(["{}: {}".format(index, tok) for index, tok in enumerate(cls_sbw_sent_tok)])
-        #     print(["{}: {}".format(index, ner) for index, ner in enumerate(cls_sbw_sent_ner)])
-        #     print(["{}: {}".format(index, mod) for index, mod in enumerate(cls_sbw_sent_mod)])
+        if verbose:
+            print("sent_id: {}/{}".format(sent_id, doc_num))
+            print(["{}: {}".format(index, tok) for index, tok in enumerate(cls_sbw_sent_tok)])
+            print(["{}: {}".format(index, ner) for index, ner in enumerate(cls_sbw_sent_ner)])
+            print(["{}: {}".format(index, mod) for index, mod in enumerate(cls_sbw_sent_mod)])
 
         # preparing rel data
         sent_rel_tuples, sent_spo = [], []

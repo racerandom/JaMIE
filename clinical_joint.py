@@ -110,43 +110,37 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM mhs recognizer')
 
-    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
-                        help="train file, multihead conll format.")
+    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+    #                     help="train file, multihead conll format.")
+    #
+    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+    #                     help="dev file, multihead conll format.")
+    #
+    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+    #                     help="test file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
-                        help="dev file, multihead conll format.")
-
-    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
-                        help="test file, multihead conll format.")
-
-    parser.add_argument("--pretrained_model",
-                        default='bert-base-uncased',
-                        type=str,
-                        help="pre-trained model dir")
+    # parser.add_argument("--pretrained_model",
+    #                     default='bert-base-uncased',
+    #                     type=str,
+    #                     help="pre-trained model dir")
 
     parser.add_argument("--do_lower_case",
                         action='store_true',
                         help="tokenizer: do_lower_case")
 
-    # parser.add_argument("--train_file", default="data/clinical2020Q1/cv0_train.conll", type=str,
-    #                     help="train file, multihead conll format.")
-    #
-    # parser.add_argument("--dev_file", default="data/clinical2020Q1/cv0_dev.conll", type=str,
-    #                     help="dev file, multihead conll format.")
-    #
-    # parser.add_argument("--test_file", default="data/clinical2020Q1/cv0_test.conll", type=str,
-    #                     help="test file, multihead conll format.")
-    #
-    # parser.add_argument("--pretrained_model",
-    #                     default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
-    #                     type=str,
-    #                     help="pre-trained model dir")
-    #
-    # parser.add_argument("--do_lower_case",
-    #                     # action='store_True',
-    #                     default=False,
-    #                     type=bool,
-    #                     help="tokenizer: do_lower_case")
+    parser.add_argument("--train_file", default="data/clinical2020Q1/cv0_train_juman.conll", type=str,
+                        help="train file, multihead conll format.")
+
+    parser.add_argument("--dev_file", default="data/clinical2020Q1/cv0_dev_juman.conll", type=str,
+                        help="dev file, multihead conll format.")
+
+    parser.add_argument("--test_file", default="data/clinical2020Q1/cv0_test_juman.conll", type=str,
+                        help="test file, multihead conll format.")
+
+    parser.add_argument("--pretrained_model",
+                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
+                        type=str,
+                        help="pre-trained model dir")
 
     parser.add_argument("--save_model", default='checkpoints/mhs/', type=str,
                         help="save/load model dir")
@@ -156,6 +150,9 @@ def main():
 
     parser.add_argument("--num_epoch", default=20, type=int,
                         help="fine-tuning epoch number")
+
+    parser.add_argument("--embed_size", default='[128, 128, 512]', type=str,
+                        help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
                         help="Max gradient norm.")
@@ -176,7 +173,7 @@ def main():
     parser.add_argument("--save_best", default='f1', type=str,
                         help="save the best model, given dev scores (f1 or loss)")
 
-    parser.add_argument("--save_step_portion", default=2, type=int,
+    parser.add_argument("--save_step_portion", default=4, type=int,
                         help="save best model given a portion of steps")
 
     parser.add_argument("--neg_ratio", default=1.0, type=float,
@@ -189,9 +186,7 @@ def main():
                         help="learning rate schedule")
 
     parser.add_argument("--epoch_eval",
-                        # action='store_True',
-                        default=True,
-                        type=bool,
+                        action='store_true',
                         help="eval each epoch")
 
     parser.add_argument("--fp16",
@@ -305,11 +300,13 @@ def main():
     warmup_ratio = 0.1
     save_step_interval = math.ceil(num_epoch_steps / args.save_step_portion)
 
+    bio_emb_size, mod_emb_size, rel_emb_size = eval(args.embed_size)
+
     model = JointNerModReExtractor(
         bert_url=args.pretrained_model,
-        bio_emb_size=128, bio_vocab=bio2ix,
-        mod_emb_size=128, mod_vocab=mod2ix,
-        rel_emb_size=512, relation_vocab=rel2ix,
+        bio_emb_size=bio_emb_size, bio_vocab=bio2ix,
+        mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
+        rel_emb_size=rel_emb_size, relation_vocab=rel2ix,
         gpu_id=args.gpu_id
     )
     model.encoder.resize_token_embeddings(len(tokenizer))
