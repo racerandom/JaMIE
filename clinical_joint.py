@@ -110,37 +110,37 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+    #                     help="train file, multihead conll format.")
+    #
+    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+    #                     help="dev file, multihead conll format.")
+    #
+    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+    #                     help="test file, multihead conll format.")
+    #
+    # parser.add_argument("--pretrained_model",
+    #                     default='bert-base-uncased',
+    #                     type=str,
+    #                     help="pre-trained model dir")
+
+    parser.add_argument("--train_file", default="data/clinical2020Q1/cv0_train_juman.conll", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+    parser.add_argument("--dev_file", default="data/clinical2020Q1/cv0_dev_juman.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+    parser.add_argument("--test_file", default="data/clinical2020Q1/cv0_test_juman.conll", type=str,
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
-                        default='bert-base-uncased',
+                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
                         type=str,
                         help="pre-trained model dir")
 
     parser.add_argument("--do_lower_case",
                         action='store_true',
                         help="tokenizer: do_lower_case")
-
-    # parser.add_argument("--train_file", default="data/clinical2020Q1/cv0_train_juman.conll", type=str,
-    #                     help="train file, multihead conll format.")
-    #
-    # parser.add_argument("--dev_file", default="data/clinical2020Q1/cv0_dev_juman.conll", type=str,
-    #                     help="dev file, multihead conll format.")
-    #
-    # parser.add_argument("--test_file", default="data/clinical2020Q1/cv0_test_juman.conll", type=str,
-    #                     help="test file, multihead conll format.")
-    #
-    # parser.add_argument("--pretrained_model",
-    #                     default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
-    #                     type=str,
-    #                     help="pre-trained model dir")
 
     parser.add_argument("--save_model", default='checkpoints/mhs/', type=str,
                         help="save/load model dir")
@@ -151,7 +151,7 @@ def main():
     parser.add_argument("--num_epoch", default=20, type=int,
                         help="fine-tuning epoch number")
 
-    parser.add_argument("--embed_size", default='[128, 128, 512]', type=str,
+    parser.add_argument("--embed_size", default='[32, 32, 256]', type=str,
                         help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -164,7 +164,7 @@ def main():
                         action='store_true',
                         help="Whether to run training.")
 
-    parser.add_argument("--lr", default=2e-5, type=float,
+    parser.add_argument("--lr", default=5e-5, type=float,
                         help="learning rate")
 
     parser.add_argument("--reduction", default='token_mean', type=str,
@@ -282,14 +282,6 @@ def main():
     test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
         test_toks, test_ners, test_mods, test_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
-
-    # train_sampler = RandomSampler(train_dataset)
-    # train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=args.batch_size)
-    # dev_sampler = SequentialSampler(dev_dataset)
-    # dev_dataloader = DataLoader(dev_dataset, sampler=dev_sampler, batch_size=args.batch_size)
-    # test_sampler = SequentialSampler(test_dataset)
-    # test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=args.batch_size)
-    # print(train_sampler)
 
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
     dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
