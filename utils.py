@@ -204,7 +204,7 @@ def retrieve_w2v(embed_file, binary=True, add_unk=True):
 
 # generate MHS conll files by reading .xml and .rel files
 def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphological_analyzer,
-                                      sent_tag=True, defaut_cert='_',
+                                      sent_tag=True, defaut_modality='_',
                                       contains_modality=False,
                                       is_raw=False):
     from collections import defaultdict
@@ -213,13 +213,14 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphologica
     filename, extension = os.path.splitext(clinical_file)
     rel_file = filename + '.rel'
     rel_dic = defaultdict(lambda: [[], []])
-    with open(rel_file, 'r') as rfi:
-        for line in rfi:
-            if not line.strip():
-                continue
-            tail_tid, head_tid, rel = eval(line)
-            rel_dic[tail_tid][0].append(head_tid)
-            rel_dic[tail_tid][1].append(rel)
+    if not is_raw:
+        with open(rel_file, 'r') as rfi:
+            for line in rfi:
+                if not line.strip():
+                    continue
+                tail_tid, head_tid, rel = eval(line)
+                rel_dic[tail_tid][0].append(head_tid)
+                rel_dic[tail_tid][1].append(rel)
 
     with open(clinical_file, 'r') as fi:
         for index, pre_line in enumerate(fi):
@@ -256,10 +257,8 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphologica
                                     '<ABD US>', '<Liver>', '<胸部CT>']:
                             continue
 
-                    if sent_tag:
-                        line = '<sentence>' + line + '</sentence>'
-
                     if not is_raw:
+                        line = '<sentence>' + line + '</sentence>'
                         tag2mask = {}
                         st = ET.fromstring(line)
                         toks, labs, modality_labs, cert_labs, ttype_labs, state_labs = [], [], [], [], [], []
@@ -350,49 +349,47 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphologica
                                     tok_head_list[tail_id] = str(head_list)
                                     tok_rel_list[tail_id] = str(rel_list)
                     else:
-                        print(line)
                         seg = juman.analysis(line)
                         toks = [w.midasi for w in seg.mrph_list()]
-                        print(toks)
-                        print()
                         sent_stat.append(len(toks))
                         # replace '\u3000' to '[JASP]'
                         toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
-                        sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
-                        deunk_toks = explore_unk(sbp_toks, toks)
-                        sbp_labs = ['O'] * len(sbp_toks)
-                        sbp_cert_labs = ['_'] * len(sbp_toks)
-                        sbp_ttype_labs = ['_'] * len(sbp_toks)
-                        sbp_state_labs = ['_'] * len(sbp_toks)
+                        # sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
+                        # deunk_toks = explore_unk(sbp_toks, toks)
+                        # sbp_labs = ['O'] * len(sbp_toks)
+                        # sbp_cert_labs = ['_'] * len(sbp_toks)
+                        # sbp_ttype_labs = ['_'] * len(sbp_toks)
+                        # sbp_state_labs = ['_'] * len(sbp_toks)
+                        labs = ['O'] * len(toks)
+                        modality_labs = [defaut_modality] * len(toks)
+                        tok_rel_list = [['N']] * len(toks)
+                        tok_head_list = [[i] for i in range(len(toks))]
 
-                    assert len(sbp_toks) == len(deunk_toks) == len(sbp_labs) == len(sbp_cert_labs) == len(
-                        sbp_ttype_labs) == len(sbp_state_labs)
+                    # assert len(sbp_toks) == len(deunk_toks) == len(sbp_labs) == len(sbp_cert_labs) == len(
+                    #     sbp_ttype_labs) == len(sbp_state_labs)
 
                     # for d, t, l, cl, tl, sl in zip(deunk_toks, sbp_toks, sbp_labs, sbp_cert_labs, sbp_ttype_labs,
                     #                                sbp_state_labs):
                     #     fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (d, t, l, cl, tl, sl))
                     # fo.write('\n')
+                    tok_ids = [str(i) for i in range(len(toks))]
                     fo.write('#doc\n')
                     if not contains_modality:
-                        for i, t, l, r, h in zip(tok_tail_list, toks, labs, tok_rel_list, tok_head_list):
-                            fo.write('%s\t%s\t%s\t%s\t%s\n' % (i, t, l, r, h))
+                        for i, t, l, r, h in zip(tok_ids, toks, labs, tok_rel_list, tok_head_list):
+                            fo.write("{}\t{}\t{}\t{}\t{}\n".format(i, t, l, r, h))
                     else:
-                        for i, t, l, ml, r, h in zip(tok_tail_list, toks, labs, modality_labs, tok_rel_list, tok_head_list):
-                            fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (i, t, l, ml, r, h))
-                    # fo.write('\n')
+                        for i, t, l, ml, r, h in zip(tok_ids, toks, labs, modality_labs, tok_rel_list, tok_head_list):
+                            fo.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i, t, l, ml, r, h))
                 except Exception as ex:
-
                     print('[error]' + clinical_file + ': ' + line)
                     print(ex)
-    #     return index + 1
     return sent_stat
 
 
 def batch_convert_clinical_data_to_relconll(
     file_list, file_out, tokenizer,
-    is_separated=True,
     sent_tag=True,
-    defaut_cert='_',
+    defaut_modality='_',
     contains_modality=False,
     is_raw=False,
     morph_analyzer_name='juman'
@@ -406,12 +403,41 @@ def batch_convert_clinical_data_to_relconll(
                 try:
                     doc_stat.append(convert_clinical_data_to_relconll(
                         file, fo, tokenizer, morphological_analyzer, sent_tag=sent_tag,
-                        defaut_cert=defaut_cert,
+                        defaut_modality=defaut_modality,
                         contains_modality=contains_modality,
                         is_raw=is_raw
                     ))
                 except Exception as ex:
                     print('[error]:' + file)
+                    print(ex)
+    return doc_stat
+
+
+def separated_batch_convert_clinical_data_to_relconll(
+    file_in_dir, file_out_dir, tokenizer,
+    sent_tag=True,
+    defaut_modality='_',
+    contains_modality=False,
+    is_raw=False,
+    morph_analyzer_name='juman'
+):
+    morphological_analyzer = MorphologicalAnalyzer(morph_analyzer_name)
+    doc_stat = []
+
+    for file_name in sorted(os.listdir(file_in_dir)):
+        if file_name.endswith(".xml"):
+            file_in = os.path.join(file_in_dir, file_name)
+            file_out = os.path.join(file_out_dir, file_name.rstrip(".xml") + '.conll')
+            with open(file_out, 'w') as fo:
+                try:
+                    doc_stat.append(convert_clinical_data_to_relconll(
+                        file_in, fo, tokenizer, morphological_analyzer, sent_tag=sent_tag,
+                        defaut_modality=defaut_modality,
+                        contains_modality=contains_modality,
+                        is_raw=is_raw
+                    ))
+                except Exception as ex:
+                    print('[error]:' + file_in)
                     print(ex)
     return doc_stat
 
@@ -1290,6 +1316,64 @@ def align_sbw_ids(sbw_sent_toks):
         else:
             aligned_ids.append([index])
     return aligned_ids
+
+
+def sbwtok2tok_alignment(sbw_sent_tok):
+    aligned_ids = []
+    sent_tok = []
+    tok_cache = []
+    curr_index = -1
+    for index, token in enumerate(sbw_sent_tok):
+        if not token.startswith("##"):
+            if tok_cache:
+                sent_tok.append(' '.join(tok_cache).replace(' ##', ''))
+                tok_cache = []
+            curr_index += 1
+        tok_cache.append(token)
+        aligned_ids.append(curr_index)
+    if tok_cache:
+        sent_tok.append(' '.join(tok_cache).replace(' ##', ''))
+    return sent_tok, aligned_ids
+
+
+def sbwner2ner(sbw_sent_ner, aligned_ids):
+    sent_ner = []
+    for index, sbw_ner in enumerate(sbw_sent_ner):
+        if index > 0:
+            if aligned_ids[index] != aligned_ids[index - 1]:
+                sent_ner.append(sbw_ner)
+        else:
+            sent_ner.append(sbw_ner)
+    return sent_ner
+
+
+def sbwmod2mod(sbw_sent_mod, aligned_ids):
+    sent_mod = []
+    for index, sbw_mod in enumerate(sbw_sent_mod):
+        if index > 0:
+            if aligned_ids[index] == aligned_ids[index - 1]:
+                sent_mod[-1] = sbw_mod
+            else:
+                sent_mod.append(sbw_mod)
+        else:
+            sent_mod.append(sbw_mod)
+    return sent_mod
+
+
+def sbwrel2head(sbw_sent_rel, aligned_ids, offset=-1):
+    sent_rel = [['N'] for _ in range(aligned_ids[-1] + offset)]
+    sent_head = [[i] for i in range(aligned_ids[-1] + offset)]
+    for rel_triplet in sbw_sent_rel:
+        w_tail_id = aligned_ids[rel_triplet['subject'][-1]] + offset
+        w_head_id = aligned_ids[rel_triplet['object'][-1]] + offset
+        rel = rel_triplet['predicate']
+        if sent_head[w_tail_id] == [w_tail_id]:
+            sent_head[w_tail_id] = [w_head_id]
+            sent_rel[w_tail_id] = [rel]
+        else:
+            sent_head[w_tail_id].append(w_head_id)
+            sent_rel[w_tail_id].append(rel)
+    return sent_rel, sent_head
 
 
 # clinical_mhs.py related

@@ -549,7 +549,6 @@ class JointNerModReExtractor(nn.Module):
         output = {}
 
         # ner section
-
         if is_train:
             crf_loss = -self.crf_tagger(ner_logits, bio_gold,
                                         mask=mask,
@@ -621,7 +620,7 @@ class JointNerModReExtractor(nn.Module):
             )
         else:
             selection_loss = 0.
-            output['selection_triplets'] = self.inference(
+            output['selection_triplets'], output['index_triplets'] = self.inference(
                 mask, text_list, decoded_tag, selection_logits)
             output['spo_gold'] = spo_gold
 
@@ -643,7 +642,7 @@ class JointNerModReExtractor(nn.Module):
 
         text_list = list(map(list, text_list))
 
-        def find_entity(pos, text, sequence_tags, return_text=True):
+        def find_entity(pos, text, sequence_tags):
             entity = []
 
             if sequence_tags[pos][0] in ['B', 'O']:
@@ -659,10 +658,11 @@ class JointNerModReExtractor(nn.Module):
                         temp_entity.append(pos)
                         break
                 entity = list(reversed(temp_entity))
-            return [text[index] for index in entity] if return_text else entity
+            return [text[index] for index in entity], entity
 
         batch_num = len(sequence_tags)
         result = [[] for _ in range(batch_num)]
+        index_result = [[] for _ in range(batch_num)]
         idx = torch.nonzero(selection_tags.cpu())
 
         for i in range(idx.size(0)):
@@ -672,8 +672,8 @@ class JointNerModReExtractor(nn.Module):
             if predicate == 'N':
                 continue
             tags = list(map(lambda x: reversed_bio_vocab[x], sequence_tags[b]))
-            object = find_entity(o, text_list[b], tags)
-            subject = find_entity(s, text_list[b], tags)
+            object, index_object = find_entity(o, text_list[b], tags)
+            subject, index_subject = find_entity(s, text_list[b], tags)
             assert object != [] and subject != []
 
             rel_triplet = {
@@ -681,5 +681,11 @@ class JointNerModReExtractor(nn.Module):
                 'predicate': predicate,
                 'object': object
             }
+            rel_index_triplet = {
+                'subject': index_subject,
+                'predicate': predicate,
+                'object': index_object
+            }
             result[b].append(rel_triplet)
-        return result
+            index_result[b].append(rel_index_triplet)
+        return result, index_result
