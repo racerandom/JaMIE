@@ -17,7 +17,7 @@ import utils
 warnings.filterwarnings("ignore")
 
 
-def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, bio2ix, mod2ix, rel2ix,
+def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, bio2ix, mod2ix, rel2ix,
                cls_max_len, gpu_id, message, ner_details, mod_details, rel_details, print_general,
                orig_tok=None, out_file='tmp.conll',
                f1_mode='micro', verbose=0):
@@ -43,8 +43,8 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
             b_spo_gold = tuple([eval_spo[sent_id] for sent_id in b_sent_ids])
             if verbose:
                 for sent_id in b_sent_ids:
-                    print(["{}: {}".format(ix, tok) for ix, tok in enumerate(eval_tok[sent_id])])
-                    print(["{}: {}".format(ix, lab) for ix, lab in enumerate(eval_lab[sent_id])])
+                    print([f"{ix}: {tok}" for ix, tok in enumerate(eval_tok[sent_id])])
+                    print([f"{ix}: {lab}" for ix, lab in enumerate(eval_lab[sent_id])])
                     print(eval_rel[sent_id])
                     print()
 
@@ -118,7 +118,7 @@ def eval_joint(model, eval_dataloader, eval_tok, eval_lab, eval_mod, eval_rel, e
                 # print(w_rel)
                 # print(w_head)
                 # print()
-                fo.write('#doc\n')
+                fo.write(f'{eval_comments[sid]}\n')
                 for index, (tok, ner, mod, rel, head) in enumerate(zip(orig_tok[sid] if orig_tok else w_tok, w_ner, w_mod, w_rel, w_head)):
                     fo.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
                         index, tok, ner, mod, rel, head
@@ -154,20 +154,27 @@ def main():
     #                     type=str,
     #                     help="pre-trained model dir")
 
-    parser.add_argument("--train_file", default="data/NCC1K20200601/cv1_train_juman.conll", type=str,
+    parser.add_argument("--train_file", default="data/clinical20200605/cv5/cv0_train_juman.conll", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/NCC1K20200601/cv1_dev_juman.conll", type=str,
+    parser.add_argument("--dev_file", default="data/clinical20200605/cv5/cv0_dev_juman.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file", default="data/NCC1K20200601/cv1_test_juman.conll", type=str,
-                        help="test file, multihead conll format.")
+    # parser.add_argument("--test_file", default="data/NCC1K20200601/cv1_test_juman.conll", type=str,
+    #                     help="test file, multihead conll format.")
+    #
+    # parser.add_argument("--pred_file", default="test_pred.conll", type=str,
+    #                     help="test prediction, multihead conll format.")
 
-    parser.add_argument("--pred_file", default="test_pred.conll", type=str,
-                        help="test prediction, multihead conll format.")
+    parser.add_argument("--test_dir", default="data/clinicalreport_part2/conll", type=str,
+                        help="test dir, multihead conll format.")
+
+    parser.add_argument("--pred_dir", default="data/clinicalreport_part2/pred/conll", type=str,
+                        help="prediction dir, multihead conll format.")
+
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
+                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE_WWM_transformers",
                         type=str,
                         help="pre-trained model dir")
 
@@ -175,7 +182,7 @@ def main():
                         action='store_true',
                         help="tokenizer: do_lower_case")
 
-    parser.add_argument("--save_model", default='checkpoints/ncc/', type=str,
+    parser.add_argument("--save_model", default='checkpoints/mr_joint_full_wwm/', type=str,
                         help="save/load model dir")
 
     parser.add_argument("--batch_size", default=8, type=int,
@@ -252,7 +259,7 @@ def main():
             do_basic_tokenize=False
         )
 
-    train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
+    train_comments, train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
         args.train_file,
         down_neg=0.0
     )
@@ -267,12 +274,10 @@ def main():
     print(min([len(sent_rels) for sent_rels in train_rels]), max([len(sent_rels) for sent_rels in train_rels]))
     print()
 
-    dev_toks, dev_ners, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(args.dev_file, down_neg=0.0)
+    dev_comments, dev_toks, dev_ners, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(args.dev_file, down_neg=0.0)
     print('max sent len:', utils.max_sents_len(dev_toks, tokenizer))
     print(min([len(sent_rels) for sent_rels in dev_rels]), max([len(sent_rels) for sent_rels in dev_rels]))
     print()
-
-
 
     ix2rel = {v: k for k, v in rel2ix.items()}
     ix2bio = {v: k for k, v in bio2ix.items()}
@@ -316,7 +321,6 @@ def main():
     dev_dataset, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
         dev_toks, dev_ners, dev_mods, dev_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
-
 
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
     dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
@@ -394,6 +398,7 @@ def main():
                 if epoch > args.freeze_after_epoch:
                     utils.freeze_bert_layers(model, bert_name='encoder', freeze_embed=True, layer_list=list(range(0, 11)))
 
+                # input processing
                 b_toks, b_attn_mask, b_ner, b_mod = tuple(
                     t.cuda(args.gpu_id) for t in batch[1:]
                 )
@@ -408,24 +413,8 @@ def main():
                 b_ner_text = [train_ner[sent_id] for sent_id in b_sent_ids]
                 b_mod_text = [train_mod[sent_id] for sent_id in b_sent_ids]
                 b_spo_gold = tuple([train_spo[sent_id] for sent_id in b_sent_ids])
-                # print(b_toks.shape)
-                # print(b_ner.shape)
-                # print(b_gold_relmat.shape)
-                # print([len(t) for t in b_text_list])
-                # print([len(b) for b in b_bio_text])
-                # print([len(s) for s in b_spo_gold])
-                # for ix, sent_id in enumerate(b_sent_ids):
-                #     print('sent_id', sent_id)
-                #     print(["{}: {}".format(ix, tok) for ix, tok in enumerate(train_tok[sent_id])])
-                #     print(["{}: {}".format(ix, lab) for ix, lab in enumerate(train_lab[sent_id])])
-                #     print(train_rel[sent_id])
-                #     print('-' * 20)
-                #     print(b_text_list[ix])
-                #     print(b_bio_text[ix])
-                #     print(b_spo_gold[ix])
-                #     print()
 
-                # ner_loss, rel_loss = model(b_toks, b_attn_mask.bool(), ner_labels=b_ner, rel_labels=b_gold_relmat)
+                # model forward
                 output = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
                                b_text_list, b_ner_text, b_mod_text, b_spo_gold,
                                is_train=True, reduction=args.reduction)
@@ -454,13 +443,12 @@ def main():
                 train_ner_loss += ner_loss.item()
                 train_mod_loss += mod_loss.item()
                 train_rel_loss += rel_loss.item()
-                pbar.set_description("L {:.6f}, L_NER: {:.6f}, L_MOD: {:.6f} L_REL: {:.6f} | epoch: {}/{}:".format(
-                    loss.item(), ner_loss.item(), mod_loss.item(), rel_loss.item(), epoch, args.num_epoch
-                ))
+                pbar.set_description(f"L {loss.item():.6f}, L_NER: {ner_loss.item():.6f}, L_MOD: {mod_loss.item():.6f}"
+                                     f" L_REL: {rel_loss.item():.6f} | epoch: {epoch}/{args.num_epoch}:")
 
                 if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
-                        dev_f1 = eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+                        dev_f1 = eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                                             mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
                                             ner_details=False, mod_details=False, rel_details=False,
                                             print_general=False, verbose=0)
@@ -468,20 +456,11 @@ def main():
                         dev_f1 += (step,)
                         if best_dev_f1[0] < dev_f1[0]:
                             print(
-                                " -> Previous best dev f1 {:.6f} (ner: {:.6f}, mod: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d} \n"
-                                " >> Current f1 {:.6f} (ner: {:.6f}, mod: {:.6f}, rel: {:.6f}; best model saved '{}'".format(
-                                    best_dev_f1[0],
-                                    best_dev_f1[1],
-                                    best_dev_f1[2],
-                                    best_dev_f1[3],
-                                    best_dev_f1[4],
-                                    best_dev_f1[5],
-                                    dev_f1[0],
-                                    dev_f1[1],
-                                    dev_f1[2],
-                                    dev_f1[3],
-                                    args.save_model
-                                )
+                                f" -> Previous best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, "
+                                f"mod: {best_dev_f1[2]:.6f}, rel: {best_dev_f1[3]:.6f}; "
+                                f"epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d} \n "
+                                f">> Current f1 {dev_f1[0]:.6f} (ner: {dev_f1[1]:.6f}, mod: {dev_f1[2]:.6f}, "
+                                f"rel: {dev_f1[3]:.6f}; best model saved '{args.save_model}'"
                             )
                             best_dev_f1 = dev_f1
 
@@ -491,7 +470,7 @@ def main():
                             torch.save(model.state_dict(), os.path.join(args.save_model, 'best.pt'))
                             tokenizer.save_pretrained(args.save_model)
 
-            eval_joint(model, dev_dataloader, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+            eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                        mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
                        ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
 
@@ -503,20 +482,8 @@ def main():
                 train_rel_loss / num_epoch_steps
             ))
 
-            # if args.epoch_eval and epoch > 5:
-            #     eval_joint(model, test_dataloader, test_tok, test_ner, test_mod, test_rel, test_spo,
-            #                bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "test dataset",
-            #                ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
-
-        print("""Best dev f1 {:.6f} (ner: {:.6f}, mod: {:.6f}, rel: {:.6f}; epoch {:d} / step {:d}\n
-                     """.format(
-            best_dev_f1[0],
-            best_dev_f1[1],
-            best_dev_f1[2],
-            best_dev_f1[3],
-            best_dev_f1[4],
-            best_dev_f1[5],
-        ))
+        print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
+              f"rel: {best_dev_f1[3]:.6f}; epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d}\n")
     else:
         model = JointNerModReExtractor(
             bert_url=args.pretrained_model,
@@ -529,14 +496,14 @@ def main():
         model.cuda(args.gpu_id)
         model.load_state_dict(torch.load(os.path.join(args.save_model, 'best.pt')))
 
-        for file_name in sorted(os.listdir("data/NCC2K/conll")):
+        for file_name in sorted(os.listdir(args.test_dir)):
             if file_name.endswith(".conll"):
-                file_in = os.path.join("data/NCC2K/conll", file_name)
-                file_out = os.path.join("data/NCC2K/pred", file_name)
+                file_in = os.path.join(args.test_dir, file_name)
+                file_out = os.path.join(args.pred_dir, file_name)
 
-                test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(file_in,
+                test_comments, test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(file_in,
                                                                                                                  down_neg=0.0)
-                print('max sent len:', utils.max_sents_len(test_toks, tokenizer))
+                print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
                 print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
                 print()
                 max_len = max(
@@ -550,7 +517,7 @@ def main():
 
                 test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
-                eval_joint(model, test_dataloader, test_tok, test_ner, test_mod, test_rel, test_spo,
+                eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
                            bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "Final test dataset",
                            ner_details=True, mod_details=True, rel_details=True, print_general=True,
                            orig_tok=test_toks, out_file=file_out, verbose=0)

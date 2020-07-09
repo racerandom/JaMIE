@@ -62,7 +62,7 @@ parser.add_argument("--dev_file", dest="DEV_FILE", type=str,
                     help="dev file, BIO format.")
 
 parser.add_argument("-p", "--pre", dest="PRE_MODEL",
-                    default='/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE',
+                    default='/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE_WWM_transformers',
                     type=str,
                     help="pre-trained model dir")
 

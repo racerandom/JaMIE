@@ -79,7 +79,7 @@ class BertCRF(BertPreTrainedModel):
     def forward(self, input_embeds, attention_mask, labels=None):
         encoder_logits = self.bert(input_embeds, attention_mask=attention_mask)[0]
         emissions = self.crf_emission(encoder_logits)
-        crf_loss = -self.crf_layer(self.dropout(emissions), mask=attention_mask, tags=labels, reduction='mean')
+        crf_loss = -self.crf_layer(self.dropout(emissions), mask=attention_mask, tags=labels, reduction='token_mean')
         return crf_loss
 
     def decode(self, input_embeds, attention_mask):

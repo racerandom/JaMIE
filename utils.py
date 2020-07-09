@@ -223,6 +223,7 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphologica
                 rel_dic[tail_tid][1].append(rel)
 
     with open(clinical_file, 'r') as fi:
+        comment_line = None
         for index, pre_line in enumerate(fi):
             # convert number&alphabet to han-kaku for spliting sentences
             pre_line = mojimoji.zen_to_han(pre_line, kana=False)
@@ -235,151 +236,144 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphologica
             for line in sent_list:
 
                 try:
-
                     line = line.strip().replace('\n', '').replace('\r', '')
 
-                    line = line.replace('>>', '>＞').replace('<<', '＜<')
-
-                    if is_raw:
-                        line = line.replace('#', '＃')  # a solution to fix juman casting #
-                        line = line.replace('<', '＜')
-                        line = line.replace('>', '＞')
-                    #                         print()
-                    #                         print(line)
+                    if line.startswith('## line'):
+                        comment_line = line
+                        fo.write(f'{comment_line}\n')
                     else:
-                        if line in ['<CHEST: CT>',
-                                    '<CHEST>',
-                                    '<胸部CT>',
-                                    '<CHEST；CT>',
-                                    '<CHEST;CT>',
-                                    '<胸部単純CT>',
-                                    '<胸部CT>',
-                                    '<ABD US>', '<Liver>', '<胸部CT>']:
-                            continue
+                        line = line.replace('>>', '>＞').replace('<<', '＜<')
 
-                    if not is_raw:
-                        line = '<sentence>' + line + '</sentence>'
-                        tag2mask = {}
-                        st = ET.fromstring(line)
-                        toks, labs, modality_labs, cert_labs, ttype_labs, state_labs = [], [], [], [], [], []
-                        for item in st.iter():
-                            if item.text is not None:
-                                seg_toks = morphological_analyzer.analyze(item.text)
-                                toks += seg_toks
-                                if item.tag in ['event', 'TIMEX3',
-                                                'd', 'a', 'f', 'c', 'C', 't', 'r',
-                                                'm-key', 'm-val', 't-test', 't-key', 't-val', 'cc']:
-                                    tag2mask[item.attrib['tid']] = [0] * len(labs) + [1] * len(seg_toks)
-                                    tok_labs = ['I-%s' % (item.tag.capitalize())] * len(seg_toks)
-                                    tok_labs[0] = 'B-%s' % (item.tag.capitalize())
-                                    labs += tok_labs
+                        if is_raw:
+                            line = line.replace('#', '＃')  # a solution to fix juman casting #
+                            line = line.replace('<', '＜')
+                            line = line.replace('>', '＞')
+                        #                         print()
+                        #                         print(line)
+                        else:
+                            if line in ['<CHEST: CT>',
+                                        '<CHEST>',
+                                        '<胸部CT>',
+                                        '<CHEST；CT>',
+                                        '<CHEST;CT>',
+                                        '<胸部単純CT>',
+                                        '<胸部CT>',
+                                        '<ABD US>', '<Liver>', '<胸部CT>']:
+                                continue
 
-                                    phrase_modality_labs = ['_'] * len(seg_toks)
+                        if not is_raw:
+                            line = '<sentence>' + line + '</sentence>'
+                            tag2mask = {}
+                            st = ET.fromstring(line)
+                            toks, labs, modality_labs, cert_labs, ttype_labs, state_labs = [], [], [], [], [], []
+                            for item in st.iter():
+                                if item.text is not None:
+                                    seg_toks = morphological_analyzer.analyze(item.text)
+                                    toks += seg_toks
+                                    if item.tag in ['event', 'TIMEX3',
+                                                    'd', 'a', 'f', 'c', 'C', 't', 'r',
+                                                    'm-key', 'm-val', 't-test', 't-key', 't-val', 'cc']:
+                                        tag2mask[item.attrib['tid']] = [0] * len(labs) + [1] * len(seg_toks)
+                                        tok_labs = ['I-%s' % (item.tag.capitalize())] * len(seg_toks)
+                                        tok_labs[0] = 'B-%s' % (item.tag.capitalize())
+                                        labs += tok_labs
 
-                                    if item.tag == 'd' and 'certainty' in item.attrib:
-                                        tok_cert_labs = ['_'] * len(seg_toks)
-                                        tok_cert_labs[0] = item.attrib['certainty']
-                                        cert_labs += tok_cert_labs
-                                        phrase_modality_labs[-1] = item.attrib['certainty']
+                                        phrase_modality_labs = ['_'] * len(seg_toks)
+
+                                        if item.tag == 'd' and 'certainty' in item.attrib:
+                                            tok_cert_labs = ['_'] * len(seg_toks)
+                                            tok_cert_labs[0] = item.attrib['certainty']
+                                            cert_labs += tok_cert_labs
+                                            phrase_modality_labs[-1] = item.attrib['certainty']
+                                        else:
+                                            cert_labs += ['_'] * len(seg_toks)
+
+                                        if item.tag == 'TIMEX3' and 'type' in item.attrib:
+                                            tok_ttype_labs = ['_'] * len(seg_toks)
+                                            tok_ttype_labs[0] = item.attrib['type']
+                                            ttype_labs += tok_ttype_labs
+                                            phrase_modality_labs[-1] = item.attrib['type']
+                                        else:
+                                            ttype_labs += ['_'] * len(seg_toks)
+                                        if item.tag in ['t-test', 'r', 'cc'] and 'state' in item.attrib:
+                                            tok_state_labs = ['_'] * len(seg_toks)
+                                            tok_state_labs[0] = item.attrib['state']
+                                            state_labs += tok_state_labs
+                                            phrase_modality_labs[-1] = item.attrib['state']
+                                        else:
+                                            state_labs += ['_'] * len(seg_toks)
+
+                                        modality_labs += phrase_modality_labs
                                     else:
+                                        if item.tag not in ['sentence', 'p']:
+                                            print(item.tag)
+                                        labs += ['O'] * len(seg_toks)
+                                        modality_labs += ['_'] * len(seg_toks)
                                         cert_labs += ['_'] * len(seg_toks)
-
-                                    if item.tag == 'TIMEX3' and 'type' in item.attrib:
-                                        tok_ttype_labs = ['_'] * len(seg_toks)
-                                        tok_ttype_labs[0] = item.attrib['type']
-                                        ttype_labs += tok_ttype_labs
-                                        phrase_modality_labs[-1] = item.attrib['type']
-                                    else:
                                         ttype_labs += ['_'] * len(seg_toks)
-                                    if item.tag in ['t-test', 'r', 'cc'] and 'state' in item.attrib:
-                                        tok_state_labs = ['_'] * len(seg_toks)
-                                        tok_state_labs[0] = item.attrib['state']
-                                        state_labs += tok_state_labs
-                                        phrase_modality_labs[-1] = item.attrib['state']
-                                    else:
                                         state_labs += ['_'] * len(seg_toks)
+                                if item.tail is not None:
+                                    seg_tail = morphological_analyzer.analyze(item.tail)
+                                    toks += seg_tail
+                                    labs += ['O'] * len(seg_tail)
+                                    modality_labs += ['_'] * len(seg_tail)
+                                    cert_labs += ['_'] * len(seg_tail)
+                                    ttype_labs += ['_'] * len(seg_tail)
+                                    state_labs += ['_'] * len(seg_tail)
 
-                                    modality_labs += phrase_modality_labs
-                                else:
-                                    if item.tag not in ['sentence', 'p']:
-                                        print(item.tag)
-                                    labs += ['O'] * len(seg_toks)
-                                    modality_labs += ['_'] * len(seg_toks)
-                                    cert_labs += ['_'] * len(seg_toks)
-                                    ttype_labs += ['_'] * len(seg_toks)
-                                    state_labs += ['_'] * len(seg_toks)
-                            if item.tail is not None:
-                                seg_tail = morphological_analyzer.analyze(item.tail)
-                                toks += seg_tail
-                                labs += ['O'] * len(seg_tail)
-                                modality_labs += ['_'] * len(seg_tail)
-                                cert_labs += ['_'] * len(seg_tail)
-                                ttype_labs += ['_'] * len(seg_tail)
-                                state_labs += ['_'] * len(seg_tail)
+                            assert len(toks) == len(labs) == len(modality_labs) == len(cert_labs) == len(ttype_labs) == len(state_labs)
 
-                        assert len(toks) == len(labs) == len(modality_labs) == len(cert_labs) == len(ttype_labs) == len(state_labs)
+                            sent_stat.append(len(toks))
 
-                        sent_stat.append(len(toks))
+                            # replace '\u3000' to '[JASP]'
+                            toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
+                            sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
+                            deunk_toks = explore_unk(sbp_toks, toks)
+                            sbp_labs = match_ner_label(deunk_toks, labs)
+                            sbp_cert_labs = match_sbp_cert_labs(deunk_toks, cert_labs)
+                            sbp_ttype_labs = match_sbp_cert_labs(deunk_toks, ttype_labs)
+                            sbp_state_labs = match_sbp_cert_labs(deunk_toks, state_labs)
 
-                        # replace '\u3000' to '[JASP]'
-                        toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
-                        sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
-                        deunk_toks = explore_unk(sbp_toks, toks)
-                        sbp_labs = match_ner_label(deunk_toks, labs)
-                        sbp_cert_labs = match_sbp_cert_labs(deunk_toks, cert_labs)
-                        sbp_ttype_labs = match_sbp_cert_labs(deunk_toks, ttype_labs)
-                        sbp_state_labs = match_sbp_cert_labs(deunk_toks, state_labs)
+                            # calculate tag mask only in the current sentence
+                            for tid, tag_mask in tag2mask.items():
+                                tag2mask[tid] += [0] * (len(toks) - len(tag2mask[tid]))
+                                # tag2mask[tid] = match_bpe_mask(deunk_toks, tag2mask[tid])
+                            tok_tail_list = [str(i) for i in range(len(toks))]
+                            tok_head_list = ["[%i]" % i for i in range(len(toks))]
+                            tok_rel_list = ["['N']" for _ in toks]
+                            for tail_tid, (head_tids, rels) in rel_dic.items():
+                                if tail_tid in tag2mask:
+                                    tail_id = return_index_of_last_one(tag2mask[tail_tid])
+                                    head_list, rel_list = [], []
+                                    for head_tid, rel in zip(head_tids, rels):
+                                        if head_tid in tag2mask:
+                                            head_list.append(return_index_of_last_one(tag2mask[head_tid]))
+                                            rel_list.append(rel)
+                                    if head_list and rel_list:
+                                        tok_head_list[tail_id] = str(head_list)
+                                        tok_rel_list[tail_id] = str(rel_list)
+                        else:
+                            seg = juman.analysis(line)
+                            toks = [w.midasi for w in seg.mrph_list()]
+                            sent_stat.append(len(toks))
+                            toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
+                            labs = ['O'] * len(toks)
+                            modality_labs = [defaut_modality] * len(toks)
+                            tok_rel_list = [['N']] * len(toks)
+                            tok_head_list = [[i] for i in range(len(toks))]
 
-                        # calculate tag mask only in the current sentence
-                        for tid, tag_mask in tag2mask.items():
-                            tag2mask[tid] += [0] * (len(toks) - len(tag2mask[tid]))
-                            # tag2mask[tid] = match_bpe_mask(deunk_toks, tag2mask[tid])
-                        tok_tail_list = [str(i) for i in range(len(toks))]
-                        tok_head_list = ["[%i]" % i for i in range(len(toks))]
-                        tok_rel_list = ["['N']" for _ in toks]
-                        for tail_tid, (head_tids, rels) in rel_dic.items():
-                            if tail_tid in tag2mask:
-                                tail_id = return_index_of_last_one(tag2mask[tail_tid])
-                                head_list, rel_list = [], []
-                                for head_tid, rel in zip(head_tids, rels):
-                                    if head_tid in tag2mask:
-                                        head_list.append(return_index_of_last_one(tag2mask[head_tid]))
-                                        rel_list.append(rel)
-                                if head_list and rel_list:
-                                    tok_head_list[tail_id] = str(head_list)
-                                    tok_rel_list[tail_id] = str(rel_list)
-                    else:
-                        seg = juman.analysis(line)
-                        toks = [w.midasi for w in seg.mrph_list()]
-                        sent_stat.append(len(toks))
-                        # replace '\u3000' to '[JASP]'
-                        toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
-                        # sbp_toks = tokenizer.tokenize(' '.join(toks)) if tokenizer else toks
-                        # deunk_toks = explore_unk(sbp_toks, toks)
-                        # sbp_labs = ['O'] * len(sbp_toks)
-                        # sbp_cert_labs = ['_'] * len(sbp_toks)
-                        # sbp_ttype_labs = ['_'] * len(sbp_toks)
-                        # sbp_state_labs = ['_'] * len(sbp_toks)
-                        labs = ['O'] * len(toks)
-                        modality_labs = [defaut_modality] * len(toks)
-                        tok_rel_list = [['N']] * len(toks)
-                        tok_head_list = [[i] for i in range(len(toks))]
+                        tok_ids = [str(i) for i in range(len(toks))]
+                        if not comment_line:
+                            fo.write(f'#doc\n')
+                        comment_line = None
 
-                    # assert len(sbp_toks) == len(deunk_toks) == len(sbp_labs) == len(sbp_cert_labs) == len(
-                    #     sbp_ttype_labs) == len(sbp_state_labs)
+                        if not contains_modality:
+                            for i, t, l, r, h in zip(tok_ids, toks, labs, tok_rel_list, tok_head_list):
+                                fo.write("{}\t{}\t{}\t{}\t{}\n".format(i, t, l, r, h))
+                        else:
+                            for i, t, l, ml, r, h in zip(tok_ids, toks, labs, modality_labs, tok_rel_list, tok_head_list):
+                                fo.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i, t, l, ml, r, h))
 
-                    # for d, t, l, cl, tl, sl in zip(deunk_toks, sbp_toks, sbp_labs, sbp_cert_labs, sbp_ttype_labs,
-                    #                                sbp_state_labs):
-                    #     fo.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (d, t, l, cl, tl, sl))
-                    # fo.write('\n')
-                    tok_ids = [str(i) for i in range(len(toks))]
-                    fo.write('#doc\n')
-                    if not contains_modality:
-                        for i, t, l, r, h in zip(tok_ids, toks, labs, tok_rel_list, tok_head_list):
-                            fo.write("{}\t{}\t{}\t{}\t{}\n".format(i, t, l, r, h))
-                    else:
-                        for i, t, l, ml, r, h in zip(tok_ids, toks, labs, modality_labs, tok_rel_list, tok_head_list):
-                            fo.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i, t, l, ml, r, h))
                 except Exception as ex:
                     print('[error]' + clinical_file + ': ' + line)
                     print(ex)
@@ -1069,23 +1063,24 @@ def read_multihead_conll(file_name, col_names):
         file_name, names=col_names, encoding="utf-8", na_filter=False,
         engine='python', sep="\t", quoting=csv.QUOTE_NONE
     ).values.tolist()
-    # print(conll_data[19601])
     return conll_data
 
 
-def convert_multihead_conll_2d_to_3d(list_2d, sep='#doc'):
+def convert_multihead_conll_2d_to_3d(list_2d, sep=('#doc', '## line')):
     list_3d = []
-    sent_cache = []
+    comments = []
+    sent_cache = None
     for entry in list_2d:
         if entry[0].startswith(sep):
-            if sent_cache:
+            comments.append(entry[0])
+            if sent_cache is not None:
                 list_3d.append(sent_cache)
-                sent_cache = []
+            sent_cache = []
             continue
         sent_cache.append(entry)
-    if sent_cache:
+    if sent_cache is not None:
         list_3d.append(sent_cache)
-    return list_3d
+    return list_3d, comments
 
 
 def extract_entity_ids_from_conll_sent(conll_sent, col_names):
@@ -1189,7 +1184,7 @@ def extract_rel_data_from_mh_conll_v2(conll_file, down_neg=0.0, del_neg=False):
 
     col_names = ['token_id', 'token', "ner", "modality", "relation", 'head']
     conll_data = read_multihead_conll(conll_file, col_names)
-    conll_sents = convert_multihead_conll_2d_to_3d(conll_data)
+    conll_sents, comments = convert_multihead_conll_2d_to_3d(conll_data)
     toks = [[tok[col_names.index("token")] for tok in sent] for sent in conll_sents]
     ner_labs = [[tok[col_names.index("ner")] for tok in sent] for sent in conll_sents]
     mod_labs = [[tok[col_names.index("modality")] for tok in sent] for sent in conll_sents]
@@ -1197,7 +1192,8 @@ def extract_rel_data_from_mh_conll_v2(conll_file, down_neg=0.0, del_neg=False):
     for sent_id, sent in enumerate(conll_sents):
         sent_rels = extract_rels_from_conll_sent(sent, col_names, down_neg=down_neg)
         rel_tuples.append(sent_rels)
-    assert len(toks) == len(ner_labs) == len(mod_labs) == len(rel_tuples)
+    print(len(comments), len(toks))
+    assert len(comments) == len(toks) == len(ner_labs) == len(mod_labs) == len(rel_tuples)
     print('number of sents:', len(toks))
     print('number of ne:', len([ner for sent_ner in ner_labs for ner in sent_ner if ner.startswith('B-')]))
     print(
@@ -1212,7 +1208,7 @@ def extract_rel_data_from_mh_conll_v2(conll_file, down_neg=0.0, del_neg=False):
     else:
         rel2ix = get_label2ix([eval(tok[col_names.index("relation")]) for sent in conll_sents for tok in sent])
 
-    return toks, ner_labs, mod_labs, rel_tuples, bio2ix, ne2ix, mod2ix, rel2ix
+    return comments, toks, ner_labs, mod_labs, rel_tuples, bio2ix, ne2ix, mod2ix, rel2ix
 
 
 def convert_rels_to_tensors(ner_toks, ner_labs, rels,
