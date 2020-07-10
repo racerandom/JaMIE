@@ -223,6 +223,9 @@ def main():
     parser.add_argument("--neg_ratio", default=1.0, type=float,
                         help="negative sample ratio")
 
+    parser.add_argument("--warmup_ratio", default=0.1, type=float,
+                        help="warmup ratio")
+
     parser.add_argument("--scheduled_lr",
                         default=True,
                         type=bool,
@@ -330,9 +333,9 @@ def main():
     dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
 
     if args.do_train:
+
         num_epoch_steps = len(train_dataloader)
         num_training_steps = args.num_epoch * num_epoch_steps
-        warmup_ratio = 0.1
         save_step_interval = math.ceil(num_epoch_steps / args.save_step_portion)
 
         model = JointNerModReExtractor(
@@ -372,7 +375,7 @@ def main():
         if args.scheduled_lr:
             scheduler = get_linear_schedule_with_warmup(
                 optimizer,
-                num_warmup_steps=num_training_steps * warmup_ratio,
+                num_warmup_steps=num_training_steps * args.warmup_ratio,
                 num_training_steps=num_training_steps
             )
 
