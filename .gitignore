@@ -17,3 +17,4 @@ nohup.*
 checkpoints/
 .ipynb_checkpoints/
 *.conll
+medicalreport0710/

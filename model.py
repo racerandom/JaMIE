@@ -463,20 +463,20 @@ class JointNerModReExtractor(nn.Module):
                  bio_emb_size, bio_vocab,
                  mod_emb_size, mod_vocab,
                  rel_emb_size, relation_vocab,
-                 hidden_size=768, gpu_id=0):
+                 hidden_size=768, device=None):
         super(JointNerModReExtractor, self).__init__()
 
         bio_num = len(bio_vocab)
         mod_num = len(mod_vocab)
         rel_num = len(relation_vocab)
 
-        self.gpu = gpu_id
+        self.device = device
 
         self.bio_emb = nn.Embedding(num_embeddings=bio_num, embedding_dim=bio_emb_size)
         self.mod_emb = nn.Embedding(num_embeddings=mod_num, embedding_dim=mod_emb_size)
         self.rel_emb = nn.Embedding(num_embeddings=rel_num, embedding_dim=rel_emb_size)
 
-        self.encoder = BertModel.from_pretrained(bert_url)
+        self.encoder = BertModel.from_pretrained(bert_url, output_hidden_states=True)
 
         self.activation = nn.Tanh()
 
@@ -534,16 +534,19 @@ class JointNerModReExtractor(nn.Module):
 
     @staticmethod
     def description(epoch, epoch_num, output):
-        return "L: {:.6f}, L_ner: {:.6f}, L_mod: {:.6f}, L_rel: {:.6f}, epoch: {}/{}:".format(
-            output['loss'].item(), output['crf_loss'].item(),
-            output['mod_loss'].item(), output['selection_loss'].item(), epoch, epoch_num)
+        return f"L: {output['loss'].item():.6f}, L_ner: {output['crf_loss'].item():.6f}, " \
+               f"L_mod: {output['mod_loss'].item():.6f}, L_rel: {output['selection_loss'].item():.6f}, " \
+               f"epoch: {epoch}/{epoch_num}:"
 
     def forward(self, tokens, mask, bio_gold, mod_gold, selection_gold, text_list, bio_text, mod_text, spo_gold,
                 is_train: bool, reduction='token_mean'):
 
         B, L = tokens.shape
-        o = self.encoder(tokens, attention_mask=mask)[0]  # last hidden of BERT
-
+        bert_out = self.encoder(tokens, attention_mask=mask)  # last hidden of BERT
+        o = bert_out[0]
+        # o_high = bert_out[0]
+        # o_mid = bert_out[-1]
+        # o_low = bert_out[0]
         ner_logits = self.crf_emission(o)
 
         output = {}
@@ -562,7 +565,7 @@ class JointNerModReExtractor(nn.Module):
             temp_tag = copy.deepcopy(decoded_tag)
             for line in temp_tag:
                 line.extend([self.bio_vocab['O']] * (L - len(line)))
-            bio_gold = torch.tensor(temp_tag).cuda(self.gpu)
+            bio_gold = torch.tensor(temp_tag).to(self.device)
 
         output['crf_loss'] = crf_loss
 
@@ -587,7 +590,7 @@ class JointNerModReExtractor(nn.Module):
             temp_mod = copy.deepcopy(decoded_mod)
             for line in temp_mod:
                 line.extend([self.mod_vocab['_']] * (L - len(line)))
-            mod_gold = torch.tensor(temp_mod).cuda(self.gpu)
+            mod_gold = torch.tensor(temp_mod).to(self.device)
 
         mod_out = self.mod_emb(mod_gold)
         o = torch.cat((o, mod_out), dim=-1)

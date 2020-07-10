@@ -145,7 +145,7 @@ class MultiheadConll(object):
                 sent_str += ''.join(output_toks) + '\n'
                 fo.write(sent_str)
 
-    def doc_to_brat(self, brat_file, with_rel=False):
+    def doc_to_brat(self, brat_file, with_rel=True):
         with open(brat_file + '.txt', 'w', encoding='utf8') as brat_txt, open(brat_file + '.ann', 'w', encoding='utf8') as brat_ann:
             line_start = 0
             eid_start = 1
@@ -174,8 +174,11 @@ class MultiheadConll(object):
                     for tail_tid, head_tid, rel in self._rel_triplets[sent_id]:
                         tail_char_id = line_start + len(''.join(self._toks[sent_id][:tail_tid + 1])) - 1
                         head_char_id = line_start + len(''.join(self._toks[sent_id][:head_tid + 1])) - 1
-                        brat_ann.write(f'R{rid_start}	{rel} Arg1:{charid2eid[tail_char_id]} Arg2:{charid2eid[head_char_id]}\n')
-                        rid_start += 1
+                        if tail_char_id in charid2eid and head_char_id in charid2eid:
+                            brat_ann.write(f'R{rid_start}	{rel} Arg1:{charid2eid[tail_char_id]} Arg2:{charid2eid[head_char_id]}\n')
+                            rid_start += 1
+                        else:
+                            print(f'unknow eid of tail{tail_char_id}, head{head_char_id}')
                 line_start += len(sent_str)
 
 

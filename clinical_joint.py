@@ -18,7 +18,7 @@ warnings.filterwarnings("ignore")
 
 
 def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, bio2ix, mod2ix, rel2ix,
-               cls_max_len, gpu_id, message, ner_details, mod_details, rel_details, print_general,
+               cls_max_len, device, message, ner_details, mod_details, rel_details, print_general,
                orig_tok=None, out_file='tmp.conll',
                f1_mode='micro', verbose=0):
 
@@ -29,7 +29,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
     with torch.no_grad(), open(out_file, 'w') as fo:
         for dev_step, dev_batch in enumerate(eval_dataloader):
             b_toks, b_attn_mask, b_ner, b_mod = tuple(
-                t.cuda(gpu_id) for t in dev_batch[1:]
+                t.to(device) for t in dev_batch[1:]
             )
             b_sent_ids = dev_batch[0].tolist()
             b_text_list = [utils.padding_1d(
@@ -48,7 +48,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                     print(eval_rel[sent_id])
                     print()
 
-            b_gold_relmat = utils.gen_relmat(eval_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).cuda(gpu_id)
+            b_gold_relmat = utils.gen_relmat(eval_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).to(device)
             output = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
                            b_text_list, b_bio_text, b_mod_text, b_spo_gold, is_train=False)
 
@@ -236,14 +236,14 @@ def main():
                         action='store_true',
                         help="fp16")
 
-    parser.add_argument("--fp16_opt_level", type=str, default="O2",
+    parser.add_argument("--fp16_opt_level", type=str, default="O1",
                         help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
                              "See details at https://nvidia.github.io/apex/amp.html")
 
-    parser.add_argument("--gpu_id", default=0, type=int,
-                        help="gpu id: default 0")
-
     args = parser.parse_args()
+
+    args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    args.n_gpu = torch.cuda.device_count()
 
     print(args)
 
@@ -340,9 +340,10 @@ def main():
             bio_emb_size=bio_emb_size, bio_vocab=bio2ix,
             mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
             rel_emb_size=rel_emb_size, relation_vocab=rel2ix,
-            gpu_id=args.gpu_id
+            device=args.device
         )
         model.encoder.resize_token_embeddings(len(tokenizer))
+        model.to(args.device)
 
         param_optimizer = list(model.named_parameters())
         encoder_name_list = ['encoder']
@@ -375,7 +376,6 @@ def main():
                 num_training_steps=num_training_steps
             )
 
-        model.cuda(args.gpu_id)
 
         if args.fp16:
             try:
@@ -383,6 +383,9 @@ def main():
             except ImportError:
                 raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
             model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
+
+        if args.n_gpu > 1:
+            model = torch.nn.DataParallel(model)
 
         # (F1, NER_F1, MOD_F1, REL_F1, epoch, step)
         best_dev_f1 = (float('-inf'), float('-inf'),  float('-inf'), float('-inf'), 0, 0)
@@ -404,10 +407,10 @@ def main():
 
                 # input processing
                 b_toks, b_attn_mask, b_ner, b_mod = tuple(
-                    t.cuda(args.gpu_id) for t in batch[1:]
+                    t.to(args.device) for t in batch[1:]
                 )
                 b_sent_ids = batch[0].tolist()
-                b_gold_relmat = utils.gen_relmat(train_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).cuda(args.gpu_id)
+                b_gold_relmat = utils.gen_relmat(train_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).to(args.device)
 
                 b_text_list = [utils.padding_1d(
                     train_tok[sent_id],
@@ -426,6 +429,9 @@ def main():
                 mod_loss = output['mod_loss']
                 rel_loss = output['selection_loss']
                 loss = output['loss']
+
+                if args.n_gpu > 1:
+                    loss = loss.mean()
 
                 if args.fp16:
                     with amp.scale_loss(loss, optimizer) as scaled_loss:
@@ -453,7 +459,7 @@ def main():
                 if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                         dev_f1 = eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                                            mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
+                                            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
                                             ner_details=False, mod_details=False, rel_details=False,
                                             print_general=False, verbose=0)
                         dev_f1 += (epoch,)
@@ -471,11 +477,12 @@ def main():
                             """ save the best model """
                             if not os.path.exists(args.save_model):
                                 os.makedirs(args.save_model)
-                            torch.save(model.state_dict(), os.path.join(args.save_model, 'best.pt'))
+                            model_to_save = model.module if hasattr(model, 'module') else model
+                            torch.save(model_to_save.state_dict(), os.path.join(args.save_model, 'best.pt'))
                             tokenizer.save_pretrained(args.save_model)
 
             eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                       mod2ix, rel2ix, cls_max_len, args.gpu_id, "dev dataset",
+                       mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
                        ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
 
             print('Epoch %i, train loss: %.6f, training ner_loss: %.6f, training mod_loss: %.6f, rel_loss: %.6f\n' % (
@@ -497,7 +504,7 @@ def main():
             gpu_id=args.gpu_id
         )
         model.encoder.resize_token_embeddings(len(tokenizer))
-        model.cuda(args.gpu_id)
+        model.to(args.device)
         model.load_state_dict(torch.load(os.path.join(args.save_model, 'best.pt')))
 
         if args.batch_test:
@@ -523,7 +530,7 @@ def main():
                     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
                     eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
-                               bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "Final test dataset",
+                               bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
                                ner_details=True, mod_details=True, rel_details=True, print_general=True,
                                orig_tok=test_toks, out_file=file_out, verbose=0)
         else:
@@ -546,7 +553,7 @@ def main():
             test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
             eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
-                       bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "Final test dataset",
+                       bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
                        ner_details=True, mod_details=True, rel_details=True, print_general=True,
                        orig_tok=test_toks, out_file=args.pred_file, verbose=0)
 
