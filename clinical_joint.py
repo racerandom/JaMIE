@@ -398,8 +398,9 @@ def main():
         for epoch in range(1, args.num_epoch + 1):
 
             train_loss, train_ner_loss, train_mod_loss, train_rel_loss = .0, .0, .0, .0
-            pbar = tqdm(enumerate(BackgroundGenerator(train_dataloader)), total=len(train_dataloader))
-            for step, batch in pbar:
+            # pbar = tqdm(enumerate(BackgroundGenerator(train_dataloader)), total=len(train_dataloader))
+            epoch_iterator = tqdm(train_dataloader, desc="Iteration", total=len(train_dataloader))
+            for step, batch in enumerate(epoch_iterator):
                 model.train()
 
                 if epoch > args.freeze_after_epoch:
@@ -453,7 +454,7 @@ def main():
                 train_ner_loss += ner_loss.item()
                 train_mod_loss += mod_loss.item()
                 train_rel_loss += rel_loss.item()
-                pbar.set_description(f"L {loss.item():.6f}, L_NER: {ner_loss.item():.6f}, L_MOD: {mod_loss.item():.6f}"
+                epoch_iterator.set_description(f"L {loss.item():.6f}, L_NER: {ner_loss.item():.6f}, L_MOD: {mod_loss.item():.6f}"
                                      f" L_REL: {rel_loss.item():.6f} | epoch: {epoch}/{args.num_epoch}:")
 
                 if epoch > 5:
