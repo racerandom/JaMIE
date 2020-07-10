@@ -160,11 +160,11 @@ def main():
     parser.add_argument("--dev_file", default="data/clinical20200605/cv5/cv0_dev_juman.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    # parser.add_argument("--test_file", default="data/NCC1K20200601/cv1_test_juman.conll", type=str,
-    #                     help="test file, multihead conll format.")
-    #
-    # parser.add_argument("--pred_file", default="test_pred.conll", type=str,
-    #                     help="test prediction, multihead conll format.")
+    parser.add_argument("--test_file", default="data/clinical20200605/cv5/cv0_test_juman.conll", type=str,
+                        help="test file, multihead conll format.")
+
+    parser.add_argument("--pred_file", default="mr_cv0_test_pred.conll", type=str,
+                        help="test prediction, multihead conll format.")
 
     parser.add_argument("--test_dir", default="data/clinicalreport_part2/conll", type=str,
                         help="test dir, multihead conll format.")
@@ -174,7 +174,7 @@ def main():
 
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE_WWM_transformers",
+                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
                         type=str,
                         help="pre-trained model dir")
 
@@ -182,7 +182,11 @@ def main():
                         action='store_true',
                         help="tokenizer: do_lower_case")
 
-    parser.add_argument("--save_model", default='checkpoints/mr_joint_full_wwm/', type=str,
+    parser.add_argument("--batch_test",
+                        action='store_true',
+                        help="test batch files")
+
+    parser.add_argument("--save_model", default='checkpoints/mr_joint_full/', type=str,
                         help="save/load model dir")
 
     parser.add_argument("--batch_size", default=8, type=int,
@@ -496,31 +500,55 @@ def main():
         model.cuda(args.gpu_id)
         model.load_state_dict(torch.load(os.path.join(args.save_model, 'best.pt')))
 
-        for file_name in sorted(os.listdir(args.test_dir)):
-            if file_name.endswith(".conll"):
-                file_in = os.path.join(args.test_dir, file_name)
-                file_out = os.path.join(args.pred_dir, file_name)
+        if args.batch_test:
+            for file_name in sorted(os.listdir(args.test_dir)):
+                if file_name.endswith(".conll"):
+                    file_in = os.path.join(args.test_dir, file_name)
+                    file_out = os.path.join(args.pred_dir, file_name)
 
-                test_comments, test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(file_in,
-                                                                                                                 down_neg=0.0)
-                print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
-                print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
-                print()
-                max_len = max(
-                    max_len,
-                    utils.max_sents_len(test_toks, tokenizer)
-                )
+                    test_comments, test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(file_in,
+                                                                                                                     down_neg=0.0)
+                    print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
+                    print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
+                    print()
+                    max_len = max(
+                        max_len,
+                        utils.max_sents_len(test_toks, tokenizer)
+                    )
 
-                test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
-                    test_toks, test_ners, test_mods, test_rels,
-                    tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+                    test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
+                        test_toks, test_ners, test_mods, test_rels,
+                        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
 
-                test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+                    test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
-                eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
-                           bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "Final test dataset",
-                           ner_details=True, mod_details=True, rel_details=True, print_general=True,
-                           orig_tok=test_toks, out_file=file_out, verbose=0)
+                    eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
+                               bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "Final test dataset",
+                               ner_details=True, mod_details=True, rel_details=True, print_general=True,
+                               orig_tok=test_toks, out_file=file_out, verbose=0)
+        else:
+
+            test_comments, test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
+                args.test_file,
+                down_neg=0.0)
+            print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
+            print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
+            print()
+            max_len = max(
+                max_len,
+                utils.max_sents_len(test_toks, tokenizer)
+            )
+
+            test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
+                test_toks, test_ners, test_mods, test_rels,
+                tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+
+            test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+
+            eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
+                       bio2ix, mod2ix, rel2ix, cls_max_len, args.gpu_id, "Final test dataset",
+                       ner_details=True, mod_details=True, rel_details=True, print_general=True,
+                       orig_tok=test_toks, out_file=args.pred_file, verbose=0)
 
 
 if __name__ == '__main__':

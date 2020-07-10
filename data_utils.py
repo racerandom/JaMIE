@@ -69,10 +69,12 @@ class MultiheadConll(object):
         self._head_id_lists = []
         self._entities = []
         self._mod_entities = []
+        self._rel_triplets = []
         self.load_doc(conll_file, empty_comment)
         self.update_columns()
         self.update_entities()
         self.update_mod_entities()
+        self.update_rel_triplets()
 
     def load_doc(self, conll_file, empty_comment):
         with open(conll_file, 'r', encoding='utf8') as conll_fi:
@@ -116,7 +118,13 @@ class MultiheadConll(object):
             self._mod_entities.append(sent_entities)
 
     def update_rel_triplets(self):
-        pass
+        for sent_id in range(len(self._doc_lines)):
+            sent_triplets = []
+            for tail_id, head_ids, rels in zip(self._tok_ids[sent_id], self._head_id_lists[sent_id], self._rel_tag_lists[sent_id]):
+                for head_id, rel in zip(head_ids, rels):
+                    if rel not in ['N']:
+                        sent_triplets.append((tail_id, head_id, rel))
+            self._rel_triplets.append(sent_triplets)
 
     def doc_to_xml(self, xml_file):
         with open(xml_file, 'w', encoding='utf8') as fo:
@@ -137,11 +145,13 @@ class MultiheadConll(object):
                 sent_str += ''.join(output_toks) + '\n'
                 fo.write(sent_str)
 
-    def doc_to_brat(self, brat_file):
+    def doc_to_brat(self, brat_file, with_rel=False):
         with open(brat_file + '.txt', 'w', encoding='utf8') as brat_txt, open(brat_file + '.ann', 'w', encoding='utf8') as brat_ann:
             line_start = 0
             eid_start = 1
             mid_start = 1
+            rid_start = 1
+            charid2eid = {}  # begin_tid: T{eid}
             for sent_id in range(len(self._doc_lines)):
                 if not self._comments[sent_id].startswith('#doc'):
                     comment_str = f'{self._comments[sent_id]}\n'
@@ -155,11 +165,22 @@ class MultiheadConll(object):
                     end_char_id = line_start + len(''.join(self._toks[sent_id][:end_tid]))
                     char_surface = ''.join(self._toks[sent_id][begin_tid:end_tid])
                     brat_ann.write(f'T{eid_start}\t{NER_DICT[ner_tag]} {begin_char_id} {end_char_id}\t{char_surface}\n')
+                    charid2eid[end_char_id - 1] = f'T{eid_start}'
                     if mod_tag != '_':
                         brat_ann.write(f'A{mid_start}\t{MOD_DICT[mod_tag]} T{eid_start} {mod_tag}\n')
                         mid_start += 1
                     eid_start += 1
+                if with_rel:
+                    for tail_tid, head_tid, rel in self._rel_triplets[sent_id]:
+                        tail_char_id = line_start + len(''.join(self._toks[sent_id][:tail_tid + 1])) - 1
+                        head_char_id = line_start + len(''.join(self._toks[sent_id][:head_tid + 1])) - 1
+                        brat_ann.write(f'R{rid_start}	{rel} Arg1:{charid2eid[tail_char_id]} Arg2:{charid2eid[head_char_id]}\n')
+                        rid_start += 1
                 line_start += len(sent_str)
+
+
+
+
 
 
 
