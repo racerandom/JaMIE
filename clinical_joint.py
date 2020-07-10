@@ -423,13 +423,13 @@ def main():
                 b_spo_gold = tuple([train_spo[sent_id] for sent_id in b_sent_ids])
 
                 # model forward
-                loss, ner_loss, mod_loss, rel_loss = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
+                output = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
                                b_text_list, b_ner_text, b_mod_text, b_spo_gold,
                                is_train=True, reduction=args.reduction)
-                # ner_loss = output['crf_loss']
-                # mod_loss = output['mod_loss']
-                # rel_loss = output['selection_loss']
-                # loss = output['loss']
+                ner_loss = output['crf_loss']
+                mod_loss = output['mod_loss']
+                rel_loss = output['selection_loss']
+                loss = output['loss']
 
                 if args.n_gpu > 1:
                     loss = loss.mean()
@@ -454,8 +454,10 @@ def main():
                 train_ner_loss += ner_loss.item()
                 train_mod_loss += mod_loss.item()
                 train_rel_loss += rel_loss.item()
-                epoch_iterator.set_description(f"L {loss.item():.6f}, L_NER: {ner_loss.item():.6f}, L_MOD: {mod_loss.item():.6f}"
-                                     f" L_REL: {rel_loss.item():.6f} | epoch: {epoch}/{args.num_epoch}:")
+                epoch_iterator.set_description(
+                    f"L {loss.item():.6f}, L_NER: {ner_loss.item():.6f}, L_MOD: {mod_loss.item():.6f}"
+                    f" L_REL: {rel_loss.item():.6f} | epoch: {epoch}/{args.num_epoch}:"
+                )
 
                 if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
