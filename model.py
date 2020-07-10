@@ -634,7 +634,8 @@ class JointNerModReExtractor(nn.Module):
         output['loss'] = loss
 
         output['description'] = partial(self.description, output=output)
-        return output
+        # return output
+        return loss, crf_loss, mod_loss, selection_loss
 
     def selection_decode(self, text_list, sequence_tags, selection_tags):
         reversed_relation_vocab = {

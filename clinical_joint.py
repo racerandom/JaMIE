@@ -423,13 +423,13 @@ def main():
                 b_spo_gold = tuple([train_spo[sent_id] for sent_id in b_sent_ids])
 
                 # model forward
-                output = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
+                loss, ner_loss, mod_loss, rel_loss = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
                                b_text_list, b_ner_text, b_mod_text, b_spo_gold,
                                is_train=True, reduction=args.reduction)
-                ner_loss = output['crf_loss']
-                mod_loss = output['mod_loss']
-                rel_loss = output['selection_loss']
-                loss = output['loss']
+                # ner_loss = output['crf_loss']
+                # mod_loss = output['mod_loss']
+                # rel_loss = output['selection_loss']
+                # loss = output['loss']
 
                 if args.n_gpu > 1:
                     loss = loss.mean()
@@ -437,12 +437,9 @@ def main():
                 if args.fp16:
                     with amp.scale_loss(loss, optimizer) as scaled_loss:
                         scaled_loss.backward()
-                else:
-                    loss.backward()
-
-                if args.fp16:
                     torch.nn.utils.clip_grad_norm_(amp.master_params(optimizer), args.max_grad_norm)
                 else:
+                    loss.backward()
                     torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
 
                 optimizer.step()
@@ -502,7 +499,7 @@ def main():
             bio_emb_size=bio_emb_size, bio_vocab=bio2ix,
             mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
             rel_emb_size=rel_emb_size, relation_vocab=rel2ix,
-            gpu_id=args.gpu_id
+            device=args.device
         )
         model.encoder.resize_token_embeddings(len(tokenizer))
         model.to(args.device)
