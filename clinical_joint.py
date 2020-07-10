@@ -433,6 +433,9 @@ def main():
 
                 if args.n_gpu > 1:
                     loss = loss.mean()
+                    ner_loss = ner_loss.mean()
+                    mod_loss = mod_loss.mean()
+                    rel_loss = rel_loss.mean()
 
                 if args.fp16:
                     with amp.scale_loss(loss, optimizer) as scaled_loss:
