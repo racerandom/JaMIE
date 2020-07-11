@@ -484,13 +484,13 @@ class JointNerModReExtractor(nn.Module):
 
         self.crf_emission = nn.Linear(hidden_size, len(ner_vocab))
 
-        self.mod_linear = nn.Linear(hidden_size + ner_emb_size, len(mod_vocab))
+        self.mod_h2o = nn.Linear(hidden_size + ner_emb_size, len(mod_vocab))
         self.mod_loss_func = nn.CrossEntropyLoss(reduction='none')
 
-        self.mhs_u = nn.Linear(hidden_size + ner_emb_size + mod_emb_size,
-                               rel_emb_size, bias=False)
-        self.mhs_v = nn.Linear(hidden_size + ner_emb_size + mod_emb_size,
-                               rel_emb_size, bias=False)
+        # self.mhs_u = nn.Linear(hidden_size + ner_emb_size + mod_emb_size,
+        #                        rel_emb_size, bias=False)
+        # self.mhs_v = nn.Linear(hidden_size + ner_emb_size + mod_emb_size,
+        #                        rel_emb_size, bias=False)
 
         self.sel_u_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + ner_emb_size + mod_emb_size))
         nn.init.kaiming_uniform_(self.sel_u_mat, a=math.sqrt(5))
@@ -499,7 +499,7 @@ class JointNerModReExtractor(nn.Module):
         nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
 
         self.drop_uv = nn.Dropout(p=0.1)
-        self.rel_linear = nn.Linear(rel_emb_size, len(rel_vocab), bias=False)
+        self.rel_h2o = nn.Linear(rel_emb_size, len(rel_vocab), bias=False)
 
         self.id2ner = {v: k for k, v in self.ner_vocab.items()}
         self.id2mod = {v: k for k, v in self.mod_vocab.items()}
@@ -535,7 +535,7 @@ class JointNerModReExtractor(nn.Module):
         o = torch.cat((o, ner_out), dim=2)
 
         # mod section
-        mod_logits = self.mod_linear(o)
+        mod_logits = self.mod_h2o(o)
         if all(gold is not None for gold in [ner_gold, mod_gold, rel_gold]):
             mod_loss = self.mod_loss_func(mod_logits.view(-1, len(self.mod_vocab)), mod_gold.view(-1))
             mod_loss = mod_loss.masked_select(mask.view(-1)).sum()/mask.sum()
@@ -564,7 +564,7 @@ class JointNerModReExtractor(nn.Module):
         uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
         uv = self.drop_uv(uv)
         # rel_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
-        rel_logits = self.rel_linear(uv).transpose(2, 3)
+        rel_logits = self.rel_h2o(uv).transpose(2, 3)
 
         if all(gold is not None for gold in [ner_gold, mod_gold, rel_gold]):
             rel_loss = self.masked_BCEloss(
