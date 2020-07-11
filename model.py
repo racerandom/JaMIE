@@ -518,15 +518,13 @@ class JointNerModReExtractor(nn.Module):
         return selection_triplets
 
     def masked_BCEloss(self, selection_logits, selection_gold, mask, reduction):
-        selection_mask = (mask.unsqueeze(2) *
-                          mask.unsqueeze(1)).unsqueeze(2).expand(
-                              -1, -1, len(self.rel_vocab),
-                              -1)  # batch x seq x rel x seq
+        selection_mask = (
+                mask.unsqueeze(2) * mask.unsqueeze(1)).unsqueeze(2).expand(
+                              -1, -1, len(self.rel_vocab), -1
+        )  # batch x seq x rel x seq
         selection_loss = F.binary_cross_entropy_with_logits(selection_logits,
                                                             selection_gold,
                                                             reduction='none')
-        # print(selection_loss[0])
-        # print(selection_loss.masked_select(selection_mask).sum().item(), mask.sum().item())
         selection_loss = selection_loss.masked_select(selection_mask).sum()
         if reduction in ['token_mean']:
             selection_loss /= mask.sum()
@@ -544,13 +542,9 @@ class JointNerModReExtractor(nn.Module):
         B, L = tokens.shape
         bert_out = self.encoder(tokens, attention_mask=mask)  # last hidden of BERT
         o = bert_out[0]
-        # o_high = bert_out[0]
-        # o_mid = bert_out[-1]
-        # o_low = bert_out[0]
         ner_logits = self.crf_emission(o)
 
         output = {}
-
         # ner section
         if is_train:
             crf_loss = -self.crf_tagger(ner_logits, bio_gold,
@@ -576,11 +570,7 @@ class JointNerModReExtractor(nn.Module):
         mod_logits = self.mod_linear(o)
         if is_train:
             mod_loss = self.mod_loss_func(mod_logits.view(-1, len(self.mod_vocab)), mod_gold.view(-1))
-            # print(mod_loss.shape, mask.view(-1).shape, mask.shape)
-            # print(mod_loss)
-            # print(mask.view(-1))
             mod_loss = mod_loss.masked_select(mask.view(-1)).sum()/mask.sum()
-            # mod_loss = mod_loss.masked_select(mask.view(-1)).sum()
         else:
             mod_loss = 0.
             pred_mod = mod_logits.argmax(-1)

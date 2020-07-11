@@ -4,7 +4,6 @@ import warnings
 
 import os
 import argparse
-from prefetch_generator import BackgroundGenerator
 from tqdm import tqdm
 import torch
 from sklearn.metrics import classification_report
