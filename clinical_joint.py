@@ -299,7 +299,7 @@ def main():
 
         param_optimizer = list(model.named_parameters())
         encoder_name_list = ['encoder']
-        crf_name_list = ['crf_tagger']
+        crf_name_list = ['crf_tagger', 'mod_h2o']
         optimizer_grouped_parameters = [
             {
                 'params': [p for n, p in param_optimizer if any(nd in n for nd in encoder_name_list)],
