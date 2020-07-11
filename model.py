@@ -492,11 +492,11 @@ class JointNerModReExtractor(nn.Module):
         self.mhs_v = nn.Linear(hidden_size + ner_emb_size + mod_emb_size,
                                rel_emb_size, bias=False)
 
-        # self.sel_u_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + ner_emb_size + mod_emb_size))
-        # nn.init.kaiming_uniform_(self.sel_u_mat, a=math.sqrt(5))
-        #
-        # self.sel_v_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + ner_emb_size + mod_emb_size))
-        # nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
+        self.sel_u_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + ner_emb_size + mod_emb_size))
+        nn.init.kaiming_uniform_(self.sel_u_mat, a=math.sqrt(5))
+
+        self.sel_v_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + ner_emb_size + mod_emb_size))
+        nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
 
         self.drop_uv = nn.Dropout(p=0.1)
         self.rel_linear = nn.Linear(rel_emb_size, len(rel_vocab), bias=False)
@@ -550,18 +550,18 @@ class JointNerModReExtractor(nn.Module):
         o = torch.cat((o, mod_out), dim=-1)
 
         # forward multi head selection
-        u = self.mhs_u(o).unsqueeze(1).expand(batch_size, seq_len, seq_len, -1)
-        v = self.mhs_v(o).unsqueeze(2).expand(batch_size, seq_len, seq_len, -1)
-        uv = self.activation(u + v)
+        # u = self.mhs_u(o).unsqueeze(1).expand(batch_size, seq_len, seq_len, -1)
+        # v = self.mhs_v(o).unsqueeze(2).expand(batch_size, seq_len, seq_len, -1)
+        # uv = self.activation(u + v)
         # uv = self.activation(torch.cat((u, v, (u - v).abs()), dim=-1))
         # # correct one
 
         '''Multi-head Selection'''
         # word representations: [b, l, r_s]
         # broadcast sum: [b, l, 1, h] + [b, 1, l, h] = [b, l, l, h]
-        # u = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
-        # v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
-        # uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
+        u = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
+        v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
+        uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
         uv = self.drop_uv(uv)
         # rel_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
         rel_logits = self.rel_linear(uv).transpose(2, 3)
