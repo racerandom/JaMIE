@@ -1,23 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 import warnings
-
 import os
 import argparse
 from tqdm import tqdm
 import torch
-from sklearn.metrics import classification_report
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
-from torch.nn import CrossEntropyLoss
-from transformers import *
 from model import *
 
 import utils
 warnings.filterwarnings("ignore")
 
 
-def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, bio2ix, mod2ix, rel2ix,
-               cls_max_len, device, message, ner_details, mod_details, rel_details, print_general,
+def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, ner2ix, mod2ix, rel2ix,
+               cls_max_len, device, message, print_details=(False, False, False, False),
                orig_tok=None, out_file='tmp.conll',
                f1_mode='micro', verbose=0):
 
@@ -36,10 +32,10 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 cls_max_len,
                 pad_tok='[PAD]') for sent_id in b_sent_ids]
 
-            b_bio_text = [eval_lab[sent_id] for sent_id in b_sent_ids]
-            b_mod_text = [eval_mod[sent_id] for sent_id in b_sent_ids]
+            b_gold_ner = [eval_lab[sent_id] for sent_id in b_sent_ids]
+            b_gold_mod = [eval_mod[sent_id] for sent_id in b_sent_ids]
+            b_gold_rel = tuple([eval_spo[sent_id] for sent_id in b_sent_ids])
 
-            b_spo_gold = tuple([eval_spo[sent_id] for sent_id in b_sent_ids])
             if verbose:
                 for sent_id in b_sent_ids:
                     print([f"{ix}: {tok}" for ix, tok in enumerate(eval_tok[sent_id])])
@@ -47,52 +43,35 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                     print(eval_rel[sent_id])
                     print()
 
-            b_gold_relmat = utils.gen_relmat(eval_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).to(device)
-            output = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
-                           b_text_list, b_bio_text, b_mod_text, b_spo_gold, is_train=False)
+            b_pred_ner, b_pred_mod, b_pred_rel_ix = model(
+                b_toks, b_attn_mask.bool()
+            )
 
             # ner tuple -> [sent_id, [ids], ner_lab]
-            b_pred_ner, b_gold_ner = output['decoded_tag'], output['gold_tags']
             b_gold_ner_tuple = utils.ner2tuple(b_sent_ids, b_gold_ner)
             b_pred_ner_tuple = utils.ner2tuple(b_sent_ids, b_pred_ner)
-            # print('gold_ner:', [g for g in b_gold_ner_tuple if g[-1] != 'O'])
-            # print('pred_ner:', [p for p in b_pred_ner_tuple if p[-1] != 'O'])
             ner_evaluator.update(b_gold_ner_tuple, b_pred_ner_tuple)
 
             # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
-            b_pred_mod, b_gold_mod = output['decoded_mod'], output['gold_mod']
             b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]]
                                 for p in b_pred_ner_tuple if p[-1] != 'O']
             b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]]
                                 for g in b_gold_ner_tuple if g[-1] != 'O']
             mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
-            # for sid, g, p, gm, pm in zip(b_sent_ids, b_gold_ner, b_pred_ner, b_gold_mod, b_pred_mod):
-            #     print(sid)
-            #     print(g)
-            #     print(p)
-            #     print(gm)
-            #     print(pm)
-            #     print('-' * 10)
-            # for s_id, ner_ids, ner in b_pred_ner_tuple:
-            #     if ner != 'O':
-            #         mod = b_pred_mod[b_sent_ids.index(s_id)][ner_ids[-1]]
-            #         b_pred_mod_tuple.append([s_id, ner_ids, ner, mod])
-            #         print('pred', [s_id, ner_ids, ner, mod])
-            # for s_id, ner_ids, ner in b_gold_ner_tuple:
-            #     if ner != 'O':
-            #         mod = b_gold_mod[b_sent_ids.index(s_id)][ner_ids[-1]]
-            #         b_gold_mod_tuple.append([s_id, ner_ids, ner, mod])
-            #         print('gold', [s_id, ner_ids, ner, mod])
-            # print('gold_mod:', [g for g in b_gold_mod_tuple if g[-1] != '_'])
-            # print('pred_mod:', [p for p in b_pred_mod_tuple if p[-1] != '_'])
-            #
-            # print()
-            b_pred_rel, b_gold_rel, b_pred_index = output['selection_triplets'], output['spo_gold'], output['index_triplets']
+
+            b_pred_rel = [[{
+                'subject': [b_text_list[b_id][tok_id] for tok_id in rel['subject']],
+                'predicate': rel['predicate'],
+                'object': [b_text_list[b_id][tok_id] for tok_id in rel['object']],
+            }
+                for rel in sent_rel_ix] for b_id, sent_rel_ix in enumerate(b_pred_rel_ix) ]
+
             b_pred_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
                                  for sent_id, sent_rel in zip(b_sent_ids, b_pred_rel) for rel in sent_rel]
             b_gold_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
                                  for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
-            for sid, sbw_ner, sbw_mod, sbw_rel, index_sbw_rel in zip(b_sent_ids, b_pred_ner, b_pred_mod, b_pred_rel, b_pred_index):
+
+            for sid, sbw_ner, sbw_mod, sbw_rel, index_sbw_rel in zip(b_sent_ids, b_pred_ner, b_pred_mod, b_pred_rel, b_pred_rel_ix):
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
                 w_ner = utils.sbwner2ner(sbw_ner, aligned_ids)
                 w_mod = utils.sbwmod2mod(sbw_mod, aligned_ids)
@@ -105,18 +84,6 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 if orig_tok:
                     assert len(orig_tok[sid]) == len(w_tok)
 
-                # print(len(eval_tok[sid]), len(sbw_ner), len(sbw_mod))
-                # print(eval_tok[sid])
-                # print(sbw_ner)
-                # print(sbw_mod)
-                # print(sbw_rel)
-                # print(index_sbw_rel)
-                # print(w_tok)
-                # print(w_ner)
-                # print(w_mod)
-                # print(w_rel)
-                # print(w_head)
-                # print()
                 fo.write(f'{eval_comments[sid]}\n')
                 for index, (tok, ner, mod, rel, head) in enumerate(zip(orig_tok[sid] if orig_tok else w_tok, w_ner, w_mod, w_rel, w_head)):
                     fo.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
@@ -125,11 +92,11 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
 
             rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 
-        ner_f1 = ner_evaluator.print_results(message + ' ner', print_details=ner_details, print_general=print_general,
+        ner_f1 = ner_evaluator.print_results(message + ' ner', print_details=print_details[1], print_general=print_details[0],
                                              f1_mode=f1_mode)
-        mod_f1 = mod_evaluator.print_results(message + ' mod', print_details=mod_details, print_general=print_general,
+        mod_f1 = mod_evaluator.print_results(message + ' mod', print_details=print_details[2], print_general=print_details[0],
                                              f1_mode=f1_mode)
-        rel_f1 = rel_evaluator.print_results(message + ' rel', print_details=rel_details, print_general=print_general,
+        rel_f1 = rel_evaluator.print_results(message + ' rel', print_details=print_details[3], print_general=print_details[0],
                                              f1_mode=f1_mode)
         f1 = (ner_f1 + mod_f1 + rel_f1) / 3
         return f1, ner_f1, mod_f1, rel_f1
@@ -138,20 +105,6 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
 def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
-
-    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
-    #                     help="train file, multihead conll format.")
-    #
-    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
-    #                     help="dev file, multihead conll format.")
-    #
-    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
-    #                     help="test file, multihead conll format.")
-    #
-    # parser.add_argument("--pretrained_model",
-    #                     default='bert-base-uncased',
-    #                     type=str,
-    #                     help="pre-trained model dir")
 
     parser.add_argument("--train_file", default="data/clinical20200605/cv5/cv0_train_juman.conll", type=str,
                         help="train file, multihead conll format.")
@@ -171,9 +124,8 @@ def main():
     parser.add_argument("--pred_dir", default="data/clinicalreport_part2/pred/conll", type=str,
                         help="prediction dir, multihead conll format.")
 
-
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
+                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE_WWM_transformers",
                         type=str,
                         help="pre-trained model dir")
 
@@ -185,7 +137,7 @@ def main():
                         action='store_true',
                         help="test batch files")
 
-    parser.add_argument("--save_model", default='checkpoints/mr_joint_full/', type=str,
+    parser.add_argument("--save_model", default='checkpoints/tmp/', type=str,
                         help="save/load model dir")
 
     parser.add_argument("--batch_size", default=8, type=int,
@@ -255,14 +207,16 @@ def main():
         tokenizer = BertTokenizer.from_pretrained(
             args.pretrained_model,
             do_lower_case=args.do_lower_case,
-            do_basic_tokenize=False
+            do_basic_tokenize=False,
+            tokenize_chinese_chars=False
         )
         tokenizer.add_tokens(['[JASP]'])
     else:
         tokenizer = BertTokenizer.from_pretrained(
             args.save_model,
             do_lower_case=args.do_lower_case,
-            do_basic_tokenize=False
+            do_basic_tokenize=False,
+            tokenize_chinese_chars=False
         )
 
     train_comments, train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
@@ -300,10 +254,6 @@ def main():
         for rel in sent_rels:
             rel_count[rel[-1]] += 1
 
-    # for sent_rels in test_rels:
-    #     for rel in sent_rels:
-    #         rel_count[rel[-1]] += 1
-
     print(rel_count)
 
     example_id = 15
@@ -339,9 +289,9 @@ def main():
 
         model = JointNerModReExtractor(
             bert_url=args.pretrained_model,
-            bio_emb_size=bio_emb_size, bio_vocab=bio2ix,
+            ner_emb_size=bio_emb_size, ner_vocab=bio2ix,
             mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
-            rel_emb_size=rel_emb_size, relation_vocab=rel2ix,
+            rel_emb_size=rel_emb_size, rel_vocab=rel2ix,
             device=args.device
         )
         model.encoder.resize_token_embeddings(len(tokenizer))
@@ -378,7 +328,6 @@ def main():
                 num_training_steps=num_training_steps
             )
 
-
         if args.fp16:
             try:
                 from apex import amp
@@ -400,7 +349,7 @@ def main():
         for epoch in range(1, args.num_epoch + 1):
 
             train_loss, train_ner_loss, train_mod_loss, train_rel_loss = .0, .0, .0, .0
-            # pbar = tqdm(enumerate(BackgroundGenerator(train_dataloader)), total=len(train_dataloader))
+
             epoch_iterator = tqdm(train_dataloader, desc="Iteration", total=len(train_dataloader))
             for step, batch in enumerate(epoch_iterator):
                 model.train()
@@ -420,18 +369,11 @@ def main():
                     cls_max_len,
                     pad_tok='[PAD]') for sent_id in b_sent_ids]
 
-                b_ner_text = [train_ner[sent_id] for sent_id in b_sent_ids]
-                b_mod_text = [train_mod[sent_id] for sent_id in b_sent_ids]
-                b_spo_gold = tuple([train_spo[sent_id] for sent_id in b_sent_ids])
-
-                # model forward
-                output = model(b_toks, b_attn_mask.bool(), b_ner, b_mod, b_gold_relmat,
-                               b_text_list, b_ner_text, b_mod_text, b_spo_gold,
-                               is_train=True, reduction=args.reduction)
-                ner_loss = output['crf_loss']
-                mod_loss = output['mod_loss']
-                rel_loss = output['selection_loss']
-                loss = output['loss']
+                ner_loss, mod_loss, rel_loss = model(
+                    b_toks, b_attn_mask.bool(),
+                    ner_gold=b_ner, mod_gold=b_mod, rel_gold=b_gold_relmat, reduction=args.reduction
+                )
+                loss = ner_loss + mod_loss + rel_loss
 
                 if args.n_gpu > 1:
                     loss = loss.mean()
@@ -457,16 +399,14 @@ def main():
                 train_mod_loss += mod_loss.item()
                 train_rel_loss += rel_loss.item()
                 epoch_iterator.set_description(
-                    f"L {loss.item():.6f}, L_NER: {ner_loss.item():.6f}, L_MOD: {mod_loss.item():.6f}"
-                    f" L_REL: {rel_loss.item():.6f} | epoch: {epoch}/{args.num_epoch}:"
+                    f"L {train_loss/(step+1):.6f}, L_NER: {train_ner_loss/(step+1):.6f}, L_MOD: {train_mod_loss/(step+1):.6f}"
+                    f" L_REL: {train_rel_loss/(step+1):.6f} | epoch: {epoch}/{args.num_epoch}:"
                 )
 
                 if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                         dev_f1 = eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                                            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
-                                            ner_details=False, mod_details=False, rel_details=False,
-                                            print_general=False, verbose=0)
+                                            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", verbose=0)
                         dev_f1 += (epoch,)
                         dev_f1 += (step,)
                         if best_dev_f1[0] < dev_f1[0]:
@@ -487,8 +427,8 @@ def main():
                             tokenizer.save_pretrained(args.save_model)
 
             eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                       mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
-                       ner_details=True, mod_details=True, rel_details=True, print_general=True, verbose=0)
+                       mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", orig_tok=dev_toks,
+                       print_details=(True, True, True, True), verbose=0)
 
             print('Epoch %i, train loss: %.6f, training ner_loss: %.6f, training mod_loss: %.6f, rel_loss: %.6f\n' % (
                 epoch,
@@ -503,9 +443,9 @@ def main():
     else:
         model = JointNerModReExtractor(
             bert_url=args.pretrained_model,
-            bio_emb_size=bio_emb_size, bio_vocab=bio2ix,
+            ner_emb_size=bio_emb_size, ner_vocab=bio2ix,
             mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
-            rel_emb_size=rel_emb_size, relation_vocab=rel2ix,
+            rel_emb_size=rel_emb_size, rel_vocab=rel2ix,
             device=args.device
         )
         model.encoder.resize_token_embeddings(len(tokenizer))
@@ -536,7 +476,7 @@ def main():
 
                     eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
                                bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
-                               ner_details=True, mod_details=True, rel_details=True, print_general=True,
+                               print_details=(True, True, True, True),
                                orig_tok=test_toks, out_file=file_out, verbose=0)
         else:
 
@@ -559,8 +499,7 @@ def main():
 
             eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
                        bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
-                       ner_details=True, mod_details=True, rel_details=True, print_general=True,
-                       orig_tok=test_toks, out_file=args.pred_file, verbose=0)
+                       print_details=(True, True, True, True), out_file=args.pred_file, verbose=0)
 
 
 if __name__ == '__main__':

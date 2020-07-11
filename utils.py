@@ -1570,6 +1570,7 @@ def convert_rels_to_mhs_v3(
         pad_mask_id=0,
         pad_lab_id=0,
         merged_modality=False,
+        deunk=True,
         verbose=0
 ):
     doc_tok, doc_attn_mask, doc_ner, doc_mod, doc_rel, doc_spo = [], [], [], [], [], []
@@ -1581,7 +1582,10 @@ def convert_rels_to_mhs_v3(
     for sent_id, (sent_tok, sent_ner, sent_mod, sent_rel) in enumerate(zip(ner_toks, ners, mods, rels)):
 
         # wrapping data with [CLS] and [SEP]
-        sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
+        if deunk:
+            sbw_sent_tok = explore_unk(tokenizer.tokenize(' '.join(sent_tok)), sent_tok)
+        else:
+            sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
         sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
         sbw_sent_mod = match_mod_label(sbw_sent_tok, sent_mod)
 
