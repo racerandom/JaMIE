@@ -123,7 +123,7 @@ def main():
                         help="prediction dir, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE_WWM_transformers",
+                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
                         type=str,
                         help="pre-trained model dir")
 
@@ -141,7 +141,7 @@ def main():
     parser.add_argument("--batch_size", default=8, type=int,
                         help="BATCH SIZE")
 
-    parser.add_argument("--num_epoch", default=20, type=int,
+    parser.add_argument("--num_epoch", default=15, type=int,
                         help="fine-tuning epoch number")
 
     parser.add_argument("--embed_size", default='[32, 32, 384]', type=str,
