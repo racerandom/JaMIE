@@ -3,6 +3,7 @@
 import warnings
 import os
 import argparse
+from collections import defaultdict
 from tqdm import tqdm
 import torch
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
@@ -13,7 +14,7 @@ warnings.filterwarnings("ignore")
 
 
 def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, ner2ix, mod2ix, rel2ix,
-               cls_max_len, device, message, print_details=(False, False, False, False),
+               cls_max_len, device, message, print_levels=(0, 0, 0),
                orig_tok=None, out_file='tmp.conll',
                f1_mode='micro', verbose=0):
 
@@ -92,12 +93,9 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
 
             rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 
-        ner_f1 = ner_evaluator.print_results(message + ' ner', print_details=print_details[1], print_general=print_details[0],
-                                             f1_mode=f1_mode)
-        mod_f1 = mod_evaluator.print_results(message + ' mod', print_details=print_details[2], print_general=print_details[0],
-                                             f1_mode=f1_mode)
-        rel_f1 = rel_evaluator.print_results(message + ' rel', print_details=print_details[3], print_general=print_details[0],
-                                             f1_mode=f1_mode)
+        ner_f1 = ner_evaluator.print_results(message + ' ner', f1_mode=f1_mode, print_level=print_levels[0])
+        mod_f1 = mod_evaluator.print_results(message + ' mod', f1_mode=f1_mode, print_level=print_levels[1])
+        rel_f1 = rel_evaluator.print_results(message + ' rel', f1_mode=f1_mode, print_level=print_levels[2])
         f1 = (ner_f1 + mod_f1 + rel_f1) / 3
         return f1, ner_f1, mod_f1, rel_f1
 
@@ -143,7 +141,7 @@ def main():
     parser.add_argument("--batch_size", default=8, type=int,
                         help="BATCH SIZE")
 
-    parser.add_argument("--num_epoch", default=15, type=int,
+    parser.add_argument("--num_epoch", default=20, type=int,
                         help="fine-tuning epoch number")
 
     parser.add_argument("--embed_size", default='[32, 32, 384]', type=str,
@@ -238,11 +236,6 @@ def main():
     print('max sent len:', utils.max_sents_len(dev_toks, tokenizer))
     print(min([len(sent_rels) for sent_rels in dev_rels]), max([len(sent_rels) for sent_rels in dev_rels]))
     print()
-
-    ix2rel = {v: k for k, v in rel2ix.items()}
-    ix2bio = {v: k for k, v in bio2ix.items()}
-
-    from collections import defaultdict
 
     rel_count = defaultdict(lambda: 0)
 
@@ -406,7 +399,7 @@ def main():
                 if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                         dev_f1 = eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                                            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", verbose=0)
+                                            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", print_levels=(0, 0, 0), verbose=0)
                         dev_f1 += (epoch,)
                         dev_f1 += (step,)
                         if best_dev_f1[0] < dev_f1[0]:
@@ -428,7 +421,7 @@ def main():
 
             eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                        mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", orig_tok=dev_toks,
-                       print_details=(True, True, True, True), verbose=0)
+                       print_levels=(1, 1, 1), verbose=0)
 
             print('Epoch %i, train loss: %.6f, training ner_loss: %.6f, training mod_loss: %.6f, rel_loss: %.6f\n' % (
                 epoch,
@@ -476,7 +469,7 @@ def main():
 
                     eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
                                bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
-                               print_details=(True, True, True, True),
+                               print_levels=(2, 2, 2),
                                orig_tok=test_toks, out_file=file_out, verbose=0)
         else:
 
@@ -499,7 +492,7 @@ def main():
 
             eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
                        bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
-                       print_details=(True, True, True, True), out_file=args.pred_file, verbose=0)
+                       print_levels=(2, 2, 2), out_file=args.pred_file, verbose=0)
 
 
 if __name__ == '__main__':

@@ -1879,13 +1879,13 @@ class TupleEvaluator(object):
                 continue
             self.eval_dic[p_rel][self.fps_id] += 1
 
-    def print_results(self, message, print_details, print_general, f1_mode):
+    def print_results(self, message, f1_mode, print_level):
 
         class_scores = {}
         for rel, (rel_tps, rel_fps, rel_fns) in self.eval_dic.items():
             p, r, f1 = calculate_f1(rel_tps, rel_fps, rel_fns)
             class_scores[rel] = (p, r, f1)
-            if print_details:
+            if print_level > 1:
                 print("\t{:>12}, p {:.6f}, r {:.6f}, f1 {:.6f}, (tps {:.0f}, fps {:.0f}, fns {:.0f})".format(
                     rel,
                     p, r, f1,
@@ -1904,7 +1904,7 @@ class TupleEvaluator(object):
         else:
             raise Exception("Unknown f1_model: {} ...".format(f1_mode))
 
-        if print_general:
+        if print_level >= 1:
             print("{}, {}, overall, p {:.6f}, r {:.6f}, f1 {:.6f}\n".format(
                 message, f1_mode,
                 all_p, all_r, all_f1
