@@ -316,7 +316,7 @@ def main():
 
         optimizer = AdamW(
             optimizer_grouped_parameters,
-            lr=args.encoder_lr,
+            # lr=args.encoder_lr,
             eps=1e-8,
             correct_bias=False
         )

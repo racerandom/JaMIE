@@ -512,9 +512,11 @@ class JointNerModReExtractor(nn.Module):
         pred_outputs = ()
 
         batch_size, seq_len = tokens.shape
-        bert_out = self.encoder(tokens, attention_mask=mask)  # last hidden of BERT
-        o = bert_out[0]
-        ner_logits = self.crf_emission(o)
+        _, _, all_hiddens = self.encoder(tokens, attention_mask=mask)  # last hidden of BERT
+        low_o = all_hiddens[6]
+        high_o = all_hiddens[12]
+
+        ner_logits = self.crf_emission(low_o)
 
         # ner section
         if all(gold is not None for gold in [ner_gold, mod_gold, rel_gold]):
@@ -532,7 +534,7 @@ class JointNerModReExtractor(nn.Module):
             ner_gold = torch.tensor(temp_tag).to(self.device)
 
         ner_out = self.ner_emb(ner_gold)
-        o = torch.cat((o, ner_out), dim=2)
+        o = torch.cat((low_o, ner_out), dim=2)
 
         # mod section
         mod_logits = self.mod_h2o(o)
@@ -547,7 +549,7 @@ class JointNerModReExtractor(nn.Module):
             mod_gold = pred_mod
 
         mod_out = self.mod_emb(mod_gold)
-        o = torch.cat((o, mod_out), dim=-1)
+        o = torch.cat((high_o, ner_out, mod_out), dim=-1)
 
         # forward multi head selection
         # u = self.mhs_u(o).unsqueeze(1).expand(batch_size, seq_len, seq_len, -1)
