@@ -157,7 +157,13 @@ def main():
                         action='store_true',
                         help="Whether to run training.")
 
-    parser.add_argument("--lr", default=5e-5, type=float,
+    parser.add_argument("--encoder_lr", default=5e-5, type=float,
+                        help="learning rate")
+
+    parser.add_argument("--decoder_lr", default=1e-2, type=float,
+                        help="learning rate")
+
+    parser.add_argument("--other_lr", default=1e-3, type=float,
                         help="learning rate")
 
     parser.add_argument("--reduction", default='token_mean', type=str,
@@ -292,19 +298,19 @@ def main():
 
         param_optimizer = list(model.named_parameters())
         encoder_name_list = ['encoder']
-        crf_name_list = ['crf_tagger', 'mod_h2o']
+        decoder_name_list = ['crf_tagger', 'mod_h2o']
         optimizer_grouped_parameters = [
             {
                 'params': [p for n, p in param_optimizer if any(nd in n for nd in encoder_name_list)],
-                'lr': args.lr
+                'lr': args.encoder_lr
             },
             {
-                'params': [p for n, p in param_optimizer if any(nd in n for nd in crf_name_list)],
-                'lr': 1e-2
+                'params': [p for n, p in param_optimizer if any(nd in n for nd in decoder_name_list)],
+                'lr': args.decoder_lr
             },
             {
-                'params': [p for n, p in param_optimizer if not any(nd in n for nd in encoder_name_list + crf_name_list)],
-                'lr': 1e-3
+                'params': [p for n, p in param_optimizer if not any(nd in n for nd in encoder_name_list + decoder_name_list)],
+                'lr': args.other_lr
             }
         ]
 
