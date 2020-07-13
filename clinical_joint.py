@@ -104,13 +104,13 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    parser.add_argument("--train_file", default="data/clinical20200605/cv5/cv0_train_juman.conll", type=str,
+    parser.add_argument("--train_file", default="data/clinical20200605/cv5_mecab/cv0_train_mecab.conll", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/clinical20200605/cv5/cv0_dev_juman.conll", type=str,
+    parser.add_argument("--dev_file", default="data/clinical20200605/cv5_mecab/cv0_dev_mecab.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file", default="data/clinical20200605/cv5/cv0_test_juman.conll", type=str,
+    parser.add_argument("--test_file", default="data/clinical20200605/cv5_mecab/cv0_test_mecab.conll", type=str,
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pred_file", default="mr_cv0_test_pred.conll", type=str,
@@ -123,7 +123,7 @@ def main():
                         help="prediction dir, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE",
+                        default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
                         type=str,
                         help="pre-trained model dir")
 

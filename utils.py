@@ -33,9 +33,10 @@ class MorphologicalAnalyzer(object):
         elif self.analyzer_name == 'mecab':
             import MeCab
             self.analyzer = MeCab.Tagger(
-                "-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd "
-                "-u /home/feicheng/Tools/MANBYO_201907_Dic-utf8.dic "
-                "-Owakati"
+                # "-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd "
+                # "-u /home/feicheng/Tools/MANBYO_201907_Dic-utf8.dic "
+                # "-Owakati"
+                "-d /usr/lib/x86_64-linux-gnu/mecab/dic/jumandic -Owakati"
             )
 
     def analyze(self, text):
@@ -1886,7 +1887,7 @@ class TupleEvaluator(object):
             p, r, f1 = calculate_f1(rel_tps, rel_fps, rel_fns)
             class_scores[rel] = (p, r, f1)
             if print_level > 1:
-                print("\t{:>12}, p {:.6f}, r {:.6f}, f1 {:.6f}, (tps {:.0f}, fps {:.0f}, fns {:.0f})".format(
+                print("\t{:>12}, p {:2.4f}, r {:2.4f}, f1 {:2.4f}, (tps {:.0f}, fps {:.0f}, fns {:.0f})".format(
                     rel,
                     p, r, f1,
                     rel_tps, rel_fps, rel_fns
@@ -1905,7 +1906,7 @@ class TupleEvaluator(object):
             raise Exception("Unknown f1_model: {} ...".format(f1_mode))
 
         if print_level >= 1:
-            print("{}, {}, overall, p {:.6f}, r {:.6f}, f1 {:.6f}\n".format(
+            print("{}, {}, overall, p {:2.4f}, r {:2.4f}, f1 {:2.4f}\n".format(
                 message, f1_mode,
                 all_p, all_r, all_f1
             ))
