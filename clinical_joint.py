@@ -136,7 +136,7 @@ def main():
                         action='store_true',
                         help="test batch files")
 
-    parser.add_argument("--save_model", default='checkpoints/tmp/', type=str,
+    parser.add_argument("--saved_model", default='checkpoints/tmp/', type=str,
                         help="save/load model dir")
 
     parser.add_argument("--batch_size", default=8, type=int,
@@ -409,21 +409,21 @@ def main():
                                 f"mod: {best_dev_f1[2]:.6f}, rel: {best_dev_f1[3]:.6f}; "
                                 f"epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d} \n "
                                 f">> Current f1 {dev_f1[0]:.6f} (ner: {dev_f1[1]:.6f}, mod: {dev_f1[2]:.6f}, "
-                                f"rel: {dev_f1[3]:.6f}; best model saved '{args.save_model}'"
+                                f"rel: {dev_f1[3]:.6f}; best model saved '{args.saved_model}'"
                             )
                             best_dev_f1 = dev_f1
 
                             """ save the best model """
-                            if not os.path.exists(args.save_model):
-                                os.makedirs(args.save_model)
+                            if not os.path.exists(args.saved_model):
+                                os.makedirs(args.saved_model)
                             model_to_save = model.module if hasattr(model, 'module') else model
-                            torch.save(model_to_save.state_dict(), os.path.join(args.save_model, 'best.pt'))
-                            tokenizer.save_pretrained(args.save_model)
-                            with open('ner2ix.json', 'w') as fp:
+                            torch.save(model_to_save.state_dict(), os.path.join(args.saved_model, 'best.pt'))
+                            tokenizer.save_pretrained(args.saved_model)
+                            with open(os.path.join(args.saved_model, 'ner2ix.json'), 'w') as fp:
                                 json.dump(bio2ix, fp)
-                            with open('mod2ix.json', 'w') as fp:
+                            with open(os.path.join(args.saved_model, 'mod2ix.json'), 'w') as fp:
                                 json.dump(mod2ix, fp)
-                            with open('rel2ix.json', 'w') as fp:
+                            with open(os.path.join(args.saved_model, 'rel2ix.json'), 'w') as fp:
                                 json.dump(rel2ix, fp)
 
             eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
@@ -443,7 +443,7 @@ def main():
     else:
 
         tokenizer = BertTokenizer.from_pretrained(
-            args.save_model,
+            args.saved_model,
             do_lower_case=args.do_lower_case,
             do_basic_tokenize=False,
             tokenize_chinese_chars=False
@@ -462,7 +462,7 @@ def main():
         )
         model.encoder.resize_token_embeddings(len(tokenizer))
         model.to(args.device)
-        model.load_state_dict(torch.load(os.path.join(args.save_model, 'best.pt')))
+        model.load_state_dict(torch.load(os.path.join(args.saved_model, 'best.pt')))
 
         if args.batch_test:
             for file_name in sorted(os.listdir(args.test_dir)):
@@ -486,8 +486,7 @@ def main():
 
                     eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
                                bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
-                               print_levels=(2, 2, 2),
-                               orig_tok=test_toks, out_file=file_out, verbose=0)
+                               print_levels=(2, 2, 2), out_file=file_out, verbose=0)
         else:
 
             test_comments, test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
@@ -496,7 +495,7 @@ def main():
             print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
             print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
             print()
-            
+
             max_len = utils.max_sents_len(test_toks, tokenizer)
             cls_max_len = max_len + 2
 

@@ -1887,11 +1887,8 @@ class TupleEvaluator(object):
             p, r, f1 = calculate_f1(rel_tps, rel_fps, rel_fns)
             class_scores[rel] = (p, r, f1)
             if print_level > 1:
-                print("\t{:>12}, p {:2.4f}, r {:2.4f}, f1 {:2.4f}, (tps {:.0f}, fps {:.0f}, fns {:.0f})".format(
-                    rel,
-                    p, r, f1,
-                    rel_tps, rel_fps, rel_fns
-                ))
+                print(f"\t{rel:>12}, p {p * 100:2.4f}, r {r * 100:2.4f}, f1 {f1 * 100:2.4f},"
+                      f" (tps {rel_tps:.0f}, fps {rel_fps:.0f}, fns {rel_fns:.0f})")
 
         if f1_mode == 'micro':
             all_tps = sum([v[self.tps_id] for v in self.eval_dic.values()])
@@ -1903,12 +1900,9 @@ class TupleEvaluator(object):
             all_r = sum([v[1] for k, v in class_scores.items()]) / len(class_scores)
             all_f1 = sum([v[2] for k, v in class_scores.items()]) / len(class_scores)
         else:
-            raise Exception("Unknown f1_model: {} ...".format(f1_mode))
+            raise ValueError(f"Unknown f1_model: {f1_mode} ...")
 
         if print_level >= 1:
-            print("{}, {}, overall, p {:2.4f}, r {:2.4f}, f1 {:2.4f}\n".format(
-                message, f1_mode,
-                all_p, all_r, all_f1
-            ))
+            print(f"{message}, {f1_mode}, overall, p {all_p * 100:2.4f}, r {all_r * 100:2.4f}, f1 {all_f1 * 100:2.4f}\n")
 
         return all_f1
