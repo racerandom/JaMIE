@@ -448,10 +448,12 @@ def main():
             do_basic_tokenize=False,
             tokenize_chinese_chars=False
         )
-
-        bio2ix = json.loads('ner2ix.json')[0]
-        mod2ix = json.loads('mod2ix.json')[0]
-        rel2ix = json.loads('rel2ix.json')[0]
+        with open('ner2ix.json') as json_fi:
+            bio2ix = json.load(json_fi)
+        with open('mod2ix.json') as json_fi:
+            mod2ix = json.load(json_fi)
+        with open('rel2ix.json') as json_fi:
+            rel2ix = json.load(json_fi)
 
         model = JointNerModReExtractor(
             bert_url=args.pretrained_model,
