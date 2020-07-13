@@ -430,18 +430,10 @@ def main():
                        mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", orig_tok=dev_toks,
                        print_levels=(1, 1, 1), verbose=0)
 
-            print('Epoch %i, train loss: %.6f, training ner_loss: %.6f, training mod_loss: %.6f, rel_loss: %.6f\n' % (
-                epoch,
-                train_loss / num_epoch_steps,
-                train_ner_loss / num_epoch_steps,
-                train_mod_loss / num_epoch_steps,
-                train_rel_loss / num_epoch_steps
-            ))
-
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
               f"rel: {best_dev_f1[3]:.6f}; epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d}\n")
         model.load_state_dict(torch.load(os.path.join(args.saved_model, 'best.pt')))
-        torch.save(os.path.join(args.saved_model, 'best.pt'))
+        torch.save(model, os.path.join(args.saved_model, 'best.pt'))
     else:
 
         tokenizer = BertTokenizer.from_pretrained(
