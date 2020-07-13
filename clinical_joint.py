@@ -3,6 +3,7 @@
 import warnings
 import os
 import argparse
+import json
 from collections import defaultdict
 from tqdm import tqdm
 import torch
@@ -208,79 +209,73 @@ def main():
     bio_emb_size, mod_emb_size, rel_emb_size = eval(args.embed_size)
 
     if args.do_train:
-        tokenizer = BertTokenizer.from_pretrained(
-            args.pretrained_model,
-            do_lower_case=args.do_lower_case,
-            do_basic_tokenize=False,
-            tokenize_chinese_chars=False
+
+        if args.do_train:
+            tokenizer = BertTokenizer.from_pretrained(
+                args.pretrained_model,
+                do_lower_case=args.do_lower_case,
+                do_basic_tokenize=False,
+                tokenize_chinese_chars=False
+            )
+            tokenizer.add_tokens(['[JASP]'])
+
+        train_comments, train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
+            args.train_file,
+            down_neg=0.0
         )
-        tokenizer.add_tokens(['[JASP]'])
-    else:
-        tokenizer = BertTokenizer.from_pretrained(
-            args.save_model,
-            do_lower_case=args.do_lower_case,
-            do_basic_tokenize=False,
-            tokenize_chinese_chars=False
+
+        print(bio2ix)
+        print(ne2ix)
+        print(rel2ix)
+        print(mod2ix)
+        print()
+
+        print('max sent len:', utils.max_sents_len(train_toks, tokenizer))
+        print(min([len(sent_rels) for sent_rels in train_rels]), max([len(sent_rels) for sent_rels in train_rels]))
+        print()
+
+        dev_comments, dev_toks, dev_ners, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
+            args.dev_file, down_neg=0.0)
+        print('max sent len:', utils.max_sents_len(dev_toks, tokenizer))
+        print(min([len(sent_rels) for sent_rels in dev_rels]), max([len(sent_rels) for sent_rels in dev_rels]))
+        print()
+
+        rel_count = defaultdict(lambda: 0)
+
+        for sent_rels in train_rels:
+            for rel in sent_rels:
+                rel_count[rel[-1]] += 1
+
+        for sent_rels in dev_rels:
+            for rel in sent_rels:
+                rel_count[rel[-1]] += 1
+
+        print(rel_count)
+
+        example_id = 15
+        print('Random example: id %i, len: %i' % (example_id, len(train_toks[example_id])))
+        for tok_id in range(len(train_toks[example_id])):
+            print("%i\t%10s\t%s" % (tok_id, train_toks[example_id][tok_id], train_ners[example_id][tok_id]))
+        print(train_rels[example_id])
+        print()
+
+        max_len = max(
+            utils.max_sents_len(train_toks, tokenizer),
+            utils.max_sents_len(dev_toks, tokenizer),
+            # utils.max_sents_len(test_toks, tokenizer)
         )
+        cls_max_len = max_len + 2
 
-    train_comments, train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
-        args.train_file,
-        down_neg=0.0
-    )
+        train_dataset, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
+            train_toks, train_ners, train_mods, train_rels,
+            tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
 
-    print(bio2ix)
-    print(ne2ix)
-    print(rel2ix)
-    print(mod2ix)
-    print()
+        dev_dataset, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
+            dev_toks, dev_ners, dev_mods, dev_rels,
+            tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
 
-    print('max sent len:', utils.max_sents_len(train_toks, tokenizer))
-    print(min([len(sent_rels) for sent_rels in train_rels]), max([len(sent_rels) for sent_rels in train_rels]))
-    print()
-
-    dev_comments, dev_toks, dev_ners, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(args.dev_file, down_neg=0.0)
-    print('max sent len:', utils.max_sents_len(dev_toks, tokenizer))
-    print(min([len(sent_rels) for sent_rels in dev_rels]), max([len(sent_rels) for sent_rels in dev_rels]))
-    print()
-
-    rel_count = defaultdict(lambda: 0)
-
-    for sent_rels in train_rels:
-        for rel in sent_rels:
-            rel_count[rel[-1]] += 1
-
-    for sent_rels in dev_rels:
-        for rel in sent_rels:
-            rel_count[rel[-1]] += 1
-
-    print(rel_count)
-
-    example_id = 15
-    print('Random example: id %i, len: %i' % (example_id, len(train_toks[example_id])))
-    for tok_id in range(len(train_toks[example_id])):
-        print("%i\t%10s\t%s" % (tok_id, train_toks[example_id][tok_id], train_ners[example_id][tok_id]))
-    print(train_rels[example_id])
-    print()
-
-    max_len = max(
-        utils.max_sents_len(train_toks, tokenizer),
-        utils.max_sents_len(dev_toks, tokenizer),
-        # utils.max_sents_len(test_toks, tokenizer)
-    )
-    cls_max_len = max_len + 2
-
-    train_dataset, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
-        train_toks, train_ners, train_mods, train_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
-
-    dev_dataset, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
-        dev_toks, dev_ners, dev_mods, dev_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
-
-    train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
-    dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
-
-    if args.do_train:
+        train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
+        dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
 
         num_epoch_steps = len(train_dataloader)
         num_training_steps = args.num_epoch * num_epoch_steps
@@ -424,6 +419,12 @@ def main():
                             model_to_save = model.module if hasattr(model, 'module') else model
                             torch.save(model_to_save.state_dict(), os.path.join(args.save_model, 'best.pt'))
                             tokenizer.save_pretrained(args.save_model)
+                            with open('ner2ix.json', 'w') as fp:
+                                json.dump(bio2ix, fp)
+                            with open('mod2ix.json', 'w') as fp:
+                                json.dump(mod2ix, fp)
+                            with open('rel2ix.json', 'w') as fp:
+                                json.dump(rel2ix, fp)
 
             eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                        mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", orig_tok=dev_toks,
@@ -440,6 +441,18 @@ def main():
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
               f"rel: {best_dev_f1[3]:.6f}; epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d}\n")
     else:
+
+        tokenizer = BertTokenizer.from_pretrained(
+            args.save_model,
+            do_lower_case=args.do_lower_case,
+            do_basic_tokenize=False,
+            tokenize_chinese_chars=False
+        )
+
+        bio2ix = json.loads('ner2ix.json')[0]
+        mod2ix = json.loads('mod2ix.json')[0]
+        rel2ix = json.loads('rel2ix.json')[0]
+
         model = JointNerModReExtractor(
             bert_url=args.pretrained_model,
             ner_emb_size=bio_emb_size, ner_vocab=bio2ix,
@@ -462,10 +475,8 @@ def main():
                     print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
                     print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
                     print()
-                    max_len = max(
-                        max_len,
-                        utils.max_sents_len(test_toks, tokenizer)
-                    )
+                    max_len = utils.max_sents_len(test_toks, tokenizer)
+                    cls_max_len = max_len + 2
 
                     test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
                         test_toks, test_ners, test_mods, test_rels,
@@ -485,10 +496,9 @@ def main():
             print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
             print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
             print()
-            max_len = max(
-                max_len,
-                utils.max_sents_len(test_toks, tokenizer)
-            )
+            
+            max_len = utils.max_sents_len(test_toks, tokenizer)
+            cls_max_len = max_len + 2
 
             test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
                 test_toks, test_ners, test_mods, test_rels,
