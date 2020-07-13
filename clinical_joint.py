@@ -440,6 +440,8 @@ def main():
 
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
               f"rel: {best_dev_f1[3]:.6f}; epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d}\n")
+        model.load_state_dict(torch.load(os.path.join(args.saved_model, 'best.pt')))
+        torch.save(os.path.join(args.saved_model, 'best.pt'))
     else:
 
         tokenizer = BertTokenizer.from_pretrained(
@@ -455,16 +457,19 @@ def main():
         with open(os.path.join(args.saved_model, 'rel2ix.json')) as json_fi:
             rel2ix = json.load(json_fi)
 
-        model = JointNerModReExtractor(
-            bert_url=args.pretrained_model,
-            ner_emb_size=bio_emb_size, ner_vocab=bio2ix,
-            mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
-            rel_emb_size=rel_emb_size, rel_vocab=rel2ix,
-            device=args.device
-        )
-        model.encoder.resize_token_embeddings(len(tokenizer))
+        # model = JointNerModReExtractor(
+        #     bert_url=args.pretrained_model,
+        #     ner_emb_size=bio_emb_size, ner_vocab=bio2ix,
+        #     mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
+        #     rel_emb_size=rel_emb_size, rel_vocab=rel2ix,
+        #     device=args.device
+        # )
+        # model.encoder.resize_token_embeddings(len(tokenizer))
+        # model.to(args.device)
+        # model.load_state_dict(torch.load(os.path.join(args.saved_model, 'best.pt')))
+
+        model = torch.load(os.path.join(args.saved_model, 'best.pt'))
         model.to(args.device)
-        model.load_state_dict(torch.load(os.path.join(args.saved_model, 'best.pt')))
 
         if args.batch_test:
             for file_name in sorted(os.listdir(args.test_dir)):
