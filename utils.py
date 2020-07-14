@@ -1903,6 +1903,6 @@ class TupleEvaluator(object):
             raise ValueError(f"Unknown f1_model: {f1_mode} ...")
 
         if print_level >= 1:
-            print(f"{message}, {f1_mode}, overall, p {all_p * 100:2.4f}, r {all_r * 100:2.4f}, f1 {all_f1 * 100:2.4f}\n")
+            print(f"{message}, {f1_mode}, overall, p {all_p * 100:2.4f}, r {all_r * 100:2.4f}, f1 {all_f1 * 100:2.4f}")
 
         return all_f1

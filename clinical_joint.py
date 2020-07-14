@@ -105,16 +105,25 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    parser.add_argument("--train_file", default="data/clinical20200605/cv5_mecab/cv0_train_mecab.conll", type=str,
+    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/clinical20200605/cv5_mecab/cv0_dev_mecab.conll", type=str,
+    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file", default="data/clinical20200605/cv5_mecab/cv0_test_mecab.conll", type=str,
+    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
                         help="test file, multihead conll format.")
 
-    parser.add_argument("--pred_file", default="mr_cv0_test_pred.conll", type=str,
+    # parser.add_argument("--train_file", default="data/clinical20200605/cv5_mecab/cv0_train_mecab.conll", type=str,
+    #                     help="train file, multihead conll format.")
+    #
+    # parser.add_argument("--dev_file", default="data/clinical20200605/cv5_mecab/cv0_dev_mecab.conll", type=str,
+    #                     help="dev file, multihead conll format.")
+    #
+    # parser.add_argument("--test_file", default="data/clinical20200605/cv5_mecab/cv0_test_mecab.conll", type=str,
+    #                     help="test file, multihead conll format.")
+
+    parser.add_argument("--pred_file", default="tmp.conll", type=str,
                         help="test prediction, multihead conll format.")
 
     parser.add_argument("--test_dir", default="data/clinicalreport_part2/conll", type=str,
@@ -145,7 +154,7 @@ def main():
     parser.add_argument("--num_epoch", default=15, type=int,
                         help="fine-tuning epoch number")
 
-    parser.add_argument("--embed_size", default='[32, 32, 384]', type=str,
+    parser.add_argument("--embed_size", default='[32, 32, 256]', type=str,
                         help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
