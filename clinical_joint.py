@@ -105,25 +105,25 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
-                        help="train file, multihead conll format.")
-
-    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
-                        help="dev file, multihead conll format.")
-
-    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
-                        help="test file, multihead conll format.")
-
-    # parser.add_argument("--train_file", default="data/clinical20200605/cv5_mecab/cv0_train_mecab.conll", type=str,
+    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
     #                     help="train file, multihead conll format.")
     #
-    # parser.add_argument("--dev_file", default="data/clinical20200605/cv5_mecab/cv0_dev_mecab.conll", type=str,
+    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
     #                     help="dev file, multihead conll format.")
     #
-    # parser.add_argument("--test_file", default="data/clinical20200605/cv5_mecab/cv0_test_mecab.conll", type=str,
+    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
     #                     help="test file, multihead conll format.")
 
-    parser.add_argument("--pred_file", default="tmp.conll", type=str,
+    parser.add_argument("--train_file", default="data/clinical20200605/cv5_mecab/cv0_train_mecab.conll", type=str,
+                        help="train file, multihead conll format.")
+
+    parser.add_argument("--dev_file", default="data/clinical20200605/cv5_mecab/cv0_dev_mecab.conll", type=str,
+                        help="dev file, multihead conll format.")
+
+    parser.add_argument("--test_file", default="data/clinical20200605/cv5_mecab/cv0_test_mecab.conll", type=str,
+                        help="test file, multihead conll format.")
+
+    parser.add_argument("--pred_file", default="cv0_pred.conll", type=str,
                         help="test prediction, multihead conll format.")
 
     parser.add_argument("--test_dir", default="data/clinicalreport_part2/conll", type=str,
@@ -131,6 +131,9 @@ def main():
 
     parser.add_argument("--pred_dir", default="data/clinicalreport_part2/pred/conll", type=str,
                         help="prediction dir, multihead conll format.")
+
+    parser.add_argument("--saved_model", default='checkpoints/mr_joint_mecab/cv0', type=str,
+                        help="save/load model dir")
 
     parser.add_argument("--pretrained_model",
                         default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
@@ -145,16 +148,13 @@ def main():
                         action='store_true',
                         help="test batch files")
 
-    parser.add_argument("--saved_model", default='checkpoints/tmp/', type=str,
-                        help="save/load model dir")
-
     parser.add_argument("--batch_size", default=8, type=int,
                         help="BATCH SIZE")
 
     parser.add_argument("--num_epoch", default=15, type=int,
                         help="fine-tuning epoch number")
 
-    parser.add_argument("--embed_size", default='[32, 32, 256]', type=str,
+    parser.add_argument("--embed_size", default='[32, 32, 384]', type=str,
                         help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -219,14 +219,13 @@ def main():
 
     if args.do_train:
 
-        if args.do_train:
-            tokenizer = BertTokenizer.from_pretrained(
-                args.pretrained_model,
-                do_lower_case=args.do_lower_case,
-                do_basic_tokenize=False,
-                tokenize_chinese_chars=False
-            )
-            tokenizer.add_tokens(['[JASP]'])
+        tokenizer = BertTokenizer.from_pretrained(
+            args.pretrained_model,
+            do_lower_case=args.do_lower_case,
+            do_basic_tokenize=False,
+            tokenize_chinese_chars=False
+        )
+        tokenizer.add_tokens(['[JASP]'])
 
         train_comments, train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
             args.train_file,
@@ -302,7 +301,7 @@ def main():
 
         param_optimizer = list(model.named_parameters())
         encoder_name_list = ['encoder']
-        decoder_name_list = ['crf_tagger', 'mod_h2o', 'rel_h2o']
+        decoder_name_list = ['crf_tagger']
         optimizer_grouped_parameters = [
             {
                 'params': [p for n, p in param_optimizer if any(nd in n for nd in encoder_name_list)],
@@ -320,7 +319,6 @@ def main():
 
         optimizer = AdamW(
             optimizer_grouped_parameters,
-            # lr=args.encoder_lr,
             eps=1e-8,
             correct_bias=False
         )

@@ -296,7 +296,7 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphologica
                                             phrase_modality_labs[-1] = item.attrib['type']
                                         else:
                                             ttype_labs += ['_'] * len(seg_toks)
-                                        if item.tag in ['t-test', 'r', 'cc'] and 'state' in item.attrib:
+                                        if 'state' in item.attrib:
                                             tok_state_labs = ['_'] * len(seg_toks)
                                             tok_state_labs[0] = item.attrib['state']
                                             state_labs += tok_state_labs
@@ -354,8 +354,7 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphologica
                                         tok_head_list[tail_id] = str(head_list)
                                         tok_rel_list[tail_id] = str(rel_list)
                         else:
-                            seg = juman.analysis(line)
-                            toks = [w.midasi for w in seg.mrph_list()]
+                            toks = morphological_analyzer.analyze(line)
                             sent_stat.append(len(toks))
                             toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
                             labs = ['O'] * len(toks)
