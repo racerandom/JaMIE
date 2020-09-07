@@ -145,7 +145,7 @@ class MultiheadConll(object):
                 sent_str += ''.join(output_toks) + '\n'
                 fo.write(sent_str)
 
-    def doc_to_brat(self, brat_file, with_rel=True):
+    def doc_to_brat(self, brat_file, with_rel=False):
         with open(brat_file + '.txt', 'w', encoding='utf8') as brat_txt, open(brat_file + '.ann', 'w', encoding='utf8') as brat_ann:
             line_start = 0
             eid_start = 1
@@ -180,6 +180,7 @@ class MultiheadConll(object):
                         else:
                             print(f'unknow eid of tail{tail_char_id}, head{head_char_id}')
                 line_start += len(sent_str)
+
 
 
 

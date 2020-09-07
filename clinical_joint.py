@@ -114,29 +114,29 @@ def main():
     # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
     #                     help="test file, multihead conll format.")
 
-    parser.add_argument("--train_file", default="data/clinical20200605/cv5_mecab/cv0_train_mecab.conll", type=str,
+    parser.add_argument("--train_file", default="data/clinical20200605/cv5_juman/cv0_train_juman.conll", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/clinical20200605/cv5_mecab/cv0_dev_mecab.conll", type=str,
+    parser.add_argument("--dev_file", default="data/clinical20200605/cv5_juman/cv0_dev_juman.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file", default="data/clinical20200605/cv5_mecab/cv0_test_mecab.conll", type=str,
+    parser.add_argument("--test_file", default="data/clinical20200605/cv5_juman/cv0_test_juman.conll", type=str,
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pred_file", default="cv0_pred.conll", type=str,
                         help="test prediction, multihead conll format.")
 
-    parser.add_argument("--test_dir", default="data/clinicalreport_part2/conll", type=str,
+    parser.add_argument("--test_dir", default="data/clinicalreport_part2/conll_juman", type=str,
                         help="test dir, multihead conll format.")
 
     parser.add_argument("--pred_dir", default="data/clinicalreport_part2/pred/conll", type=str,
                         help="prediction dir, multihead conll format.")
 
-    parser.add_argument("--saved_model", default='checkpoints/mr_joint_mecab/cv0', type=str,
+    parser.add_argument("--saved_model", default='checkpoints/mr_joint_juman/cv0', type=str,
                         help="save/load model dir")
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+                        default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE_WWM_transformers",
                         type=str,
                         help="pre-trained model dir")
 
@@ -154,7 +154,7 @@ def main():
     parser.add_argument("--num_epoch", default=15, type=int,
                         help="fine-tuning epoch number")
 
-    parser.add_argument("--embed_size", default='[32, 32, 384]', type=str,
+    parser.add_argument("--embed_size", default='[32, 32, 448]', type=str,
                         help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,

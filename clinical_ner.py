@@ -255,7 +255,6 @@ if args.do_train:
             num_training_steps=num_training_steps
         )
 
-
     # support fp16
     if args.fp16:
         try:

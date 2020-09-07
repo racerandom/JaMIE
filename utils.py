@@ -2,6 +2,7 @@ import os
 from collections import defaultdict, Counter
 import copy
 import json
+import math
 import mojimoji
 import xml.etree.ElementTree as ET
 import numpy as np
@@ -840,7 +841,7 @@ def extract_cert_from_conll(conll_file, tokenizer, attrib_lab2ix, device, max_ne
                          ), deunks
 
 
-def doc_kfold(data_dir, cv=5, dev_ratio=0.1, random_seed=1029):
+def doc_kfold(data_dir, cv=5, train_scale=1.0, dev_ratio=0.1, random_seed=1029):
     from sklearn.model_selection import KFold, train_test_split
     file_list, file_splits = [], []
     for file in sorted(os.listdir(data_dir)):
@@ -860,6 +861,11 @@ def doc_kfold(data_dir, cv=5, dev_ratio=0.1, random_seed=1029):
         else:
             train_split = raw_train_split
             dev_split = []
+        print(len(train_split))
+        random.seed(random_seed)
+        random.shuffle(train_split)
+        train_split = train_split[:math.ceil(len(train_split) * train_scale)]
+        print(len(train_split))
         file_splits.append((
             [file_list[fid] for fid in train_split],
             [file_list[fid] for fid in dev_split],
