@@ -409,7 +409,7 @@ def main():
                     f" L_REL: {train_rel_loss/(step+1):.6f} | epoch: {epoch}/{args.num_epoch}:"
                 )
 
-                if epoch > 5:
+                if epoch > 0:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                         dev_f1 = eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                                             mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", print_levels=(0, 0, 0), verbose=0)
@@ -444,10 +444,10 @@ def main():
 
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
               f"rel: {best_dev_f1[3]:.6f}; epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d}\n")
-        model.load_state_dict(torch.load(os.path.join(args.saved_model, 'best.pt')))
-        torch.save(model, os.path.join(args.saved_model, 'best.pt'))
+        model.load_state_dict(torch.load(os.path.join(args.saved_model, 'model.pt')))
+        torch.save(model, os.path.join(args.saved_model, 'model.pt'))
     else:
-
+        '''Load tokenizer and tag2ix'''
         tokenizer = BertTokenizer.from_pretrained(
             args.saved_model,
             do_lower_case=args.do_lower_case,
@@ -461,6 +461,7 @@ def main():
         with open(os.path.join(args.saved_model, 'rel2ix.json')) as json_fi:
             rel2ix = json.load(json_fi)
 
+        # '''Initialize model and load state'''
         # model = JointNerModReExtractor(
         #     bert_url=args.pretrained_model,
         #     ner_emb_size=bio_emb_size, ner_vocab=bio2ix,
@@ -472,7 +473,8 @@ def main():
         # model.to(args.device)
         # model.load_state_dict(torch.load(os.path.join(args.saved_model, 'best.pt')))
 
-        model = torch.load(os.path.join(args.saved_model, 'best.pt'))
+        '''Load full model'''
+        model = torch.load(os.path.join(args.saved_model, 'model.pt'))
         model.to(args.device)
 
         if args.batch_test:

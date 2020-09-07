@@ -70,11 +70,13 @@ class MultiheadConll(object):
         self._entities = []
         self._mod_entities = []
         self._rel_triplets = []
+        self._rel_detailed_triplets = []
         self.load_doc(conll_file, empty_comment)
         self.update_columns()
         self.update_entities()
         self.update_mod_entities()
         self.update_rel_triplets()
+        self.update_rel_detailed_triplets()
 
     def load_doc(self, conll_file, empty_comment):
         with open(conll_file, 'r', encoding='utf8') as conll_fi:
@@ -125,6 +127,16 @@ class MultiheadConll(object):
                     if rel not in ['N']:
                         sent_triplets.append((tail_id, head_id, rel))
             self._rel_triplets.append(sent_triplets)
+
+    def update_rel_detailed_triplets(self):
+        for sent_id in range(len(self._doc_lines)):
+            sent_dic = {(entity[-1]-1): entity[1:3] for entity in self._entities[sent_id]}
+            sent_triplets = []
+            for tail_id, head_id, rel in self._rel_triplets[sent_id]:
+                tail_span = sent_dic[tail_id] if tail_id in sent_dic else (tail_id, tail_id + 1)
+                head_span = sent_dic[head_id] if head_id in sent_dic else (head_id, head_id + 1)
+                sent_triplets.append((tail_span, head_span, rel))
+            self._rel_detailed_triplets.append(sent_triplets)
 
     def doc_to_xml(self, xml_file):
         with open(xml_file, 'w', encoding='utf8') as fo:
