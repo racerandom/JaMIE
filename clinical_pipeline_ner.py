@@ -27,9 +27,10 @@ def output_ner(model, eval_dataloader, eval_tok, eval_ner, ner2ix, ner_outfile, 
             b_gold_ner = [eval_ner[sent_id] for sent_id in b_sent_ids]
             pred_ix = [tags[1:] for tags in model.decode(b_toks, attention_mask=b_attn_mask.bool())]
 
-            for index, p in zip(b_sent_ids, pred_ix):
-                print(len(eval_tok[index]), eval_tok[index])
+            for index, mask, toks, p in zip(b_sent_ids, b_attn_mask.cpu().tolist(), b_text_list, pred_ix):
+                print(len(toks), toks)
                 print(len(eval_ner[index]), eval_ner[index])
+                print(mask)
                 print(len(p), p)
                 print()
 
