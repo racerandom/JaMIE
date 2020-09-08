@@ -253,7 +253,7 @@ if args.do_train:
             )
 
             if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
-                output_ner(model, dev_dataloader, dev_toks, dev_ners, bio2ix, args.dev_output, args.device)
+                output_ner(model, dev_dataloader, dev_tok, dev_ner, bio2ix, args.dev_output, args.device)
                 import subprocess
                 eval_out = subprocess.check_output(
                     ['./ner_eval.sh', args.dev_output]
@@ -283,25 +283,6 @@ if args.do_train:
                     tokenizer.save_pretrained(args.saved_model)
                     with open(os.path.join(args.saved_model, 'ner2ix.json'), 'w') as fp:
                         json.dump(bio2ix, fp)
-
-    if args.later_eval:
-        if args.do_crf:
-            model = BertCRF.from_pretrained(model_dir)
-            model.to(device)
-            eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
-        else:
-            model = BertForTokenClassification.from_pretrained(model_dir)
-            model.to(device)
-            eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
-        import subprocess
-        eval_out = subprocess.check_output(
-            ['./ner_eval.sh', args.test_output]
-        ).decode("utf-8")
-        print("epoch loss: %.6f; " % (epoch_loss/len(train_dataloader)))
-        # print(eval_out.split('\n')[2])
-        print(eval_out)
-        eval_modality(args.test_output)
-
 
 else:
     """ load the new tokenizer"""
