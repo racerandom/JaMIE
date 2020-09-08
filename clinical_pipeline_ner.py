@@ -63,7 +63,7 @@ parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
 parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
                     help="test file, multihead conll format.")
 
-parser.add_argument("--batch_size", default=8, type=int,
+parser.add_argument("--batch_size", default=16, type=int,
                     help="BATCH SIZE")
 
 parser.add_argument("--num_epoch", default=15, type=int,
@@ -253,73 +253,68 @@ if args.do_train:
                 f"L_NER: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
-                output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.device)
-                dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
-                dev_f1 = dev_evaluator.eval_ner()
-                if best_dev_score < dev_f1:
-                    print("-> best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
-                        best_dev_score,
-                        dev_f1,
-                        args.saved_model
-                    ))
-                    best_dev_score = dev_f1
+            if epoch > 3:
+                if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
+                    output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.device)
+                    dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
+                    dev_f1 = dev_evaluator.eval_ner()
+                    if best_dev_score < dev_f1:
+                        print("-> best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
+                            best_dev_score,
+                            dev_f1,
+                            args.saved_model
+                        ))
+                        best_dev_score = dev_f1
 
-                    """ save the best model """
-                    if not os.path.exists(args.saved_model):
-                        os.makedirs(args.saved_model)
-                    model_to_save = model.module if hasattr(model, 'module') else model
-                    torch.save(model_to_save.state_dict(), os.path.join(args.saved_model, 'best.pt'))
-                    tokenizer.save_pretrained(args.saved_model)
-                    with open(os.path.join(args.saved_model, 'ner2ix.json'), 'w') as fp:
-                        json.dump(bio2ix, fp)
+                        """ save the best model """
+                        if not os.path.exists(args.saved_model):
+                            os.makedirs(args.saved_model)
+                        model_to_save = model.module if hasattr(model, 'module') else model
+                        torch.save(model_to_save.state_dict(), os.path.join(args.saved_model, 'best.pt'))
+                        tokenizer.save_pretrained(args.saved_model)
+                        with open(os.path.join(args.saved_model, 'ner2ix.json'), 'w') as fp:
+                            json.dump(bio2ix, fp)
+                        with open(os.path.join(args.saved_model, 'mod2ix.json'), 'w') as fp:
+                            json.dump(mod2ix, fp)
+                        with open(os.path.join(args.saved_model, 'rel2ix.json'), 'w') as fp:
+                            json.dump(rel2ix, fp)
 
 else:
     """ load the new tokenizer"""
-    print("test_mode:", model_dir)
-    tokenizer = BertTokenizer.from_pretrained(model_dir, do_lower_case=False, do_basic_tokenize=False)
-    # test_tensors, test_deunk = extract_ner_from_conll(TEST_FILE, tokenizer, lab2ix, device)
-    # test_dataloader = DataLoader(test_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
-    # test_deunk_loader = [test_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(test_deunk), args.BATCH_SIZE)]
-    # print('test size: %i' % len(test_tensors))
-    #
-    # dev_tensors, dev_deunk = extract_ner_from_conll(DEV_FILE, tokenizer, lab2ix, device, is_merged=args.joint)
-    # dev_dataloader = DataLoader(dev_tensors, batch_size=args.BATCH_SIZE, shuffle=False)
-    # dev_deunk_loader = [dev_deunk[i: i + args.BATCH_SIZE] for i in range(0, len(dev_deunk), args.BATCH_SIZE)]
-    # print('dev size: %i' % len(dev_tensors))
+    print("test_mode:", args.saved_model)
+    tokenizer = BertTokenizer.from_pretrained(
+        args.saved_model,
+        do_lower_case=args.do_lower_case,
+        do_basic_tokenize=False
+    )
+    with open(os.path.join(args.saved_model, 'ner2ix.json')) as json_fi:
+        bio2ix = json.load(json_fi)
+    with open(os.path.join(args.saved_model, 'mod2ix.json')) as json_fi:
+        mod2ix = json.load(json_fi)
+    with open(os.path.join(args.saved_model, 'rel2ix.json')) as json_fi:
+        rel2ix = json.load(json_fi)
 
-    """ load the new model"""
-    if args.do_crf:
-        model = BertCRF.from_pretrained(model_dir)
-    else:
-        model = BertForTokenClassification.from_pretrained(model_dir)
-    model.to(device)
+    """ load test data """
+    test_comments, test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
+        args.test_file,
+        down_neg=0.0)
+    print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
+    print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
+    print()
+
+    max_len = utils.max_sents_len(test_toks, tokenizer)
+    cls_max_len = max_len + 2
+
+    test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
+        test_toks, test_ners, test_mods, test_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+
+    test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+
+    """ load the saved model"""
+    model = BertCRF.from_pretrained(args.saved_model)
+    model.to(args.device)
 
     """ predict test out """
-    # if not args.do_crf:
-    #     eval_seq(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
-    # else:
-    #     eval_crf(model, tokenizer, dev_dataloader, dev_deunk_loader, lab2ix, args.dev_output, args.joint)
+    output_ner(model, test_dataloader, test_comments, test_tok, bio2ix, args.test_output, args.device)
 
-    if not args.do_crf:
-        eval_seq(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
-    else:
-        eval_crf(model, tokenizer, test_dataloader, test_deunk_loader, lab2ix, args.test_output, args.joint)
-
-    # import subprocess
-    #
-    # dev_score = subprocess.check_output(
-    #     ['./ner_eval.sh', args.dev_output]
-    # ).decode("utf-8")
-    # # print(eval_out.split('\n')[2])
-    # print(dev_score)
-    # eval_modality(args.dev_output)
-    #
-    # import subprocess
-    #
-    # test_score = subprocess.check_output(
-    #     ['./ner_eval.sh', args.test_output]
-    # ).decode("utf-8")
-    # # print(eval_out.split('\n')[2])
-    # print(test_score)
-    # eval_modality(args.test_output)
