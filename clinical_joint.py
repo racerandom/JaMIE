@@ -88,9 +88,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
 
                 fo.write(f'{eval_comments[sid]}\n')
                 for index, (tok, ner, mod, rel, head) in enumerate(zip(orig_tok[sid] if orig_tok else w_tok, w_ner, w_mod, w_rel, w_head)):
-                    fo.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
-                        index, tok, ner, mod, rel, head
-                    ))
+                    fo.write(f"{index}\t{tok}\t{ner}\t{mod}\t{rel}\t{head}\n")
 
             rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 

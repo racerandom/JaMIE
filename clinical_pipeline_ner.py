@@ -7,10 +7,11 @@ from torch.utils.data import Dataset, DataLoader, RandomSampler, TensorDataset
 from transformers import *
 import argparse
 from model import *
+from clinical_eval import MhsEvaluator
 warnings.filterwarnings("ignore")
 
 
-def output_ner(model, eval_dataloader, eval_tok, eval_ner, ner2ix, ner_outfile, device):
+def output_ner(model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfile, device):
     ix2ner = {v: k for k, v in ner2ix.items()}
     model.eval()
     with torch.no_grad(), open(ner_outfile, 'w') as fo:
@@ -24,17 +25,17 @@ def output_ner(model, eval_dataloader, eval_tok, eval_ner, ner2ix, ner_outfile, 
                 cls_max_len,
                 pad_tok='[PAD]') for sent_id in b_sent_ids]
 
-            b_gold_ner = [eval_ner[sent_id] for sent_id in b_sent_ids]
-            pred_ix = [tags[1:-1] for tags in model.decode(b_toks, attention_mask=b_attn_mask.bool())]
+            pred_tags = [[ix2ner[tag_id] for tag_id in tag_ix] for tag_ix in model.decode(b_toks, attention_mask=b_attn_mask.bool())]
 
-            for sent_id, toks, mask, p in zip(b_sent_ids, b_toks.cpu().tolist(), b_attn_mask.cpu().tolist(), pred_ix):
-                print(len(eval_tok[sent_id]), eval_tok[sent_id])
-                print(len(eval_ner[sent_id]), eval_ner[sent_id])
-                print(toks)
-                print(sum(mask))
-                print(len(p), p)
-                print()
-
+            for sid in zip(b_sent_ids, pred_tags):
+                w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
+                w_ner = utils.sbwner2ner(pred_tags, aligned_ids)
+                w_tok = w_tok[1:-1]
+                w_ner = w_ner[1:-1]
+                assert len(w_tok) == len(w_ner)
+                fo.write(f'{eval_comment[sid]}\n')
+                for index, (tok, ner) in enumerate(zip(w_tok, w_ner)):
+                    fo.write(f"{index}\t{tok}\t{ner}\t_\t['N']\t[{index}]\n")
 
 """ 
 python input arguments 
@@ -253,20 +254,9 @@ if args.do_train:
             )
 
             if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
-                output_ner(model, dev_dataloader, dev_tok, dev_ner, bio2ix, args.dev_output, args.device)
-                import subprocess
-                eval_out = subprocess.check_output(
-                    ['./ner_eval.sh', args.dev_output]
-                ).decode("utf-8").split('\n')[2]
-                dev_f1 = float(eval_out.split()[-1])
-                print("current dev f1: {:2f}".format(dev_f1))
-
-                test_out = subprocess.check_output(
-                    ['./ner_eval.sh', args.test_output]
-                ).decode("utf-8").split('\n')[2]
-                test_f1 = float(test_out.split()[-1])
-                print("current test f1: {:2f}".format(test_f1))
-
+                output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.device)
+                dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
+                dev_f1 = dev_evaluator.eval_ner()
                 if best_dev_score < dev_f1:
                     print("-> best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
                         best_dev_score,
