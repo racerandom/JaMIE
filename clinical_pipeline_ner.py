@@ -27,9 +27,9 @@ def output_ner(model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfi
 
             pred_tags = [[ix2ner[tag_id] for tag_id in tag_ix] for tag_ix in model.decode(b_toks, attention_mask=b_attn_mask.bool())]
 
-            for sid in zip(b_sent_ids, pred_tags):
+            for sid, sent_tag in zip(b_sent_ids, pred_tags):
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
-                w_ner = utils.sbwner2ner(pred_tags, aligned_ids)
+                w_ner = utils.sbwner2ner(sent_tag, aligned_ids)
                 w_tok = w_tok[1:-1]
                 w_ner = w_ner[1:-1]
                 assert len(w_tok) == len(w_ner)
