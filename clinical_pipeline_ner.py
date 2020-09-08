@@ -261,7 +261,7 @@ if args.do_train:
                     print("-> best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
                         best_dev_score,
                         dev_f1,
-                        args.args.saved_model
+                        args.saved_model
                     ))
                     best_dev_score = dev_f1
 
