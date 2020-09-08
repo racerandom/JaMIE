@@ -140,7 +140,7 @@ def main():
     parser.add_argument("--pred_dir", default="tmp/", type=str,
                         help="prediction dir, multihead conll format.")
 
-    parser.add_argument("--saved_model", default='checkpoints/tmp', type=str,
+    parser.add_argument("--saved_model", default='checkpoints/tmp/joint', type=str,
                         help="save/load model dir")
 
     parser.add_argument("--do_lower_case",

@@ -73,10 +73,6 @@ parser.add_argument("--do_train",
                     action='store_true',
                     help="Whether to run training.")
 
-parser.add_argument("--do_crf",
-                    action='store_true',
-                    help="Whether to use CRF.")
-
 parser.add_argument("--enc_lr", default=5e-5, type=float,
                     help="encoder lr")
 
@@ -103,7 +99,7 @@ parser.add_argument("--save_step_portion", default=4, type=int,
                         help="save best model given a portion of steps")
 
 parser.add_argument("--warmup_ratio", default=0.1, type=float,
-                        help="warmup ratio")
+                    help="warmup ratio")
 
 parser.add_argument("--fp16",
                     action='store_true',
@@ -214,7 +210,7 @@ if args.do_train:
             raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
         model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
-    best_dev_score = float('-inf') if args.save_best == 'f1' else float('inf')
+    best_dev_f1 = (float('-inf'), 0, 0)
 
     save_step_interval = math.ceil(num_epoch_steps / 4)
 
@@ -257,13 +253,13 @@ if args.do_train:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.device)
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
-                    dev_f1 = dev_evaluator.eval_ner()
-                    if best_dev_score < dev_f1:
-                        print("-> best dev f1 %.4f; current f1 %.4f; best model saved '%s'" % (
-                            best_dev_score,
-                            dev_f1,
-                            args.saved_model
-                        ))
+                    dev_f1 = (dev_evaluator.eval_ner(), epoch, step)
+                    if best_dev_f1[0] < dev_f1[0]:
+                        print(
+                            f" -> Previous best dev f1 {best_dev_f1[0]:.6f}; "
+                            f"epoch {best_dev_f1[1]:d} / step {best_dev_f1[2]:d} \n "
+                            f">> Current f1 {dev_f1[0]:.6f}; best model saved '{args.saved_model}'"
+                        )
                         best_dev_score = dev_f1
 
                         """ save the best model """
