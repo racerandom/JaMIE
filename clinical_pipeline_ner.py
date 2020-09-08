@@ -30,7 +30,7 @@ def output_ner(model, eval_dataloader, eval_tok, eval_ner, ner2ix, ner_outfile, 
             for sent_id, toks, mask, p in zip(b_sent_ids, b_toks.cpu().tolist(), b_attn_mask.cpu().tolist(), pred_ix):
                 print(len(eval_tok[sent_id]), eval_tok[sent_id])
                 print(len(eval_ner[sent_id]), eval_ner[sent_id])
-                print(len(toks))
+                print(toks)
                 print(sum(mask))
                 print(len(p), p)
                 print()
