@@ -429,7 +429,7 @@ def main():
                             if not os.path.exists(args.saved_model):
                                 os.makedirs(args.saved_model)
                             model_to_save = model.module if hasattr(model, 'module') else model
-                            torch.save(model_to_save.state_dict(), os.path.join(args.saved_model, 'best.pt'))
+                            torch.save(model_to_save.state_dict(), os.path.join(args.saved_model, 'model.pt'))
                             tokenizer.save_pretrained(args.saved_model)
                             with open(os.path.join(args.saved_model, 'ner2ix.json'), 'w') as fp:
                                 json.dump(bio2ix, fp)
