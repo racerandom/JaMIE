@@ -95,8 +95,8 @@ parser.add_argument("--later_eval",
 parser.add_argument("--save_best", action='store', type=str, default='f1',
                     help="save the best model, given dev scores (f1 or loss)")
 
-parser.add_argument("--save_step_portion", default=4, type=int,
-                        help="save best model given a portion of steps")
+parser.add_argument("--save_step_portion", default=3, type=int,
+                    help="save best model given a portion of steps")
 
 parser.add_argument("--warmup_ratio", default=0.1, type=float,
                     help="warmup ratio")
