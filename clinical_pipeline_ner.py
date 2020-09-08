@@ -260,7 +260,7 @@ if args.do_train:
                             f"epoch {best_dev_f1[1]:d} / step {best_dev_f1[2]:d} \n "
                             f">> Current f1 {dev_f1[0]:.6f}; best model saved '{args.saved_model}'"
                         )
-                        best_dev_score = dev_f1
+                        best_dev_f1 = dev_f1
 
                         """ save the best model """
                         if not os.path.exists(args.saved_model):
