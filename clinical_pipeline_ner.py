@@ -37,6 +37,7 @@ def output_ner(model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfi
                 for index, (tok, ner) in enumerate(zip(w_tok, w_ner)):
                     fo.write(f"{index}\t{tok}\t{ner}\t_\t['N']\t[{index}]\n")
 
+
 """ 
 python input arguments 
 """
@@ -234,13 +235,11 @@ if args.do_train:
             if args.fp16:
                 with amp.scale_loss(loss, optimizer) as scaled_loss:
                     scaled_loss.backward()
-            else:
-                loss.backward()
-
-            if args.fp16:
                 torch.nn.utils.clip_grad_norm_(amp.master_params(optimizer), args.max_grad_norm)
             else:
+                loss.backward()
                 torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+
             optimizer.step()
             scheduler.step()
             model.zero_grad()
@@ -249,11 +248,11 @@ if args.do_train:
                 f"L_NER: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 3:
+            if epoch > 0:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.device)
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
-                    dev_f1 = (dev_evaluator.eval_ner(), epoch, step)
+                    dev_f1 = (dev_evaluator.eval_ner(print_level=0), epoch, step)
                     if best_dev_f1[0] < dev_f1[0]:
                         print(
                             f" -> Previous best dev f1 {best_dev_f1[0]:.6f}; "
@@ -266,7 +265,7 @@ if args.do_train:
                         if not os.path.exists(args.saved_model):
                             os.makedirs(args.saved_model)
                         model_to_save = model.module if hasattr(model, 'module') else model
-                        torch.save(model_to_save.state_dict(), os.path.join(args.saved_model, 'best.pt'))
+                        torch.save(model_to_save.state_dict(), os.path.join(args.saved_model, 'model.pt'))
                         tokenizer.save_pretrained(args.saved_model)
                         with open(os.path.join(args.saved_model, 'ner2ix.json'), 'w') as fp:
                             json.dump(bio2ix, fp)
@@ -274,7 +273,9 @@ if args.do_train:
                             json.dump(mod2ix, fp)
                         with open(os.path.join(args.saved_model, 'rel2ix.json'), 'w') as fp:
                             json.dump(rel2ix, fp)
-
+    print(f"Best dev f1 {best_dev_f1[0]:.6f}; epoch {best_dev_f1[1]:d} / step {best_dev_f1[2]:d}\n")
+    model.load_state_dict(torch.load(os.path.join(args.saved_model, 'model.pt')))
+    torch.save(model, os.path.join(args.saved_model, 'model.pt'))
 else:
     """ load the new tokenizer"""
     print("test_mode:", args.saved_model)
@@ -308,7 +309,7 @@ else:
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
     """ load the saved model"""
-    model = BertCRF.from_pretrained(args.saved_model)
+    model = torch.load(os.path.join(args.saved_model, 'model.pt'))
     model.to(args.device)
 
     """ predict test out """
