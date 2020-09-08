@@ -10,7 +10,8 @@ from model import *
 warnings.filterwarnings("ignore")
 
 
-def output_ner(model, eval_dataloader, eval_tok, eval_ner, ner_outfile, device):
+def output_ner(model, eval_dataloader, eval_tok, eval_ner, ner2ix, ner_outfile, device):
+    ix2ner = {v: k for k, v in ner2ix.items()}
     model.eval()
     with torch.no_grad(), open(ner_outfile, 'w') as fo:
         for dev_step, dev_batch in enumerate(eval_dataloader):
@@ -24,7 +25,12 @@ def output_ner(model, eval_dataloader, eval_tok, eval_ner, ner_outfile, device):
                 pad_tok='[PAD]') for sent_id in b_sent_ids]
 
             b_gold_ner = [eval_ner[sent_id] for sent_id in b_sent_ids]
-            pred_ix = [l[1:] for l in model.decode(b_toks, b_attn_mask)]
+            pred_ix = [tags[1:] for tags in model.decode(b_toks, attention_mask=b_attn_mask)]
+
+            for g, p in zip(eval_ner, pred_ix):
+                print(len(g), g)
+                print(len(p), p)
+                print()
 
 
 """ 
@@ -76,10 +82,10 @@ parser.add_argument("--crf_lr", default=1e-2, type=float,
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
                     help="Max gradient norm.")
 
-parser.add_argument("--test_output", default='outputs/temp_test.ner', type=str,
+parser.add_argument("--test_output", default='tmp/test.ner', type=str,
                     help="test output filename")
 
-parser.add_argument("--dev_output", default='outputs/temp_dev.ner', type=str,
+parser.add_argument("--dev_output", default='tmp/dev.ner', type=str,
                     help="dev output filename")
 
 parser.add_argument("--later_eval",
@@ -99,7 +105,7 @@ parser.add_argument("--fp16",
                     action='store_true',
                     help="fp16")
 
-parser.add_argument("--fp16_opt_level", type=str, default="O2",
+parser.add_argument("--fp16_opt_level", type=str, default="O1",
                     help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
                     "See details at https://nvidia.github.io/apex/amp.html")
 
@@ -244,7 +250,7 @@ if args.do_train:
             )
 
             if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
-                output_ner(model, dev_dataloader, dev_toks, dev_ners, args.dev_output, args.device)
+                output_ner(model, dev_dataloader, dev_toks, dev_ners, bio2ix, args.dev_output, args.device)
                 import subprocess
                 eval_out = subprocess.check_output(
                     ['./ner_eval.sh', args.dev_output]
