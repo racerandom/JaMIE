@@ -10,6 +10,7 @@ import torch
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
 from model import *
 
+import clinical_eval
 import utils
 warnings.filterwarnings("ignore")
 
@@ -19,9 +20,9 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                orig_tok=None, out_file='tmp.conll',
                f1_mode='micro', verbose=0):
 
-    ner_evaluator = utils.TupleEvaluator()
-    mod_evaluator = utils.TupleEvaluator()
-    rel_evaluator = utils.TupleEvaluator()
+    ner_evaluator = clinical_eval.TupleEvaluator()
+    mod_evaluator = clinical_eval.TupleEvaluator()
+    rel_evaluator = clinical_eval.TupleEvaluator()
     model.eval()
     with torch.no_grad(), open(out_file, 'w') as fo:
         for dev_step, dev_batch in enumerate(eval_dataloader):
@@ -103,33 +104,37 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+    #                     help="train file, multihead conll format.")
+    #
+    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+    #                     help="dev file, multihead conll format.")
+    #
+    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+    #                     help="test file, multihead conll format.")
+    #
+    # parser.add_argument("--pretrained_model",
+    #                     default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
+    #                     type=str,
+    #                     help="pre-trained model dir")
+
+    parser.add_argument("--train_file", default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct/cv2_train.conll", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+    parser.add_argument("--dev_file", default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct/cv2_dev.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+    parser.add_argument("--test_file", default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct/cv2_test.conll", type=str,
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
+                        default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
                         type=str,
                         help="pre-trained model dir")
 
-    # parser.add_argument("--train_file", default="data/clinical20200605/cv5_juman/cv0_train_juman.conll", type=str,
-    #                     help="train file, multihead conll format.")
-    #
-    # parser.add_argument("--dev_file", default="data/clinical20200605/cv5_juman/cv0_dev_juman.conll", type=str,
-    #                     help="dev file, multihead conll format.")
-    #
-    # parser.add_argument("--test_file", default="data/clinical20200605/cv5_juman/cv0_test_juman.conll", type=str,
-    #                     help="test file, multihead conll format.")
-
-    # parser.add_argument("--pretrained_model",
-    #                     default="/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE_WWM_transformers",
-    #                     type=str,
-    #                     help="pre-trained model dir")
+    parser.add_argument("--do_lower_case",
+                        action='store_true',
+                        help="tokenizer: do_lower_case")
 
     parser.add_argument("--pred_file", default="tmp/pred.conll", type=str,
                         help="test prediction, multihead conll format.")
@@ -143,10 +148,6 @@ def main():
     parser.add_argument("--saved_model", default='checkpoints/tmp/joint', type=str,
                         help="save/load model dir")
 
-    parser.add_argument("--do_lower_case",
-                        action='store_true',
-                        help="tokenizer: do_lower_case")
-
     parser.add_argument("--batch_test",
                         action='store_true',
                         help="test batch files")
@@ -154,7 +155,7 @@ def main():
     parser.add_argument("--batch_size", default=8, type=int,
                         help="BATCH SIZE")
 
-    parser.add_argument("--num_epoch", default=15, type=int,
+    parser.add_argument("--num_epoch", default=20, type=int,
                         help="fine-tuning epoch number")
 
     parser.add_argument("--embed_size", default='[32, 32, 448]', type=str,
@@ -170,7 +171,7 @@ def main():
                         action='store_true',
                         help="Whether to run training.")
 
-    parser.add_argument("--encoder_lr", default=5e-5, type=float,
+    parser.add_argument("--encoder_lr", default=2e-5, type=float,
                         help="learning rate")
 
     parser.add_argument("--decoder_lr", default=1e-2, type=float,
@@ -217,6 +218,8 @@ def main():
     args.n_gpu = torch.cuda.device_count()
 
     print(args)
+
+    bert_max_len = 512
 
     bio_emb_size, mod_emb_size, rel_emb_size = eval(args.embed_size)
 
@@ -277,13 +280,15 @@ def main():
         )
         cls_max_len = max_len + 2
 
-        train_dataset, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
-            train_toks, train_ners, train_mods, train_rels,
-            tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+        train_dataset, train_comment, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
+            train_comments, train_toks, train_ners, train_mods, train_rels,
+            tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
-        dev_dataset, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
-            dev_toks, dev_ners, dev_mods, dev_rels,
-            tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+        dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
+            dev_comments, dev_toks, dev_ners, dev_mods, dev_rels,
+            tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
+
+        cls_max_len = min(cls_max_len, bert_max_len)
 
         train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
         dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
@@ -407,9 +412,9 @@ def main():
                     f" L_REL: {train_rel_loss/(step+1):.6f} | epoch: {epoch}/{args.num_epoch}:"
                 )
 
-                if epoch > 0:
+                if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
-                        dev_f1 = eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+                        dev_f1 = eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                                             mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", print_levels=(0, 0, 0), verbose=0)
                         dev_f1 += (epoch,)
                         dev_f1 += (step,)
@@ -436,9 +441,8 @@ def main():
                             with open(os.path.join(args.saved_model, 'rel2ix.json'), 'w') as fp:
                                 json.dump(rel2ix, fp)
 
-            eval_joint(model, dev_dataloader, dev_comments, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                       mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", orig_tok=dev_toks,
-                       print_levels=(1, 1, 1), verbose=0)
+            eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+                       mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", print_levels=(1, 1, 1), verbose=0)
 
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
               f"rel: {best_dev_f1[3]:.6f}; epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d}\n")
@@ -489,13 +493,15 @@ def main():
                     max_len = utils.max_sents_len(test_toks, tokenizer)
                     cls_max_len = max_len + 2
 
-                    test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
-                        test_toks, test_ners, test_mods, test_rels,
-                        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+                    test_dataset, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
+                        test_comments, test_toks, test_ners, test_mods, test_rels,
+                        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
+
+                    cls_max_len = min(cls_max_len, bert_max_len)
 
                     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
-                    eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
+                    eval_joint(model, test_dataloader, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo,
                                bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
                                print_levels=(2, 2, 2), out_file=file_out, verbose=0)
         else:
@@ -510,13 +516,15 @@ def main():
             max_len = utils.max_sents_len(test_toks, tokenizer)
             cls_max_len = max_len + 2
 
-            test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
-                test_toks, test_ners, test_mods, test_rels,
-                tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+            test_dataset, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
+                test_comments, test_toks, test_ners, test_mods, test_rels,
+                tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
+
+            cls_max_len = min(cls_max_len, bert_max_len)
 
             test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
-            eval_joint(model, test_dataloader, test_comments, test_tok, test_ner, test_mod, test_rel, test_spo,
+            eval_joint(model, test_dataloader, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo,
                        bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
                        print_levels=(2, 2, 2), out_file=args.pred_file, verbose=0)
 

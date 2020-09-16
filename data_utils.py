@@ -55,6 +55,8 @@ def bio_to_spans(ner_tags):
     return entities
 
 
+# def span_to_mask(entity_span):
+
 # MultiheadConll document class
 class MultiheadConll(object):
 

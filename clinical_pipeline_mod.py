@@ -1,221 +1,321 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+import warnings
 from tqdm import tqdm
-import torch
-from torch.utils.data import Dataset, DataLoader, TensorDataset
-import argparse
-from transformers import *
-
-# local libraries
 from utils import *
-from model import SeqCertClassifier
+from torch.utils.data import Dataset, DataLoader, RandomSampler, TensorDataset
+from transformers import *
+import argparse
+from model import *
+from clinical_eval import MhsEvaluator
+from data_utils import bio_to_spans
+warnings.filterwarnings("ignore")
 
-device = torch.device('cuda') if torch.cuda.is_available() else torch.device("cpu")
+def sent_mask_mod(ner, mod):
+    ne_spans = bio_to_spans(ner)
 
-print('device', device)
 
-juman = Juman()
+def output_ner(model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfile, device):
+    ix2ner = {v: k for k, v in ner2ix.items()}
+    model.eval()
+    with torch.no_grad(), open(ner_outfile, 'w') as fo:
+        for dev_step, dev_batch in enumerate(eval_dataloader):
+            b_toks, b_attn_mask, b_ner, b_mod = tuple(
+                t.to(device) for t in dev_batch[1:]
+            )
+            b_sent_ids = dev_batch[0].tolist()
+            b_text_list = [utils.padding_1d(
+                eval_tok[sent_id],
+                cls_max_len,
+                pad_tok='[PAD]') for sent_id in b_sent_ids]
 
-parser = argparse.ArgumentParser(description='PRISM certainty classification')
+            pred_tags = [[ix2ner[tag_id] for tag_id in tag_ix] for tag_ix in model.decode(b_toks, attention_mask=b_attn_mask.bool())]
 
-parser.add_argument("-c", "--corpus", dest="CORPUS", default='goku', type=str,
-                    help="goku (国がん), osaka (阪大), tb (BCCWJ-Timebank)")
+            for sid, sent_tag in zip(b_sent_ids, pred_tags):
+                w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
+                w_ner = utils.sbwner2ner(sent_tag, aligned_ids)
+                w_tok = w_tok[1:-1]
+                w_ner = w_ner[1:-1]
+                assert len(w_tok) == len(w_ner)
+                fo.write(f'{eval_comment[sid]}\n')
+                for index, (tok, ner) in enumerate(zip(w_tok, w_ner)):
+                    fo.write(f"{index}\t{tok}\t{ner}\t_\t['N']\t[{index}]\n")
 
-parser.add_argument("--train_file", dest="TRAIN_FILE", type=str,
-                    help="train file, BIO format.")
 
-parser.add_argument("-m", "--model", dest="MODEL_DIR", default='checkpoints/cert/', type=str,
+""" 
+python input arguments 
+"""
+parser = argparse.ArgumentParser(description='Clinical IE pipeline NER')
+
+parser.add_argument("--pretrained_model",
+                    default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
+                    type=str,
+                    help="pre-trained model dir")
+
+parser.add_argument("--do_lower_case",
+                    action='store_true',
+                    help="tokenizer: do_lower_case")
+
+parser.add_argument("--saved_model", default='checkpoints/tmp/pipeline/ner', type=str,
                     help="save/load model dir")
 
-parser.add_argument("-p", "--pre", dest="PRE_MODEL",
-                    default='/home/feicheng/Tools/Japanese_L-12_H-768_A-12_E-30_BPE',
-                    type=str, help="pre-trained model dir")
+parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+                    help="train file, multihead conll format.")
 
-parser.add_argument("-b", "--batch", dest="BATCH_SIZE", default=16, type=int,
+parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+                    help="dev file, multihead conll format.")
+
+parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+                    help="test file, multihead conll format.")
+
+parser.add_argument("--batch_size", default=16, type=int,
                     help="BATCH SIZE")
 
-parser.add_argument("-e", "--epoch", dest="NUM_EPOCHS", default=5, type=int,
+parser.add_argument("--num_epoch", default=15, type=int,
                     help="fine-tuning epoch number")
 
-parser.add_argument("-a", "--attrib", dest="ATTRIB", default='cert', type=str,
-                    help="the attrib name to recognize, value: 'cert', 'ttype' or 'state'")
-
-parser.add_argument("-n", "--ner_out", dest="NER_OUT", type=str,
-                    help="tag recognition results")
-
-parser.add_argument("--do_train", action='store_true',
+parser.add_argument("--do_train",
+                    action='store_true',
                     help="Whether to run training.")
 
-parser.add_argument("-o", "--output",
-                    dest="OUTPUT_FILE",
-                    # default='outputs/temp_cert.txt',
-                    type=str,
-                    help="output filename")
+parser.add_argument("--enc_lr", default=5e-5, type=float,
+                    help="encoder lr")
+
+parser.add_argument("--crf_lr", default=1e-2, type=float,
+                    help="crf layer lr")
+
+parser.add_argument("--max_grad_norm", default=1.0, type=float,
+                    help="Max gradient norm.")
+
+parser.add_argument("--test_output", default='tmp/test.ner', type=str,
+                    help="test output filename")
+
+parser.add_argument("--dev_output", default='tmp/dev.ner', type=str,
+                    help="dev output filename")
+
+parser.add_argument("--later_eval",
+                    action='store_true',
+                    help="Whether eval model every epoch.")
+
+parser.add_argument("--save_best", action='store', type=str, default='f1',
+                    help="save the best model, given dev scores (f1 or loss)")
+
+parser.add_argument("--save_step_portion", default=3, type=int,
+                    help="save best model given a portion of steps")
+
+parser.add_argument("--warmup_ratio", default=0.1, type=float,
+                    help="warmup ratio")
+
+parser.add_argument("--fp16",
+                    action='store_true',
+                    help="fp16")
+
+parser.add_argument("--fp16_opt_level", type=str, default="O1",
+                    help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
+                    "See details at https://nvidia.github.io/apex/amp.html")
+
+parser.add_argument("--scheduled_lr",
+                    action='store_true',
+                    help="learning rate schedule")
+
+parser.add_argument("--joint",
+                    action='store_true',
+                    help="merge ner and modality jointly")
 
 args = parser.parse_args()
 
-tokenizer = BertTokenizer.from_pretrained(args.PRE_MODEL, do_lower_case=False, do_basic_tokenize=False)
-
-TRAIN_FILE = args.TRAIN_FILE
-TEST_FILE = args.NER_OUT
-
-# batch_convert_clinical_data_to_conll('data/train_%s/' % CORPUS, 'data/train_%s.txt' % CORPUS, sent_tag=True,  is_raw=False)
-# batch_convert_clinical_data_to_conll('data/test_%s/' % CORPUS, 'data/test_%s.txt' % CORPUS, sent_tag=True,  is_raw=False)
-# batch_convert_clinical_data_to_conll('data/records/', 'data/records.txt', sent_tag=False, is_raw=True)
-
-train_deunks, train_toks, train_labs, train_cert_labs, train_ttype_labs, train_state_labs = read_conll(TRAIN_FILE)
-# test_deunks, test_toks, test_labs, test_cert_labs = read_conll('data/test_%s.txt' % CORPUS)
-test_deunks, test_toks, test_labs, test_cert_labs, test_ttype_labs, test_state_labs = read_conll(TEST_FILE)
-# test_deunks, test_toks, test_labs, test_cert_labs = read_conll('data/records.txt')
-
-
-whole_toks = train_toks + test_toks
-max_len = max([len(x) for x in whole_toks])
-unk_count = sum([x.count('[UNK]') for x in whole_toks])
-total_count = sum([len(x) for x in whole_toks])
-lab2ix = get_label2ix(train_labs)
-
-if args.ATTRIB == 'cert':
-    attrib_lab2ix = get_label2ix(train_cert_labs + test_cert_labs)
-elif args.ATTRIB == 'ttype':
-    attrib_lab2ix = get_label2ix(train_ttype_labs + test_ttype_labs)
-elif args.ATTRIB == 'state':
-    attrib_lab2ix = get_label2ix(train_state_labs + test_state_labs)
-else:
-    raise Exception("Error: wrong task...")
-
-print(attrib_lab2ix)
-
-def eval_seq_cert(model, tokenizer, test_dataloader, test_deunks, test_labs, attrib_lab2ix, file_out, attrib='cert'):
-    pred_labs, gold_labs = [], []
-    ix2clab = {v: k for k, v in attrib_lab2ix.items()}
-    model.eval()
-    with torch.no_grad():
-        with open(file_out, 'w') as fo:
-            for b_deunk, b_labs, (b_toks, b_masks, b_ner_masks, b_clab_masks, b_clabs) in zip(test_deunks, test_labs, test_dataloader):
-                # import pdb
-                # pdb.set_trace()
-                pred_prob = model(b_toks, b_ner_masks, b_clab_masks, attention_mask=b_masks)
-                active_index = b_clab_masks.view(-1) == 1
-                if not (active_index != 0).sum().item():
-                    for t_deunk, t_lab in zip(b_deunk, b_labs):
-                        fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, '_'))
-                    fo.write('\n')
-                    continue
-                active_pred_prob = pred_prob.view(-1, len(attrib_lab2ix))[active_index]
-                active_pred_lab = torch.argmax(active_pred_prob, dim=-1)
-                active_gold_lab = b_clabs.view(-1)[active_index]
-                pred_labs.append(active_pred_lab.tolist())
-                gold_labs.append(active_gold_lab.tolist())
-
-                active_pred_lab_list = active_pred_lab.tolist()
-                for t_deunk, t_lab in zip(b_deunk, b_labs):
-                    if attrib == 'cert':
-                        attrib_lab = ix2clab[active_pred_lab_list.pop(0)] if t_lab in ['B-D'] else '_'
-                    elif attrib == 'ttype':
-                        attrib_lab = ix2clab[active_pred_lab_list.pop(0)] if t_lab in ['B-Timex3'] else '_'
-                    elif attrib == 'state':
-                        attrib_lab = ix2clab[active_pred_lab_list.pop(0)] if t_lab in ['B-T-test', 'B-R', 'B-Cc'] and active_pred_lab_list else '_'
-                    else:
-                        raise Exception("Error: wrong task...")
-                    fo.write('%s\t%s\t%s\n' % (t_deunk, t_lab, attrib_lab))
-                fo.write('\n')
-
+args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print('device', args.device)
+args.n_gpu = torch.cuda.device_count()
 
 if args.do_train:
+    tokenizer = BertTokenizer.from_pretrained(args.pretrained_model, do_lower_case=args.do_lower_case, do_basic_tokenize=False)
 
-    print('max sequence length:', max_len)
-    print('[UNK] token: %s, total: %s, oov rate: %.2f%%' % (unk_count, total_count, unk_count * 100 / total_count))
-    print('[Example:]', whole_toks[0])
-
-    train_tensors, train_deunk = extract_cert_from_conll(
-        TRAIN_FILE,
-        tokenizer,
-        attrib_lab2ix,
-        device,
-        max_ner_num=16,
-        attrib=args.ATTRIB
+    """ Read conll file for counting statistics, such as: [UNK] token ratio, label2ix, etc. """
+    train_comments, train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
+        args.train_file,
+        down_neg=0.0
     )
+    max_len_train = utils.max_sents_len(train_toks, tokenizer)
+    print(bio2ix)
+    print()
+    print('max training sent len:', max_len_train)
+    print()
 
-    # test_tensors, test_deunk = extract_ner_from_conll('data/records.txt', tokenizer, lab2ix)
-    train_dataloader = DataLoader(train_tensors, batch_size=args.BATCH_SIZE, shuffle=True)
-    print('train size: %i' % len(train_tensors))
-
-    model = SeqCertClassifier.from_pretrained(
-        args.PRE_MODEL,
-        num_labels=len(attrib_lab2ix)
+    dev_comments, dev_toks, dev_ners, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
+        args.dev_file,
+        down_neg=0.0
     )
-    model.to(device)
+    max_len_dev = utils.max_sents_len(dev_toks, tokenizer)
+    print('max dev sent len:', )
+    print()
+
+    max_len = max(max_len_train, max_len_dev)
+    cls_max_len = max_len + 2
+    print(f"max seq len: {max_len}, max seq len with [CLS] and [SEP]: {cls_max_len}")
+
+    example_id = 25
+
+    print(f"Random example: id {example_id}, len: {len(train_toks[example_id])}")
+    for tok_id in range(len(train_toks[example_id])):
+        print(f"{tok_id}\t{train_toks[example_id][tok_id]}\t{train_ners[example_id][tok_id]}")
+    print(train_rels[example_id])
+    print()
+
+    """ 
+    - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
+    - wrap them into dataloader for mini-batch cutting
+    """
+    train_dataset, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
+        train_toks, train_ners, train_mods, train_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+
+    dev_dataset, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
+        dev_toks, dev_ners, dev_mods, dev_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+
+    train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
+    dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
+
+    """
+    Model
+    """
+    model = BertCRF.from_pretrained(args.pretrained_model, num_labels=len(bio2ix))
+
+    # specify different lr
     param_optimizer = list(model.named_parameters())
-    no_decay = ['bias', 'LayerNorm.bias', 'LayerNorm.weight']
+    crf_name_list = ['crf_layer']
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)], 'weight_decay': 0.01},
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.0}
+        {'params': [p for n, p in param_optimizer if any(nd in n for nd in crf_name_list)], 'lr': args.crf_lr},
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in crf_name_list)], 'lr': args.enc_lr}
     ]
-
-    num_training_steps = args.NUM_EPOCHS * len(train_dataloader)
-    warmup_ratio = 0.1
-    max_grad_norm = 1.0
-
-    # To reproduce BertAdam specific behavior set correct_bias=False
     optimizer = AdamW(
-        # model.parameters(),
         optimizer_grouped_parameters,
-        lr=5e-5,
         correct_bias=False
+        # weight_decay=1e-2,
     )
+    model.to(args.device)
 
     # PyTorch scheduler
-    scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=num_training_steps * warmup_ratio,
-                                                num_training_steps=num_training_steps)
+    num_epoch_steps = len(train_dataloader)
+    num_training_steps = args.num_epoch * num_epoch_steps
+    save_step_interval = math.ceil(num_epoch_steps / args.save_step_portion)
 
-    model.train()
-    for epoch in range(1, args.NUM_EPOCHS + 1):
-        for (b_toks, b_masks, b_ner_masks, b_clab_masks, b_clabs) in tqdm(train_dataloader, desc='Training'):
+    scheduler = get_linear_schedule_with_warmup(
+        optimizer,
+        num_warmup_steps=num_training_steps * args.warmup_ratio,
+        num_training_steps=num_training_steps
+    )
 
-            loss = model(b_toks, b_ner_masks, b_clab_masks, attention_mask=b_masks, labels=b_clabs)
+    # support fp16
+    if args.fp16:
+        try:
+            from apex import amp
+        except ImportError:
+            raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
+        model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
-            # temporal solution for the loss of a empty tensor
-            if not loss:
-                continue
+    best_dev_f1 = (float('-inf'), 0, 0)
 
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), max_grad_norm)
+    save_step_interval = math.ceil(num_epoch_steps / 4)
+
+    for epoch in range(1, args.num_epoch + 1):
+
+        epoch_loss = 0.0
+        epoch_iterator = tqdm(train_dataloader, desc="Iteration", total=len(train_dataloader))
+        for step, batch in enumerate(epoch_iterator):
+
+            model.train()
+
+            b_toks, b_attn_mask, b_ner, b_mod = tuple(
+                t.to(args.device) for t in batch[1:]
+            )
+
+            # BERT loss, logits: (batch_size, seq_len, tag_num)
+            loss = model(b_toks, attention_mask=b_attn_mask.bool(), labels=b_ner)
+
+            epoch_loss += loss.item()
+
+            if args.fp16:
+                with amp.scale_loss(loss, optimizer) as scaled_loss:
+                    scaled_loss.backward()
+                torch.nn.utils.clip_grad_norm_(amp.master_params(optimizer), args.max_grad_norm)
+            else:
+                loss.backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+
             optimizer.step()
             scheduler.step()
             model.zero_grad()
 
-        """ save the trained model per epoch """
-        model_dir = "checkpoints/attrib/%s_ep%i" % (args.ATTRIB, epoch)
-        if not os.path.exists(model_dir):
-            os.makedirs(model_dir)
-        model.save_pretrained(model_dir)
-        tokenizer.save_pretrained(model_dir)
+            epoch_iterator.set_description(
+                f"L_NER: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
+            )
 
-""" load the new tokenizer """
-model_dir = "checkpoints/attrib/%s_ep%i" % (args.ATTRIB, 1)
-tokenizer = BertTokenizer.from_pretrained(model_dir, do_lower_case=False, do_basic_tokenize=False)
-test_tensors, test_deunk = extract_cert_from_conll(
-    args.NER_OUT,
-    tokenizer,
-    attrib_lab2ix,
-    device,
-    max_ner_num=12,
-    attrib=args.ATTRIB,
-    test_mode=True
-)
-test_dataloader = DataLoader(test_tensors, batch_size=1, shuffle=False)
-print('test size: %i' % len(test_tensors))
+            if epoch > 0:
+                if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
+                    output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.device)
+                    dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
+                    dev_f1 = (dev_evaluator.eval_ner(print_level=0), epoch, step)
+                    if best_dev_f1[0] < dev_f1[0]:
+                        print(
+                            f" -> Previous best dev f1 {best_dev_f1[0]:.6f}; "
+                            f"epoch {best_dev_f1[1]:d} / step {best_dev_f1[2]:d} \n "
+                            f">> Current f1 {dev_f1[0]:.6f}; best model saved '{args.saved_model}'"
+                        )
+                        best_dev_f1 = dev_f1
 
-""" load the new model"""
-model = SeqCertClassifier.from_pretrained(model_dir)
-model.to(device)
+                        """ save the best model """
+                        if not os.path.exists(args.saved_model):
+                            os.makedirs(args.saved_model)
+                        model_to_save = model.module if hasattr(model, 'module') else model
+                        torch.save(model_to_save.state_dict(), os.path.join(args.saved_model, 'model.pt'))
+                        tokenizer.save_pretrained(args.saved_model)
+                        with open(os.path.join(args.saved_model, 'ner2ix.json'), 'w') as fp:
+                            json.dump(bio2ix, fp)
+                        with open(os.path.join(args.saved_model, 'mod2ix.json'), 'w') as fp:
+                            json.dump(mod2ix, fp)
+                        with open(os.path.join(args.saved_model, 'rel2ix.json'), 'w') as fp:
+                            json.dump(rel2ix, fp)
+    print(f"Best dev f1 {best_dev_f1[0]:.6f}; epoch {best_dev_f1[1]:d} / step {best_dev_f1[2]:d}\n")
+    model.load_state_dict(torch.load(os.path.join(args.saved_model, 'model.pt')))
+    torch.save(model, os.path.join(args.saved_model, 'model.pt'))
+else:
+    """ load the new tokenizer"""
+    print("test_mode:", args.saved_model)
+    tokenizer = BertTokenizer.from_pretrained(
+        args.saved_model,
+        do_lower_case=args.do_lower_case,
+        do_basic_tokenize=False
+    )
+    with open(os.path.join(args.saved_model, 'ner2ix.json')) as json_fi:
+        bio2ix = json.load(json_fi)
+    with open(os.path.join(args.saved_model, 'mod2ix.json')) as json_fi:
+        mod2ix = json.load(json_fi)
+    with open(os.path.join(args.saved_model, 'rel2ix.json')) as json_fi:
+        rel2ix = json.load(json_fi)
 
-eval_seq_cert(model, tokenizer, test_dataloader, test_deunk, test_labs, attrib_lab2ix, args.OUTPUT_FILE, attrib=args.ATTRIB)
+    """ load test data """
+    test_comments, test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
+        args.test_file,
+        down_neg=0.0)
+    print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
+    print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
+    print()
 
+    max_len = utils.max_sents_len(test_toks, tokenizer)
+    cls_max_len = max_len + 2
 
+    test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
+        test_toks, test_ners, test_mods, test_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
 
+    test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
+    """ load the saved model"""
+    model = torch.load(os.path.join(args.saved_model, 'model.pt'))
+    model.to(args.device)
 
+    """ predict test out """
+    output_ner(model, test_dataloader, test_comments, test_tok, bio2ix, args.test_output, args.device)
 
