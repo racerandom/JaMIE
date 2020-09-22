@@ -505,14 +505,14 @@ class JointNerModReExtractor(nn.Module):
         self.id2mod = {v: k for k, v in self.mod_vocab.items()}
         self.id2rel = {v: k for k, v in self.rel_vocab.items()}
 
-    def forward(self, tokens, mask, ner_gold=None, mod_gold=None, rel_gold=None, reduction='token_mean'):
+    def forward(self, tokens, mask, sent_mask, ner_gold=None, mod_gold=None, rel_gold=None, reduction='token_mean'):
 
         # output tuple
         loss_outputs = ()
         pred_outputs = ()
 
         batch_size, seq_len = tokens.shape
-        _, _, all_hiddens = self.encoder(tokens, attention_mask=mask)  # last hidden of BERT
+        _, _, all_hiddens = self.encoder(tokens, attention_mask=mask, token_type_ids=sent_mask)  # last hidden of BERT
         low_o = all_hiddens[6]
         high_o = all_hiddens[12]
 

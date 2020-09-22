@@ -1731,7 +1731,19 @@ def convert_rels_to_mhs_v2(
     ), doc_tok, doc_lab, doc_rel, doc_spo
 
 
-# clinical_mhs.py related
+'''document sentence mask'''
+def document_sent_mask(sbw_toks, sep_tok='[SEP]'):
+    flip = 0
+    dsm = []
+    for t in sbw_toks:
+        dsm.append(flip)
+        if t == sep_tok:
+            flip = 1 - flip
+    assert len(sbw_toks) == len(dsm)
+    return dsm
+
+
+'''clinical_mhs.py related'''
 def convert_rels_to_mhs_v3(
         comments, ner_toks, ners, mods, rels,
         tokenizer,
@@ -1748,7 +1760,7 @@ def convert_rels_to_mhs_v3(
         bert_max_len=512,
         verbose=0
 ):
-    doc_comment, doc_tok, doc_attn_mask, doc_ner, doc_mod, doc_rel, doc_spo = [], [], [], [], [], [], []
+    doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_mod, doc_rel, doc_spo = [], [], [], [], [], [], [], []
     rel_count = 0
     print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
     doc_num = len(ner_toks)
@@ -1805,6 +1817,7 @@ def convert_rels_to_mhs_v3(
         doc_comment.append(sent_comment)
         doc_tok.append(cls_sbw_sent_tok)
         doc_attn_mask.append(cls_sbw_sent_mask)
+        doc_sent_mask.append(document_sent_mask(cls_sbw_sent_tok))
         doc_ner.append(cls_sbw_sent_ner)
         doc_mod.append(cls_sbw_sent_mod)
         doc_rel.append(sent_rel_tuples)
@@ -1846,9 +1859,17 @@ def convert_rels_to_mhs_v3(
             pad_tok=pad_mask_id
         ) for sent_mask in doc_attn_mask]
     )
+    padded_doc_sent_mask_t = torch.tensor(
+        [padding_1d(
+            sent_mask,
+            cls_max_len,
+            pad_tok=pad_mask_id
+        ) for sent_mask in doc_sent_mask]
+    )
 
     print(padded_doc_tok_ix_t.shape,
           padded_doc_attn_mask_t.shape,
+          padded_doc_sent_mask_t.shape,
           padded_doc_ner_ix_t.shape,
           padded_doc_mod_ix_t.shape,
           len(doc_rel))
@@ -1858,6 +1879,7 @@ def convert_rels_to_mhs_v3(
         doc_ix_t,
         padded_doc_tok_ix_t,
         padded_doc_attn_mask_t,
+        padded_doc_sent_mask_t,
         padded_doc_ner_ix_t,
         padded_doc_mod_ix_t,
     ), doc_comment, doc_tok, doc_ner, doc_mod, doc_rel, doc_spo

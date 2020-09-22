@@ -26,7 +26,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
     model.eval()
     with torch.no_grad(), open(out_file, 'w') as fo:
         for dev_step, dev_batch in enumerate(eval_dataloader):
-            b_toks, b_attn_mask, b_ner, b_mod = tuple(
+            b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
                 t.to(device) for t in dev_batch[1:]
             )
             b_sent_ids = dev_batch[0].tolist()
@@ -47,7 +47,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                     print()
 
             b_pred_ner, b_pred_mod, b_pred_rel_ix = model(
-                b_toks, b_attn_mask.bool()
+                b_toks, b_attn_mask.bool(), b_sent_mask.long()
             )
 
             # ner tuple -> [sent_id, [ids], ner_lab]
@@ -120,13 +120,19 @@ def main():
     #                     type=str,
     #                     help="pre-trained model dir")
 
-    parser.add_argument("--train_file", default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct/cv2_train.conll", type=str,
+    parser.add_argument("--train_file",
+                        default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_train.conll",
+                        type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file", default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct/cv2_dev.conll", type=str,
+    parser.add_argument("--dev_file",
+                        default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_dev.conll",
+                        type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file", default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct/cv2_test.conll", type=str,
+    parser.add_argument("--test_file",
+                        default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_test.conll",
+                        type=str,
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
@@ -369,7 +375,7 @@ def main():
                     utils.freeze_bert_layers(model, bert_name='encoder', freeze_embed=True, layer_list=list(range(0, 11)))
 
                 # input processing
-                b_toks, b_attn_mask, b_ner, b_mod = tuple(
+                b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
                     t.to(args.device) for t in batch[1:]
                 )
                 b_sent_ids = batch[0].tolist()
@@ -381,7 +387,7 @@ def main():
                     pad_tok='[PAD]') for sent_id in b_sent_ids]
 
                 ner_loss, mod_loss, rel_loss = model(
-                    b_toks, b_attn_mask.bool(),
+                    b_toks, b_attn_mask.bool(), b_sent_mask.long(),
                     ner_gold=b_ner, mod_gold=b_mod, rel_gold=b_gold_relmat, reduction=args.reduction
                 )
                 loss = ner_loss + mod_loss + rel_loss
