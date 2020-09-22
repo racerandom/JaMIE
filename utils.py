@@ -407,11 +407,13 @@ def batch_convert_clinical_data_to_relconll(
 
 
 # generate document-level MHS conll file by reading .xml and .rel files
-def convert_document_to_relconll(clinical_file, fo, tokenizer, morphological_analyzer,
+def convert_document_to_relconll(clinical_file, fo, morphological_analyzer,
                                  sent_tag=True, defaut_modality='_',
                                  contains_modality=False,
                                  with_dct=False,
-                                 is_raw=False):
+                                 is_raw=False,
+                                 bert_tokenizer=None,
+                                 len_limit=512):
     from collections import defaultdict
 
     x_data, y_data = [], []
@@ -522,17 +524,23 @@ def convert_document_to_relconll(clinical_file, fo, tokenizer, morphological_ana
                     tok_head_list = [[i] for i in range(len(toks))]
 
                 tok_ids = [str(i) for i in range(len(toks))]
-                if not comment_line:
-                    fo.write(f'#doc {filename}\n')
-                comment_line = None
 
-                if not contains_modality:
-                    for i, t, l, r, h in zip(tok_ids, toks, labs, tok_rel_list, tok_head_list):
-                        fo.write("{}\t{}\t{}\t{}\t{}\n".format(i, t, l, r, h))
+                '''filter sub-word length larger than len_limit'''
+                sbw_len = len(bert_tokenizer.tokenize(' '.join(toks)))
+                # print(len(toks), sbw_len)
+                if sbw_len <= len_limit - 2:
+                    if not comment_line:
+                        fo.write(f'#doc {filename}\n')
+
+                    if not contains_modality:
+                        for i, t, l, r, h in zip(tok_ids, toks, labs, tok_rel_list, tok_head_list):
+                            fo.write("{}\t{}\t{}\t{}\t{}\n".format(i, t, l, r, h))
+                    else:
+                        for i, t, l, m, r, h in zip(tok_ids, toks, labs, modality_labs, tok_rel_list, tok_head_list):
+                            fo.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i, t, l, m, r, h))
                 else:
-                    for i, t, l, ml, r, h in zip(tok_ids, toks, labs, modality_labs, tok_rel_list, tok_head_list):
-                        fo.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i, t, l, ml, r, h))
-                return len(toks)
+                    print(clinical_file)
+                return sbw_len
         except Exception as ex:
             print('[error]' + clinical_file + ': ' + line)
             print(ex)
@@ -540,13 +548,14 @@ def convert_document_to_relconll(clinical_file, fo, tokenizer, morphological_ana
 
 # batch convert document-level conll from .xml and .rel
 def batch_convert_document_to_relconll(
-    file_list, file_out, tokenizer,
+    file_list, file_out,
     sent_tag=True,
     defaut_modality='_',
     contains_modality=False,
     with_dct=False,
     is_raw=False,
-    morph_analyzer_name='juman'
+    morph_analyzer_name='juman',
+    bert_tokenizer=None
 ):
     morphological_analyzer = MorphologicalAnalyzer(morph_analyzer_name)
     doc_tok_lens = []
@@ -556,16 +565,17 @@ def batch_convert_document_to_relconll(
             if file.endswith(file_ext):
                 try:
                     doc_tok_lens.append(convert_document_to_relconll(
-                        file, fo, tokenizer, morphological_analyzer, sent_tag=sent_tag,
+                        file, fo, morphological_analyzer, sent_tag=sent_tag,
                         defaut_modality=defaut_modality,
                         contains_modality=contains_modality,
                         with_dct=with_dct,
-                        is_raw=is_raw
+                        is_raw=is_raw,
+                        bert_tokenizer=bert_tokenizer
                     ))
                 except Exception as ex:
                     print('[error]:' + file)
                     print(ex)
-    print(f"max length: {max(doc_tok_lens)}, {sum(i > 400 for i in doc_tok_lens)} docs > 400, total {len(doc_tok_lens)} docs")
+    print(f"max length: {max(doc_tok_lens)}, {sum(i > 510 for i in doc_tok_lens)} docs > 510, total {len(doc_tok_lens)} docs")
 
 
 def separated_batch_convert_clinical_data_to_relconll(

@@ -74,6 +74,8 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
             b_gold_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
                                  for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
 
+            print(b_pred_rel_ix)
+
             for sid, sbw_ner, sbw_mod, sbw_rel, index_sbw_rel in zip(b_sent_ids, b_pred_ner, b_pred_mod, b_pred_rel, b_pred_rel_ix):
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
                 w_ner = utils.sbwner2ner(sbw_ner, aligned_ids)
