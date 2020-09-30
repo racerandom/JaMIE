@@ -12,6 +12,7 @@ from textformatting import ssplit
 from gensim.models import KeyedVectors
 from transformers import *
 
+import data_utils
 from pyknp import Juman
 juman = Juman()
 
@@ -74,6 +75,21 @@ def padding_2d(seq_2d, max_len, pad_tok=0, direct='right'):
             else:
                 seq_1d.insert(0, pad_tok)
     return tmp_seq_2d
+
+
+def padding_3d(seq_3d, max_1d, max_2d, pad_tok=0):
+    tmp_seq_3d = []
+    for seq_2d in seq_3d:
+        tmp_seq_2d = []
+        if not seq_2d:
+            for i in range(max_2d):
+                tmp_seq_2d.append([pad_tok] * max_1d)
+        else:
+            tmp_seq_2d = padding_2d(seq_2d, max_1d, pad_tok=pad_tok)
+            for i in range(0, max_2d - len(seq_2d)):
+                tmp_seq_2d.append([pad_tok] * max_1d)
+        tmp_seq_3d.append(tmp_seq_2d)
+    return tmp_seq_3d
 
 
 def match_ner_label(bpe_x, y):
@@ -1731,7 +1747,7 @@ def convert_rels_to_mhs_v2(
     ), doc_tok, doc_lab, doc_rel, doc_spo
 
 
-'''document sentence mask'''
+# document sentence mask
 def document_sent_mask(sbw_toks, sep_tok='[SEP]'):
     flip = 0
     dsm = []
@@ -1743,7 +1759,189 @@ def document_sent_mask(sbw_toks, sep_tok='[SEP]'):
     return dsm
 
 
-'''clinical_mhs.py related'''
+def sent_mask_mod(sent_ner, sent_mod):
+    ner_masks, mod_tags = [], []
+    ne_spans = data_utils.bio_to_spans(sent_ner)
+    for ner_tag, start, end in ne_spans:
+        tmp_mask = [0] * len(sent_ner)
+        for index in range(start, end):
+            tmp_mask[index] = 1
+        ner_masks.append(tmp_mask)
+        mod_tags.append(sent_mod[end - 1])
+    assert len(ner_masks) == len(mod_tags)
+    return ner_masks, mod_tags
+
+
+# extract_pipeline_data_from_mhs_conll
+def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
+        tokenizer,
+        bio2ix, mod2ix, rel2ix,
+        cls_max_len,
+        cls_tok='[CLS]',
+        sep_tok='[SEP]',
+        pad_tok='[PAD]',
+        pad_id=0,
+        pad_mask_id=0,
+        pad_lab_id=0,
+        merged_modality=False,
+        deunk=True,
+        bert_max_len=512,
+        verbose=0):
+    doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_ner_mask, doc_mod, doc_rel, doc_spo = [], [], [], [], [], [], [], [], []
+    rel_count = 0
+    print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
+    doc_num = len(ner_toks)
+    print("ready to extract pipeline data from mhs_conll...")
+    for sent_id, (sent_comment, sent_tok, sent_ner, sent_mod, sent_rel) in enumerate(
+            zip(comments, ner_toks, ners, mods, rels)):
+
+        # wrapping data with [CLS] and [SEP]
+        if deunk:
+            sbw_sent_tok = explore_unk(tokenizer.tokenize(' '.join(sent_tok)), sent_tok)
+        else:
+            sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
+        sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
+        sbw_sent_mod = match_mod_label(sbw_sent_tok, sent_mod)
+
+        cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
+        if len(cls_sbw_sent_tok) > bert_max_len:
+            continue
+
+        cls_sbw_sent_ner = ['O'] + sbw_sent_ner + ['O']
+        cls_sbw_sent_mod = ['_'] + sbw_sent_mod + ['_']
+        cls_sbw_sent_mask = [1] * len(cls_sbw_sent_tok)
+
+        assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mod) == len(cls_sbw_sent_mask)
+
+        # pipeline ner_mask and mod
+        cls_sbw_ner_mask, cls_sbw_mod = sent_mask_mod(cls_sbw_sent_ner, cls_sbw_sent_mod)
+        # print(cls_sbw_sent_tok)
+        # print(cls_sbw_sent_ner)
+        # print(cls_sbw_sent_mod)
+        # print(cls_sbw_ner_mask)
+        # print(cls_sbw_mod)
+        # print()
+
+        if verbose:
+            print("sent_id: {}/{}".format(sent_id, doc_num))
+            print(["{}: {}".format(index, tok) for index, tok in enumerate(cls_sbw_sent_tok)])
+            print(["{}: {}".format(index, ner) for index, ner in enumerate(cls_sbw_sent_ner)])
+            print(["{}: {}".format(index, mod) for index, mod in enumerate(cls_sbw_sent_mod)])
+
+        # preparing rel data
+        sent_rel_tuples, sent_spo = [], []
+        # align entity_ids in sent_rels
+        cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
+        assert len(cls_aligned_ids) == (len(sent_tok) + 2)
+        for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rel:
+            tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+            head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+            rel_item = (tail_last_id, head_last_id, rel_lab)
+            sent_rel_tuples.append(rel_item)
+            sbw_tail_tok = [cls_sbw_sent_tok[a_i] for o_i in tail_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
+            sbw_head_tok = [cls_sbw_sent_tok[a_i] for o_i in head_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
+            spo_item = {'subject': sbw_tail_tok, 'predicate': rel_lab, 'object': sbw_head_tok}
+            sent_spo.append(spo_item)
+            if verbose:
+                print(rel_item)
+                print(["{}: {}".format(ix, a_i) for ix, a_i in enumerate(cls_aligned_ids)])
+                print((tail_ids, rel_lab, head_ids))
+                print(spo_item)
+            rel_count += 1
+        if verbose:
+            print()
+
+        doc_comment.append(sent_comment)  # b
+        doc_tok.append(cls_sbw_sent_tok)  # b x l
+        doc_attn_mask.append(cls_sbw_sent_mask)  # b x l
+        doc_sent_mask.append(document_sent_mask(cls_sbw_sent_tok))  # b x l
+        doc_ner.append(cls_sbw_sent_ner)  # b x l
+        doc_ner_mask.append(cls_sbw_ner_mask)  # b x e x l
+        doc_mod.append(cls_sbw_mod)  # b x e x l
+        doc_rel.append(sent_rel_tuples)
+        doc_spo.append(sent_spo)
+
+    assert len(doc_comment) == len(doc_tok) == len(doc_attn_mask) == len(doc_ner) == len(doc_mod) == len(doc_rel)
+    print("ready to tensor list/numpy")
+
+    doc_ix_t = torch.tensor(list(range(len(doc_tok))))  # add sent_id into batch data
+
+    cls_max_len = min(cls_max_len, bert_max_len)
+    entity_max_num = max([len(sent_e) for sent_e in doc_ner_mask])
+
+    print(f"max sequence length:{cls_max_len}, max entity num: {entity_max_num}")
+
+    # padding data to cls_max_len
+    padded_doc_tok_ix_t = torch.tensor(
+        [tokenizer.convert_tokens_to_ids(padding_1d(
+            sent_tok,
+            cls_max_len,
+            pad_tok=pad_tok
+        )) for sent_tok in doc_tok]
+    )
+
+    padded_doc_ner_ix_t = torch.tensor(
+        [padding_1d(
+            [bio2ix[ner] for ner in sent_ner],
+            cls_max_len,
+            pad_tok=pad_lab_id
+        ) for sent_ner in doc_ner]
+    )
+
+    tmp_ner_mask = padding_3d(doc_ner_mask, cls_max_len, entity_max_num)
+    # for i in tmp_ner_mask:
+    #     if len(i) != 24:
+    #         print(i)
+    padded_doc_ner_mask_ix_t = torch.tensor(
+        tmp_ner_mask
+    )
+
+    padded_doc_mod_ix_t = torch.tensor(
+        [padding_1d(
+            [mod2ix[mod] for mod in sent_mod],
+            entity_max_num,
+            pad_tok=pad_lab_id
+        ) for sent_mod in doc_mod]
+    )
+
+    padded_doc_attn_mask_t = torch.tensor(
+        [padding_1d(
+            sent_mask,
+            cls_max_len,
+            pad_tok=pad_mask_id
+        ) for sent_mask in doc_attn_mask]
+    )
+
+    padded_doc_sent_mask_t = torch.tensor(
+        [padding_1d(
+            sent_mask,
+            cls_max_len,
+            pad_tok=pad_mask_id
+        ) for sent_mask in doc_sent_mask]
+    )
+
+    print(padded_doc_tok_ix_t.shape,
+          padded_doc_attn_mask_t.shape,
+          padded_doc_sent_mask_t.shape,
+          padded_doc_ner_ix_t.shape,
+          padded_doc_ner_mask_ix_t.shape,
+          padded_doc_mod_ix_t.shape,
+          len(doc_rel))
+    print("positive rel count:", rel_count)
+    print()
+    tensor_dataset = TensorDataset(
+        doc_ix_t,
+        padded_doc_tok_ix_t,
+        padded_doc_attn_mask_t,
+        padded_doc_sent_mask_t,
+        padded_doc_ner_ix_t,
+        padded_doc_ner_mask_ix_t,
+        padded_doc_mod_ix_t,
+    )
+    return tensor_dataset, doc_comment, doc_tok, doc_ner, doc_mod, doc_rel, doc_spo
+
+
+# clinical_mhs.py related
 def convert_rels_to_mhs_v3(
         comments, ner_toks, ners, mods, rels,
         tokenizer,

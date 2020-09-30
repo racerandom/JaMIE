@@ -11,35 +11,37 @@ from clinical_eval import MhsEvaluator
 from data_utils import bio_to_spans
 warnings.filterwarnings("ignore")
 
-def sent_mask_mod(ner, mod):
-    ne_spans = bio_to_spans(ner)
 
-
-def output_ner(model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfile, device):
-    ix2ner = {v: k for k, v in ner2ix.items()}
+def output_mod(model, eval_dataloader, eval_comment, eval_tok, eval_ner, mod2ix, mod_outfile, device):
+    ix2mod = {v: k for k, v in mod2ix.items()}
     model.eval()
-    with torch.no_grad(), open(ner_outfile, 'w') as fo:
+    with torch.no_grad(), open(mod_outfile, 'w') as fo:
         for dev_step, dev_batch in enumerate(eval_dataloader):
-            b_toks, b_attn_mask, b_ner, b_mod = tuple(
+            b_toks, b_attn_mask, b_sent_mask, b_ner, b_ner_mask, b_mod = tuple(
                 t.to(device) for t in dev_batch[1:]
             )
+            _, _, l = b_ner_mask.shape
             b_sent_ids = dev_batch[0].tolist()
             b_text_list = [utils.padding_1d(
                 eval_tok[sent_id],
                 cls_max_len,
                 pad_tok='[PAD]') for sent_id in b_sent_ids]
 
-            pred_tags = [[ix2ner[tag_id] for tag_id in tag_ix] for tag_ix in model.decode(b_toks, attention_mask=b_attn_mask.bool())]
+            pred_logit = model(b_toks, b_ner_mask.float(), attention_mask=b_attn_mask.bool())
+            pred_tag_ix = pred_logit.argmax(-1).view(-1).cpu()
+            tag_mask = torch.tensor([True if m != [0] * l else False for m in b_ner_mask.view(-1, l).tolist()])
+            pred_tag = pred_tag_ix.masked_select(tag_mask).tolist()
 
-            for sid, sent_tag in zip(b_sent_ids, pred_tags):
+            for sid in b_sent_ids:
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
-                w_ner = utils.sbwner2ner(sent_tag, aligned_ids)
+                w_ner = utils.sbwner2ner(eval_ner[sid], aligned_ids)
                 w_tok = w_tok[1:-1]
                 w_ner = w_ner[1:-1]
                 assert len(w_tok) == len(w_ner)
                 fo.write(f'{eval_comment[sid]}\n')
                 for index, (tok, ner) in enumerate(zip(w_tok, w_ner)):
-                    fo.write(f"{index}\t{tok}\t{ner}\t_\t['N']\t[{index}]\n")
+                    mod = ix2mod[pred_tag.pop(0)] if ner.startswith('B-') else '_'
+                    fo.write(f"{index}\t{tok}\t{ner}\t{mod}\t['N']\t[{index}]\n")
 
 
 """ 
@@ -56,7 +58,7 @@ parser.add_argument("--do_lower_case",
                     action='store_true',
                     help="tokenizer: do_lower_case")
 
-parser.add_argument("--saved_model", default='checkpoints/tmp/pipeline/ner', type=str,
+parser.add_argument("--saved_model", default='checkpoints/tmp/pipeline/mod', type=str,
                     help="save/load model dir")
 
 parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
@@ -71,7 +73,7 @@ parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str
 parser.add_argument("--batch_size", default=16, type=int,
                     help="BATCH SIZE")
 
-parser.add_argument("--num_epoch", default=15, type=int,
+parser.add_argument("--num_epoch", default=10, type=int,
                     help="fine-tuning epoch number")
 
 parser.add_argument("--do_train",
@@ -81,8 +83,8 @@ parser.add_argument("--do_train",
 parser.add_argument("--enc_lr", default=5e-5, type=float,
                     help="encoder lr")
 
-parser.add_argument("--crf_lr", default=1e-2, type=float,
-                    help="crf layer lr")
+parser.add_argument("--dec_lr", default=1e-2, type=float,
+                    help="decoder layer lr")
 
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
                     help="Max gradient norm.")
@@ -100,7 +102,7 @@ parser.add_argument("--later_eval",
 parser.add_argument("--save_best", action='store', type=str, default='f1',
                     help="save the best model, given dev scores (f1 or loss)")
 
-parser.add_argument("--save_step_portion", default=3, type=int,
+parser.add_argument("--save_step_interval", default=4, type=int,
                     help="save best model given a portion of steps")
 
 parser.add_argument("--warmup_ratio", default=0.1, type=float,
@@ -138,6 +140,8 @@ if args.do_train:
     )
     max_len_train = utils.max_sents_len(train_toks, tokenizer)
     print(bio2ix)
+    print(mod2ix)
+    print(rel2ix)
     print()
     print('max training sent len:', max_len_train)
     print()
@@ -166,13 +170,13 @@ if args.do_train:
     - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
     - wrap them into dataloader for mini-batch cutting
     """
-    train_dataset, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
-        train_toks, train_ners, train_mods, train_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+    train_dataset, train_comment, train_tok, train_ner, train_mod, train_rel, train_spo = utils.extract_pipeline_data_from_mhs_conll(
+        train_comments, train_toks, train_ners, train_mods, train_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
-    dev_dataset, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
-        dev_toks, dev_ners, dev_mods, dev_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
+        dev_comments, dev_toks, dev_ners, dev_mods, dev_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
     dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
@@ -180,26 +184,25 @@ if args.do_train:
     """
     Model
     """
-    model = BertCRF.from_pretrained(args.pretrained_model, num_labels=len(bio2ix))
+    model = ModalityClassifier(args.pretrained_model, len(mod2ix))
 
     # specify different lr
     param_optimizer = list(model.named_parameters())
-    crf_name_list = ['crf_layer']
+    encoder_name_list = ['bert']
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in crf_name_list)], 'lr': args.crf_lr},
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in crf_name_list)], 'lr': args.enc_lr}
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in encoder_name_list)], 'lr': args.dec_lr},
+        {'params': [p for n, p in param_optimizer if any(nd in n for nd in encoder_name_list)], 'lr': args.enc_lr}
     ]
     optimizer = AdamW(
         optimizer_grouped_parameters,
         correct_bias=False
-        # weight_decay=1e-2,
     )
     model.to(args.device)
 
     # PyTorch scheduler
     num_epoch_steps = len(train_dataloader)
     num_training_steps = args.num_epoch * num_epoch_steps
-    save_step_interval = math.ceil(num_epoch_steps / args.save_step_portion)
+    save_step_interval = math.ceil(num_epoch_steps / args.save_step_interval)
 
     scheduler = get_linear_schedule_with_warmup(
         optimizer,
@@ -217,8 +220,6 @@ if args.do_train:
 
     best_dev_f1 = (float('-inf'), 0, 0)
 
-    save_step_interval = math.ceil(num_epoch_steps / 4)
-
     for epoch in range(1, args.num_epoch + 1):
 
         epoch_loss = 0.0
@@ -227,12 +228,12 @@ if args.do_train:
 
             model.train()
 
-            b_toks, b_attn_mask, b_ner, b_mod = tuple(
+            b_toks, b_attn_mask, b_sent_mask, b_ner, b_ner_mask, b_mod = tuple(
                 t.to(args.device) for t in batch[1:]
             )
 
             # BERT loss, logits: (batch_size, seq_len, tag_num)
-            loss = model(b_toks, attention_mask=b_attn_mask.bool(), labels=b_ner)
+            loss = model(b_toks, b_ner_mask.float(), attention_mask=b_attn_mask.bool(), labels=b_mod)
 
             epoch_loss += loss.item()
 
@@ -252,11 +253,11 @@ if args.do_train:
                 f"L_NER: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 0:
+            if epoch > 5:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
-                    output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.device)
+                    output_mod(model, dev_dataloader, dev_comments, dev_tok, dev_ner, mod2ix, args.dev_output, args.device)
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
-                    dev_f1 = (dev_evaluator.eval_ner(print_level=0), epoch, step)
+                    dev_f1 = (dev_evaluator.eval_mod(print_level=0), epoch, step)
                     if best_dev_f1[0] < dev_f1[0]:
                         print(
                             f" -> Previous best dev f1 {best_dev_f1[0]:.6f}; "
@@ -306,9 +307,9 @@ else:
     max_len = utils.max_sents_len(test_toks, tokenizer)
     cls_max_len = max_len + 2
 
-    test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
-        test_toks, test_ners, test_mods, test_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+    test_dataset, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo = utils.extract_pipeline_data_from_mhs_conll(
+        test_comments, test_toks, test_ners, test_mods, test_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
@@ -317,5 +318,6 @@ else:
     model.to(args.device)
 
     """ predict test out """
-    output_ner(model, test_dataloader, test_comments, test_tok, bio2ix, args.test_output, args.device)
-
+    output_mod(model, test_dataloader, test_comments, test_tok, test_ner, mod2ix, args.test_output, args.device)
+    test_evaluator = MhsEvaluator(args.test_file, args.test_output)
+    test_evaluator.eval_mod(print_level=1)

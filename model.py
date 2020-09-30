@@ -118,6 +118,34 @@ class LSTMCRF(nn.Module):
             return self.crf_layer.decode(encoder_out, mask=attention_mask)
 
 
+class ModalityClassifier(nn.Module):
+
+    def __init__(self, encoder_url, num_labels, hidden_size=768, dropout_prob=0.1):
+        super(ModalityClassifier, self).__init__()
+        self.num_labels = num_labels
+        self.bert = BertModel.from_pretrained(encoder_url)
+        self.dropout = nn.Dropout(dropout_prob)
+        self.classifier = nn.Linear(hidden_size, num_labels)
+        # self.apply(self.init_bert_weights)
+
+    '''dm_mask: batch_size x entity_num x mask_len'''
+    def forward(self, input_ids, dm_mask, token_type_ids=None, attention_mask=None, labels=None):
+        encoder_logits = self.bert(input_ids, attention_mask=attention_mask)[0]
+        # print(dm_mask.shape, dm_mask.dtype, encoder_logits.shape, encoder_logits.dtype)
+        tag_rep = torch.bmm(dm_mask, encoder_logits)
+        # print(tag_rep.shape)
+        pooled_output = self.dropout(tag_rep)
+        logits = self.classifier(pooled_output)
+        # print(logits.shape)
+        if labels is not None:
+            loss_fct = CrossEntropyLoss(ignore_index=0)
+            loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
+            return loss
+        else:
+            # print('fw:', logits.shape)
+            return logits
+
+
 class BertRel(BertPreTrainedModel):
 
     def __init__(self, config, ne_size, num_ne, num_rel):
