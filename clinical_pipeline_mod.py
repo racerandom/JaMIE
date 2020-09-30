@@ -38,16 +38,22 @@ def output_mod(model, eval_dataloader, eval_comment, eval_tok, eval_ner, mod2ix,
                 w_tok = w_tok[1:-1]
                 w_ner = w_ner[1:-1]
                 assert len(w_tok) == len(w_ner)
+
+                sent_spans = bio_to_spans(w_ner)
+                last_tid2mod = {}
+                for (ner, start, end) in sent_spans:
+                    last_tid2mod[end - 1] = ix2mod[pred_tag.pop(0)]
+
                 fo.write(f'{eval_comment[sid]}\n')
                 for index, (tok, ner) in enumerate(zip(w_tok, w_ner)):
-                    mod = ix2mod[pred_tag.pop(0)] if ner.startswith('B-') else '_'
+                    mod = last_tid2mod[index] if index in last_tid2mod else '_'
                     fo.write(f"{index}\t{tok}\t{ner}\t{mod}\t['N']\t[{index}]\n")
 
 
 """ 
 python input arguments 
 """
-parser = argparse.ArgumentParser(description='Clinical IE pipeline NER')
+parser = argparse.ArgumentParser(description='Clinical IE pipeline Modality classifier')
 
 parser.add_argument("--pretrained_model",
                     default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
@@ -89,10 +95,10 @@ parser.add_argument("--dec_lr", default=1e-2, type=float,
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
                     help="Max gradient norm.")
 
-parser.add_argument("--test_output", default='tmp/test.ner', type=str,
+parser.add_argument("--test_output", default='tmp/test.mod', type=str,
                     help="test output filename")
 
-parser.add_argument("--dev_output", default='tmp/dev.ner', type=str,
+parser.add_argument("--dev_output", default='tmp/dev.mod', type=str,
                     help="dev output filename")
 
 parser.add_argument("--later_eval",
