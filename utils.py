@@ -1815,12 +1815,6 @@ def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
 
         # pipeline ner_mask and mod
         cls_sbw_ner_mask, cls_sbw_mod = sent_mask_mod(cls_sbw_sent_ner, cls_sbw_sent_mod)
-        # print(cls_sbw_sent_tok)
-        # print(cls_sbw_sent_ner)
-        # print(cls_sbw_sent_mod)
-        # print(cls_sbw_ner_mask)
-        # print(cls_sbw_mod)
-        # print()
 
         if verbose:
             print("sent_id: {}/{}".format(sent_id, doc_num))
@@ -1889,9 +1883,7 @@ def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
     )
 
     tmp_ner_mask = padding_3d(doc_ner_mask, cls_max_len, entity_max_num)
-    # for i in tmp_ner_mask:
-    #     if len(i) != 24:
-    #         print(i)
+
     padded_doc_ner_mask_ix_t = torch.tensor(
         tmp_ner_mask
     )
@@ -1900,7 +1892,7 @@ def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
         [padding_1d(
             [mod2ix[mod] for mod in sent_mod],
             entity_max_num,
-            pad_tok=pad_lab_id
+            pad_tok=-100
         ) for sent_mod in doc_mod]
     )
 
