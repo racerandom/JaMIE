@@ -92,12 +92,12 @@ def output_rel(
                         for h_index, (h_ner, h_start, h_end) in enumerate(sent_spans):
                             if h_index != t_index:
                                 tmp_rel = ix2rel[pred_tag.pop(0)]
-                            if tmp_rel != 'N':
-                                last_tid2head[t_end - 1].append(h_end - 1)
-                            last_tid2rel[t_end - 1].append(tmp_rel)
+                                if tmp_rel != 'N':
+                                    last_tid2head[t_end - 1].append(h_end - 1)
+                                    last_tid2rel[t_end - 1].append(tmp_rel)
                             if not last_tid2head[t_end - 1] and not last_tid2rel[t_end - 1]:
                                 last_tid2head[t_end - 1] = [t_end - 1]
-                            last_tid2rel[t_end - 1] = ['N']
+                                last_tid2rel[t_end - 1] = ['N']
                     print(f'left pred_tag: {len(pred_tag)}')
 
                     fo.write(f'{eval_comment[sid]}\n')
