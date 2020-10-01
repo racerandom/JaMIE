@@ -84,22 +84,22 @@ def output_rel(
                 w_mod = w_mod[1:-1]
                 assert len(w_tok) == len(w_ner) == len(w_mod)
 
-                sent_spans = bio_to_spans(w_ner)
-                ner_num = len(sent_spans)
-                last_tid2head = defaultdict(list)
-                last_tid2rel = defaultdict(list)
-                for t_index, (t_ner, t_start, t_end) in enumerate(sent_spans):
-                    for h_index, (h_ner, h_start, h_end) in enumerate(sent_spans):
-                        if h_index != t_index:
-                            tmp_rel = ix2rel[pred_tag.pop(0)]
+                if len(b_e_pair_mask.shape) > 2:
+                    sent_spans = bio_to_spans(w_ner)
+                    last_tid2head = defaultdict(list)
+                    last_tid2rel = defaultdict(list)
+                    for t_index, (t_ner, t_start, t_end) in enumerate(sent_spans):
+                        for h_index, (h_ner, h_start, h_end) in enumerate(sent_spans):
+                            if h_index != t_index:
+                                tmp_rel = ix2rel[pred_tag.pop(0)]
                             if tmp_rel != 'N':
                                 last_tid2head[t_end - 1].append(h_end - 1)
-                                last_tid2rel[t_end - 1].append(tmp_rel)
-                    if not last_tid2head[t_end - 1] and not last_tid2rel[t_end - 1]:
-                        last_tid2head[t_end - 1] = [t_end - 1]
-                        last_tid2rel[t_end - 1] = ['N']
+                            last_tid2rel[t_end - 1].append(tmp_rel)
+                            if not last_tid2head[t_end - 1] and not last_tid2rel[t_end - 1]:
+                                last_tid2head[t_end - 1] = [t_end - 1]
+                            last_tid2rel[t_end - 1] = ['N']
+                    print(f'left pred_tag: {len(pred_tag)}')
 
-                if len(b_e_pair_mask.shape) > 2:
                     fo.write(f'{eval_comment[sid]}\n')
                     for index, (tok, ner, mod) in enumerate(zip(w_tok, w_ner, w_mod)):
                         head_col = last_tid2head[index] if index in last_tid2head else f'[{index}]'
@@ -319,7 +319,7 @@ if args.do_train:
             model.zero_grad()
 
             epoch_iterator.set_description(
-                f"L_NER: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
+                f"L_REL: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
             if epoch > 3:

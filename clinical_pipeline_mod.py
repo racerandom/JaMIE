@@ -252,7 +252,7 @@ if args.do_train:
             model.zero_grad()
 
             epoch_iterator.set_description(
-                f"L_NER: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
+                f"L_MOD: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
             if epoch > 5:
