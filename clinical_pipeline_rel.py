@@ -90,8 +90,8 @@ def output_rel(
                     last_tid2rel = defaultdict(list)
                     for t_index, (t_ner, t_start, t_end) in enumerate(sent_spans):
                         for h_index, (h_ner, h_start, h_end) in enumerate(sent_spans):
+                            tmp_rel = ix2rel[pred_tag.pop(0)]
                             if h_index != t_index:
-                                tmp_rel = ix2rel[pred_tag.pop(0)]
                                 if tmp_rel != 'N':
                                     last_tid2head[t_end - 1].append(h_end - 1)
                                     last_tid2rel[t_end - 1].append(tmp_rel)
