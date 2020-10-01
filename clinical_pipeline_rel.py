@@ -137,7 +137,7 @@ parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
 parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
                     help="test file, multihead conll format.")
 
-parser.add_argument("--batch_size", default=12, type=int,
+parser.add_argument("--batch_size", default=16, type=int,
                     help="BATCH SIZE")
 
 parser.add_argument("--num_epoch", default=10, type=int,
@@ -322,7 +322,7 @@ if args.do_train:
                 f"L_REL: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 3:
+            if epoch > 0:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_rel(
                         model, dev_dataloader,
