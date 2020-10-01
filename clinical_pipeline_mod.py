@@ -12,12 +12,12 @@ from data_utils import bio_to_spans
 warnings.filterwarnings("ignore")
 
 
-def output_mod(model, eval_dataloader, eval_comment, eval_tok, eval_ner, mod2ix, mod_outfile, device):
+def output_mod(trained_model, eval_dataloader, eval_comment, eval_tok, eval_ner, mod2ix, mod_outfile, device):
     ix2mod = {v: k for k, v in mod2ix.items()}
-    model.eval()
+    trained_model.eval()
     with torch.no_grad(), open(mod_outfile, 'w') as fo:
         for dev_step, dev_batch in enumerate(eval_dataloader):
-            b_toks, b_attn_mask, b_sent_mask, b_ner, b_ner_mask, b_mod = tuple(
+            b_e_toks, b_e_attn_mask, b_e_sent_mask, b_e_ner, b_e_ner_mask, b_e_mod = tuple(
                 t.to(device) for t in dev_batch[1:]
             )
             _, _, l = b_ner_mask.shape
@@ -27,9 +27,9 @@ def output_mod(model, eval_dataloader, eval_comment, eval_tok, eval_ner, mod2ix,
                 cls_max_len,
                 pad_tok='[PAD]') for sent_id in b_sent_ids]
 
-            pred_logit = model(b_toks, b_ner_mask.float(), attention_mask=b_attn_mask.bool())
+            pred_logit = trained_model(b_e_toks, b_e_ner_mask.float(), attention_mask=b_e_attn_mask.bool())
             pred_tag_ix = pred_logit.argmax(-1).view(-1).cpu()
-            tag_mask = torch.tensor([True if m != [0] * l else False for m in b_ner_mask.view(-1, l).tolist()])
+            tag_mask = torch.tensor([True if m != [0] * l else False for m in b_e_ner_mask.view(-1, l).tolist()])
             pred_tag = pred_tag_ix.masked_select(tag_mask).tolist()
 
             for sid in b_sent_ids:
@@ -126,10 +126,6 @@ parser.add_argument("--scheduled_lr",
                     action='store_true',
                     help="learning rate schedule")
 
-parser.add_argument("--joint",
-                    action='store_true',
-                    help="merge ner and modality jointly")
-
 args = parser.parse_args()
 
 args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -176,11 +172,11 @@ if args.do_train:
     - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
     - wrap them into dataloader for mini-batch cutting
     """
-    train_dataset, train_comment, train_tok, train_ner, train_mod, train_rel, train_spo = utils.extract_pipeline_data_from_mhs_conll(
+    train_dataset, train_comment, train_tok, train_ner, train_mod, train_pair_mask, train_rel, train_rel_tup, train_spo = utils.extract_pipeline_data_from_mhs_conll(
         train_comments, train_toks, train_ners, train_mods, train_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
-    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
+    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_pair_mask, dev_rel, dev_rel_tup, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
         dev_comments, dev_toks, dev_ners, dev_mods, dev_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
@@ -313,7 +309,7 @@ else:
     max_len = utils.max_sents_len(test_toks, tokenizer)
     cls_max_len = max_len + 2
 
-    test_dataset, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo = utils.extract_pipeline_data_from_mhs_conll(
+    test_dataset, test_comment, test_tok, test_ner, test_mod, test_pair_mask, test_rel, test_rel_tup, test_spo = utils.extract_pipeline_data_from_mhs_conll(
         test_comments, test_toks, test_ners, test_mods, test_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 

@@ -11,21 +11,22 @@ from clinical_eval import MhsEvaluator
 warnings.filterwarnings("ignore")
 
 
-def output_ner(model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfile, device):
+def output_ner(trained_model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfile, device):
     ix2ner = {v: k for k, v in ner2ix.items()}
-    model.eval()
+    trained_model.eval()
     with torch.no_grad(), open(ner_outfile, 'w') as fo:
         for dev_step, dev_batch in enumerate(eval_dataloader):
-            b_toks, b_attn_mask, b_ner, b_mod = tuple(
+            b_eval_toks, b_eval_attn_mask, b_eval_sent_mask, b_eval_ner, b_eval_mod = tuple(
                 t.to(device) for t in dev_batch[1:]
             )
             b_sent_ids = dev_batch[0].tolist()
-            b_text_list = [utils.padding_1d(
-                eval_tok[sent_id],
-                cls_max_len,
-                pad_tok='[PAD]') for sent_id in b_sent_ids]
+            # b_text_list = [utils.padding_1d(
+            #     eval_tok[sent_id],
+            #     cls_max_len,
+            #     pad_tok='[PAD]') for sent_id in b_sent_ids]
 
-            pred_tags = [[ix2ner[tag_id] for tag_id in tag_ix] for tag_ix in model.decode(b_toks, attention_mask=b_attn_mask.bool())]
+            pred_tags = [[ix2ner[tag_id] for tag_id in tag_ix]
+                         for tag_ix in trained_model.decode(b_eval_toks, attention_mask=b_eval_attn_mask.bool())]
 
             for sid, sent_tag in zip(b_sent_ids, pred_tags):
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
@@ -162,13 +163,13 @@ if args.do_train:
     - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
     - wrap them into dataloader for mini-batch cutting
     """
-    train_dataset, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
-        train_toks, train_ners, train_mods, train_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+    train_dataset, train_comment, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
+        train_comments, train_toks, train_ners, train_mods, train_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
-    dev_dataset, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
-        dev_toks, dev_ners, dev_mods, dev_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
+        dev_comments, dev_toks, dev_ners, dev_mods, dev_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
     dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
@@ -176,19 +177,18 @@ if args.do_train:
     """
     Model
     """
-    model = BertCRF.from_pretrained(args.pretrained_model, num_labels=len(bio2ix))
+    model = BertCRF(args.pretrained_model, num_labels=len(bio2ix))
 
     # specify different lr
     param_optimizer = list(model.named_parameters())
-    crf_name_list = ['crf_layer']
+    enc_name_list = ['encoder']
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if any(nd in n for nd in crf_name_list)], 'lr': args.crf_lr},
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in crf_name_list)], 'lr': args.enc_lr}
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in enc_name_list)], 'lr': args.crf_lr},
+        {'params': [p for n, p in param_optimizer if any(nd in n for nd in enc_name_list)], 'lr': args.enc_lr}
     ]
     optimizer = AdamW(
         optimizer_grouped_parameters,
         correct_bias=False
-        # weight_decay=1e-2,
     )
     model.to(args.device)
 
@@ -223,7 +223,7 @@ if args.do_train:
 
             model.train()
 
-            b_toks, b_attn_mask, b_ner, b_mod = tuple(
+            b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
                 t.to(args.device) for t in batch[1:]
             )
 
@@ -302,9 +302,9 @@ else:
     max_len = utils.max_sents_len(test_toks, tokenizer)
     cls_max_len = max_len + 2
 
-    test_dataset, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
-        test_toks, test_ners, test_mods, test_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, max_len, verbose=0)
+    test_dataset, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
+        test_comments, test_toks, test_ners, test_mods, test_rels,
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
@@ -314,4 +314,3 @@ else:
 
     """ predict test out """
     output_ner(model, test_dataloader, test_comments, test_tok, bio2ix, args.test_output, args.device)
-

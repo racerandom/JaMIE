@@ -1236,7 +1236,7 @@ def eval_modality(file_out):
     measure_modality_fscore(gold_tags, pred_tags)
 
 
-# clinical_pipeline_rel.py related
+# clinical_pipeline_rel_bk.py related
 import pandas as pd
 import csv
 import random
@@ -1772,22 +1772,48 @@ def sent_mask_mod(sent_ner, sent_mod):
     return ner_masks, mod_tags
 
 
+def sent_entity_mask(sent_ner):
+    ner_masks = []
+    ne_spans = data_utils.bio_to_spans(sent_ner)
+    for ner_tag, start, end in ne_spans:
+        tmp_mask = [0] * len(sent_ner)
+        for index in range(start, end):
+            tmp_mask[index] = 1
+        ner_masks.append(tmp_mask)
+    return ner_masks
+
+
+def list_rindex(li, x):
+    for i in reversed(range(len(li))):
+        if li[i] == x:
+            return i
+    raise None
+
+
+def sent_pair_mask(ner_masks):
+    pair_masks = []
+    for tail_mask in ner_masks:
+        for head_mask in ner_masks:
+            pair_masks.append((tail_mask, head_mask))
+    return pair_masks
+
+
 # extract_pipeline_data_from_mhs_conll
-def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
+def extract_pipeline_data_from_mhs_conll(
+        comments, ner_toks, ners, mods, rels,
         tokenizer,
         bio2ix, mod2ix, rel2ix,
         cls_max_len,
         cls_tok='[CLS]',
         sep_tok='[SEP]',
         pad_tok='[PAD]',
-        pad_id=0,
         pad_mask_id=0,
         pad_lab_id=0,
-        merged_modality=False,
         deunk=True,
         bert_max_len=512,
-        verbose=0):
-    doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_ner_mask, doc_mod, doc_rel, doc_spo = [], [], [], [], [], [], [], [], []
+        verbose=0
+):
+    doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_mod, doc_ner_mask, doc_ner_mod, doc_ner_pair_mask, doc_rel, doc_rel_tup, doc_spo = [], [], [], [], [], [], [], [], [], [], [], []
     rel_count = 0
     print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
     doc_num = len(ner_toks)
@@ -1813,8 +1839,23 @@ def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
 
         assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mod) == len(cls_sbw_sent_mask)
 
-        # pipeline ner_mask and mod
-        cls_sbw_ner_mask, cls_sbw_mod = sent_mask_mod(cls_sbw_sent_ner, cls_sbw_sent_mod)
+        # align BPE ids
+        cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
+
+        # pipeline entity_mask, entity_mod
+        cls_sbw_ner_mask, cls_sbw_ner_mod = sent_mask_mod(cls_sbw_sent_ner, cls_sbw_sent_mod)
+
+        # entity_pair_rel
+        cls_sbw_sent_pair_mask = sent_pair_mask(sent_entity_mask(cls_sbw_sent_ner))
+        cls_sbw_sent_rel = ['N'] * len(cls_sbw_sent_pair_mask)
+
+        for index, (tail_mask, head_mask) in enumerate(cls_sbw_sent_pair_mask):
+            for tail_ids, tail_lab, head_ids, head_lab, rel_tag in sent_rel:
+                tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+                head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]
+                if list_rindex(tail_mask, 1) == tail_last_id and list_rindex(head_mask, 1) == head_last_id:
+                    cls_sbw_sent_rel[index] = rel_tag
+        # print(cls_sbw_sent_rel)
 
         if verbose:
             print("sent_id: {}/{}".format(sent_id, doc_num))
@@ -1824,8 +1865,8 @@ def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
 
         # preparing rel data
         sent_rel_tuples, sent_spo = [], []
+
         # align entity_ids in sent_rels
-        cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
         assert len(cls_aligned_ids) == (len(sent_tok) + 2)
         for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rel:
             tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
@@ -1850,20 +1891,24 @@ def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
         doc_attn_mask.append(cls_sbw_sent_mask)  # b x l
         doc_sent_mask.append(document_sent_mask(cls_sbw_sent_tok))  # b x l
         doc_ner.append(cls_sbw_sent_ner)  # b x l
+        doc_mod.append(cls_sbw_sent_mod)  # b x l
         doc_ner_mask.append(cls_sbw_ner_mask)  # b x e x l
-        doc_mod.append(cls_sbw_mod)  # b x e x l
-        doc_rel.append(sent_rel_tuples)
+        doc_ner_mod.append(cls_sbw_ner_mod)  # b x e x l
+        doc_ner_pair_mask.append(cls_sbw_sent_pair_mask)  # b x e^2 x 2l
+        doc_rel.append(cls_sbw_sent_rel)  # b x e^2
+        doc_rel_tup.append(sent_rel_tuples)
         doc_spo.append(sent_spo)
 
-    assert len(doc_comment) == len(doc_tok) == len(doc_attn_mask) == len(doc_ner) == len(doc_mod) == len(doc_rel)
+    assert len(doc_comment) == len(doc_tok) == len(doc_attn_mask) == len(doc_ner) == len(doc_mod) == len(doc_rel_tup)
     print("ready to tensor list/numpy")
 
     doc_ix_t = torch.tensor(list(range(len(doc_tok))))  # add sent_id into batch data
 
     cls_max_len = min(cls_max_len, bert_max_len)
     entity_max_num = max([len(sent_e) for sent_e in doc_ner_mask])
+    rel_max_num = max([len(sent_r) for sent_r in doc_rel_tup])
 
-    print(f"max sequence length:{cls_max_len}, max entity num: {entity_max_num}")
+    print(f"max sequence length:{cls_max_len}, max entity num: {entity_max_num}, max rel num:{rel_max_num}")
 
     # padding data to cls_max_len
     padded_doc_tok_ix_t = torch.tensor(
@@ -1872,28 +1917,6 @@ def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
             cls_max_len,
             pad_tok=pad_tok
         )) for sent_tok in doc_tok]
-    )
-
-    padded_doc_ner_ix_t = torch.tensor(
-        [padding_1d(
-            [bio2ix[ner] for ner in sent_ner],
-            cls_max_len,
-            pad_tok=pad_lab_id
-        ) for sent_ner in doc_ner]
-    )
-
-    tmp_ner_mask = padding_3d(doc_ner_mask, cls_max_len, entity_max_num)
-
-    padded_doc_ner_mask_ix_t = torch.tensor(
-        tmp_ner_mask
-    )
-
-    padded_doc_mod_ix_t = torch.tensor(
-        [padding_1d(
-            [mod2ix[mod] for mod in sent_mod],
-            entity_max_num,
-            pad_tok=-100
-        ) for sent_mod in doc_mod]
     )
 
     padded_doc_attn_mask_t = torch.tensor(
@@ -1912,12 +1935,33 @@ def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
         ) for sent_mask in doc_sent_mask]
     )
 
+    padded_doc_ner_ix_t = torch.tensor(
+        [padding_1d(
+            [bio2ix[ner] for ner in sent_ner],
+            cls_max_len,
+            pad_tok=pad_lab_id
+        ) for sent_ner in doc_ner]
+    )
+
+    padded_doc_ner_mask_ix_t = torch.tensor(
+        padding_3d(doc_ner_mask, cls_max_len, entity_max_num)
+    )
+
+    padded_doc_ner_mod_ix_t = torch.tensor(
+        [padding_1d(
+            [mod2ix[mod] for mod in sent_mod],
+            entity_max_num,
+            pad_tok=-100
+        ) for sent_mod in doc_ner_mod]
+    )
+
     print(padded_doc_tok_ix_t.shape,
           padded_doc_attn_mask_t.shape,
           padded_doc_sent_mask_t.shape,
           padded_doc_ner_ix_t.shape,
           padded_doc_ner_mask_ix_t.shape,
-          padded_doc_mod_ix_t.shape,
+          padded_doc_ner_mod_ix_t.shape,
+          # padded_doc_rel_ix_t.shape,
           len(doc_rel))
     print("positive rel count:", rel_count)
     print()
@@ -1928,9 +1972,9 @@ def extract_pipeline_data_from_mhs_conll(comments, ner_toks, ners, mods, rels,
         padded_doc_sent_mask_t,
         padded_doc_ner_ix_t,
         padded_doc_ner_mask_ix_t,
-        padded_doc_mod_ix_t,
+        padded_doc_ner_mod_ix_t
     )
-    return tensor_dataset, doc_comment, doc_tok, doc_ner, doc_mod, doc_rel, doc_spo
+    return tensor_dataset, doc_comment, doc_tok, doc_ner, doc_mod, doc_ner_pair_mask, doc_rel, doc_rel_tup, doc_spo
 
 
 # clinical_mhs.py related
