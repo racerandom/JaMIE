@@ -108,8 +108,8 @@ def output_rel(
                     fo.write(f'{eval_comment[sid]}\n')
                     for index, (tok, ner, mod) in enumerate(zip(w_tok, w_ner, w_mod)):
                         fo.write(f"{index}\t{tok}\t{ner}\t{mod}\t['N']\t[{index}]\n")
-            if len(b_e_pair_mask.shape) > 2:
-                print(f'left pred_tag: {len(pred_tag)}')
+            # if len(b_e_pair_mask.shape) > 2:
+            #     print(f'left pred_tag: {len(pred_tag)}')
 
 """ 
 python input arguments 
@@ -322,7 +322,7 @@ if args.do_train:
                 f"L_REL: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 0:
+            if epoch > 5:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_rel(
                         model, dev_dataloader,
