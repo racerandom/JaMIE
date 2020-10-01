@@ -98,7 +98,7 @@ def output_rel(
                             if not last_tid2head[t_end - 1] and not last_tid2rel[t_end - 1]:
                                 last_tid2head[t_end - 1] = [t_end - 1]
                                 last_tid2rel[t_end - 1] = ['N']
-                    print(f'left pred_tag: {len(pred_tag)}')
+                    # print(f'left pred_tag: {len(pred_tag)}')
 
                     fo.write(f'{eval_comment[sid]}\n')
                     for index, (tok, ner, mod) in enumerate(zip(w_tok, w_ner, w_mod)):
@@ -322,7 +322,7 @@ if args.do_train:
                 f"L_REL: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 0:
+            if epoch > 3:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_rel(
                         model, dev_dataloader,
