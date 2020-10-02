@@ -301,6 +301,8 @@ if args.do_train:
             b_pair_mask = generate_batch_pair_mask_t(train_pair_mask, b_sent_ids, cls_max_len).to(args.device)
             b_rel = generate_batch_rel_t(train_rel, b_sent_ids).to(args.device)
 
+            if len(b_pair_mask.shape) < 3:
+                continue
             # BERT loss, logits: (batch_size, seq_len, tag_num)
             loss = model(b_toks, b_pair_mask.float(), attention_mask=b_attn_mask.bool(), labels=b_rel)
 
