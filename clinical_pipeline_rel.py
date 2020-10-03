@@ -356,6 +356,11 @@ if args.do_train:
     print(f"Best dev f1 {best_dev_f1[0]:.6f}; epoch {best_dev_f1[1]:d} / step {best_dev_f1[2]:d}\n")
     model.load_state_dict(torch.load(os.path.join(args.saved_model, 'model.pt')))
     torch.save(model, os.path.join(args.saved_model, 'model.pt'))
+    output_rel(
+        model, dev_dataloader,
+        dev_comments, dev_tok, dev_ner, dev_mod, dev_pair_mask,
+        rel2ix, cls_max_len, args.dev_output, args.device
+    )
 else:
     """ load the new tokenizer"""
     print("test_mode:", args.saved_model)
