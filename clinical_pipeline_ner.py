@@ -248,7 +248,7 @@ if args.do_train:
                 f"L_NER: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 0:
+            if epoch > 3:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.device)
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
