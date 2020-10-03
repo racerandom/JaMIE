@@ -133,24 +133,25 @@ class MhsEvaluator(object):
         return self._rel_evaluator.print_results('rel', f1_mode=self.f1_mode, print_level=print_level)
 
 
-parser = argparse.ArgumentParser(description='Clinical IE Evaluation')
-parser.add_argument("--gold_file", default="data/i2b2/i2b2_test.conll", type=str,
-                    help="gold file, multihead conll format.")
-parser.add_argument("--pred_file", default="tmp/pred.conll", type=str,
-                    help="pred file, multihead conll format.")
-parser.add_argument("--eval_level", default=0, type=int,
-                    help="0: all, 1: ner, 2: mod, 3: rel")
-args = parser.parse_args()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Clinical IE Evaluation')
+    parser.add_argument("--gold_file", default="data/i2b2/i2b2_test.conll", type=str,
+                        help="gold file, multihead conll format.")
+    parser.add_argument("--pred_file", default="tmp/pred.conll", type=str,
+                        help="pred file, multihead conll format.")
+    parser.add_argument("--eval_level", default=0, type=int,
+                        help="0: all, 1: ner, 2: mod, 3: rel")
+    args = parser.parse_args()
 
-evaluator = MhsEvaluator(args.gold_file, args.pred_file)
-if args.eval_level == 0:
-    evaluator.eval_ner(print_level=1)
-    evaluator.eval_mod(print_level=1)
-    evaluator.eval_rel(print_level=1)
-elif args.eval_level == 1:
-    evaluator.eval_ner(print_level=1)
-elif args.eval_level == 2:
-    evaluator.eval_mod(print_level=1)
-elif args.eval_level == 3:
-    evaluator.eval_rel(print_level=1)
+    evaluator = MhsEvaluator(args.gold_file, args.pred_file)
+    if args.eval_level == 0:
+        evaluator.eval_ner(print_level=1)
+        evaluator.eval_mod(print_level=1)
+        evaluator.eval_rel(print_level=1)
+    elif args.eval_level == 1:
+        evaluator.eval_ner(print_level=1)
+    elif args.eval_level == 2:
+        evaluator.eval_mod(print_level=1)
+    elif args.eval_level == 3:
+        evaluator.eval_rel(print_level=1)
 
