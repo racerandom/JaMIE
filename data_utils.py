@@ -60,7 +60,7 @@ def bio_to_spans(ner_tags):
 # MultiheadConll document class
 class MultiheadConll(object):
 
-    def __init__(self, conll_file, empty_comment=('#doc', '## line')):
+    def __init__(self, conll_file, prune_type=False, empty_comment=('#doc', '## line')):
         self._doc_lines = []
         self._comments = []
         self._tok_ids = []
@@ -78,7 +78,7 @@ class MultiheadConll(object):
         self.update_entities()
         self.update_mod_entities()
         self.update_rel_triplets()
-        self.update_rel_detailed_triplets()
+        self.update_rel_detailed_triplets(prune_type=prune_type)
 
     def load_doc(self, conll_file, empty_comment):
         with open(conll_file, 'r', encoding='utf8') as conll_fi:
@@ -130,14 +130,24 @@ class MultiheadConll(object):
                         sent_triplets.append((tail_id, head_id, rel))
             self._rel_triplets.append(sent_triplets)
 
-    def update_rel_detailed_triplets(self):
+    def update_rel_detailed_triplets(self, prune_type):
         for sent_id in range(len(self._doc_lines)):
-            sent_dic = {(entity[-1]-1): entity[1:3] for entity in self._entities[sent_id]}
+            sent_dic = {(entity[-1]-1): (entity[1:3], entity[0]) for entity in self._entities[sent_id]}
+            # print(sent_dic)
             sent_triplets = []
             for tail_id, head_id, rel in self._rel_triplets[sent_id]:
-                tail_span = sent_dic[tail_id] if tail_id in sent_dic else (tail_id, tail_id + 1)
-                head_span = sent_dic[head_id] if head_id in sent_dic else (head_id, head_id + 1)
-                sent_triplets.append((tail_span, head_span, rel))
+                if tail_id in sent_dic and head_id in sent_dic:
+                    tail_tag = sent_dic[tail_id][1]
+                    head_tag = sent_dic[head_id][1]
+                    if prune_type:
+                        if head_tag == 'problem':
+                            tail_span = sent_dic[tail_id][0]
+                            head_span = sent_dic[head_id][0]
+                            sent_triplets.append((tail_span, head_span, rel))
+                    else:
+                        tail_span = sent_dic[tail_id][0]
+                        head_span = sent_dic[head_id][0]
+                        sent_triplets.append((tail_span, head_span, rel))
             self._rel_detailed_triplets.append(sent_triplets)
 
     def doc_to_xml(self, xml_file):

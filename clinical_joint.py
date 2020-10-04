@@ -104,39 +104,39 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
-    #                     help="train file, multihead conll format.")
-    #
-    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
-    #                     help="dev file, multihead conll format.")
-    #
-    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
-    #                     help="test file, multihead conll format.")
-    #
-    # parser.add_argument("--pretrained_model",
-    #                     default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
-    #                     type=str,
-    #                     help="pre-trained model dir")
-
-    parser.add_argument("--train_file",
-                        default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_train.conll",
-                        type=str,
+    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file",
-                        default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_dev.conll",
-                        type=str,
+    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file",
-                        default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_test.conll",
-                        type=str,
+    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+                        default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
                         type=str,
                         help="pre-trained model dir")
+
+    # parser.add_argument("--train_file",
+    #                     default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_train.conll",
+    #                     type=str,
+    #                     help="train file, multihead conll format.")
+    #
+    # parser.add_argument("--dev_file",
+    #                     default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_dev.conll",
+    #                     type=str,
+    #                     help="dev file, multihead conll format.")
+    #
+    # parser.add_argument("--test_file",
+    #                     default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_test.conll",
+    #                     type=str,
+    #                     help="test file, multihead conll format.")
+    #
+    # parser.add_argument("--pretrained_model",
+    #                     default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+    #                     type=str,
+    #                     help="pre-trained model dir")
 
     parser.add_argument("--do_lower_case",
                         action='store_true',
@@ -164,7 +164,7 @@ def main():
     parser.add_argument("--num_epoch", default=20, type=int,
                         help="fine-tuning epoch number")
 
-    parser.add_argument("--embed_size", default='[32, 32, 448]', type=str,
+    parser.add_argument("--embed_size", default='[64, 64, 512]', type=str,
                         help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,

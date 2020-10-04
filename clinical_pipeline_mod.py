@@ -20,7 +20,9 @@ def output_mod(trained_model, eval_dataloader, eval_comment, eval_tok, eval_ner,
             b_e_toks, b_e_attn_mask, b_e_sent_mask, b_e_ner, b_e_ner_mask, b_e_mod = tuple(
                 t.to(device) for t in dev_batch[1:]
             )
-            _, _, l = b_ner_mask.shape
+            print([eval_tok[sent_id] for sent_id in dev_batch[0].tolist()])
+            print()
+            _, _, l = b_e_ner_mask.shape
             b_sent_ids = dev_batch[0].tolist()
             b_text_list = [utils.padding_1d(
                 eval_tok[sent_id],
@@ -35,8 +37,8 @@ def output_mod(trained_model, eval_dataloader, eval_comment, eval_tok, eval_ner,
             for sid in b_sent_ids:
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
                 w_ner = utils.sbwner2ner(eval_ner[sid], aligned_ids)
-                w_tok = w_tok[1:-1]
-                w_ner = w_ner[1:-1]
+                # w_tok = w_tok[1:-1]
+                # w_ner = w_ner[1:-1]
                 assert len(w_tok) == len(w_ner)
 
                 sent_spans = bio_to_spans(w_ner)
@@ -48,7 +50,8 @@ def output_mod(trained_model, eval_dataloader, eval_comment, eval_tok, eval_ner,
                 for index, (tok, ner) in enumerate(zip(w_tok, w_ner)):
                     mod = last_tid2mod[index] if index in last_tid2mod else '_'
                     fo.write(f"{index}\t{tok}\t{ner}\t{mod}\t['N']\t[{index}]\n")
-
+            if len(pred_tag) != 0:
+                print(f"pred_tag left: {len(pred_tag)}")
 
 """ 
 python input arguments 
@@ -82,14 +85,29 @@ parser.add_argument("--batch_size", default=16, type=int,
 parser.add_argument("--num_epoch", default=10, type=int,
                     help="fine-tuning epoch number")
 
+parser.add_argument("--epoch_start_eval", default=3, type=int,
+                    help="epoch num starting eval with validation data")
+
 parser.add_argument("--do_train",
                     action='store_true',
                     help="Whether to run training.")
 
+parser.add_argument("--non_bert",
+                    action='store_true',
+                    help="use lstm + word embedding")
+
+parser.add_argument("--word_embedding",
+                    default="/home/feicheng/Resources/Embedding/keyed-6B-300.bin.gz",
+                    type=str,
+                    help="pre-trained word embedding")
+
+parser.add_argument("--encoder_hidden_size", default=300, type=int,
+                    help="encoder hidden size")
+
 parser.add_argument("--enc_lr", default=5e-5, type=float,
                     help="encoder lr")
 
-parser.add_argument("--dec_lr", default=1e-2, type=float,
+parser.add_argument("--dec_lr", default=1e-3, type=float,
                     help="decoder layer lr")
 
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -122,7 +140,7 @@ parser.add_argument("--fp16_opt_level", type=str, default="O1",
                     help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
                     "See details at https://nvidia.github.io/apex/amp.html")
 
-parser.add_argument("--scheduled_lr",
+parser.add_argument("--non_scheduled_lr",
                     action='store_true',
                     help="learning rate schedule")
 
@@ -140,21 +158,30 @@ if args.do_train:
         args.train_file,
         down_neg=0.0
     )
-    max_len_train = utils.max_sents_len(train_toks, tokenizer)
     print(bio2ix)
     print(mod2ix)
     print(rel2ix)
-    print()
-    print('max training sent len:', max_len_train)
     print()
 
     dev_comments, dev_toks, dev_ners, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
         args.dev_file,
         down_neg=0.0
     )
-    max_len_dev = utils.max_sents_len(dev_toks, tokenizer)
-    print('max dev sent len:', )
-    print()
+
+    # non_bert for word embedding
+    if args.non_bert:
+        word2ix, weights = retrieve_w2v(args.word_embedding)
+        max_len_train = max([len(sent_tok) for sent_tok in train_toks])
+        max_len_dev = max([len(sent_tok) for sent_tok in dev_toks])
+        _, hidden_size = weights.shape
+    else:
+        word2ix, weights = None, None
+        max_len_train = utils.max_sents_len(train_toks, tokenizer)
+        max_len_dev = utils.max_sents_len(dev_toks, tokenizer)
+        hidden_size = 768
+        print('max training sent len:', max_len_train)
+        print('max dev sent len:', )
+        print()
 
     max_len = max(max_len_train, max_len_dev)
     cls_max_len = max_len + 2
@@ -172,13 +199,16 @@ if args.do_train:
     - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
     - wrap them into dataloader for mini-batch cutting
     """
+
     train_dataset, train_comment, train_tok, train_ner, train_mod, train_pair_mask, train_rel, train_rel_tup, train_spo = utils.extract_pipeline_data_from_mhs_conll(
         train_comments, train_toks, train_ners, train_mods, train_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
+        non_bert=args.non_bert, word2ix=word2ix, verbose=0)
 
     dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_pair_mask, dev_rel, dev_rel_tup, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
         dev_comments, dev_toks, dev_ners, dev_mods, dev_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
+        non_bert=args.non_bert, word2ix=word2ix, verbose=0)
 
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
     dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
@@ -186,11 +216,14 @@ if args.do_train:
     """
     Model
     """
-    model = ModalityClassifier(args.pretrained_model, len(mod2ix))
+    model = ModalityClassifier(
+        args.pretrained_model, len(mod2ix),
+        hidden_size=args.encoder_hidden_size, pretrain_embed=weights
+    )
 
     # specify different lr
     param_optimizer = list(model.named_parameters())
-    encoder_name_list = ['bert']
+    encoder_name_list = ['encoder']
     optimizer_grouped_parameters = [
         {'params': [p for n, p in param_optimizer if not any(nd in n for nd in encoder_name_list)], 'lr': args.dec_lr},
         {'params': [p for n, p in param_optimizer if any(nd in n for nd in encoder_name_list)], 'lr': args.enc_lr}
@@ -206,11 +239,12 @@ if args.do_train:
     num_training_steps = args.num_epoch * num_epoch_steps
     save_step_interval = math.ceil(num_epoch_steps / args.save_step_interval)
 
-    scheduler = get_linear_schedule_with_warmup(
-        optimizer,
-        num_warmup_steps=num_training_steps * args.warmup_ratio,
-        num_training_steps=num_training_steps
-    )
+    if not args.non_scheduled_lr:
+        scheduler = get_linear_schedule_with_warmup(
+            optimizer,
+            num_warmup_steps=num_training_steps * args.warmup_ratio,
+            num_training_steps=num_training_steps
+        )
 
     # support fp16
     if args.fp16:
@@ -230,12 +264,12 @@ if args.do_train:
 
             model.train()
 
-            b_toks, b_attn_mask, b_sent_mask, b_ner, b_ner_mask, b_mod = tuple(
+            b_tok, b_attn_mask, b_sent_mask, b_ner, b_ner_mask, b_mod = tuple(
                 t.to(args.device) for t in batch[1:]
             )
 
             # BERT loss, logits: (batch_size, seq_len, tag_num)
-            loss = model(b_toks, b_ner_mask.float(), attention_mask=b_attn_mask.bool(), labels=b_mod)
+            loss = model(b_tok, b_ner_mask.float(), attention_mask=b_attn_mask.bool(), labels=b_mod)
 
             epoch_loss += loss.item()
 
@@ -248,14 +282,15 @@ if args.do_train:
                 torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
 
             optimizer.step()
-            scheduler.step()
+            if not args.non_scheduled_lr:
+                scheduler.step()
             model.zero_grad()
 
             epoch_iterator.set_description(
                 f"L_MOD: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 3:
+            if epoch > args.epoch_start_eval:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_mod(model, dev_dataloader, dev_comments, dev_tok, dev_ner, mod2ix, args.dev_output, args.device)
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
@@ -302,16 +337,22 @@ else:
     test_comments, test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
         args.test_file,
         down_neg=0.0)
-    print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
+    if args.non_bert:
+        word2ix, weights = retrieve_w2v(args.word_embedding)
+        max_len = max([len(sent_tok) for sent_tok in test_toks])
+    else:
+        word2ix, weights = None, None
+        max_len = utils.max_sents_len(test_toks, tokenizer)
+    print(f"max sent len: {max_len}")
     print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
     print()
 
-    max_len = utils.max_sents_len(test_toks, tokenizer)
     cls_max_len = max_len + 2
 
     test_dataset, test_comment, test_tok, test_ner, test_mod, test_pair_mask, test_rel, test_rel_tup, test_spo = utils.extract_pipeline_data_from_mhs_conll(
         test_comments, test_toks, test_ners, test_mods, test_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
+        non_bert=args.non_bert, word2ix=word2ix, verbose=0)
 
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 

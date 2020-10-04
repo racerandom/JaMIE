@@ -150,7 +150,7 @@ parser.add_argument("--do_train",
 parser.add_argument("--enc_lr", default=5e-5, type=float,
                     help="encoder lr")
 
-parser.add_argument("--dec_lr", default=1e-2, type=float,
+parser.add_argument("--dec_lr", default=1e-3, type=float,
                     help="decoder layer lr")
 
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -324,7 +324,7 @@ if args.do_train:
                 f"L_REL: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 5:
+            if epoch > 3:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_rel(
                         model, dev_dataloader,

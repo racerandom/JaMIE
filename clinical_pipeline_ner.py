@@ -11,12 +11,12 @@ from clinical_eval import MhsEvaluator
 warnings.filterwarnings("ignore")
 
 
-def output_ner(trained_model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfile, device):
+def output_ner(trained_model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfile, non_bert, device):
     ix2ner = {v: k for k, v in ner2ix.items()}
     trained_model.eval()
     with torch.no_grad(), open(ner_outfile, 'w') as fo:
         for dev_step, dev_batch in enumerate(eval_dataloader):
-            b_eval_toks, b_eval_attn_mask, b_eval_sent_mask, b_eval_ner, b_eval_mod = tuple(
+            b_e_toks, b_e_attn_mask, b_e_sent_mask, b_e_ner, b_e_ner_mask, b_e_mod = tuple(
                 t.to(device) for t in dev_batch[1:]
             )
             b_sent_ids = dev_batch[0].tolist()
@@ -26,13 +26,14 @@ def output_ner(trained_model, eval_dataloader, eval_comment, eval_tok, ner2ix, n
             #     pad_tok='[PAD]') for sent_id in b_sent_ids]
 
             pred_tags = [[ix2ner[tag_id] for tag_id in tag_ix]
-                         for tag_ix in trained_model.decode(b_eval_toks, attention_mask=b_eval_attn_mask.bool())]
+                         for tag_ix in trained_model.decode(b_e_toks, attention_mask=b_e_attn_mask.bool())]
 
             for sid, sent_tag in zip(b_sent_ids, pred_tags):
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
                 w_ner = utils.sbwner2ner(sent_tag, aligned_ids)
-                w_tok = w_tok[1:-1]
-                w_ner = w_ner[1:-1]
+                if not non_bert:
+                    w_tok = w_tok[1:-1]
+                    w_ner = w_ner[1:-1]
                 assert len(w_tok) == len(w_ner)
                 fo.write(f'{eval_comment[sid]}\n')
                 for index, (tok, ner) in enumerate(zip(w_tok, w_ner)):
@@ -68,18 +69,33 @@ parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str
 parser.add_argument("--batch_size", default=16, type=int,
                     help="BATCH SIZE")
 
-parser.add_argument("--num_epoch", default=15, type=int,
+parser.add_argument("--num_epoch", default=10, type=int,
                     help="fine-tuning epoch number")
+
+parser.add_argument("--epoch_start_eval", default=3, type=int,
+                    help="epoch num starting eval with validation data")
 
 parser.add_argument("--do_train",
                     action='store_true',
                     help="Whether to run training.")
 
+parser.add_argument("--non_bert",
+                    action='store_true',
+                    help="use lstm + word embedding")
+
+parser.add_argument("--word_embedding",
+                    default="/home/feicheng/Resources/Embedding/keyed-6B-300.bin.gz",
+                    type=str,
+                    help="pre-trained word embedding")
+
 parser.add_argument("--enc_lr", default=5e-5, type=float,
                     help="encoder lr")
 
-parser.add_argument("--crf_lr", default=1e-2, type=float,
+parser.add_argument("--dec_lr", default=1e-2, type=float,
                     help="crf layer lr")
+
+parser.add_argument("--encoder_hidden_size", default=300, type=int,
+                    help="encoder hidden size")
 
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
                     help="Max gradient norm.")
@@ -97,7 +113,7 @@ parser.add_argument("--later_eval",
 parser.add_argument("--save_best", action='store', type=str, default='f1',
                     help="save the best model, given dev scores (f1 or loss)")
 
-parser.add_argument("--save_step_portion", default=3, type=int,
+parser.add_argument("--save_step_interval", default=3, type=int,
                     help="save best model given a portion of steps")
 
 parser.add_argument("--warmup_ratio", default=0.1, type=float,
@@ -111,7 +127,7 @@ parser.add_argument("--fp16_opt_level", type=str, default="O1",
                     help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
                     "See details at https://nvidia.github.io/apex/amp.html")
 
-parser.add_argument("--scheduled_lr",
+parser.add_argument("--non_scheduled_lr",
                     action='store_true',
                     help="learning rate schedule")
 
@@ -133,19 +149,27 @@ if args.do_train:
         args.train_file,
         down_neg=0.0
     )
-    max_len_train = utils.max_sents_len(train_toks, tokenizer)
     print(bio2ix)
-    print()
-    print('max training sent len:', max_len_train)
     print()
 
     dev_comments, dev_toks, dev_ners, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
         args.dev_file,
         down_neg=0.0
     )
-    max_len_dev = utils.max_sents_len(dev_toks, tokenizer)
-    print('max dev sent len:', )
-    print()
+    # non_bert for word embedding
+    if args.non_bert:
+        word2ix, weights = retrieve_w2v(args.word_embedding)
+        max_len_train = max([len(sent_tok) for sent_tok in train_toks])
+        max_len_dev = max([len(sent_tok) for sent_tok in dev_toks])
+        _, hidden_size = weights.shape
+    else:
+        word2ix, weights = None, None
+        max_len_train = utils.max_sents_len(train_toks, tokenizer)
+        max_len_dev = utils.max_sents_len(dev_toks, tokenizer)
+        hidden_size = 768
+        print('max training sent len:', max_len_train)
+        print('max dev sent len:', )
+        print()
 
     max_len = max(max_len_train, max_len_dev)
     cls_max_len = max_len + 2
@@ -163,13 +187,15 @@ if args.do_train:
     - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
     - wrap them into dataloader for mini-batch cutting
     """
-    train_dataset, train_comment, train_tok, train_ner, train_mod, train_rel, train_spo = utils.convert_rels_to_mhs_v3(
+    train_dataset, train_comment, train_tok, train_ner, train_mod, train_pair_mask, train_rel, train_rel_tup, train_spo = utils.extract_pipeline_data_from_mhs_conll(
         train_comments, train_toks, train_ners, train_mods, train_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
+        non_bert=args.non_bert, word2ix=word2ix, verbose=0)
 
-    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo = utils.convert_rels_to_mhs_v3(
+    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_pair_mask, dev_rel, dev_rel_tup, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
         dev_comments, dev_toks, dev_ners, dev_mods, dev_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
+        non_bert=args.non_bert, word2ix=word2ix, verbose=0)
 
     train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
     dev_dataloader = DataLoader(dev_dataset, batch_size=args.batch_size, shuffle=False)
@@ -177,13 +203,13 @@ if args.do_train:
     """
     Model
     """
-    model = BertCRF(args.pretrained_model, num_labels=len(bio2ix))
+    model = BertCRF(args.pretrained_model, hidden_size=args.encoder_hidden_size, num_labels=len(bio2ix), pretrain_embed=weights)
 
     # specify different lr
     param_optimizer = list(model.named_parameters())
     enc_name_list = ['encoder']
     optimizer_grouped_parameters = [
-        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in enc_name_list)], 'lr': args.crf_lr},
+        {'params': [p for n, p in param_optimizer if not any(nd in n for nd in enc_name_list)], 'lr': args.dec_lr},
         {'params': [p for n, p in param_optimizer if any(nd in n for nd in enc_name_list)], 'lr': args.enc_lr}
     ]
     optimizer = AdamW(
@@ -195,13 +221,14 @@ if args.do_train:
     # PyTorch scheduler
     num_epoch_steps = len(train_dataloader)
     num_training_steps = args.num_epoch * num_epoch_steps
-    save_step_interval = math.ceil(num_epoch_steps / args.save_step_portion)
+    save_step_interval = math.ceil(num_epoch_steps / args.save_step_interval)
 
-    scheduler = get_linear_schedule_with_warmup(
-        optimizer,
-        num_warmup_steps=num_training_steps * args.warmup_ratio,
-        num_training_steps=num_training_steps
-    )
+    if not args.non_scheduled_lr:
+        scheduler = get_linear_schedule_with_warmup(
+            optimizer,
+            num_warmup_steps=num_training_steps * args.warmup_ratio,
+            num_training_steps=num_training_steps
+        )
 
     # support fp16
     if args.fp16:
@@ -213,8 +240,6 @@ if args.do_train:
 
     best_dev_f1 = (float('-inf'), 0, 0)
 
-    save_step_interval = math.ceil(num_epoch_steps / 4)
-
     for epoch in range(1, args.num_epoch + 1):
 
         epoch_loss = 0.0
@@ -223,12 +248,18 @@ if args.do_train:
 
             model.train()
 
-            b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
+            b_tok, b_attn_mask, b_sent_mask, b_ner, b_ner_mask, b_mod = tuple(
                 t.to(args.device) for t in batch[1:]
             )
 
+            # for index, sent_id in enumerate(batch[0].tolist()):
+            #     print(train_tok[sent_id])
+            #     print(train_ner[sent_id])
+            #     print(b_tok[index][:10].tolist())
+            #     print(b_ner[index][:10].tolist())
+            #     print()
             # BERT loss, logits: (batch_size, seq_len, tag_num)
-            loss = model(b_toks, attention_mask=b_attn_mask.bool(), labels=b_ner)
+            loss = model(b_tok, attention_mask=b_attn_mask.bool(), labels=b_ner)
 
             epoch_loss += loss.item()
 
@@ -241,16 +272,17 @@ if args.do_train:
                 torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
 
             optimizer.step()
-            scheduler.step()
+            if not args.non_scheduled_lr:
+                scheduler.step()
             model.zero_grad()
 
             epoch_iterator.set_description(
                 f"L_NER: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 3:
+            if epoch > args.epoch_start_eval:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
-                    output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.device)
+                    output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.non_bert, args.device)
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
                     dev_f1 = (dev_evaluator.eval_ner(print_level=0), epoch, step)
                     if best_dev_f1[0] < dev_f1[0]:
@@ -295,16 +327,22 @@ else:
     test_comments, test_toks, test_ners, test_mods, test_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
         args.test_file,
         down_neg=0.0)
-    print(f"max sent len: {utils.max_sents_len(test_toks, tokenizer)}")
+    if args.non_bert:
+        word2ix, weights = retrieve_w2v(args.word_embedding)
+        max_len = max([len(sent_tok) for sent_tok in test_toks])
+    else:
+        word2ix, weights = None, None
+        max_len = utils.max_sents_len(test_toks, tokenizer)
+    print(f"max sent len: {max_len}")
     print(min([len(sent_rels) for sent_rels in test_rels]), max([len(sent_rels) for sent_rels in test_rels]))
     print()
 
-    max_len = utils.max_sents_len(test_toks, tokenizer)
     cls_max_len = max_len + 2
 
-    test_dataset, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo = utils.convert_rels_to_mhs_v3(
+    test_dataset, test_comment, test_tok, test_ner, test_mod, test_pair_mask, test_rel, test_rel_tup, test_spo = utils.extract_pipeline_data_from_mhs_conll(
         test_comments, test_toks, test_ners, test_mods, test_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
+        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
+        non_bert=args.non_bert, word2ix=word2ix, verbose=0)
 
     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
@@ -313,4 +351,6 @@ else:
     model.to(args.device)
 
     """ predict test out """
-    output_ner(model, test_dataloader, test_comments, test_tok, bio2ix, args.test_output, args.device)
+    output_ner(model, test_dataloader, test_comments, test_tok, bio2ix, args.test_output, args.non_bert, args.device)
+    test_evaluator = MhsEvaluator(args.test_file, args.test_output)
+    test_evaluator.eval_ner(print_level=1)

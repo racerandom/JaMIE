@@ -3,6 +3,8 @@ import torch
 from torch import nn
 from torch.nn import CrossEntropyLoss
 import torch.nn.functional as F
+import torch.optim as optim
+import torch.nn.utils.rnn as rnn
 
 from transformers import *
 from torchcrf import CRF
@@ -66,7 +68,7 @@ class SeqCertClassifier(BertPreTrainedModel):
 
 
 class BertCRF(nn.Module):
-    def __init__(self, encoder_url, num_labels, hidden_size=768, dropout_prob=0.1, pretrain_embed=None):
+    def __init__(self, encoder_url, num_labels, hidden_size=768, dropout_prob=0.5, pretrain_embed=None):
         super(BertCRF, self).__init__()
         self.num_labels = num_labels
         if pretrain_embed is not None:
@@ -76,7 +78,7 @@ class BertCRF(nn.Module):
                 freeze=True
             )
             vocab_size, embed_size = pretrain_embed.shape
-            self.encoder = nn.LSTM(embed_size, hidden_size, batch_first=True, bidirectional=True)
+            self.encoder = nn.LSTM(embed_size, hidden_size // 2, batch_first=True, bidirectional=True)
         else:
             self.is_bert = True
             self.encoder = BertModel.from_pretrained(encoder_url)
@@ -89,8 +91,17 @@ class BertCRF(nn.Module):
         if self.is_bert:
             encoder_logits = self.encoder(input_ix, attention_mask=attention_mask)[0]
         else:
+            batch_size, seq_len = input_ix.shape
+            input_lens = (input_ix != 0).sum(-1).tolist()
             embedded_input = self.word_embed(input_ix)
-            encoder_logits, _ = self.encoder(embedded_input)
+            packed_input = rnn.pack_padded_sequence(embedded_input, input_lens, batch_first=True, enforce_sorted=False)
+            encoder_logits, _ = self.encoder(packed_input)
+            encoder_logits, out_lens = rnn.pad_packed_sequence(
+                encoder_logits,
+                batch_first=True,
+                padding_value=0,
+                total_length=seq_len
+            )
         emissions = self.crf_emission(encoder_logits)
         crf_loss = -self.crf_layer(self.dropout(emissions), mask=attention_mask, tags=labels, reduction='token_mean')
         return crf_loss
@@ -99,8 +110,17 @@ class BertCRF(nn.Module):
         if self.is_bert:
             encoder_logits = self.encoder(input_ix, attention_mask=attention_mask)[0]
         else:
+            batch_size, seq_len = input_ix.shape
+            input_lens = (input_ix != 0).sum(-1).tolist()
             embedded_input = self.word_embed(input_ix)
-            encoder_logits, _ = self.encoder(embedded_input)
+            packed_input = rnn.pack_padded_sequence(embedded_input, input_lens, batch_first=True, enforce_sorted=False)
+            encoder_logits, _ = self.encoder(packed_input)
+            encoder_logits, out_lens = rnn.pad_packed_sequence(
+                encoder_logits,
+                batch_first=True,
+                padding_value=0,
+                total_length=seq_len
+            )
         emissions = self.crf_emission(encoder_logits)
         return self.crf_layer.decode(emissions, mask=attention_mask)
 
@@ -137,7 +157,7 @@ class LSTMCRF(nn.Module):
 
 class ModalityClassifier(nn.Module):
 
-    def __init__(self, encoder_url, num_labels, hidden_size=768, dropout_prob=0.1, pretrain_embed=None):
+    def __init__(self, encoder_url, num_labels, hidden_size=768, dropout_prob=0.5, pretrain_embed=None):
         super(ModalityClassifier, self).__init__()
         self.num_labels = num_labels
         if pretrain_embed is not None:
@@ -147,7 +167,7 @@ class ModalityClassifier(nn.Module):
                 freeze=True
             )
             vocab_size, embed_size = pretrain_embed.shape
-            self.encoder = nn.LSTM(embed_size, hidden_size, batch_first=True, bidirectional=True)
+            self.encoder = nn.LSTM(embed_size, int(hidden_size / 2), batch_first=True, bidirectional=True)
         else:
             self.is_bert = True
             self.encoder = BertModel.from_pretrained(encoder_url)
@@ -159,8 +179,17 @@ class ModalityClassifier(nn.Module):
         if self.is_bert:
             encoder_logits = self.encoder(input_ix, attention_mask=attention_mask)[0]
         else:
+            batch_size, seq_len = input_ix.shape
+            input_lens = (input_ix != 0).sum(-1).tolist()
             embedded_input = self.word_embed(input_ix)
-            encoder_logits, _ = self.encoder(embedded_input)
+            packed_input = rnn.pack_padded_sequence(embedded_input, input_lens, batch_first=True, enforce_sorted=False)
+            encoder_logits, _ = self.encoder(packed_input)
+            encoder_logits, out_lens = rnn.pad_packed_sequence(
+                encoder_logits,
+                batch_first=True,
+                padding_value=0,
+                total_length=seq_len
+            )
         # print(dm_mask.shape, dm_mask.dtype, encoder_logits.shape, encoder_logits.dtype)
         tag_rep = torch.bmm(dm_mask, encoder_logits)
         # print(tag_rep.shape)
@@ -178,7 +207,7 @@ class ModalityClassifier(nn.Module):
 
 class PipelineRelation(nn.Module):
 
-    def __init__(self, encoder_url, num_labels, hidden_size=768, dropout_prob=0.1, pretrain_embed=None):
+    def __init__(self, encoder_url, num_labels, hidden_size=768, rel_hidden_size=256, dropout_prob=0.1, pretrain_embed=None):
         super(PipelineRelation, self).__init__()
         self.num_labels = num_labels
         if pretrain_embed is not None:
@@ -193,7 +222,8 @@ class PipelineRelation(nn.Module):
             self.is_bert = True
             self.encoder = BertModel.from_pretrained(encoder_url)
         self.dropout = nn.Dropout(dropout_prob)
-        self.classifier = nn.Linear(2 * hidden_size, num_labels)
+        self.rel_layer = nn.Linear(2 * hidden_size, rel_hidden_size)
+        self.classifier = nn.Linear(rel_hidden_size, num_labels)
 
     def forward(self, input_ix, pair_mask, token_type_ids=None, attention_mask=None, labels=None):
         if self.is_bert:
@@ -206,7 +236,7 @@ class PipelineRelation(nn.Module):
         head_rep = torch.bmm(head_mask, encoder_logits)
         tail_rep = torch.bmm(tail_mask, encoder_logits)
         pooled_output = self.dropout(torch.cat((head_rep, tail_rep), dim=-1))
-        logits = self.classifier(pooled_output)
+        logits = self.classifier(self.dropout(self.rel_layer(pooled_output)))
         # print(logits.shape)
         if labels is not None:
             loss_fct = CrossEntropyLoss()

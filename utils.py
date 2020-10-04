@@ -95,7 +95,7 @@ def padding_3d(seq_3d, max_1d, max_2d, pad_tok=0):
 def match_ner_label(bpe_x, y):
     bpe_y = y.copy()
     for i in range(len(bpe_x)):
-        if bpe_x[i].startswith('##'):
+        if bpe_x[i].startswith('##') and len(bpe_x[i]) > 2:
             if '-' in bpe_y[i-1]:
                 bpe_y.insert(i, 'I' + bpe_y[i-1][1:])
             else:
@@ -106,7 +106,7 @@ def match_ner_label(bpe_x, y):
 def match_mod_label(bpe_x, y, default_lab='_'):
     bpe_y = y.copy()
     for i in range(len(bpe_x)):
-        if bpe_x[i].startswith('##'):
+        if bpe_x[i].startswith('##') and len(bpe_x[i]) > 2:
             lab_hist = bpe_y[i-1]
             bpe_y[i-1] = default_lab
             bpe_y.insert(i, lab_hist)
@@ -213,9 +213,17 @@ def retrieve_w2v(embed_file, binary=True, add_unk=True):
     weights = w2v.vectors
     word_list = w2v.index2word
     if add_unk:
+        # dont mess the order
         word_list.insert(0, '[UNK]')
         weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
+        word_list.insert(0, '[SEP]')
+        weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
+        word_list.insert(0, '[CLS]')
+        weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
+        word_list.insert(0, '[PAD]')
+        weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
     word2ix = {tok: tok_ix for tok_ix, tok in enumerate(word_list)}
+    print(f"loading word embedding {embed_file} completed, vocab size: {len(word2ix)}")
     return word2ix, weights
 
 
@@ -1497,7 +1505,7 @@ def convert_rels_to_tensors(ner_toks, ner_labs, rels,
 def align_sbw_ids(sbw_sent_toks):
     aligned_ids = []
     for index, token in enumerate(sbw_sent_toks):
-        if token.startswith("##"):
+        if token.startswith("##") and len(token) > 2:
             aligned_ids[-1].append(index)
         else:
             aligned_ids.append([index])
@@ -1809,7 +1817,10 @@ def extract_pipeline_data_from_mhs_conll(
         pad_tok='[PAD]',
         pad_mask_id=0,
         pad_lab_id=0,
-        deunk=True,
+        is_deunk=True,
+        non_bert=False,
+        is_uncased=True,
+        word2ix=None,
         bert_max_len=512,
         verbose=0
 ):
@@ -1822,19 +1833,37 @@ def extract_pipeline_data_from_mhs_conll(
             zip(comments, ner_toks, ners, mods, rels)):
 
         # wrapping data with [CLS] and [SEP]
-        if deunk:
-            sbw_sent_tok = explore_unk(tokenizer.tokenize(' '.join(sent_tok)), sent_tok)
+        if not non_bert:
+            if is_deunk:
+                sbw_sent_tok = explore_unk(tokenizer.tokenize(' '.join(sent_tok)), sent_tok)
+            else:
+                sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
         else:
-            sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
+
+            if not is_uncased:
+                sbw_sent_tok = sent_tok
+            else:
+                sbw_sent_tok = [tok.lower() for tok in sent_tok]
         sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
         sbw_sent_mod = match_mod_label(sbw_sent_tok, sent_mod)
+        #
+        # print(len(sbw_sent_tok), sbw_sent_tok)
+        # print(len(sbw_sent_ner), sbw_sent_ner)
+        # print(len(sbw_sent_mod), sbw_sent_mod)
+        # print(len(sbw_sent_tok), len(sent_ner), len(sbw_sent_ner))
+        # print()
+        if not non_bert:
+            cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
+            cls_sbw_sent_ner = ['O'] + sbw_sent_ner + ['O']
+            cls_sbw_sent_mod = ['_'] + sbw_sent_mod + ['_']
+        else:
+            cls_sbw_sent_tok = sbw_sent_tok
+            cls_sbw_sent_ner = sbw_sent_ner
+            cls_sbw_sent_mod = sbw_sent_mod
 
-        cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
         if len(cls_sbw_sent_tok) > bert_max_len:
             continue
 
-        cls_sbw_sent_ner = ['O'] + sbw_sent_ner + ['O']
-        cls_sbw_sent_mod = ['_'] + sbw_sent_mod + ['_']
         cls_sbw_sent_mask = [1] * len(cls_sbw_sent_tok)
 
         assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mod) == len(cls_sbw_sent_mask)
@@ -1851,8 +1880,12 @@ def extract_pipeline_data_from_mhs_conll(
 
         for index, (tail_mask, head_mask) in enumerate(cls_sbw_sent_pair_mask):
             for tail_ids, tail_lab, head_ids, head_lab, rel_tag in sent_rel:
-                tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
-                head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]
+                if not non_bert:
+                    tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+                    head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+                else:
+                    tail_last_id = cls_aligned_ids[int(tail_ids[-1])][-1]  # with the begining [CLS] + 1
+                    head_last_id = cls_aligned_ids[int(head_ids[-1])][-1]  # with the begining [CLS] + 1
                 if list_rindex(tail_mask, 1) == tail_last_id and list_rindex(head_mask, 1) == head_last_id:
                     cls_sbw_sent_rel[index] = rel_tag
         # print(cls_sbw_sent_rel)
@@ -1867,14 +1900,30 @@ def extract_pipeline_data_from_mhs_conll(
         sent_rel_tuples, sent_spo = [], []
 
         # align entity_ids in sent_rels
-        assert len(cls_aligned_ids) == (len(sent_tok) + 2)
+        if not non_bert:
+            assert len(cls_aligned_ids) == (len(sent_tok) + 2)
+        else:
+            assert len(cls_aligned_ids) == len(sent_tok)
+
         for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rel:
-            tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
-            head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+            if not non_bert:
+                # with the begining [CLS] + 1
+                tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]
+                head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]
+            else:
+                # same index
+                tail_last_id = cls_aligned_ids[int(tail_ids[-1])][-1]
+                head_last_id = cls_aligned_ids[int(head_ids[-1])][-1]
             rel_item = (tail_last_id, head_last_id, rel_lab)
             sent_rel_tuples.append(rel_item)
-            sbw_tail_tok = [cls_sbw_sent_tok[a_i] for o_i in tail_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
-            sbw_head_tok = [cls_sbw_sent_tok[a_i] for o_i in head_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
+            if not non_bert:
+                # with the begining [CLS] + 1
+                sbw_tail_tok = [cls_sbw_sent_tok[a_i] for o_i in tail_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
+                sbw_head_tok = [cls_sbw_sent_tok[a_i] for o_i in head_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
+            else:
+                # same index
+                sbw_tail_tok = [cls_sbw_sent_tok[a_i] for o_i in tail_ids for a_i in cls_aligned_ids[int(o_i)]]
+                sbw_head_tok = [cls_sbw_sent_tok[a_i] for o_i in head_ids for a_i in cls_aligned_ids[int(o_i)]]
             spo_item = {'subject': sbw_tail_tok, 'predicate': rel_lab, 'object': sbw_head_tok}
             sent_spo.append(spo_item)
             if verbose:
@@ -1911,13 +1960,24 @@ def extract_pipeline_data_from_mhs_conll(
     print(f"max sequence length:{cls_max_len}, max entity num: {entity_max_num}, max rel num:{rel_max_num}")
 
     # padding data to cls_max_len
-    padded_doc_tok_ix_t = torch.tensor(
-        [tokenizer.convert_tokens_to_ids(padding_1d(
-            sent_tok,
-            cls_max_len,
-            pad_tok=pad_tok
-        )) for sent_tok in doc_tok]
-    )
+    if not non_bert:
+        # word to index with bert tokenizer
+        padded_doc_tok_ix_t = torch.tensor(
+            [tokenizer.convert_tokens_to_ids(padding_1d(
+                sent_tok,
+                cls_max_len,
+                pad_tok=pad_tok
+            )) for sent_tok in doc_tok]
+        )
+    else:
+        # word to index with word2ix dictionary for non bert model
+        padded_doc_tok_ix_t = torch.tensor(
+            [[word2ix[t] if t in word2ix else word2ix['[UNK]'] for t in padding_1d(
+                sent_tok,
+                cls_max_len,
+                pad_tok=pad_tok
+            )] for sent_tok in doc_tok]
+        )
 
     padded_doc_attn_mask_t = torch.tensor(
         [padding_1d(

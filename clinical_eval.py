@@ -111,7 +111,7 @@ class TupleEvaluator(object):
 class MhsEvaluator(object):
     def __init__(self, gold_mhs_file, pred_mhs_file, f1_mode='micro'):
         self._gold_mhs = MultiheadConll(gold_mhs_file)
-        self._pred_mhs = MultiheadConll(pred_mhs_file)
+        self._pred_mhs = MultiheadConll(pred_mhs_file, prune_type=True)
         self.f1_mode = f1_mode
         self._ner_evaluator = TupleEvaluator()
         self._mod_evaluator = TupleEvaluator()
