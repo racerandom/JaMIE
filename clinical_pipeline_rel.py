@@ -162,6 +162,9 @@ parser.add_argument("--test_output", default='tmp/test.rel', type=str,
 parser.add_argument("--dev_output", default='tmp/dev.rel', type=str,
                     help="dev output filename")
 
+parser.add_argument("--epoch_start_eval", default=3, type=int,
+                    help="epoch num starting eval with validation data")
+
 parser.add_argument("--later_eval",
                     action='store_true',
                     help="Whether eval model every epoch.")
@@ -324,7 +327,7 @@ if args.do_train:
                 f"L_REL: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > 3:
+            if epoch > args.epoch_start_eval:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_rel(
                         model, dev_dataloader,

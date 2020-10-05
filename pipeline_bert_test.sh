@@ -2,6 +2,8 @@
 
 BERT="clinicalbert"
 BERT_URL="/home/feicheng/Tools/ClinicalBERT"
+#BERT="bert"
+#BERT_URL="bert-base-uncased"
 
 CUDA_VISIBLE_DEVICES=$1 python clinical_pipeline_ner.py \
 --saved_model "checkpoints/tmp/pipeline/ner/${BERT}/" \
