@@ -227,6 +227,29 @@ def retrieve_w2v(embed_file, binary=True, add_unk=True):
     return word2ix, weights
 
 
+def reduce_w2v(embed_file, tokens, binary=True, add_unk=True):
+    # return: word2ix, weights
+    w2v = KeyedVectors.load_word2vec_format(
+        embed_file,
+        binary=binary
+    )
+    weights = w2v.vectors
+    word_list = w2v.index2word
+    if add_unk:
+        # dont mess the order
+        word_list.insert(0, '[UNK]')
+        weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
+        word_list.insert(0, '[SEP]')
+        weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
+        word_list.insert(0, '[CLS]')
+        weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
+        word_list.insert(0, '[PAD]')
+        weights = np.insert(weights, 0, np.zeros(weights.shape[1]), 0)
+    word2ix = {tok: tok_ix for tok_ix, tok in enumerate(word_list)}
+    print(f"loading word embedding {embed_file} completed, vocab size: {len(word2ix)}")
+    return word2ix, weights
+
+
 # generate MHS conll files by reading .xml and .rel files
 def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphological_analyzer,
                                       sent_tag=True, defaut_modality='_',
