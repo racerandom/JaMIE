@@ -142,8 +142,11 @@ def main():
                         action='store_true',
                         help="tokenizer: do_lower_case")
 
-    parser.add_argument("--pred_file", default="tmp/pred.conll", type=str,
-                        help="test prediction, multihead conll format.")
+    parser.add_argument("--test_output", default='tmp/test.ner', type=str,
+                        help="test output filename")
+
+    parser.add_argument("--dev_output", default='tmp/dev.ner', type=str,
+                        help="dev output filename")
 
     parser.add_argument("--test_dir", default="tmp/", type=str,
                         help="test dir, multihead conll format.")
@@ -192,7 +195,7 @@ def main():
     parser.add_argument("--save_best", default='f1', type=str,
                         help="save the best model, given dev scores (f1 or loss)")
 
-    parser.add_argument("--save_step_portion", default=4, type=int,
+    parser.add_argument("--save_step_portion", default=3, type=int,
                         help="save best model given a portion of steps")
 
     parser.add_argument("--neg_ratio", default=1.0, type=float,
@@ -421,7 +424,8 @@ def main():
                 if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                         dev_f1 = eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                                            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", print_levels=(0, 0, 0), verbose=0)
+                                            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
+                                            print_levels=(0, 0, 0), out_file=args.dev_output, verbose=0)
                         dev_f1 += (epoch,)
                         dev_f1 += (step,)
                         if best_dev_f1[0] < dev_f1[0]:
@@ -532,8 +536,7 @@ def main():
 
             eval_joint(model, test_dataloader, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo,
                        bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
-                       print_levels=(2, 2, 2), out_file=args.pred_file, verbose=0)
-
+                       print_levels=(2, 2, 2), out_file=args.test_output, verbose=0)
 
 if __name__ == '__main__':
     main()
