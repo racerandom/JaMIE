@@ -164,7 +164,7 @@ def main():
     parser.add_argument("--num_epoch", default=20, type=int,
                         help="fine-tuning epoch number")
 
-    parser.add_argument("--embed_size", default='[64, 64, 512]', type=str,
+    parser.add_argument("--embed_size", default='[64, 64, 256]', type=str,
                         help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -177,7 +177,7 @@ def main():
                         action='store_true',
                         help="Whether to run training.")
 
-    parser.add_argument("--encoder_lr", default=2e-5, type=float,
+    parser.add_argument("--encoder_lr", default=5e-5, type=float,
                         help="learning rate")
 
     parser.add_argument("--decoder_lr", default=1e-2, type=float,

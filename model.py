@@ -621,13 +621,14 @@ class JointNerModReExtractor(nn.Module):
         # self.mhs_v = nn.Linear(hidden_size + ner_emb_size + mod_emb_size,
         #                        rel_emb_size, bias=False)
 
-        self.sel_u_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + ner_emb_size + mod_emb_size))
+        self.sel_u_mat = nn.Parameter(torch.Tensor(hidden_size + ner_emb_size + mod_emb_size, hidden_size + ner_emb_size + mod_emb_size))
         nn.init.kaiming_uniform_(self.sel_u_mat, a=math.sqrt(5))
 
-        self.sel_v_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + ner_emb_size + mod_emb_size))
+        self.sel_v_mat = nn.Parameter(torch.Tensor(hidden_size + ner_emb_size + mod_emb_size, hidden_size + ner_emb_size + mod_emb_size))
         nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
 
         self.drop_uv = nn.Dropout(p=0.1)
+        self.uv_rel = nn.Linear(hidden_size + ner_emb_size + mod_emb_size, rel_emb_size)
         self.rel_h2o = nn.Linear(rel_emb_size, len(rel_vocab), bias=False)
 
         self.id2ner = {v: k for k, v in self.ner_vocab.items()}
@@ -692,10 +693,10 @@ class JointNerModReExtractor(nn.Module):
         # broadcast sum: [b, l, 1, h] + [b, 1, l, h] = [b, l, l, h]
         u = o.matmul(self.sel_u_mat.t())  # [b, l, h_s] -> [b, l, r_s]
         v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
-        uv = self.activation(u.unsqueeze(2) + v.unsqueeze(1))
-        uv = self.drop_uv(uv)
+        uv = u.unsqueeze(2) + v.unsqueeze(1)
         # rel_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
-        rel_logits = self.rel_h2o(uv).transpose(2, 3)
+        uv_logits = self.drop_uv(self.activation(self.uv_rel(uv)))
+        rel_logits = self.rel_h2o(uv_logits).transpose(2, 3)
 
         if all(gold is not None for gold in [ner_gold, mod_gold, rel_gold]):
             rel_loss = self.masked_BCEloss(

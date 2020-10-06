@@ -1417,6 +1417,7 @@ def extract_rel_data_from_mh_conll_v2(conll_file, down_neg=0.0, del_neg=False):
     assert len(comments) == len(toks) == len(ner_labs) == len(mod_labs) == len(rel_tuples)
     print('number of sents:', len(toks))
     print('number of ne:', len([ner for sent_ner in ner_labs for ner in sent_ner if ner.startswith('B-')]))
+    print('number of mod', len([mod for sent_mod in mod_labs for mod in sent_mod if mod != '_']))
     print(
         'pos rels:', len([rel for sent_rel in rel_tuples for rel in sent_rel if rel[-1] != 'N']),
         'neg rels:', len([rel for sent_rel in rel_tuples for rel in sent_rel if rel[-1] == 'N'])
