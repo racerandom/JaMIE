@@ -1422,13 +1422,13 @@ def extract_rel_data_from_mh_conll_v2(conll_file, down_neg=0.0, del_neg=False):
         'pos rels:', len([rel for sent_rel in rel_tuples for rel in sent_rel if rel[-1] != 'N']),
         'neg rels:', len([rel for sent_rel in rel_tuples for rel in sent_rel if rel[-1] == 'N'])
     )
-    bio2ix = get_label2ix(ner_labs)
-    ne2ix = get_label2ix([[lab.split('-', 1)[-1] for lab in labs if '-' in lab] for labs in ner_labs])
-    mod2ix = get_label2ix(mod_labs)
+    bio2ix = get_label2ix(ner_labs, default={'O': 0})
+    ne2ix = get_label2ix([[lab.split('-', 1)[-1] for lab in labs if '-' in lab] for labs in ner_labs], default={'O': 0})
+    mod2ix = get_label2ix(mod_labs, default={'_': 0})
     if del_neg:
-        rel2ix = get_label2ix([eval(tok[col_names.index("relation")]) for sent in conll_sents for tok in sent], ignore_lab='N')
+        rel2ix = get_label2ix([eval(tok[col_names.index("relation")]) for sent in conll_sents for tok in sent], default={'N': 0}, ignore_lab='N')
     else:
-        rel2ix = get_label2ix([eval(tok[col_names.index("relation")]) for sent in conll_sents for tok in sent])
+        rel2ix = get_label2ix([eval(tok[col_names.index("relation")]) for sent in conll_sents for tok in sent], default={'N': 0})
 
     return comments, toks, ner_labs, mod_labs, rel_tuples, bio2ix, ne2ix, mod2ix, rel2ix
 
@@ -1815,6 +1815,14 @@ def sent_entity_mask(sent_ner):
     return ner_masks
 
 
+def sent_entity_tag(sent_ner):
+    ner_tags = []
+    ne_spans = data_utils.bio_to_spans(sent_ner)
+    for tag, start, end in ne_spans:
+        ner_tags.append(tag)
+    return ner_tags
+
+
 def list_rindex(li, x):
     for i in reversed(range(len(li))):
         if li[i] == x:
@@ -1828,6 +1836,14 @@ def sent_pair_mask(ner_masks):
         for head_mask in ner_masks:
             pair_masks.append((tail_mask, head_mask))
     return pair_masks
+
+
+def sent_pair_tag(sent_tags):
+    pair_tags = []
+    for tail_tag in sent_tags:
+        for head_tag in sent_tags:
+            pair_tags.append((tail_tag, head_tag))
+    return pair_tags
 
 
 # extract_pipeline_data_from_mhs_conll
@@ -1848,7 +1864,9 @@ def extract_pipeline_data_from_mhs_conll(
         bert_max_len=512,
         verbose=0
 ):
-    doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_mod, doc_ner_mask, doc_ner_mod, doc_ner_pair_mask, doc_rel, doc_rel_tup, doc_spo = [], [], [], [], [], [], [], [], [], [], [], []
+    doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_mod, \
+    doc_ner_mask, doc_ner_mod, doc_ner_pair_mask, doc_ner_pair_tag, doc_rel, doc_rel_tup, doc_spo = \
+        [], [], [], [], [], [], [], [], [], [], [], [], []
     rel_count = 0
     print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
     doc_num = len(ner_toks)
@@ -1901,6 +1919,8 @@ def extract_pipeline_data_from_mhs_conll(
         # entity_pair_rel
         cls_sbw_sent_pair_mask = sent_pair_mask(sent_entity_mask(cls_sbw_sent_ner))
         cls_sbw_sent_rel = ['N'] * len(cls_sbw_sent_pair_mask)
+        sent_entity_tags = sent_entity_tag(cls_sbw_sent_ner)
+        cls_sbw_sent_pair_tag = sent_pair_tag(sent_entity_tags)
 
         for index, (tail_mask, head_mask) in enumerate(cls_sbw_sent_pair_mask):
             for tail_ids, tail_lab, head_ids, head_lab, rel_tag in sent_rel:
@@ -1968,6 +1988,7 @@ def extract_pipeline_data_from_mhs_conll(
         doc_ner_mask.append(cls_sbw_ner_mask)  # b x e x l
         doc_ner_mod.append(cls_sbw_ner_mod)  # b x e x l
         doc_ner_pair_mask.append(cls_sbw_sent_pair_mask)  # b x e^2 x 2l
+        doc_ner_pair_tag.append(cls_sbw_sent_pair_tag) # b x e^2 x 2
         doc_rel.append(cls_sbw_sent_rel)  # b x e^2
         doc_rel_tup.append(sent_rel_tuples)
         doc_spo.append(sent_spo)
@@ -2045,7 +2066,6 @@ def extract_pipeline_data_from_mhs_conll(
           padded_doc_ner_ix_t.shape,
           padded_doc_ner_mask_ix_t.shape,
           padded_doc_ner_mod_ix_t.shape,
-          # padded_doc_rel_ix_t.shape,
           len(doc_rel))
     print("positive rel count:", rel_count)
     print()
@@ -2058,7 +2078,8 @@ def extract_pipeline_data_from_mhs_conll(
         padded_doc_ner_mask_ix_t,
         padded_doc_ner_mod_ix_t
     )
-    return tensor_dataset, doc_comment, doc_tok, doc_ner, doc_mod, doc_ner_pair_mask, doc_rel, doc_rel_tup, doc_spo
+    return tensor_dataset, doc_comment, doc_tok, doc_ner, doc_mod, \
+           doc_ner_pair_mask, doc_ner_pair_tag, doc_rel, doc_rel_tup, doc_spo
 
 
 # clinical_mhs.py related

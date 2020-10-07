@@ -200,12 +200,14 @@ if args.do_train:
     - wrap them into dataloader for mini-batch cutting
     """
 
-    train_dataset, train_comment, train_tok, train_ner, train_mod, train_pair_mask, train_rel, train_rel_tup, train_spo = utils.extract_pipeline_data_from_mhs_conll(
+    train_dataset, train_comment, train_tok, train_ner, train_mod, \
+    train_pair_mask, train_pair_tag, train_rel, train_rel_tup, train_spo = utils.extract_pipeline_data_from_mhs_conll(
         train_comments, train_toks, train_ners, train_mods, train_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
         non_bert=args.non_bert, word2ix=word2ix, verbose=0)
 
-    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_pair_mask, dev_rel, dev_rel_tup, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
+    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, \
+    dev_pair_mask, dev_pair_tag, dev_rel, dev_rel_tup, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
         dev_comments, dev_toks, dev_ners, dev_mods, dev_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
         non_bert=args.non_bert, word2ix=word2ix, verbose=0)
@@ -349,7 +351,8 @@ else:
 
     cls_max_len = max_len + 2
 
-    test_dataset, test_comment, test_tok, test_ner, test_mod, test_pair_mask, test_rel, test_rel_tup, test_spo = utils.extract_pipeline_data_from_mhs_conll(
+    test_dataset, test_comment, test_tok, test_ner, test_mod, \
+    test_pair_mask, test_pair_tag, test_rel, test_rel_tup, test_spo = utils.extract_pipeline_data_from_mhs_conll(
         test_comments, test_toks, test_ners, test_mods, test_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
         non_bert=args.non_bert, word2ix=word2ix, verbose=0)

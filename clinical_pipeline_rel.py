@@ -17,26 +17,47 @@ def generate_batch_pair_mask_t(doc_pair_mask, batch_sent_ids, cls_max_len):
 
     batch_tail_mask = [[pair_mask[0] for pair_mask in doc_pair_mask[sent_id]] for sent_id in batch_sent_ids]
     batch_head_mask = [[pair_mask[1] for pair_mask in doc_pair_mask[sent_id]] for sent_id in batch_sent_ids]
-    rel_max_num = max([len(sent_pair) for sent_pair in batch_tail_mask])
+    pair_max_num = max([len(sent_pair) for sent_pair in batch_tail_mask])
     padded_doc_tail_mask_ix_t = torch.tensor(
         padding_3d(
             batch_tail_mask,
             cls_max_len,
-            rel_max_num
+            pair_max_num
         )
     )
     padded_doc_head_mask_ix_t = torch.tensor(
         padding_3d(
             batch_head_mask,
             cls_max_len,
-            rel_max_num
+            pair_max_num
         )
     )
     padded_doc_pair_mask_ix_t = torch.cat((padded_doc_tail_mask_ix_t, padded_doc_head_mask_ix_t), dim=-1)
     return padded_doc_pair_mask_ix_t
 
 
-def generate_batch_rel_t(doc_rel, batch_sent_ids):
+def generate_batch_pair_tag_t(doc_pair_tag, batch_sent_ids, ne2ix):
+    batch_tail_tag = [[pair_tag[0] for pair_tag in doc_pair_tag[sent_id]] for sent_id in batch_sent_ids]
+    batch_head_tag = [[pair_tag[1] for pair_tag in doc_pair_tag[sent_id]] for sent_id in batch_sent_ids]
+    pair_max_num = max([len(sent_tag) for sent_tag in batch_tail_tag])
+    padded_doc_tail_tag_t = torch.tensor(
+        [padding_1d(
+            [ne2ix[tag] for tag in sent_tail],
+            pair_max_num,
+            pad_tok=0
+        ) for sent_tail in batch_tail_tag]
+    )
+    padded_doc_head_tag_t = torch.tensor(
+        [padding_1d(
+            [ne2ix[tag] for tag in sent_head],
+            pair_max_num,
+            pad_tok=0
+        ) for sent_head in batch_head_tag]
+    )
+    return padded_doc_tail_tag_t, padded_doc_head_tag_t
+
+
+def generate_batch_rel_t(doc_rel, batch_sent_ids, rel2ix):
     batch_rel = [doc_rel[sent_id] for sent_id in batch_sent_ids]
     rel_max_num = max([len(sent_rel) for sent_rel in batch_rel])
     padded_doc_rel_ix_t = torch.tensor(
@@ -51,13 +72,13 @@ def generate_batch_rel_t(doc_rel, batch_sent_ids):
 
 def output_rel(
         trained_model,
-        eval_dataloader, eval_comment, eval_tok, eval_ner, eval_mod, eval_pair_mask,
-        rel2ix, cls_max_len, rel_outfile, device
+        eval_dataloader, eval_comment, eval_tok, eval_ner, eval_mod, eval_pair_mask, eval_pair_tag,
+        rel2ix, cls_max_len, rel_outfile, device, test_mode=False
 ):
     ix2rel = {v: k for k, v in rel2ix.items()}
     trained_model.eval()
     with torch.no_grad(), open(rel_outfile, 'w') as fo:
-        for dev_step, dev_batch in enumerate(eval_dataloader):
+        for dev_batch in tqdm(eval_dataloader, desc="Testing", disable=not test_mode):
             b_e_toks, b_e_attn_mask, b_e_sent_mask, b_e_ner, b_e_ner_mask, b_e_mod = tuple(
                 t.to(device) for t in dev_batch[1:]
             )
@@ -70,7 +91,10 @@ def output_rel(
             b_e_pair_mask = generate_batch_pair_mask_t(eval_pair_mask, b_sent_ids, cls_max_len).to(device)
             if len(b_e_pair_mask.shape) > 2:
                 b, e, l = b_e_pair_mask.shape
-                pred_logit = trained_model(b_e_toks, b_e_pair_mask.float().float(), attention_mask=b_e_attn_mask.bool())
+                b_e_pair_tail, b_e_pair_head = generate_batch_pair_tag_t(eval_pair_tag, b_sent_ids, ne2ix)
+                pred_logit = trained_model(
+                    b_e_toks, b_e_pair_mask.float(),
+                    b_e_pair_tail.to(device), b_e_pair_head.to(device), attention_mask=b_e_attn_mask.bool())
                 pred_tag_ix = pred_logit.argmax(-1).view(-1).cpu()  # flatten batch x entity
                 tag_mask = torch.tensor([True if m != [0] * l else False for m in b_e_pair_mask.view(-1, l).tolist()])
                 pred_tag = pred_tag_ix.masked_select(tag_mask).tolist()
@@ -207,6 +231,7 @@ if args.do_train:
     )
     max_len_train = utils.max_sents_len(train_toks, tokenizer)
     print(bio2ix)
+    print(ne2ix)
     print(mod2ix)
     print(rel2ix)
     print()
@@ -237,11 +262,13 @@ if args.do_train:
     - Generate train/test tensors including (token_ids, mask_ids, label_ids) 
     - wrap them into dataloader for mini-batch cutting
     """
-    train_dataset, train_comment, train_tok, train_ner, train_mod, train_pair_mask, train_rel, train_rel_tup, train_spo = utils.extract_pipeline_data_from_mhs_conll(
+    train_dataset, train_comment, train_tok, train_ner, train_mod, \
+    train_pair_mask, train_pair_tag, train_rel, train_rel_tup, train_spo = utils.extract_pipeline_data_from_mhs_conll(
         train_comments, train_toks, train_ners, train_mods, train_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
-    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, dev_pair_mask, dev_rel, dev_rel_tup, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
+    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, \
+    dev_pair_mask, dev_pair_tag, dev_rel, dev_rel_tup, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
         dev_comments, dev_toks, dev_ners, dev_mods, dev_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
@@ -251,7 +278,7 @@ if args.do_train:
     """
     Model
     """
-    model = PipelineRelation(args.pretrained_model, len(rel2ix))
+    model = PipelineRelation(args.pretrained_model, len(ne2ix), len(rel2ix))
 
     # specify different lr
     param_optimizer = list(model.named_parameters())
@@ -302,12 +329,13 @@ if args.do_train:
             b_sent_ids = batch[0].tolist()
 
             b_pair_mask = generate_batch_pair_mask_t(train_pair_mask, b_sent_ids, cls_max_len).to(args.device)
-            b_rel = generate_batch_rel_t(train_rel, b_sent_ids).to(args.device)
-
+            b_pair_tail, b_pair_head = generate_batch_pair_tag_t(train_pair_tag, b_sent_ids, ne2ix)
+            b_rel = generate_batch_rel_t(train_rel, b_sent_ids, rel2ix).to(args.device)
             if len(b_pair_mask.shape) < 3:
                 continue
             # BERT loss, logits: (batch_size, seq_len, tag_num)
-            loss = model(b_toks, b_pair_mask.float(), attention_mask=b_attn_mask.bool(), labels=b_rel)
+            loss = model(b_toks, b_pair_mask.float(), b_pair_tail.to(args.device), b_pair_head.to(args.device),
+                         attention_mask=b_attn_mask.bool(), labels=b_rel)
 
             epoch_loss += loss.item()
 
@@ -331,7 +359,7 @@ if args.do_train:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_rel(
                         model, dev_dataloader,
-                        dev_comments, dev_tok, dev_ner, dev_mod, dev_pair_mask,
+                        dev_comments, dev_tok, dev_ner, dev_mod, dev_pair_mask, dev_pair_tag,
                         rel2ix, cls_max_len, args.dev_output, args.device
                     )
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
@@ -352,16 +380,20 @@ if args.do_train:
                         tokenizer.save_pretrained(args.saved_model)
                         with open(os.path.join(args.saved_model, 'ner2ix.json'), 'w') as fp:
                             json.dump(bio2ix, fp)
+                        with open(os.path.join(args.saved_model, 'ne2ix.json'), 'w') as fp:
+                            json.dump(ne2ix, fp)
                         with open(os.path.join(args.saved_model, 'mod2ix.json'), 'w') as fp:
                             json.dump(mod2ix, fp)
                         with open(os.path.join(args.saved_model, 'rel2ix.json'), 'w') as fp:
                             json.dump(rel2ix, fp)
+                    if num_training_steps == step + 1:
+                        dev_evaluator.eval_rel(print_level=1)
     print(f"Best dev f1 {best_dev_f1[0]:.6f}; epoch {best_dev_f1[1]:d} / step {best_dev_f1[2]:d}\n")
     model.load_state_dict(torch.load(os.path.join(args.saved_model, 'model.pt')))
     torch.save(model, os.path.join(args.saved_model, 'model.pt'))
     output_rel(
         model, dev_dataloader,
-        dev_comments, dev_tok, dev_ner, dev_mod, dev_pair_mask,
+        dev_comments, dev_tok, dev_ner, dev_mod, dev_pair_mask, dev_pair_tag,
         rel2ix, cls_max_len, args.dev_output, args.device
     )
 else:
@@ -374,6 +406,8 @@ else:
     )
     with open(os.path.join(args.saved_model, 'ner2ix.json')) as json_fi:
         bio2ix = json.load(json_fi)
+    with open(os.path.join(args.saved_model, 'ne2ix.json')) as json_fi:
+        ne2ix = json.load(json_fi)
     with open(os.path.join(args.saved_model, 'mod2ix.json')) as json_fi:
         mod2ix = json.load(json_fi)
     with open(os.path.join(args.saved_model, 'rel2ix.json')) as json_fi:
@@ -390,7 +424,7 @@ else:
     max_len = utils.max_sents_len(test_toks, tokenizer)
     cls_max_len = max_len + 2
 
-    test_dataset, test_comment, test_tok, test_ner, test_mod, test_pair_mask, test_rel, test_rel_tup, test_spo = utils.extract_pipeline_data_from_mhs_conll(
+    test_dataset, test_comment, test_tok, test_ner, test_mod, test_pair_mask, test_pair_tag, test_rel, test_rel_tup, test_spo = utils.extract_pipeline_data_from_mhs_conll(
         test_comments, test_toks, test_ners, test_mods, test_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len, verbose=0)
 
@@ -403,7 +437,7 @@ else:
     """ predict test out """
     output_rel(
         model, test_dataloader,
-        test_comments, test_tok, test_ner, test_mod, test_pair_mask,
-        rel2ix, cls_max_len, args.test_output, args.device)
+        test_comments, test_tok, test_ner, test_mod, test_pair_mask, test_pair_tag,
+        rel2ix, cls_max_len, args.test_output, args.device, test_mode=True)
     test_evaluator = MhsEvaluator(args.test_file, args.test_output)
     test_evaluator.eval_rel(print_level=1)

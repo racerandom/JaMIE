@@ -207,9 +207,9 @@ class ModalityClassifier(nn.Module):
 
 class PipelineRelation(nn.Module):
 
-    def __init__(self, encoder_url, num_labels, hidden_size=768, rel_hidden_size=256, dropout_prob=0.1, pretrain_embed=None):
+    def __init__(self, encoder_url, num_ne, num_rel, ne_embed_size=32, hidden_size=768, rel_hidden_size=256, dropout_prob=0.1, pretrain_embed=None):
         super(PipelineRelation, self).__init__()
-        self.num_labels = num_labels
+        self.num_rel = num_rel
         if pretrain_embed is not None:
             self.is_bert = False
             self.word_embed = nn.Embedding.from_pretrained(
@@ -221,26 +221,33 @@ class PipelineRelation(nn.Module):
         else:
             self.is_bert = True
             self.encoder = BertModel.from_pretrained(encoder_url)
+        self.ne_embed = nn.Embedding(num_ne, ne_embed_size)
         self.dropout = nn.Dropout(dropout_prob)
-        self.rel_layer = nn.Linear(2 * hidden_size, rel_hidden_size)
-        self.classifier = nn.Linear(rel_hidden_size, num_labels)
+        self.pair2rel = nn.Linear(2 * (hidden_size + ne_embed_size), rel_hidden_size)
+        self.classifier = nn.Linear(rel_hidden_size, num_rel)
 
-    def forward(self, input_ix, pair_mask, token_type_ids=None, attention_mask=None, labels=None):
+    def forward(self, input_ix, pair_mask, pair_tail, pair_head, token_type_ids=None, attention_mask=None, labels=None):
+        # print(input_ix.dtype, pair_mask.dtype, pair_tail.dtype, pair_head.dtype)
+        # print(input_ix.shape, pair_mask.shape, pair_tail.shape, pair_head.shape)
         if self.is_bert:
             encoder_logits = self.encoder(input_ix, attention_mask=attention_mask)[0]
         else:
             embedded_input = self.word_embed(input_ix)
             encoder_logits, _ = self.encoder(embedded_input)
         b, e, l = pair_mask.shape
-        head_mask, tail_mask = pair_mask.split(int(l / 2), -1)
-        head_rep = torch.bmm(head_mask, encoder_logits)
+        tail_mask, head_mask = pair_mask.split(int(l / 2), -1)
         tail_rep = torch.bmm(tail_mask, encoder_logits)
-        pooled_output = self.dropout(torch.cat((head_rep, tail_rep), dim=-1))
-        logits = self.classifier(self.dropout(self.rel_layer(pooled_output)))
+        head_rep = torch.bmm(head_mask, encoder_logits)
+        tail_tag = self.ne_embed(pair_tail)
+        head_tag = self.ne_embed(pair_head)
+        # print(tail_tag)
+
+        pooled_output = self.dropout(torch.cat((tail_rep, tail_tag, head_rep, head_tag), dim=-1))
+        logits = self.classifier(self.dropout(F.relu(self.pair2rel(pooled_output))))
         # print(logits.shape)
         if labels is not None:
             loss_fct = CrossEntropyLoss()
-            loss = loss_fct(logits.view(-1, self.num_labels), labels.view(-1))
+            loss = loss_fct(logits.view(-1, self.num_rel), labels.view(-1))
             return loss
         else:
             # print('fw:', logits.shape)
