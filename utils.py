@@ -2139,16 +2139,20 @@ def extract_pipeline_data_from_mhs_conll(
         sent_entity_tags = sent_entity_tag(cls_sbw_sent_ner)
         cls_sbw_sent_pair_tag = sent_pair_tag(sent_entity_tags)
 
+        pair2rel = {}
+        for tail_ids, tail_lab, head_ids, head_lab, rel_tag in sent_rel:
+            if not non_bert:
+                tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+                head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
+            else:
+                tail_last_id = cls_aligned_ids[int(tail_ids[-1])][-1]  # with the begining [CLS] + 1
+                head_last_id = cls_aligned_ids[int(head_ids[-1])][-1]  # with the begining [CLS] + 1
+            pair2rel[(tail_last_id, head_last_id)] = rel_tag
+
         for index, (tail_mask, head_mask) in enumerate(cls_sbw_sent_pair_mask):
-            for tail_ids, tail_lab, head_ids, head_lab, rel_tag in sent_rel:
-                if not non_bert:
-                    tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
-                    head_last_id = cls_aligned_ids[int(head_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
-                else:
-                    tail_last_id = cls_aligned_ids[int(tail_ids[-1])][-1]  # with the begining [CLS] + 1
-                    head_last_id = cls_aligned_ids[int(head_ids[-1])][-1]  # with the begining [CLS] + 1
-                if list_rindex(tail_mask, 1) == tail_last_id and list_rindex(head_mask, 1) == head_last_id:
-                    cls_sbw_sent_rel[index] = rel_tag
+            pair_key = (list_rindex(tail_mask, 1), list_rindex(head_mask, 1))
+            if pair_key in pair2rel:
+                cls_sbw_sent_rel[index] = pair2rel[pair_key]
         # print(cls_sbw_sent_rel)
 
         if verbose:
