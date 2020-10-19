@@ -2139,6 +2139,7 @@ def extract_pipeline_data_from_mhs_conll(
         sent_entity_tags = sent_entity_tag(cls_sbw_sent_ner)
         cls_sbw_sent_pair_tag = sent_pair_tag(sent_entity_tags)
 
+        # pair last_ids to relation
         pair2rel = {}
         for tail_ids, tail_lab, head_ids, head_lab, rel_tag in sent_rel:
             if not non_bert:

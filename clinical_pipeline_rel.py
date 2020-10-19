@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 import warnings
+import random
 from tqdm import tqdm
 from utils import *
 from torch.utils.data import Dataset, DataLoader, RandomSampler, TensorDataset
@@ -59,12 +60,12 @@ def generate_batch_pair_tag_t(doc_pair_tag, batch_sent_ids, ne2ix):
     return padded_doc_tail_tag_t, padded_doc_head_tag_t
 
 
-def generate_batch_rel_t(doc_rel, batch_sent_ids, rel2ix):
+def generate_batch_rel_t(doc_rel, batch_sent_ids, rel2ix, neg_ratio):
     batch_rel = [doc_rel[sent_id] for sent_id in batch_sent_ids]
     rel_max_num = max([len(sent_rel) for sent_rel in batch_rel])
     padded_doc_rel_ix_t = torch.tensor(
         [padding_1d(
-            [rel2ix[rel] for rel in sent_rel],
+            [-100 if rel == 'N' and random.random() < neg_ratio else rel2ix[rel] for rel in sent_rel],
             rel_max_num,
             pad_tok=-100
         ) for sent_rel in batch_rel]
@@ -201,8 +202,11 @@ parser.add_argument("--save_best", action='store', type=str, default='f1',
 parser.add_argument("--logging_interval", default=3, type=int,
                     help="save best model given a portion of steps")
 
-parser.add_argument("--warmup_ratio", default=0.1, type=float,
-                    help="warmup ratio")
+parser.add_argument("--warmup_epoch", default=2, type=float,
+                    help="warmup epoch")
+
+parser.add_argument("--neg_ratio", default=0.5, type=float,
+                    help="negative sampling ratio")
 
 parser.add_argument("--fp16",
                     action='store_true',
@@ -253,7 +257,7 @@ if args.do_train:
     cls_max_len = max_len + 2
     print(f"max seq len: {max_len}, max seq len with [CLS] and [SEP]: {cls_max_len}")
 
-    example_id = 25
+    example_id = 7
 
     print(f"Random example: id {example_id}, len: {len(train_toks[example_id])}")
     for tok_id in range(len(train_toks[example_id])):
@@ -303,7 +307,7 @@ if args.do_train:
 
     scheduler = get_linear_schedule_with_warmup(
         optimizer,
-        num_warmup_steps=num_training_steps * args.warmup_ratio,
+        num_warmup_steps=num_epoch_steps * args.warmup_epoch,
         num_training_steps=num_training_steps
     )
 
@@ -341,7 +345,7 @@ if args.do_train:
 
             b_pair_mask = generate_batch_pair_mask_t(train_pair_mask, b_sent_ids, cls_max_len).to(args.device)
             b_pair_tail, b_pair_head = generate_batch_pair_tag_t(train_pair_tag, b_sent_ids, ne2ix)
-            b_rel = generate_batch_rel_t(train_rel, b_sent_ids, rel2ix).to(args.device)
+            b_rel = generate_batch_rel_t(train_rel, b_sent_ids, rel2ix, args.neg_ratio).to(args.device)
             if len(b_pair_mask.shape) < 3:
                 continue
             # BERT loss, logits: (batch_size, seq_len, tag_num)
