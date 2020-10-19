@@ -65,7 +65,7 @@ def generate_batch_rel_t(doc_rel, batch_sent_ids, rel2ix, neg_ratio):
     rel_max_num = max([len(sent_rel) for sent_rel in batch_rel])
     padded_doc_rel_ix_t = torch.tensor(
         [padding_1d(
-            [-100 if rel == 'N' and random.random() < neg_ratio else rel2ix[rel] for rel in sent_rel],
+            [-100 if (rel == 'N' and random.random() > neg_ratio) else rel2ix[rel] for rel in sent_rel],
             rel_max_num,
             pad_tok=-100
         ) for sent_rel in batch_rel]
@@ -161,7 +161,7 @@ parser.add_argument("--train_file", default="data/2020Q2/mr20200605_rev/conll/tr
 parser.add_argument("--dev_file", default="data/2020Q2/mr20200605_rev/conll/test.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/2020Q2/ncc2k/conll/test.conll", type=str,
+parser.add_argument("--test_file", default="data/2020Q2/mr20200605_rev/conll/test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=16, type=int,
@@ -423,6 +423,8 @@ if args.do_train:
         rel2ix, cls_max_len, args.dev_output, args.device
     )
     tb_writer.close()
+    dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
+    dev_evaluator.eval_rel(print_level=2)
 else:
     """ load the new tokenizer"""
     print("test_mode:", args.saved_model)
