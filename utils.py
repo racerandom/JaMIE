@@ -426,6 +426,7 @@ def convert_clinical_data_to_relconll(clinical_file, fo, tokenizer, morphologica
                     print(ex)
     return sent_stat
 
+
 def batch_convert_clinical_data_to_relconll(
     file_list, file_out, tokenizer,
     sent_tag=True,
@@ -619,6 +620,221 @@ def batch_convert_document_to_relconll(
                         is_raw=is_raw,
                         bert_tokenizer=bert_tokenizer
                     ))
+                except Exception as ex:
+                    print('[error]:' + file)
+                    print(ex)
+    print(f"max length: {max(doc_tok_lens)}, {sum(i > 510 for i in doc_tok_lens)} docs > 510, total {len(doc_tok_lens)} docs")
+
+
+def bert_sent_len(line, bert_tokenizer, mor_analyzer):
+    line = line.strip().replace('\r', '')
+    line = line.replace('>>', '>＞').replace('<<', '＜<')
+    line = '<sentence>' + line + '</sentence>'
+    st = ET.fromstring(line)
+    toks = []
+    for item in st:
+        if item.text is not None:
+            toks += mor_analyzer.analyze(item.text)
+        if item.tail is not None:
+            toks += mor_analyzer.analyze(item.tail)
+    toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
+    toks = ['[SEP]' if t in ['ＳＥＰ'] else mojimoji.han_to_zen(t) for t in toks]
+    return len(bert_tokenizer.tokenize(' '.join(toks)))
+
+
+# generate document-level MHS conll file by reading .xml
+def convert_document_to_conll(clinical_file, fo, mor_analyzer,
+                              sent_tag=True, defaut_modality='_',
+                              contains_modality=False,
+                              with_dct=False,
+                              is_raw=False,
+                              bert_tokenizer=None,
+                              len_limit=512):
+    from collections import defaultdict
+    '''store relations to rel_dic'''
+    rel_dic = defaultdict(lambda: [[], []])
+    with open(clinical_file) as fi:
+        file_str = fi.read()
+        file_xml = ET.fromstring("<doc>" + file_str + "</doc>")
+        for elem in file_xml:
+            if with_dct and "DCT-Rel" in elem.attrib:
+                tail_tid = elem.attrib["tid"]
+                rel = elem.attrib["DCT-Rel"]
+                rel_dic[tail_tid][0].append(tail_tid)
+                rel_dic[tail_tid][1].append(rel)
+            if "rel" in elem.tag:
+                tail_tid = elem.attrib["arg1"]
+                head_tid = elem.attrib["arg2"]
+                rel = elem.attrib["reltype"]
+                rel_dic[tail_tid][0].append(head_tid)
+                rel_dic[tail_tid][1].append(rel)
+
+    '''read xml file'''
+    line_list = [line_str for line_str in file_str.split('\n') if line_str.strip() and (line_str[1:5] not in ['trel', 'brel'])]
+
+    trunk_list = [[]]
+    for line in line_list:
+        if not any(trunk_list):
+            trunk_list[-1].append(line)
+        elif line.startswith("## line"):
+            trunk_list.append([line])
+        else:
+            if trunk_list[-1][-1].startswith("## line"):
+                trunk_list.append([line])
+            else:
+                if bert_sent_len('SEP'.join(trunk_list[-1]) + 'SEP' + line, bert_tokenizer, mor_analyzer) + 2 < len_limit:
+                    trunk_list[-1].append(line)
+                else:
+                    trunk_list.append([line])
+
+    trunk_list = ['SEP'.join(line) for line in trunk_list]
+
+    comment_line = None
+
+    length_list = []
+    for line in trunk_list:
+        try:
+            line = line.strip().replace('\r', '')
+
+            if line.startswith('## line'):
+                comment_line = line
+            else:
+                line = line.replace('>>', '>＞').replace('<<', '＜<')
+
+                if is_raw:
+                    line = line.replace('#', '＃')  # a solution to fix juman casting #
+                    line = line.replace('<', '＜')
+                    line = line.replace('>', '＞')
+
+                if not is_raw:
+                    line = '<sentence>' + line + '</sentence>'
+                    tag2mask = {}
+                    st = ET.fromstring(line)
+                    current_tid = 1
+                    toks, labs, modality_labs = [], [], []
+                    for item in st:
+                        if item.text is not None:
+                            seg_toks = mor_analyzer.analyze(item.text)
+                            toks += seg_toks
+                            # if item.tag in ['event', 'TIMEX3',
+                            #                 'd', 'a', 'f', 'c', 'C', 't', 'r',
+                            #                 'm-key', 'm-val', 't-test', 't-key', 't-val', 'cc']:
+                            if item.tag != 'sentence':
+                                if 'tid' in item.attrib:
+                                    tag_tid = item.attrib['tid']
+                                else:
+                                    tag_tid = f"T{current_tid}"
+                                    current_tid += 1
+                                tag2mask[tag_tid] = [0] * len(labs) + [1] * len(seg_toks)
+                                tok_labs = ['I-%s' % (item.tag.capitalize())] * len(seg_toks)
+                                tok_labs[0] = 'B-%s' % (item.tag.capitalize())
+                                labs += tok_labs
+
+                                phrase_modality_labs = ['_'] * len(seg_toks)
+
+                                if item.tag in ['d', 'D'] and 'certainty' in item.attrib:
+                                    phrase_modality_labs[-1] = item.attrib['certainty']
+
+                                if item.tag in ['TIMEX3', 'Timex3'] and 'type' in item.attrib:
+                                    phrase_modality_labs[-1] = item.attrib['type']
+
+                                if 'state' in item.attrib:
+                                    phrase_modality_labs[-1] = item.attrib['state']
+
+                                modality_labs += phrase_modality_labs
+                            else:
+                                if item.tag not in ['sentence', 'p']:
+                                    print(item.tag)
+                                labs += ['O'] * len(seg_toks)
+                                modality_labs += ['_'] * len(seg_toks)
+                        if item.tail is not None:
+                            seg_tail = mor_analyzer.analyze(item.tail)
+                            toks += seg_tail
+                            labs += ['O'] * len(seg_tail)
+                            modality_labs += ['_'] * len(seg_tail)
+
+                    assert len(toks) == len(labs) == len(modality_labs)
+
+                    # replace '\u3000' to '[JASP]'
+                    toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
+                    toks = ['[SEP]' if t in ['ＳＥＰ'] else mojimoji.han_to_zen(t) for t in toks]
+                    # calculate tag mask only in the current sentence
+                    for tid, tag_mask in tag2mask.items():
+                        tag2mask[tid] += [0] * (len(toks) - len(tag2mask[tid]))
+                    tok_tail_list = [str(i) for i in range(len(toks))]
+                    tok_head_list = ["[%i]" % i for i in range(len(toks))]
+                    tok_rel_list = ["['N']" for _ in toks]
+                    for tail_tid, (head_tids, rels) in rel_dic.items():
+                        if tail_tid in tag2mask:
+                            tail_id = return_index_of_last_one(tag2mask[tail_tid])
+                            head_list, rel_list = [], []
+                            for head_tid, rel in zip(head_tids, rels):
+                                if head_tid in tag2mask:
+                                    head_list.append(return_index_of_last_one(tag2mask[head_tid]))
+                                    rel_list.append(rel)
+                            if head_list and rel_list:
+                                tok_head_list[tail_id] = str(head_list)
+                                tok_rel_list[tail_id] = str(rel_list)
+                else:
+                    toks = mor_analyzer.analyze(line)
+                    toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
+                    labs = ['O'] * len(toks)
+                    modality_labs = [defaut_modality] * len(toks)
+                    tok_rel_list = [['N']] * len(toks)
+                    tok_head_list = [[i] for i in range(len(toks))]
+
+                tok_ids = [str(i) for i in range(len(toks))]
+
+                '''filter sub-word length larger than len_limit'''
+                sbw_len = len(bert_tokenizer.tokenize(' '.join(toks)))
+                # print(len(toks), sbw_len)
+                if sbw_len <= len_limit - 2:
+                    if not comment_line:
+                        fo.write(f'#doc {clinical_file}\n')
+                    else:
+                        fo.write(f'{comment_line}\n')
+
+                    if not contains_modality:
+                        for i, t, l, r, h in zip(tok_ids, toks, labs, tok_rel_list, tok_head_list):
+                            fo.write("{}\t{}\t{}\t{}\t{}\n".format(i, t, l, r, h))
+                    else:
+                        for i, t, l, m, r, h in zip(tok_ids, toks, labs, modality_labs, tok_rel_list, tok_head_list):
+                            fo.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(i, t, l, m, r, h))
+                else:
+                    print(f"exceeded len:{sbw_len}, {comment_line}")
+                length_list.append(sbw_len)
+        except Exception as ex:
+            print('[error]' + clinical_file + ': ' + line)
+            print(ex)
+    return length_list
+
+
+# batch convert document-level conll from .xml
+def batch_convert_document_to_conll(
+    file_list, file_out,
+    sent_tag=True,
+    defaut_modality='_',
+    contains_modality=False,
+    with_dct=False,
+    is_raw=False,
+    morph_analyzer_name='juman',
+    bert_tokenizer=None
+):
+    morphological_analyzer = MorphologicalAnalyzer(morph_analyzer_name)
+    doc_tok_lens = []
+    with open(file_out, 'w') as fo:
+        for file in file_list:
+            file_ext = ".xml" if sent_tag else ".txt"
+            if file.endswith(file_ext):
+                try:
+                    doc_tok_lens += convert_document_to_conll(
+                        file, fo, morphological_analyzer, sent_tag=sent_tag,
+                        defaut_modality=defaut_modality,
+                        contains_modality=contains_modality,
+                        with_dct=with_dct,
+                        is_raw=is_raw,
+                        bert_tokenizer=bert_tokenizer
+                    )
                 except Exception as ex:
                     print('[error]:' + file)
                     print(ex)
@@ -1350,20 +1566,21 @@ def extract_rels_from_conll_sent(conll_sent, col_names, down_neg=1.0):
     sent_rels = []
     for tail_id in range(len(keys)):
         for head_id in range(len(keys)):
-            if tail_id != head_id:
-                rel = [
-                    entity2ids[keys[tail_id]][0],
-                    entity2ids[keys[tail_id]][1],
-                    entity2ids[keys[head_id]][0],
-                    entity2ids[keys[head_id]][1]
-                ]
-                if (keys[tail_id], keys[head_id]) in pos_rels:
-                    rel.append(pos_rels[(keys[tail_id], keys[head_id])])
+            # if tail_id != head_id:
+            rel = [
+                entity2ids[keys[tail_id]][0],
+                entity2ids[keys[tail_id]][1],
+                entity2ids[keys[head_id]][0],
+                entity2ids[keys[head_id]][1]
+            ]
+            if (keys[tail_id], keys[head_id]) in pos_rels:
+                rel_tag = pos_rels[(keys[tail_id], keys[head_id])]
+                rel.append(rel_tag)
+                sent_rels.append(rel)
+            else:
+                rel.append('N')
+                if random.random() < down_neg:
                     sent_rels.append(rel)
-                else:
-                    rel.append('N')
-                    if random.random() < down_neg:
-                        sent_rels.append(rel)
 
     return sent_rels
 
@@ -2042,7 +2259,7 @@ def extract_pipeline_data_from_mhs_conll(
 
     padded_doc_ner_ix_t = torch.tensor(
         [padding_1d(
-            [bio2ix[ner] for ner in sent_ner],
+            [bio2ix[ner] if ner in bio2ix else bio2ix['O'] for ner in sent_ner],
             cls_max_len,
             pad_tok=pad_lab_id
         ) for sent_ner in doc_ner]
@@ -2054,7 +2271,7 @@ def extract_pipeline_data_from_mhs_conll(
 
     padded_doc_ner_mod_ix_t = torch.tensor(
         [padding_1d(
-            [mod2ix[mod] for mod in sent_mod],
+            [mod2ix[mod] if mod in mod2ix else mod2ix['_'] for mod in sent_mod],
             entity_max_num,
             pad_tok=-100
         ) for sent_mod in doc_ner_mod]

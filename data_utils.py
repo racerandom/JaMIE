@@ -79,6 +79,8 @@ class MultiheadConll(object):
         self.update_mod_entities()
         self.update_rel_triplets()
         self.update_rel_detailed_triplets(prune_type=prune_type)
+        # print(self._mod_entities)
+        # print(self._rel_detailed_triplets)
 
     def load_doc(self, conll_file, empty_comment):
         with open(conll_file, 'r', encoding='utf8') as conll_fi:
@@ -100,7 +102,7 @@ class MultiheadConll(object):
             for line in sent_lines:
                 tok_items = line.strip().split('\t')
                 s_tok_ids.append(int(tok_items[0]))
-                s_toks.append(tok_items[1].replace('[JASP]', '\u3000'))
+                s_toks.append(tok_items[1].replace('[JASP]', '\u3000').replace('[SEP]', '\n'))
                 s_ner_tags.append(tok_items[2])
                 s_mod_tags.append(tok_items[3])
                 s_rels.append(eval(tok_items[4]))
@@ -151,25 +153,51 @@ class MultiheadConll(object):
             self._rel_detailed_triplets.append(sent_triplets)
 
     def doc_to_xml(self, xml_file):
+        current_tid = 1
+        current_rid = 1
+        span2tid = {}
+        span2rel = {}
+        for sent_id in range(len(self._doc_lines)):
+            # update cid2tid
+            for ner_tag, begin_cid, end_cid, mod_tag in self._mod_entities[sent_id]:
+                span = (begin_cid, end_cid)
+                span2tid[span] = (f"T{current_tid}", ner_tag)
+                current_tid += 1
+            # update ttid2rel
+            for tail_span, head_span, rel in self._rel_detailed_triplets[sent_id]:
+                span2rel[(tail_span, head_span)] = rel
+
         with open(xml_file, 'w', encoding='utf8') as fo:
             for sent_id in range(len(self._doc_lines)):
                 sent_str = ""
                 if not self._comments[sent_id].startswith("#doc"):
                     sent_str += self._comments[sent_id].strip() + '\n'
                 output_toks = copy.deepcopy(self._toks[sent_id])
-                for ner_tag, begin_tid, end_tid, mod_tag in reversed(self._mod_entities[sent_id]):
+                for ner_tag, begin_cid, end_cid, mod_tag in reversed(self._mod_entities[sent_id]):
+                    span = (begin_cid, end_cid)
                     output_toks.insert(
-                        end_tid,
+                        end_cid,
                         f"</{ner_tag}>"
                     )
                     output_toks.insert(
-                        begin_tid,
-                        f"<{ner_tag} {MOD_DICT[mod_tag]}=\"{mod_tag}\">" if mod_tag != '_' else f"<{ner_tag}>"
+                        begin_cid,
+                        f"<{ner_tag} tid=\"{span2tid[span][0]}\"" +
+                        (f" {MOD_DICT[mod_tag]}=\"{mod_tag}\"" if mod_tag != '_' else "") +
+                        (f" DCT-Rel=\"{span2rel[(span, span)]}\"" if (span, span) in span2rel else "") +
+                        ">"
                     )
                 sent_str += ''.join(output_toks) + '\n'
                 fo.write(sent_str)
+                fo.write("\n")
+            for (tail_span, head_span), rel in span2rel.items():
+                tail_tid, tail_tag = span2tid[tail_span]
+                head_tid, head_tag = span2tid[head_span]
+                rel_tag = "brel" if (tail_tag != "Timex3" and head_tag != "Timex3") else "trel"
+                if tail_tid != head_tid:
+                    fo.write(f"<{rel_tag} rid=\"R{current_rid}\" arg1=\"{tail_tid}\" arg2=\"{head_tid}\" reltype=\"{rel}\" />\n")
+                    current_rid += 1
 
-    def doc_to_brat(self, brat_file, with_rel=False):
+    def doc_to_brat(self, brat_file, with_rel=True):
         with open(brat_file + '.txt', 'w', encoding='utf8') as brat_txt, open(brat_file + '.ann', 'w', encoding='utf8') as brat_ann:
             line_start = 0
             eid_start = 1
@@ -199,8 +227,12 @@ class MultiheadConll(object):
                         tail_char_id = line_start + len(''.join(self._toks[sent_id][:tail_tid + 1])) - 1
                         head_char_id = line_start + len(''.join(self._toks[sent_id][:head_tid + 1])) - 1
                         if tail_char_id in charid2eid and head_char_id in charid2eid:
-                            brat_ann.write(f'R{rid_start}	{rel} Arg1:{charid2eid[tail_char_id]} Arg2:{charid2eid[head_char_id]}\n')
-                            rid_start += 1
+                            if tail_char_id != head_char_id:
+                                brat_ann.write(f'R{rid_start}	{rel} Arg1:{charid2eid[tail_char_id]} Arg2:{charid2eid[head_char_id]}\n')
+                                rid_start += 1
+                            else:
+                                brat_ann.write(f"A{mid_start}	DCT-Rel {charid2eid[tail_char_id]} {rel}\n")
+                                mid_start += 1
                         else:
                             print(f'unknow eid of tail{tail_char_id}, head{head_char_id}')
                 line_start += len(sent_str)

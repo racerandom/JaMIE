@@ -128,7 +128,8 @@ class MhsEvaluator(object):
         return self._mod_evaluator.print_results('mod', f1_mode=self.f1_mode, print_level=print_level)
 
     def eval_rel(self, print_level=1):
-        for s_gold_rel, s_pred_rel in zip(self._gold_mhs._rel_detailed_triplets, self._pred_mhs._rel_detailed_triplets):
+        # for s_gold_rel, s_pred_rel in zip(self._gold_mhs._rel_detailed_triplets, self._pred_mhs._rel_detailed_triplets):
+        for s_gold_rel, s_pred_rel in zip(self._gold_mhs._rel_triplets, self._pred_mhs._rel_triplets):
             self._rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
         return self._rel_evaluator.print_results('rel', f1_mode=self.f1_mode, print_level=print_level)
 
@@ -153,5 +154,5 @@ if __name__ == '__main__':
     elif args.eval_level == 2:
         evaluator.eval_mod(print_level=1)
     elif args.eval_level == 3:
-        evaluator.eval_rel(print_level=1)
+        evaluator.eval_rel(print_level=2)
 

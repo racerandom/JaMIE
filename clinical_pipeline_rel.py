@@ -5,6 +5,8 @@ from tqdm import tqdm
 from utils import *
 from torch.utils.data import Dataset, DataLoader, RandomSampler, TensorDataset
 from transformers import *
+from tensorboardX import SummaryWriter
+
 import argparse
 from model import *
 from clinical_eval import MhsEvaluator
@@ -42,14 +44,14 @@ def generate_batch_pair_tag_t(doc_pair_tag, batch_sent_ids, ne2ix):
     pair_max_num = max([len(sent_tag) for sent_tag in batch_tail_tag])
     padded_doc_tail_tag_t = torch.tensor(
         [padding_1d(
-            [ne2ix[tag] for tag in sent_tail],
+            [ne2ix[tag] if tag in ne2ix else ne2ix['O'] for tag in sent_tail],
             pair_max_num,
             pad_tok=0
         ) for sent_tail in batch_tail_tag]
     )
     padded_doc_head_tag_t = torch.tensor(
         [padding_1d(
-            [ne2ix[tag] for tag in sent_head],
+            [ne2ix[tag] if tag in ne2ix else ne2ix['O'] for tag in sent_head],
             pair_max_num,
             pad_tok=0
         ) for sent_head in batch_head_tag]
@@ -115,10 +117,10 @@ def output_rel(
                     for t_index, (t_ner, t_start, t_end) in enumerate(sent_spans):
                         for h_index, (h_ner, h_start, h_end) in enumerate(sent_spans):
                             tmp_rel = ix2rel[pred_tag.pop(0)]
-                            if h_index != t_index:
-                                if tmp_rel != 'N':
-                                    last_tid2head[t_end - 1].append(h_end - 1)
-                                    last_tid2rel[t_end - 1].append(tmp_rel)
+                            # if h_index != t_index:
+                            if tmp_rel != 'N':
+                                last_tid2head[t_end - 1].append(h_end - 1)
+                                last_tid2rel[t_end - 1].append(tmp_rel)
                             if not last_tid2head[t_end - 1] and not last_tid2rel[t_end - 1]:
                                 last_tid2head[t_end - 1] = [t_end - 1]
                                 last_tid2rel[t_end - 1] = ['N']
@@ -141,7 +143,7 @@ python input arguments
 parser = argparse.ArgumentParser(description='Clinical IE pipeline relation extraction')
 
 parser.add_argument("--pretrained_model",
-                    default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
+                    default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
                     type=str,
                     help="pre-trained model dir")
 
@@ -149,16 +151,16 @@ parser.add_argument("--do_lower_case",
                     action='store_true',
                     help="tokenizer: do_lower_case")
 
-parser.add_argument("--saved_model", default='checkpoints/tmp/pipeline/rel', type=str,
+parser.add_argument("--saved_model", default='checkpoints/tmp/mr/rel', type=str,
                     help="save/load model dir")
 
-parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+parser.add_argument("--train_file", default="data/2020Q2/mr20200605_rev/conll/train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+parser.add_argument("--dev_file", default="data/2020Q2/mr20200605_rev/conll/test.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+parser.add_argument("--test_file", default="data/2020Q2/ncc2k/conll/test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=16, type=int,
@@ -180,10 +182,10 @@ parser.add_argument("--dec_lr", default=1e-3, type=float,
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
                     help="Max gradient norm.")
 
-parser.add_argument("--test_output", default='tmp/test.rel', type=str,
+parser.add_argument("--test_output", default='tmp/ncc2k.test.conll', type=str,
                     help="test output filename")
 
-parser.add_argument("--dev_output", default='tmp/dev.rel', type=str,
+parser.add_argument("--dev_output", default='tmp/mr.test.rel', type=str,
                     help="dev output filename")
 
 parser.add_argument("--epoch_start_eval", default=3, type=int,
@@ -196,7 +198,7 @@ parser.add_argument("--later_eval",
 parser.add_argument("--save_best", action='store', type=str, default='f1',
                     help="save the best model, given dev scores (f1 or loss)")
 
-parser.add_argument("--save_step_interval", default=3, type=int,
+parser.add_argument("--logging_interval", default=3, type=int,
                     help="save best model given a portion of steps")
 
 parser.add_argument("--warmup_ratio", default=0.1, type=float,
@@ -229,13 +231,14 @@ if args.do_train:
         args.train_file,
         down_neg=0.0
     )
+    max_word_len = max([len(sent_tok) for sent_tok in train_toks])
     max_len_train = utils.max_sents_len(train_toks, tokenizer)
     print(bio2ix)
     print(ne2ix)
     print(mod2ix)
     print(rel2ix)
     print()
-    print('max training sent len:', max_len_train)
+    print(f'max training tok len: {max_len_train}, max training word len: {max_word_len}')
     print()
 
     dev_comments, dev_toks, dev_ners, dev_mods, dev_rels, _, _, _, _ = utils.extract_rel_data_from_mh_conll_v2(
@@ -296,7 +299,7 @@ if args.do_train:
     # PyTorch scheduler
     num_epoch_steps = len(train_dataloader)
     num_training_steps = args.num_epoch * num_epoch_steps
-    save_step_interval = math.ceil(num_epoch_steps / args.save_step_interval)
+    logging_steps = math.ceil(num_epoch_steps / args.logging_interval)
 
     scheduler = get_linear_schedule_with_warmup(
         optimizer,
@@ -312,7 +315,15 @@ if args.do_train:
             raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
         model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
 
+
+    """
+    Start training loop
+    """
+    tb_writer = SummaryWriter()
     best_dev_f1 = (float('-inf'), 0, 0)
+    global_step = 0
+    tr_loss, logging_loss = 0.0, 0.0
+    model.zero_grad()
 
     for epoch in range(1, args.num_epoch + 1):
 
@@ -338,6 +349,7 @@ if args.do_train:
                          attention_mask=b_attn_mask.bool(), labels=b_rel)
 
             epoch_loss += loss.item()
+            tr_loss += loss.item()
 
             if args.fp16:
                 with amp.scale_loss(loss, optimizer) as scaled_loss:
@@ -350,13 +362,21 @@ if args.do_train:
             optimizer.step()
             scheduler.step()
             model.zero_grad()
+            global_step += 1
 
             epoch_iterator.set_description(
                 f"L_REL: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
             if epoch > args.epoch_start_eval:
-                if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
+                if (step + 1) % logging_steps == 0:
+
+                    '''logging tensorboardx: lr, loss'''
+                    tb_writer.add_scalar("lr", scheduler.get_lr()[0], global_step)
+                    tb_writer.add_scalar("loss", (tr_loss - logging_loss) / logging_steps, global_step)
+                    logging_loss = tr_loss
+
+                    '''dev eval'''
                     output_rel(
                         model, dev_dataloader,
                         dev_comments, dev_tok, dev_ner, dev_mod, dev_pair_mask, dev_pair_tag,
@@ -364,6 +384,8 @@ if args.do_train:
                     )
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
                     dev_f1 = (dev_evaluator.eval_rel(print_level=0), epoch, step)
+
+                    '''save best model'''
                     if best_dev_f1[0] < dev_f1[0]:
                         print(
                             f" -> Previous best dev f1 {best_dev_f1[0]:.6f}; "
@@ -396,6 +418,7 @@ if args.do_train:
         dev_comments, dev_tok, dev_ner, dev_mod, dev_pair_mask, dev_pair_tag,
         rel2ix, cls_max_len, args.dev_output, args.device
     )
+    tb_writer.close()
 else:
     """ load the new tokenizer"""
     print("test_mode:", args.saved_model)
