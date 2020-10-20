@@ -152,16 +152,16 @@ parser.add_argument("--do_lower_case",
                     action='store_true',
                     help="tokenizer: do_lower_case")
 
-parser.add_argument("--saved_model", default='checkpoints/tmp/ncc/rel', type=str,
+parser.add_argument("--saved_model", default='checkpoints/tmp/mr/rel', type=str,
                     help="save/load model dir")
 
-parser.add_argument("--train_file", default="data/2020Q2/ncc20200601_rev/conll/train.conll", type=str,
+parser.add_argument("--train_file", default="data/2020Q2/mr20200605_rev/conll/train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="data/2020Q2/ncc20200601_rev/conll/dev.conll", type=str,
+parser.add_argument("--dev_file", default="data/2020Q2/mr20200605_rev/conll/dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/2020Q2/ncc20200601_rev/conll/test.conll", type=str,
+parser.add_argument("--test_file", default="data/2020Q2/mr20200605_rev/conll/test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=16, type=int,
@@ -183,10 +183,10 @@ parser.add_argument("--dec_lr", default=1e-3, type=float,
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
                     help="Max gradient norm.")
 
-parser.add_argument("--test_output", default='tmp/ncc.test.rel', type=str,
+parser.add_argument("--test_output", default='tmp/mr.test.rel', type=str,
                     help="test output filename")
 
-parser.add_argument("--dev_output", default='tmp/ncc.dev.rel', type=str,
+parser.add_argument("--dev_output", default='tmp/mr.dev.rel', type=str,
                     help="dev output filename")
 
 parser.add_argument("--epoch_start_eval", default=3, type=int,
@@ -202,7 +202,7 @@ parser.add_argument("--save_best", action='store', type=str, default='f1',
 parser.add_argument("--logging_interval", default=3, type=int,
                     help="save best model given a portion of steps")
 
-parser.add_argument("--warmup_epoch", default=2, type=float,
+parser.add_argument("--warmup_epoch", default=3, type=float,
                     help="warmup epoch")
 
 parser.add_argument("--neg_ratio", default=1.0, type=float,

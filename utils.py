@@ -44,7 +44,8 @@ class MorphologicalAnalyzer(object):
         if self.analyzer_name == 'juman':
             return [w.midasi for w in self.analyzer.analysis(text).mrph_list()]
         elif self.analyzer_name == 'mecab':
-            return [mojimoji.han_to_zen(tok) for tok in self.analyzer.parse(text).replace('\u3000', '[JASP]').split()]
+            segments = self.analyzer.parse(text).replace('\u3000', '[JASP]').split()
+            return ['[JASP]' if '[JASP]' in tok else mojimoji.han_to_zen(tok) for tok in segments]
 
 
 def get_label2ix(y_data, default=None, ignore_lab=None):
@@ -637,8 +638,7 @@ def bert_sent_len(line, bert_tokenizer, mor_analyzer):
             toks += mor_analyzer.analyze(item.text)
         if item.tail is not None:
             toks += mor_analyzer.analyze(item.tail)
-    toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
-    toks = ['[SEP]' if t in ['ＳＥＰ'] else mojimoji.han_to_zen(t) for t in toks]
+    toks = ['[SEP]' if t in ['ＳＥＰ'] else t.replace('［ＪＡＳＰ］', '[JASP]') for t in toks]
     return len(bert_tokenizer.tokenize(' '.join(toks)))
 
 
@@ -2094,7 +2094,9 @@ def extract_pipeline_data_from_mhs_conll(
         # wrapping data with [CLS] and [SEP]
         if not non_bert:
             if is_deunk:
-                sbw_sent_tok = explore_unk(tokenizer.tokenize(' '.join(sent_tok)), sent_tok)
+                sbw_sent_unk = tokenizer.tokenize(' '.join(sent_tok))
+
+                sbw_sent_tok = explore_unk(sbw_sent_unk, sent_tok)
             else:
                 sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
         else:
