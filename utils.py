@@ -44,7 +44,7 @@ class MorphologicalAnalyzer(object):
         if self.analyzer_name == 'juman':
             return [w.midasi for w in self.analyzer.analysis(text).mrph_list()]
         elif self.analyzer_name == 'mecab':
-            return self.analyzer.parse(text).split()
+            return [mojimoji.han_to_zen(tok) for tok in self.analyzer.parse(text).replace('\u3000', '[JASP]').split()]
 
 
 def get_label2ix(y_data, default=None, ignore_lab=None):
@@ -756,8 +756,8 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                     assert len(toks) == len(labs) == len(modality_labs)
 
                     # replace '\u3000' to '[JASP]'
-                    toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
-                    toks = ['[SEP]' if t in ['ＳＥＰ'] else mojimoji.han_to_zen(t) for t in toks]
+                    # toks = ['[JASP]' if t == '\u3000' else t) for t in toks]
+                    toks = ['[SEP]' if t in ['ＳＥＰ'] else t.replace('［ＪＡＳＰ］', '[JASP]') for t in toks]
                     # calculate tag mask only in the current sentence
                     for tid, tag_mask in tag2mask.items():
                         tag2mask[tid] += [0] * (len(toks) - len(tag2mask[tid]))
@@ -2106,11 +2106,21 @@ def extract_pipeline_data_from_mhs_conll(
         sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
         sbw_sent_mod = match_mod_label(sbw_sent_tok, sent_mod)
         #
+        # print(len(sent_tok), sent_tok)
         # print(len(sbw_sent_tok), sbw_sent_tok)
         # print(len(sbw_sent_ner), sbw_sent_ner)
         # print(len(sbw_sent_mod), sbw_sent_mod)
-        # print(len(sbw_sent_tok), len(sent_ner), len(sbw_sent_ner))
+        # print(len(sent_tok), len(sent_ner), len(sent_mod))
+        # print(len(sbw_sent_tok), len(sbw_sent_ner), len(sbw_sent_mod))
         # print()
+        #
+        # for tok, ner in zip(sent_tok, sent_ner):
+        #     print(tok, ner)
+
+        # for i in range(len(sbw_sent_tok)):
+        #     print(sbw_sent_tok[i], sbw_sent_ner[i])
+        # print(sbw_sent_ner[-1])
+
         if not non_bert:
             cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
             cls_sbw_sent_ner = ['O'] + sbw_sent_ner + ['O']

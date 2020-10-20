@@ -152,16 +152,16 @@ parser.add_argument("--do_lower_case",
                     action='store_true',
                     help="tokenizer: do_lower_case")
 
-parser.add_argument("--saved_model", default='checkpoints/tmp/mr/rel', type=str,
+parser.add_argument("--saved_model", default='checkpoints/tmp/ncc/rel', type=str,
                     help="save/load model dir")
 
-parser.add_argument("--train_file", default="data/2020Q2/mr20200605_rev/conll/train.conll", type=str,
+parser.add_argument("--train_file", default="data/2020Q2/ncc20200601_rev/conll/train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="data/2020Q2/mr20200605_rev/conll/test.conll", type=str,
+parser.add_argument("--dev_file", default="data/2020Q2/ncc20200601_rev/conll/dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/2020Q2/mr20200605_rev/conll/test.conll", type=str,
+parser.add_argument("--test_file", default="data/2020Q2/ncc20200601_rev/conll/test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=16, type=int,
@@ -183,10 +183,10 @@ parser.add_argument("--dec_lr", default=1e-3, type=float,
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
                     help="Max gradient norm.")
 
-parser.add_argument("--test_output", default='tmp/ncc2k.test.conll', type=str,
+parser.add_argument("--test_output", default='tmp/ncc.test.rel', type=str,
                     help="test output filename")
 
-parser.add_argument("--dev_output", default='tmp/mr.test.rel', type=str,
+parser.add_argument("--dev_output", default='tmp/ncc.dev.rel', type=str,
                     help="dev output filename")
 
 parser.add_argument("--epoch_start_eval", default=3, type=int,
@@ -205,7 +205,7 @@ parser.add_argument("--logging_interval", default=3, type=int,
 parser.add_argument("--warmup_epoch", default=2, type=float,
                     help="warmup epoch")
 
-parser.add_argument("--neg_ratio", default=0.5, type=float,
+parser.add_argument("--neg_ratio", default=1.0, type=float,
                     help="negative sampling ratio")
 
 parser.add_argument("--fp16",
@@ -229,6 +229,7 @@ args.n_gpu = torch.cuda.device_count()
 
 if args.do_train:
     tokenizer = BertTokenizer.from_pretrained(args.pretrained_model, do_lower_case=args.do_lower_case, do_basic_tokenize=False)
+    tokenizer.add_tokens(['[JASP]'])
 
     """ Read conll file for counting statistics, such as: [UNK] token ratio, label2ix, etc. """
     train_comments, train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
@@ -286,6 +287,8 @@ if args.do_train:
     Model
     """
     model = PipelineRelation(args.pretrained_model, len(ne2ix), len(rel2ix))
+    model.encoder.resize_token_embeddings(len(tokenizer))
+    model.to(args.device)
 
     # specify different lr
     param_optimizer = list(model.named_parameters())
@@ -298,7 +301,6 @@ if args.do_train:
         optimizer_grouped_parameters,
         correct_bias=False
     )
-    model.to(args.device)
 
     # PyTorch scheduler
     num_epoch_steps = len(train_dataloader)
@@ -414,6 +416,9 @@ if args.do_train:
                             json.dump(rel2ix, fp)
                     if num_training_steps == step + 1:
                         dev_evaluator.eval_rel(print_level=1)
+        if epoch > args.epoch_start_eval:
+            dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
+            dev_evaluator.eval_rel(print_level=1)
     print(f"Best dev f1 {best_dev_f1[0]:.6f}; epoch {best_dev_f1[1]:d} / step {best_dev_f1[2]:d}\n")
     model.load_state_dict(torch.load(os.path.join(args.saved_model, 'model.pt')))
     torch.save(model, os.path.join(args.saved_model, 'model.pt'))
