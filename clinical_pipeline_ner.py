@@ -116,8 +116,8 @@ parser.add_argument("--save_best", action='store', type=str, default='f1',
 parser.add_argument("--save_step_interval", default=3, type=int,
                     help="save best model given a portion of steps")
 
-parser.add_argument("--warmup_ratio", default=0.1, type=float,
-                    help="warmup ratio")
+parser.add_argument("--warmup_epoch", default=2, type=float,
+                    help="warmup epoch")
 
 parser.add_argument("--fp16",
                     action='store_true',
@@ -229,7 +229,7 @@ if args.do_train:
     if not args.non_scheduled_lr:
         scheduler = get_linear_schedule_with_warmup(
             optimizer,
-            num_warmup_steps=num_training_steps * args.warmup_ratio,
+            num_warmup_steps=num_epoch_steps * args.warmup_epoch,
             num_training_steps=num_training_steps
         )
 
@@ -358,4 +358,4 @@ else:
     output_ner(model, test_dataloader, test_comments, test_tok, bio2ix, args.test_output,
                args.non_bert, args.device, test_mode=True)
     test_evaluator = MhsEvaluator(args.test_file, args.test_output)
-    test_evaluator.eval_ner(print_level=1)
+    test_evaluator.eval_ner(print_level=2)
