@@ -55,8 +55,6 @@ def bio_to_spans(ner_tags):
     return entities
 
 
-# def span_to_mask(entity_span):
-
 # MultiheadConll document class
 class MultiheadConll(object):
 
@@ -170,7 +168,7 @@ class MultiheadConll(object):
         with open(xml_file, 'w', encoding='utf8') as fo:
             for sent_id in range(len(self._doc_lines)):
                 sent_str = ""
-                if not self._comments[sent_id].startswith("#doc"):
+                if not self._comments[sent_id].startswith(('#doc', '## line')):
                     sent_str += self._comments[sent_id].strip() + '\n'
                 output_toks = copy.deepcopy(self._toks[sent_id])
                 for ner_tag, begin_cid, end_cid, mod_tag in reversed(self._mod_entities[sent_id]):
@@ -204,11 +202,14 @@ class MultiheadConll(object):
             mid_start = 1
             rid_start = 1
             charid2eid = {}  # begin_tid: T{eid}
+            prev_comment = ""
             for sent_id in range(len(self._doc_lines)):
-                if not self._comments[sent_id].startswith('#doc'):
+                if self._comments[sent_id].startswith(('#doc', '## line')) and self._comments[sent_id] != prev_comment:
+                    print(self._comments[sent_id])
                     comment_str = f'{self._comments[sent_id]}\n'
                     brat_txt.write(comment_str)
                     line_start += len(comment_str)
+                    prev_comment = self._comments[sent_id]
                 sent_str = ''.join(self._toks[sent_id]) + '\n'
                 brat_txt.write(sent_str)
                 # entity: 'T{}\t{} {} {}\t{}', modality: 'A{}\t{} T{} {}'

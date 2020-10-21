@@ -34,18 +34,19 @@ class MorphologicalAnalyzer(object):
         elif self.analyzer_name == 'mecab':
             import MeCab
             self.analyzer = MeCab.Tagger(
+                "-d /usr/lib/x86_64-linux-gnu/mecab/dic/jumandic -Owakati"
                 # "-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd "
                 # "-u /home/feicheng/Tools/MANBYO_201907_Dic-utf8.dic "
                 # "-Owakati"
-                "-d /usr/lib/x86_64-linux-gnu/mecab/dic/jumandic -Owakati"
             )
 
     def analyze(self, text):
         if self.analyzer_name == 'juman':
             return [w.midasi for w in self.analyzer.analysis(text).mrph_list()]
         elif self.analyzer_name == 'mecab':
-            segments = self.analyzer.parse(text).replace('\u3000', '[JASP]').split()
-            return ['[JASP]' if '[JASP]' in tok else mojimoji.han_to_zen(tok) for tok in segments]
+            segments = self.analyzer.parse(text).replace('\u3000 SEP \u3000', ' [SEP] ').replace('\u3000', '[JASP]').split()
+            segments = ['[JASP]' if '[JASP]' in tok else mojimoji.han_to_zen(tok).replace('［ＳＥＰ］', '[SEP]') for tok in segments]
+            return segments
 
 
 def get_label2ix(y_data, default=None, ignore_lab=None):
@@ -682,12 +683,12 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
             if trunk_list[-1][-1].startswith("## line"):
                 trunk_list.append([line])
             else:
-                if bert_sent_len('SEP'.join(trunk_list[-1]) + 'SEP' + line, bert_tokenizer, mor_analyzer) + 2 < len_limit:
+                if bert_sent_len('\u3000SEP\u3000'.join(trunk_list[-1]) + '\u3000SEP\u3000' + line, bert_tokenizer, mor_analyzer) + 2 < len_limit:
                     trunk_list[-1].append(line)
                 else:
                     trunk_list.append([line])
 
-    trunk_list = ['SEP'.join(line) for line in trunk_list]
+    trunk_list = ['\u3000SEP\u3000'.join(line) for line in trunk_list]
 
     comment_line = None
 
@@ -716,9 +717,6 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                         if item.text is not None:
                             seg_toks = mor_analyzer.analyze(item.text)
                             toks += seg_toks
-                            # if item.tag in ['event', 'TIMEX3',
-                            #                 'd', 'a', 'f', 'c', 'C', 't', 'r',
-                            #                 'm-key', 'm-val', 't-test', 't-key', 't-val', 'cc']:
                             if item.tag != 'sentence':
                                 if 'tid' in item.attrib:
                                     tag_tid = item.attrib['tid']
@@ -757,7 +755,7 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
 
                     # replace '\u3000' to '[JASP]'
                     # toks = ['[JASP]' if t == '\u3000' else t) for t in toks]
-                    toks = ['[SEP]' if t in ['ＳＥＰ'] else t.replace('［ＪＡＳＰ］', '[JASP]') for t in toks]
+                    # toks = ['[SEP]' if t in ['ＳＥＰ'] else t.replace('［ＪＡＳＰ］', '[JASP]') for t in toks]
                     # calculate tag mask only in the current sentence
                     for tid, tag_mask in tag2mask.items():
                         tag2mask[tid] += [0] * (len(toks) - len(tag2mask[tid]))
