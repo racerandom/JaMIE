@@ -46,7 +46,7 @@ python input arguments
 parser = argparse.ArgumentParser(description='Clinical IE pipeline NER')
 
 parser.add_argument("--pretrained_model",
-                    default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
+                    default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
                     type=str,
                     help="pre-trained model dir")
 
@@ -57,16 +57,16 @@ parser.add_argument("--do_lower_case",
 parser.add_argument("--saved_model", default='checkpoints/tmp/pipeline/ner', type=str,
                     help="save/load model dir")
 
-parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+parser.add_argument("--train_file", default="data/moonshot/conll/cv0_train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+parser.add_argument("--dev_file", default="data/moonshot/cv0_dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+parser.add_argument("--test_file", default="data/tmoonshot/cv0_test.conll", type=str,
                     help="test file, multihead conll format.")
 
-parser.add_argument("--batch_size", default=16, type=int,
+parser.add_argument("--batch_size", default=4, type=int,
                     help="BATCH SIZE")
 
 parser.add_argument("--num_epoch", default=10, type=int,

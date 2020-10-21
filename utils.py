@@ -639,7 +639,6 @@ def bert_sent_len(line, bert_tokenizer, mor_analyzer):
             toks += mor_analyzer.analyze(item.text)
         if item.tail is not None:
             toks += mor_analyzer.analyze(item.tail)
-    toks = ['[SEP]' if t in ['ＳＥＰ'] else t.replace('［ＪＡＳＰ］', '[JASP]') for t in toks]
     return len(bert_tokenizer.tokenize(' '.join(toks)))
 
 
@@ -683,10 +682,11 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
             if trunk_list[-1][-1].startswith("## line"):
                 trunk_list.append([line])
             else:
-                if bert_sent_len('\u3000SEP\u3000'.join(trunk_list[-1]) + '\u3000SEP\u3000' + line, bert_tokenizer, mor_analyzer) + 2 < len_limit:
-                    trunk_list[-1].append(line)
-                else:
-                    trunk_list.append([line])
+                # if bert_sent_len('\u3000SEP\u3000'.join(trunk_list[-1]) + '\u3000SEP\u3000' + line, bert_tokenizer, mor_analyzer) + 2 < len_limit:
+                #     trunk_list[-1].append(line)
+                # else:
+                #     trunk_list.append([line])
+                trunk_list.append([line])
 
     trunk_list = ['\u3000SEP\u3000'.join(line) for line in trunk_list]
 
@@ -713,7 +713,7 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                     st = ET.fromstring(line)
                     current_tid = 1
                     toks, labs, modality_labs = [], [], []
-                    for item in st:
+                    for item in st.iter():
                         if item.text is not None:
                             seg_toks = mor_analyzer.analyze(item.text)
                             toks += seg_toks
@@ -753,9 +753,6 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
 
                     assert len(toks) == len(labs) == len(modality_labs)
 
-                    # replace '\u3000' to '[JASP]'
-                    # toks = ['[JASP]' if t == '\u3000' else t) for t in toks]
-                    # toks = ['[SEP]' if t in ['ＳＥＰ'] else t.replace('［ＪＡＳＰ］', '[JASP]') for t in toks]
                     # calculate tag mask only in the current sentence
                     for tid, tag_mask in tag2mask.items():
                         tag2mask[tid] += [0] * (len(toks) - len(tag2mask[tid]))
@@ -786,7 +783,7 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                 '''filter sub-word length larger than len_limit'''
                 sbw_len = len(bert_tokenizer.tokenize(' '.join(toks)))
                 # print(len(toks), sbw_len)
-                if sbw_len <= len_limit - 2:
+                if sbw_len <= len_limit - 2 and sbw_len > 2:
                     if not comment_line:
                         fo.write(f'#doc {clinical_file}\n')
                     else:
@@ -2086,9 +2083,11 @@ def extract_pipeline_data_from_mhs_conll(
     print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
     doc_num = len(ner_toks)
     print("ready to extract pipeline data from mhs_conll...")
+    sent_num = len(ner_toks)
     for sent_id, (sent_comment, sent_tok, sent_ner, sent_mod, sent_rel) in enumerate(
             zip(comments, ner_toks, ners, mods, rels)):
 
+        # print(f"{sent_id} / {sent_num}")
         # wrapping data with [CLS] and [SEP]
         if not non_bert:
             if is_deunk:
