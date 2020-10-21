@@ -60,10 +60,10 @@ parser.add_argument("--saved_model", default='checkpoints/tmp/pipeline/ner', typ
 parser.add_argument("--train_file", default="data/moonshot/conll/cv0_train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="data/moonshot/cv0_dev.conll", type=str,
+parser.add_argument("--dev_file", default="data/moonshot/conll/cv0_dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/moonshot/cv0_test.conll", type=str,
+parser.add_argument("--test_file", default="data/moonshot/conll/cv0_test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=4, type=int,
