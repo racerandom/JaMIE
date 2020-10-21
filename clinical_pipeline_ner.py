@@ -11,11 +11,11 @@ from clinical_eval import MhsEvaluator
 warnings.filterwarnings("ignore")
 
 
-def output_ner(trained_model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfile, non_bert, device):
+def output_ner(trained_model, eval_dataloader, eval_comment, eval_tok, ner2ix, ner_outfile, non_bert, device, test_mode=False):
     ix2ner = {v: k for k, v in ner2ix.items()}
     trained_model.eval()
     with torch.no_grad(), open(ner_outfile, 'w') as fo:
-        for dev_step, dev_batch in enumerate(eval_dataloader):
+        for dev_batch in tqdm(eval_dataloader, desc="Testing", disable=not test_mode):
             b_e_toks, b_e_attn_mask, b_e_sent_mask, b_e_ner, b_e_ner_mask, b_e_mod = tuple(
                 t.to(device) for t in dev_batch[1:]
             )
@@ -63,7 +63,7 @@ parser.add_argument("--train_file", default="data/moonshot/conll/cv0_train.conll
 parser.add_argument("--dev_file", default="data/moonshot/cv0_dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/tmoonshot/cv0_test.conll", type=str,
+parser.add_argument("--test_file", default="data/moonshot/cv0_test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=4, type=int,
@@ -355,6 +355,7 @@ else:
     model.to(args.device)
 
     """ predict test out """
-    output_ner(model, test_dataloader, test_comments, test_tok, bio2ix, args.test_output, args.non_bert, args.device)
+    output_ner(model, test_dataloader, test_comments, test_tok, bio2ix, args.test_output,
+               args.non_bert, args.device, test_mode=True)
     test_evaluator = MhsEvaluator(args.test_file, args.test_output)
     test_evaluator.eval_ner(print_level=1)

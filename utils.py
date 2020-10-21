@@ -649,7 +649,9 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                               with_dct=False,
                               is_raw=False,
                               bert_tokenizer=None,
-                              len_limit=512):
+                              len_limit=512,
+                              is_document=False,
+                              ):
     from collections import defaultdict
     '''store relations to rel_dic'''
     rel_dic = defaultdict(lambda: [[], []])
@@ -682,11 +684,13 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
             if trunk_list[-1][-1].startswith("## line"):
                 trunk_list.append([line])
             else:
-                # if bert_sent_len('\u3000SEP\u3000'.join(trunk_list[-1]) + '\u3000SEP\u3000' + line, bert_tokenizer, mor_analyzer) + 2 < len_limit:
-                #     trunk_list[-1].append(line)
-                # else:
-                #     trunk_list.append([line])
-                trunk_list.append([line])
+                if is_document:
+                    if bert_sent_len('\u3000SEP\u3000'.join(trunk_list[-1]) + '\u3000SEP\u3000' + line, bert_tokenizer, mor_analyzer) + 2 < len_limit:
+                        trunk_list[-1].append(line)
+                    else:
+                        trunk_list.append([line])
+                else:
+                    trunk_list.append([line])
 
     trunk_list = ['\u3000SEP\u3000'.join(line) for line in trunk_list]
 
@@ -724,8 +728,8 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                                     tag_tid = f"T{current_tid}"
                                     current_tid += 1
                                 tag2mask[tag_tid] = [0] * len(labs) + [1] * len(seg_toks)
-                                tok_labs = ['I-%s' % (item.tag.capitalize())] * len(seg_toks)
-                                tok_labs[0] = 'B-%s' % (item.tag.capitalize())
+                                tok_labs = [f"I-{item.tag if item.tag!='O' else 'OO'}"] * len(seg_toks)
+                                tok_labs[0] = f"B-{item.tag if item.tag!='O' else 'OO'}"
                                 labs += tok_labs
 
                                 phrase_modality_labs = ['_'] * len(seg_toks)
@@ -783,7 +787,11 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                 '''filter sub-word length larger than len_limit'''
                 sbw_len = len(bert_tokenizer.tokenize(' '.join(toks)))
                 # print(len(toks), sbw_len)
-                if sbw_len <= len_limit - 2 and sbw_len > 2:
+                if 2 < sbw_len <= len_limit - 2:
+
+                    if sbw_len > 250:
+                        continue
+
                     if not comment_line:
                         fo.write(f'#doc {clinical_file}\n')
                     else:
