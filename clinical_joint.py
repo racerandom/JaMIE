@@ -104,48 +104,48 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
-                        help="train file, multihead conll format.")
-
-    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
-                        help="dev file, multihead conll format.")
-
-    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
-                        help="test file, multihead conll format.")
-
-    parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
-                        type=str,
-                        help="pre-trained model dir")
-
-    # parser.add_argument("--train_file",
-    #                     default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_train.conll",
-    #                     type=str,
+    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
     #                     help="train file, multihead conll format.")
     #
-    # parser.add_argument("--dev_file",
-    #                     default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_dev.conll",
-    #                     type=str,
+    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
     #                     help="dev file, multihead conll format.")
     #
-    # parser.add_argument("--test_file",
-    #                     default="data/clinical20200605/doc_cv5_mecab_p1.0_wo_dct_filtered/cv2_test.conll",
-    #                     type=str,
+    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
     #                     help="test file, multihead conll format.")
     #
     # parser.add_argument("--pretrained_model",
-    #                     default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+    #                     default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
     #                     type=str,
     #                     help="pre-trained model dir")
+
+    parser.add_argument("--train_file",
+                        default="data/2020Q2/mr20200605_rev/cv0_train.conll",
+                        type=str,
+                        help="train file, multihead conll format.")
+
+    parser.add_argument("--dev_file",
+                        default="data/2020Q2/mr20200605_rev/cv0_dev.conll",
+                        type=str,
+                        help="dev file, multihead conll format.")
+
+    parser.add_argument("--test_file",
+                        default="data/2020Q2/mr20200605_rev/cv0_test.conll",
+                        type=str,
+                        help="test file, multihead conll format.")
+
+    parser.add_argument("--pretrained_model",
+                        default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+                        type=str,
+                        help="pre-trained model dir")
 
     parser.add_argument("--do_lower_case",
                         action='store_true',
                         help="tokenizer: do_lower_case")
 
-    parser.add_argument("--test_output", default='tmp/test.ner', type=str,
+    parser.add_argument("--test_output", default='tmp/mr_rev.test.conll', type=str,
                         help="test output filename")
 
-    parser.add_argument("--dev_output", default='tmp/dev.ner', type=str,
+    parser.add_argument("--dev_output", default='tmp/mr_rev.dev.conll', type=str,
                         help="dev output filename")
 
     parser.add_argument("--test_dir", default="tmp/", type=str,
@@ -154,7 +154,7 @@ def main():
     parser.add_argument("--pred_dir", default="tmp/", type=str,
                         help="prediction dir, multihead conll format.")
 
-    parser.add_argument("--saved_model", default='checkpoints/tmp/joint', type=str,
+    parser.add_argument("--saved_model", default='checkpoints/tmp/joint_mr_rev', type=str,
                         help="save/load model dir")
 
     parser.add_argument("--batch_test",
@@ -167,7 +167,7 @@ def main():
     parser.add_argument("--num_epoch", default=20, type=int,
                         help="fine-tuning epoch number")
 
-    parser.add_argument("--embed_size", default='[64, 64, 256]', type=str,
+    parser.add_argument("--embed_size", default='[64, 64, 512]', type=str,
                         help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -201,8 +201,8 @@ def main():
     parser.add_argument("--neg_ratio", default=1.0, type=float,
                         help="negative sample ratio")
 
-    parser.add_argument("--warmup_ratio", default=0.1, type=float,
-                        help="warmup ratio")
+    parser.add_argument("--warmup_epoch", default=2, type=float,
+                        help="warmup epoch")
 
     parser.add_argument("--scheduled_lr",
                         default=True,
@@ -342,7 +342,7 @@ def main():
         if args.scheduled_lr:
             scheduler = get_linear_schedule_with_warmup(
                 optimizer,
-                num_warmup_steps=num_training_steps * args.warmup_ratio,
+                num_warmup_steps=num_epoch_steps * args.warmup_epoch,
                 num_training_steps=num_training_steps
             )
 

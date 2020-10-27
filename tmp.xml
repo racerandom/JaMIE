@@ -1,0 +1,37 @@
+## line id: 1192 ||| 表示順: 325 ||| 匿名ID: 32434248 ||| タイトル: O
+<s>《　<A>ＣＨＥＳＴ</A>：<T-test state="executed">ＣＴ</T-test>　》<Timex3 type="DATE">２０１４．８．１３</Timex3></s>
+<s>＊　<A>両側肺上葉</A><F>優位</F>に<D certainty="positive">ｅｍｐｈｙｓｅｍａ</D>．</s>
+<s>＊　<A>両側肺下葉</A><F>優位</F>、<A>胸膜側</A><F>優位</F>に<D certainty="positive">すりガラス影や蜂巣肺状陰影、牽引性気管支拡張</D>が認められます。</s>
+<s><D certainty="suspicious">ＵＩＰパターンの間質性肺炎</D>を疑います。</s>
+<s><D certainty="positive">肺気腫</D>と併せて<D certainty="suspicious">ｃｏｍｂｉｎｅｄ　ｐｕｌｍｏｎａｒｙ　ｆｉｂｒｏｓｉｓ　ａｎｄ　ｅｍｐｈｙｓｅｍａ</D>を疑います。</s>
+<s>＊　<A>右肺Ｓ６／８</A>に<F>径６ｍｍ大</F>の<D certainty="positive">境界明瞭・辺縁平滑な結節影</D>が認められます（<A>Ｓｅ３Ｉｍ２９７</A>）。</s>
+<s><D certainty="positive">結節</D>は<A>小葉間隔壁上</A>に存在します。</s>
+<s><D certainty="suspicious">肺内リンパ節のような良性結節</D>を疑います。</s>
+<s>＊　<A>縦隔内</A>に<F>短径１ｃｍ未満</F>の<D certainty="positive">ＬＮｓ</D>が認められますが、<F>ｐｏｓｉｔｉｖｅ　ｓｉｚｅ</F>の<D certainty="negative">ＬＮ</D>は認められません。</s>
+<s>＊　<A>両側胸膜</A>に<D certainty="positive">肥厚・石灰化</D>が認められます。</s>
+<s><D certainty="suspicious">アスベストによる胸膜病変</D>の可能性があります。</s>
+<s>＊　<A>両側肩甲骨下部の内側</A>に<F>やや境界不明瞭</F>な<D certainty="positive">軟部組織陰影</D>が認められます。</s>
+<s><D certainty="suspicious">ｅｌａｓｔｏｆｉｂｒｏｍａ　ｄｏｒｓｉ</D>を疑います。</s>
+<s>診断</s>
+<s>①<D certainty="suspicious">ＣＰＦＥ</D>疑い</s>
+<s>②<D certainty="positive">右肺下葉結節</D>（<D certainty="suspicious">肺内リンパ節</D>疑い）</s>
+<s>③<D certainty="positive">胸膜肥厚・石灰化</D></s>
+<s>④<D certainty="suspicious">ｅｌａｓｔｏｆｉｂｒｏｍａ　ｄｏｒｓｉ</D>　ｓｕｓｐ．</s>
+## line id: 1193 ||| 表示順: 325 ||| 匿名ID: 32434248 ||| タイトル: P
+<s><Timex3 type="DATE">１２／１</Timex3><Cc state="executed">再診</Cc></s>
+## line id: 1195 ||| 表示順: 325 ||| 匿名ID: 32434248 ||| タイトル: S
+<s><T-key>ＭＲＣ</T-key>　<T-val>ｇｒａｄｅ　０－１</T-val></s>
+## line id: 1196 ||| 表示順: 325 ||| 匿名ID: 32434248 ||| タイトル: A
+<s>＃<D certainty="positive">慢性間質性肺炎</D>　<Timex3 type="DATE">２０１４．５．１２</Timex3>当科<Cc state="executed">初診</Cc></s>
+<s><Timex3 type="DATE">２０１３年</Timex3><T-test state="executed">検診</T-test>ｐ／ｏ、順天堂大にて診断</s>
+<s><T-key>ＭＲＣ</T-key>　<T-val>ｇｒａｄｅ　０－１</T-val>（３－５　ｋｍウォーキング）</s>
+<s><T-test state="executed">精密肺機能</T-test>　<Timex3 type="DATE">２０１４．７．２４</Timex3></s>
+<s><T-key>ＶＣ</T-key>　<T-val>３．０８　（９７．７％）</T-val></s>
+<s><T-key>ＦＥＶ１．０</T-key>　<T-val>２．２８　（９２．８％）</T-val></s>
+<s><T-key>ＦＲＣ</T-key>　<T-val>２．２８　（７２．５％）</T-val></s>
+<s><T-key>ＤＬＣＯ</T-key>　<T-val>１０．３４　（６８．３％）</T-val></s>
+<s>＃<D certainty="positive">肺結節</D>（<A>右Ｓ８</A>）</s>
+<s>＃<D certainty="positive">Ｃ型慢性肝炎</D>（消化器内科）</s>
+<s><Timex3 type="DATE">２０１０年</Timex3>　<R state="executed">ＩＦＮ</R>（この時、<D certainty="negative">間質性肺炎</D>は指摘されず）</s>
+<s><T-key>喫煙</T-key>　<Timex3 type="DURATION">２０歳～６５歳</Timex3>（<Timex3 type="DURATION">その間５年間</Timex3><T-key>禁煙</T-key>）　<T-val>１５－２０本／ｄａｙ</T-val></s>
+<s><T-val>建設業</T-val>（アスベストも吸入した可能性もあり）</s>

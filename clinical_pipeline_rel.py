@@ -155,13 +155,13 @@ parser.add_argument("--do_lower_case",
 parser.add_argument("--saved_model", default='checkpoints/tmp/mr/rel', type=str,
                     help="save/load model dir")
 
-parser.add_argument("--train_file", default="data/2020Q2/mr20200605_rev/conll/train.conll", type=str,
+parser.add_argument("--train_file", default="data/2020Q2/mr20200605_rev/cv0_train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="data/2020Q2/mr20200605_rev/conll/dev.conll", type=str,
+parser.add_argument("--dev_file", default="data/2020Q2/mr20200605_rev/cv0_dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/2020Q2/mr20200605_rev/conll/test.conll", type=str,
+parser.add_argument("--test_file", default="data/2020Q2/mr20200605_rev/cv0_test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=16, type=int,

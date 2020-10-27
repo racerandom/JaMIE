@@ -67,7 +67,7 @@ class TupleEvaluator(object):
         pred_tuple_cp = copy.deepcopy(pred_tuples)
         for g_t in gold_tuple_cp:
             g_rel = g_t[rel_col]
-            if g_rel in ['N', 'O', '_']:
+            if g_rel in ['N', 'O', '_', 'OO']:
                 continue
             if g_t in pred_tuple_cp:
                 self.eval_dic[g_rel][self.tps_id] += 1
@@ -76,7 +76,7 @@ class TupleEvaluator(object):
                 self.eval_dic[g_rel][self.fns_id] += 1
         for p_t in pred_tuple_cp:
             p_rel = p_t[rel_col]
-            if p_rel in ['N', 'O', '_']:
+            if p_rel in ['N', 'O', '_', 'OO']:
                 continue
             self.eval_dic[p_rel][self.fps_id] += 1
 
@@ -103,7 +103,7 @@ class TupleEvaluator(object):
             raise ValueError(f"Unknown f1_model: {f1_mode} ...")
 
         if print_level >= 1:
-            print(f"{message}, {f1_mode}, overall, p {all_p * 100:2.4f}, r {all_r * 100:2.4f}, f1 {all_f1 * 100:2.4f}")
+            print(f"{message}, {f1_mode} overall, p {all_p * 100:2.4f}, r {all_r * 100:2.4f}, f1 {all_f1 * 100:2.4f}")
 
         return all_f1
 

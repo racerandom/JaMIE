@@ -634,12 +634,14 @@ def bert_sent_len(line, bert_tokenizer, mor_analyzer):
     line = '<sentence>' + line + '</sentence>'
     st = ET.fromstring(line)
     toks = []
-    for item in st:
+    for item in st.iter():
         if item.text is not None:
             toks += mor_analyzer.analyze(item.text)
         if item.tail is not None:
             toks += mor_analyzer.analyze(item.tail)
-    return len(bert_tokenizer.tokenize(' '.join(toks)))
+    sbw_line = bert_tokenizer.tokenize(' '.join(toks))
+    # print(len(sbw_line), sbw_line)
+    return len(sbw_line)
 
 
 # generate document-level MHS conll file by reading .xml
@@ -650,7 +652,7 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                               is_raw=False,
                               bert_tokenizer=None,
                               len_limit=512,
-                              is_document=False,
+                              is_document=True,
                               ):
     from collections import defaultdict
     '''store relations to rel_dic'''
@@ -705,6 +707,8 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                 comment_line = line
             else:
                 line = line.replace('>>', '>＞').replace('<<', '＜<')
+                line = line.replace("＆ａｍｐ；ｇｔ；", "＞").replace("＆ａｍｐ；ｌｔ；", "＜")
+                line = line.replace('&gt;', "＞").replace('&lt;', "＜")
 
                 if is_raw:
                     line = line.replace('#', '＃')  # a solution to fix juman casting #
@@ -789,8 +793,8 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                 # print(len(toks), sbw_len)
                 if 2 < sbw_len <= len_limit - 2:
 
-                    if sbw_len > 250:
-                        continue
+                    # if sbw_len > 250:
+                    #     continue
 
                     if not comment_line:
                         fo.write(f'#doc {clinical_file}\n')
@@ -821,7 +825,8 @@ def batch_convert_document_to_conll(
     with_dct=False,
     is_raw=False,
     morph_analyzer_name='juman',
-    bert_tokenizer=None
+    bert_tokenizer=None,
+    is_document=True
 ):
     morphological_analyzer = MorphologicalAnalyzer(morph_analyzer_name)
     doc_tok_lens = []
@@ -836,7 +841,8 @@ def batch_convert_document_to_conll(
                         contains_modality=contains_modality,
                         with_dct=with_dct,
                         is_raw=is_raw,
-                        bert_tokenizer=bert_tokenizer
+                        bert_tokenizer=bert_tokenizer,
+                        is_document=is_document
                     )
                 except Exception as ex:
                     print('[error]:' + file)
