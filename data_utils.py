@@ -217,7 +217,7 @@ class MultiheadConll(object):
                     begin_char_id = line_start + len(''.join(self._toks[sent_id][:begin_tid]))
                     end_char_id = line_start + len(''.join(self._toks[sent_id][:end_tid]))
                     char_surface = ''.join(self._toks[sent_id][begin_tid:end_tid])
-                    brat_ann.write(f'T{eid_start}\t{NER_DICT[ner_tag]} {begin_char_id} {end_char_id}\t{char_surface}\n')
+                    brat_ann.write(f'T{eid_start}\t{NER_DICT[ner_tag.capitalize()]} {begin_char_id} {end_char_id}\t{char_surface}\n')
                     charid2eid[end_char_id - 1] = f'T{eid_start}'
                     if mod_tag != '_':
                         brat_ann.write(f'A{mid_start}\t{MOD_DICT[mod_tag]} T{eid_start} {mod_tag}\n')
