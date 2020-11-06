@@ -44,6 +44,8 @@ class MorphologicalAnalyzer(object):
         if self.analyzer_name == 'juman':
             return [w.midasi for w in self.analyzer.analysis(text).mrph_list()]
         elif self.analyzer_name == 'mecab':
+            text = text.replace(' ', '\u3000')
+            print(self.analyzer.parse(text).replace('\u3000 SEP \u3000', ' [SEP] ').replace('\u3000', '[JASP]').split())
             segments = self.analyzer.parse(text).replace('\u3000 SEP \u3000', ' [SEP] ').replace('\u3000', '[JASP]').split()
             segments = ['[JASP]' if '[JASP]' in tok else mojimoji.han_to_zen(tok).replace('［ＳＥＰ］', '[SEP]') for tok in segments]
             return segments
@@ -723,7 +725,9 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                     toks, labs, modality_labs = [], [], []
                     for item in st.iter():
                         if item.text is not None:
+                            print(item.text)
                             seg_toks = mor_analyzer.analyze(item.text)
+                            print(seg_toks)
                             toks += seg_toks
                             if item.tag != 'sentence':
                                 if 'tid' in item.attrib:
@@ -834,6 +838,8 @@ def batch_convert_document_to_conll(
         for file in file_list:
             file_ext = ".xml" if sent_tag else ".txt"
             if file.endswith(file_ext):
+                if "report_1_1_3276171.xml" not in file:
+                    continue
                 try:
                     doc_tok_lens += convert_document_to_conll(
                         file, fo, morphological_analyzer, sent_tag=sent_tag,
@@ -2424,7 +2430,7 @@ def convert_rels_to_mhs_v3(
     )
     padded_doc_ner_ix_t = torch.tensor(
         [padding_1d(
-            [bio2ix[ner] for ner in sent_ner],
+            [bio2ix[ner] for ner in sent_ner ],
             cls_max_len,
             pad_tok=pad_lab_id
         ) for sent_ner in doc_ner]

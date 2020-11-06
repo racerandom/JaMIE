@@ -207,8 +207,9 @@ class MultiheadConll(object):
                 if self._comments[sent_id].startswith(('#doc', '## line')) and self._comments[sent_id] != prev_comment:
                     print(self._comments[sent_id])
                     comment_str = f'{self._comments[sent_id]}\n'
-                    brat_txt.write(comment_str)
-                    line_start += len(comment_str)
+                    if comment_str.startswith('## line'):
+                        brat_txt.write(comment_str)
+                        line_start += len(comment_str)
                     prev_comment = self._comments[sent_id]
                 sent_str = ''.join(self._toks[sent_id]) + '\n'
                 brat_txt.write(sent_str)

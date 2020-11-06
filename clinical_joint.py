@@ -173,14 +173,14 @@ def main():
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
                         help="Max gradient norm.")
 
-    parser.add_argument("--freeze_after_epoch", default=15, type=int,
+    parser.add_argument("--freeze_after_epoch", default=50, type=int,
                         help="freeze encoder after N epochs")
 
     parser.add_argument("--do_train",
                         action='store_true',
                         help="Whether to run training.")
 
-    parser.add_argument("--encoder_lr", default=5e-5, type=float,
+    parser.add_argument("--encoder_lr", default=2e-5, type=float,
                         help="learning rate")
 
     parser.add_argument("--decoder_lr", default=1e-2, type=float,
@@ -195,13 +195,13 @@ def main():
     parser.add_argument("--save_best", default='f1', type=str,
                         help="save the best model, given dev scores (f1 or loss)")
 
-    parser.add_argument("--save_step_portion", default=3, type=int,
+    parser.add_argument("--save_step_portion", default=2, type=int,
                         help="save best model given a portion of steps")
 
     parser.add_argument("--neg_ratio", default=1.0, type=float,
                         help="negative sample ratio")
 
-    parser.add_argument("--warmup_epoch", default=2, type=float,
+    parser.add_argument("--warmup_epoch", default=3, type=float,
                         help="warmup epoch")
 
     parser.add_argument("--scheduled_lr",
