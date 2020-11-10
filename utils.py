@@ -45,10 +45,18 @@ class MorphologicalAnalyzer(object):
             return [w.midasi for w in self.analyzer.analysis(text).mrph_list()]
         elif self.analyzer_name == 'mecab':
             text = text.replace(' ', '\u3000')
-            print(self.analyzer.parse(text).replace('\u3000 SEP \u3000', ' [SEP] ').replace('\u3000', '[JASP]').split())
             segments = self.analyzer.parse(text).replace('\u3000 SEP \u3000', ' [SEP] ').replace('\u3000', '[JASP]').split()
             segments = ['[JASP]' if '[JASP]' in tok else mojimoji.han_to_zen(tok).replace('［ＳＥＰ］', '[SEP]') for tok in segments]
-            return segments
+            refined_segments = []
+            for i in range(len(segments)):
+                if i == 0:
+                    refined_segments.append(segments[i])
+                else:
+                    if segments[i] == segments[i - 1] == '[JASP]':
+                        continue
+                    else:
+                        refined_segments.append(segments[i])
+            return refined_segments
 
 
 def get_label2ix(y_data, default=None, ignore_lab=None):
@@ -725,9 +733,9 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                     toks, labs, modality_labs = [], [], []
                     for item in st.iter():
                         if item.text is not None:
-                            print(item.text)
+                            # print(item.text)
                             seg_toks = mor_analyzer.analyze(item.text)
-                            print(seg_toks)
+                            # print(seg_toks)
                             toks += seg_toks
                             if item.tag != 'sentence':
                                 if 'tid' in item.attrib:
@@ -838,8 +846,8 @@ def batch_convert_document_to_conll(
         for file in file_list:
             file_ext = ".xml" if sent_tag else ".txt"
             if file.endswith(file_ext):
-                if "report_1_1_3276171.xml" not in file:
-                    continue
+                # if "report_1_1_3276171.xml" not in file:
+                #     continue
                 try:
                     doc_tok_lens += convert_document_to_conll(
                         file, fo, morphological_analyzer, sent_tag=sent_tag,
