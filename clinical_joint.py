@@ -119,17 +119,17 @@ def main():
     #                     help="pre-trained model dir")
 
     parser.add_argument("--train_file",
-                        default="data/2020Q2/mr20200605_rev/cv0_train.conll",
+                        default="data/2020Q2/mr20200605_rev/doc_conll/cv0_train.conll",
                         type=str,
                         help="train file, multihead conll format.")
 
     parser.add_argument("--dev_file",
-                        default="data/2020Q2/mr20200605_rev/cv0_dev.conll",
+                        default="data/2020Q2/mr20200605_rev/doc_conll/cv0_dev.conll",
                         type=str,
                         help="dev file, multihead conll format.")
 
     parser.add_argument("--test_file",
-                        default="data/2020Q2/mr20200605_rev/cv0_test.conll",
+                        default="data/2020Q2/mr20200605_rev/doc_conll/cv0_test.conll",
                         type=str,
                         help="test file, multihead conll format.")
 
@@ -137,6 +137,9 @@ def main():
                         default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
                         type=str,
                         help="pre-trained model dir")
+
+    parser.add_argument("--saved_model", default='checkpoints/tmp/joint_mr_rev2', type=str,
+                        help="save/load model dir")
 
     parser.add_argument("--do_lower_case",
                         action='store_true',
@@ -153,9 +156,6 @@ def main():
 
     parser.add_argument("--pred_dir", default="tmp/", type=str,
                         help="prediction dir, multihead conll format.")
-
-    parser.add_argument("--saved_model", default='checkpoints/tmp/joint_mr_rev', type=str,
-                        help="save/load model dir")
 
     parser.add_argument("--batch_test",
                         action='store_true',
@@ -540,4 +540,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

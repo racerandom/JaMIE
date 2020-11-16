@@ -215,7 +215,7 @@ class MultiheadConll(object):
                     fo.write(f"<{rel_tag} rid=\"R{current_rid}\" arg1=\"{tail_tid}\" arg2=\"{head_tid}\" reltype=\"{rel}\" />\n")
                     current_rid += 1
 
-    def doc_to_brat(self, brat_file, with_rel=True):
+    def doc_to_brat(self, brat_file, with_rel=True, is_prism=False):
         with open(brat_file + '.txt', 'w', encoding='utf8') as brat_txt, open(brat_file + '.ann', 'w', encoding='utf8') as brat_ann:
             line_start = 0
             eid_start = 1
@@ -238,10 +238,17 @@ class MultiheadConll(object):
                     begin_char_id = line_start + len(''.join(self._toks[sent_id][:begin_tid]))
                     end_char_id = line_start + len(''.join(self._toks[sent_id][:end_tid]))
                     char_surface = ''.join(self._toks[sent_id][begin_tid:end_tid])
-                    brat_ann.write(f'T{eid_start}\t{NER_DICT[ner_tag.capitalize()]} {begin_char_id} {end_char_id}\t{char_surface}\n')
+                    if not is_prism:
+                        brat_ann.write(f'T{eid_start}\t{ner_tag} {begin_char_id} {end_char_id}\t{char_surface}\n')
+                    else:
+                        # convert ner tag
+                        brat_ann.write(f'T{eid_start}\t{NER_DICT[ner_tag.capitalize()]} {begin_char_id} {end_char_id}\t{char_surface}\n')
                     charid2eid[end_char_id - 1] = f'T{eid_start}'
                     if mod_tag != '_':
-                        brat_ann.write(f'A{mid_start}\t{MOD_DICT[mod_tag]} T{eid_start} {mod_tag}\n')
+                        if not is_prism:
+                            brat_ann.write(f'A{mid_start}\t{mod_tag} T{eid_start} {mod_tag}\n')
+                        else:
+                            brat_ann.write(f'A{mid_start}\t{MOD_DICT[mod_tag]} T{eid_start} {mod_tag}\n')
                         mid_start += 1
                     eid_start += 1
                 if with_rel:
