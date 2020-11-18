@@ -623,19 +623,14 @@ class JointNerModReExtractor(nn.Module):
         self.mod_h2o = nn.Linear(hidden_size + ner_emb_size, len(mod_vocab))
         self.mod_loss_func = nn.CrossEntropyLoss(reduction='none')
 
-        # self.mhs_u = nn.Linear(hidden_size + ner_emb_size + mod_emb_size,
-        #                        rel_emb_size, bias=False)
-        # self.mhs_v = nn.Linear(hidden_size + ner_emb_size + mod_emb_size,
-        #                        rel_emb_size, bias=False)
-
-        self.sel_u_mat = nn.Parameter(torch.Tensor(hidden_size + ner_emb_size + mod_emb_size, hidden_size + ner_emb_size + mod_emb_size))
+        self.sel_u_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + ner_emb_size + mod_emb_size))
         nn.init.kaiming_uniform_(self.sel_u_mat, a=math.sqrt(5))
 
-        self.sel_v_mat = nn.Parameter(torch.Tensor(hidden_size + ner_emb_size + mod_emb_size, hidden_size + ner_emb_size + mod_emb_size))
+        self.sel_v_mat = nn.Parameter(torch.Tensor(rel_emb_size, hidden_size + ner_emb_size + mod_emb_size))
         nn.init.kaiming_uniform_(self.sel_v_mat, a=math.sqrt(5))
 
         self.drop_uv = nn.Dropout(p=0.1)
-        self.uv_rel = nn.Linear(hidden_size + ner_emb_size + mod_emb_size, rel_emb_size)
+        # self.uv_rel = nn.Linear(hidden_size + ner_emb_size + mod_emb_size, rel_emb_size)
         self.rel_h2o = nn.Linear(rel_emb_size, len(rel_vocab), bias=False)
 
         self.id2ner = {v: k for k, v in self.ner_vocab.items()}
@@ -688,13 +683,6 @@ class JointNerModReExtractor(nn.Module):
         mod_out = self.mod_emb(mod_gold)
         o = torch.cat((high_o, ner_out, mod_out), dim=-1)
 
-        # forward multi head selection
-        # u = self.mhs_u(o).unsqueeze(1).expand(batch_size, seq_len, seq_len, -1)
-        # v = self.mhs_v(o).unsqueeze(2).expand(batch_size, seq_len, seq_len, -1)
-        # uv = self.activation(u + v)
-        # uv = self.activation(torch.cat((u, v, (u - v).abs()), dim=-1))
-        # # correct one
-
         '''Multi-head Selection'''
         # word representations: [b, l, r_s]
         # broadcast sum: [b, l, 1, h] + [b, 1, l, h] = [b, l, l, h]
@@ -702,7 +690,7 @@ class JointNerModReExtractor(nn.Module):
         v = o.matmul(self.sel_v_mat.t())  # [b, l, h_s] -> [b, l, r_s]
         uv = u.unsqueeze(2) + v.unsqueeze(1)
         # rel_logits = torch.einsum('bijh,rh->birj', [uv, self.relation_emb.weight])
-        uv_logits = self.drop_uv(self.activation(self.uv_rel(uv)))
+        uv_logits = self.drop_uv(self.activation(uv))
         rel_logits = self.rel_h2o(uv_logits).transpose(2, 3)
 
         if all(gold is not None for gold in [ner_gold, mod_gold, rel_gold]):

@@ -1600,10 +1600,10 @@ def extract_rels_from_conll_sent(conll_sent, col_names, down_neg=1.0):
                 rel_tag = pos_rels[(keys[tail_id], keys[head_id])]
                 rel.append(rel_tag)
                 sent_rels.append(rel)
-            else:
-                rel.append('N')
-                if random.random() < down_neg:
-                    sent_rels.append(rel)
+            # else:
+            #     rel.append('N')
+            #     if random.random() < down_neg:
+            #         sent_rels.append(rel)
 
     return sent_rels
 

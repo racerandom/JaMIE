@@ -47,7 +47,9 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                     print()
 
             b_pred_ner, b_pred_mod, b_pred_rel_ix = model(
-                b_toks, b_attn_mask.bool(), b_sent_mask.long()
+                b_toks, b_attn_mask.bool(),
+                None
+                # b_sent_mask.long()
             )
 
             # ner tuple -> [sent_id, [ids], ner_lab]
@@ -161,13 +163,13 @@ def main():
                         action='store_true',
                         help="test batch files")
 
-    parser.add_argument("--batch_size", default=8, type=int,
+    parser.add_argument("--batch_size", default=4, type=int,
                         help="BATCH SIZE")
 
     parser.add_argument("--num_epoch", default=20, type=int,
                         help="fine-tuning epoch number")
 
-    parser.add_argument("--embed_size", default='[64, 64, 512]', type=str,
+    parser.add_argument("--embed_size", default='[32, 32, 512]', type=str,
                         help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -180,7 +182,7 @@ def main():
                         action='store_true',
                         help="Whether to run training.")
 
-    parser.add_argument("--encoder_lr", default=2e-5, type=float,
+    parser.add_argument("--encoder_lr", default=5e-5, type=float,
                         help="learning rate")
 
     parser.add_argument("--decoder_lr", default=1e-2, type=float,
@@ -388,7 +390,9 @@ def main():
                     pad_tok='[PAD]') for sent_id in b_sent_ids]
 
                 ner_loss, mod_loss, rel_loss = model(
-                    b_toks, b_attn_mask.bool(), b_sent_mask.long(),
+                    b_toks, b_attn_mask.bool(),
+                    # b_sent_mask.long(),
+                    None,
                     ner_gold=b_ner, mod_gold=b_mod, rel_gold=b_gold_relmat, reduction=args.reduction
                 )
                 loss = ner_loss + mod_loss + rel_loss
