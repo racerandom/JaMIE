@@ -143,11 +143,11 @@ class MultiheadConll(object):
     def update_rel_mention_triplets(self):
         for sent_id in range(len(self._doc_lines)):
             sent_dic = {(entity[-1]-1): entity[1:3] for entity in self._entities[sent_id]}
-            sent_triplets = set([])
+            sent_triplets = []
             for tail_id, head_id, rel in self._rel_triplets[sent_id]:
                 tail_mention = ''.join(self._toks[sent_id][sent_dic[tail_id][0]: sent_dic[tail_id][1]]) if tail_id in sent_dic else ''.join(self._toks[sent_id][tail_id: tail_id + 1])
                 head_mention = ''.join(self._toks[sent_id][sent_dic[head_id][0]: sent_dic[head_id][1]]) if head_id in sent_dic else ''.join(self._toks[sent_id][head_id: head_id + 1])
-                sent_triplets.add((tail_mention, head_mention, rel))
+                sent_triplets.append((tail_mention, head_mention, rel))
             self._rel_mention_triplets.append(sent_triplets)
 
     # def update_rel_detailed_triplets(self, prune_type):

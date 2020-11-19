@@ -106,46 +106,46 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
-                        help="train file, multihead conll format.")
-
-    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
-                        help="dev file, multihead conll format.")
-
-    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
-                        help="test file, multihead conll format.")
-
-    parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
-                        type=str,
-                        help="pre-trained model dir")
-
-    parser.add_argument("--saved_model", default='checkpoints/tmp/joint_i2b2', type=str,
-                        help="save/load model dir")
-
-
-    # parser.add_argument("--train_file",
-    #                     default="data/2020Q2/mr20200605_rev/doc_conll/cv0_train.conll",
-    #                     type=str,
+    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
     #                     help="train file, multihead conll format.")
     #
-    # parser.add_argument("--dev_file",
-    #                     default="data/2020Q2/mr20200605_rev/doc_conll/cv0_dev.conll",
-    #                     type=str,
+    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
     #                     help="dev file, multihead conll format.")
     #
-    # parser.add_argument("--test_file",
-    #                     default="data/2020Q2/mr20200605_rev/doc_conll/cv0_test.conll",
-    #                     type=str,
+    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
     #                     help="test file, multihead conll format.")
     #
     # parser.add_argument("--pretrained_model",
-    #                     default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+    #                     default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
     #                     type=str,
     #                     help="pre-trained model dir")
     #
-    # parser.add_argument("--saved_model", default='checkpoints/tmp/joint_mr_rev2', type=str,
+    # parser.add_argument("--saved_model", default='checkpoints/tmp/joint_i2b2', type=str,
     #                     help="save/load model dir")
+
+
+    parser.add_argument("--train_file",
+                        default="data/2020Q2/mr20200605_rev/sent_conll/cv0_train.conll",
+                        type=str,
+                        help="train file, multihead conll format.")
+
+    parser.add_argument("--dev_file",
+                        default="data/2020Q2/mr20200605_rev/sent_conll/cv0_dev.conll",
+                        type=str,
+                        help="dev file, multihead conll format.")
+
+    parser.add_argument("--test_file",
+                        default="data/2020Q2/mr20200605_rev/sent_conll/cv0_test.conll",
+                        type=str,
+                        help="test file, multihead conll format.")
+
+    parser.add_argument("--pretrained_model",
+                        default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+                        type=str,
+                        help="pre-trained model dir")
+
+    parser.add_argument("--saved_model", default='checkpoints/tmp/joint_mr_sent', type=str,
+                        help="save/load model dir")
 
     parser.add_argument("--do_lower_case",
                         action='store_true',
@@ -464,6 +464,7 @@ def main():
             dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
             dev_evaluator.eval_ner(print_level=1)
             dev_evaluator.eval_mod(print_level=1)
+            dev_evaluator.eval_rel(print_level=1)
             dev_evaluator.eval_mention_rel(print_level=1)
 
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
@@ -537,10 +538,11 @@ def main():
             eval_joint(model, test_dataloader, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo,
                        bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
                        print_levels=(2, 2, 2), out_file=args.test_output, verbose=0)
-            dev_evaluator = MhsEvaluator(args.test_file, args.test_output)
-            dev_evaluator.eval_ner(print_level=1)
-            dev_evaluator.eval_mod(print_level=1)
-            dev_evaluator.eval_mention_rel(print_level=1)
+            test_evaluator = MhsEvaluator(args.test_file, args.test_output)
+            test_evaluator.eval_ner(print_level=1)
+            test_evaluator.eval_mod(print_level=1)
+            test_evaluator.eval_rel(print_level=1)
+            test_evaluator.eval_mention_rel(print_level=1)
 
 if __name__ == '__main__':
     main()
