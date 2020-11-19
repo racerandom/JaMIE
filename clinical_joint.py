@@ -11,6 +11,7 @@ from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, Tenso
 from model import *
 
 import clinical_eval
+from clinical_eval import MhsEvaluator
 import utils
 warnings.filterwarnings("ignore")
 
@@ -454,7 +455,12 @@ def main():
                                 json.dump(rel2ix, fp)
 
             eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                       mod2ix, rel2ix, cls_max_len, args.device, "dev dataset", print_levels=(1, 1, 1), verbose=0)
+                       mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
+                       print_levels=(1, 1, 1), out_file=args.dev_output, verbose=0)
+            dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
+            dev_evaluator.eval_ner(print_level=1)
+            dev_evaluator.eval_mod(print_level=1)
+            dev_evaluator.eval_rel(print_level=1)
 
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
               f"rel: {best_dev_f1[3]:.6f}; epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d}\n")
@@ -474,18 +480,6 @@ def main():
             mod2ix = json.load(json_fi)
         with open(os.path.join(args.saved_model, 'rel2ix.json')) as json_fi:
             rel2ix = json.load(json_fi)
-
-        # '''Initialize model and load state'''
-        # model = JointNerModReExtractor(
-        #     bert_url=args.pretrained_model,
-        #     ner_emb_size=bio_emb_size, ner_vocab=bio2ix,
-        #     mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
-        #     rel_emb_size=rel_emb_size, rel_vocab=rel2ix,
-        #     device=args.device
-        # )
-        # model.encoder.resize_token_embeddings(len(tokenizer))
-        # model.to(args.device)
-        # model.load_state_dict(torch.load(os.path.join(args.saved_model, 'best.pt')))
 
         '''Load full model'''
         model = torch.load(os.path.join(args.saved_model, 'model.pt'))
