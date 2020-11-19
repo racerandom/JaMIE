@@ -106,46 +106,45 @@ def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
-    #                     help="train file, multihead conll format.")
-    #
-    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
-    #                     help="dev file, multihead conll format.")
-    #
-    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
-    #                     help="test file, multihead conll format.")
-    #
-    # parser.add_argument("--pretrained_model",
-    #                     default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
-    #                     type=str,
-    #                     help="pre-trained model dir")
-    #
-    # parser.add_argument("--saved_model", default='checkpoints/tmp/joint_i2b2', type=str,
-    #                     help="save/load model dir")
-
-
-    parser.add_argument("--train_file",
-                        default="data/2020Q2/mr20200605_rev/sent_conll/cv0_train.conll",
-                        type=str,
+    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
                         help="train file, multihead conll format.")
 
-    parser.add_argument("--dev_file",
-                        default="data/2020Q2/mr20200605_rev/sent_conll/cv0_dev.conll",
-                        type=str,
+    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
                         help="dev file, multihead conll format.")
 
-    parser.add_argument("--test_file",
-                        default="data/2020Q2/mr20200605_rev/sent_conll/cv0_test.conll",
-                        type=str,
+    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+                        default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
                         type=str,
                         help="pre-trained model dir")
 
-    parser.add_argument("--saved_model", default='checkpoints/tmp/joint_mr_sent', type=str,
+    parser.add_argument("--saved_model", default='checkpoints/tmp/joint_i2b2', type=str,
                         help="save/load model dir")
+
+    # parser.add_argument("--train_file",
+    #                     default="data/2020Q2/mr20200605_rev/sent_conll/cv0_train.conll",
+    #                     type=str,
+    #                     help="train file, multihead conll format.")
+    #
+    # parser.add_argument("--dev_file",
+    #                     default="data/2020Q2/mr20200605_rev/sent_conll/cv0_dev.conll",
+    #                     type=str,
+    #                     help="dev file, multihead conll format.")
+    #
+    # parser.add_argument("--test_file",
+    #                     default="data/2020Q2/mr20200605_rev/sent_conll/cv0_test.conll",
+    #                     type=str,
+    #                     help="test file, multihead conll format.")
+    #
+    # parser.add_argument("--pretrained_model",
+    #                     default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+    #                     type=str,
+    #                     help="pre-trained model dir")
+    #
+    # parser.add_argument("--saved_model", default='checkpoints/tmp/joint_mr_sent', type=str,
+    #                     help="save/load model dir")
 
     parser.add_argument("--do_lower_case",
                         action='store_true',
