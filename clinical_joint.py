@@ -460,7 +460,7 @@ def main():
             dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
             dev_evaluator.eval_ner(print_level=1)
             dev_evaluator.eval_mod(print_level=1)
-            dev_evaluator.eval_rel(print_level=1)
+            dev_evaluator.eval_mention_rel(print_level=1)
 
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
               f"rel: {best_dev_f1[3]:.6f}; epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d}\n")
@@ -533,6 +533,10 @@ def main():
             eval_joint(model, test_dataloader, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo,
                        bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
                        print_levels=(2, 2, 2), out_file=args.test_output, verbose=0)
+            dev_evaluator = MhsEvaluator(args.test_file, args.test_output)
+            dev_evaluator.eval_ner(print_level=1)
+            dev_evaluator.eval_mod(print_level=1)
+            dev_evaluator.eval_mention_rel(print_level=1)
 
 if __name__ == '__main__':
     main()
