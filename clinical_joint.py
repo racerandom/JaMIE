@@ -48,8 +48,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
 
             b_pred_ner, b_pred_mod, b_pred_rel_ix = model(
                 b_toks, b_attn_mask.bool(),
-                None
-                # b_sent_mask.long()
+                b_sent_mask.long()
             )
 
             # ner tuple -> [sent_id, [ids], ner_lab]
@@ -391,8 +390,7 @@ def main():
 
                 ner_loss, mod_loss, rel_loss = model(
                     b_toks, b_attn_mask.bool(),
-                    # b_sent_mask.long(),
-                    None,
+                    b_sent_mask.long(),
                     ner_gold=b_ner, mod_gold=b_mod, rel_gold=b_gold_relmat, reduction=args.reduction
                 )
                 loss = ner_loss + mod_loss + rel_loss
