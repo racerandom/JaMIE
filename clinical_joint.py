@@ -21,9 +21,9 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                orig_tok=None, out_file='tmp.conll',
                f1_mode='micro', test_mode=False, verbose=0):
 
-    ner_evaluator = clinical_eval.TupleEvaluator()
-    mod_evaluator = clinical_eval.TupleEvaluator()
-    rel_evaluator = clinical_eval.TupleEvaluator()
+    # ner_evaluator = clinical_eval.TupleEvaluator()
+    # mod_evaluator = clinical_eval.TupleEvaluator()
+    # rel_evaluator = clinical_eval.TupleEvaluator()
     model.eval()
     with torch.no_grad(), open(out_file, 'w') as fo:
         for eval_batch in tqdm(eval_dataloader, desc="Testing", disable=not test_mode):
@@ -52,17 +52,17 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 b_sent_mask.long()
             )
 
-            # ner tuple -> [sent_id, [ids], ner_lab]
-            b_gold_ner_tuple = utils.ner2tuple(b_sent_ids, b_gold_ner)
-            b_pred_ner_tuple = utils.ner2tuple(b_sent_ids, b_pred_ner)
-            ner_evaluator.update(b_gold_ner_tuple, b_pred_ner_tuple)
-
-            # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
-            b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]]
-                                for p in b_pred_ner_tuple if p[-1] != 'O']
-            b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]]
-                                for g in b_gold_ner_tuple if g[-1] != 'O']
-            mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
+            # # ner tuple -> [sent_id, [ids], ner_lab]
+            # b_gold_ner_tuple = utils.ner2tuple(b_sent_ids, b_gold_ner)
+            # b_pred_ner_tuple = utils.ner2tuple(b_sent_ids, b_pred_ner)
+            # ner_evaluator.update(b_gold_ner_tuple, b_pred_ner_tuple)
+            #
+            # # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
+            # b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]]
+            #                     for p in b_pred_ner_tuple if p[-1] != 'O']
+            # b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]]
+            #                     for g in b_gold_ner_tuple if g[-1] != 'O']
+            # mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
 
             b_pred_rel = [[{
                 'subject': [b_text_list[b_id][tok_id] for tok_id in rel['subject']],
@@ -71,11 +71,11 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
             } for rel in sent_rel_ix] for b_id, sent_rel_ix in enumerate(b_pred_rel_ix) ]
 
 
-            b_pred_rel_tuples = [[sent_id, ''.join(rel['subject']).replace('##', ''), ''.join(rel['object']).replace('##', ''), rel['predicate']]
-                                 for sent_id, sent_rel in zip(b_sent_ids, b_pred_rel) for rel in sent_rel]
-            b_gold_rel_tuples = [[sent_id, ''.join(rel['subject']).replace('##', ''), ''.join(rel['object']).replace('##', ''), rel['predicate']]
-                                 for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
-            rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
+            # b_pred_rel_tuples = [[sent_id, ''.join(rel['subject']).replace('##', ''), ''.join(rel['object']).replace('##', ''), rel['predicate']]
+            #                      for sent_id, sent_rel in zip(b_sent_ids, b_pred_rel) for rel in sent_rel]
+            # b_gold_rel_tuples = [[sent_id, ''.join(rel['subject']).replace('##', ''), ''.join(rel['object']).replace('##', ''), rel['predicate']]
+            #                      for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
+            # rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
 
             # print([(sub, obj, rel) for s_id, sub, obj, rel in b_pred_rel_tuples])
             # print([(sub, obj, rel) for s_id, sub, obj, rel in b_gold_rel_tuples])
@@ -98,9 +98,9 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 for index, (tok, ner, mod, rel, head) in enumerate(zip(orig_tok[sid] if orig_tok else w_tok, w_ner, w_mod, w_rel, w_head)):
                     fo.write(f"{index}\t{tok}\t{ner}\t{mod}\t{rel}\t{head}\n")
 
-        ner_f1 = ner_evaluator.print_results(message + ' ner', f1_mode=f1_mode, print_level=print_levels[0])
-        mod_f1 = mod_evaluator.print_results(message + ' mod', f1_mode=f1_mode, print_level=print_levels[1])
-        rel_f1 = rel_evaluator.print_results(message + ' rel', f1_mode=f1_mode, print_level=print_levels[2])
+        # ner_f1 = ner_evaluator.print_results(message + ' ner', f1_mode=f1_mode, print_level=print_levels[0])
+        # mod_f1 = mod_evaluator.print_results(message + ' mod', f1_mode=f1_mode, print_level=print_levels[1])
+        # rel_f1 = rel_evaluator.print_results(message + ' rel', f1_mode=f1_mode, print_level=print_levels[2])
         # f1 = (ner_f1 + mod_f1 + rel_f1) / 3
         # return f1, ner_f1, mod_f1, rel_f1
 
@@ -473,7 +473,7 @@ def main():
             dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
             dev_evaluator.eval_ner(print_level=1)
             dev_evaluator.eval_mod(print_level=1)
-            dev_evaluator.eval_rel(print_level=1)
+            # dev_evaluator.eval_rel(print_level=1)
             dev_evaluator.eval_mention_rel(print_level=1)
 
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
@@ -550,7 +550,7 @@ def main():
             test_evaluator = MhsEvaluator(args.test_file, args.test_output)
             test_evaluator.eval_ner(print_level=1)
             test_evaluator.eval_mod(print_level=1)
-            test_evaluator.eval_rel(print_level=2)
+            # test_evaluator.eval_rel(print_level=2)
             test_evaluator.eval_mention_rel(print_level=2)
 
 if __name__ == '__main__':
