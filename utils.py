@@ -1825,7 +1825,13 @@ def sbwrel2head(sbw_sent_rel, aligned_ids, offset=-1):
         w_tail_id = aligned_ids[rel_triplet['subject'][-1]] + offset
         w_head_id = aligned_ids[rel_triplet['object'][-1]] + offset
         rel = rel_triplet['predicate']
-        if sent_head[w_tail_id] == [w_tail_id]:
+        # if sent_head[w_tail_id] == [w_tail_id]:
+        #     sent_head[w_tail_id] = [w_head_id]
+        #     sent_rel[w_tail_id] = [rel]
+        # else:
+        #     sent_head[w_tail_id].append(w_head_id)
+        #     sent_rel[w_tail_id].append(rel)
+        if sent_head[w_tail_id] == [w_tail_id] and sent_rel[w_tail_id] == ['N']:
             sent_head[w_tail_id] = [w_head_id]
             sent_rel[w_tail_id] = [rel]
         else:
@@ -2402,7 +2408,8 @@ def convert_rels_to_mhs_v3(
             sbw_tail_tok = [cls_sbw_sent_tok[a_i] for o_i in tail_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
             sbw_head_tok = [cls_sbw_sent_tok[a_i] for o_i in head_ids for a_i in cls_aligned_ids[int(o_i) + 1]]
             spo_item = {'subject': sbw_tail_tok, 'predicate': rel_lab, 'object': sbw_head_tok}
-            sent_spo.append(spo_item)
+            if rel_lab != 'N':
+                sent_spo.append(spo_item)
             if verbose:
                 print(rel_item)
                 print(["{}: {}".format(ix, a_i) for ix, a_i in enumerate(cls_aligned_ids)])

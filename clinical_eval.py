@@ -111,11 +111,16 @@ class TupleEvaluator(object):
 class MhsEvaluator(object):
     def __init__(self, gold_mhs_file, pred_mhs_file, f1_mode='micro'):
         self._gold_mhs = MultiheadConll(gold_mhs_file)
-        self._pred_mhs = MultiheadConll(pred_mhs_file, prune_type=True)
+        self._pred_mhs = MultiheadConll(pred_mhs_file)
         self.f1_mode = f1_mode
         self._ner_evaluator = TupleEvaluator()
         self._mod_evaluator = TupleEvaluator()
         self._rel_evaluator = TupleEvaluator()
+        self._mention_rel_evaluator = TupleEvaluator()
+        # for g, p in zip(self._gold_mhs._rel_mention_triplets, self._pred_mhs._rel_mention_triplets):
+        #     print(p)
+        #     # print(g)
+        #     print()
 
     def eval_ner(self, print_level=1):
         for s_gold_ner, s_pred_ner in zip(self._gold_mhs._entities, self._pred_mhs._entities):
@@ -127,15 +132,21 @@ class MhsEvaluator(object):
             self._mod_evaluator.update(s_gold_mod, s_pred_mod, rel_col=-1)
         return self._mod_evaluator.print_results('mod', f1_mode=self.f1_mode, print_level=print_level)
 
+    def eval_rel_relax(self, print_level=1):
+        for s_gold_rel, s_pred_rel in zip(self._gold_mhs._rel_triplets, self._pred_mhs._rel_triplets):
+            self._rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
+        return self._rel_evaluator.print_results('rel (relax)', f1_mode=self.f1_mode, print_level=print_level)
+
     def eval_rel(self, print_level=1):
         for s_gold_rel, s_pred_rel in zip(self._gold_mhs._rel_detailed_triplets, self._pred_mhs._rel_detailed_triplets):
             self._rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
-        return self._rel_evaluator.print_results('rel', f1_mode=self.f1_mode, print_level=print_level)
+        return self._rel_evaluator.print_results('rel (strict)', f1_mode=self.f1_mode, print_level=print_level)
 
     def eval_mention_rel(self, print_level=1):
         for s_gold_rel, s_pred_rel in zip(self._gold_mhs._rel_mention_triplets, self._pred_mhs._rel_mention_triplets):
-            self._rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
-        return self._rel_evaluator.print_results('rel', f1_mode=self.f1_mode, print_level=print_level)
+            # print(s_pred_rel)
+            self._mention_rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
+        return self._mention_rel_evaluator.print_results('rel (str strict)', f1_mode=self.f1_mode, print_level=print_level)
 
 
 if __name__ == '__main__':
@@ -162,5 +173,6 @@ if __name__ == '__main__':
     if args.eval_level == 4:
         evaluator.eval_ner(print_level=1)
         evaluator.eval_mod(print_level=1)
-        evaluator.eval_mention_rel(print_level=1)
+        # evaluator.eval_rel(print_level=2)
+        evaluator.eval_mention_rel(print_level=2)
 

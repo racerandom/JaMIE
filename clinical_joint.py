@@ -19,18 +19,18 @@ warnings.filterwarnings("ignore")
 def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, ner2ix, mod2ix, rel2ix,
                cls_max_len, device, message, print_levels=(0, 0, 0),
                orig_tok=None, out_file='tmp.conll',
-               f1_mode='micro', verbose=0):
+               f1_mode='micro', test_mode=False, verbose=0):
 
     ner_evaluator = clinical_eval.TupleEvaluator()
     mod_evaluator = clinical_eval.TupleEvaluator()
     rel_evaluator = clinical_eval.TupleEvaluator()
     model.eval()
     with torch.no_grad(), open(out_file, 'w') as fo:
-        for dev_step, dev_batch in enumerate(eval_dataloader):
+        for eval_batch in tqdm(eval_dataloader, desc="Testing", disable=not test_mode):
             b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
-                t.to(device) for t in dev_batch[1:]
+                t.to(device) for t in eval_batch[1:]
             )
-            b_sent_ids = dev_batch[0].tolist()
+            b_sent_ids = eval_batch[0].tolist()
             b_text_list = [utils.padding_1d(
                 eval_tok[sent_id],
                 cls_max_len,
@@ -68,13 +68,18 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 'subject': [b_text_list[b_id][tok_id] for tok_id in rel['subject']],
                 'predicate': rel['predicate'],
                 'object': [b_text_list[b_id][tok_id] for tok_id in rel['object']],
-            }
-                for rel in sent_rel_ix] for b_id, sent_rel_ix in enumerate(b_pred_rel_ix) ]
+            } for rel in sent_rel_ix] for b_id, sent_rel_ix in enumerate(b_pred_rel_ix) ]
 
-            b_pred_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
+
+            b_pred_rel_tuples = [[sent_id, ''.join(rel['subject']).replace('##', ''), ''.join(rel['object']).replace('##', ''), rel['predicate']]
                                  for sent_id, sent_rel in zip(b_sent_ids, b_pred_rel) for rel in sent_rel]
-            b_gold_rel_tuples = [[sent_id, rel['subject'], rel['object'], rel['predicate']]
+            b_gold_rel_tuples = [[sent_id, ''.join(rel['subject']).replace('##', ''), ''.join(rel['object']).replace('##', ''), rel['predicate']]
                                  for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
+            rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
+
+            # print([(sub, obj, rel) for s_id, sub, obj, rel in b_pred_rel_tuples])
+            # print([(sub, obj, rel) for s_id, sub, obj, rel in b_gold_rel_tuples])
+            # print()
 
             for sid, sbw_ner, sbw_mod, sbw_rel, index_sbw_rel in zip(b_sent_ids, b_pred_ner, b_pred_mod, b_pred_rel, b_pred_rel_ix):
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
@@ -93,58 +98,56 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 for index, (tok, ner, mod, rel, head) in enumerate(zip(orig_tok[sid] if orig_tok else w_tok, w_ner, w_mod, w_rel, w_head)):
                     fo.write(f"{index}\t{tok}\t{ner}\t{mod}\t{rel}\t{head}\n")
 
-            rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
-
         ner_f1 = ner_evaluator.print_results(message + ' ner', f1_mode=f1_mode, print_level=print_levels[0])
         mod_f1 = mod_evaluator.print_results(message + ' mod', f1_mode=f1_mode, print_level=print_levels[1])
         rel_f1 = rel_evaluator.print_results(message + ' rel', f1_mode=f1_mode, print_level=print_levels[2])
-        f1 = (ner_f1 + mod_f1 + rel_f1) / 3
-        return f1, ner_f1, mod_f1, rel_f1
+        # f1 = (ner_f1 + mod_f1 + rel_f1) / 3
+        # return f1, ner_f1, mod_f1, rel_f1
 
 
 def main():
 
     parser = argparse.ArgumentParser(description='PRISM joint recognizer')
 
-    parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
-                        help="train file, multihead conll format.")
-
-    parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
-                        help="dev file, multihead conll format.")
-
-    parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
-                        help="test file, multihead conll format.")
-
-    parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
-                        type=str,
-                        help="pre-trained model dir")
-
-    parser.add_argument("--saved_model", default='checkpoints/tmp/joint_i2b2', type=str,
-                        help="save/load model dir")
-
-    # parser.add_argument("--train_file",
-    #                     default="data/2020Q2/mr20200605_rev/sent_conll/cv0_train.conll",
-    #                     type=str,
+    # parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
     #                     help="train file, multihead conll format.")
     #
-    # parser.add_argument("--dev_file",
-    #                     default="data/2020Q2/mr20200605_rev/sent_conll/cv0_dev.conll",
-    #                     type=str,
+    # parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
     #                     help="dev file, multihead conll format.")
     #
-    # parser.add_argument("--test_file",
-    #                     default="data/2020Q2/mr20200605_rev/sent_conll/cv0_test.conll",
-    #                     type=str,
+    # parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
     #                     help="test file, multihead conll format.")
     #
     # parser.add_argument("--pretrained_model",
-    #                     default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+    #                     default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
     #                     type=str,
     #                     help="pre-trained model dir")
     #
-    # parser.add_argument("--saved_model", default='checkpoints/tmp/joint_mr_sent', type=str,
+    # parser.add_argument("--saved_model", default='checkpoints/tmp/joint_i2b2', type=str,
     #                     help="save/load model dir")
+
+    parser.add_argument("--train_file",
+                        default="data/2020Q2/mr20200605_rev/doc_conll/cv0_train.conll",
+                        type=str,
+                        help="train file, multihead conll format.")
+
+    parser.add_argument("--dev_file",
+                        default="data/2020Q2/mr20200605_rev/doc_conll/cv0_dev.conll",
+                        type=str,
+                        help="dev file, multihead conll format.")
+
+    parser.add_argument("--test_file",
+                        default="data/2020Q2/mr20200605_rev/doc_conll/cv0_test.conll",
+                        type=str,
+                        help="test file, multihead conll format.")
+
+    parser.add_argument("--pretrained_model",
+                        default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+                        type=str,
+                        help="pre-trained model dir")
+
+    parser.add_argument("--saved_model", default='checkpoints/tmp/joint_mr_doc', type=str,
+                        help="save/load model dir")
 
     parser.add_argument("--do_lower_case",
                         action='store_true',
@@ -169,10 +172,10 @@ def main():
     parser.add_argument("--batch_size", default=4, type=int,
                         help="BATCH SIZE")
 
-    parser.add_argument("--num_epoch", default=20, type=int,
+    parser.add_argument("--num_epoch", default=30, type=int,
                         help="fine-tuning epoch number")
 
-    parser.add_argument("--embed_size", default='[32, 32, 512]', type=str,
+    parser.add_argument("--embed_size", default='[32, 32, 832]', type=str,
                         help="ner, mod, rel embedding size")
 
     parser.add_argument("--max_grad_norm", default=1.0, type=float,
@@ -185,7 +188,7 @@ def main():
                         action='store_true',
                         help="Whether to run training.")
 
-    parser.add_argument("--encoder_lr", default=5e-5, type=float,
+    parser.add_argument("--encoder_lr", default=2e-5, type=float,
                         help="learning rate")
 
     parser.add_argument("--decoder_lr", default=1e-2, type=float,
@@ -432,6 +435,13 @@ def main():
                         dev_f1 = eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                                             mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
                                             print_levels=(0, 0, 0), out_file=args.dev_output, verbose=0)
+                        dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
+                        dev_ner_f1 = dev_evaluator.eval_ner(print_level=0)
+                        dev_mod_f1 = dev_evaluator.eval_mod(print_level=0)
+                        dev_rel_f1 = dev_evaluator.eval_rel(print_level=0)
+                        dev_f1 = ((dev_ner_f1 + dev_mod_f1 + dev_rel_f1) / 3    ,
+                                  dev_ner_f1, dev_mod_f1, dev_rel_f1)
+
                         dev_f1 += (epoch,)
                         dev_f1 += (step,)
                         if best_dev_f1[0] < dev_f1[0]:
@@ -536,12 +546,12 @@ def main():
 
             eval_joint(model, test_dataloader, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo,
                        bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
-                       print_levels=(2, 2, 2), out_file=args.test_output, verbose=0)
+                       print_levels=(2, 2, 2), out_file=args.test_output, test_mode=False, verbose=0)
             test_evaluator = MhsEvaluator(args.test_file, args.test_output)
             test_evaluator.eval_ner(print_level=1)
             test_evaluator.eval_mod(print_level=1)
-            test_evaluator.eval_rel(print_level=1)
-            test_evaluator.eval_mention_rel(print_level=1)
+            test_evaluator.eval_rel(print_level=2)
+            test_evaluator.eval_mention_rel(print_level=2)
 
 if __name__ == '__main__':
     main()

@@ -100,6 +100,7 @@ class MultiheadConll(object):
             for line in sent_lines:
                 tok_items = line.strip().split('\t')
                 s_tok_ids.append(int(tok_items[0]))
+                # s_toks.append(tok_items[1])
                 s_toks.append(tok_items[1].replace('[JASP]', '\u3000').replace('[SEP]', '\n'))
                 s_ner_tags.append(tok_items[2])
                 s_mod_tags.append(tok_items[3])
@@ -135,9 +136,10 @@ class MultiheadConll(object):
             sent_dic = {(entity[-1]-1): entity[1:3] for entity in self._entities[sent_id]}
             sent_triplets = []
             for tail_id, head_id, rel in self._rel_triplets[sent_id]:
-                tail_span = sent_dic[tail_id] if tail_id in sent_dic else (tail_id, tail_id + 1)
-                head_span = sent_dic[head_id] if head_id in sent_dic else (head_id, head_id + 1)
-                sent_triplets.append((tail_span, head_span, rel))
+                if rel not in ['N']:
+                    tail_span = sent_dic[tail_id] if tail_id in sent_dic else (tail_id, tail_id + 1)
+                    head_span = sent_dic[head_id] if head_id in sent_dic else (head_id, head_id + 1)
+                    sent_triplets.append((tail_span, head_span, rel))
             self._rel_detailed_triplets.append(sent_triplets)
 
     def update_rel_mention_triplets(self):
@@ -145,9 +147,15 @@ class MultiheadConll(object):
             sent_dic = {(entity[-1]-1): entity[1:3] for entity in self._entities[sent_id]}
             sent_triplets = []
             for tail_id, head_id, rel in self._rel_triplets[sent_id]:
-                tail_mention = ''.join(self._toks[sent_id][sent_dic[tail_id][0]: sent_dic[tail_id][1]]) if tail_id in sent_dic else ''.join(self._toks[sent_id][tail_id: tail_id + 1])
-                head_mention = ''.join(self._toks[sent_id][sent_dic[head_id][0]: sent_dic[head_id][1]]) if head_id in sent_dic else ''.join(self._toks[sent_id][head_id: head_id + 1])
-                sent_triplets.append((tail_mention, head_mention, rel))
+                if rel not in ['N']:
+                    # tail_mention = ''.join(self._toks[sent_id][sent_dic[tail_id][0]: sent_dic[tail_id][1]]) if tail_id in sent_dic else ''.join(self._toks[sent_id][tail_id: tail_id + 1])
+                    # head_mention = ''.join(self._toks[sent_id][sent_dic[head_id][0]: sent_dic[head_id][1]]) if head_id in sent_dic else ''.join(self._toks[sent_id][head_id: head_id + 1])
+
+                    # ignore the cases if tail_id/head_id not equal to the last tok_id of entity
+                    if tail_id in sent_dic and head_id in sent_dic:
+                        tail_mention = ''.join(self._toks[sent_id][sent_dic[tail_id][0]: sent_dic[tail_id][1]])
+                        head_mention = ''.join(self._toks[sent_id][sent_dic[head_id][0]: sent_dic[head_id][1]])
+                        sent_triplets.append((tail_mention, head_mention, rel))
             self._rel_mention_triplets.append(sent_triplets)
 
     # def update_rel_detailed_triplets(self, prune_type):
