@@ -22,8 +22,3 @@ CUDA_VISIBLE_DEVICES=$1 python clinical_joint.py \
 --batch_size 4
 #done
 
-#cat "tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv0_dev.out" "tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv1_dev.out" "tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv2_dev.out" \
-#"tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv3_dev.out" "tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv4_dev.out" > "tmp/joint_${CORPUS}_${DOC_OR_SENT}_dev.out"
-
-#cat "tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv0_test.out" "tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv1_test.out" "tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv2_test.out" \
-#"tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv3_test.out" "tmp/joint_${CORPUS}_${DOC_OR_SENT}_cv4_test.out" > "tmp/joint_${CORPUS}_${DOC_OR_SENT}_test.out"

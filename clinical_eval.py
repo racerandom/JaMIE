@@ -157,22 +157,19 @@ if __name__ == '__main__':
                         help="pred file, multihead conll format.")
     parser.add_argument("--eval_level", default=0, type=int,
                         help="0: all, 1: ner, 2: mod, 3: rel")
+    parser.add_argument("--print_level", default=2, type=int,
+                        help="0: None, 1: F1scores, 2: detailed F1scores")
     args = parser.parse_args()
 
     evaluator = MhsEvaluator(args.gold_file, args.pred_file)
     if args.eval_level == 0:
-        evaluator.eval_ner(print_level=1)
-        evaluator.eval_mod(print_level=1)
-        evaluator.eval_rel(print_level=1)
-    elif args.eval_level == 1:
-        evaluator.eval_ner(print_level=1)
-    elif args.eval_level == 2:
-        evaluator.eval_mod(print_level=1)
-    elif args.eval_level == 3:
-        evaluator.eval_rel(print_level=2)
-    if args.eval_level == 4:
-        evaluator.eval_ner(print_level=1)
-        evaluator.eval_mod(print_level=1)
-        # evaluator.eval_rel(print_level=2)
-        evaluator.eval_mention_rel(print_level=2)
+        evaluator.eval_ner(print_level=args.print_level)
+        evaluator.eval_mod(print_level=args.print_level)
+        evaluator.eval_mention_rel(print_level=args.print_level)
+    elif args.eval_level == args.print_level:
+        evaluator.eval_ner(print_level=args.print_level)
+    elif args.eval_level == args.print_level:
+        evaluator.eval_mod(print_level=args.print_level)
+    elif args.eval_level == args.print_level:
+        evaluator.eval_rel(print_level=args.print_level)
 
