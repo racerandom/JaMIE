@@ -174,7 +174,7 @@ parser.add_argument("--do_train",
                     action='store_true',
                     help="Whether to run training.")
 
-parser.add_argument("--enc_lr", default=5e-5, type=float,
+parser.add_argument("--enc_lr", default=2e-5, type=float,
                     help="encoder lr")
 
 parser.add_argument("--dec_lr", default=1e-3, type=float,
