@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 CORPUS=$1
 DOC_OR_SENT=$2
 

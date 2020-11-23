@@ -803,7 +803,7 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                 '''filter sub-word length larger than len_limit'''
                 sbw_len = len(bert_tokenizer.tokenize(' '.join(toks)))
                 # print(len(toks), sbw_len)
-                if 2 < sbw_len <= len_limit - 2:
+                if sbw_len <= len_limit - 2:
 
                     # if sbw_len > 250:
                     #     continue
