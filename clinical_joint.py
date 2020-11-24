@@ -330,11 +330,11 @@ def main():
         optimizer_grouped_parameters = [
             {
                 'params': [p for n, p in param_optimizer if any(nd in n for nd in encoder_name_list)],
-                'lr': args.encoder_lr
+                'lr': args.enc_lr
             },
             {
                 'params': [p for n, p in param_optimizer if any(nd in n for nd in decoder_name_list)],
-                'lr': args.decoder_lr
+                'lr': args.dec_lr
             },
             {
                 'params': [p for n, p in param_optimizer if not any(nd in n for nd in encoder_name_list + decoder_name_list)],
