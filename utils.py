@@ -2445,7 +2445,7 @@ def convert_rels_to_mhs_v3(
     )
     padded_doc_ner_ix_t = torch.tensor(
         [padding_1d(
-            [bio2ix[ner] for ner in sent_ner ],
+            [bio2ix[ner] if ner in bio2ix else bio2ix['O'] for ner in sent_ner ],
             cls_max_len,
             pad_tok=pad_lab_id
         ) for sent_ner in doc_ner]
