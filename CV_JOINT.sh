@@ -5,7 +5,8 @@ DOC_OR_SENT=$3
 MODEL=$4
 SAVED_MODEL="checkpoints/${MODEL}/${CORPUS}_${DOC_OR_SENT}"
 DATA_DIR="data/2020Q2/${CORPUS}/${DOC_OR_SENT}_conll"
-OUTFILE_DIR"tmp/${MODEL}_${CORPUS}_${DOC_OR_SENT}"
+OUTFILE_DIR="tmp/${MODEL}_${CORPUS}_${DOC_OR_SENT}"
+mkdir -p $OUTFILE_DIR
 
 for cv_id in 0 1 2 3 4; do
     CUDA_VISIBLE_DEVICES=$1 python clinical_${MODEL}.py \
