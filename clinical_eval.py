@@ -166,10 +166,12 @@ if __name__ == '__main__':
         evaluator.eval_ner(print_level=args.print_level)
         evaluator.eval_mod(print_level=args.print_level)
         evaluator.eval_mention_rel(print_level=args.print_level)
+        evaluator.eval_rel(print_level=1)
     elif args.eval_level == 1:
         evaluator.eval_ner(print_level=args.print_level)
     elif args.eval_level == 2:
         evaluator.eval_mod(print_level=args.print_level)
     elif args.eval_level == 3:
         evaluator.eval_mention_rel(print_level=args.print_level)
+        evaluator.eval_rel(print_level=1)
 

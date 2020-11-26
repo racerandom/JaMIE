@@ -18,12 +18,15 @@ warnings.filterwarnings("ignore")
 
 def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, ner2ix, mod2ix, rel2ix,
                cls_max_len, device, message, print_levels=(0, 0, 0),
-               orig_tok=None, out_file='tmp.conll',
+               orig_tok=None, out_file=None,
                f1_mode='micro', test_mode=False, verbose=0):
 
     # ner_evaluator = clinical_eval.TupleEvaluator()
     # mod_evaluator = clinical_eval.TupleEvaluator()
     # rel_evaluator = clinical_eval.TupleEvaluator()
+    outfile_dir = out_file.rsplit('/', 1)[0]
+    if not os.path.exists(outfile_dir):
+        os.makedirs(outfile_dir)
     model.eval()
     with torch.no_grad(), open(out_file, 'w') as fo:
         for eval_batch in tqdm(eval_dataloader, desc="Testing", disable=not test_mode):
