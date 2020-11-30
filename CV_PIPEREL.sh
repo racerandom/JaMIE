@@ -18,7 +18,7 @@ for cv_id in 0 1 2 3 4; do
     --warmup_epoch 2 \
     --num_epoch 20 \
     --batch_size 1 \
-    --do_train 
+    --do_train
 
     CUDA_VISIBLE_DEVICES=${GPU_ID} python clinical_pipeline_rel.py \
     --saved_model "${MODEL_DIR}/cv${cv_id}" \

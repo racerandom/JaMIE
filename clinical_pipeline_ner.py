@@ -94,7 +94,7 @@ parser.add_argument("--enc_lr", default=5e-5, type=float,
 parser.add_argument("--dec_lr", default=1e-2, type=float,
                     help="crf layer lr")
 
-parser.add_argument("--encoder_hidden_size", default=300, type=int,
+parser.add_argument("--encoder_hidden_size", default=768, type=int,
                     help="encoder hidden size")
 
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
