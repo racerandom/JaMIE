@@ -666,10 +666,13 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                               ):
     from collections import defaultdict
     '''store relations to rel_dic'''
+    # print(clinical_file)
     rel_dic = defaultdict(lambda: [[], []])
-    with open(clinical_file) as fi:
+    with open(clinical_file, 'r') as fi:
         file_str = fi.read()
+        print(file_str)
         file_xml = ET.fromstring("<doc>" + file_str + "</doc>")
+        print('done')
         for elem in file_xml:
             if with_dct and "DCT-Rel" in elem.attrib:
                 tail_tid = elem.attrib["tid"]
@@ -685,7 +688,7 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
 
     '''read xml file'''
     line_list = [line_str for line_str in file_str.split('\n') if line_str.strip() and (line_str[1:5] not in ['trel', 'brel'])]
-
+    # print(line_list)
     trunk_list = [[]]
     for line in line_list:
         if not any(trunk_list):
@@ -758,6 +761,9 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
 
                                 if 'state' in item.attrib:
                                     phrase_modality_labs[-1] = item.attrib['state']
+
+                                if item.tag in ['EVENT'] and 'DCT' in item.attrib:
+                                    phrase_modality_labs[-1] = item.attrib['DCT']
 
                                 modality_labs += phrase_modality_labs
                             else:
@@ -1295,6 +1301,11 @@ def extract_cert_from_conll(conll_file, tokenizer, attrib_lab2ix, device, max_ne
                          clab_masks_t, 
                          pad_clab_ids_t
                          ), deunks
+
+
+# def sent_kfold(in_file, out_dir, cv=5, dev_ratio=0.1, random_seed=1029):
+#     from sklearn.model_selection import KFold, train_test_split
+#     for sent_id
 
 
 def doc_kfold(data_dir, cv=5, train_scale=1.0, dev_ratio=0.1, random_seed=1029):

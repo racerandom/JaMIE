@@ -20,8 +20,8 @@ def output_mod(trained_model, eval_dataloader, eval_comment, eval_tok, eval_ner,
             b_e_toks, b_e_attn_mask, b_e_sent_mask, b_e_ner, b_e_ner_mask, b_e_mod = tuple(
                 t.to(device) for t in dev_batch[1:]
             )
-            print([eval_tok[sent_id] for sent_id in dev_batch[0].tolist()])
-            print()
+            # print([eval_tok[sent_id] for sent_id in dev_batch[0].tolist()])
+            # print()
             _, _, l = b_e_ner_mask.shape
             b_sent_ids = dev_batch[0].tolist()
             b_text_list = [utils.padding_1d(
@@ -37,8 +37,8 @@ def output_mod(trained_model, eval_dataloader, eval_comment, eval_tok, eval_ner,
             for sid in b_sent_ids:
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
                 w_ner = utils.sbwner2ner(eval_ner[sid], aligned_ids)
-                # w_tok = w_tok[1:-1]
-                # w_ner = w_ner[1:-1]
+                w_tok = w_tok[1:-1]
+                w_ner = w_ner[1:-1]
                 assert len(w_tok) == len(w_ner)
 
                 sent_spans = bio_to_spans(w_ner)
@@ -58,8 +58,29 @@ python input arguments
 """
 parser = argparse.ArgumentParser(description='Clinical IE pipeline Modality classifier')
 
+# parser.add_argument("--pretrained_model",
+#                     default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
+#                     type=str,
+#                     help="pre-trained model dir")
+#
+# parser.add_argument("--do_lower_case",
+#                     action='store_true',
+#                     help="tokenizer: do_lower_case")
+#
+# parser.add_argument("--saved_model", default='checkpoints/tmp/pipeline/mod', type=str,
+#                     help="save/load model dir")
+#
+# parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+#                     help="train file, multihead conll format.")
+#
+# parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+#                     help="dev file, multihead conll format.")
+#
+# parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+#                     help="test file, multihead conll format.")
+
 parser.add_argument("--pretrained_model",
-                    default="/home/feicheng/Tools/NCBI_BERT_pubmed_mimic_uncased_L-12_H-768_A-12",
+                    default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
                     type=str,
                     help="pre-trained model dir")
 
@@ -67,16 +88,16 @@ parser.add_argument("--do_lower_case",
                     action='store_true',
                     help="tokenizer: do_lower_case")
 
-parser.add_argument("--saved_model", default='checkpoints/tmp/pipeline/mod', type=str,
+parser.add_argument("--saved_model", default='checkpoints/asahara/pipeline/mod', type=str,
                     help="save/load model dir")
 
-parser.add_argument("--train_file", default="data/i2b2/i2b2_training.conll", type=str,
+parser.add_argument("--train_file", default="resources/asahara/cv5_conll/cv0_train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="data/i2b2/i2b2_dev.conll", type=str,
+parser.add_argument("--dev_file", default="resources/asahara/cv5_conll/cv0_dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/i2b2/i2b2_test.conll", type=str,
+parser.add_argument("--test_file", default="resources/asahara/cv5_conll/cv0_test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=16, type=int,
@@ -101,10 +122,10 @@ parser.add_argument("--word_embedding",
                     type=str,
                     help="pre-trained word embedding")
 
-parser.add_argument("--encoder_hidden_size", default=300, type=int,
+parser.add_argument("--encoder_hidden_size", default=768, type=int,
                     help="encoder hidden size")
 
-parser.add_argument("--enc_lr", default=5e-5, type=float,
+parser.add_argument("--enc_lr", default=2e-5, type=float,
                     help="encoder lr")
 
 parser.add_argument("--dec_lr", default=1e-3, type=float,
@@ -129,8 +150,8 @@ parser.add_argument("--save_best", action='store', type=str, default='f1',
 parser.add_argument("--save_step_interval", default=3, type=int,
                     help="save best model given a portion of steps")
 
-parser.add_argument("--warmup_ratio", default=0.1, type=float,
-                    help="warmup ratio")
+parser.add_argument("--warmup_epoch", default=2, type=float,
+                    help="warmup epoch")
 
 parser.add_argument("--fp16",
                     action='store_true',
@@ -244,7 +265,7 @@ if args.do_train:
     if not args.non_scheduled_lr:
         scheduler = get_linear_schedule_with_warmup(
             optimizer,
-            num_warmup_steps=num_training_steps * args.warmup_ratio,
+            num_warmup_steps=num_epoch_steps * args.warmup_epoch,
             num_training_steps=num_training_steps
         )
 
@@ -366,4 +387,4 @@ else:
     """ predict test out """
     output_mod(model, test_dataloader, test_comments, test_tok, test_ner, mod2ix, args.test_output, args.device)
     test_evaluator = MhsEvaluator(args.test_file, args.test_output)
-    test_evaluator.eval_mod(print_level=1)
+    test_evaluator.eval_mod(print_level=2)

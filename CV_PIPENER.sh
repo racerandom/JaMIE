@@ -23,7 +23,7 @@ for cv_id in 0 1 2 3 4; do
     CUDA_VISIBLE_DEVICES=${GPU_ID} python clinical_pipeline_ner.py \
     --saved_model "${MODEL_DIR}/cv${cv_id}" \
     --test_file "${DATA_DIR}/cv${cv_id}_test.conll" \
-    --test_output "${OUT_DIR}}/cv${cv_id}_test.out" \
+    --test_output "${OUT_DIR}/cv${cv_id}_test.out" \
     --batch_size 32
 done
 
@@ -31,4 +31,4 @@ cat "${OUT_DIR}/cv0_test.out" "${OUT_DIR}/cv1_test.out" "${OUT_DIR}/cv2_test.out
 
 cat "${DATA_DIR}/cv0_test.conll" "${DATA_DIR}/cv1_test.conll" "${DATA_DIR}/cv2_test.conll" "${DATA_DIR}/cv3_test.conll" "${DATA_DIR}/cv4_test.conll" > "${DATA_DIR}/test.conll"
 
-python clinical_eval.py --gold_file "${DATA_DIR}/test.conll" --pred_file "${OUT_DIR}/test.out" --eval_level 0 --print_level 2
+python clinical_eval.py --gold_file "${DATA_DIR}/test.conll" --pred_file "${OUT_DIR}/test.out" --eval_level 1 --print_level 2
