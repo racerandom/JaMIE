@@ -670,9 +670,7 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
     rel_dic = defaultdict(lambda: [[], []])
     with open(clinical_file, 'r') as fi:
         file_str = fi.read()
-        print(file_str)
         file_xml = ET.fromstring("<doc>" + file_str + "</doc>")
-        print('done')
         for elem in file_xml:
             if with_dct and "DCT-Rel" in elem.attrib:
                 tail_tid = elem.attrib["tid"]
@@ -764,6 +762,9 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
 
                                 if item.tag in ['EVENT'] and 'DCT' in item.attrib:
                                     phrase_modality_labs[-1] = item.attrib['DCT']
+
+                                if item.tag in ['EVENT'] and 'DURATION' in item.attrib:
+                                    phrase_modality_labs[-1] = item.attrib['DURATION']
 
                                 modality_labs += phrase_modality_labs
                             else:

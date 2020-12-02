@@ -17,14 +17,19 @@ for cv_id in 0 1 2 3 4; do
     --enc_lr 2e-5 \
     --warmup_epoch 2 \
     --num_epoch 12 \
-    --batch_size 16 \
+    --batch_size 8 \
     --do_train
+#    --non_bert \
+#    --non_scheduled_lr \
+
 
     CUDA_VISIBLE_DEVICES=${GPU_ID} python clinical_pipeline_mod.py \
     --saved_model "${MODEL_DIR}/cv${cv_id}" \
     --test_file "${DATA_DIR}/cv${cv_id}_test.conll" \
     --test_output "${OUT_DIR}/cv${cv_id}_test.out" \
-    --batch_size 32
+#    --non_bert \
+#    --non_scheduled_lr \
+    --batch_size 16
 done
 
 cat "${OUT_DIR}/cv0_test.out" "${OUT_DIR}/cv1_test.out" "${OUT_DIR}/cv2_test.out" "${OUT_DIR}/cv3_test.out" "${OUT_DIR}/cv4_test.out" > "${OUT_DIR}/test.out"

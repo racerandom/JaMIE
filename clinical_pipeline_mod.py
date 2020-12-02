@@ -91,13 +91,13 @@ parser.add_argument("--do_lower_case",
 parser.add_argument("--saved_model", default='checkpoints/asahara/pipeline/mod', type=str,
                     help="save/load model dir")
 
-parser.add_argument("--train_file", default="resources/asahara/cv5_conll/cv0_train.conll", type=str,
+parser.add_argument("--train_file", default="data/2020Q2/asahara/line_conll/cv0_train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="resources/asahara/cv5_conll/cv0_dev.conll", type=str,
+parser.add_argument("--dev_file", default="data/2020Q2/asahara/line_conll/cv0_dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="resources/asahara/cv5_conll/cv0_test.conll", type=str,
+parser.add_argument("--test_file", default="data/2020Q2/asahara/line_conll/cv0_test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=16, type=int,
@@ -118,7 +118,8 @@ parser.add_argument("--non_bert",
                     help="use lstm + word embedding")
 
 parser.add_argument("--word_embedding",
-                    default="/home/feicheng/Resources/Embedding/keyed-6B-300.bin.gz",
+                    # default="/home/feicheng/Resources/Embedding/keyed-6B-300.bin.gz",
+                    default="/home/feicheng/Resources/Embedding/w2v.midasi.256.100M.bin",
                     type=str,
                     help="pre-trained word embedding")
 
@@ -255,6 +256,7 @@ if args.do_train:
         optimizer_grouped_parameters,
         correct_bias=False
     )
+    model.encoder.resize_token_embeddings(len(tokenizer))
     model.to(args.device)
 
     # PyTorch scheduler

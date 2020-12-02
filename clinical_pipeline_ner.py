@@ -119,9 +119,6 @@ parser.add_argument("--save_step_interval", default=3, type=int,
 parser.add_argument("--warmup_epoch", default=2, type=float,
                     help="warmup epoch")
 
-parser.add_argument("--fp16",
-                    action='store_true',
-                    help="fp16")
 
 parser.add_argument("--fp16_opt_level", type=str, default="O1",
                     help="For fp16: Apex AMP optimization level selected in ['O0', 'O1', 'O2', and 'O3']."
