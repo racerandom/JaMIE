@@ -59,6 +59,15 @@ class MorphologicalAnalyzer(object):
             return refined_segments
 
 
+def consist_nertag(nertag):
+    if nertag in ['O', 'OO']:
+        return nertag
+    elif nertag in ['Timex3']:
+        return nertag.upper()
+    else:
+        return nertag.lower()
+
+
 def get_label2ix(y_data, default=None, ignore_lab=None):
     label2ix = default if default is not None else {}
     for line in y_data:
@@ -745,8 +754,8 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                                     tag_tid = f"T{current_tid}"
                                     current_tid += 1
                                 tag2mask[tag_tid] = [0] * len(labs) + [1] * len(seg_toks)
-                                tok_labs = [f"I-{item.tag if item.tag!='O' else 'OO'}"] * len(seg_toks)
-                                tok_labs[0] = f"B-{item.tag if item.tag!='O' else 'OO'}"
+                                tok_labs = [f"I-{consist_nertag(item.tag)}"] * len(seg_toks)
+                                tok_labs[0] = f"B-{consist_nertag(item.tag)}"
                                 labs += tok_labs
 
                                 phrase_modality_labs = ['_'] * len(seg_toks)
@@ -811,9 +820,6 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                 sbw_len = len(bert_tokenizer.tokenize(' '.join(toks)))
                 # print(len(toks), sbw_len)
                 if sbw_len <= len_limit - 2:
-
-                    # if sbw_len > 250:
-                    #     continue
 
                     if not comment_line:
                         fo.write(f'#doc {clinical_file}\n')
@@ -2331,7 +2337,7 @@ def extract_pipeline_data_from_mhs_conll(
 
     padded_doc_ner_mod_ix_t = torch.tensor(
         [padding_1d(
-            [mod2ix[mod] if mod in mod2ix else mod2ix['_'] for mod in sent_mod],
+            [mod2ix[mod] if (mod in mod2ix and mod != '_') else -100 for mod in sent_mod],
             entity_max_num,
             pad_tok=-100
         ) for sent_mod in doc_ner_mod]
