@@ -113,7 +113,7 @@ parser.add_argument("--later_eval",
 parser.add_argument("--save_best", action='store', type=str, default='f1',
                     help="save the best model, given dev scores (f1 or loss)")
 
-parser.add_argument("--save_step_interval", default=3, type=int,
+parser.add_argument("--save_step_interval", default=2, type=int,
                     help="save best model given a portion of steps")
 
 parser.add_argument("--warmup_epoch", default=2, type=float,
@@ -140,6 +140,7 @@ args = parser.parse_args()
 args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print('device', args.device)
 args.n_gpu = torch.cuda.device_count()
+print(args)
 
 if args.do_train:
     tokenizer = BertTokenizer.from_pretrained(args.pretrained_model, do_lower_case=args.do_lower_case, do_basic_tokenize=False)
@@ -283,7 +284,7 @@ if args.do_train:
                 f"L_NER: {epoch_loss / (step + 1):.6f} | epoch: {epoch}/{args.num_epoch}:"
             )
 
-            if epoch > args.epoch_start_eval:
+            if epoch >= args.epoch_start_eval:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
                     output_ner(model, dev_dataloader, dev_comments, dev_tok, bio2ix, args.dev_output, args.non_bert, args.device)
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)

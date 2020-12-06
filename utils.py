@@ -1329,14 +1329,12 @@ def doc_kfold(data_dir, cv=5, train_scale=1.0, dev_ratio=0.1, random_seed=1029):
             train_split, dev_split = train_test_split(
                 raw_train_split,
                 test_size=dev_ratio,
-                shuffle=False,
+                shuffle=True,
                 random_state=random_seed
             )
         else:
             train_split = raw_train_split
             dev_split = []
-        random.seed(random_seed)
-        random.shuffle(train_split)
         train_split = train_split[:math.ceil(len(train_split) * train_scale)]
         file_splits.append((
             [file_list[fid] for fid in train_split],

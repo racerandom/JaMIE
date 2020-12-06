@@ -3,9 +3,14 @@
 GPU_ID=$1
 CORPUS=$2
 DOC_OR_SENT=$3
-MODEL_DIR="checkpoints/pipener/${CORPUS}_${DOC_OR_SENT}"
+ENC_LR=2e-5
+WARMUP=1
+EPOCH=6
+BATCH_SIZE=16
+
+MODEL_DIR="checkpoints/pipener/${CORPUS}_${DOC_OR_SENT}/EL${ENC_LR}_WU${WARMUP}_EP${EPOCH}_BS${BATCH_SIZE}"
 DATA_DIR="data/2020Q2/${CORPUS}/${DOC_OR_SENT}_conll"
-OUT_DIR="tmp/pipener_${CORPUS}_${DOC_OR_SENT}"
+OUT_DIR="tmp/pipener_${CORPUS}_${DOC_OR_SENT}/ EL${ENC_LR}_WU${WARMUP}_EP${EPOCH}_BS${BATCH_SIZE}"
 mkdir -p $OUT_DIR
 
 for cv_id in 0 1 2 3 4; do
@@ -14,10 +19,10 @@ for cv_id in 0 1 2 3 4; do
     --dev_file "${DATA_DIR}/cv${cv_id}_dev.conll" \
     --dev_output "${OUT_DIR}/cv${cv_id}_dev.out" \
     --saved_model "${MODEL_DIR}/cv${cv_id}" \
-    --enc_lr 2e-5 \
-    --warmup_epoch 2 \
-    --num_epoch 12 \
-    --batch_size 16 \
+    --enc_lr $ENC_LR \
+    --warmup_epoch $WARMUP \
+    --num_epoch $EPOCH \
+    --batch_size $BATCH_SIZE \
     --do_train
 
     CUDA_VISIBLE_DEVICES=${GPU_ID} python clinical_pipeline_ner.py \
