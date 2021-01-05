@@ -62,7 +62,7 @@ class MorphologicalAnalyzer(object):
 def consist_nertag(nertag):
     if nertag in ['O', 'OO']:
         return nertag
-    elif nertag in ['Timex3']:
+    elif nertag in ['Timex3', 'TIMEX3', 'timex3']:
         return nertag.upper()
     else:
         return nertag.lower()
@@ -2335,7 +2335,8 @@ def extract_pipeline_data_from_mhs_conll(
 
     padded_doc_ner_mod_ix_t = torch.tensor(
         [padding_1d(
-            [mod2ix[mod] if (mod in mod2ix and mod != '_') else -100 for mod in sent_mod],
+            # [mod2ix[mod] if (mod in mod2ix and mod != '_') else -100 for mod in sent_mod],
+            [mod2ix[mod] if mod in mod2ix else mod2ix['_'] for mod in sent_mod],
             entity_max_num,
             pad_tok=-100
         ) for sent_mod in doc_ner_mod]
