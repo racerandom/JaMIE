@@ -12,7 +12,7 @@ from data_utils import bio_to_spans
 warnings.filterwarnings("ignore")
 
 
-def output_mod(trained_model, eval_dataloader, eval_comment, eval_tok, eval_ner, mod2ix, mod_outfile, device):
+def output_mod(trained_model, eval_dataloader, eval_comment, eval_tok, eval_ner, mod2ix, mod_outfile, non_bert, device):
     ix2mod = {v: k for k, v in mod2ix.items()}
     trained_model.eval()
     with torch.no_grad(), open(mod_outfile, 'w') as fo:
@@ -37,8 +37,9 @@ def output_mod(trained_model, eval_dataloader, eval_comment, eval_tok, eval_ner,
             for sid in b_sent_ids:
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
                 w_ner = utils.sbwner2ner(eval_ner[sid], aligned_ids)
-                w_tok = w_tok[1:-1]
-                w_ner = w_ner[1:-1]
+                if not non_bert:
+                    w_tok = w_tok[1:-1]
+                    w_ner = w_ner[1:-1]
                 assert len(w_tok) == len(w_ner)
 
                 sent_spans = bio_to_spans(w_ner)
@@ -88,16 +89,16 @@ parser.add_argument("--do_lower_case",
                     action='store_true',
                     help="tokenizer: do_lower_case")
 
-parser.add_argument("--saved_model", default='checkpoints/asahara/pipeline/mod', type=str,
+parser.add_argument("--saved_model", default='checkpoints/mr20200605_rev/lstm_pipeline/ner', type=str,
                     help="save/load model dir")
 
-parser.add_argument("--train_file", default="data/2020Q2/asahara/line_conll/cv0_train.conll", type=str,
+parser.add_argument("--train_file", default="data/2020Q2/mr20200605_rev/sent_conll/cv0_train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="data/2020Q2/asahara/line_conll/cv0_dev.conll", type=str,
+parser.add_argument("--dev_file", default="data/2020Q2/mr20200605_rev/sent_conll/cv0_dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/2020Q2/asahara/line_conll/cv0_test.conll", type=str,
+parser.add_argument("--test_file", default="data/2020Q2/mr20200605_rev/sent_conll/cv0_test.conll", type=str,
                     help="test file, multihead conll format.")
 
 parser.add_argument("--batch_size", default=16, type=int,
@@ -123,8 +124,8 @@ parser.add_argument("--word_embedding",
                     type=str,
                     help="pre-trained word embedding")
 
-parser.add_argument("--encoder_hidden_size", default=768, type=int,
-                    help="encoder hidden size")
+# parser.add_argument("--encoder_hidden_size", default=768, type=int,
+#                     help="encoder hidden size")
 
 parser.add_argument("--enc_lr", default=2e-5, type=float,
                     help="encoder lr")
@@ -148,7 +149,7 @@ parser.add_argument("--later_eval",
 parser.add_argument("--save_best", action='store', type=str, default='f1',
                     help="save the best model, given dev scores (f1 or loss)")
 
-parser.add_argument("--save_step_interval", default=2, type=int,
+parser.add_argument("--save_step_interval", default=1, type=int,
                     help="save best model given a portion of steps")
 
 parser.add_argument("--warmup_epoch", default=2, type=float,
@@ -242,7 +243,7 @@ if args.do_train:
     """
     model = ModalityClassifier(
         args.pretrained_model, len(mod2ix),
-        hidden_size=args.encoder_hidden_size, pretrain_embed=weights
+        hidden_size=hidden_size, pretrain_embed=weights
     )
 
     # specify different lr
@@ -256,7 +257,8 @@ if args.do_train:
         optimizer_grouped_parameters,
         correct_bias=False
     )
-    model.encoder.resize_token_embeddings(len(tokenizer))
+    if not args.non_bert:
+        model.encoder.resize_token_embeddings(len(tokenizer))
     model.to(args.device)
 
     # PyTorch scheduler
@@ -317,7 +319,7 @@ if args.do_train:
 
             if epoch >= args.epoch_start_eval:
                 if ((step + 1) % save_step_interval == 0) or ((step + 1) == num_epoch_steps):
-                    output_mod(model, dev_dataloader, dev_comments, dev_tok, dev_ner, mod2ix, args.dev_output, args.device)
+                    output_mod(model, dev_dataloader, dev_comments, dev_tok, dev_ner, mod2ix, args.dev_output, args.non_bert, args.device)
                     dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
                     dev_f1 = (dev_evaluator.eval_mod(print_level=0), epoch, step)
                     if best_dev_f1[0] < dev_f1[0]:
@@ -387,6 +389,6 @@ else:
     model.to(args.device)
 
     """ predict test out """
-    output_mod(model, test_dataloader, test_comments, test_tok, test_ner, mod2ix, args.test_output, args.device)
+    output_mod(model, test_dataloader, test_comments, test_tok, test_ner, mod2ix, args.test_output, args.non_bert, args.device)
     test_evaluator = MhsEvaluator(args.test_file, args.test_output)
     test_evaluator.eval_mod(print_level=2)

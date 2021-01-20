@@ -54,19 +54,19 @@ parser.add_argument("--do_lower_case",
                     action='store_true',
                     help="tokenizer: do_lower_case")
 
-parser.add_argument("--saved_model", default='checkpoints/tmp/pipeline/ner', type=str,
+parser.add_argument("--saved_model", default='checkpoints/mr20200605_rev/lstm_pipeline/ner', type=str,
                     help="save/load model dir")
 
-parser.add_argument("--train_file", default="data/moonshot/conll/cv0_train.conll", type=str,
+parser.add_argument("--train_file", default="data/2020Q2/mr20200605_rev/sent_conll/cv0_train.conll", type=str,
                     help="train file, multihead conll format.")
 
-parser.add_argument("--dev_file", default="data/moonshot/conll/cv0_dev.conll", type=str,
+parser.add_argument("--dev_file", default="data/2020Q2/mr20200605_rev/sent_conll/cv0_dev.conll", type=str,
                     help="dev file, multihead conll format.")
 
-parser.add_argument("--test_file", default="data/moonshot/conll/cv0_test.conll", type=str,
+parser.add_argument("--test_file", default="data/2020Q2/mr20200605_rev/sent_conll/cv0_test.conll", type=str,
                     help="test file, multihead conll format.")
 
-parser.add_argument("--batch_size", default=4, type=int,
+parser.add_argument("--batch_size", default=16, type=int,
                     help="BATCH SIZE")
 
 parser.add_argument("--num_epoch", default=10, type=int,
@@ -84,18 +84,18 @@ parser.add_argument("--non_bert",
                     help="use lstm + word embedding")
 
 parser.add_argument("--word_embedding",
-                    default="/home/feicheng/Resources/Embedding/keyed-6B-300.bin.gz",
+                    default="/home/feicheng/Resources/Embedding/w2v.midasi.256.100M.bin",
                     type=str,
                     help="pre-trained word embedding")
 
-parser.add_argument("--enc_lr", default=5e-5, type=float,
+parser.add_argument("--enc_lr", default=1e-3, type=float,
                     help="encoder lr")
 
 parser.add_argument("--dec_lr", default=1e-2, type=float,
                     help="crf layer lr")
-
-parser.add_argument("--encoder_hidden_size", default=768, type=int,
-                    help="encoder hidden size")
+#
+# parser.add_argument("--encoder_hidden_size", default=768, type=int,
+#                     help="encoder hidden size")
 
 parser.add_argument("--max_grad_norm", default=1.0, type=float,
                     help="Max gradient norm.")
@@ -113,7 +113,7 @@ parser.add_argument("--later_eval",
 parser.add_argument("--save_best", action='store', type=str, default='f1',
                     help="save the best model, given dev scores (f1 or loss)")
 
-parser.add_argument("--save_step_interval", default=2, type=int,
+parser.add_argument("--save_step_interval", default=1, type=int,
                     help="save best model given a portion of steps")
 
 parser.add_argument("--warmup_epoch", default=2, type=float,
@@ -168,7 +168,7 @@ if args.do_train:
         word2ix, weights = None, None
         max_len_train = utils.max_sents_len(train_toks, tokenizer)
         max_len_dev = utils.max_sents_len(dev_toks, tokenizer)
-        hidden_size = 768
+        hidden_size = 768  # BERT-base
         print('max training sent len:', max_len_train)
         print('max dev sent len:', )
         print()
@@ -207,7 +207,7 @@ if args.do_train:
     """
     Model
     """
-    model = BertCRF(args.pretrained_model, hidden_size=args.encoder_hidden_size, num_labels=len(bio2ix), pretrain_embed=weights)
+    model = BertCRF(args.pretrained_model, hidden_size=hidden_size, num_labels=len(bio2ix), pretrain_embed=weights)
 
     # specify different lr
     param_optimizer = list(model.named_parameters())

@@ -1616,10 +1616,10 @@ def extract_rels_from_conll_sent(conll_sent, col_names, down_neg=1.0):
                 rel_tag = pos_rels[(keys[tail_id], keys[head_id])]
                 rel.append(rel_tag)
                 sent_rels.append(rel)
-            # else:
-            #     rel.append('N')
-            #     if random.random() < down_neg:
-            #         sent_rels.append(rel)
+            else:
+                rel.append('N')
+                if random.random() < down_neg:
+                    sent_rels.append(rel)
 
     return sent_rels
 
@@ -2154,21 +2154,6 @@ def extract_pipeline_data_from_mhs_conll(
                 sbw_sent_tok = [tok.lower() for tok in sent_tok]
         sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
         sbw_sent_mod = match_mod_label(sbw_sent_tok, sent_mod)
-        #
-        # print(len(sent_tok), sent_tok)
-        # print(len(sbw_sent_tok), sbw_sent_tok)
-        # print(len(sbw_sent_ner), sbw_sent_ner)
-        # print(len(sbw_sent_mod), sbw_sent_mod)
-        # print(len(sent_tok), len(sent_ner), len(sent_mod))
-        # print(len(sbw_sent_tok), len(sbw_sent_ner), len(sbw_sent_mod))
-        # print()
-        #
-        # for tok, ner in zip(sent_tok, sent_ner):
-        #     print(tok, ner)
-
-        # for i in range(len(sbw_sent_tok)):
-        #     print(sbw_sent_tok[i], sbw_sent_ner[i])
-        # print(sbw_sent_ner[-1])
 
         if not non_bert:
             cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
@@ -2362,6 +2347,63 @@ def extract_pipeline_data_from_mhs_conll(
     )
     return tensor_dataset, doc_comment, doc_tok, doc_ner, doc_mod, \
            doc_ner_pair_mask, doc_ner_pair_tag, doc_rel, doc_rel_tup, doc_spo
+
+#
+# # extract_pipeline_data_from_mhs_conll_v2
+# # example: [cls] x x x [e] x x [/e]
+# def extract_pipeline_rel_from_mhs_conll_v2(
+#     comments, ner_toks, ners, mods, rels,
+#     tokenizer,
+#     bio2ix, mod2ix, rel2ix,
+#     cls_max_len,
+#     cls_tok = '[CLS]',
+#     sep_tok = '[SEP]',
+#     pad_tok = '[PAD]',
+#     pad_mask_id = 0,
+#     pad_lab_id = 0,
+#     is_deunk = True,
+#     non_bert = False,
+#     is_uncased = True,
+#     word2ix = None,
+#     bert_max_len = 512,
+#     verbose = 0):
+#
+#     def attach_extended_tag(tok_seq, ner_seq):
+#
+#
+#     doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_mod, \
+#     doc_ner_mask, doc_ner_mod, doc_ner_pair_mask, doc_ner_pair_tag, doc_rel, doc_rel_tup, doc_spo = \
+#         [], [], [], [], [], [], [], [], [], [], [], [], []
+#     rel_count = 0
+#     print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
+#     doc_num = len(ner_toks)
+#     print("ready to extract pipeline data from mhs_conll...")
+#     sent_num = len(ner_toks)
+#     for sent_id, (sent_comment, sent_tok, sent_ner, sent_mod, sent_rel) in enumerate(zip(comments, ner_toks, ners, mods, rels)):
+#
+#         sbw_sent_unk = tokenizer.tokenize(' '.join(sent_tok))
+#         sbw_sent_tok = explore_unk(sbw_sent_unk, sent_tok)
+#
+#         sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
+#
+#         cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
+#         cls_sbw_sent_ner = ['O'] + sbw_sent_ner + ['O']
+#
+#         if len(cls_sbw_sent_tok) > bert_max_len:
+#             continue
+#
+#         cls_sbw_sent_mask = [1] * len(cls_sbw_sent_tok)
+#
+#         assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mask)
+#
+#         # align BPE ids
+#         cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
+#
+#         print(cls_sbw_sent_tok)
+#         print(cls_sbw_sent_ner)
+#         print()
+#     return None
+
 
 
 # clinical_mhs.py related

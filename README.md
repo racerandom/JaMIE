@@ -50,10 +50,33 @@ Predicted texts will be located in the 'outputs' folder.
 
 Predicted texts will be located in the 'outputs' folder.
 
+## Joint Japanese Medical Problem, Modality and Relation Recognition
+
+### Train：  
+> CUDA_VISIBLE_DEVICES=#SEED python clinical_joint.py \
+>    --pretrained_model #PRETRAINED_MODEL_DIR \
+>    --train_file #TRAIN_FILE \
+>    --dev_file #DEV_FILE \
+>    --dev_output #DEV_OUT \
+>    --saved_model #MODEL_DIR_TO_SAVE \
+>    --enc_lr 2e-5 \
+>    --batch_size 4 \
+>    --warmup_epoch 2 \
+>    --num_epoch 20 \
+>    --do_train \
+
+### Test:
+CUDA_VISIBLE_DEVICES=#SEED python clinical_joint.py \
+    --saved_model #SAVED_MODEL \
+    --test_file #TEST_FILE \
+    --test_output #TEST_OUT \
+    --batch_size 4
+
+
 
 ## Required Package
-pytorch=1.0.0  
-pytorch-pretrained-bert=0.6.2  
+pytorch=1.3.1  
+transformers=2.2.2
 mojimoji  
 tqdm  
 pyknp  

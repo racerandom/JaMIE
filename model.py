@@ -83,6 +83,7 @@ class BertCRF(nn.Module):
             self.is_bert = True
             self.encoder = BertModel.from_pretrained(encoder_url)
         self.dropout = nn.Dropout(dropout_prob)
+        self.emb_drop = nn.Dropout(0.2)
         self.crf_emission = nn.Linear(hidden_size, num_labels)
         self.crf_layer = CRF(self.num_labels, batch_first=True)
         self.crf_layer.reset_parameters()
@@ -94,7 +95,7 @@ class BertCRF(nn.Module):
             batch_size, seq_len = input_ix.shape
             input_lens = (input_ix != 0).sum(-1).tolist()
             embedded_input = self.word_embed(input_ix)
-            packed_input = rnn.pack_padded_sequence(embedded_input, input_lens, batch_first=True, enforce_sorted=False)
+            packed_input = rnn.pack_padded_sequence(self.emb_drop(embedded_input), input_lens, batch_first=True, enforce_sorted=False)
             encoder_logits, _ = self.encoder(packed_input)
             encoder_logits, out_lens = rnn.pad_packed_sequence(
                 encoder_logits,
@@ -102,8 +103,8 @@ class BertCRF(nn.Module):
                 padding_value=0,
                 total_length=seq_len
             )
-        emissions = self.crf_emission(encoder_logits)
-        crf_loss = -self.crf_layer(self.dropout(emissions), mask=attention_mask, tags=labels, reduction='token_mean')
+        emissions = self.crf_emission(self.dropout(encoder_logits))
+        crf_loss = -self.crf_layer(emissions, mask=attention_mask, tags=labels, reduction='mean')
         return crf_loss
 
     def decode(self, input_ix, attention_mask):
@@ -164,13 +165,14 @@ class ModalityClassifier(nn.Module):
             self.is_bert = False
             self.word_embed = nn.Embedding.from_pretrained(
                 torch.from_numpy(pretrain_embed),
-                freeze=True
+                freeze=False
             )
             vocab_size, embed_size = pretrain_embed.shape
             self.encoder = nn.LSTM(embed_size, int(hidden_size / 2), batch_first=True, bidirectional=True)
         else:
             self.is_bert = True
             self.encoder = BertModel.from_pretrained(encoder_url)
+        self.emb_drop = nn.Dropout(0.2)
         self.dropout = nn.Dropout(dropout_prob)
         self.classifier = nn.Linear(hidden_size, num_labels)
 
@@ -182,7 +184,7 @@ class ModalityClassifier(nn.Module):
             batch_size, seq_len = input_ix.shape
             input_lens = (input_ix != 0).sum(-1).tolist()
             embedded_input = self.word_embed(input_ix)
-            packed_input = rnn.pack_padded_sequence(embedded_input, input_lens, batch_first=True, enforce_sorted=False)
+            packed_input = rnn.pack_padded_sequence(self.emb_drop(embedded_input), input_lens, batch_first=True, enforce_sorted=False)
             encoder_logits, _ = self.encoder(packed_input)
             encoder_logits, out_lens = rnn.pad_packed_sequence(
                 encoder_logits,
@@ -191,7 +193,7 @@ class ModalityClassifier(nn.Module):
                 total_length=seq_len
             )
         # print(dm_mask.shape, dm_mask.dtype, encoder_logits.shape, encoder_logits.dtype)
-        tag_rep = torch.bmm(dm_mask, encoder_logits)
+        tag_rep = torch.bmm(dm_mask, F.relu(encoder_logits))
         # print(tag_rep.shape)
         pooled_output = self.dropout(tag_rep)
         logits = self.classifier(pooled_output)
