@@ -21,3 +21,4 @@ checkpoints/
 *.conll
 medicalreport0710/
 *.log
+*.swp

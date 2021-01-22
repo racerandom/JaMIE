@@ -66,21 +66,31 @@ Predicted texts will be located in the 'outputs' folder.
 >    --do_train \
 
 ### Test:
-CUDA_VISIBLE_DEVICES=#SEED python clinical_joint.py \
-    --saved_model #SAVED_MODEL \
-    --test_file #TEST_FILE \
-    --test_output #TEST_OUT \
-    --batch_size 4
+> CUDA_VISIBLE_DEVICES=#SEED python clinical_joint.py \
+>    --saved_model #SAVED_MODEL \
+>    --test_file #TEST_FILE \
+>    --test_output #TEST_OUT \
+>    --batch_size 4
 
 
+### Convert XML to CONLL for training
+> python data_converter.py \
+> --xml #XML_FILES_DIR \
+> --conll #OUTPUT_CONLL_DIR \
+> --cv_num 5 \ # 5-fold cross-validation, 0 presents to generate single conll file 
+> --doc_level \ # generate document-level ([SEP] denotes sentence boundaries) or sentence-level conll files
+> --segmenter mecab \ # please use mecab and NICT bert currently
+> --bert_dir ~/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE
 
 ## Required Package
 pytorch=1.3.1  
 transformers=2.2.2
 mojimoji  
 tqdm  
-pyknp  
-jumanpp 
+pyknp 
+MeCab
+*jumanpp 
+*mecab
 
 
 

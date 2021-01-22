@@ -874,7 +874,7 @@ def batch_convert_document_to_conll(
                 except Exception as ex:
                     print('[error]:' + file)
                     print(ex)
-    print(f"max length: {max(doc_tok_lens)}, {sum(i > 510 for i in doc_tok_lens)} docs > 510, total {len(doc_tok_lens)} docs")
+    print(f"max length: {max(doc_tok_lens)}, {sum(i > 510 for i in doc_tok_lens)} instances > 510, total {len(doc_tok_lens)} instances")
 
 
 def separated_batch_convert_clinical_data_to_relconll(
