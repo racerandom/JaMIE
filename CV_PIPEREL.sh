@@ -14,10 +14,10 @@ for cv_id in 0 1 2 3 4; do
     --dev_file "${DATA_DIR}/cv${cv_id}_dev.conll" \
     --dev_output "${OUT_DIR}/cv${cv_id}_dev.out" \
     --saved_model "${MODEL_DIR}/cv${cv_id}" \
-    --enc_lr 2e-5 \
-    --warmup_epoch 2 \
-    --num_epoch 20 \
-    --batch_size 1 \
+    --enc_lr 5e-5 \
+    --warmup_epoch 1 \
+    --num_epoch 10 \
+    --batch_size 8 \
     --do_train
 
     CUDA_VISIBLE_DEVICES=${GPU_ID} python clinical_pipeline_rel.py \

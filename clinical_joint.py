@@ -130,17 +130,17 @@ def main():
     #                     help="save/load model dir")
 
     parser.add_argument("--train_file",
-                        default="data/2020Q2/mr20200605_rev/doc_conll/cv0_train.conll",
+                        default="data/2021Q1/mr_final/doc_conll/cv0_train.conll",
                         type=str,
                         help="train file, multihead conll format.")
 
     parser.add_argument("--dev_file",
-                        default="data/2020Q2/mr20200605_rev/doc_conll/cv0_dev.conll",
+                        default="data/2021Q1/mr_final/doc_conll/cv0_dev.conll",
                         type=str,
                         help="dev file, multihead conll format.")
 
     parser.add_argument("--test_file",
-                        default="data/2020Q2/mr20200605_rev/doc_conll/cv0_test.conll",
+                        default="data/2021Q1/mr_final/doc_conll/cv0_test.conll",
                         type=str,
                         help="test file, multihead conll format.")
 
@@ -212,12 +212,11 @@ def main():
     parser.add_argument("--neg_ratio", default=1.0, type=float,
                         help="negative sample ratio")
 
-    parser.add_argument("--warmup_epoch", default=3, type=float,
+    parser.add_argument("--warmup_epoch", default=2, type=float,
                         help="warmup epoch")
 
     parser.add_argument("--scheduled_lr",
-                        default=True,
-                        type=bool,
+                        action='store_true',
                         help="learning rate schedule")
 
     parser.add_argument("--epoch_eval",
@@ -435,14 +434,14 @@ def main():
 
                 if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
-                        dev_f1 = eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                                            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
-                                            print_levels=(0, 0, 0), out_file=args.dev_output, verbose=0)
+                        eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo,
+                                   bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
+                                   print_levels=(0, 0, 0), out_file=args.dev_output, verbose=0)
                         dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
                         dev_ner_f1 = dev_evaluator.eval_ner(print_level=0)
                         dev_mod_f1 = dev_evaluator.eval_mod(print_level=0)
                         dev_rel_f1 = dev_evaluator.eval_rel(print_level=0)
-                        dev_f1 = ((dev_ner_f1 + dev_mod_f1 + dev_rel_f1) / 3    ,
+                        dev_f1 = ((dev_ner_f1 + dev_mod_f1 + dev_rel_f1) / 3,
                                   dev_ner_f1, dev_mod_f1, dev_rel_f1)
 
                         dev_f1 += (epoch,)

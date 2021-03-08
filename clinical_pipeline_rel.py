@@ -12,7 +12,7 @@ import argparse
 from model import *
 from clinical_eval import MhsEvaluator
 from collections import defaultdict
-from data_utils import bio_to_spans
+from data_objects import bio_to_spans
 warnings.filterwarnings("ignore")
 
 

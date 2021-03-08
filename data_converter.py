@@ -124,5 +124,5 @@ if args.cv_num == 0:
 elif args.cv_num > 0:
     cross_validation(args.xml_dir, args.conll_dir, args.doc_level, args.segmenter, args.cv_num, bert_tokenizer)
 else:
-    raise Exception(f"Incorrect cv number {cv_num}...")
+    raise Exception(f"Incorrect cv number {args.cv_num}...")
 

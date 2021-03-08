@@ -3,7 +3,6 @@ import torch
 from torch import nn
 from torch.nn import CrossEntropyLoss
 import torch.nn.functional as F
-import torch.optim as optim
 import torch.nn.utils.rnn as rnn
 
 from transformers import *
@@ -662,10 +661,10 @@ class JointNerModReExtractor(nn.Module):
             decoded_ner_ix = self.crf_tagger.decode(emissions=ner_logits, mask=mask)
             decoded_ner_tags = [list(map(lambda x: self.id2ner[x], tags)) for tags in decoded_ner_ix]
             pred_outputs += (decoded_ner_tags,)
-            temp_tag = copy.deepcopy(decoded_ner_ix)
-            for line in temp_tag:
+            batch_tag = copy.deepcopy(decoded_ner_ix)
+            for line in batch_tag:
                 line.extend([self.ner_vocab['O']] * (seq_len - len(line)))
-            ner_gold = torch.tensor(temp_tag).to(self.device)
+            ner_gold = torch.tensor(batch_tag).to(self.device)
 
         ner_out = self.ner_emb(ner_gold)
         o = torch.cat((low_o, ner_out), dim=2)

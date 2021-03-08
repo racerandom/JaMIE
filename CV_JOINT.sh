@@ -18,7 +18,8 @@ for cv_id in 0 1 2 3 4; do
     --warmup_epoch 2 \
     --num_epoch 25 \
     --do_train \
-    --batch_size 1
+    --fp16 \
+    --batch_size 2
 
     CUDA_VISIBLE_DEVICES=$1 python clinical_${MODEL}.py \
     --saved_model "${SAVED_MODEL}/cv${cv_id}" \

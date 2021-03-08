@@ -1,13 +1,28 @@
 #!/usr/bin/env python
 # coding: utf-8
 import copy
+import numpy as np
 
 MOD_DICT = {
         'positive': 'certainty', 'suspicious': 'certainty', 'negative': 'certainty', 'general': 'certainty',
         'executed': 'state', 'negated': 'state', 'scheduled': 'state', 'other': 'state',
         'DATE': 'type',  'TIME': 'type', 'DURATION': 'type', 'CC': 'type', 'SET': 'type', 'AGE': 'type', 'MISC': 'type'
-
-    }
+}
+tag2name = {
+    'd': 'Disease',
+    'a': 'Anatomical',
+    'f': 'Feature',
+    'c': 'Change',
+    'p': 'Pending',
+    'TIMEX3': 'TIMEX3',
+    't-test': 'TestTest',
+    't-key': 'TestKey',
+    't-val': 'TestVal',
+    'cc': 'ClinicalContext',
+    'r': 'Remedy',
+    'm-key': 'MedicineKey',
+    'm-val': 'MedicineVal',
+}
 
 NER_DICT = {
     'D': 'Disease',
@@ -55,10 +70,102 @@ def bio_to_spans(ner_tags):
     return entities
 
 
+# MultiheadConll Object
+class MultiheadConllObject(object):
+
+    def __init__(self, conll_file, delimiter=('#doc', '## line')):
+        self._doc_lines = []
+        self._comments = []
+        self._tok_ids = []
+        self._toks = []
+        self._ner_tags = []
+        self._mod_tags = []
+        self._head_rels = []
+        self._head_ids = []
+        self._multihead_mat = []
+        self.load_lines(conll_file, delimiter)
+        self.load_columns()
+
+    ''' split conll lines with the delimiters of the commented lines 
+        self._doc_lines as a 2D list 
+    '''
+    def load_lines(self, conll_file, delimiter):
+        with open(conll_file, 'r', encoding='utf8') as conll_fi:
+            sent_lines = []
+            for line in conll_fi:
+                if line.startswith(delimiter):
+                    self._comments.append(line.strip())
+                    if sent_lines:
+                        self._doc_lines.append(sent_lines)
+                        sent_lines = []
+                    continue
+                sent_lines.append(line)
+            if sent_lines:
+                self._doc_lines.append(sent_lines)
+
+    def load_columns(self):
+        for sent_lines in self._doc_lines:
+            s_tok_ids, s_toks, s_ner_tags, s_mod_tags, s_head_rels, s_head_ids = [], [], [], [], [], []
+            for line in sent_lines:
+                tok_items = line.strip().split('\t')
+                s_tok_ids.append(int(tok_items[0]))
+                s_toks.append(tok_items[1])
+                s_ner_tags.append(tok_items[2])
+                s_mod_tags.append(tok_items[3])
+                s_head_rels.append(eval(tok_items[4]))
+                s_head_ids.append(eval(tok_items[5]))
+            self._tok_ids.append(s_tok_ids)
+            self._toks.append(s_toks)
+            self._ner_tags.append(s_ner_tags)
+            self._mod_tags.append(s_mod_tags)
+            self._head_rels.append(s_head_rels)
+            self._head_ids.append(s_head_ids)
+
+    def generate_multihead_mat(self):
+        for ner_tags, mod_tags, head_rels, head_ids in zip(self._ner_tags, self._mod_tags, self._head_rels, self._head_ids):
+            seq_len = len(ner_tags)
+            mh_mat = np.empty((seq_len, seq_len), 'U25')
+            mh_mat.fill("O")
+            mh_mat = self.ner_to_mat(ner_tags, mh_mat)
+            mh_mat = self.rel_to_mat(head_rels, head_ids, mh_mat)
+            print(ner_tags)
+            print(mh_mat)
+            print()
+            self._multihead_mat.append(mh_mat)
+
+    @staticmethod
+    def ner_to_mat(ner_tags, mh_mat):
+        prev_start = None
+        for tag_id, tag in enumerate(ner_tags):
+            ne_tag = tag.split('-', 1)[-1]
+            if tag_id == 0:
+                prev_start = (tag_id, ne_tag)
+            else:
+                if tag == 'O' or tag.startswith('B-'):
+                    mh_mat[prev_start[0], tag_id-1] = prev_start[1]
+                    prev_start = (tag_id, ne_tag)
+                elif tag.startswith('I-'):
+                    if tag.split('-')[-1] != prev_start[1]:
+                        mh_mat[prev_start[0], tag_id - 1] = prev_start[1]
+                        prev_start = (tag_id, ne_tag)
+                else:
+                    raise Exception(f"Incorrect tag: {tag}...")
+        mh_mat[prev_start[0]][-1] = prev_start[1]
+        return mh_mat
+
+    @staticmethod
+    def rel_to_mat(head_rels, head_ids, mh_mat):
+        for modifier_id, (tok_head_rels, tok_head_ids) in enumerate(zip(head_rels, head_ids)):
+            for head_rel, head_id in zip(tok_head_rels, tok_head_ids):
+                if modifier_id != head_id and head_rel != 'N':
+                    mh_mat[modifier_id, head_id] = head_rel
+        return mh_mat
+
+
 # MultiheadConll document class
 class MultiheadConll(object):
 
-    def __init__(self, conll_file, prune_type=False, empty_comment=('#doc', '## line')):
+    def __init__(self, conll_file, prune_type=False, delimiter=('#doc', '## line')):
         self._doc_lines = []
         self._comments = []
         self._tok_ids = []
@@ -72,7 +179,7 @@ class MultiheadConll(object):
         self._rel_triplets = []
         self._rel_detailed_triplets = []
         self._rel_mention_triplets = []
-        self.load_doc(conll_file, empty_comment)
+        self.load_doc(conll_file, delimiter)
         self.update_columns()
         self.update_entities()
         self.update_mod_entities()
@@ -158,26 +265,6 @@ class MultiheadConll(object):
                         sent_triplets.append((tail_mention, head_mention, rel))
             self._rel_mention_triplets.append(sent_triplets)
 
-    # def update_rel_detailed_triplets(self, prune_type):
-    #     for sent_id in range(len(self._doc_lines)):
-    #         sent_dic = {(entity[-1]-1): (entity[1:3], entity[0]) for entity in self._entities[sent_id]}
-    #         # print(sent_dic)
-    #         sent_triplets = []
-    #         for tail_id, head_id, rel in self._rel_triplets[sent_id]:
-    #             if tail_id in sent_dic and head_id in sent_dic:
-    #                 tail_tag = sent_dic[tail_id][1]
-    #                 head_tag = sent_dic[head_id][1]
-    #                 if prune_type:
-    #                     if head_tag == 'problem':
-    #                         tail_span = sent_dic[tail_id][0]
-    #                         head_span = sent_dic[head_id][0]
-    #                         sent_triplets.append((tail_span, head_span, rel))
-    #                 else:
-    #                     tail_span = sent_dic[tail_id][0]
-    #                     head_span = sent_dic[head_id][0]
-    #                     sent_triplets.append((tail_span, head_span, rel))
-    #         self._rel_detailed_triplets.append(sent_triplets)
-
     def doc_to_xml(self, xml_file):
         current_tid = 1
         current_rid = 1
@@ -223,7 +310,7 @@ class MultiheadConll(object):
                     fo.write(f"<{rel_tag} rid=\"R{current_rid}\" arg1=\"{tail_tid}\" arg2=\"{head_tid}\" reltype=\"{rel}\" />\n")
                     current_rid += 1
 
-    def doc_to_brat(self, brat_file, with_rel=True, is_prism=False):
+    def doc_to_brat(self, brat_file, with_rel=True, is_prism=True):
         with open(brat_file + '.txt', 'w', encoding='utf8') as brat_txt, open(brat_file + '.ann', 'w', encoding='utf8') as brat_ann:
             line_start = 0
             eid_start = 1

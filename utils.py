@@ -12,7 +12,7 @@ from textformatting import ssplit
 from gensim.models import KeyedVectors
 from transformers import *
 
-import data_utils
+import data_objects
 from pyknp import Juman
 juman = Juman()
 
@@ -2055,7 +2055,7 @@ def document_sent_mask(sbw_toks, sep_tok='[SEP]'):
 
 def sent_mask_mod(sent_ner, sent_mod):
     ner_masks, mod_tags = [], []
-    ne_spans = data_utils.bio_to_spans(sent_ner)
+    ne_spans = data_objects.bio_to_spans(sent_ner)
     for ner_tag, start, end in ne_spans:
         tmp_mask = [0] * len(sent_ner)
         for index in range(start, end):
@@ -2068,7 +2068,7 @@ def sent_mask_mod(sent_ner, sent_mod):
 
 def sent_entity_mask(sent_ner):
     ner_masks = []
-    ne_spans = data_utils.bio_to_spans(sent_ner)
+    ne_spans = data_objects.bio_to_spans(sent_ner)
     for ner_tag, start, end in ne_spans:
         tmp_mask = [0] * len(sent_ner)
         for index in range(start, end):
@@ -2079,7 +2079,7 @@ def sent_entity_mask(sent_ner):
 
 def sent_entity_tag(sent_ner):
     ner_tags = []
-    ne_spans = data_utils.bio_to_spans(sent_ner)
+    ne_spans = data_objects.bio_to_spans(sent_ner)
     for tag, start, end in ne_spans:
         ner_tags.append(tag)
     return ner_tags
@@ -2349,60 +2349,83 @@ def extract_pipeline_data_from_mhs_conll(
            doc_ner_pair_mask, doc_ner_pair_tag, doc_rel, doc_rel_tup, doc_spo
 
 #
-# # extract_pipeline_data_from_mhs_conll_v2
-# # example: [cls] x x x [e] x x [/e]
-# def extract_pipeline_rel_from_mhs_conll_v2(
-#     comments, ner_toks, ners, mods, rels,
-#     tokenizer,
-#     bio2ix, mod2ix, rel2ix,
-#     cls_max_len,
-#     cls_tok = '[CLS]',
-#     sep_tok = '[SEP]',
-#     pad_tok = '[PAD]',
-#     pad_mask_id = 0,
-#     pad_lab_id = 0,
-#     is_deunk = True,
-#     non_bert = False,
-#     is_uncased = True,
-#     word2ix = None,
-#     bert_max_len = 512,
-#     verbose = 0):
-#
-#     def attach_extended_tag(tok_seq, ner_seq):
-#
-#
-#     doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_mod, \
-#     doc_ner_mask, doc_ner_mod, doc_ner_pair_mask, doc_ner_pair_tag, doc_rel, doc_rel_tup, doc_spo = \
-#         [], [], [], [], [], [], [], [], [], [], [], [], []
-#     rel_count = 0
-#     print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
-#     doc_num = len(ner_toks)
-#     print("ready to extract pipeline data from mhs_conll...")
-#     sent_num = len(ner_toks)
-#     for sent_id, (sent_comment, sent_tok, sent_ner, sent_mod, sent_rel) in enumerate(zip(comments, ner_toks, ners, mods, rels)):
-#
-#         sbw_sent_unk = tokenizer.tokenize(' '.join(sent_tok))
-#         sbw_sent_tok = explore_unk(sbw_sent_unk, sent_tok)
-#
-#         sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
-#
-#         cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
-#         cls_sbw_sent_ner = ['O'] + sbw_sent_ner + ['O']
-#
-#         if len(cls_sbw_sent_tok) > bert_max_len:
-#             continue
-#
-#         cls_sbw_sent_mask = [1] * len(cls_sbw_sent_tok)
-#
-#         assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mask)
-#
-#         # align BPE ids
-#         cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
-#
-#         print(cls_sbw_sent_tok)
-#         print(cls_sbw_sent_ner)
-#         print()
-#     return None
+# extract_pipeline_data_from_mhs_conll_v2
+# example: [cls] x x x [e] x x [/e]
+def extract_dataset_from_mhs_conll_v2(
+    comments, ner_toks, ners, mods, rels,
+    tokenizer,
+    bio2ix, mod2ix, rel2ix,
+    cls_max_len,
+    cls_tok = '[CLS]',
+    sep_tok = '[SEP]',
+    pad_tok = '[PAD]',
+    pad_mask_id = 0,
+    pad_lab_id = -100,
+    is_deunk = True,
+    non_bert = False,
+    is_uncased = True,
+    word2ix = None,
+    bert_max_len = 512,
+    verbose = 0):
+
+    def attach_ner_tag(tok_seq, ner_seq):
+        assert len(tok_seq) == len(ner_seq)
+        entity_pairs = []
+        prev_tag = 'O'
+        for tok_id, (tok, tag) in enumerate(zip(tok_seq, ner_seq)):
+            entity = tag.lstrip('B-').lstrip('I-')
+            prev_entity = prev_tag.lstrip('B-').lstrip('I-')
+            if tag.startswith('I-') and prev_tag.startswith(('B-', 'I-')) and entity == prev_entity:
+                entity_pairs[-1].append((tok, entity))
+            else:
+                entity_pairs.append([(tok, entity)])
+            prev_tag = tag
+        tagged_toks = []
+        for pairs in entity_pairs:
+            entity = pairs[0][1]
+            if entity not in ['O', 'o']:
+                tagged_toks.append(f"<{entity}>")
+            for tok, _ in pairs:
+                tagged_toks.append(tok)
+            if entity not in ['O', 'o']:
+                tagged_toks.append(f"</{entity}>")
+        return tagged_toks
+
+    def dettach_ner_tag(tok_seq):
+        pass
+
+    doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_mod, doc_ner_mask, doc_ner_mod, doc_ner_pair_mask, doc_ner_pair_tag, doc_rel, doc_rel_tup, doc_spo = [], [], [], [], [], [], [], [], [], [], [], [], []
+    rel_count = 0
+    print((len(ner_toks), cls_max_len, cls_max_len, len(rel2ix)))
+    doc_num = len(ner_toks)
+    print("ready to extract pipeline data from mhs_conll...")
+    sent_num = len(ner_toks)
+    for sent_id, (sent_comment, sent_tok, sent_ner, sent_mod, sent_rel) in enumerate(zip(comments, ner_toks, ners, mods, rels)):
+
+        sbw_sent_unk = tokenizer.tokenize(' '.join(sent_tok))
+        sbw_sent_tok = explore_unk(sbw_sent_unk, sent_tok)
+
+        sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
+
+        cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
+        cls_sbw_sent_ner = ['O'] + sbw_sent_ner + ['O']
+        tagged_cls_sbw_sent_tok = attach_ner_tag(cls_sbw_sent_tok, cls_sbw_sent_ner)
+
+        if len(cls_sbw_sent_tok) > bert_max_len:
+            continue
+
+        cls_sbw_sent_mask = [1] * len(cls_sbw_sent_tok)
+
+        assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mask)
+
+        # align BPE ids
+        cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
+
+        print(cls_sbw_sent_tok)
+        print(cls_sbw_sent_ner)
+        print(tagged_cls_sbw_sent_tok)
+        print()
+    return None
 
 
 

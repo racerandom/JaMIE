@@ -167,7 +167,7 @@ if args.do_train:
         down_neg=0.0
     )
 
-    # non_bert for word embedding
+    # word embedding of word2vec or bert
     if args.non_bert:
         word2ix, weights = retrieve_w2v(args.word_embedding)
         max_len_train = max([len(sent_tok) for sent_tok in train_toks])
@@ -199,14 +199,13 @@ if args.do_train:
     - wrap them into dataloader for mini-batch cutting
     """
 
-    train_dataset, train_comment, train_tok, train_ner, train_mod, \
-    train_pair_mask, train_pair_tag, train_rel, train_rel_tup, train_spo = utils.extract_pipeline_data_from_mhs_conll(
-        train_comments, train_toks, train_ners, train_mods, train_rels,
-        tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
-        non_bert=args.non_bert, word2ix=word2ix, verbose=0)
+    # train_dataset, train_comment, train_tok, train_ner, train_mod, \
+    # train_pair_mask, train_pair_tag, train_rel, train_rel_tup, train_spo = utils.extract_pipeline_data_from_mhs_conll(
+    #     train_comments, train_toks, train_ners, train_mods, train_rels,
+    #     tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
+    #     non_bert=args.non_bert, word2ix=word2ix, verbose=0)
 
-    dev_dataset, dev_comment, dev_tok, dev_ner, dev_mod, \
-    dev_pair_mask, dev_pair_tag, dev_rel, dev_rel_tup, dev_spo = utils.extract_pipeline_data_from_mhs_conll(
+    utils.extract_dataset_from_mhs_conll_v2(
         dev_comments, dev_toks, dev_ners, dev_mods, dev_rels,
         tokenizer, bio2ix, mod2ix, rel2ix, cls_max_len,
         non_bert=args.non_bert, word2ix=word2ix, verbose=0)

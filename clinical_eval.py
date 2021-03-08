@@ -1,6 +1,6 @@
 import copy
 from collections import defaultdict
-from data_utils import MultiheadConll
+from data_objects import MultiheadConll
 import argparse
 
 
