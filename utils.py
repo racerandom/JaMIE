@@ -1315,7 +1315,7 @@ def extract_cert_from_conll(conll_file, tokenizer, attrib_lab2ix, device, max_ne
 #     for sent_id
 
 
-def doc_kfold(data_dir, cv=5, train_scale=1.0, dev_ratio=0.1, random_seed=1029):
+def doc_kfold(data_dir, cv=5, train_scale=1.0, dev_ratio=0.08, random_seed=1029):
     from sklearn.model_selection import KFold, train_test_split
     file_list, file_splits = [], []
     for file in sorted(os.listdir(data_dir)):
