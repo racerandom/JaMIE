@@ -130,17 +130,17 @@ def main():
     #                     help="save/load model dir")
 
     parser.add_argument("--train_file",
-                        default="data/2021Q1/mr_final/doc_conll/cv0_train.conll",
+                        default="data/2021Q1/mr150/doc_conll/cv0_train.conll",
                         type=str,
                         help="train file, multihead conll format.")
 
     parser.add_argument("--dev_file",
-                        default="data/2021Q1/mr_final/doc_conll/cv0_dev.conll",
+                        default="data/2021Q1/mr150/doc_conll/cv0_dev.conll",
                         type=str,
                         help="dev file, multihead conll format.")
 
     parser.add_argument("--test_file",
-                        default="data/2021Q1/mr_final/doc_conll/cv0_test.conll",
+                        default="data/2021Q1/mr150/doc_conll/cv0_test.conll",
                         type=str,
                         help="test file, multihead conll format.")
 
