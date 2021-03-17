@@ -4,7 +4,7 @@ CORPUS=$2
 DOC_OR_SENT=$3
 MODEL=$4
 SAVED_MODEL="checkpoints/${MODEL}/${CORPUS}_${DOC_OR_SENT}"
-DATA_DIR="data/2020Q2/${CORPUS}/${DOC_OR_SENT}_conll"
+DATA_DIR="data/2021Q1/${CORPUS}/${DOC_OR_SENT}_conll"
 OUTFILE_DIR="tmp/${MODEL}_${CORPUS}_${DOC_OR_SENT}"
 mkdir -p $OUTFILE_DIR
 
@@ -14,11 +14,11 @@ for cv_id in 0 1 2 3 4; do
     --dev_file "${DATA_DIR}/cv${cv_id}_dev.conll" \
     --dev_output "${OUTFILE_DIR}/cv${cv_id}_dev.out" \
     --saved_model "${SAVED_MODEL}/cv${cv_id}" \
-    --enc_lr 5e-5 \
+    --enc_lr 2e-5 \
     --warmup_epoch 2 \
-    --num_epoch 25 \
+    --scheduled_lr \
+    --num_epoch 30 \
     --do_train \
-    --fp16 \
     --batch_size 2
 
     CUDA_VISIBLE_DEVICES=$1 python clinical_${MODEL}.py \

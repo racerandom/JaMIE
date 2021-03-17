@@ -2534,7 +2534,7 @@ def convert_rels_to_mhs_v3(
     )
     padded_doc_mod_ix_t = torch.tensor(
         [padding_1d(
-            [mod2ix[mod] for mod in sent_mod],
+            [mod2ix[mod] if mod in mod2ix else mod2ix['O'] for mod in sent_mod],
             cls_max_len,
             pad_tok=pad_lab_id
         ) for sent_mod in doc_mod]
