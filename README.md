@@ -94,16 +94,18 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 > --conll $OUTPUT_CONLL_DIR 
 
 ## Required Package
-pytorch=>1.3.1 
-transformers=2.2.2
-mojimoji  
-tqdm
-python-textformatting
-gensim
-scikit-learn
-pandas
-pyknp 
-MeCab
+pytorch=>1.3.1\
+transformers=2.2.2\
+mojimoji\
+tqdm\
+python-textformatting\
+gensim\
+scikit-learn\
+pandas\
+apex(for fp16)\
+word segmenter required:
+pyknp\
+MeCab\
 *jumanpp 
 *mecab
 
