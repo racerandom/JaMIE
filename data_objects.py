@@ -207,7 +207,6 @@ class MultiheadConll(object):
             for line in sent_lines:
                 tok_items = line.strip().split('\t')
                 s_tok_ids.append(int(tok_items[0]))
-                # s_toks.append(tok_items[1])
                 s_toks.append(tok_items[1].replace('[JASP]', '\u3000').replace('[SEP]', '\n'))
                 s_ner_tags.append(tok_items[2])
                 s_mod_tags.append(tok_items[3])

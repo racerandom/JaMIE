@@ -22,3 +22,5 @@ checkpoints/
 medicalreport0710/
 *.log
 *.swp
+*_v2.py
+*_v3.py

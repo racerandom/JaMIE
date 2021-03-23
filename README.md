@@ -52,13 +52,15 @@ Predicted texts will be located in the 'outputs' folder.
 
 ## Joint Japanese Medical Problem, Modality and Relation Recognition
 
+The Train/Test phrases require all train, dev, test file converted to CONLL-style. Please check data_converter.py
+
 ### Train：  
-> CUDA_VISIBLE_DEVICES=#SEED python clinical_joint.py \
->    --pretrained_model #PRETRAINED_MODEL_DIR \
->    --train_file #TRAIN_FILE \
->    --dev_file #DEV_FILE \
->    --dev_output #DEV_OUT \
->    --saved_model #MODEL_DIR_TO_SAVE \
+> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \
+>    --pretrained_model $PRETRAINED_MODEL_DIR \
+>    --train_file $TRAIN_FILE \  
+>    --dev_file $DEV_FILE \    
+>    --dev_output $DEV_OUT \
+>    --saved_model $MODEL_DIR_TO_SAVE \
 >    --enc_lr 2e-5 \
 >    --batch_size 4 \
 >    --warmup_epoch 2 \
@@ -66,27 +68,40 @@ Predicted texts will be located in the 'outputs' folder.
 >    --do_train \
 
 ### Test:
-> CUDA_VISIBLE_DEVICES=#SEED python clinical_joint.py \
->    --saved_model #SAVED_MODEL \
->    --test_file #TEST_FILE \
->    --test_output #TEST_OUT \
+> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \
+>    --saved_model $SAVED_MODEL \
+>    --test_file $TEST_FILE \
+>    --test_output $TEST_OUT \
 >    --batch_size 4
 
+### Bath Converter from XML to CONLL for training
 
-### Convert XML to CONLL for training
+Convert XML files to CONLL files for Train/Test. You can also convert raw text to CONLL-style for Test.
+
 > python data_converter.py \
-> --xml #XML_FILES_DIR \
-> --conll #OUTPUT_CONLL_DIR \
+> --mode xml2conll \
+> --xml $XML_FILES_DIR \
+> --conll $OUTPUT_CONLL_DIR \
 > --cv_num 5 \ # 5-fold cross-validation, 0 presents to generate single conll file 
 > --doc_level \ # generate document-level ([SEP] denotes sentence boundaries) or sentence-level conll files
 > --segmenter mecab \ # please use mecab and NICT bert currently
 > --bert_dir ~/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE
 
+### Batch Converter from CONLL to XML
+> python data_converter.py \
+> --mode conll2xml \
+> --xml $XML_FILES_DIR \
+> --conll $OUTPUT_CONLL_DIR 
+
 ## Required Package
-pytorch=1.3.1  
+pytorch=>1.3.1 
 transformers=2.2.2
 mojimoji  
-tqdm  
+tqdm
+python-textformatting
+gensim
+scikit-learn
+pandas
 pyknp 
 MeCab
 *jumanpp 

@@ -674,6 +674,8 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                               is_document=True,
                               ):
     from collections import defaultdict
+    spec_dic = {"\u3000": "[JASP]", "［ＪＡＳＰ］": "[JASP]", "［ＳＥＰ］": "[SEP]"}
+
     '''store relations to rel_dic'''
     # print(clinical_file)
     rel_dic = defaultdict(lambda: [[], []])
@@ -694,8 +696,10 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                 rel_dic[tail_tid][1].append(rel)
 
     '''read xml file'''
-    line_list = [line_str for line_str in file_str.split('\n') if line_str.strip() and (line_str[1:5] not in ['trel', 'brel'])]
-    # print(line_list)
+    line_list = [line_str for line_str in file_str.split('\n') if line_str.strip() and (line_str.strip()[1:5] not in ['trel', 'brel'])]
+    '''split raw sentences'''
+    if is_raw:
+        line_list = [mojimoji.han_to_zen(sent) for line in line_list for sent in ssplit(mojimoji.zen_to_han(line, kana=False))]
     trunk_list = [[]]
     for line in line_list:
         if not any(trunk_list):
@@ -719,6 +723,7 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
     comment_line = None
 
     length_list = []
+
     for line in trunk_list:
         try:
             line = line.strip().replace('\r', '')
@@ -808,7 +813,7 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                                 tok_rel_list[tail_id] = str(rel_list)
                 else:
                     toks = mor_analyzer.analyze(line)
-                    toks = ['[JASP]' if t == '\u3000' else mojimoji.han_to_zen(t) for t in toks]
+                    toks = [spec_dic[t] if t in spec_dic else t for t in toks]
                     labs = ['O'] * len(toks)
                     modality_labs = [defaut_modality] * len(toks)
                     tok_rel_list = [['N']] * len(toks)
@@ -859,8 +864,6 @@ def batch_convert_document_to_conll(
         for file in file_list:
             file_ext = ".xml" if sent_tag else ".txt"
             if file.endswith(file_ext):
-                # if "report_1_1_3276171.xml" not in file:
-                #     continue
                 try:
                     doc_tok_lens += convert_document_to_conll(
                         file, fo, morphological_analyzer, sent_tag=sent_tag,
@@ -874,6 +877,38 @@ def batch_convert_document_to_conll(
                 except Exception as ex:
                     print('[error]:' + file)
                     print(ex)
+    print(f"max length: {max(doc_tok_lens)}, {sum(i > 510 for i in doc_tok_lens)} instances > 510, total {len(doc_tok_lens)} instances")
+
+
+def single_convert_document_to_conll(
+    file_in, file_out,
+    sent_tag=True,
+    defaut_modality='_',
+    contains_modality=False,
+    with_dct=False,
+    is_raw=False,
+    morph_analyzer_name='juman',
+    bert_tokenizer=None,
+    is_document=True
+):
+    morphological_analyzer = MorphologicalAnalyzer(morph_analyzer_name)
+    doc_tok_lens = []
+    with open(file_out, 'w') as fo:
+        file_ext = ".xml" if sent_tag else ".txt"
+        if file_in.endswith(file_ext):
+            try:
+                doc_tok_lens += convert_document_to_conll(
+                    file_in, fo, morphological_analyzer, sent_tag=sent_tag,
+                    defaut_modality=defaut_modality,
+                    contains_modality=contains_modality,
+                    with_dct=with_dct,
+                    is_raw=is_raw,
+                    bert_tokenizer=bert_tokenizer,
+                    is_document=is_document
+                )
+            except Exception as ex:
+                print('[error]:' + file_in)
+                print(ex)
     print(f"max length: {max(doc_tok_lens)}, {sum(i > 510 for i in doc_tok_lens)} instances > 510, total {len(doc_tok_lens)} instances")
 
 
