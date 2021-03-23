@@ -82,7 +82,7 @@ The Train/Test phrases require all train, dev, test file converted to CONLL-styl
 
 ### Train：  
 > CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
->    --pretrained_model $PRETRAINED_MODEL_DIR \ \
+>    --pretrained_model $PRETRAINED_BERT \ \
 >    --train_file $TRAIN_FILE \ \
 >    --dev_file $DEV_FILE \ \
 >    --dev_output $DEV_OUT \ \
@@ -116,7 +116,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 >    --cv_num 5 \ # 5-fold cross-validation, 0 presents to generate single conll file\
 >    --doc_level \ # generate document-level ([SEP] denotes sentence boundaries) or sentence-level conll files\
 >    --segmenter mecab \ # please use mecab and NICT bert currently\
->    --bert_dir ~/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE\
+>    --bert_dir $PRETRAINED_BERT 
 
 ### Batch Converter from predicted CONLL to XML
 > python data_converter.py \ \
@@ -134,12 +134,13 @@ gensim\
 scikit-learn\
 pandas\
 apex(for fp16)\
-word segmenter required:
+Mophological analyzer required:\
 pyknp\
 MeCab\
-*jumanpp 
-*mecab
-
+*jumanpp\
+*mecab (juman-dict)\
+Pretrained BERT required:\
+*NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)
 
 
 
