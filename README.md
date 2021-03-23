@@ -1,97 +1,128 @@
-## [PRISM] Medical Tag recognition and Disease certainty classification
+## JaMIE: a Japanese Medical Information Extraction toolkit
 
-## pipeline processes: 
+[comment]: <> (## [PRISM] Medical Tag recognition and Disease certainty classification)
 
-### [medical tag recognition] -> [disease certainty classification]
+[comment]: <> (## pipeline processes: )
 
-## Install
-> git clone URL  
-> cd XX
+[comment]: <> (### [medical tag recognition] -> [disease certainty classification])
 
-Copy the processed data (in 黒橋研 server) into the 'data' folder in XX. 
+[comment]: <> (## Install)
 
-## step1: medical tag recognition:
+[comment]: <> (> git clone URL  )
 
-### Train and test:
-> python clinical\_ner.py \\  
-> --corpus 'goku' \\  
-> --model 'checkpoints/ner/' \\ # save model   
-> --epoch 5 \\  
-> --batch 16 \\  
-> --do_train 
+[comment]: <> (> cd XX)
 
-### Test:
-> python clinical\_ner.py \\  
-> --corpus 'goku' \\  
-> --model 'checkpoints/ner/' # load model  
+[comment]: <> (Copy the processed data &#40;in 黒橋研 server&#41; into the 'data' folder in XX. )
 
-Predicted texts will be located in the 'outputs' folder.
+[comment]: <> (## step1: medical tag recognition:)
 
-### Evaluation:
-> cd conlleval  
-> python conlleval.py < ../outputs/ner\_goku\_ep5\_eval.txt
+[comment]: <> (### Train and test:)
 
-## step2: disease certainty classification
+[comment]: <> (> python clinical\_ner.py \\  )
 
-### Train and test:
-> python clinical\_cert.py \\  
-> --corpus 'goku' \\  
-> --model 'checkpoints/cert/' \\ # save model  
-> --ner\_out 'outputs/ner\_goku\_ep3\_out.txt' \\  # predicted ner results with BIO format  
-> --epoch 3 \\  
-> --batch 16 \\  
-> --do_train 
+[comment]: <> (> --corpus 'goku' \\  )
 
-### Test:
-> python clinical\_cert.py \\  
-> --corpus 'goku' \\  
-> --model 'checkpoints/cert/' # load model  
-> --ner\_out 'outputs/ner\_goku\_ep3\_out.txt'   # predicted ner results with BIO format
+[comment]: <> (> --model 'checkpoints/ner/' \\ # save model   )
 
-Predicted texts will be located in the 'outputs' folder.
+[comment]: <> (> --epoch 5 \\  )
+
+[comment]: <> (> --batch 16 \\  )
+
+[comment]: <> (> --do_train )
+
+[comment]: <> (### Test:)
+
+[comment]: <> (> python clinical\_ner.py \\  )
+
+[comment]: <> (> --corpus 'goku' \\  )
+
+[comment]: <> (> --model 'checkpoints/ner/' # load model  )
+
+[comment]: <> (Predicted texts will be located in the 'outputs' folder.)
+
+[comment]: <> (### Evaluation:)
+
+[comment]: <> (> cd conlleval  )
+
+[comment]: <> (> python conlleval.py < ../outputs/ner\_goku\_ep5\_eval.txt)
+
+[comment]: <> (## step2: disease certainty classification)
+
+[comment]: <> (### Train and test:)
+
+[comment]: <> (> python clinical\_cert.py \\  )
+
+[comment]: <> (> --corpus 'goku' \\  )
+
+[comment]: <> (> --model 'checkpoints/cert/' \\ # save model  )
+
+[comment]: <> (> --ner\_out 'outputs/ner\_goku\_ep3\_out.txt' \\  # predicted ner results with BIO format  )
+
+[comment]: <> (> --epoch 3 \\  )
+
+[comment]: <> (> --batch 16 \\  )
+
+[comment]: <> (> --do_train )
+
+[comment]: <> (### Test:)
+
+[comment]: <> (> python clinical\_cert.py \\  )
+
+[comment]: <> (> --corpus 'goku' \\  )
+
+[comment]: <> (> --model 'checkpoints/cert/' # load model  )
+
+[comment]: <> (> --ner\_out 'outputs/ner\_goku\_ep3\_out.txt'   # predicted ner results with BIO format)
+
+[comment]: <> (Predicted texts will be located in the 'outputs' folder.)
 
 ## Joint Japanese Medical Problem, Modality and Relation Recognition
 
 The Train/Test phrases require all train, dev, test file converted to CONLL-style. Please check data_converter.py
 
 ### Train：  
-> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \
->    --pretrained_model $PRETRAINED_MODEL_DIR \
->    --train_file $TRAIN_FILE \  
->    --dev_file $DEV_FILE \    
->    --dev_output $DEV_OUT \
->    --saved_model $MODEL_DIR_TO_SAVE \
->    --enc_lr 2e-5 \
->    --batch_size 4 \
->    --warmup_epoch 2 \
->    --num_epoch 20 \
+> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
+>    --pretrained_model $PRETRAINED_MODEL_DIR \ \
+>    --train_file $TRAIN_FILE \ \
+>    --dev_file $DEV_FILE \ \
+>    --dev_output $DEV_OUT \ \
+>    --saved_model $MODEL_DIR_TO_SAVE \ \
+>    --enc_lr 2e-5 \ \
+>    --batch_size 4 \ \
+>    --warmup_epoch 2 \ \
+>    --num_epoch 20 \ \
 >    --do_train \
+>    --fp16 (apex required)
+
+The models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF) are to be availabel: link1, link2.
 
 ### Test:
-> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \
->    --saved_model $SAVED_MODEL \
->    --test_file $TEST_FILE \
->    --test_output $TEST_OUT \
+> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
+>    --saved_model $SAVED_MODEL \ \
+>    --test_file $TEST_FILE \ \
+>    --test_output $TEST_OUT \ \
 >    --batch_size 4
 
-### Bath Converter from XML to CONLL for training
+
+
+### Bath Converter from XML (or raw text) to CONLL for Train/Test
 
 Convert XML files to CONLL files for Train/Test. You can also convert raw text to CONLL-style for Test.
 
-> python data_converter.py \
-> --mode xml2conll \
-> --xml $XML_FILES_DIR \
-> --conll $OUTPUT_CONLL_DIR \
-> --cv_num 5 \ # 5-fold cross-validation, 0 presents to generate single conll file 
-> --doc_level \ # generate document-level ([SEP] denotes sentence boundaries) or sentence-level conll files
-> --segmenter mecab \ # please use mecab and NICT bert currently
-> --bert_dir ~/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE
+> python data_converter.py \ \
+>    --mode xml2conll \ \
+>    --xml $XML_FILES_DIR \ \
+>    --conll $OUTPUT_CONLL_DIR \ \
+>    --cv_num 5 \ # 5-fold cross-validation, 0 presents to generate single conll file\
+>    --doc_level \ # generate document-level ([SEP] denotes sentence boundaries) or sentence-level conll files\
+>    --segmenter mecab \ # please use mecab and NICT bert currently\
+>    --bert_dir ~/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE\
 
-### Batch Converter from CONLL to XML
-> python data_converter.py \
-> --mode conll2xml \
-> --xml $XML_FILES_DIR \
-> --conll $OUTPUT_CONLL_DIR 
+### Batch Converter from predicted CONLL to XML
+> python data_converter.py \ \
+>    --mode conll2xml \ \
+>    --xml $XML_FILES_DIR \ \
+>    --conll $OUTPUT_CONLL_DIR 
 
 ## Required Package
 pytorch=>1.3.1\
