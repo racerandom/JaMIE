@@ -4,9 +4,9 @@
 ## pipeline processes: 
 
 * [Preprocess] of converting raw text to CONLL-styple input data
-* [Medical Entity Recognition (MER)] <a href="drive.google.com" target="_top">link<a> to the trained MER model
-* [Modality Classification (RC)] <a href="drive.google.com" target="_top">link<a> to the trained MC model
-* [Relation Extraction (RE)] <a href="drive.google.com" target="_top">link<a> to the trained RE model
+* [Medical Entity Recognition (MER)] 
+* [Modality Classification (RC)] 
+* [Relation Extraction (RE)] 
 * [Postprocess] of converting the CONLL-style output to the XML file
 
 ## step1: [Preprocess] of converting raw text to CONLL-styple input data:
@@ -17,9 +17,9 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 >    --mode xml2conll \ \
 >    --xml $XML_FILES_DIR \ \
 >    --conll $OUTPUT_CONLL_DIR \ \
->    --cv_num 0 \ # n-fold cross-validation, 0 for single output 
->    --segmenter mecab \ # please use mecab and NICT bert
->    --bert_dir $PRETRAINED_BERT \ # BERT tokenizer dir 
+>    --cv_num 0 \ # n-fold cross-validation, 0 for single output\
+>    --segmenter mecab \ # please use mecab and NICT bert\
+>    --bert_dir $PRETRAINED_BERT \ # BERT tokenizer dir\
 >    --is_raw  # whether the input is raw text    
 
 ## step2: [Medical Entity Recognition]
@@ -28,16 +28,18 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 
 > python clinical_pipeline_ner.py \ \
 > --pretrained_model $PRETRAINED_BERT_DIR \ \
-> --saved_model $DIR_TO_SAVE_MODEL \ \ 
+> --saved_model $DIR_TO_SAVE_MODEL \ \
 > --train_file $TRAIN_CONLL_FILE \ \
 > --dev_file $DEV_CONLL_FILE \ \
 > --batch_size 16 \ \
 > --do_train 
 
+<a href="drive.google.com" target="_top">link to the trained MER model<a>
+
 ### Test:
 
-> python clinical_pipeline_ner.py \ \  
-> --saved_model $SAVED_MODEL_DIR \ \ 
+> python clinical_pipeline_ner.py \ \
+> --saved_model $SAVED_MODEL_DIR \ \
 > --test_file $TEST_CONLL_IN \ \
 > --test_output $TEST_CONLL_OUTPUT \ \
 > --batch_size  
@@ -49,16 +51,18 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 
 > python clinical_pipeline_mod.py \ \
 > --pretrained_model $PRETRAINED_BERT_DIR \ \
-> --saved_model $DIR_TO_SAVE_MODEL \ \ 
+> --saved_model $DIR_TO_SAVE_MODEL \ \
 > --train_file $TRAIN_CONLL_FILE \ \
 > --dev_file $DEV_CONLL_FILE \ \
 > --batch_size 16 \ \
 > --do_train 
 
+<a href="drive.google.com" target="_top">link to the trained MC model<a>
+
 ### Test:
 
-> python clinical_pipeline_mod.py \ \  
-> --saved_model $SAVED_MODEL_DIR \ \ 
+> python clinical_pipeline_mod.py \ \
+> --saved_model $SAVED_MODEL_DIR \ \
 > --test_file $TEST_CONLL_IN \ \
 > --test_output $TEST_CONLL_OUTPUT \ \
 > --batch_size  
@@ -69,16 +73,18 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 
 > python clinical_pipeline_rel.py \ \
 > --pretrained_model $PRETRAINED_BERT_DIR \ \
-> --saved_model $DIR_TO_SAVE_MODEL \ \ 
+> --saved_model $DIR_TO_SAVE_MODEL \ \
 > --train_file $TRAIN_CONLL_FILE \ \
 > --dev_file $DEV_CONLL_FILE \ \
 > --batch_size 16 \ \
 > --do_train 
 
+<a href="drive.google.com" target="_top">link to the trained RE model<a>
+
 ### Test:
 
-> python clinical_pipeline_rel.py \ \  
-> --saved_model $SAVED_MODEL_DIR \ \ 
+> python clinical_pipeline_rel.py \ \
+> --saved_model $SAVED_MODEL_DIR \ \
 > --test_file $TEST_CONLL_IN \ \
 > --test_output $TEST_CONLL_OUTPUT \ \
 > --batch_size
