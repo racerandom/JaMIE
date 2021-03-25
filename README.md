@@ -1,124 +1,89 @@
 ## JaMIE: a Japanese Medical Information Extraction toolkit
 
-[comment]: <> (## [PRISM] Medical Tag recognition and Disease certainty classification)
 
-[comment]: <> (## pipeline processes: )
+## pipeline processes: 
 
-[comment]: <> (### [medical tag recognition] -> [disease certainty classification])
+* [Preprocess] of converting raw text to CONLL-styple input data
+* [Medical Entity Recognition (MER)] [link to the trained MER model] (https://drive.google.com/)
+* [Modality Classification (RC)] [link to the trained MC model] (https://drive.google.com/)
+* [Relation Extraction (RE)] [link to the trained RE model] (https://drive.google.com/)
+* [Postprocess] of converting the CONLL-style output to the XML file
 
-[comment]: <> (## Install)
-
-[comment]: <> (> git clone URL  )
-
-[comment]: <> (> cd XX)
-
-[comment]: <> (Copy the processed data &#40;in 黒橋研 server&#41; into the 'data' folder in XX. )
-
-[comment]: <> (## step1: medical tag recognition:)
-
-[comment]: <> (### Train and test:)
-
-[comment]: <> (> python clinical\_ner.py \\  )
-
-[comment]: <> (> --corpus 'goku' \\  )
-
-[comment]: <> (> --model 'checkpoints/ner/' \\ # save model   )
-
-[comment]: <> (> --epoch 5 \\  )
-
-[comment]: <> (> --batch 16 \\  )
-
-[comment]: <> (> --do_train )
-
-[comment]: <> (### Test:)
-
-[comment]: <> (> python clinical\_ner.py \\  )
-
-[comment]: <> (> --corpus 'goku' \\  )
-
-[comment]: <> (> --model 'checkpoints/ner/' # load model  )
-
-[comment]: <> (Predicted texts will be located in the 'outputs' folder.)
-
-[comment]: <> (### Evaluation:)
-
-[comment]: <> (> cd conlleval  )
-
-[comment]: <> (> python conlleval.py < ../outputs/ner\_goku\_ep5\_eval.txt)
-
-[comment]: <> (## step2: disease certainty classification)
-
-[comment]: <> (### Train and test:)
-
-[comment]: <> (> python clinical\_cert.py \\  )
-
-[comment]: <> (> --corpus 'goku' \\  )
-
-[comment]: <> (> --model 'checkpoints/cert/' \\ # save model  )
-
-[comment]: <> (> --ner\_out 'outputs/ner\_goku\_ep3\_out.txt' \\  # predicted ner results with BIO format  )
-
-[comment]: <> (> --epoch 3 \\  )
-
-[comment]: <> (> --batch 16 \\  )
-
-[comment]: <> (> --do_train )
-
-[comment]: <> (### Test:)
-
-[comment]: <> (> python clinical\_cert.py \\  )
-
-[comment]: <> (> --corpus 'goku' \\  )
-
-[comment]: <> (> --model 'checkpoints/cert/' # load model  )
-
-[comment]: <> (> --ner\_out 'outputs/ner\_goku\_ep3\_out.txt'   # predicted ner results with BIO format)
-
-[comment]: <> (Predicted texts will be located in the 'outputs' folder.)
-
-## Joint Japanese Medical Problem, Modality and Relation Recognition
-
-The Train/Test phrases require all train, dev, test file converted to CONLL-style. Please check data_converter.py
-
-### Train：  
-> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
->    --pretrained_model $PRETRAINED_BERT \ \
->    --train_file $TRAIN_FILE \ \
->    --dev_file $DEV_FILE \ \
->    --dev_output $DEV_OUT \ \
->    --saved_model $MODEL_DIR_TO_SAVE \ \
->    --enc_lr 2e-5 \ \
->    --batch_size 4 \ \
->    --warmup_epoch 2 \ \
->    --num_epoch 20 \ \
->    --do_train \
->    --fp16 (apex required)
-
-The models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF) are to be availabel: link1, link2.
-
-### Test:
-> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
->    --saved_model $SAVED_MODEL \ \
->    --test_file $TEST_FILE \ \
->    --test_output $TEST_OUT \ \
->    --batch_size 4
-
-
-
-### Bath Converter from XML (or raw text) to CONLL for Train/Test
+## step1: [Preprocess] of converting raw text to CONLL-styple input data:
 
 Convert XML files to CONLL files for Train/Test. You can also convert raw text to CONLL-style for Test.
 
-> python data_converter.py \ \
->    --mode xml2conll \ \
->    --xml $XML_FILES_DIR \ \
->    --conll $OUTPUT_CONLL_DIR \ \
->    --cv_num 5 \ # 5-fold cross-validation, 0 presents to generate single conll file\
->    --doc_level \ # generate document-level ([SEP] denotes sentence boundaries) or sentence-level conll files\
->    --segmenter mecab \ # please use mecab and NICT bert currently\
->    --bert_dir $PRETRAINED_BERT 
+> python data_converter.py \\
+>    --mode xml2conll \\
+>    --xml $XML_FILES_DIR \\
+>    --conll $OUTPUT_CONLL_DIR \\
+>    --cv_num 0 \ # n-fold cross-validation, 0 for single output 
+>    --segmenter mecab \ # please use mecab and NICT bert
+>    --bert_dir $PRETRAINED_BERT \ # BERT tokenizer dir 
+>    --is_raw  # whether the input is raw text    
 
-### Batch Converter from predicted CONLL to XML
+## step2: [Medical Entity Recognition]
+
+### Train:
+
+> python clinical_pipeline_ner.py \\
+> --pretrained_model $PRETRAINED_BERT_DIR \\
+> --saved_model $DIR_TO_SAVE_MODEL \\ 
+> --train_file $TRAIN_CONLL_FILE \\
+> --dev_file $DEV_CONLL_FILE \\
+> --batch_size 16 \\
+> --do_train 
+
+### Test:
+
+> python clinical_pipeline_ner.py \\  
+> --saved_model $SAVED_MODEL_DIR \\ 
+> --test_file $TEST_CONLL_IN \\
+> --test_output $TEST_CONLL_OUTPUT \\
+> --batch_size  
+
+
+## step3: [Modality Classification]
+
+### Train:
+
+> python clinical_pipeline_mod.py \\
+> --pretrained_model $PRETRAINED_BERT_DIR \\
+> --saved_model $DIR_TO_SAVE_MODEL \\ 
+> --train_file $TRAIN_CONLL_FILE \\
+> --dev_file $DEV_CONLL_FILE \\
+> --batch_size 16 \\
+> --do_train 
+
+### Test:
+
+> python clinical_pipeline_mod.py \\  
+> --saved_model $SAVED_MODEL_DIR \\ 
+> --test_file $TEST_CONLL_IN \\
+> --test_output $TEST_CONLL_OUTPUT \\
+> --batch_size  
+
+## step4: [Relation Extraction]
+
+### Train:
+
+> python clinical_pipeline_rel.py \\
+> --pretrained_model $PRETRAINED_BERT_DIR \\
+> --saved_model $DIR_TO_SAVE_MODEL \\ 
+> --train_file $TRAIN_CONLL_FILE \\
+> --dev_file $DEV_CONLL_FILE \\
+> --batch_size 16 \\
+> --do_train 
+
+### Test:
+
+> python clinical_pipeline_rel.py \\  
+> --saved_model $SAVED_MODEL_DIR \\ 
+> --test_file $TEST_CONLL_IN \\
+> --test_output $TEST_CONLL_OUTPUT \\
+> --batch_size
+
+### step5: [Postprocess] of converting the CONLL-style output to the XML file
 > python data_converter.py \ \
 >    --mode conll2xml \ \
 >    --xml $XML_FILES_DIR \ \
