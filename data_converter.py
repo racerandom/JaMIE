@@ -127,7 +127,7 @@ parser.add_argument("--is_raw",
                     action='store_true',
                     help="whether the input xml is raw or annotated")
 
-parser.add_argument("--cv_num", default=5, type=int,
+parser.add_argument("--cv_num", default=0, type=int,
                     help="k-fold cross-validation, 0 presents not to split data")
 
 parser.add_argument("--segmenter", default='mecab', type=str,

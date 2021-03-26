@@ -1,7 +1,37 @@
 ## JaMIE: a Japanese Medical Information Extraction toolkit
+A pipeline Japanese Medical IE system, which offers automatic and accurate analysis of medical entities, modalities and relations for two report types (radiography interpretation reports of LC and general medical reports of IPF).
 
+### Installation
 
-## pipeline processes: 
+#### Clone from Github
+
+```bash
+$git clone -b demo https://github.com/racerandom/JaMIE.git
+cd JaMIE
+```
+
+#### Required Environment
+```bash
+Python packages required:
+pytorch=>1.3.1
+transformers=2.2.2
+mojimoji
+tqdm
+python-textformatting
+gensim
+scikit-learn
+pandas
+apex #for fp16
+Mophological analyzer required:
+pyknp
+MeCab
+*jumanpp
+*mecab (juman-dict)
+Pretrained BERT required:
+*NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)
+```
+
+## Usage: 
 
 * [Preprocess] of converting raw text to CONLL-styple input data
 * [Medical Entity Recognition (MER)] 
@@ -9,7 +39,7 @@
 * [Relation Extraction (RE)] 
 * [Postprocess] of converting the CONLL-style output to the XML file
 
-## step1: [Preprocess] of converting raw text to CONLL-styple input data:
+### step1: [Preprocess] of converting raw text to CONLL-styple input data:
 
 Convert XML files to CONLL files for Train/Test. You can also convert raw text to CONLL-style for Test.
 
@@ -22,9 +52,9 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 >    --bert_dir $PRETRAINED_BERT \ # BERT tokenizer dir\
 >    --is_raw  # whether the input is raw text    
 
-## step2: [Medical Entity Recognition]
+### step2: [Medical Entity Recognition]
 
-### Train:
+#### Train:
 
 > python clinical_pipeline_ner.py \ \
 > --pretrained_model $PRETRAINED_BERT_DIR \ \
@@ -36,7 +66,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 
 <a href="drive.google.com" target="_top">link to the trained MER model<a>
 
-### Test:
+#### Test:
 
 > python clinical_pipeline_ner.py \ \
 > --saved_model $SAVED_MODEL_DIR \ \
@@ -45,9 +75,9 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 > --batch_size  
 
 
-## step3: [Modality Classification]
+### step3: [Modality Classification]
 
-### Train:
+#### Train:
 
 > python clinical_pipeline_mod.py \ \
 > --pretrained_model $PRETRAINED_BERT_DIR \ \
@@ -59,7 +89,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 
 <a href="drive.google.com" target="_top">link to the trained MC model<a>
 
-### Test:
+#### Test:
 
 > python clinical_pipeline_mod.py \ \
 > --saved_model $SAVED_MODEL_DIR \ \
@@ -67,9 +97,9 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 > --test_output $TEST_CONLL_OUTPUT \ \
 > --batch_size  
 
-## step4: [Relation Extraction]
+### step4: [Relation Extraction]
 
-### Train:
+#### Train:
 
 > python clinical_pipeline_rel.py \ \
 > --pretrained_model $PRETRAINED_BERT_DIR \ \
@@ -81,7 +111,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 
 <a href="drive.google.com" target="_top">link to the trained RE model<a>
 
-### Test:
+#### Test:
 
 > python clinical_pipeline_rel.py \ \
 > --saved_model $SAVED_MODEL_DIR \ \
@@ -95,23 +125,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 >    --xml $XML_FILES_DIR \ \
 >    --conll $OUTPUT_CONLL_DIR 
 
-## Required Package
-pytorch=>1.3.1\
-transformers=2.2.2\
-mojimoji\
-tqdm\
-python-textformatting\
-gensim\
-scikit-learn\
-pandas\
-apex(for fp16)\
-Mophological analyzer required:\
-pyknp\
-MeCab\
-*jumanpp\
-*mecab (juman-dict)\
-Pretrained BERT required:\
-*NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)
+
 
 
 
