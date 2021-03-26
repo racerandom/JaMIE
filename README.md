@@ -1,5 +1,5 @@
 ## JaMIE: a Japanese Medical Information Extraction toolkit
-A pipeline Japanese Medical IE system, which offers automatic and accurate analysis of medical entities, modalities and relations for two report types (radiography interpretation reports of LC and general medical reports of IPF).
+A pipeline Japanese Medical IE system, which offers automatic and accurate analysis of medical entities, modalities and relations for radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF).
 
 ### Installation
 
@@ -52,7 +52,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 >    --bert_dir $PRETRAINED_BERT \ # BERT tokenizer dir\
 >    --is_raw  # whether the input is raw text    
 
-### step2: [Medical Entity Recognition]
+### step2: [Medical Entity Recognition (MER)]
 
 #### Train:
 
@@ -64,7 +64,8 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 > --batch_size 16 \ \
 > --do_train 
 
-<a href="drive.google.com" target="_top">link to the trained MER model<a>
+<a href="drive.google.com" target="_top">Trained LC MER model<a>
+<a href="drive.google.com" target="_top">Trained IPF MER mode<a>
 
 #### Test:
 
@@ -75,7 +76,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 > --batch_size  
 
 
-### step3: [Modality Classification]
+### step3: [Modality Classification (MC)]
 
 #### Train:
 
@@ -87,7 +88,8 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 > --batch_size 16 \ \
 > --do_train 
 
-<a href="drive.google.com" target="_top">link to the trained MC model<a>
+<a href="drive.google.com" target="_top">Trained LC MC model<a>
+<a href="drive.google.com" target="_top">Trained IPF MC mode<a>
 
 #### Test:
 
@@ -97,7 +99,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 > --test_output $TEST_CONLL_OUTPUT \ \
 > --batch_size  
 
-### step4: [Relation Extraction]
+### step4: [Relation Extraction (RE)]
 
 #### Train:
 
@@ -109,7 +111,8 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 > --batch_size 16 \ \
 > --do_train 
 
-<a href="drive.google.com" target="_top">link to the trained RE model<a>
+<a href="drive.google.com" target="_top">Trained LC RE model<a>
+<a href="drive.google.com" target="_top">Trained IPF RE mode<a>
 
 #### Test:
 
