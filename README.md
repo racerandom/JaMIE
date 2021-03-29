@@ -1,16 +1,16 @@
 ## JaMIE: a Japanese Medical Information Extraction toolkit
 A pipeline Japanese Medical IE system, which offers automatic and accurate analysis of medical entities, modalities and relations for radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF).
 
-### Installation
+## Installation
 
-#### Clone from Github
+### Clone from Github
 
 ```bash
 $git clone -b demo https://github.com/racerandom/JaMIE.git
 cd JaMIE
 ```
 
-#### Required Environment
+### Required Environment
 ```bash
 Python packages required:
 pytorch=>1.3.1
