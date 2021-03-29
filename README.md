@@ -31,7 +31,7 @@ Pretrained BERT required:
 *NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)
 ```
 
-## Usage: 
+## Pipeline Usage: 
 
 * [Preprocess] of converting raw text to CONLL-styple input data
 * [Medical Entity Recognition (MER)] 
@@ -39,7 +39,7 @@ Pretrained BERT required:
 * [Relation Extraction (RE)] 
 * [Postprocess] of converting the CONLL-style output to the XML file
 
-### step1: [Preprocess] of converting raw text to CONLL-styple input data:
+### Step1: [Preprocess] of converting raw text to CONLL-styple input data:
 
 Convert XML files to CONLL files for Train/Test. You can also convert raw text to CONLL-style for Test.
 
@@ -53,7 +53,7 @@ python data_converter.py \
 --bert_dir $PRETRAINED_BERT \ # BERT tokenizer dir
 --is_raw  # whether the input is raw text    
 ```
-### step2: [Medical Entity Recognition (MER)]
+### Step2: [Medical Entity Recognition (MER)]
 
 #### Train:
 ```bash
@@ -78,7 +78,7 @@ python clinical_pipeline_ner.py \
 --batch_size  
 ```
 
-### step3: [Modality Classification (MC)]
+### Step3: [Modality Classification (MC)]
 
 #### Train:
 ```bash
@@ -101,7 +101,7 @@ python clinical_pipeline_mod.py \
 --test_output $TEST_CONLL_OUTPUT \
 --batch_size  
 ```
-### step4: [Relation Extraction (RE)]
+### Step4: [Relation Extraction (RE)]
 
 #### Train:
 ```bash
@@ -124,7 +124,7 @@ python clinical_pipeline_rel.py \
 --test_output $TEST_CONLL_OUTPUT \
 --batch_size
 ```
-### step5: [Postprocess] of converting the CONLL-style output to the XML file
+### Step5: [Postprocess] of converting the CONLL-style output to the XML file
 ```bash
 python data_converter.py \
 --mode conll2xml \
