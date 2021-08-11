@@ -66,7 +66,7 @@ python clinical_pipeline_ner.py \
 --do_train 
 ```
 
-* We are still in the application of the permission for openning the trained model. Once it's accepted, the following links here will be replaced by the real.
+We are still in the application of the permission for openning the trained model. Once it's accepted, the following links here will be replaced by the real.
 
 <a href="drive.google.com" target="_top">Trained LC MER model<a>\
 <a href="drive.google.com" target="_top">Trained IPF MER mode<a>
@@ -92,7 +92,7 @@ python clinical_pipeline_mod.py \
 --batch_size 16 \
 --do_train 
 ```
-* We are still in the application of the permission for openning the trained model. Once it's accepted, the following links here will be replaced by the real.
+We are still in the application of the permission for openning the trained model. Once it's accepted, the following links here will be replaced by the real.
 
 <a href="drive.google.com" target="_top">Trained LC MC model<a>\
 <a href="drive.google.com" target="_top">Trained IPF MC mode<a>
@@ -117,7 +117,7 @@ python clinical_pipeline_rel.py \
 --batch_size 16 \
 --do_train 
 ```
-* We are still in the application of the permission for openning the trained model. Once it's accepted, the following links here will be replaced by the real.
+We are still in the application of the permission for openning the trained model. Once it's accepted, the following links here will be replaced by the real.
 
 <a href="drive.google.com" target="_top">Trained LC RE model<a>\
 <a href="drive.google.com" target="_top">Trained IPF RE mode<a>
