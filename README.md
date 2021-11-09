@@ -142,7 +142,16 @@ MeCab\
 Pretrained BERT required:\
 *NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)
 
-
+## Citation
+If you use our code in your research, please cite our work:
+```bibtex
+@inproceedings{cheng2021jamie,
+   title={JaMIE: A Pipeline Japanese Medical Information Extraction System,
+   author={Fei Cheng, Shuntaro Yada, Ribeka Tanaka, Eiji Aramaki, Sadao Kurohashi},
+   booktitle={arXiv},
+   year={2021}
+}
+```
 
 
 
