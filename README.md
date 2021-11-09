@@ -125,6 +125,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 >    --conll $OUTPUT_CONLL_DIR 
 
 ## Required Package
+> pip install -r requirements.txt
 
 Mophological analyzer required:\
 [jumanpp](https://github.com/ku-nlp/jumanpp)\
