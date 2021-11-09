@@ -83,13 +83,14 @@ The Train/Test phrases require all train, dev, test file converted to CONLL-styl
 ### Installation (python3.8)
 > git clone https://github.com/racerandom/JaMIE.git \
 > cd JaMIE \
-#### required python package
+#### Required python package
 > pip install -r requirements.txt 
 
 #### Mophological analyzer required:\
 [jumanpp](https://github.com/ku-nlp/jumanpp)\
-[mecab (juman-dict)](https://taku910.github.io/mecab/)\
-Pretrained BERT required:\
+[mecab (juman-dict)](https://taku910.github.io/mecab/)
+
+#### Pretrained BERT required:\
 [NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)](https://alaginrc.nict.go.jp/nict-bert/index.html)
 
 ### Train：  
