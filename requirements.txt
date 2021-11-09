@@ -1,0 +1,11 @@
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.8.0+cu111
+transformers==2.2.2
+pytorch-crf
+mojimoji
+tqdm
+gensim
+scikit-learn
+pandas
+pyknp
+git+https://github.com/ku-nlp/python-textformatting.git
