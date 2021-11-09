@@ -80,6 +80,15 @@
 
 The Train/Test phrases require all train, dev, test file converted to CONLL-style. Please check data_converter.py
 
+## Required Package
+> pip install -r requirements.txt
+
+Mophological analyzer required:\
+[jumanpp](https://github.com/ku-nlp/jumanpp)\
+[mecab (juman-dict)](https://taku910.github.io/mecab/)\
+Pretrained BERT required:\
+[NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)](https://alaginrc.nict.go.jp/nict-bert/index.html)
+
 ### Train：  
 > CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
 >    --pretrained_model $PRETRAINED_BERT \ \
@@ -124,14 +133,6 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 >    --xml $XML_FILES_DIR \ \
 >    --conll $OUTPUT_CONLL_DIR 
 
-## Required Package
-> pip install -r requirements.txt
-
-Mophological analyzer required:\
-[jumanpp](https://github.com/ku-nlp/jumanpp)\
-[mecab (juman-dict)](https://taku910.github.io/mecab/)\
-Pretrained BERT required:\
-[NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)](https://alaginrc.nict.go.jp/nict-bert/index.html)
 
 ## Citation
 If you use our code in your research, please cite [our work](https://arxiv.org/pdf/2111.04261):
