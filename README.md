@@ -143,7 +143,7 @@ Pretrained BERT required:\
 *NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)
 
 ## Citation
-If you use our code in your research, please cite our work:
+If you use our code in your research, please cite [our work](https://arxiv.org/pdf/2111.04261):
 ```bibtex
 @inproceedings{cheng2021jamie,
    title={JaMIE: A Pipeline Japanese Medical Information Extraction System,
