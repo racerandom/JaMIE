@@ -80,13 +80,13 @@
 
 The Train/Test phrases require all train, dev, test file converted to CONLL-style. Please check data_converter.py
 
-## Installation (python3.8)
+### Installation (python3.8)
 > git clone https://github.com/racerandom/JaMIE.git \
 > cd JaMIE \
-### required python package
+#### required python package
 > pip install -r requirements.txt 
 
-Mophological analyzer required:\
+#### Mophological analyzer required:\
 [jumanpp](https://github.com/ku-nlp/jumanpp)\
 [mecab (juman-dict)](https://taku910.github.io/mecab/)\
 Pretrained BERT required:\
