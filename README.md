@@ -81,8 +81,8 @@
 The Train/Test phrases require all train, dev, test file converted to CONLL-style. Please check data_converter.py
 
 ## Required Package (python3.8)
-> git clone https://github.com/racerandom/JaMIE.git
-> cd JaMIE
+> git clone https://github.com/racerandom/JaMIE.git \
+> cd JaMIE \
 > pip install -r requirements.txt
 
 Mophological analyzer required:\
