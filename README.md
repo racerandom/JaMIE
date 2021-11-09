@@ -80,7 +80,7 @@
 
 The Train/Test phrases require all train, dev, test file converted to CONLL-style. Please check data_converter.py
 
-## Required Package
+## Required Package (python3.8)
 > pip install -r requirements.txt
 
 Mophological analyzer required:\
