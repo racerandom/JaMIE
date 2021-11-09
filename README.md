@@ -125,22 +125,12 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 >    --conll $OUTPUT_CONLL_DIR 
 
 ## Required Package
-pytorch=>1.3.1\
-transformers=2.2.2\
-mojimoji\
-tqdm\
-python-textformatting\
-gensim\
-scikit-learn\
-pandas\
-apex(for fp16)\
+
 Mophological analyzer required:\
-pyknp\
-MeCab\
-*jumanpp\
-*mecab (juman-dict)\
+[jumanpp](https://github.com/ku-nlp/jumanpp)\
+[mecab (juman-dict)](https://taku910.github.io/mecab/)\
 Pretrained BERT required:\
-*NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)
+[NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)](https://alaginrc.nict.go.jp/nict-bert/index.html)
 
 ## Citation
 If you use our code in your research, please cite [our work](https://arxiv.org/pdf/2111.04261):
