@@ -35,10 +35,10 @@ class MorphologicalAnalyzer(object):
         elif self.analyzer_name == 'mecab':
             import MeCab
             self.analyzer = MeCab.Tagger(
-                "-d /usr/lib/x86_64-linux-gnu/mecab/dic/jumandic -Owakati"
+                # "-d /usr/lib/x86_64-linux-gnu/mecab/dic/jumandic -Owakati"
                 # "-d /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd "
                 # "-u /home/feicheng/Tools/MANBYO_201907_Dic-utf8.dic "
-                # "-Owakati"
+                "-Owakati"
             )
 
     def analyze(self, text):
