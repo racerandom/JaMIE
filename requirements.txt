@@ -7,5 +7,6 @@ tqdm
 gensim
 scikit-learn
 pandas
+mecab-python3
 pyknp
 git+https://github.com/ku-nlp/python-textformatting.git
