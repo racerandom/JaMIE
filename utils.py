@@ -14,7 +14,8 @@ from transformers import *
 
 import data_objects
 from pyknp import Juman
-juman = Juman()
+
+#juman = Juman()
 
 DEUNK_COL = 0
 TOK_COL = 1
