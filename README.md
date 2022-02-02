@@ -142,7 +142,7 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 If you use our code in your research, please cite [our work](https://arxiv.org/pdf/2111.04261):
 ```bibtex
 @inproceedings{cheng2021jamie,
-   title={JaMIE: A Pipeline Japanese Medical Information Extraction System,
+   title={JaMIE: A Pipeline Japanese Medical Information Extraction System},
    author={Fei Cheng, Shuntaro Yada, Ribeka Tanaka, Eiji Aramaki, Sadao Kurohashi},
    booktitle={arXiv},
    year={2021}
