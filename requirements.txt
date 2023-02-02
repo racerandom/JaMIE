@@ -1,6 +1,5 @@
---find-links https://download.pytorch.org/whl/torch_stable.html
-torch==1.8.0+cu111
-transformers==2.2.2
+torch==1.13.1
+transformers==4.25.1
 pytorch-crf
 mojimoji
 tqdm

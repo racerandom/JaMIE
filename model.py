@@ -613,7 +613,7 @@ class JointNerModReExtractor(nn.Module):
         self.mod_emb = nn.Embedding(num_embeddings=len(mod_vocab), embedding_dim=mod_emb_size)
         self.rel_emb = nn.Embedding(num_embeddings=len(rel_vocab), embedding_dim=rel_emb_size)
 
-        self.encoder = BertModel.from_pretrained(bert_url, output_hidden_states=True)
+        self.encoder = AutoModelForMaskedLM.from_pretrained(bert_url, output_hidden_states=True)
 
         self.activation = nn.Tanh()
 
@@ -645,11 +645,15 @@ class JointNerModReExtractor(nn.Module):
         pred_outputs = ()
 
         batch_size, seq_len = tokens.shape
-        _, _, all_hiddens = self.encoder(tokens, attention_mask=mask, token_type_ids=sent_mask)  # last hidden of BERT
-        low_o = all_hiddens[6]
-        high_o = all_hiddens[12]
+#        _, _, all_hiddens = self.encoder(tokens, attention_mask=mask, token_type_ids=sent_mask)  # last hidden of BERT
+#        low_o = all_hiddens[6]
+#        high_o = all_hiddens[12]
+        
+#        print(type(low_o))
+        all_hiddens = self.encoder(tokens, attention_mask=mask, token_type_ids=sent_mask)
+        last_o = all_hiddens['hidden_states'][-1]
 
-        ner_logits = self.crf_emission(low_o)
+        ner_logits = self.crf_emission(last_o)
 
         # ner section
         if all(gold is not None for gold in [ner_gold, mod_gold, rel_gold]):
@@ -667,7 +671,7 @@ class JointNerModReExtractor(nn.Module):
             ner_gold = torch.tensor(batch_tag).to(self.device)
 
         ner_out = self.ner_emb(ner_gold)
-        o = torch.cat((low_o, ner_out), dim=2)
+        o = torch.cat((last_o, ner_out), dim=2)
 
         # mod section
         mod_logits = self.mod_h2o(o)
@@ -682,7 +686,7 @@ class JointNerModReExtractor(nn.Module):
             mod_gold = pred_mod
 
         mod_out = self.mod_emb(mod_gold)
-        o = torch.cat((high_o, ner_out, mod_out), dim=-1)
+        o = torch.cat((last_o, ner_out, mod_out), dim=-1)
 
         '''Multi-head Selection'''
         # word representations: [b, l, r_s]

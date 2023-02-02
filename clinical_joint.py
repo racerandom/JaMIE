@@ -7,6 +7,7 @@ import json
 from collections import defaultdict
 from tqdm import tqdm
 import torch
+from transformers import AutoTokenizer, AutoModelForMaskedLM
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler, TensorDataset
 from model import *
 
@@ -227,13 +228,14 @@ def main():
 
     if args.do_train:
 
-        tokenizer = BertTokenizer.from_pretrained(
-            args.pretrained_model,
-            do_lower_case=args.do_lower_case,
-            do_basic_tokenize=False,
-            tokenize_chinese_chars=False
-        )
-        tokenizer.add_tokens(['[JASP]'])
+#        tokenizer = BertTokenizer.from_pretrained(
+#            args.pretrained_model,
+#            do_lower_case=args.do_lower_case,
+#            do_basic_tokenize=False,
+#            tokenize_chinese_chars=False
+#        )
+        tokenizer = AutoTokenizer.from_pretrained(args.pretrained_model)
+        tokenizer.add_tokens(['[JASP]'], special_tokens=True)
 
         train_comments, train_toks, train_ners, train_mods, train_rels, bio2ix, ne2ix, mod2ix, rel2ix = utils.extract_rel_data_from_mh_conll_v2(
             args.train_file,

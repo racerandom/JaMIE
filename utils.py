@@ -114,24 +114,45 @@ def padding_3d(seq_3d, max_1d, max_2d, pad_tok=0):
     return tmp_seq_3d
 
 
-def match_ner_label(bpe_x, y):
+def match_ner_label(bpe_x, y, default_lab="O", seg_style="SP"):
+    special_tokens = ["[CLS]", "[SEP]", "[UNK]", "[MASK]", "[PAD]", "[JASP]"]
     bpe_y = y.copy()
-    for i in range(len(bpe_x)):
-        if bpe_x[i].startswith('##') and len(bpe_x[i]) > 2:
-            if '-' in bpe_y[i-1]:
-                bpe_y.insert(i, 'I' + bpe_y[i-1][1:])
-            else:
-                bpe_y.insert(i, bpe_y[i-1])
+    if seg_style == "BPE":
+        for i in range(len(bpe_x)):
+            if bpe_x[i].startswith('##') and len(bpe_x[i]) > 2:
+                if '-' in bpe_y[i-1]:
+                    bpe_y.insert(i, 'I' + bpe_y[i-1][1:])
+                else:
+                    bpe_y.insert(i, bpe_y[i-1])
+    elif seg_style == "SP":
+        for i in range(len(bpe_x)):
+            if not (bpe_x[i].startswith('▁') or bpe_x[i] in special_tokens):
+                if '-' in bpe_y[i - 1]:
+                    bpe_y.insert(i, 'I' + bpe_y[i - 1][1:])
+                else:
+                    bpe_y.insert(i, bpe_y[i - 1])
+    else:
+        raise Exception("Unknown Segmentation Style setting!!")
     return bpe_y
 
 
-def match_mod_label(bpe_x, y, default_lab='_'):
+def match_mod_label(bpe_x, y, default_lab='_', seg_style="SP"):
+    special_tokens = ["[CLS]", "[SEP]", "[UNK]", "[MASK]", "[PAD]", "[JASP]"]
     bpe_y = y.copy()
-    for i in range(len(bpe_x)):
-        if bpe_x[i].startswith('##') and len(bpe_x[i]) > 2:
-            lab_hist = bpe_y[i-1]
-            bpe_y[i-1] = default_lab
-            bpe_y.insert(i, lab_hist)
+    if seg_style == "BPE":
+        for i in range(len(bpe_x)):
+            if bpe_x[i].startswith('##') and len(bpe_x[i]) > 2:
+                lab_hist = bpe_y[i-1]
+                bpe_y[i-1] = default_lab
+                bpe_y.insert(i, lab_hist)
+    elif seg_style == "SP":
+        for i in range(len(bpe_x)):
+            if not (bpe_x[i].startswith('▁') or bpe_x[i] in special_tokens):
+                lab_hist = bpe_y[i - 1]
+                bpe_y[i - 1] = default_lab
+                bpe_y.insert(i, lab_hist)
+    else:
+        raise Exception("Unknown Segmentation Style setting!!")
     return bpe_y
 
 
@@ -1818,13 +1839,23 @@ def convert_rels_to_tensors(ner_toks, ner_labs, rels,
 
 
 # tok_id -> sbw_tok_id
-def align_sbw_ids(sbw_sent_toks):
+def align_sbw_ids(sbw_sent_toks, seg_style="SP"):
+    special_tokens = ["[CLS]", "[SEP]", "[UNK]", "[MASK]", "[PAD]", "[JASP]"]
     aligned_ids = []
-    for index, token in enumerate(sbw_sent_toks):
-        if token.startswith("##") and len(token) > 2:
-            aligned_ids[-1].append(index)
-        else:
-            aligned_ids.append([index])
+    if seg_style == "BPE":
+        for index, token in enumerate(sbw_sent_toks):
+            if token.startswith("##") and len(token) > 2:
+                aligned_ids[-1].append(index)
+            else:
+                aligned_ids.append([index])
+    elif seg_style == "SP":
+        for index, token in enumerate(sbw_sent_toks):
+            if not (token.startswith('▁') or token in special_tokens):
+                aligned_ids[-1].append(index)
+            else:
+                aligned_ids.append([index])
+    else:
+        raise Exception("Unknown segmentation style setting!!!")
     return aligned_ids
 
 
@@ -2480,6 +2511,7 @@ def convert_rels_to_mhs_v3(
         merged_modality=False,
         deunk=True,
         bert_max_len=512,
+        seg_style="SP",
         verbose=0
 ):
     doc_comment, doc_tok, doc_attn_mask, doc_sent_mask, doc_ner, doc_mod, doc_rel, doc_spo = [], [], [], [], [], [], [], []
@@ -2494,8 +2526,8 @@ def convert_rels_to_mhs_v3(
             sbw_sent_tok = explore_unk(tokenizer.tokenize(' '.join(sent_tok)), sent_tok)
         else:
             sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
-        sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner)
-        sbw_sent_mod = match_mod_label(sbw_sent_tok, sent_mod)
+        sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner, seg_style=seg_style)
+        sbw_sent_mod = match_mod_label(sbw_sent_tok, sent_mod, seg_style=seg_style)
 
         cls_sbw_sent_tok = [cls_tok] + sbw_sent_tok + [sep_tok]
         if len(cls_sbw_sent_tok) > bert_max_len:
@@ -2505,18 +2537,19 @@ def convert_rels_to_mhs_v3(
         cls_sbw_sent_mod = ['_'] + sbw_sent_mod + ['_']
         cls_sbw_sent_mask = [1] * len(cls_sbw_sent_tok)
 
-        assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mod) == len(cls_sbw_sent_mask)
-
         if verbose:
             print("sent_id: {}/{}".format(sent_id, doc_num))
+            print(["{}: {}".format(index, tok) for index, tok in enumerate(sent_tok)])
             print(["{}: {}".format(index, tok) for index, tok in enumerate(cls_sbw_sent_tok)])
             print(["{}: {}".format(index, ner) for index, ner in enumerate(cls_sbw_sent_ner)])
             print(["{}: {}".format(index, mod) for index, mod in enumerate(cls_sbw_sent_mod)])
+        
+        assert len(cls_sbw_sent_tok) == len(cls_sbw_sent_ner) == len(cls_sbw_sent_mod) == len(cls_sbw_sent_mask)
 
         # preparing rel data
         sent_rel_tuples, sent_spo = [], []
         # align entity_ids in sent_rels
-        cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok)
+        cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok,  seg_style=seg_style)
         assert len(cls_aligned_ids) == (len(sent_tok) + 2)
         for tail_ids, tail_lab, head_ids, head_lab, rel_lab in sent_rel:
             tail_last_id = cls_aligned_ids[int(tail_ids[-1]) + 1][-1]  # with the begining [CLS] + 1
