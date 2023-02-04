@@ -175,7 +175,7 @@ def main():
                         action='store_true',
                         help="Whether to run training.")
 
-    parser.add_argument("--enc_lr", default=2e-5, type=float,
+    parser.add_argument("--enc_lr", default=5e-6, type=float,
                         help="learning rate")
 
     parser.add_argument("--dec_lr", default=1e-2, type=float,
@@ -306,6 +306,7 @@ def main():
             ner_emb_size=bio_emb_size, ner_vocab=bio2ix,
             mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
             rel_emb_size=rel_emb_size, rel_vocab=rel2ix,
+            hidden_size=1024 if "large" in args.pretrained_model else 768,
             device=args.device
         )
         model.encoder.resize_token_embeddings(len(tokenizer))
@@ -331,7 +332,7 @@ def main():
 
         optimizer = AdamW(
             optimizer_grouped_parameters,
-            eps=1e-8,
+            eps=1e-6,
             correct_bias=False
         )
         if args.scheduled_lr:
@@ -341,12 +342,18 @@ def main():
                 num_training_steps=num_training_steps
             )
 
+
         if args.fp16:
-            try:
-                from apex import amp
-            except ImportError:
-                raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
-            model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
+            # # Nvidia AMP fp16
+            # try:
+            #     from apex import amp
+            # except ImportError:
+            #     raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
+            # model, optimizer = amp.initialize(model, optimizer, opt_level=args.fp16_opt_level)
+
+            '''PyTorch native fp16 '''
+            scaler = torch.cuda.amp.GradScaler(enabled=args.fp16)
+
 
         if args.n_gpu > 1:
             model = torch.nn.DataParallel(model)
@@ -370,43 +377,49 @@ def main():
                 if epoch > args.freeze_after_epoch:
                     utils.freeze_bert_layers(model, bert_name='encoder', freeze_embed=True, layer_list=list(range(0, 11)))
 
-                # input processing
-                b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
-                    t.to(args.device) for t in batch[1:]
-                )
-                b_sent_ids = batch[0].tolist()
-                b_gold_relmat = utils.gen_relmat(train_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).to(args.device)
+                with torch.autocast(device_type='cuda', dtype=torch.float16, enabled=args.fp16):
+                    # input processing
+                    b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
+                        t.to(args.device) for t in batch[1:]
+                    )
+                    b_sent_ids = batch[0].tolist()
+                    b_gold_relmat = utils.gen_relmat(train_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).to(args.device)
 
-                b_text_list = [utils.padding_1d(
-                    train_tok[sent_id],
-                    cls_max_len,
-                    pad_tok='[PAD]') for sent_id in b_sent_ids]
+                    b_text_list = [utils.padding_1d(
+                        train_tok[sent_id],
+                        cls_max_len,
+                        pad_tok='[PAD]') for sent_id in b_sent_ids]
 
-                ner_loss, mod_loss, rel_loss = model(
-                    b_toks, b_attn_mask.bool(),
-                    b_sent_mask.long(),
-                    ner_gold=b_ner, mod_gold=b_mod, rel_gold=b_gold_relmat, reduction=args.reduction
-                )
-                loss = ner_loss + mod_loss + rel_loss
+                    ner_loss, mod_loss, rel_loss = model(
+                        b_toks, b_attn_mask.bool(),
+                        b_sent_mask.long(),
+                        ner_gold=b_ner, mod_gold=b_mod, rel_gold=b_gold_relmat, reduction=args.reduction
+                    )
+                    loss = ner_loss + mod_loss + rel_loss
 
-                if args.n_gpu > 1:
+                if args.n_gpu > 0:
                     loss = loss.mean()
                     ner_loss = ner_loss.mean()
                     mod_loss = mod_loss.mean()
                     rel_loss = rel_loss.mean()
 
                 if args.fp16:
-                    with amp.scale_loss(loss, optimizer) as scaled_loss:
-                        scaled_loss.backward()
-                    torch.nn.utils.clip_grad_norm_(amp.master_params(optimizer), args.max_grad_norm)
+                    # '''Nvidia AMP fp16'''
+                    # with amp.scale_loss(loss, optimizer) as scaled_loss:
+                    #     scaled_loss.backward()
+                    # torch.nn.utils.clip_grad_norm_(amp.master_params(optimizer), args.max_grad_norm)
+                    '''PyTorch Native fp16'''
+                    scaler.scale(loss).backward()
+                    scaler.unscale_(optimizer)
+                    torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=args.max_grad_norm)
+                    scaler.step(optimizer)
+                    scaler.update()
                 else:
                     loss.backward()
                     torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+                    optimizer.step()
 
-                optimizer.step()
-                if args.scheduled_lr:
-                    scheduler.step()
-                model.zero_grad()
+                optimizer.zero_grad()
 
                 train_loss += loss.item()
                 train_ner_loss += ner_loss.item()
@@ -417,7 +430,7 @@ def main():
                     f" L_REL: {train_rel_loss/(step+1):.6f} | epoch: {epoch}/{args.num_epoch}:"
                 )
 
-                if epoch > 1:
+                if epoch > 0:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                         eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo,
                                    bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
@@ -454,14 +467,17 @@ def main():
                             with open(os.path.join(args.saved_model, 'rel2ix.json'), 'w') as fp:
                                 json.dump(rel2ix, fp)
 
+            if args.scheduled_lr:
+                scheduler.step()
+
             eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
                        mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
                        print_levels=(1, 1, 1), out_file=args.dev_output, verbose=0)
             dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
             dev_evaluator.eval_ner(print_level=1)
             dev_evaluator.eval_mod(print_level=1)
-            # dev_evaluator.eval_rel(print_level=1)
-            dev_evaluator.eval_mention_rel(print_level=1)
+            dev_evaluator.eval_rel(print_level=1)
+            # dev_evaluator.eval_mention_rel(print_level=1)
 
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
               f"rel: {best_dev_f1[3]:.6f}; epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d}\n")
