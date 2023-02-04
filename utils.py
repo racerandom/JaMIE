@@ -43,11 +43,33 @@ class MorphologicalAnalyzer(object):
 
     def analyze(self, text):
         if self.analyzer_name == 'juman':
-            return [w.midasi for w in self.analyzer.analysis(text).mrph_list()]
+            # return [w.midasi for w in self.analyzer.analysis(text).mrph_list()]
+            text = text.replace(' ', '\u3000')
+            segment_lines = []
+            # print(text)
+            for line in text.split('[SEP]'):
+                segment_lines.append(' '.join([w.midasi for w in self.analyzer.analysis(mojimoji.han_to_zen(line)).mrph_list()]).replace('\u3000', '[JASP]'))
+            segments = " [SEP] ".join(segment_lines).split()
+            refined_segments = []
+            for i in range(len(segments)):
+                if i == 0:
+                    refined_segments.append(segments[i])
+                else:
+                    if segments[i] == segments[i - 1] == '[JASP]':
+                        continue
+                    else:
+                        refined_segments.append(segments[i])
+            # print(refined_segments)
+            # print()
+            return refined_segments
         elif self.analyzer_name == 'mecab':
             text = text.replace(' ', '\u3000')
-            segments = self.analyzer.parse(text).replace('\u3000 SEP \u3000', ' [SEP] ').replace('\u3000', '[JASP]').split()
-            segments = ['[JASP]' if '[JASP]' in tok else mojimoji.han_to_zen(tok).replace('［ＳＥＰ］', '[SEP]') for tok in segments]
+            segment_lines = []
+            for line in text.split('[SEP]'):
+                segment_lines.append(self.analyzer.parse(line).replace('\u3000', '[JASP]'))
+            segments = " [SEP] ".join(segment_lines).split()
+            # segments = self.analyzer.parse(text).replace('\u3000 SEP \u3000', ' [SEP] ').replace('\u3000', '[JASP]').split()
+            # segments = ['[JASP]' if '[JASP]' in tok else mojimoji.han_to_zen(tok).replace('［ＳＥＰ］', '[SEP]') for tok in segments]
             refined_segments = []
             for i in range(len(segments)):
                 if i == 0:
@@ -733,14 +755,14 @@ def convert_document_to_conll(clinical_file, fo, mor_analyzer,
                 trunk_list.append([line])
             else:
                 if is_document:
-                    if bert_sent_len('\u3000SEP\u3000'.join(trunk_list[-1]) + '\u3000SEP\u3000' + line, bert_tokenizer, mor_analyzer) + 2 < len_limit:
+                    if bert_sent_len('[SEP]'.join(trunk_list[-1]) + '[SEP]' + line, bert_tokenizer, mor_analyzer) + 2 < len_limit:
                         trunk_list[-1].append(line)
                     else:
                         trunk_list.append([line])
                 else:
                     trunk_list.append([line])
 
-    trunk_list = ['\u3000SEP\u3000'.join(line) for line in trunk_list]
+    trunk_list = ['[SEP]'.join(line) for line in trunk_list]
 
     comment_line = None
 
@@ -1859,21 +1881,36 @@ def align_sbw_ids(sbw_sent_toks, seg_style="SP"):
     return aligned_ids
 
 
-def sbwtok2tok_alignment(sbw_sent_tok):
+def sbwtok2tok_alignment(sbw_sent_tok, seg_style="SP"):
+    special_tokens = ["[CLS]", "[SEP]", "[UNK]", "[MASK]", "[PAD]", "[JASP]"]
     aligned_ids = []
     sent_tok = []
     tok_cache = []
     curr_index = -1
-    for index, token in enumerate(sbw_sent_tok):
-        if not token.startswith("##"):
-            if tok_cache:
-                sent_tok.append(' '.join(tok_cache).replace(' ##', ''))
-                tok_cache = []
-            curr_index += 1
-        tok_cache.append(token)
-        aligned_ids.append(curr_index)
-    if tok_cache:
-        sent_tok.append(' '.join(tok_cache).replace(' ##', ''))
+    if seg_style == "BPE":
+        for index, token in enumerate(sbw_sent_tok):
+            if not token.startswith("##"):
+                if tok_cache:
+                    sent_tok.append(' '.join(tok_cache).replace(' ##', ''))
+                    tok_cache = []
+                curr_index += 1
+            tok_cache.append(token)
+            aligned_ids.append(curr_index)
+        if tok_cache:
+            sent_tok.append(' '.join(tok_cache).replace(' ##', ''))
+    elif seg_style == "SP":
+        for index, token in enumerate(sbw_sent_tok):
+            if token.startswith("▁") or token in special_tokens:
+                if tok_cache:
+                    sent_tok.append(''.join(tok_cache).lstrip('▁'))
+                    tok_cache = []
+                curr_index += 1
+            tok_cache.append(token)
+            aligned_ids.append(curr_index)
+        if tok_cache:
+            sent_tok.append(''.join(tok_cache).lstrip('▁'))
+    else:
+        raise Exception("Unknown segmentation style setting!!!")
     return sent_tok, aligned_ids
 
 
@@ -2548,6 +2585,7 @@ def convert_rels_to_mhs_v3(
 
         # preparing rel data
         sent_rel_tuples, sent_spo = [], []
+
         # align entity_ids in sent_rels
         cls_aligned_ids = align_sbw_ids(cls_sbw_sent_tok,  seg_style=seg_style)
         assert len(cls_aligned_ids) == (len(sent_tok) + 2)

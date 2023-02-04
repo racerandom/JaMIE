@@ -39,7 +39,7 @@ def xml_to_conll(xml_dir, conll_dir, doc_level, is_raw, segmenter, tokenizer):
                 with_dct=with_dct,
                 is_raw=is_raw,
                 morph_analyzer_name=segmenter,
-                bert_tokenizer=bert_tokenizer,
+                bert_tokenizer=tokenizer,
                 is_document=doc_level
             )
 
@@ -139,18 +139,20 @@ parser.add_argument("--bert_dir", type=str,
 args = parser.parse_args()
 
 if args.mode in ['xml2conll']:
-    bert_tokenizer = BertTokenizer.from_pretrained(
-        args.bert_dir,
-        do_lower_case=False,
-        do_basic_tokenize=False,
-        tokenize_chinese_chars=False
-    )
-    bert_tokenizer.add_tokens(['[JASP]'])
+    # bert_tokenizer = BertTokenizer.from_pretrained(
+    #     args.bert_dir,
+    #     do_lower_case=False,
+    #     do_basic_tokenize=False,
+    #     tokenize_chinese_chars=False
+    # )
+    # bert_tokenizer.add_tokens(['[JASP]'])
+    tokenizer = AutoTokenizer.from_pretrained(args.bert_dir)
+    tokenizer.add_tokens(['[JASP]'], special_tokens=True)
 
     if args.cv_num == 0:
-        xml_to_conll(args.xml_dir, args.conll_dir, args.doc_level, args.is_raw, args.segmenter, bert_tokenizer)
+        xml_to_conll(args.xml_dir, args.conll_dir, args.doc_level, args.is_raw, args.segmenter, tokenizer)
     elif args.cv_num > 0:
-        cross_validation(args.xml_dir, args.conll_dir, args.doc_level, args.is_raw, args.segmenter, args.cv_num, bert_tokenizer)
+        cross_validation(args.xml_dir, args.conll_dir, args.doc_level, args.is_raw, args.segmenter, args.cv_num, tokenizer)
     else:
         raise Exception(f"Incorrect cv number {args.cv_num}...")
 elif args.mode in ['conll2xml']:

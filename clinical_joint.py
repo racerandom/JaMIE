@@ -86,7 +86,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
             # print()
 
             for sid, sbw_ner, sbw_mod, sbw_rel, index_sbw_rel in zip(b_sent_ids, b_pred_ner, b_pred_mod, b_pred_rel, b_pred_rel_ix):
-                w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid])
+                w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid], seg_style="SP")
                 w_ner = utils.sbwner2ner(sbw_ner, aligned_ids)
                 w_mod = utils.sbwmod2mod(sbw_mod, aligned_ids)
                 w_rel, w_head = utils.sbwrel2head(index_sbw_rel, aligned_ids)
@@ -417,7 +417,7 @@ def main():
                     f" L_REL: {train_rel_loss/(step+1):.6f} | epoch: {epoch}/{args.num_epoch}:"
                 )
 
-                if epoch > 5:
+                if epoch > 1:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                         eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo,
                                    bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
