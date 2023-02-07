@@ -2563,6 +2563,7 @@ def convert_rels_to_mhs_v3(
             sbw_sent_tok = explore_unk(tokenizer.tokenize(' '.join(sent_tok)), sent_tok)
         else:
             sbw_sent_tok = tokenizer.tokenize(' '.join(sent_tok))
+
         sbw_sent_ner = match_ner_label(sbw_sent_tok, sent_ner, seg_style=seg_style)
         sbw_sent_mod = match_mod_label(sbw_sent_tok, sent_mod, seg_style=seg_style)
 

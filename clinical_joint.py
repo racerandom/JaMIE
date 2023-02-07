@@ -5,6 +5,8 @@ import os
 import argparse
 import json
 from collections import defaultdict
+
+import mojimoji
 from tqdm import tqdm
 import torch
 from transformers import AutoTokenizer, AutoModelForMaskedLM
@@ -100,7 +102,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
 
                 fo.write(f'{eval_comments[sid]}\n')
                 for index, (tok, ner, mod, rel, head) in enumerate(zip(orig_tok[sid] if orig_tok else w_tok, w_ner, w_mod, w_rel, w_head)):
-                    fo.write(f"{index}\t{tok}\t{ner}\t{mod}\t{rel}\t{head}\n")
+                    fo.write(f"{index}\t{mojimoji.han_to_zen(tok)}\t{ner}\t{mod}\t{rel}\t{head}\n")
 
         # ner_f1 = ner_evaluator.print_results(message + ' ner', f1_mode=f1_mode, print_level=print_levels[0])
         # mod_f1 = mod_evaluator.print_results(message + ' mod', f1_mode=f1_mode, print_level=print_levels[1])
@@ -430,18 +432,19 @@ def main():
                     f" L_REL: {train_rel_loss/(step+1):.6f} | epoch: {epoch}/{args.num_epoch}:"
                 )
 
-                if epoch > 0:
+                if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                         eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo,
                                    bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
                                    print_levels=(0, 0, 0), out_file=args.dev_output, verbose=0)
                         dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
-                        dev_ner_f1 = dev_evaluator.eval_ner(print_level=0)
-                        dev_mod_f1 = dev_evaluator.eval_mod(print_level=0)
-                        dev_rel_f1 = dev_evaluator.eval_rel(print_level=0)
+                        dev_ner_f1 = dev_evaluator.eval_ner(print_level=1)
+                        dev_mod_f1 = dev_evaluator.eval_mod(print_level=1)
+                        dev_rel_f1 = dev_evaluator.eval_rel(print_level=1)
+                        dev_menrel_f1 = dev_evaluator.eval_mention_rel(print_level=1)
                         dev_f1 = ((dev_ner_f1 + dev_mod_f1 + dev_rel_f1) / 3,
                                   dev_ner_f1, dev_mod_f1, dev_rel_f1)
-
+                        print("-" * 50)
                         dev_f1 += (epoch,)
                         dev_f1 += (step,)
                         if best_dev_f1[0] < dev_f1[0]:
@@ -450,7 +453,7 @@ def main():
                                 f"mod: {best_dev_f1[2]:.6f}, rel: {best_dev_f1[3]:.6f}; "
                                 f"epoch {best_dev_f1[4]:d} / step {best_dev_f1[5]:d} \n "
                                 f">> Current f1 {dev_f1[0]:.6f} (ner: {dev_f1[1]:.6f}, mod: {dev_f1[2]:.6f}, "
-                                f"rel: {dev_f1[3]:.6f}; best model saved '{args.saved_model}'"
+                                f"rel: {dev_f1[3]:.6f}; \nbest model saved '{args.saved_model}'"
                             )
                             best_dev_f1 = dev_f1
 
@@ -470,13 +473,13 @@ def main():
             if args.scheduled_lr:
                 scheduler.step()
 
-            eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-                       mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
-                       print_levels=(1, 1, 1), out_file=args.dev_output, verbose=0)
-            dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
-            dev_evaluator.eval_ner(print_level=1)
-            dev_evaluator.eval_mod(print_level=1)
-            dev_evaluator.eval_rel(print_level=1)
+            # eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
+            #            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
+            #            print_levels=(1, 1, 1), out_file=args.dev_output, verbose=0)
+            # dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
+            # dev_evaluator.eval_ner(print_level=1)
+            # dev_evaluator.eval_mod(print_level=1)
+            # dev_evaluator.eval_rel(print_level=1)
             # dev_evaluator.eval_mention_rel(print_level=1)
 
         print(f"Best dev f1 {best_dev_f1[0]:.6f} (ner: {best_dev_f1[1]:.6f}, mod: {best_dev_f1[2]:.6f}, "
@@ -485,12 +488,13 @@ def main():
         torch.save(model, os.path.join(args.saved_model, 'model.pt'))
     else:
         '''Load tokenizer and tag2ix'''
-        tokenizer = BertTokenizer.from_pretrained(
-            args.saved_model,
-            do_lower_case=args.do_lower_case,
-            do_basic_tokenize=False,
-            tokenize_chinese_chars=False
-        )
+        # tokenizer = BertTokenizer.from_pretrained(
+        #     args.saved_model,
+        #     do_lower_case=args.do_lower_case,
+        #     do_basic_tokenize=False,
+        #     tokenize_chinese_chars=False
+        # )
+        tokenizer = AutoTokenizer.from_pretrained(args.saved_model)
         with open(os.path.join(args.saved_model, 'ner2ix.json')) as json_fi:
             bio2ix = json.load(json_fi)
         with open(os.path.join(args.saved_model, 'mod2ix.json')) as json_fi:
@@ -553,8 +557,8 @@ def main():
             test_evaluator = MhsEvaluator(args.test_file, args.test_output)
             test_evaluator.eval_ner(print_level=1)
             test_evaluator.eval_mod(print_level=1)
-            # test_evaluator.eval_rel(print_level=2)
-            test_evaluator.eval_mention_rel(print_level=2)
+            test_evaluator.eval_rel(print_level=1)
+            test_evaluator.eval_mention_rel(print_level=1)
 
 if __name__ == '__main__':
     main()

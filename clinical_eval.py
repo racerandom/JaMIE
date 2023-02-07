@@ -1,5 +1,8 @@
 import copy
 from collections import defaultdict
+
+import mojimoji
+
 from data_objects import MultiheadConll
 import argparse
 
@@ -138,14 +141,25 @@ class MhsEvaluator(object):
         return self._rel_evaluator.print_results('rel (relax)', f1_mode=self.f1_mode, print_level=print_level)
 
     def eval_rel(self, print_level=1):
-        for s_gold_rel, s_pred_rel in zip(self._gold_mhs._rel_detailed_triplets, self._pred_mhs._rel_detailed_triplets):
-            self._rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
+        for index, (s_gold_rel, s_pred_rel) in enumerate(zip(self._gold_mhs._rel_detailed_triplets, self._pred_mhs._rel_detailed_triplets)):
+            if index < 0:
+                print(f"gold {len(s_gold_rel)}:", s_gold_rel)
+                print(f"pred {len(s_pred_rel)}:", s_pred_rel)
+                self._rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
+                self._rel_evaluator.print_results('rel (strict)', f1_mode=self.f1_mode, print_level=print_level)
+            else:
+                self._rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
         return self._rel_evaluator.print_results('rel (strict)', f1_mode=self.f1_mode, print_level=print_level)
 
     def eval_mention_rel(self, print_level=1):
-        for s_gold_rel, s_pred_rel in zip(self._gold_mhs._rel_mention_triplets, self._pred_mhs._rel_mention_triplets):
-            # print(s_pred_rel)
-            self._mention_rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
+        for index, (s_gold_rel, s_pred_rel) in enumerate(zip(self._gold_mhs._rel_mention_triplets, self._pred_mhs._rel_mention_triplets)):
+            if index < 0:
+                print(f"gold {len(s_gold_rel)}:", s_gold_rel)
+                print(f"pred {len(s_pred_rel)}:", s_pred_rel)
+                self._mention_rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
+                self._mention_rel_evaluator.print_results('rel (str strict)', f1_mode=self.f1_mode, print_level=print_level)
+            else:
+                self._mention_rel_evaluator.update(s_gold_rel, s_pred_rel, rel_col=-1)
         return self._mention_rel_evaluator.print_results('rel (str strict)', f1_mode=self.f1_mode, print_level=print_level)
 
 
