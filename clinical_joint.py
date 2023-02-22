@@ -70,7 +70,12 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 w_tok = w_tok[1:-1]
                 w_ner = w_ner[1:-1]
                 w_mod = w_mod[1:-1]
-                assert len(w_tok) == len(w_ner) == len(w_mod) == len(w_rel) == len(w_head)
+
+                print(w_tok)
+                print(w_ner)
+                print(w_mod)
+                assert len(w_tok) == len(w_ner) == len(w_mod) == len(w_rel) == len(w_head), \
+                    f"[assert error], {len(w_tok)}, {len(w_ner)}, {len(w_mod)}, {len(w_rel)}, {len(w_head)}"
 
                 if orig_tok:
                     assert len(orig_tok[sid]) == len(w_tok)
