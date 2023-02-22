@@ -33,6 +33,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
             b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
                 t.to(device) for t in eval_batch[1:]
             )
+            print(f"test device: {device}")
             b_sent_ids = eval_batch[0].tolist()
             b_text_list = [utils.padding_1d(
                 eval_tok[sent_id],
@@ -100,7 +101,7 @@ def main():
                         help="test file, multihead conll format.")
 
     parser.add_argument("--pretrained_model",
-                        default="/home/feicheng/Tools/NICT_BERT-base_JapaneseWikipedia_32K_BPE",
+                        default="ku-nlp/deberta-v2-base-japanese",
                         type=str,
                         help="pre-trained model dir")
 
@@ -202,7 +203,7 @@ def main():
     cuda_env_str = eval(os.environ["CUDA_VISIBLE_DEVICES"])
     gpu_ids = [cuda_env_str] if isinstance(cuda_env_str, int) else list(cuda_env_str)
     print(f"Available GPUs: {gpu_ids}")
-    device = torch.device(f"cuda:{gpu_ids[0]}" if torch.cuda.is_available() else "cpu")
+    device = torch.device(f"cuda" if torch.cuda.is_available() else "cpu")
 
     print(args)
 
@@ -288,9 +289,11 @@ def main():
             device=device
         )
         model.encoder.resize_token_embeddings(len(tokenizer))
+        model.to(device)
+
         if len(gpu_ids) > 1:
             model = torch.nn.DataParallel(model)
-        model.to(device)
+
 
         param_optimizer = list(model.named_parameters())
         encoder_name_list = ['encoder']
@@ -374,7 +377,7 @@ def main():
                     )
                     loss = ner_loss + mod_loss + rel_loss
 
-                if gpu_ids > 0:
+                if len(gpu_ids) > 1:
                     loss = loss.mean()
                     ner_loss = ner_loss.mean()
                     mod_loss = mod_loss.mean()
