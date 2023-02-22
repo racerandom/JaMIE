@@ -118,7 +118,7 @@ The models trained on radiography interpretation reports of Lung Cancer (LC) and
 
 
 
-### Bath Converter from XML (or raw text) to CONLL for Train/Test
+### Batch Converter from XML (or raw text) to CONLL for Train/Test
 
 Convert XML files to CONLL files for Train/Test. You can also convert raw text to CONLL-style for Test.
 

@@ -24,9 +24,6 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                orig_tok=None, out_file=None,
                f1_mode='micro', test_mode=False, verbose=0):
 
-    # ner_evaluator = clinical_eval.TupleEvaluator()
-    # mod_evaluator = clinical_eval.TupleEvaluator()
-    # rel_evaluator = clinical_eval.TupleEvaluator()
     outfile_dir = out_file.rsplit('/', 1)[0]
     if not os.path.exists(outfile_dir):
         os.makedirs(outfile_dir)
@@ -58,34 +55,11 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 b_sent_mask.long()
             )
 
-            # # ner tuple -> [sent_id, [ids], ner_lab]
-            # b_gold_ner_tuple = utils.ner2tuple(b_sent_ids, b_gold_ner)
-            # b_pred_ner_tuple = utils.ner2tuple(b_sent_ids, b_pred_ner)
-            # ner_evaluator.update(b_gold_ner_tuple, b_pred_ner_tuple)
-            #
-            # # mod tuple -> [sent_id, [ids], ner_lab, mod_lab]
-            # b_pred_mod_tuple = [p + [b_pred_mod[b_sent_ids.index(p[0])][p[1][-1]]]
-            #                     for p in b_pred_ner_tuple if p[-1] != 'O']
-            # b_gold_mod_tuple = [g + [b_gold_mod[b_sent_ids.index(g[0])][g[1][-1]]]
-            #                     for g in b_gold_ner_tuple if g[-1] != 'O']
-            # mod_evaluator.update(b_gold_mod_tuple, b_pred_mod_tuple)
-
             b_pred_rel = [[{
                 'subject': [b_text_list[b_id][tok_id] for tok_id in rel['subject']],
                 'predicate': rel['predicate'],
                 'object': [b_text_list[b_id][tok_id] for tok_id in rel['object']],
-            } for rel in sent_rel_ix] for b_id, sent_rel_ix in enumerate(b_pred_rel_ix) ]
-
-
-            # b_pred_rel_tuples = [[sent_id, ''.join(rel['subject']).replace('##', ''), ''.join(rel['object']).replace('##', ''), rel['predicate']]
-            #                      for sent_id, sent_rel in zip(b_sent_ids, b_pred_rel) for rel in sent_rel]
-            # b_gold_rel_tuples = [[sent_id, ''.join(rel['subject']).replace('##', ''), ''.join(rel['object']).replace('##', ''), rel['predicate']]
-            #                      for sent_id, sent_rel in zip(b_sent_ids, b_gold_rel) for rel in sent_rel]
-            # rel_evaluator.update(b_gold_rel_tuples, b_pred_rel_tuples)
-
-            # print([(sub, obj, rel) for s_id, sub, obj, rel in b_pred_rel_tuples])
-            # print([(sub, obj, rel) for s_id, sub, obj, rel in b_gold_rel_tuples])
-            # print()
+            } for rel in sent_rel_ix] for b_id, sent_rel_ix in enumerate(b_pred_rel_ix)]
 
             for sid, sbw_ner, sbw_mod, sbw_rel, index_sbw_rel in zip(b_sent_ids, b_pred_ner, b_pred_mod, b_pred_rel, b_pred_rel_ix):
                 w_tok, aligned_ids = utils.sbwtok2tok_alignment(eval_tok[sid], seg_style="SP")
@@ -104,11 +78,6 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 for index, (tok, ner, mod, rel, head) in enumerate(zip(orig_tok[sid] if orig_tok else w_tok, w_ner, w_mod, w_rel, w_head)):
                     fo.write(f"{index}\t{mojimoji.han_to_zen(tok)}\t{ner}\t{mod}\t{rel}\t{head}\n")
 
-        # ner_f1 = ner_evaluator.print_results(message + ' ner', f1_mode=f1_mode, print_level=print_levels[0])
-        # mod_f1 = mod_evaluator.print_results(message + ' mod', f1_mode=f1_mode, print_level=print_levels[1])
-        # rel_f1 = rel_evaluator.print_results(message + ' rel', f1_mode=f1_mode, print_level=print_levels[2])
-        # f1 = (ner_f1 + mod_f1 + rel_f1) / 3
-        # return f1, ner_f1, mod_f1, rel_f1
 
 
 def main():
@@ -209,6 +178,13 @@ def main():
                         action='store_true',
                         help="eval each epoch")
 
+    parser.add_argument(
+        "--dp_mode",
+        default="dp",
+        type=str,
+        help="data parallel mode: dp, ddp",
+    )
+
     parser.add_argument("--fp16",
                         action='store_true',
                         help="fp16")
@@ -219,8 +195,14 @@ def main():
 
     args = parser.parse_args()
 
-    args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    args.n_gpu = torch.cuda.device_count()
+    '''dedicated for multi-gpu'''
+    # args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # args.n_gpu = torch.cuda.device_count()
+
+    cuda_env_str = eval(os.environ["CUDA_VISIBLE_DEVICES"])
+    gpu_ids = [cuda_env_str] if isinstance(cuda_env_str, int) else list(cuda_env_str)
+    print(f"Available GPUs: {gpu_ids}")
+    device = torch.device(f"cuda:{gpu_ids[0]}" if torch.cuda.is_available() else "cpu")
 
     print(args)
 
@@ -230,12 +212,6 @@ def main():
 
     if args.do_train:
 
-#        tokenizer = BertTokenizer.from_pretrained(
-#            args.pretrained_model,
-#            do_lower_case=args.do_lower_case,
-#            do_basic_tokenize=False,
-#            tokenize_chinese_chars=False
-#        )
         tokenizer = AutoTokenizer.from_pretrained(args.pretrained_model)
         tokenizer.add_tokens(['[JASP]'], special_tokens=True)
 
@@ -309,10 +285,12 @@ def main():
             mod_emb_size=mod_emb_size, mod_vocab=mod2ix,
             rel_emb_size=rel_emb_size, rel_vocab=rel2ix,
             hidden_size=1024 if "large" in args.pretrained_model else 768,
-            device=args.device
+            device=device
         )
         model.encoder.resize_token_embeddings(len(tokenizer))
-        model.to(args.device)
+        if len(gpu_ids) > 1:
+            model = torch.nn.DataParallel(model)
+        model.to(device)
 
         param_optimizer = list(model.named_parameters())
         encoder_name_list = ['encoder']
@@ -357,9 +335,6 @@ def main():
             scaler = torch.cuda.amp.GradScaler(enabled=args.fp16)
 
 
-        if args.n_gpu > 1:
-            model = torch.nn.DataParallel(model)
-
         # (F1, NER_F1, MOD_F1, REL_F1, epoch, step)
         best_dev_f1 = (float('-inf'), float('-inf'),  float('-inf'), float('-inf'), 0, 0)
 
@@ -382,10 +357,10 @@ def main():
                 with torch.autocast(device_type='cuda', dtype=torch.float16, enabled=args.fp16):
                     # input processing
                     b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
-                        t.to(args.device) for t in batch[1:]
+                        t.to(device) for t in batch[1:]
                     )
                     b_sent_ids = batch[0].tolist()
-                    b_gold_relmat = utils.gen_relmat(train_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).to(args.device)
+                    b_gold_relmat = utils.gen_relmat(train_rel, b_sent_ids, cls_max_len, rel2ix, del_neg=False).to(device)
 
                     b_text_list = [utils.padding_1d(
                         train_tok[sent_id],
@@ -399,7 +374,7 @@ def main():
                     )
                     loss = ner_loss + mod_loss + rel_loss
 
-                if args.n_gpu > 0:
+                if gpu_ids > 0:
                     loss = loss.mean()
                     ner_loss = ner_loss.mean()
                     mod_loss = mod_loss.mean()
@@ -435,7 +410,7 @@ def main():
                 if epoch > 5:
                     if ((step + 1) % save_step_interval == 0) or (step == num_epoch_steps - 1):
                         eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo,
-                                   bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
+                                   bio2ix, mod2ix, rel2ix, cls_max_len, device, "dev dataset",
                                    print_levels=(0, 0, 0), out_file=args.dev_output, verbose=0)
                         dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
                         dev_ner_f1 = dev_evaluator.eval_ner(print_level=1)
@@ -474,7 +449,7 @@ def main():
                 scheduler.step()
 
             # eval_joint(model, dev_dataloader, dev_comment, dev_tok, dev_ner, dev_mod, dev_rel, dev_spo, bio2ix,
-            #            mod2ix, rel2ix, cls_max_len, args.device, "dev dataset",
+            #            mod2ix, rel2ix, cls_max_len, device, "dev dataset",
             #            print_levels=(1, 1, 1), out_file=args.dev_output, verbose=0)
             # dev_evaluator = MhsEvaluator(args.dev_file, args.dev_output)
             # dev_evaluator.eval_ner(print_level=1)
@@ -488,12 +463,6 @@ def main():
         torch.save(model, os.path.join(args.saved_model, 'model.pt'))
     else:
         '''Load tokenizer and tag2ix'''
-        # tokenizer = BertTokenizer.from_pretrained(
-        #     args.saved_model,
-        #     do_lower_case=args.do_lower_case,
-        #     do_basic_tokenize=False,
-        #     tokenize_chinese_chars=False
-        # )
         tokenizer = AutoTokenizer.from_pretrained(args.saved_model)
         with open(os.path.join(args.saved_model, 'ner2ix.json')) as json_fi:
             bio2ix = json.load(json_fi)
@@ -504,7 +473,7 @@ def main():
 
         '''Load full model'''
         model = torch.load(os.path.join(args.saved_model, 'model.pt'))
-        model.to(args.device)
+        model.to(device)
 
         if args.batch_test:
             for file_name in sorted(os.listdir(args.test_dir)):
@@ -529,7 +498,7 @@ def main():
                     test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
                     eval_joint(model, test_dataloader, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo,
-                               bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
+                               bio2ix, mod2ix, rel2ix, cls_max_len, device, "Final test dataset",
                                print_levels=(2, 2, 2), out_file=file_out, verbose=0)
         else:
 
@@ -552,7 +521,7 @@ def main():
             test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
 
             eval_joint(model, test_dataloader, test_comment, test_tok, test_ner, test_mod, test_rel, test_spo,
-                       bio2ix, mod2ix, rel2ix, cls_max_len, args.device, "Final test dataset",
+                       bio2ix, mod2ix, rel2ix, cls_max_len, device, "Final test dataset",
                        print_levels=(2, 2, 2), out_file=args.test_output, test_mode=False, verbose=0)
             test_evaluator = MhsEvaluator(args.test_file, args.test_output)
             test_evaluator.eval_ner(print_level=1)
