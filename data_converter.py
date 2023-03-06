@@ -44,8 +44,7 @@ def xml_to_conll(xml_dir, conll_dir, doc_level, is_raw, segmenter, tokenizer):
             )
 
 
-def cross_validation(in_dir, out_dir, doc_level, is_raw, segmenter, cv_num, tokenizer):
-    train_scale = 1.0
+def cross_validation(in_dir, out_dir, doc_level, is_raw, segmenter, cv_num, tokenizer, train_scale):
     with_dct = True
     cv_data_split = doc_kfold(in_dir, train_scale=train_scale, cv=cv_num)
     if not os.path.exists(out_dir):
@@ -136,6 +135,9 @@ parser.add_argument("--segmenter", default='mecab', type=str,
 parser.add_argument("--bert_dir", type=str,
                     help="BERT dir for initializing tokenizer")
 
+parser.add_argument("--train_ratio", default=1.0, type=float,
+                    help="sampling a part of training data...")
+
 args = parser.parse_args()
 
 if args.mode in ['xml2conll']:
@@ -152,7 +154,7 @@ if args.mode in ['xml2conll']:
     if args.cv_num == 0:
         xml_to_conll(args.xml_dir, args.conll_dir, args.doc_level, args.is_raw, args.segmenter, tokenizer)
     elif args.cv_num > 0:
-        cross_validation(args.xml_dir, args.conll_dir, args.doc_level, args.is_raw, args.segmenter, args.cv_num, tokenizer)
+        cross_validation(args.xml_dir, args.conll_dir, args.doc_level, args.is_raw, args.segmenter, args.cv_num, tokenizer, args.train_ratio)
     else:
         raise Exception(f"Incorrect cv number {args.cv_num}...")
 elif args.mode in ['conll2xml']:
