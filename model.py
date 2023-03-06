@@ -668,7 +668,7 @@ class JointNerModReExtractor(nn.Module):
             batch_tag = copy.deepcopy(decoded_ner_ix)
             for line in batch_tag:
                 line.extend([self.ner_vocab['O']] * (seq_len - len(line)))
-            print("[NER phrase]")
+            # print("[NER phrase]")
             ner_gold = torch.tensor(batch_tag).to(tokens.device)
 
         ner_out = self.ner_emb(ner_gold)

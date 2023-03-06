@@ -18,6 +18,7 @@ from clinical_eval import MhsEvaluator
 import utils
 warnings.filterwarnings("ignore")
 
+special_tokens = ["[JASP]", "[SEP]", "[CLS]", "[UNK]", "[PAD]"]
 
 def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_mod, eval_rel, eval_spo, ner2ix, mod2ix, rel2ix,
                cls_max_len, device, message, print_levels=(0, 0, 0),
@@ -33,7 +34,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
             b_toks, b_attn_mask, b_sent_mask, b_ner, b_mod = tuple(
                 t.to(device) for t in eval_batch[1:]
             )
-            print(f"test device: {device}")
+            # print(f"test device: {device}")
             b_sent_ids = eval_batch[0].tolist()
             b_text_list = [utils.padding_1d(
                 eval_tok[sent_id],
@@ -71,9 +72,9 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
                 w_ner = w_ner[1:-1]
                 w_mod = w_mod[1:-1]
 
-                print(w_tok)
-                print(w_ner)
-                print(w_mod)
+                # print(w_tok)
+                # print(w_ner)
+                # print(w_mod)
                 assert len(w_tok) == len(w_ner) == len(w_mod) == len(w_rel) == len(w_head), \
                     f"[assert error], {len(w_tok)}, {len(w_ner)}, {len(w_mod)}, {len(w_rel)}, {len(w_head)}"
 
@@ -82,7 +83,7 @@ def eval_joint(model, eval_dataloader, eval_comments, eval_tok, eval_lab, eval_m
 
                 fo.write(f'{eval_comments[sid]}\n')
                 for index, (tok, ner, mod, rel, head) in enumerate(zip(orig_tok[sid] if orig_tok else w_tok, w_ner, w_mod, w_rel, w_head)):
-                    fo.write(f"{index}\t{mojimoji.han_to_zen(tok)}\t{ner}\t{mod}\t{rel}\t{head}\n")
+                    fo.write(f"{index}\t{mojimoji.han_to_zen(tok) if tok not in special_tokens else tok}\t{ner}\t{mod}\t{rel}\t{head}\n")
 
 
 
