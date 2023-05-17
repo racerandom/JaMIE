@@ -146,6 +146,9 @@ We offer the links of both English and Japanese annotation guidelines.
 ## TO-DO
 Recognition accuracy can be improved by leverage more training data or more robust pre-trained models. We are working on making the code compatible with [Japanese DeBERTa](https://huggingface.co/ku-nlp)
 
+## Questions
+If you have any questions related to the code or papers, please feel free to send a mail to Fei Cheng: feicheng@i.kyoto-u.ac.jp or kevin.cheng.fei@gmail.com
+
 ## Citation
 If you use our code in your research, please cite the following papers:
 ```bibtex
