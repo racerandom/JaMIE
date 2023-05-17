@@ -93,6 +93,19 @@ The Train/Test phrases require all train, dev, test file converted to CONLL-styl
 #### Pretrained BERT required:\
 [NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)](https://alaginrc.nict.go.jp/nict-bert/index.html)
 
+### Pre-processing: Batch Converter from XML (or raw text) to CONLL for Train/Test
+
+Convert XML or raw text files to CONLL files before Train/Test. You can also convert raw text to CONLL-style for Test.
+
+> python data_converter.py \ \
+>    --mode xml2conll \ \
+>    --xml $XML_FILES_DIR \ \
+>    --conll $OUTPUT_CONLL_DIR \ \
+>    --cv_num 5 \ # 5-fold cross-validation, 0 presents to generate single conll file\
+>    --doc_level \ # generate document-level ([SEP] denotes sentence boundaries) or sentence-level conll files\
+>    --segmenter mecab \ # please use mecab and NICT bert currently\
+>    --bert_dir $PRETRAINED_BERT 
+
 ### Train：  
 > CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
 >    --pretrained_model $PRETRAINED_BERT \ \
@@ -107,7 +120,9 @@ The Train/Test phrases require all train, dev, test file converted to CONLL-styl
 >    --do_train \
 >    --fp16 (apex required)
 
-The models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF) are to be availabel: link1, link2.
+The models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF) are to be availabel: 
+* [radiography interpretation reports of Lung Cancer](https://drive.google.com/file/d/1Xh-XA8rusO-fKr6z1gaiyYUNqnBODNaq/view?usp=sharing)
+* [case reports of Idiopathic Pulmonary Fibrosis](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
 
 ### Test:
 > CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
@@ -115,21 +130,6 @@ The models trained on radiography interpretation reports of Lung Cancer (LC) and
 >    --test_file $TEST_FILE \ \
 >    --test_output $TEST_OUT \ \
 >    --batch_size 4
-
-
-
-### Bath Converter from XML (or raw text) to CONLL for Train/Test
-
-Convert XML files to CONLL files for Train/Test. You can also convert raw text to CONLL-style for Test.
-
-> python data_converter.py \ \
->    --mode xml2conll \ \
->    --xml $XML_FILES_DIR \ \
->    --conll $OUTPUT_CONLL_DIR \ \
->    --cv_num 5 \ # 5-fold cross-validation, 0 presents to generate single conll file\
->    --doc_level \ # generate document-level ([SEP] denotes sentence boundaries) or sentence-level conll files\
->    --segmenter mecab \ # please use mecab and NICT bert currently\
->    --bert_dir $PRETRAINED_BERT 
 
 ### Batch Converter from predicted CONLL to XML
 > python data_converter.py \ \
@@ -139,13 +139,31 @@ Convert XML files to CONLL files for Train/Test. You can also convert raw text t
 
 
 ## Citation
-If you use our code in your research, please cite [our work](https://arxiv.org/pdf/2111.04261):
+If you use our code in your research, please cite the following papers:
 ```bibtex
+@inproceedings{cheng-etal-2022-jamie,
+   title={JaMIE: A Pipeline Japanese Medical Information Extraction System with Novel Relation Annotation},
+   author={Fei Cheng, Shuntaro Yada, Ribeka Tanaka, Eiji Aramaki, Sadao Kurohashi},
+   booktitle={Proceedings of the Thirteenth Language Resources and Evaluation Conference (LREC 2022)},
+   year={2022}
+}
 @inproceedings{cheng2021jamie,
    title={JaMIE: A Pipeline Japanese Medical Information Extraction System},
    author={Fei Cheng, Shuntaro Yada, Ribeka Tanaka, Eiji Aramaki, Sadao Kurohashi},
    booktitle={arXiv},
    year={2021}
+}
+@inproceedings{yada-etal-2020-towards,
+   title={Towards a Versatile Medical-Annotation Guideline Feasible Without Heavy Medical Knowledge: Starting From Critical Lung Diseases},
+   author={Shuntaro Yada, Ayami Joh, Ribeka Tanaka, Fei Cheng, Eiji Aramaki, Sadao Kurohashi},
+   booktitle={Proceedings of the Twelfth Language Resources and Evaluation Conference (LREC 2020)},
+   year={2020}
+}
+@inproceedings{cheng-etal-2020-dynamically,
+   title={Dynamically Updating Event Representations for Temporal Relation Classification with Multi-category Learning},
+   author={Fei Cheng, Masayuki Asahara, Ichiro Kobayashi, Sadao Kurohashi},
+   booktitle={Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP 2020), Findings Volume},
+   year={2020}
 }
 ```
 
