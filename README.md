@@ -115,7 +115,7 @@ Convert XML or raw text files to CONLL files before Train/Test. You can also con
 >    --dev_output $DEV_OUT \ \
 >    --saved_model $MODEL_DIR_TO_SAVE \ # the place to save the model\
 >    --enc_lr 2e-5 \ \
->    --batch_size 4 \ # depends on you GPU memory \
+>    --batch_size 4 \ # depends on your GPU memory \
 >    --warmup_epoch 2 \ \
 >    --num_epoch 20 \ \
 >    --do_train \ \
