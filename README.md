@@ -108,7 +108,7 @@ Convert XML or raw text files to CONLL files before Train/Test. You can also con
 >    --bert_dir $PRETRAINED_BERT # Pre-trained BERT or Trained model
 
 ## Train：  
-> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
+> CUDA_VISIBLE_DEVICES=$GPU_ID python clinical_joint.py \ \
 >    --pretrained_model $PRETRAINED_BERT \ # downloaded pre-trained NICT BERT \
 >    --train_file $TRAIN_FILE \ \
 >    --dev_file $DEV_FILE \ \
@@ -128,7 +128,7 @@ We share the models trained on radiography interpretation reports of Lung Cancer
 * [The trained model of case reports of Idiopathic Pulmonary Fibrosis](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
 You can either train a new model on your own training data or use our shared model for test.
 
-> CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
+> CUDA_VISIBLE_DEVICES=$GPU_ID python clinical_joint.py \ \
 >    --saved_model $SAVED_MODEL \ # Where the trained model placed\
 >    --test_file $TEST_FILE \ \
 >    --test_output $TEST_OUT \ \
