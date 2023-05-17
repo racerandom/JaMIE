@@ -122,7 +122,7 @@ Convert XML or raw text files to CONLL files before Train/Test. You can also con
 >    --do_train \ \
 >    --fp16 (apex required)
 
-The models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF) are to be availabel: 
+The models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF) are to be available: 
 * [The trained model of radiography interpretation reports of Lung Cancer](https://drive.google.com/file/d/1Xh-XA8rusO-fKr6z1gaiyYUNqnBODNaq/view?usp=sharing)
 * [The trained model of case reports of Idiopathic Pulmonary Fibrosis](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
 
@@ -139,6 +139,8 @@ The models trained on radiography interpretation reports of Lung Cancer (LC) and
 >    --xml $XML_FILES_DIR \ \
 >    --conll $OUTPUT_CONLL_DIR 
 
+## TO-DO
+Recognition accuracy can be improved by leverage more training data or more robust pre-trained models. We are working on making the code compatible with [Japanese DeBERTa](https://huggingface.co/ku-nlp)
 
 ## Citation
 If you use our code in your research, please cite the following papers:
