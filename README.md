@@ -124,8 +124,9 @@ Convert XML or raw text files to CONLL files before Train/Test. You can also con
 
 ## Test:
 We share the models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF): 
-* [The trained model of radiography interpretation reports of Lung Cancer](https://drive.google.com/file/d/1Xh-XA8rusO-fKr6z1gaiyYUNqnBODNaq/view?usp=sharing)
-* [The trained model of case reports of Idiopathic Pulmonary Fibrosis](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
+* [The trained model of radiography interpretation reports of Lung Cancer (肺がん読影所見)](https://drive.google.com/file/d/1Xh-XA8rusO-fKr6z1gaiyYUNqnBODNaq/view?usp=sharing)
+* [The trained model of case reports of Idiopathic Pulmonary Fibrosis (IPF診療録)](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
+
 You can either train a new model on your own training data or use our shared model for test.
 
 > CUDA_VISIBLE_DEVICES=$GPU_ID python clinical_joint.py \ \
