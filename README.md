@@ -102,32 +102,34 @@ Convert XML or raw text files to CONLL files before Train/Test. You can also con
 >    --mode xml2conll \ \
 >    --xml $XML_FILES_DIR \ \
 >    --conll $OUTPUT_CONLL_DIR \ \
->    --cv_num 5 \ # 5-fold cross-validation, 0 presents to generate single conll file\
+>    --cv_num 0 \ # 0 presents to generate single conll file, 5 presents 5-fold cross-validation\
 >    --doc_level \ # generate document-level ([SEP] denotes sentence boundaries) or sentence-level conll files\
 >    --segmenter mecab \ # please use mecab and NICT bert currently\
->    --bert_dir $PRETRAINED_BERT 
+>    --bert_dir $PRETRAINED_BERT # Pre-trained BERT or Trained model
 
 ## Train：  
 > CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
->    --pretrained_model $PRETRAINED_BERT \ \
+>    --pretrained_model $PRETRAINED_BERT \ # downloaded pre-trained NICT BERT \
 >    --train_file $TRAIN_FILE \ \
 >    --dev_file $DEV_FILE \ \
 >    --dev_output $DEV_OUT \ \
->    --saved_model $MODEL_DIR_TO_SAVE \ \
+>    --saved_model $MODEL_DIR_TO_SAVE \ # the place to save the model\
 >    --enc_lr 2e-5 \ \
->    --batch_size 4 \ \
+>    --batch_size 4 \ # depends on you GPU memory \
 >    --warmup_epoch 2 \ \
 >    --num_epoch 20 \ \
 >    --do_train \ \
 >    --fp16 (apex required)
 
-The models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF) are to be available: 
-* [The trained model of radiography interpretation reports of Lung Cancer](https://drive.google.com/file/d/1Xh-XA8rusO-fKr6z1gaiyYUNqnBODNaq/view?usp=sharing)
-* [The trained model of case reports of Idiopathic Pulmonary Fibrosis](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
 
 ## Test:
+We share the models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF): 
+* [The trained model of radiography interpretation reports of Lung Cancer](https://drive.google.com/file/d/1Xh-XA8rusO-fKr6z1gaiyYUNqnBODNaq/view?usp=sharing)
+* [The trained model of case reports of Idiopathic Pulmonary Fibrosis](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
+You can either train a new model on your own training data or use our shared model for test.
+
 > CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
->    --saved_model $SAVED_MODEL \ \
+>    --saved_model $SAVED_MODEL \ # Where the trained model placed\
 >    --test_file $TEST_FILE \ \
 >    --test_output $TEST_OUT \ \
 >    --batch_size 4
@@ -135,8 +137,8 @@ The models trained on radiography interpretation reports of Lung Cancer (LC) and
 ### Batch Converter from predicted CONLL to XML
 > python data_converter.py \ \
 >    --mode conll2xml \ \
->    --xml $XML_FILES_DIR \ \
->    --conll $OUTPUT_CONLL_DIR 
+>    --xml $XML_OUT_DIR \ \
+>    --conll $TEST_OUT 
 
 ## Annotation Guideline of the training data (XML format)
 We offer the links of both English and Japanese annotation guidelines.
