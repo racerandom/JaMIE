@@ -78,7 +78,7 @@
 
 ## Joint Japanese Medical Problem, Modality and Relation Recognition
 
-The Train/Test phrases require all train, dev, test file converted to CONLL-style. Please check data_converter.py
+In the field of Japanese medical information extraction, few analyzing tools are available and relation extraction is still an under-explored topic. In this paper, we first propose a novel relation annotation schema for investigating the medical and temporal relations between medical entities in Japanese medical reports. We design a system with three components for jointly recognizing medical entities, classifying entity modalities, and extracting relations.
 
 ### Installation (python3.8)
 > git clone https://github.com/racerandom/JaMIE.git \
@@ -96,7 +96,8 @@ The Train/Test phrases require all train, dev, test file converted to CONLL-styl
 
 ## Pre-processing: Batch Converter from XML (or raw text) to CONLL for Train/Test
 
-Convert XML or raw text files to CONLL files before Train/Test. You can also convert raw text to CONLL-style for Test, but please make sure the file extension is .xml.
+The Train/Test phrases require all train, dev, test file converted to CONLL-style before Train/Test. 
+You also need to convert raw text to CONLL-style for prediction, but please make sure the file extension is .xml.
 
 > python data_converter.py \ \
 >    --mode xml2conll \ \
