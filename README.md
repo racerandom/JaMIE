@@ -138,6 +138,11 @@ The models trained on radiography interpretation reports of Lung Cancer (LC) and
 >    --xml $XML_FILES_DIR \ \
 >    --conll $OUTPUT_CONLL_DIR 
 
+## Annotation Guideline of the training data (XML format)
+We offer the links of both English and Japanese annotation guidelines.
+* [English Guideline](https://figshare.com/articles/book/Medical_Clinical_Text_Annotation_Guidelines/16418811)
+* [Japanese Guideline](https://figshare.com/articles/book/___/16418787)
+
 ## TO-DO
 Recognition accuracy can be improved by leverage more training data or more robust pre-trained models. We are working on making the code compatible with [Japanese DeBERTa](https://huggingface.co/ku-nlp)
 
