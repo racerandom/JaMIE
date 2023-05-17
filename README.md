@@ -87,8 +87,8 @@ The Train/Test phrases require all train, dev, test file converted to CONLL-styl
 > pip install -r requirements.txt 
 
 #### Mophological analyzer required:\
-[mecab (juman-dict)](https://taku910.github.io/mecab/) by default
-[jumanpp](https://github.com/ku-nlp/jumanpp)\
+[mecab (juman-dict)](https://taku910.github.io/mecab/) by default \
+[jumanpp](https://github.com/ku-nlp/jumanpp) \
 
 #### Pretrained BERT required for training:\
 [NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)](https://alaginrc.nict.go.jp/nict-bert/index.html)
@@ -117,12 +117,12 @@ Convert XML or raw text files to CONLL files before Train/Test. You can also con
 >    --batch_size 4 \ \
 >    --warmup_epoch 2 \ \
 >    --num_epoch 20 \ \
->    --do_train \
+>    --do_train \ \
 >    --fp16 (apex required)
 
 The models trained on radiography interpretation reports of Lung Cancer (LC) and general medical reports of Idiopathic Pulmonary Fibrosis (IPF) are to be availabel: 
-* [radiography interpretation reports of Lung Cancer](https://drive.google.com/file/d/1Xh-XA8rusO-fKr6z1gaiyYUNqnBODNaq/view?usp=sharing)
-* [case reports of Idiopathic Pulmonary Fibrosis](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
+* [The trained model of radiography interpretation reports of Lung Cancer](https://drive.google.com/file/d/1Xh-XA8rusO-fKr6z1gaiyYUNqnBODNaq/view?usp=sharing)
+* [The trained model of case reports of Idiopathic Pulmonary Fibrosis](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
 
 ### Test:
 > CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
