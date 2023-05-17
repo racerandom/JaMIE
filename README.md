@@ -93,9 +93,11 @@ The Train/Test phrases require all train, dev, test file converted to CONLL-styl
 #### Pretrained BERT required for training:
 [NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)](https://alaginrc.nict.go.jp/nict-bert/index.html)
 
+
+## Train: 
 ### Pre-processing: Batch Converter from XML (or raw text) to CONLL for Train/Test
 
-Convert XML or raw text files to CONLL files before Train/Test. You can also convert raw text to CONLL-style for Test.
+Convert XML or raw text files to CONLL files before Train/Test. You can also convert raw text to CONLL-style for Test, but please make sure the file extension is .xml.
 
 > python data_converter.py \ \
 >    --mode xml2conll \ \
@@ -106,7 +108,7 @@ Convert XML or raw text files to CONLL files before Train/Test. You can also con
 >    --segmenter mecab \ # please use mecab and NICT bert currently\
 >    --bert_dir $PRETRAINED_BERT 
 
-### Train：  
+### Start training：  
 > CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
 >    --pretrained_model $PRETRAINED_BERT \ \
 >    --train_file $TRAIN_FILE \ \
@@ -124,7 +126,7 @@ The models trained on radiography interpretation reports of Lung Cancer (LC) and
 * [The trained model of radiography interpretation reports of Lung Cancer](https://drive.google.com/file/d/1Xh-XA8rusO-fKr6z1gaiyYUNqnBODNaq/view?usp=sharing)
 * [The trained model of case reports of Idiopathic Pulmonary Fibrosis](https://drive.google.com/file/d/1hrKdz4mW5Wp9lwM_ZuTbO0UjoMfu-Dy3/view?usp=sharing)
 
-### Test:
+## Test:
 > CUDA_VISIBLE_DEVICES=$SEED python clinical_joint.py \ \
 >    --saved_model $SAVED_MODEL \ \
 >    --test_file $TEST_FILE \ \
