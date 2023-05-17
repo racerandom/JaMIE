@@ -86,11 +86,11 @@ The Train/Test phrases require all train, dev, test file converted to CONLL-styl
 #### Required python package
 > pip install -r requirements.txt 
 
-#### Mophological analyzer required:\
+#### Mophological analyzer required:
 [mecab (juman-dict)](https://taku910.github.io/mecab/) by default \
-[jumanpp](https://github.com/ku-nlp/jumanpp) \
+[jumanpp](https://github.com/ku-nlp/jumanpp) 
 
-#### Pretrained BERT required for training:\
+#### Pretrained BERT required for training:
 [NICT-BERT (NICT_BERT-base_JapaneseWikipedia_32K_BPE)](https://alaginrc.nict.go.jp/nict-bert/index.html)
 
 ### Pre-processing: Batch Converter from XML (or raw text) to CONLL for Train/Test
