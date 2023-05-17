@@ -80,7 +80,9 @@
 
 In the field of Japanese medical information extraction, few analyzing tools are available and relation extraction is still an under-explored topic. In this paper, we first propose a novel relation annotation schema for investigating the medical and temporal relations between medical entities in Japanese medical reports. We design a system with three components for jointly recognizing medical entities, classifying entity modalities, and extracting relations.
 
-<img src="https://github.com/racerandom/JaMIE/blob/main/jamie_overview.jpg" alt="JaMIE system" width="50%" height="50%" title="System overview">
+<div style="text-align:center">
+<img src="https://github.com/racerandom/JaMIE/blob/main/jamie_overview.jpg" alt="JaMIE system" width="68%" height="68%" title="System overview">
+</div>
 
 ### Installation (python3.8)
 > git clone https://github.com/racerandom/JaMIE.git \
