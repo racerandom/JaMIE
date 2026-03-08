@@ -78,7 +78,7 @@
 
 ## Joint Japanese Medical Problem, Modality and Relation Recognition
 
-In the field of Japanese medical information extraction, few analysis tools are publicly available, and the relation extraction task is still an under-explored topic. JaMIE provides a novel relation annotation schema for investigating the medical and temporal relations between medical entities in Japanese medical reports. Besides the original pipeline method [2], we have implemented the default approach [1] for jointly recognizing medical entities, classifying entity modalities, and extracting relations with the models trained on two types of Japanese clinical texts (i.e., radiography interpretation reports of Lung Cancer, and case reports of Idiopathic Pulmonary Fibrosis) provided.
+In the field of Japanese medical information extraction, few analysis tools are publicly available, and the relation extraction task is still an under-explored topic. JaMIE provides a novel relation annotation schema for investigating the medical and temporal relations between medical entities in Japanese medical reports. We have switched the default implementation from the original pipeline method [2] to the joint architecture [1]. We publicly released the models trained on two types of Japanese clinical texts, i.e., radiography interpretation reports of Lung Cancer (肺がん読影所見), and case reports of Idiopathic Pulmonary Fibrosis (IPF診療録).
 
 <div style="text-align:center">
 <img src="https://github.com/racerandom/JaMIE/blob/main/jamie_overview.jpg" alt="JaMIE system" width="68%" height="68%" title="System overview">
