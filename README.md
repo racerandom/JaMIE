@@ -78,7 +78,7 @@
 
 ## Joint Japanese Medical Problem, Modality and Relation Recognition
 
-In the field of Japanese medical information extraction, few analysis tools are publicly available, and the relation extraction task is still an under-explored topic. JaMIE provides a novel relation annotation schema for investigating the medical and temporal relations between medical entities in Japanese medical reports. Besides the original pipeline method [^2], we have implemented a default joint approach [^1] with three components for jointly recognizing medical entities, classifying entity modalities, and extracting relations with superior performance.
+In the field of Japanese medical information extraction, few analysis tools are publicly available, and the relation extraction task is still an under-explored topic. JaMIE provides a novel relation annotation schema for investigating the medical and temporal relations between medical entities in Japanese medical reports. Besides the original pipeline method [2], we have implemented a default joint approach [1] with three components for jointly recognizing medical entities, classifying entity modalities, and extracting relations with superior performance.
 
 <div style="text-align:center">
 <img src="https://github.com/racerandom/JaMIE/blob/main/jamie_overview.jpg" alt="JaMIE system" width="68%" height="68%" title="System overview">
@@ -161,35 +161,35 @@ If you have any questions related to the code or papers, please feel free to sen
 If you use our code in your research, please cite the following papers:
 ```bibtex
 
-[^5]: @inproceedings{yada-etal-2020-towards,
+[5]: @inproceedings{yada-etal-2020-towards,
    title={Towards a Versatile Medical-Annotation Guideline Feasible Without Heavy Medical Knowledge: Starting From Critical Lung Diseases},
       author={Shuntaro Yada, Ayami Joh, Ribeka Tanaka, Fei Cheng, Eiji Aramaki, Sadao Kurohashi},
          booktitle={Proceedings of the Twelfth Language Resources and Evaluation Conference (LREC 2020)},
             year={2020}
 }
 
-[^4]: @inproceedings{cheng-etal-2020-dynamically,
+[4]: @inproceedings{cheng-etal-2020-dynamically,
    title={Dynamically Updating Event Representations for Temporal Relation Classification with Multi-category Learning},
       author={Fei Cheng, Masayuki Asahara, Ichiro Kobayashi, Sadao Kurohashi},
          booktitle={Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP 2020), Findings Volume},
             year={2020}
 }
 
-[^3]: @article{cheng2021jamie,
+[3]: @article{cheng2021jamie,
    title={JaMIE: A Pipeline Japanese Medical Information Extraction System},
       author={Fei Cheng, Shuntaro Yada, Ribeka Tanaka, Eiji Aramaki, Sadao Kurohashi},
          booktitle={arXiv},
             year={2021}
 }
 
-[^2]: @inproceedings{cheng-etal-2022-jamie,
+[2]: @inproceedings{cheng-etal-2022-jamie,
    title={JaMIE: A Pipeline Japanese Medical Information Extraction System with Novel Relation Annotation},
       author={Fei Cheng, Shuntaro Yada, Ribeka Tanaka, Eiji Aramaki, Sadao Kurohashi},
          booktitle={Proceedings of the Thirteenth Language Resources and Evaluation Conference (LREC 2022)},
             year={2022}
 }
 
-[^1]: @article{cheng2026-jamie-joint,
+[1]: @article{cheng2026-jamie-joint,
    title={A Joint Neural Baseline for Concept, Assertion, and Relation Extraction from Clinical Text},
       author={Fei Cheng, Ribeka Tanaka, Sadao Kurohashi},
          booktitle={arXiv},
